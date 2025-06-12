@@ -7,7 +7,7 @@
 
 **Why was this done?**
 
-- The original TPP source code was cluttered with unused assets and code from the vanilla game. It was also built off of an [outdated refresh of the SM64 Decomp](https://github.com/n64decomp/sm64/commit/c45aa301bb07a14eb1b1ebc9e73b8fed60817292), which led to compilation issues for some users—often requiring workarounds like Docker. For these reasons, we figured that rebuilding the project from scratch was more practical than attempting to clean up the original source code.
+- The original TPP source code was cluttered with unused assets and code from the vanilla game. It was also built off of an [outdated refresh of the SM64 Decomp](https://github.com/n64decomp/sm64/commit/c45aa301bb07a14eb1b1ebc9e73b8fed60817292), which led to compilation issues for some users—often requiring workarounds like Docker. For these reasons, we figured that rebuilding the project from scratch was more convenient than attempting to clean up the original source code.
 
 **Am I allowed to use this source code as a base for another project?**
 
