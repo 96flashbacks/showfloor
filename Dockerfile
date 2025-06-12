@@ -6,8 +6,7 @@ RUN apt-get update && \
         build-essential \
         git \
         pkgconf \
-        python3 \
-        bsdmainutils
+        python3
 
 RUN mkdir /sm64
 WORKDIR /sm64

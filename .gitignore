@@ -50,4 +50,3 @@ build/*
 *.map
 .assets-local.txt
 **/.DS_Store
-*Zone.Identifier
