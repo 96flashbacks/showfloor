@@ -1,0 +1,42 @@
+on:
+  push:
+    branches:
+      - '**'
+
+concurrency:
+  group: ${{github.repository}}-${{github.ref_name}}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Retrieve required files
+      run: wget -q --show-progress ${{secrets.BASEROM_URL}} && unzip "Super Mario 64 (Japan).zip" && mv "Super Mario 64 (Japan).z64" baserom.jp.z64
+
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag sm64
+
+    - name: Run the Docker image
+      run: docker run --rm --mount type=bind,source="$(pwd)",destination=/sm64 sm64 bash makecontinuous.sh "${{github.event.repository.name}}-${{github.ref_name}}.bps"
+
+    - name: Push build to GitHub releases
+      uses: mini-bomba/create-github-release@v1.2.0
+      with:
+        token: ${{secrets.GITHUB_TOKEN}}
+        name: "Continuous Releases"
+        tag: "continuous"
+        body: |
+            This automatic prerelease is built from commit ${{github.sha}} and was triggered by @${{github.actor}}
+            [Github Actions workflow run that built this prerelease](https://github.com/${{github.repository}}/actions/runs/${{github.run_id}})
+            
+            Commit message:
+            ${{github.event.head_commit.message}}
+            
+            Builds from other branches are also available under this prerelease. The latest build comes from branch ${{github.ref_name}}.
+        files: ${{github.event.repository.name}}-${{github.ref_name}}.bps
+        clear_attachments: false
+        prerelease: true
