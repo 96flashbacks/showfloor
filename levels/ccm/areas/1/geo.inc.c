@@ -18,7 +18,7 @@ const GeoLayout snow_slider_geo[] = {
                GEO_DISPLAY_LIST(LAYER_OPAQUE, snow_slider_2_dl_mesh),
                GEO_DISPLAY_LIST(LAYER_ALPHA, snow_slider_3_dl_mesh),
                GEO_RENDER_OBJ(),
-               GEO_ASM(   1, geo_envfx_main),
+               GEO_ASM(   3, geo_envfx_main),
             GEO_CLOSE_NODE(),
          GEO_CLOSE_NODE(),
       GEO_CLOSE_NODE(),
