@@ -302,7 +302,9 @@ void bowser_bitdw_actions(void) {
         // Set starting Bowser level actions, randomly he can also start
         // dancing after the introduction
         if (rand < 0.1) {
-            o->oAction = BOWSER_ACT_DANCE; // 10% chance
+            o->oAction = BOWSER_ACT_UNUSED_SLOW_WALK; // 10% chance
+        } else if (rand < 0.2) {
+            o->oAction = BOWSER_ACT_DANCE; // 20% chance
         } else {
             o->oAction = BOWSER_ACT_WALK_TO_MARIO; // common
         }

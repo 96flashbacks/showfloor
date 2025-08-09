@@ -27,8 +27,6 @@ extern struct VblankHandler *gVblankHandler1;
 extern struct VblankHandler *gVblankHandler2;
 extern struct SPTask *gActiveSPTask;
 extern u32 gNumVblanks;
-extern s8 gResetTimer;
-extern s8 gNmiResetBarsTimer;
 extern s8 gDebugLevelSelect;
 extern s8 D_8032C650;
 extern s8 gShowProfiler;

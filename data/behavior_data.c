@@ -777,10 +777,10 @@ const BehaviorScript bhvDoor[] = {
 
 const BehaviorScript bhvThwomp[] = {
     BEGIN(OBJ_LIST_SURFACE),
-    LOAD_COLLISION_DATA(thwomp_seg5_collision_0500B92C),
+    LOAD_COLLISION_DATA(dosun_info2),
     OR_INT(oFlags, (OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
     DROP_TO_FLOOR(),
-    ADD_FLOAT(oPosY, 1),
+    ADD_FLOAT(oPosY, 2),
     SET_HOME(),
     SCALE(/*Unused*/ 0, /*Field*/ 140),
     BEGIN_LOOP(),
@@ -791,10 +791,10 @@ const BehaviorScript bhvThwomp[] = {
 
 const BehaviorScript bhvThwomp2[] = {
     BEGIN(OBJ_LIST_SURFACE),
-    LOAD_COLLISION_DATA(thwomp_seg5_collision_0500B7D0),
+    LOAD_COLLISION_DATA(dosun_info),
     OR_INT(oFlags, (OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
     DROP_TO_FLOOR(),
-    ADD_FLOAT(oPosY, 1),
+    ADD_FLOAT(oPosY, 2),
     SCALE(/*Unused*/ 0, /*Field*/ 140),
     SET_HOME(),
     BEGIN_LOOP(),

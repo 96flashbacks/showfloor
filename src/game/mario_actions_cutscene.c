@@ -432,6 +432,7 @@ s32 launch_mario_until_land(struct MarioState *m, s32 endAction, s32 animation, 
     if (airStepLanded) {
         if (m->action == ACT_EXIT_AIRBORNE || m->action == ACT_SPECIAL_EXIT_AIRBORNE) {
             m->faceAngle[1] += 0x7FFF;
+            m->forwardVel = 8.0f;
         }
 
         set_mario_action(m, endAction, 0);
@@ -701,10 +702,16 @@ s32 act_falling_exit_airborne(struct MarioState *m) {
 }
 
 s32 act_exit_land_save_dialog(struct MarioState *m) {
-    stationary_ground_step(m);
+    perform_ground_step(m);
+    mario_set_forward_vel(m, m->forwardVel * 2);
     play_mario_landing_sound_once(m, SOUND_ACTION_TERRAIN_LANDING);
-    set_mario_animation(m, MARIO_ANIM_GENERAL_LAND);
+    set_mario_animation(m, m->actionArg == 0 ? MARIO_ANIM_GENERAL_LAND
+                                                     : MARIO_ANIM_LAND_FROM_SINGLE_JUMP);
 
+    if (is_anim_past_frame(m, 11) || is_anim_past_frame(m, 24)) {
+        stationary_ground_step(m);
+    }
+                                        
     if (is_anim_past_end(m)) {
         set_mario_action(m, ACT_IDLE, 0);
     }

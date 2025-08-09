@@ -110,10 +110,7 @@ s32 intro_regular(void) {
     if (sPlayMarioGreeting < 30) {
         sPlayMarioGreeting++;
     }
-
-    if (sPlayMarioGreeting == 11) {
-        play_sound(SOUND_MARIO_YAHOO, gGlobalSoundSource);
-    }
+    
     print_intro_text();
 
     if (gPlayer1Controller->buttonPressed & START_BUTTON) {

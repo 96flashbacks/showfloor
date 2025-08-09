@@ -16,7 +16,7 @@ UNUSED static const u64 binid_0 = 0;
 UNUSED static const u64 binid_1 = 1;
 
 #include "thwomp/dosun.sou"
-#include "thwomp/collision.inc.c"
+#include "thwomp/dosun.flk"
 UNUSED static const u64 binid_2 = 2;
 
 #include "bullet_bill/model.inc.c"

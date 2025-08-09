@@ -1998,8 +1998,6 @@ chan_setlayer 0, .layer_C7C
 chan_end
 
 .layer_C7C:
-layer_somethingon
-layer_portamento 0x82, 40, 255
 layer_note1 41, 0x6f, 110
 layer_end
 

@@ -279,37 +279,6 @@ void end_master_display_list(void) {
 }
 
 /**
- * Draw the bars that appear when the N64 is soft reset.
- */
-void draw_reset_bars(void) {
-    s32 width, height;
-    s32 fbNum;
-    u64 *fbPtr;
-
-    if (gResetTimer != 0 && gNmiResetBarsTimer < 15) {
-        if (sRenderedFramebuffer == 0) {
-            fbNum = 2;
-        } else {
-            fbNum = sRenderedFramebuffer - 1;
-        }
-
-        fbPtr = (u64 *) PHYSICAL_TO_VIRTUAL(gPhysicalFramebuffers[fbNum]);
-        fbPtr += gNmiResetBarsTimer++ * (SCREEN_WIDTH / 4);
-
-        for (width = 0; width < ((SCREEN_HEIGHT / 16) + 1); width++) {
-            // Loop must be one line to match on -O2
-            for (height = 0; height < (SCREEN_WIDTH / 4); height++)
-                *fbPtr++ = 0;
-            fbPtr += ((SCREEN_WIDTH / 4) * 14);
-        }
-    }
-
-    osWritebackDCacheAll();
-    osRecvMesg(&gGameVblankQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
-    osRecvMesg(&gGameVblankQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
-}
-
-/**
  * Initial settings for the first rendered frame.
  */
 void render_init(void) {
@@ -547,10 +516,6 @@ void thread5_game_loop(UNUSED void *arg) {
 
     while (TRUE) {
         // If the reset timer is active, run the process to reset the game.
-        if (gResetTimer != 0) {
-            draw_reset_bars();
-            continue;
-        }
         profiler_log_thread5_time(THREAD5_START);
 
         // If any controllers are plugged in, start read the data for when

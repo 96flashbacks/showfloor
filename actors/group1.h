@@ -41,8 +41,8 @@ extern const struct Animation *const hoot_seg5_anims_05005768[];
 
 // thwomp
 extern Hierarchy RCP_HmsDosun[];
-extern const Collision thwomp_seg5_collision_0500B7D0[];
-extern const Collision thwomp_seg5_collision_0500B92C[];
+extern const Collision dosun_info[];
+extern const Collision dosun_info2[];
 
 // yellow_sphere_small
 extern const GeoLayout yellow_sphere_geo[];

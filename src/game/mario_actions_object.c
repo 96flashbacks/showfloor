@@ -99,6 +99,10 @@ s32 mario_update_punch_sequence(struct MarioState *m) {
 }
 
 s32 act_punching(struct MarioState *m) {
+    if (m->input & INPUT_STOMPED) {
+        return drop_and_set_mario_action(m, ACT_SHOCKWAVE_BOUNCE, 0);
+    }
+
     if (m->input & (INPUT_NONZERO_ANALOG | INPUT_A_PRESSED | INPUT_OFF_FLOOR | INPUT_ABOVE_SLIDE)) {
         return check_common_action_exits(m);
     }
@@ -118,6 +122,10 @@ s32 act_punching(struct MarioState *m) {
 }
 
 s32 act_picking_up(struct MarioState *m) {
+    if (m->input & INPUT_STOMPED) {
+        return drop_and_set_mario_action(m, ACT_SHOCKWAVE_BOUNCE, 0);
+    }
+
     if (m->input & INPUT_OFF_FLOOR) {
         return drop_and_set_mario_action(m, ACT_FREEFALL, 0);
     }
@@ -152,6 +160,10 @@ s32 act_picking_up(struct MarioState *m) {
 }
 
 s32 act_dive_picking_up(struct MarioState *m) {
+    if (m->input & INPUT_STOMPED) {
+        return drop_and_set_mario_action(m, ACT_SHOCKWAVE_BOUNCE, 0);
+    }
+
     //! Hands-free holding. Landing on a slope or being pushed off a ledge while
     // landing from a dive grab sets Mario's action to a non-holding action
     // without dropping the object, causing the hands-free holding glitch.
@@ -168,6 +180,10 @@ s32 act_dive_picking_up(struct MarioState *m) {
 }
 
 s32 act_placing_down(struct MarioState *m) {
+    if (m->input & INPUT_STOMPED) {
+        return drop_and_set_mario_action(m, ACT_SHOCKWAVE_BOUNCE, 0);
+    }
+
     if (m->input & INPUT_OFF_FLOOR) {
         return drop_and_set_mario_action(m, ACT_FREEFALL, 0);
     }
@@ -185,6 +201,10 @@ s32 act_throwing(struct MarioState *m) {
         return set_mario_action(m, ACT_PLACING_DOWN, 0);
     }
 
+    if (m->input & INPUT_STOMPED) {
+        return drop_and_set_mario_action(m, ACT_SHOCKWAVE_BOUNCE, 0);
+    }
+
     if (m->input & INPUT_OFF_FLOOR) {
         return drop_and_set_mario_action(m, ACT_FREEFALL, 0);
     }
@@ -200,6 +220,10 @@ s32 act_throwing(struct MarioState *m) {
 }
 
 s32 act_heavy_throw(struct MarioState *m) {
+    if (m->input & INPUT_STOMPED) {
+        return drop_and_set_mario_action(m, ACT_SHOCKWAVE_BOUNCE, 0);
+    }
+
     if (m->input & INPUT_OFF_FLOOR) {
         return drop_and_set_mario_action(m, ACT_FREEFALL, 0);
     }
@@ -215,6 +239,10 @@ s32 act_heavy_throw(struct MarioState *m) {
 }
 
 s32 act_stomach_slide_stop(struct MarioState *m) {
+    if (m->input & INPUT_STOMPED) {
+        return set_mario_action(m, ACT_SHOCKWAVE_BOUNCE, 0);
+    }
+
     if (m->input & INPUT_OFF_FLOOR) {
         return set_mario_action(m, ACT_FREEFALL, 0);
     }

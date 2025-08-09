@@ -17,7 +17,7 @@
 
 - Yep.
 
-If there are any more questions regarding this project, we invite you to join our [Discord Server.](https://discord.gg/rjWEDCqW4c)
+If there are any more questions regarding this project, we invite you to join our [Discord Server.](https://discord.gg/FbMFSKVTv2)
 
 ## Credits
 
@@ -50,16 +50,19 @@ If there are any more questions regarding this project, we invite you to join ou
 - xerox
 - Phil564
 - penguinlambz
+- RetroDev
+- Fluvian
 - skibidigurt
 - diesel64
 - Holo
+- toonjoey
   
 ### Special Thanks
+- icehotlemonade
 - Neverax
 - na0micakes
 - duskewl/jadu
 - Matsilagi
-- toonjoey
 - darkestafterglo
 - Tony (Hard4Games)
 - aaali
@@ -96,6 +99,7 @@ If there are any more questions regarding this project, we invite you to join ou
 - [64History's Archives](https://archive.org/details/sm64-beta-content)
 - [Dudaw's Archives](https://archive.org/details/sm64brp_src_abandoned)
 - [Roovahlees's Archives](https://archive.org/details/@roovahlees)
+- [VGM & Other Instrument Sources' Spreadsheet](https://docs.google.com/spreadsheets/d/1JJBlHHDc65fhZmKUGLrDTLCm6rfUU83-kbuD8Y0zU0o/edit?gid=2047725819#gid=2047725819)
 - [Retro Aesthetics' Mario Series Matches](https://retroaesthetics.net/mario-series-matches/)
 - [The Cutting Room Floor's Page](https://tcrf.net/Prerelease:Super_Mario_64_(Nintendo_64)/Shoshinkai_1995_Demo)
 - [Original TPP Source Code](https://github.com/Sunlitspace542/tpp-mirror)

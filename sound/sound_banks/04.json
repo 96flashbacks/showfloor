@@ -141,7 +141,7 @@
             "sound": "0C"
         },
         "inst13": {
-            "release_rate": 152,
+            "release_rate": 90,
             "envelope": "envelope10",
             "sound": "0D"
         }

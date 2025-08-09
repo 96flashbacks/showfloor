@@ -49,8 +49,6 @@ struct SPTask *sNextAudioSPTask = NULL;
 struct SPTask *sNextDisplaySPTask = NULL;
 s8 sAudioEnabled = TRUE;
 u32 gNumVblanks = 0;
-s8 gResetTimer = 0;
-s8 gNmiResetBarsTimer = 0;
 s8 gDebugLevelSelect = 0;
 s8 D_8032C650 = 0;
 
@@ -141,14 +139,6 @@ void create_thread(OSThread *thread, OSId id, void (*entry)(void *), void *arg, 
     osCreateThread(thread, id, entry, arg, sp, pri);
 }
 
-void handle_nmi_request(void) {
-    gResetTimer = 1;
-    gNmiResetBarsTimer = 0;
-    stop_sounds_in_continuous_banks();
-    sound_banks_disable(SEQ_PLAYER_SFX, SOUND_BANKS_BACKGROUND);
-    fadeout_level_music(90);
-}
-
 void receive_new_tasks(void) {
     struct SPTask *spTask;
 
@@ -215,10 +205,6 @@ void handle_vblank(void) {
 
     stub_main_3();
     gNumVblanks++;
-
-    if (gResetTimer > 0) {
-        gResetTimer++;
-    }
 
     receive_new_tasks();
 
@@ -340,9 +326,6 @@ void thread3_main(UNUSED void *arg) {
                 break;
             case MESG_START_GFX_SPTASK:
                 start_gfx_sptask();
-                break;
-            case MESG_NMI_REQUEST:
-                handle_nmi_request();
                 break;
         }
         stub_main_2();
