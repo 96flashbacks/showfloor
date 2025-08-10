@@ -9,28 +9,28 @@ static const Vtx burn_smoke_seg4_vertex_040217C0[] = {
 };
 
 ALIGNED8 static const u8 burn_smoke_texture_1[] = {
-#include "actors/burn_smoke/burn_smoke1.rgba16.inc.c"
+#include "actors/burn_smoke/burn_smoke1.ia16.inc.c"
 };
 ALIGNED8 static const u8 burn_smoke_texture_2[] = {
-#include "actors/burn_smoke/burn_smoke2.rgba16.inc.c"
+#include "actors/burn_smoke/burn_smoke2.ia16.inc.c"
 };
 ALIGNED8 static const u8 burn_smoke_texture_3[] = {
-#include "actors/burn_smoke/burn_smoke3.rgba16.inc.c"
+#include "actors/burn_smoke/burn_smoke3.ia16.inc.c"
 };
 ALIGNED8 static const u8 burn_smoke_texture_4[] = {
-#include "actors/burn_smoke/burn_smoke4.rgba16.inc.c"
+#include "actors/burn_smoke/burn_smoke4.ia16.inc.c"
 };
 ALIGNED8 static const u8 burn_smoke_texture_5[] = {
 #include "actors/burn_smoke/burn_smoke.ia16.inc.c"
 };
 ALIGNED8 static const u8 burn_smoke_texture_6[] = {
-#include "actors/burn_smoke/burn_smoke6.rgba16.inc.c"
+#include "actors/burn_smoke/burn_smoke6.ia16.inc.c"
 };
 ALIGNED8 static const u8 burn_smoke_texture_7[] = {
-#include "actors/burn_smoke/burn_smoke7.rgba16.inc.c"
+#include "actors/burn_smoke/burn_smoke7.ia16.inc.c"
 };
 ALIGNED8 static const u8 burn_smoke_texture_8[] = {
-#include "actors/burn_smoke/burn_smoke8.rgba16.inc.c"
+#include "actors/burn_smoke/burn_smoke8.ia16.inc.c"
 };
 
 // 0x04022000 - 0x04022028
