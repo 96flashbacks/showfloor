@@ -380,8 +380,8 @@ struct DynList dynlist_mario_face_shape[] = {
     // Eye color
     MakeDynObj(D_MATERIAL, 0),
     SetId(4),
-    SetAmbient(1.0, 1.0, 1.0),
-    SetDiffuse(1.0, 1.0, 1.0),
+    SetAmbient(0.0, 1.0, 0.0),
+    SetDiffuse(0.0, 1.0, 0.0),
     // Hair color
     MakeDynObj(D_MATERIAL, 0),
     SetId(5),
