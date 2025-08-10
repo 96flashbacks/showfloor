@@ -86,7 +86,7 @@ ifeq      ($(COMPILER),ido)
 else ifeq ($(COMPILER),gcc)
   NON_MATCHING := 1
   MIPSISET     := -mips3
-  OPT_FLAGS    := -Ofast
+  OPT_FLAGS    := -O0 -g
 endif
 
 
