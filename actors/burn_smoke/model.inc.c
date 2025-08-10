@@ -60,56 +60,56 @@ const Gfx burn_smoke_seg4_dl_04022048[] = {
 
 const Gfx gfx_burn_smoke_v1[] = {
     gsSPDisplayList(burn_smoke_seg4_dl_04022000),
-    gsDPLoadTextureBlock(burn_smoke_texture_1, G_IM_FMT_RGBA, G_IM_SIZ_16b, 32, 32, 0, G_TX_CLAMP, G_TX_CLAMP, 5, 5, G_TX_NOLOD, G_TX_NOLOD),
+    gsDPLoadTextureBlock(burn_smoke_texture_1, G_IM_FMT_IA, G_IM_SIZ_16b, 32, 32, 0, G_TX_CLAMP, G_TX_CLAMP, 5, 5, G_TX_NOLOD, G_TX_NOLOD),
     gsSPDisplayList(burn_smoke_seg4_dl_04022028),
     gsSPDisplayList(burn_smoke_seg4_dl_04022048),
     gsSPEndDisplayList(),
 };
 const Gfx gfx_burn_smoke_v2[] = {
     gsSPDisplayList(burn_smoke_seg4_dl_04022000),
-    gsDPLoadTextureBlock(burn_smoke_texture_2, G_IM_FMT_RGBA, G_IM_SIZ_16b, 32, 32, 0, G_TX_CLAMP, G_TX_CLAMP, 5, 5, G_TX_NOLOD, G_TX_NOLOD),
+    gsDPLoadTextureBlock(burn_smoke_texture_2, G_IM_FMT_IA, G_IM_SIZ_16b, 32, 32, 0, G_TX_CLAMP, G_TX_CLAMP, 5, 5, G_TX_NOLOD, G_TX_NOLOD),
     gsSPDisplayList(burn_smoke_seg4_dl_04022028),
     gsSPDisplayList(burn_smoke_seg4_dl_04022048),
     gsSPEndDisplayList(),
 };
 const Gfx gfx_burn_smoke_v3[] = {
     gsSPDisplayList(burn_smoke_seg4_dl_04022000),
-    gsDPLoadTextureBlock(burn_smoke_texture_3, G_IM_FMT_RGBA, G_IM_SIZ_16b, 32, 32, 0, G_TX_CLAMP, G_TX_CLAMP, 5, 5, G_TX_NOLOD, G_TX_NOLOD),
+    gsDPLoadTextureBlock(burn_smoke_texture_3, G_IM_FMT_IA, G_IM_SIZ_16b, 32, 32, 0, G_TX_CLAMP, G_TX_CLAMP, 5, 5, G_TX_NOLOD, G_TX_NOLOD),
     gsSPDisplayList(burn_smoke_seg4_dl_04022028),
     gsSPDisplayList(burn_smoke_seg4_dl_04022048),
     gsSPEndDisplayList(),
 };
 const Gfx gfx_burn_smoke_v4[] = {
     gsSPDisplayList(burn_smoke_seg4_dl_04022000),
-    gsDPLoadTextureBlock(burn_smoke_texture_4, G_IM_FMT_RGBA, G_IM_SIZ_16b, 32, 32, 0, G_TX_CLAMP, G_TX_CLAMP, 5, 5, G_TX_NOLOD, G_TX_NOLOD),
+    gsDPLoadTextureBlock(burn_smoke_texture_4, G_IM_FMT_IA, G_IM_SIZ_16b, 32, 32, 0, G_TX_CLAMP, G_TX_CLAMP, 5, 5, G_TX_NOLOD, G_TX_NOLOD),
     gsSPDisplayList(burn_smoke_seg4_dl_04022028),
     gsSPDisplayList(burn_smoke_seg4_dl_04022048),
     gsSPEndDisplayList(),
 };
 const Gfx gfx_burn_smoke_v5[] = {
     gsSPDisplayList(burn_smoke_seg4_dl_04022000),
-    gsDPLoadTextureBlock(burn_smoke_texture_5, G_IM_FMT_RGBA, G_IM_SIZ_16b, 32, 32, 0, G_TX_CLAMP, G_TX_CLAMP, 5, 5, G_TX_NOLOD, G_TX_NOLOD),
+    gsDPLoadTextureBlock(burn_smoke_texture_5, G_IM_FMT_IA, G_IM_SIZ_16b, 32, 32, 0, G_TX_CLAMP, G_TX_CLAMP, 5, 5, G_TX_NOLOD, G_TX_NOLOD),
     gsSPDisplayList(burn_smoke_seg4_dl_04022028),
     gsSPDisplayList(burn_smoke_seg4_dl_04022048),
     gsSPEndDisplayList(),
 };
 const Gfx gfx_burn_smoke_v6[] = {
     gsSPDisplayList(burn_smoke_seg4_dl_04022000),
-    gsDPLoadTextureBlock(burn_smoke_texture_6, G_IM_FMT_RGBA, G_IM_SIZ_16b, 32, 32, 0, G_TX_CLAMP, G_TX_CLAMP, 5, 5, G_TX_NOLOD, G_TX_NOLOD),
+    gsDPLoadTextureBlock(burn_smoke_texture_6, G_IM_FMT_IA, G_IM_SIZ_16b, 32, 32, 0, G_TX_CLAMP, G_TX_CLAMP, 5, 5, G_TX_NOLOD, G_TX_NOLOD),
     gsSPDisplayList(burn_smoke_seg4_dl_04022028),
     gsSPDisplayList(burn_smoke_seg4_dl_04022048),
     gsSPEndDisplayList(),
 };
 const Gfx gfx_burn_smoke_v7[] = {
     gsSPDisplayList(burn_smoke_seg4_dl_04022000),
-    gsDPLoadTextureBlock(burn_smoke_texture_7, G_IM_FMT_RGBA, G_IM_SIZ_16b, 32, 32, 0, G_TX_CLAMP, G_TX_CLAMP, 5, 5, G_TX_NOLOD, G_TX_NOLOD),
+    gsDPLoadTextureBlock(burn_smoke_texture_7, G_IM_FMT_IA, G_IM_SIZ_16b, 32, 32, 0, G_TX_CLAMP, G_TX_CLAMP, 5, 5, G_TX_NOLOD, G_TX_NOLOD),
     gsSPDisplayList(burn_smoke_seg4_dl_04022028),
     gsSPDisplayList(burn_smoke_seg4_dl_04022048),
     gsSPEndDisplayList(),
 };
 const Gfx gfx_burn_smoke_v8[] = {
     gsSPDisplayList(burn_smoke_seg4_dl_04022000),
-    gsDPLoadTextureBlock(burn_smoke_texture_8, G_IM_FMT_RGBA, G_IM_SIZ_16b, 32, 32, 0, G_TX_CLAMP, G_TX_CLAMP, 5, 5, G_TX_NOLOD, G_TX_NOLOD),
+    gsDPLoadTextureBlock(burn_smoke_texture_8, G_IM_FMT_IA, G_IM_SIZ_16b, 32, 32, 0, G_TX_CLAMP, G_TX_CLAMP, 5, 5, G_TX_NOLOD, G_TX_NOLOD),
     gsSPDisplayList(burn_smoke_seg4_dl_04022028),
     gsSPDisplayList(burn_smoke_seg4_dl_04022048),
     gsSPEndDisplayList(),
