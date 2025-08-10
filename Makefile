@@ -38,7 +38,7 @@ VERSION ?= jp
 $(eval $(call validate-option,VERSION,jp))
 
 OPT_FLAGS := -g
-GRUCODE   ?= f3d_old
+GRUCODE   ?= f3dex3
 
 TARGET := sm64.$(VERSION)
 
