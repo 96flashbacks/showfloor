@@ -51,4 +51,20 @@ extern f32 adjustFreq;
 struct SPTask *unused_80321460(void);
 #endif
 
-#endif // AUDIO_EXTERNAL_H
+
+// --- Vanilla compatibility additions ---
+#include <PR/ultratypes.h>
+#include "types.h"
+extern Vec3f gGlobalSoundSource;
+
+#ifndef seq_player_lower_volume
+#define seq_player_lower_volume sequence_player_lower_volume
+#endif
+#ifndef seq_player_unlower_volume
+#define seq_player_unlower_volume sequence_player_unlower_volume
+#endif
+#ifndef seq_player_fade_out
+#define seq_player_fade_out sequence_player_fade_out
+#endif
+
+#endif // end external.h

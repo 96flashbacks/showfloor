@@ -15,6 +15,8 @@
 #include "game/OPT_FOR_SIZE.h"
 #include "seq_channel_layer_process_script.h"
 
+Vec3f gGlobalSoundSource = { 0.0f, 0.0f, 0.0f };
+
 #ifdef VERSION_EU
 #define EU_FLOAT(x) x##f
 #else
