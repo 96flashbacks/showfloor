@@ -16,7 +16,7 @@ const Collision wf_seg7_collision_small_bomp[] = {
     COL_VERTEX(-252, 261, 75),
     COL_VERTEX(-252, 261, -77),
     COL_VERTEX(-252, 210, 127),
-    COL_TRI_INIT(SURFACE_SLIPPERY, 18),
+    COL_TRI_INIT(SURFACE_WALL_MISC, 18),
     COL_TRI(0, 1, 2),
     COL_TRI(0, 3, 4),
     COL_TRI(0, 2, 3),

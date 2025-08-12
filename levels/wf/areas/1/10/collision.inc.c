@@ -1,6 +1,7 @@
-const Collision mountain_10_collision[] = {
-	COL_INIT(),
-	COL_VERTEX_INIT(0x39),
+// 0x0700FE14 - 0x0701025E
+const Collision wf_seg7_collision_tower[] = {
+    COL_INIT(),
+	COL_VERTEX_INIT(57),
 	COL_VERTEX(-127, 1741, -127),
 	COL_VERTEX(-127, 1997, -127),
 	COL_VERTEX(128, 1997, -127),
@@ -138,7 +139,6 @@ const Collision mountain_10_collision[] = {
 	COL_TRI(49, 37, 50),
 	COL_TRI(51, 26, 25),
 	COL_TRI(51, 25, 52),
-	COL_TRI(50, 37, 26),
 	COL_TRI(49, 39, 37),
 	COL_TRI(53, 33, 31),
 	COL_TRI(54, 30, 39),
@@ -150,7 +150,8 @@ const Collision mountain_10_collision[] = {
 	COL_TRI(53, 31, 56),
 	COL_TRI(52, 25, 33),
 	COL_TRI(52, 33, 53),
-	COL_TRI(26, 51, 50),
+	COL_TRI(50, 37, 26),
+	COL_TRI(50, 26, 51),
 	COL_TRI_STOP(),
 	COL_END()
 };

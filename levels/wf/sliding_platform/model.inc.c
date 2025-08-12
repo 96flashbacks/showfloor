@@ -1,7 +1,7 @@
 // 0x0700EA28 - 0x0700EA40
 static const Lights1 wf_seg7_lights_0700EA28 = gdSPDefLights1(
-    0x3f, 0x3f, 0x3f,
-    0xff, 0xff, 0xff, 0x28, 0x28, 0x28
+    255/4, 255/4, 255/4,
+    0xff, 0xff, 0xff, LIGHT_X, LIGHT_Y, LIGHT_Z
 );
 
 // 0x0700EA40 - 0x0700EA80
@@ -22,7 +22,7 @@ static const Vtx wf_seg7_vertex_0700EA80[] = {
 
 // 0x0700EAC0 - 0x0700EB08
 static const Gfx wf_seg7_dl_0700EAC0[] = {
-    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, generic_09003000),
+    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1,mountain_dl__6_rgba16),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
     gsSPLight(&wf_seg7_lights_0700EA28.l, 1),
@@ -34,7 +34,7 @@ static const Gfx wf_seg7_dl_0700EAC0[] = {
 
 // 0x0700EB08 - 0x0700EB40
 static const Gfx wf_seg7_dl_0700EB08[] = {
-    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, generic_09001000),
+    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1,mountain_dl__22_rgba16),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
     gsSPVertex(wf_seg7_vertex_0700EA80, 4, 0),

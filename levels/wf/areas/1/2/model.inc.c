@@ -1,7 +1,7 @@
 // 0x070051C8 - 0x070051E0
 static const Lights1 wf_seg7_lights_070051C8 = gdSPDefLights1(
-    0x3f, 0x3f, 0x3f,
-    0xff, 0xff, 0xff, 0x28, 0x28, 0x28
+    255/4, 255/4, 255/4,
+    0xff, 0xff, 0xff, LIGHT_X, LIGHT_Y, LIGHT_Z
 );
 
 // 0x070051E0 - 0x07005260
@@ -10,10 +10,6 @@ static const Vtx wf_seg7_vertex_070051E0[] = {
     {{{  1720,   2560,      0}, 0, {     0,      0}, {0x00, 0x7f, 0x00, 0xff}}},
     {{{  1925,   2560,      0}, 0, {     0,    990}, {0x00, 0x7f, 0x00, 0xff}}},
     {{{  1720,   2560,   -204}, 0, {   990,      0}, {0x00, 0x7f, 0x00, 0xff}}},
-    {{{  1127,   2560,  -1176}, 0, {   990,    990}, {0x00, 0x7f, 0x00, 0xff}}},
-    {{{  1126,   2560,   -870}, 0, {     0,      0}, {0x00, 0x7f, 0x00, 0xff}}},
-    {{{  1280,   2560,  -1024}, 0, {     0,    990}, {0x00, 0x7f, 0x00, 0xff}}},
-    {{{   973,   2560,  -1023}, 0, {   990,      0}, {0x00, 0x7f, 0x00, 0xff}}},
 };
 
 // 0x07005260 - 0x070052B8
@@ -23,9 +19,8 @@ static const Gfx wf_seg7_dl_07005260[] = {
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
     gsSPLight(&wf_seg7_lights_070051C8.l, 1),
     gsSPLight(&wf_seg7_lights_070051C8.a, 2),
-    gsSPVertex(wf_seg7_vertex_070051E0, 8, 0),
-    gsSP2Triangles( 0,  1,  2, 0x0,  0,  3,  1, 0x0),
-    gsSP2Triangles( 4,  5,  6, 0x0,  4,  7,  5, 0x0),
+    gsSPVertex(wf_seg7_vertex_070051E0, 4, 0),
+    gsSP2Triangles( 0,  1,  2, 0x0,  0,  3,  1, 0x0), 
     gsSPEndDisplayList(),
 };
 

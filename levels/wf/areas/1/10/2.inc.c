@@ -1,7 +1,7 @@
 // 0x07008838 - 0x07008850
 static const Lights1 wf_seg7_lights_07008838 = gdSPDefLights1(
-    0x3f, 0x3f, 0x3f,
-    0xff, 0xff, 0xff, 0x28, 0x28, 0x28
+    255/4, 255/4, 255/4,
+    0xff, 0xff, 0xff, LIGHT_X, LIGHT_Y, LIGHT_Z
 );
 
 // 0x07008850 - 0x07008950
@@ -122,7 +122,7 @@ static const Vtx wf_seg7_vertex_07008D20[] = {
 
 // 0x07008DD0 - 0x07008E48
 static const Gfx wf_seg7_dl_07008DD0[] = {
-    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wf_seg7_texture_07001000),
+    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wf_seg7_texture_07001800),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
     gsSPLight(&wf_seg7_lights_07008838.l, 1),
@@ -137,7 +137,7 @@ static const Gfx wf_seg7_dl_07008DD0[] = {
 
 // 0x07008E48 - 0x07008EA0
 static const Gfx wf_seg7_dl_07008E48[] = {
-    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, generic_09004000),
+    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1,grassbeta_09007800),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
     gsSPVertex(wf_seg7_vertex_07008950, 10, 0),
@@ -149,7 +149,7 @@ static const Gfx wf_seg7_dl_07008E48[] = {
 
 // 0x07008EA0 - 0x07008F58
 static const Gfx wf_seg7_dl_07008EA0[] = {
-    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wf_seg7_texture_0700AE00),
+    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1,grassbeta_09009000),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
     gsSPVertex(wf_seg7_vertex_070089F0, 16, 0),
@@ -168,7 +168,7 @@ static const Gfx wf_seg7_dl_07008EA0[] = {
 
 // 0x07008F58 - 0x07008FE8
 static const Gfx wf_seg7_dl_07008F58[] = {
-    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, wf_seg7_texture_0700A600),
+    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1,grassbeta_09007000),
     gsDPLoadSync(),
     gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 32 * 32 - 1, CALC_DXT(32, G_IM_SIZ_16b_BYTES)),
     gsSPVertex(wf_seg7_vertex_07008C30, 15, 0),
