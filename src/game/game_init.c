@@ -19,9 +19,6 @@
 #include "segment2.h"
 #include "segment_symbols.h"
 
-extern s8 gDebugLevelSelect;
-
-
 // First 3 controller slots
 struct Controller gControllers[3];
 
