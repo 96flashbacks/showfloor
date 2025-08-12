@@ -14,6 +14,7 @@
 #include "rendering_graph_node.h"
 #include "save_file.h"
 #include "segment2.h"
+Gfx *geo_mario_force_light(s32 callContext, struct GraphNode *node, Mat4 *mtx);
 
 /**
  * @file geo_misc.c
