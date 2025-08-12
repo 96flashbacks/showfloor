@@ -14,7 +14,6 @@
 #include "rendering_graph_node.h"
 #include "save_file.h"
 #include "segment2.h"
-Gfx *geo_mario_force_light(s32 callContext, struct GraphNode *node, Mat4 *mtx);
 
 /**
  * @file geo_misc.c
@@ -59,27 +58,4 @@ s16 round_float(f32 num) {
     } else {
         return num - 0.5;
     }
-}
-// --- Mario light override ---
-#include "PR/gbi.h"
-#include "game/game_init.h" // gDisplayListHead
-
-#define LIGHT_X 0
-#define LIGHT_Y 0
-#define LIGHT_Z 127
-
-/**
- * Forces Mario's lighting to a fixed direction, ignoring stage lighting.
- * Called via GEO_ASM in Mario's geo layout.
- */
-Gfx *geo_mario_force_light(s32 callContext, struct GraphNode *node, UNUSED Mat4 *mtx) {
-    if (callContext == GEO_CONTEXT_RENDER) {
-        static Lights1 sMarioForcedLight = gdSPDefLights1(
-            0x3f, 0x3f, 0x3f,   // ambient RGB
-            0xff, 0xff, 0xff,   // diffuse RGB
-            LIGHT_X, LIGHT_Y, LIGHT_Z // direction (signed bytes)
-        );
-        gSPSetLights1(gDisplayListHead++, sMarioForcedLight);
-    }
-    return NULL;
 }
