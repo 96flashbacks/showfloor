@@ -11,7 +11,7 @@
 // Argument 10: Specify dynamic music tables for levels, if specified. _ for none.
 // Argument 11: Specify level camera table, if specified. _ for none.
 
-DEFINE_LEVEL("CASTLE JUMP",    LEVEL_FUNLAND,          COURSE_FUNLAND,  funland,          generic   20000,    0x00, 0x00, 0x00, _,         _)
+DEFINE_LEVEL("CASTLE JUMP",    LEVEL_FUNLAND,          COURSE_FUNLAND,  funland,          generic,   20000,    0x00, 0x00, 0x00, _,         _)
 STUB_LEVEL(  "",               LEVEL_UNKNOWN_2,        COURSE_NONE,                                 20000,    0x00, 0x00, 0x00, _,         _)
 STUB_LEVEL(  "",               LEVEL_UNKNOWN_3,        COURSE_NONE,                                 20000,    0x00, 0x00, 0x00, _,         _)
 STUB_LEVEL(  "TERESA OBAKE",   LEVEL_BBH,              COURSE_BBH,                                  28000,    0x00, 0x00, 0x00, _,         _)
