@@ -48,7 +48,7 @@
             "sound": "28_sitar_1_A2"
         },
         "inst3": {
-            "release_rate": 10,
+            "release_rate": 20,
             "envelope": "envelope3",
             "sound": "39_sitar_2_C#3"
         }

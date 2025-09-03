@@ -275,6 +275,15 @@ static void common_idle_step(struct MarioState *m, s32 animation, s32 arg) {
         }
     }
 
+    if (m->pos[1] <= m->waterLevel - 130) {
+        if (m->actionTimer++ > 15) {
+            m->actionTimer = 0;
+        }
+        if (m->actionTimer == 1) {
+            play_sound(SOUND_ACTION_SWIMMING_IDLE, m->marioObj->header.gfx.cameraToObject);
+        }
+    }
+
     if (targetSpeed <= 0.0f && m->angleVel[1] == 0.0f) {
         set_mario_animation(m, animation);
     } else if (animation == MARIO_ANIM_SWIM_STOP) {

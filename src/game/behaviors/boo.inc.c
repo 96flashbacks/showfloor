@@ -93,11 +93,17 @@ static void boo_approach_target_opacity_and_update_scale(void) {
 static void boo_oscillate(s32 ignoreOpacity) {
     o->oFaceAnglePitch = sins(o->oBooOscillationTimer) * 0x400;
 
-    if (o->oOpacity == 0xFF || ignoreOpacity == TRUE) {
+    if (o->oOpacity == 255 || ignoreOpacity == TRUE) {
         o->header.gfx.scale[0] = sins(o->oBooOscillationTimer) * 0.08 + o->oBooBaseScale;
         o->header.gfx.scale[1] = -sins(o->oBooOscillationTimer) * 0.08 + o->oBooBaseScale;
         o->header.gfx.scale[2] = o->header.gfx.scale[0];
         o->oGravity = sins(o->oBooOscillationTimer) * o->oBooBaseScale;
+
+        if ((o->oPosY - o->oGraphYOffset - o->oFloorHeight) < (50 * o->oBooBaseScale) ){
+            if (o->oGravity < 0) 
+                o->oGravity = -o->oGravity;
+        }
+
         o->oBooOscillationTimer += 0x400;
     }
 }
@@ -200,11 +206,10 @@ static s32 boo_update_during_death(void) {
         o->oFlags &= ~OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW;
     } else {
         if (o->oTimer == 5) {
-            o->oBooTargetOpacity = 0;
+            o->oBooTargetOpacity = 250;
         }
 
         if (o->oTimer > 30 || o->oMoveFlags & 0x200) {
-            spawn_mist_particles();
             o->oBooDeathStatus = BOO_DEATH_STATUS_DEAD;
 
             if (o->oBooParentBigBoo != NULL) {

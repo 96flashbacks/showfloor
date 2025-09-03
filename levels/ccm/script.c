@@ -17,16 +17,16 @@
 #include "levels/ccm/header.h"
 
 static const LevelScript script_func_local_1[] = {
-    OBJECT(/*model*/ MODEL_PENGUIN,          /*pos*/  7118, -2752,  6209, /*angle*/ 0,   0, 0, /*bhvParam*/ 0x00020000, /*bhv*/ bhvSmallPenguin),
-    OBJECT(/*model*/ MODEL_PENGUIN,          /*pos*/  6868, -2752,  6209, /*angle*/ 0,   0, 0, /*bhvParam*/ 0x00020000, /*bhv*/ bhvSmallPenguin),
-    OBJECT(/*model*/ MODEL_PENGUIN,          /*pos*/  1698, -2752, -7496, /*angle*/ 0,  90, 0, /*bhvParam*/ 0x00020000, /*bhv*/ bhvSmallPenguin),
-    OBJECT(/*model*/ MODEL_PENGUIN,          /*pos*/  1972,  5183, -1376, /*angle*/ 0, 180, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvSmallPenguin),
+    OBJECT(/*model*/ MODEL_PENGUIN,          /*pos*/  7293, -3521,  6321, /*angle*/ 0,   0, 0, /*bhvParam*/ 0x00020000, /*bhv*/ bhvSmallPenguin),
+    OBJECT(/*model*/ MODEL_PENGUIN,          /*pos*/  7043, -3521,  6321, /*angle*/ 0,   0, 0, /*bhvParam*/ 0x00020000, /*bhv*/ bhvSmallPenguin),
+    OBJECT(/*model*/ MODEL_PENGUIN,          /*pos*/  7863, -3162, -7915, /*angle*/ 0,  90, 0, /*bhvParam*/ 0x00020000, /*bhv*/ bhvSmallPenguin),
+    OBJECT(/*model*/ MODEL_PENGUIN,          /*pos*/  2147,  4569, -1261, /*angle*/ 0, 180, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvSmallPenguin),
     RETURN(),
 };
 
 static const LevelScript script_func_local_2[] = {
-    OBJECT(/*model*/ MODEL_PENGUIN,          /*pos*/  6993, -2752,  6029, /*angle*/ 0, 0, 0, /*bhvParam*/ 0x01000000, /*bhv*/ bhvTuxiesMother),
-    OBJECT(/*model*/ MODEL_STAR,             /*pos*/  5464, -2240,  5264, /*angle*/ 0, 0, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvStar),
+    OBJECT(/*model*/ MODEL_PENGUIN,          /*pos*/  7168, -3521,  6141, /*angle*/ 0, 0, 0, /*bhvParam*/ 0x01000000, /*bhv*/ bhvTuxiesMother),
+    OBJECT(/*model*/ MODEL_STAR,             /*pos*/  5625, -2981,  5379, /*angle*/ 0, 0, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvStar),
     RETURN(),
 };
 
@@ -76,9 +76,9 @@ const LevelScript level_ccm_entry[] = {
     LOAD_MODEL_FROM_GEO(MODEL_TTM_MOON_SMILEY,       ccm_geo_000DBC),
 
     AREA(/*index*/ 1, snow_slider_geo),
-        OBJECT(/*model*/ MODEL_NONE, /*pos*/  1671,  6300, -1756, /*angle*/ 0,   0, 0, /*bhvParam*/ 0x000A0000, /*bhv*/ bhvSpinAirborneWarp),
-        OBJECT(/*model*/ MODEL_NONE, /*pos*/  7815, -2649,  4523, /*angle*/ 0,   0, 0, /*bhvParam*/ 0x00140000, /*bhv*/ bhvWarp),
-        OBJECT(/*model*/ MODEL_NONE, /*pos*/  2696,  5190,  -316, /*angle*/ 0, -90, 0, /*bhvParam*/ 0x0F1E0000, /*bhv*/ bhvWarp),
+        OBJECT(/*model*/ MODEL_NONE, /*pos*/  1846,  5685, -1641, /*angle*/ 0,   0, 0, /*bhvParam*/ 0x000A0000, /*bhv*/ bhvSpinAirborneWarp),
+        OBJECT(/*model*/ MODEL_NONE, /*pos*/  7987, -3418,  4638, /*angle*/ 0,   0, 0, /*bhvParam*/ 0x00140000, /*bhv*/ bhvWarp),
+        OBJECT(/*model*/ MODEL_NONE, /*pos*/  2868,  4575,  -204, /*angle*/ 0, -90, 0, /*bhvParam*/ 0x0F1E0000, /*bhv*/ bhvWarp),
         WARP_NODE(/*id*/ WARP_NODE_0A,      /*destLevel*/ LEVEL_CCM,    /*destArea*/ 1, /*destNode*/ WARP_NODE_0A, /*flags*/ WARP_NO_CHECKPOINT),
         WARP_NODE(/*id*/ WARP_NODE_14,      /*destLevel*/ LEVEL_CCM,    /*destArea*/ 1, /*destNode*/ WARP_NODE_1E, /*flags*/ WARP_NO_CHECKPOINT),
         WARP_NODE(/*id*/ WARP_NODE_1E,      /*destLevel*/ LEVEL_CCM,    /*destArea*/ 2, /*destNode*/ WARP_NODE_0A, /*flags*/ WARP_NO_CHECKPOINT),

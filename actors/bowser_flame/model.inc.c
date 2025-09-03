@@ -88,7 +88,8 @@ static const Vtx flame_seg6_vertex_0601C000[] = {
 const Gfx flame_seg6_dl_0601C080[] = {
     gsDPPipeSync(),
     gsDPSetCombineMode(G_CC_MODULATERGBA, G_CC_MODULATERGBA),
-    gsSPGeometryMode(G_LIGHTING, G_SHADING_SMOOTH),
+    gsSPClearGeometryMode(G_LIGHTING),
+    gsSPSetGeometryMode(G_SHADING_SMOOTH),
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
     gsSPEndDisplayList(),
 };

@@ -28,7 +28,7 @@ jobs:
       run: docker run --rm --mount type=bind,source="$(pwd)",destination=/sm64 sm64 bash makecontinuous.sh ${{github.event.repository.name}} ${{github.ref_name}}
 
     - name: Push build to GitHub releases
-      uses: docker://ghcr.io/mini-bomba/create-github-release:v1.2.0
+      uses: docker://ghcr.io/mini-bomba/create-github-release:main
       with:
         token: ${{secrets.GITHUB_TOKEN}}
         name: "Continuous Pre-releases"

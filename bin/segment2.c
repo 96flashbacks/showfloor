@@ -1779,7 +1779,8 @@ const Gfx dl_paintings_env_mapped_begin[] = {
 const Gfx dl_paintings_env_mapped_end[] = {
     gsSPTexture(0x4000, 0x4000, 0, G_TX_RENDERTILE, G_OFF),
     gsDPPipeSync(),
-    gsSPGeometryModeSetFirst(G_TEXTURE_GEN, G_LIGHTING),
+    gsSPSetGeometryMode(G_TEXTURE_GEN),
+    gsSPClearGeometryMode(G_LIGHTING),
     gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
     gsSPEndDisplayList(),
 };

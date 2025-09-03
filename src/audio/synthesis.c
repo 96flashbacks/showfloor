@@ -155,9 +155,6 @@ u64 *synthesis_execute(u64 *cmdBuf, s32 *writtenCmds, s16 *aiBuf, s32 bufLen) {
             }
         }
         process_sequences(i - 1);
-        if (gSynthesisReverb.useReverb != 0) {
-            prepare_reverb_ring_buffer(chunkLen, gAudioUpdatesPerFrame - i);
-        }
         cmd = synthesis_do_one_audio_update((s16 *) aiBufPtr, chunkLen, cmd, gAudioUpdatesPerFrame - i);
         bufLen -= chunkLen;
         aiBufPtr += chunkLen;

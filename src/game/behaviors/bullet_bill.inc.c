@@ -53,7 +53,6 @@ void bullet_bill_act_2(void) {
 
         if (o->oTimer > 150 || o->oMoveFlags & OBJ_MOVE_HIT_WALL) {
             o->oAction = 3;
-            spawn_mist_particles();
         }
     }
 }

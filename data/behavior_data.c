@@ -34,6 +34,9 @@
 #include "make_const_nonconst.h"
 #include "behavior_data.h"
 
+#define _SHIFTL(v, s, w)	\
+    ((unsigned int) (((unsigned int)(v) & ((0x01 << (w)) - 1)) << (s)))
+
 #define BC_B(a) _SHIFTL(a, 24, 8)
 #define BC_BB(a, b) (_SHIFTL(a, 24, 8) | _SHIFTL(b, 16, 8))
 #define BC_BBBB(a, b, c, d) (_SHIFTL(a, 24, 8) | _SHIFTL(b, 16, 8) | _SHIFTL(c, 8, 8) | _SHIFTL(d, 0, 8))
@@ -43,7 +46,6 @@
 #define BC_HH(a, b) (_SHIFTL(a, 16, 16) | _SHIFTL(b, 0, 16))
 #define BC_W(a) ((uintptr_t)(u32)(a))
 #define BC_PTR(a) ((uintptr_t)(a))
-
 
 // Defines the start of the behavior script as well as the object list the object belongs to.
 // Has some special behavior for certain objects.
@@ -357,7 +359,7 @@ const BehaviorScript bhvGiantPole[] = {
     BEGIN(OBJ_LIST_POLELIKE),
     OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
     SET_INT(oInteractType, INTERACT_POLE),
-    SET_HITBOX(/*Radius*/ 80, /*Height*/ 1400),
+    SET_HITBOX(/*Radius*/ 80, /*Height*/ 1350),
     SET_HOME(),
     SET_INT(oIntangibleTimer, 0),
     BEGIN_LOOP(),
@@ -539,6 +541,18 @@ const BehaviorScript bhvCannonBarrel[] = {
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_cannon_barrel_loop),
     END_LOOP(),
+};
+
+const BehaviorScript bhvCannonBaseUnused[] = {
+    BEGIN(OBJ_LIST_DEFAULT),
+    OR_INT(oFlags, (OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_MOVE_XZ_USING_FVEL | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    BILLBOARD(),
+    SET_INT(oAnimState, -1),
+    BEGIN_REPEAT(8),
+        CALL_NATIVE(bhv_cannon_base_unused_loop),
+        ADD_INT(oAnimState, 1),
+    END_REPEAT(),
+    DEACTIVATE(),
 };
 
 const BehaviorScript bhvRotatingPlatform[] = {

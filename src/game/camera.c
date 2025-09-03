@@ -6002,6 +6002,7 @@ BAD_RETURN(s32) cutscene_intro_rotate_camera(struct Camera *c) {
 
 BAD_RETURN(s32) cutscene_intro_zoom(struct Camera *c) {
     sStatusFlags |= CAM_FLAG_SMOOTH_MOVEMENT;
+    rotate_and_move_vec3f(c->pos, sMarioCamState->pos, 0, 0xF, 0);
     c->pos[1] += 0.225f;
     c->pos[2] -= 1.0f;
 }
@@ -6013,7 +6014,7 @@ BAD_RETURN(s32) cutscene_intro(struct Camera *c) {
 }
 
 BAD_RETURN(s32) cutscene_intro_end(struct Camera *c) {
-    if (get_dialog_id() == -1) {
+    if (gMenuState == 3 && gDialogBoxAngle == 30.0f) {
         vec3f_copy(gLakituState.goalPos, c->pos);
         vec3f_copy(gLakituState.goalFocus, c->focus);
         sStatusFlags |= (CAM_FLAG_SMOOTH_MOVEMENT | CAM_FLAG_UNUSED_CUTSCENE_ACTIVE);

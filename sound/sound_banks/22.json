@@ -6,28 +6,28 @@
             [2, 32700],
             [1, 32700],
             [32700, 29430],
-            "hang"
+            "stop"
         ],
         "envelope1": [
             [2, 32700],
             [1, 32700],
             [32700, 29430],
-            "hang"
+            "stop"
         ],
         "envelope2": [
             [2, 32700],
             [1, 32700],
             [32700, 29430],
-            "hang"
+            "stop"
         ],
         "envelope3": [
             [2, 32700],
             [1, 32700],
             [32700, 29430],
-            "hang"
+            "stop"
         ],
         "envelope4": [
-            [2, 32700],
+            [1, 32700],
             [1, 32700],
             [32700, 29430],
             "hang"
@@ -36,13 +36,13 @@
             [2, 32700],
             [1, 32700],
             [32700, 29430],
-            "hang"
+            "stop"
         ],
         "envelope6": [
             [2, 32700],
             [1, 32700],
             [32700, 29430],
-            "hang"
+            "stop"
         ]
     },
     "instruments": {
@@ -133,14 +133,14 @@
             {"release_rate": 10, "pan": 128, "envelope": "envelope4", "sound": "0D_clave"}
         ],
         "inst4": {
-            "release_rate": 50,
+            "release_rate":150,
             "normal_range_lo": 24,
             "envelope": "envelope5",
             "sound_lo": "0E_hihat_closed",
             "sound": "0F_hihat_open"
         },
         "inst5": {
-            "release_rate": 10,
+            "release_rate": 3,
             "normal_range_lo": 28,
             "normal_range_hi": 28,
             "envelope": "envelope6",

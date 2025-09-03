@@ -509,7 +509,7 @@ struct SPTask *create_next_audio_frame_task(void) {
 
     // For the function to match we have to preserve some arbitrary variable
     // across this function call.
-    flags = 0;
+    flags = 2;
     gAudioCmd = synthesis_execute(gAudioCmd, &writtenCmds, gCurrAiBuffer, gAiBufferLengths[index]);
     gAudioRandom = ((gAudioRandom + gAudioFrameCount) * gAudioFrameCount);
 

@@ -93,6 +93,10 @@ void whomp_jump(void) {
     }
 
     if (o->oTimer < 8) {
+        if (o->oTimer % 2)
+            o->oFaceAnglePitch = 0x200;
+        else
+            o->oFaceAnglePitch = 0;
     } else {
         o->oAngleVelPitch += 0x100;
         o->oFaceAnglePitch += o->oAngleVelPitch;

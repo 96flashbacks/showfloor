@@ -108,7 +108,19 @@ void opened_cannon_act_2(void) {
 }
 
 void opened_cannon_act_3(void) {
-    UNUSED u8 filler[4];
+    struct Object *smoke;
+    float scale;
+
+    if (o->oTimer < 30) {
+        smoke = spawn_object(o, MODEL_BURN_SMOKE_UNUSED, bhvCannonBaseUnused);
+        smoke->oMoveAngleYaw = random_u16();
+        smoke->oForwardVel = random_float() * 20.0f + 20.0f;
+        smoke->oVelY = coss(gMarioObject->oMoveAnglePitch) * 40.0f;
+        scale = random_float() * 3.0f + 3.0f;
+        smoke->header.gfx.scale[0] = scale;
+        smoke->header.gfx.scale[1] = scale;
+    }
+
     if (o->oTimer > 3) {
         o->oAction = 0;
     }

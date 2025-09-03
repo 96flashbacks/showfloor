@@ -93,9 +93,6 @@ SECTIONS
         BUILD_DIR/src/audio/heap.o(.bss*);
         BUILD_DIR/src/audio/load.o(.bss*);
         BUILD_DIR/src/audio/data.o(.bss*);
-
-        . = ALIGN(0x1000);
-        BUILD_DIR/src/buffers/gfx_output_buffer.o(.bss*);
     }
     END_NOLOAD(buffers)
 

@@ -76,7 +76,7 @@
     },
     "instruments": {
         "inst0": {
-            "release_rate": 123,
+            "release_rate": 10,
             "envelope": "envelope0",
             "sound": "00"
         },

@@ -790,6 +790,7 @@ s32 act_ground_pound(struct MarioState *m) {
 
         stepResult = perform_air_step(m, 0);
         if (stepResult == AIR_STEP_LANDED) {
+            play_sound(SOUND_ACTION_UNK3C, m->marioObj->header.gfx.cameraToObject);
             if (!check_fall_damage(m, ACT_HARD_BACKWARD_GROUND_KB)) {
                 set_mario_action(m, ACT_GROUND_POUND_LAND, 0);
             }

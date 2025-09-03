@@ -21,7 +21,6 @@ void mr_i_piranha_particle_act_0(void) {
     } else if ((o->oTimer > 100) || (o->oMoveFlags & OBJ_MOVE_HIT_WALL)
                || (o->activeFlags & ACTIVE_FLAG_IN_DIFFERENT_ROOM)) {
         obj_mark_for_deletion(o);
-        spawn_mist_particles();
     }
 }
 
@@ -130,7 +129,6 @@ void mr_i_act_3(void) {
     } else if (o->oTimer < 168) {
         if (o->oTimer == 104) {
             cur_obj_become_intangible();
-            spawn_mist_particles();
             o->oMrIScale = sp1C * 0.6;
             if (o->oBhvParams2ndByte != 0) {
                 o->oPosY += 100.0f;
@@ -151,6 +149,13 @@ void mr_i_act_3(void) {
     } else {
         obj_mark_for_deletion(o);
     }
+
+    if (o->oDistanceToMario > 2000.0f){
+		o->oAction = 1;
+		o->oMoveAngleYaw = 0;
+		o->oMoveAnglePitch = 0;
+		cur_obj_scale(1.0);
+	}
 }
 
 void mr_i_act_2(void) {
