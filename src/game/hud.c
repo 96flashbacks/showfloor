@@ -106,6 +106,7 @@ void render_dl_power_meter(s16 numHealthWedges) {
     scaleMtx = alloc_display_list(sizeof(Mtx));
 
     if (translateMtx == NULL || scaleMtx == NULL) {
+        rmonpf(("AllocDynamic error in message!!\n"));
         return;
     }
 

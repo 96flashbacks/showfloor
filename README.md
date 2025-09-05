@@ -1,23 +1,50 @@
 # showfloor
 ![showfloorlogo](https://github.com/user-attachments/assets/255078c5-d31c-4284-a720-f1f2ddcefd4f)
 
-'showfloor' is a reimplementation of [The Preservation Project](https://github.com/Sunlitspace542/tpp-mirror) (or TPP, for short) with many improvements and details sourced from footage of the Shoshinkai 1995 demo. This project aims to continue the hack's legacy by being even more accurate to the source material whilst keeping the source code clean and easy to modify. (This is an open-source project, after all...)
+---
+
+**showfloor** is a reimplementation of [The Preservation Project](https://github.com/Sunlitspace542/tpp-mirror) (TPP) with improvements and details sourced from footage of the Shoshinkai 1995 demo.  
+The goal is to carry on the hack’s legacy with greater accuracy to the source material while keeping the codebase clean and easy to modify.
+
+## Installation
+
+The build process is the same as the [SM64 Decomp's](https://github.com/n64decomp/sm64).  
+Follow their [README](https://github.com/n64decomp/sm64/blob/master/README.md#installation) for setup steps and prerequisites (dependencies, baserom, etc).
+
+Clone and build:
+
+```sh
+git clone https://github.com/96flashbacks/showfloor.git
+cd showfloor
+make
+```
+
+### RSP Microcode
+
+This project uses the same `GRUCODE` build variable as the SM64 Decomp, but with different options.  
+Default is `f3d_102695`.
+
+- `f3d_102695`: gspFast3D from Ultra 64 OS release 102695 (U64 Aging Cartridge). Not HLE-compatible.  
+- `f3d_20E`: gspFast3D from OS 2.0E (bbgames' ostrees). HLE-compatible.  
+
+Build with a specific microcode:
+
+```sh
+make GRUCODE=f3d_20E
+```
 
 ## Q&A
 
-**Why was this done?**
+**Why reimplement TPP?**  
+- The original was cluttered with unused assets and built on an outdated SM64 Decomp refresh, making it harder to build and maintain. Starting fresh was cleaner and more practical.
 
-- The original TPP source code was cluttered with unused assets and code from the vanilla game. It was also built off of an [outdated refresh of the SM64 Decomp](https://github.com/n64decomp/sm64/commit/c45aa301bb07a14eb1b1ebc9e73b8fed60817292), which led to compilation issues for some users—often requiring workarounds like Docker. For these reasons, we figured that rebuilding the project from scratch was more practical than attempting to clean up the original source code.
+**Can I use this as a base for another project?**  
+- Yes, but not recommended, as many vanilla assets were removed or edited, so you'd need to re-add them.
 
-**Am I allowed to use this source code as a base for another project?**
-
-- Sure, you can do that. Although we wouldn't recommend doing so since there have been many things either edited or removed, meaning one would have to add vanilla assets back into this if they wanted to use it for a project of their own.
-
-**Was it worth it?**
-
+**Was it worth it?**  
 - Yep.
 
-If there are any more questions regarding this project, we invite you to join our [Discord Server.](https://discord.gg/CpxaEqg6ww)
+For more questions, join our [Discord server](https://discord.gg/CpxaEqg6ww).
 
 ## Credits
 
@@ -41,6 +68,7 @@ If there are any more questions regarding this project, we invite you to join ou
 
 #### Research & Playtesting
 - Scraps
+- Sleekflash16
 - duskewl/jadu
 - `K-Dubs΄
   
@@ -100,14 +128,10 @@ If there are any more questions regarding this project, we invite you to join ou
 ### Tools & Resources
 - [Fast64](https://github.com/Fast-64/fast64)
 - [SM64 Decomp](https://github.com/n64decomp/sm64)
-- [64History's Archives](https://archive.org/details/sm64-beta-content)
-- [Dudaw's Archives](https://archive.org/details/sm64brp_src_abandoned)
-- [Roovahlees's Archives](https://archive.org/details/@roovahlees)
-- [VGM & Other Instrument Sources' Spreadsheet](https://docs.google.com/spreadsheets/d/1JJBlHHDc65fhZmKUGLrDTLCm6rfUU83-kbuD8Y0zU0o/edit?gid=2047725819#gid=2047725819)
-- [Retro Aesthetics' Mario Series Matches](https://retroaesthetics.net/mario-series-matches/)
-- [The Cutting Room Floor's Page](https://tcrf.net/Prerelease:Super_Mario_64_(Nintendo_64)/Shoshinkai_1995_Demo)
+- [64History’s Archives](https://archive.org/details/sm64-beta-content)
+- [Dudaw’s Archives](https://archive.org/details/sm64brp_src_abandoned)
+- [Roovahlees’s Archives](https://archive.org/details/@roovahlees)
+- [VGM & Other Instrument Sources Spreadsheet](https://docs.google.com/spreadsheets/d/1JJBlHHDc65fhZmKUGLrDTLCm6rfUU83-kbuD8Y0zU0o/edit?gid=2047725819#gid=2047725819)
+- [Retro Aesthetics’ Mario Series Matches](https://retroaesthetics.net/mario-series-matches/)
+- [TCRF’s Page](https://tcrf.net/Prerelease:Super_Mario_64_(Nintendo_64)/Shoshinkai_1995_Demo)
 - [Original TPP Source Code](https://github.com/Sunlitspace542/tpp-mirror)
-
-## Installation
-
-Go read the instructions on the SM64 Decomp's [README](https://github.com/n64decomp/sm64/blob/master/README.md#installation).

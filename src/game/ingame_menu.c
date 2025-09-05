@@ -79,6 +79,7 @@ void create_dl_identity_matrix(void) {
     Mtx *matrix = (Mtx *) alloc_display_list(sizeof(Mtx));
 
     if (matrix == NULL) {
+        rmonpf(("AllocDynamic error in message!!\n"));
         return;
     }
 
@@ -113,6 +114,7 @@ void create_dl_translation_matrix(s8 pushOp, f32 x, f32 y, f32 z) {
     Mtx *matrix = (Mtx *) alloc_display_list(sizeof(Mtx));
 
     if (matrix == NULL) {
+        rmonpf(("AllocDynamic error in message!!\n"));
         return;
     }
 
@@ -133,6 +135,7 @@ void create_dl_rotation_matrix(s8 pushOp, f32 a, f32 x, f32 y, f32 z) {
     Mtx *matrix = (Mtx *) alloc_display_list(sizeof(Mtx));
 
     if (matrix == NULL) {
+        rmonpf(("AllocDynamic error in message!!\n"));
         return;
     }
 
@@ -153,6 +156,7 @@ void create_dl_scale_matrix(s8 pushOp, f32 x, f32 y, f32 z) {
     Mtx *matrix = (Mtx *) alloc_display_list(sizeof(Mtx));
 
     if (matrix == NULL) {
+        rmonpf(("AllocDynamic error in message!!\n"));
         return;
     }
 
@@ -173,6 +177,7 @@ void create_dl_ortho_matrix(void) {
     Mtx *matrix = (Mtx *) alloc_display_list(sizeof(Mtx));
 
     if (matrix == NULL) {
+        rmonpf(("AllocDynamic error in message!!\n"));
         return;
     }
 
@@ -196,6 +201,7 @@ static u8 *alloc_ia8_text_from_i1(u16 *in, s16 width, s16 height) {
     out = (u8 *) alloc_display_list((u32) width * (u32) height);
 
     if (out == NULL) {
+        rmonpf(("AllocDynamic error in message!!\n"));
         return NULL;
     }
 
@@ -832,6 +838,7 @@ void render_dialog_entries(void) {
 
     // if the dialog entry is invalid, set the ID to DIALOG_NONE.
     if (dialog == segmented_to_virtual(NULL)) {
+        rmonpf(("Message not defined. (%d)\n",gDialogID));
         gDialogID = DIALOG_NONE;
         return;
     }
@@ -1014,6 +1021,7 @@ short SelectMessageEvent(void) {
     struct DialogEntry *message = segmented_to_virtual(mlist[gMenuMode]);
 
     if (message == NULL) {
+        rmonpf(("Message not defined. (%d)\n",gMenuMode));
         gMenuMode = MENU_MODE_NONE;
         return 0;
     }

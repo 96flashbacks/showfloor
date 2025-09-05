@@ -671,10 +671,8 @@ static void geo_process_shadow(struct GraphNodeShadow *node) {
             gMatStackFixed[gMatStackIndex] = mtx;
             if (gShadowAboveWaterOrLava == 1) {
                 geo_append_display_list((void *) VIRTUAL_TO_PHYSICAL(shadowList), 4);
-            } else if (gMarioOnIceOrCarpet == 1) {
-                geo_append_display_list((void *) VIRTUAL_TO_PHYSICAL(shadowList), 5);
             } else {
-                geo_append_display_list((void *) VIRTUAL_TO_PHYSICAL(shadowList), 6);
+                geo_append_display_list((void *) VIRTUAL_TO_PHYSICAL(shadowList), 6); // 5 or 6? In the retail build, if Mario is on ice or on a carpet, it is 5, but this variable did not exist in the backup.
             }
             gMatStackIndex--;
         }

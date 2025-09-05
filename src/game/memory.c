@@ -310,6 +310,7 @@ void *load_to_fixed_pool_addr(u8 *destAddr, u8 *srcStart, u8 *srcEnd) {
             osInvalDCache(dest, destSize);
         }
     } else {
+        rmonpf(("program code load failed AD=%08X ROM=%08X ALC=%08X\n",destAddr,srcSize,destSize));
     }
     return dest;
 }
@@ -339,8 +340,10 @@ void *load_segment_decompress(s32 segment, u8 *srcStart, u8 *srcEnd) {
             set_segment_base_addr(segment, dest);
             main_pool_free(compressed);
         } else {
+            rmonpf(("compressed data load failed (ROM:$%08X  RAM:$%08X)\n", compSize, *size));
         }
     } else {
+        rmonpf(("size of compressed data is too big\n"));
     }
     return dest;
 }
@@ -357,6 +360,7 @@ void *load_segment_decompress_heap(u32 segment, u8 *srcStart, u8 *srcEnd) {
         set_segment_base_addr(segment, gDecompressionHeap);
         main_pool_free(compressed);
     } else {
+        rmonpf(("size of compressed data is too big\n"));
     }
     return gDecompressionHeap;
 }
@@ -535,6 +539,7 @@ void *alloc_display_list(u32 size) {
         gGfxPoolEnd -= size;
         ptr = gGfxPoolEnd;
     } else {
+        rmonpf(("DYnamic memory overflow\n"));
     }
     return ptr;
 }

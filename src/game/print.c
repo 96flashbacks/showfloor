@@ -1,3 +1,4 @@
+#include "sm64.h"
 #include <PR/ultratypes.h>
 #include <PR/gbi.h>
 
@@ -179,6 +180,7 @@ void print_text_fmt_int(s32 x, s32 y, const char *str, s32 n) {
     // Don't continue if there is no memory to do so.
     if ((sTextLabels[sTextLabelsCount] = mem_pool_alloc(gEffectsMemoryPool, sizeof(struct TextLabel)))
         == NULL) {
+        rmonpf(("malloc error in dprint!!\n"));
         return;
     }
 
@@ -229,6 +231,7 @@ void print_text(s32 x, s32 y, const char *str) {
     // Don't continue if there is no memory to do so.
     if ((sTextLabels[sTextLabelsCount] = mem_pool_alloc(gEffectsMemoryPool, sizeof(struct TextLabel)))
         == NULL) {
+        rmonpf(("malloc error in dprint!!\n"));
         return;
     }
 
@@ -262,6 +265,7 @@ void print_text_centered(s32 x, s32 y, const char *str) {
     // Don't continue if there is no memory to do so.
     if ((sTextLabels[sTextLabelsCount] = mem_pool_alloc(gEffectsMemoryPool, sizeof(struct TextLabel)))
         == NULL) {
+        rmonpf(("malloc error in dprint!!\n"));
         return;
     }
 
@@ -342,7 +346,7 @@ s8 char_to_glyph_index(char c) {
     }
 
     if (c == '/') {
-        return GLYPH_BETA_KEY; // beta key, JP only. Reused for Ã? in EU.
+        return GLYPH_BETA_KEY; // beta key, JP only. Reused for \C3? in EU.
     }
 
     return GLYPH_SPACE;
@@ -419,6 +423,7 @@ void render_text_labels(void) {
 
     if (mtx == NULL) {
         sTextLabelsCount = 0;
+        rmonpf(("AllocDynamic error in dprint!!\n"));
         return;
     }
 

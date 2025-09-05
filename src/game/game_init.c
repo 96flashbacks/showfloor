@@ -31,7 +31,6 @@ struct GfxPool *gGfxPool;
 OSContStatus gControllerStatuses[4];
 OSContPad gControllerPads[4];
 u8 gControllerBits;
-s8 gEepromProbe; // Save Data Probe
 
 // OS Messages
 OSMesgQueue gGameVblankQueue;
@@ -47,8 +46,8 @@ uintptr_t gPhysicalFramebuffers[3];
 uintptr_t gPhysicalZBuffer;
 
 // Mario Anims and Demo allocation
-void *gMarioAnimsMemAlloc;
-struct DmaHandlerList gMarioAnimsBuf;
+void *gPlayerAnimsMemAlloc[2];
+struct DmaHandlerList gPlayerAnimsBuf[2];
 
 // General timer that runs as the game starts
 u32 gGlobalTimer = 0;
@@ -89,7 +88,6 @@ void init_rdp(void) {
     gDPSetAlphaCompare(gDisplayListHead++, G_AC_NONE);
     gDPSetRenderMode(gDisplayListHead++, G_RM_OPA_SURF, G_RM_OPA_SURF2);
     gDPSetColorDither(gDisplayListHead++, G_CD_MAGICSQ);
-    gDPSetCycleType(gDisplayListHead++, G_CYC_FILL);
     gDPPipeSync(gDisplayListHead++);
 }
 
@@ -124,7 +122,9 @@ void init_z_buffer(void) {
 
     gDPSetColorImage(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, SCREEN_WIDTH, gPhysicalZBuffer);
     gDPSetFillColor(gDisplayListHead++, GPACK_ZDZ(G_MAXFBZ, 0) << 16 | GPACK_ZDZ(G_MAXFBZ, 0));
+	gDPSetCycleType(gDisplayListHead++, G_CYC_FILL);
 
+	gDPPipeSync(gDisplayListHead++);
     gDPFillRectangle(gDisplayListHead++, 0, BORDER_HEIGHT, SCREEN_WIDTH - 1,
                      SCREEN_HEIGHT - 1 - BORDER_HEIGHT);
 }
@@ -138,8 +138,6 @@ void select_framebuffer(void) {
     gDPSetCycleType(gDisplayListHead++, G_CYC_1CYCLE);
     gDPSetColorImage(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, SCREEN_WIDTH,
                      gPhysicalFramebuffers[sRenderingFramebuffer]);
-    gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, 0, BORDER_HEIGHT, SCREEN_WIDTH,
-                  SCREEN_HEIGHT - BORDER_HEIGHT);
 }
 
 /**
@@ -152,9 +150,14 @@ void clear_framebuffer(s32 color) {
     gDPSetRenderMode(gDisplayListHead++, G_RM_OPA_SURF, G_RM_OPA_SURF2);
     gDPSetCycleType(gDisplayListHead++, G_CYC_FILL);
 
-    gDPSetFillColor(gDisplayListHead++, color);
-    gDPFillRectangle(gDisplayListHead++, GFX_DIMENSIONS_RECT_FROM_LEFT_EDGE(0), BORDER_HEIGHT,
-                     GFX_DIMENSIONS_RECT_FROM_RIGHT_EDGE(0) - 1, SCREEN_HEIGHT - BORDER_HEIGHT - 1);
+	gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, 0, 0, SCREEN_WIDTH-1, SCREEN_HEIGHT-1);
+	gDPSetFillColor(gDisplayListHead++, 0);
+	gDPFillRectangle(gDisplayListHead++, 0, 0, SCREEN_WIDTH-1, SCREEN_HEIGHT-1);
+	gDPPipeSync(gDisplayListHead++);
+
+	gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, 2, 2, SCREEN_WIDTH-3, SCREEN_HEIGHT-3);
+	gDPSetFillColor(gDisplayListHead++, color);
+	gDPFillRectangle(gDisplayListHead++, 0, 0, SCREEN_WIDTH-1, SCREEN_HEIGHT-1);
 
     gDPPipeSync(gDisplayListHead++);
 
@@ -164,7 +167,7 @@ void clear_framebuffer(s32 color) {
 /**
  * Resets the viewport, readying it for the final image.
  */
-void clear_viewport(Vp *viewport, s32 color) {
+void clear_viewport(Vp *viewport, s32 color) { // this function does NOT exist in 1995 according to the backup from February 6, 1996
     s16 vpUlx = (viewport->vp.vtrans[0] - viewport->vp.vscale[0]) / 4 + 1;
     s16 vpUly = (viewport->vp.vtrans[1] - viewport->vp.vscale[1]) / 4 + 1;
     s16 vpLrx = (viewport->vp.vtrans[0] + viewport->vp.vscale[0]) / 4 - 2;
@@ -189,31 +192,10 @@ void clear_viewport(Vp *viewport, s32 color) {
 }
 
 /**
- * Draw the horizontal screen borders.
- */
-void draw_screen_borders(void) {
-    gDPPipeSync(gDisplayListHead++);
-
-    gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
-    gDPSetRenderMode(gDisplayListHead++, G_RM_OPA_SURF, G_RM_OPA_SURF2);
-    gDPSetCycleType(gDisplayListHead++, G_CYC_FILL);
-
-    gDPSetFillColor(gDisplayListHead++, GPACK_RGBA5551(0, 0, 0, 0) << 16 | GPACK_RGBA5551(0, 0, 0, 0));
-
-#if BORDER_HEIGHT != 0
-    gDPFillRectangle(gDisplayListHead++, GFX_DIMENSIONS_RECT_FROM_LEFT_EDGE(0), 0,
-                     GFX_DIMENSIONS_RECT_FROM_RIGHT_EDGE(0) - 1, BORDER_HEIGHT - 1);
-    gDPFillRectangle(gDisplayListHead++, GFX_DIMENSIONS_RECT_FROM_LEFT_EDGE(0),
-                     SCREEN_HEIGHT - BORDER_HEIGHT, GFX_DIMENSIONS_RECT_FROM_RIGHT_EDGE(0) - 1,
-                     SCREEN_HEIGHT - 1);
-#endif
-}
-
-/**
  * Defines the viewport scissoring rectangle.
  * Scissoring: https://jrra.zone/n64/doc/pro-man/pro12/12-03.htm#01
  */
-void make_viewport_clip_rect(Vp *viewport) {
+void make_viewport_clip_rect(Vp *viewport) { // see last comment about function not existing
     s16 vpUlx = (viewport->vp.vtrans[0] - viewport->vp.vscale[0]) / 4 + 1;
     s16 vpPly = (viewport->vp.vtrans[1] - viewport->vp.vscale[1]) / 4 + 1;
     s16 vpLrx = (viewport->vp.vtrans[0] + viewport->vp.vscale[0]) / 4 - 1;
@@ -265,7 +247,6 @@ void init_rcp(void) {
  * rendered.
  */
 void end_master_display_list(void) {
-    draw_screen_borders();
     if (gShowProfiler) {
         draw_profiler();
     }
@@ -286,7 +267,7 @@ void render_init(void) {
     gDisplayListHead = gGfxPool->buffer;
     gGfxPoolEnd = (u8 *) (gGfxPool->buffer + GFX_POOL_SIZE);
     init_rcp();
-    clear_framebuffer(0);
+    clear_framebuffer(0); // gSPDisplayList(graphPtr++, RCP_ClearScreen);
     end_master_display_list();
     exec_display_list(&gGfxPool->spTask);
 
@@ -347,21 +328,21 @@ void adjust_analog_stick(struct Controller *controller) {
     controller->stickX = 0;
     controller->stickY = 0;
 
-    // Modulate the rawStickX and rawStickY to be the new f32 values by adding/subtracting 6.
-    if (controller->rawStickX <= -8) {
-        controller->stickX = controller->rawStickX + 6;
+    // Modulate the rawStickX and rawStickY to be the new f32 values by adding/subtracting 10.
+    if (controller->rawStickX <= -10) {
+        controller->stickX = controller->rawStickX + 10;
     }
 
-    if (controller->rawStickX >= 8) {
-        controller->stickX = controller->rawStickX - 6;
+    if (controller->rawStickX >= 10) {
+        controller->stickX = controller->rawStickX - 10;
     }
 
-    if (controller->rawStickY <= -8) {
-        controller->stickY = controller->rawStickY + 6;
+    if (controller->rawStickY <= -10) {
+        controller->stickY = controller->rawStickY + 10;
     }
 
-    if (controller->rawStickY >= 8) {
-        controller->stickY = controller->rawStickY - 6;
+    if (controller->rawStickY >= 10) {
+        controller->stickY = controller->rawStickY - 10;
     }
 
     // Calculate f32 magnitude from the center by vector length.
@@ -382,15 +363,14 @@ void adjust_analog_stick(struct Controller *controller) {
  */
 void read_controller_inputs(void) {
     s32 i;
+    struct Controller *controller;
 
-    // If any controllers are plugged in, update the controller information.
-    if (gControllerBits) {
-        osRecvMesg(&gSIEventMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
-        osContGetReadData(&gControllerPads[0]);
-    }
+    // If any controllers are plugged in, update the controller information. <- This was not done before at least Feburary 1996
+    osRecvMesg(&gSIEventMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
+    osContGetReadData(&gControllerPads[0]);
 
     for (i = 0; i < 2; i++) {
-        struct Controller *controller = &gControllers[i];
+        controller = &gControllers[i];
 
         // if we're receiving inputs, update the controller struct with the new button info.
         if (controller->controllerData != NULL) {
@@ -411,17 +391,18 @@ void read_controller_inputs(void) {
             controller->stickMag = 0;
         }
     }
+	controller = ((gPlayer1Controller->stickX != 0.0f) | (gPlayer1Controller->stickY != 0.0f)) ? gPlayer1Controller : gPlayer2Controller;
 
     // For some reason, player 1's inputs are copied to player 3's port.
     // This potentially may have been a way the developers "recorded"
     // the inputs for demos, despite record_demo existing.
-    gPlayer3Controller->rawStickX = gPlayer1Controller->rawStickX;
-    gPlayer3Controller->rawStickY = gPlayer1Controller->rawStickY;
-    gPlayer3Controller->stickX = gPlayer1Controller->stickX;
-    gPlayer3Controller->stickY = gPlayer1Controller->stickY;
-    gPlayer3Controller->stickMag = gPlayer1Controller->stickMag;
-    gPlayer3Controller->buttonPressed = gPlayer1Controller->buttonPressed;
-    gPlayer3Controller->buttonDown = gPlayer1Controller->buttonDown;
+    gPlayer3Controller->rawStickX = controller->rawStickX;
+    gPlayer3Controller->rawStickY = controller->rawStickY;
+    gPlayer3Controller->stickX = controller->stickX;
+    gPlayer3Controller->stickY = controller->stickY;
+    gPlayer3Controller->stickMag = controller->stickMag;
+    gPlayer3Controller->buttonPressed = gPlayer1Controller->buttonPressed | gPlayer2Controller->buttonPressed;
+    gPlayer3Controller->buttonDown = gPlayer1Controller->buttonDown | gPlayer2Controller->buttonDown;
 }
 
 /**
@@ -432,13 +413,13 @@ void init_controllers(void) {
 
     // Set controller 1 to point to the set of status/pads for input 1 and
     // init the controllers.
-    gControllers[0].statusData = &gControllerStatuses[0];
-    gControllers[0].controllerData = &gControllerPads[0];
+    //gControllers[0].statusData = &gControllerStatuses[0];
+    //gControllers[0].controllerData = &gControllerPads[0];
     osContInit(&gSIEventMesgQueue, &gControllerBits, &gControllerStatuses[0]);
 
     // Strangely enough, the EEPROM probe for save data is done in this function.
     // Save Pak detection?
-    gEepromProbe = osEepromProbe(&gSIEventMesgQueue);
+    // osEepromProbe(&gSIEventMesgQueue); // This is commented out in the Feburary 1996 source backup. gEepromProbe variable doesn't exist neither.
 
     // Loop over the 4 ports and link the controller structs to the appropriate
     // status and pad. Interestingly, although there are pointers to 3 controllers,
@@ -478,9 +459,13 @@ void setup_game_memory(void) {
     gPhysicalFramebuffers[1] = VIRTUAL_TO_PHYSICAL(gFramebuffer1);
     gPhysicalFramebuffers[2] = VIRTUAL_TO_PHYSICAL(gFramebuffer2);
     // Setup Mario Animations
-    gMarioAnimsMemAlloc = main_pool_alloc(0x4000, MEMORY_POOL_LEFT);
-    set_segment_base_addr(17, (void *) gMarioAnimsMemAlloc);
-    setup_dma_table_list(&gMarioAnimsBuf, gMarioAnims, gMarioAnimsMemAlloc);
+    gPlayerAnimsMemAlloc[0] = main_pool_alloc(0x2000, MEMORY_POOL_LEFT);
+    gPlayerAnimsMemAlloc[1] = main_pool_alloc(0x2000, MEMORY_POOL_LEFT);
+    set_segment_base_addr(17, (void *) gPlayerAnimsMemAlloc[0]);
+    set_segment_base_addr(18, (void *) gPlayerAnimsMemAlloc[1]);
+    setup_dma_table_list(&gPlayerAnimsBuf[0], gMarioAnims, gPlayerAnimsMemAlloc[0]);
+    setup_dma_table_list(&gPlayerAnimsBuf[1], NULL, gPlayerAnimsMemAlloc[1]);
+	gPlayerAnimsBuf[1].dmaTable = gPlayerAnimsBuf[0].dmaTable;
     // Setup Level Script Entry
     load_segment(0x10, _entrySegmentRomStart, _entrySegmentRomEnd, MEMORY_POOL_LEFT);
     // Setup Segment 2 (Fonts, Text, etc)
@@ -497,11 +482,11 @@ void thread5_game_loop(UNUSED void *arg) {
 
     setup_game_memory();
 
+    save_file_create_temporary_file();
+
     CN_DEBUG_PRINTF(("init ctrl\n"));
     init_controllers();
     CN_DEBUG_PRINTF(("done ctrl\n"));
-
-    save_file_create_temporary_file();
 
     set_vblank_handler(2, &gGameVblankHandler, &gGameVblankQueue, (OSMesg) 1);
 
@@ -509,7 +494,7 @@ void thread5_game_loop(UNUSED void *arg) {
     addr = segmented_to_virtual(level_script_entry);
 
     play_music(SEQ_PLAYER_SFX, SEQUENCE_ARGS(0, SEQ_SOUND_PLAYER), 0);
-    set_sound_mode(save_file_get_sound_mode());
+    //set_sound_mode(save_file_get_sound_mode());
     render_init();
 
     while (TRUE) {
@@ -517,14 +502,15 @@ void thread5_game_loop(UNUSED void *arg) {
         profiler_log_thread5_time(THREAD5_START);
 
         // If any controllers are plugged in, start read the data for when
-        // read_controller_inputs is called later.
-        if (gControllerBits) {
-            osContStartReadData(&gSIEventMesgQueue);
-        }
+        // read_controller_inputs is called later. <- do not check anymore
+        osContStartReadData(&gSIEventMesgQueue);
 
         audio_game_loop_tick();
         select_gfx_pool();
         read_controller_inputs();
+#if DEBUGSW
+		handle_debug_key_sequences();
+#endif
         addr = level_script_execute(addr);
 
         display_and_vsync();

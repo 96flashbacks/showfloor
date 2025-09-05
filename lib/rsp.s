@@ -22,7 +22,11 @@ glabel rspF3DEnd
 
 .balign 16
 glabel rspAspMainStart
-    .incbin "lib/PR/102695/aspMain.text.bin"
+    #ifdef FAST3D_20E
+        .incbin "lib/PR/2.0E/aspMain.text.bin"
+    #else
+        .incbin "lib/PR/102695/aspMain.text.bin"
+    #endif
 glabel rspAspMainEnd
 
 /* DATA SECTION START */
@@ -42,5 +46,9 @@ glabel rspF3DDataEnd
 
 .balign 16
 glabel rspAspMainDataStart
-    .incbin "lib/PR/102695/aspMain.data.bin"
+    #ifdef FAST3D_20E
+        .incbin "lib/PR/2.0E/aspMain.data.bin"
+    #else
+        .incbin "lib/PR/102695/aspMain.data.bin"
+    #endif
 glabel rspAspMainDataEnd
