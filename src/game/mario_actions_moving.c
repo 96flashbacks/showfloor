@@ -746,7 +746,8 @@ s32 act_move_punching(struct MarioState *m) {
         m->actionArg = 5; // punch glitch
     }
 
-    mario_update_punch_sequence(m);
+    if (m->actionArg != 5) // punch glitch
+        mario_update_punch_sequence(m);
 
     if (m->forwardVel >= 0.0f) {
         apply_slope_decel(m, 0.5f);

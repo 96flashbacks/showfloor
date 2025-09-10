@@ -28,10 +28,10 @@ OUTPUT_ARCH (mips)
 #define END_NOLOAD(name) \
     _##name##SegmentNoloadEnd = ADDR(.name.noload) + SIZEOF(.name.noload);
 
-#define MIO0_SEG(name, segAddr) \
+#define SZP_SEG(name, segAddr) \
     BEGIN_SEG(name##_mio0, segAddr) \
     { \
-        BUILD_DIR/bin/name.mio0.o(.data); \
+        BUILD_DIR/bin/name.szp.o(.data); \
         . = ALIGN(0x10); \
     } \
     END_SEG(name##_mio0)
@@ -39,7 +39,7 @@ OUTPUT_ARCH (mips)
 #define STANDARD_LEVEL(name) \
     BEGIN_SEG(name##_segment_7, 0x07000000) \
     { \
-        BUILD_DIR/levels/name/leveldata.mio0.o(.data); \
+        BUILD_DIR/levels/name/leveldata.szp.o(.data); \
         . = ALIGN(0x10); \
     } \
     END_SEG(name##_segment_7) \
@@ -53,7 +53,7 @@ OUTPUT_ARCH (mips)
 #define STANDARD_OBJECTS(name, segAddr, geoAddr) \
     BEGIN_SEG(name##_mio0, segAddr) \
     { \
-        BUILD_DIR/actors/name.mio0.o(.data); \
+        BUILD_DIR/actors/name.szp.o(.data); \
         . = ALIGN(0x10); \
     } \
     END_SEG(name##_mio0) \
@@ -128,7 +128,7 @@ SECTIONS
         BUILD_DIR/src/game/area.o(.text);
         BUILD_DIR/src/game/rendering_graph_node.o(.text);
         BUILD_DIR/src/game/profiler.o(.text);
-        BUILD_DIR/asm/decompress.o(.text);
+        BUILD_DIR/lib/asm/slidec.o(.text);
         BUILD_DIR/src/game/camera.o(.text);
         BUILD_DIR/src/game/debug_course.o(.text);
         BUILD_DIR/src/game/object_list_processor.o(.text);
@@ -525,7 +525,7 @@ SECTIONS
     END_SEG(entry)
 
     /* load MIO0 and level data */
-    MIO0_SEG(segment2, 0x02000000)
+    SZP_SEG(segment2, 0x02000000)
 
     /* mario actor group */
     STANDARD_OBJECTS(group0,  0x04000000, 0x17000000)
@@ -639,13 +639,13 @@ SECTIONS
     END_SEG(intro)
     BEGIN_SEG(intro_segment_7, 0x07000000)
     {
-        BUILD_DIR/levels/intro/leveldata.mio0.o(.data);
+        BUILD_DIR/levels/intro/leveldata.szp.o(.data);
         . = ALIGN(0x10);
     }
     END_SEG(intro_segment_7)
 
-    MIO0_SEG(debug_level_select, 0x07000000)
-    MIO0_SEG(title_screen_bg, 0x0A000000)
+    SZP_SEG(debug_level_select, 0x07000000)
+    SZP_SEG(title_screen_bg, 0x0A000000)
 
     /* 271B20-2A42A0 [32780] */
     BEGIN_SEG(gd_dynlists, 0x04000000)
@@ -678,20 +678,20 @@ SECTIONS
     }
     END_SEG(scripts)
 
-    MIO0_SEG(water_skybox, 0x0A000000)
-    MIO0_SEG(ccm_skybox, 0x0A000000)
-    MIO0_SEG(bitfs_skybox, 0x0A000000)
-    MIO0_SEG(wdw_skybox, 0x0A000000)
-    MIO0_SEG(cloud_floor_skybox, 0x0A000000)
-    MIO0_SEG(bidw_skybox, 0x0A000000)
+    SZP_SEG(water_skybox, 0x0A000000)
+    SZP_SEG(ccm_skybox, 0x0A000000)
+    SZP_SEG(bitfs_skybox, 0x0A000000)
+    SZP_SEG(wdw_skybox, 0x0A000000)
+    SZP_SEG(cloud_floor_skybox, 0x0A000000)
+    SZP_SEG(bidw_skybox, 0x0A000000)
 
     // Texture bins
-    MIO0_SEG(generic, 0x09000000)
-    MIO0_SEG(water, 0x09000000)
-    MIO0_SEG(slide, 0x09000000)
-    MIO0_SEG(outside, 0x09000000)
-    MIO0_SEG(inside, 0x09000000)
-    MIO0_SEG(effect, 0x0B000000)
+    SZP_SEG(generic, 0x09000000)
+    SZP_SEG(water, 0x09000000)
+    SZP_SEG(slide, 0x09000000)
+    SZP_SEG(outside, 0x09000000)
+    SZP_SEG(inside, 0x09000000)
+    SZP_SEG(effect, 0x0B000000)
 
 #define STUB_LEVEL(_0, _1, _2, _3, _4, _5, _6, _7, _8)
 #define DEFINE_LEVEL(_0, _1, _2, folder, _4, _5, _6, _7, _8, _9, _10) STANDARD_LEVEL(folder)

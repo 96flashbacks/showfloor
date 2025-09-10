@@ -1,4 +1,5 @@
 #include <PR/ultratypes.h>
+#include <PR/slidec.h>
 
 #include "sm64.h"
 
@@ -6,7 +7,6 @@
 
 #include "buffers/zbuffer.h"
 #include "buffers/buffers.h"
-#include "decompress.h"
 #include "game_init.h"
 #include "main.h"
 #include "memory.h"
@@ -327,14 +327,14 @@ void *load_segment_decompress(s32 segment, u8 *srcStart, u8 *srcEnd) {
     u8 *compressed = main_pool_alloc(compSize, MEMORY_POOL_RIGHT);
 
     // Decompressed size from mio0 header
-    u32 *size = (u32 *) (compressed + 4);
+    u32 *size = (u32 *) (compressed + 8);
 
     if (compressed != NULL) {
         dma_read(compressed, srcStart, srcEnd);
         dest = main_pool_alloc(*size, MEMORY_POOL_LEFT);
         if (dest != NULL) {
             CN_DEBUG_PRINTF(("start decompress\n"));
-            decompress(compressed, dest);
+            slidec(compressed, dest);
             CN_DEBUG_PRINTF(("end decompress\n"));
 
             set_segment_base_addr(segment, dest);
@@ -352,11 +352,11 @@ void *load_segment_decompress_heap(u32 segment, u8 *srcStart, u8 *srcEnd) {
     UNUSED void *dest = NULL;
     u32 compSize = ALIGN16(srcEnd - srcStart);
     u8 *compressed = main_pool_alloc(compSize, MEMORY_POOL_RIGHT);
-    UNUSED u32 *pUncSize = (u32 *) (compressed + 4);
+    UNUSED u32 *pUncSize = (u32 *) (compressed + 8);
 
     if (compressed != NULL) {
         dma_read(compressed, srcStart, srcEnd);
-        decompress(compressed, gDecompressionHeap);
+        slidec(compressed, gDecompressionHeap);
         set_segment_base_addr(segment, gDecompressionHeap);
         main_pool_free(compressed);
     } else {

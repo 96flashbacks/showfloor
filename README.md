@@ -3,12 +3,13 @@
 
 ---
 
-**showfloor** is a reimplementation of [The Preservation Project](https://github.com/Sunlitspace542/tpp-mirror) (TPP) with improvements and details sourced from footage of the Shoshinkai 1995 demo.  
+**showfloor** is a reimplementation of [The Preservation Project](https://github.com/Sunlitspace542/tpp-mirror) (TPP) with improvements and details sourced from footage of the Shoshinkai 1995 demo. 
+
 The goal is to carry on the hack’s legacy with greater accuracy to the source material while keeping the codebase clean and easy to modify.
 
 ## Installation
 
-The build process is the same as the [SM64 Decomp's](https://github.com/n64decomp/sm64).  
+The build process is the same as the [SM64 Decomp's](https://github.com/n64decomp/sm64).
 Follow their [README](https://github.com/n64decomp/sm64/blob/master/README.md#installation) for setup steps and prerequisites (dependencies, baserom, etc).
 
 Clone and build:
@@ -21,11 +22,12 @@ make
 
 ### RSP Microcode
 
-This project uses the same `GRUCODE` build variable as the SM64 Decomp, but with different options.  
+This project uses the same `GRUCODE` build variable as the SM64 Decomp, but with different options.
+
 Default is `f3d_102695`.
 
-- `f3d_102695`: gspFast3D from Ultra 64 OS release 102695 (U64 Aging Cartridge). Not HLE-compatible.  
-- `f3d_20E`: gspFast3D from OS 2.0E (bbgames' ostrees). HLE-compatible.  
+- `f3d_102695`: gspFast3D from Ultra 64 OS release 102695 (U64 Aging Cartridge). Not HLE-compatible.
+- `f3d_20E`: gspFast3D from OS 2.0E (bbgames' ostrees). HLE-compatible.
 
 Build with a specific microcode:
 
@@ -35,13 +37,16 @@ make GRUCODE=f3d_20E
 
 ## Q&A
 
-**Why reimplement TPP?**  
+**Why reimplement TPP?**
 - The original was cluttered with unused assets and built on an outdated SM64 Decomp refresh, making it harder to build and maintain. Starting fresh was cleaner and more practical.
 
-**Can I use this as a base for another project?**  
+**Can I use this as a base for another project?**
 - Yes, but not recommended, as many vanilla assets were removed or edited, so you'd need to re-add them.
 
-**Was it worth it?**  
+**Can I contribute to this repository?**
+- Contrbutions are welcome. Please open an issue to report problems or suggest improvements, and feel free to submit pull requests.
+
+**Was it worth it?**
 - Yep.
 
 For more questions, join our [Discord server](https://discord.gg/CpxaEqg6ww).

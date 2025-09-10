@@ -33,7 +33,7 @@ s32 mario_update_punch_sequence(struct MarioState *m) {
             // fallthrough
         case 1:
             set_mario_animation(m, MARIO_ANIM_FIRST_PUNCH);
-            if (is_anim_past_end(m)) {
+            if (is_anim_at_end(m)) {
                 m->actionArg = 2;
             } else {
                 m->actionArg = 1;
@@ -84,15 +84,6 @@ s32 mario_update_punch_sequence(struct MarioState *m) {
                 m->actionArg = 4;
             }
             break;
-        case 5: // punch glitch
-            if ((m->action = ACT_MOVE_PUNCHING)) {
-                if (m->marioObj->header.gfx.animInfo.animFrame == 1) {
-                    play_sound(SOUND_ACTION_THROW, m->marioObj->header.gfx.cameraToObject);
-                }
-                set_mario_animation(m, MARIO_ANIM_FIRST_PUNCH);
-                m->marioBodyState->punchState = (0 << 6) | 4;
-                m->flags |= MARIO_PUNCHING;
-            }
     }
 
     return FALSE;

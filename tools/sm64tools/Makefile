@@ -7,7 +7,7 @@ CC           := gcc
 CXX          := g++
 CFLAGS       := -I . -Wall -Wextra -Wno-unused-parameter -pedantic -O2 -s
 LDFLAGS      := -lm
-ALL_PROGRAMS := n64graphics n64graphics_ci mio0 n64cksum
+ALL_PROGRAMS := n64graphics n64graphics_ci n64cksum
 
 BUILD_PROGRAMS := $(ALL_PROGRAMS)
 

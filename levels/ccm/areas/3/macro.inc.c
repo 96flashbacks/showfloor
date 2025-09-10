@@ -26,15 +26,16 @@ const MacroObject ccm_seg7_area_3_macro_objs[] = {
     MACRO_OBJECT(/*preset*/ macro_yellow_coin_2,        /*yaw*/   0, /*pos*/  3152, -6413,  7113),
     MACRO_OBJECT(/*preset*/ macro_yellow_coin_2,        /*yaw*/   0, /*pos*/  3603, -6532,  6816),
     MACRO_OBJECT(/*preset*/ macro_yellow_coin_2,        /*yaw*/   0, /*pos*/  3990, -6674,  6436),
-    MACRO_OBJECT(/*preset*/ macro_yellow_coin_2,        /*yaw*/   0, /*pos*/   202,  -935, -5562),
+    MACRO_OBJECT(/*preset*/ macro_yellow_coin_2,        /*yaw*/   0, /*pos*/   195,  -959, -5565), //2nd path coin 1
     MACRO_OBJECT(/*preset*/ macro_yellow_coin_2,        /*yaw*/   0, /*pos*/  1463,  -996, -5449),
     MACRO_OBJECT(/*preset*/ macro_yellow_coin_2,        /*yaw*/   0, /*pos*/  1839, -1158, -5721),
-    MACRO_OBJECT(/*preset*/ macro_yellow_coin_2,        /*yaw*/   0, /*pos*/  2629, -1550, -4707),
+    MACRO_OBJECT(/*preset*/ macro_yellow_coin_2,        /*yaw*/   0, /*pos*/  2620, -1575, -4697), //2nd path coin 2
     MACRO_OBJECT(/*preset*/ macro_yellow_coin_2,        /*yaw*/   0, /*pos*/  6557, -2174, -6487),
+    MACRO_OBJECT(/*preset*/ macro_yellow_coin_2,        /*yaw*/   0, /*pos*/  5883, -2553, -3969), //2nd path coin 3
     //MACRO_OBJECT(/*preset*/ macro_yellow_coin_2,        /*yaw*/   0, /*pos*/  -125, -4772,   -30),
     //MACRO_OBJECT(/*preset*/ macro_yellow_coin_2,        /*yaw*/   0, /*pos*/  -895, -4965,   343),
     //MACRO_OBJECT(/*preset*/ macro_yellow_coin_2,        /*yaw*/   0, /*pos*/ -1173, -5101,   808),
-    MACRO_OBJECT(/*preset*/ macro_moving_blue_coin,     /*yaw*/   0, /*pos*/  3897, -2750, -1200),
+    MACRO_OBJECT(/*preset*/ macro_moving_blue_coin,     /*yaw*/   0, /*pos*/  4624, -3502, -462), //2nd path bouncing coin
     MACRO_OBJECT(/*preset*/ macro_yellow_coin_2,        /*yaw*/   0, /*pos*/ -1511, -3433,  -320),
     MACRO_OBJECT(/*preset*/ macro_yellow_coin_2,        /*yaw*/   0, /*pos*/ -1709, -3828,   652),
     MACRO_OBJECT(/*preset*/ macro_yellow_coin_2,        /*yaw*/   0, /*pos*/ -1496, -4203,  1571),

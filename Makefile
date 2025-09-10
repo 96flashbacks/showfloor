@@ -29,11 +29,6 @@ $(eval $(call validate-option,COMPILER,ido gcc))
 
 # VERSION - selects the version of the game to build
 #   jp - builds the 1996 Japanese version
-#
-# (yes i'm aware this is the worst possible way i could've done this)
-# (yes i'm aware that i left this entire file really messy)
-# (yes i'm aware that i left the entire repository a complete mess)
-# (sorry)
 VERSION ?= jp
 $(eval $(call validate-option,VERSION,jp))
 
@@ -187,7 +182,7 @@ LIBULTRA       := $(BUILD_DIR)/libultra.a
 LD_SCRIPT      := sm64.ld
 CHARMAP        := charmap.txt
 CHARMAP_DEBUG  := charmap.debug.txt
-MIO0_DIR       := $(BUILD_DIR)/bin
+SZP_DIR       := $(BUILD_DIR)/bin
 SOUND_BIN_DIR  := $(BUILD_DIR)/sound
 TEXTURE_DIR    := textures
 ACTOR_DIR      := actors
@@ -344,7 +339,7 @@ export LANG := C
 #==============================================================================#
 
 # N64 tools
-MIO0TOOL              := $(TOOLS_DIR)/sm64tools/mio0
+SLIENC                := $(TOOLS_DIR)/slienc
 N64CKSUM              := $(TOOLS_DIR)/sm64tools/n64cksum
 N64GRAPHICS           := $(TOOLS_DIR)/sm64tools/n64graphics
 N64GRAPHICS_CI        := $(TOOLS_DIR)/sm64tools/n64graphics_ci
@@ -433,7 +428,7 @@ TEXT_DIRS := text/$(VERSION)
 $(BUILD_DIR)/bin/segment2.o: $(BUILD_DIR)/text/$(VERSION)/define_text.inc.c
 $(BUILD_DIR)/bin/segment2.o: $(BUILD_DIR)/text/debug_text.raw.inc.c
 
-ALL_DIRS := $(BUILD_DIR) $(addprefix $(BUILD_DIR)/,$(SRC_DIRS) $(GODDARD_SRC_DIRS) $(ULTRA_SRC_DIRS) $(ULTRA_BIN_DIRS) $(LIBGCC_SRC_DIRS) $(BIN_DIRS) $(TEXTURE_DIRS) $(TEXT_DIRS) $(SOUND_SAMPLE_DIRS) $(addprefix levels/,$(LEVEL_DIRS)) rsp include) $(MIO0_DIR) $(addprefix $(MIO0_DIR)/,$(VERSION)) $(SOUND_BIN_DIR) $(SOUND_BIN_DIR)/sequences/$(VERSION)
+ALL_DIRS := $(BUILD_DIR) $(addprefix $(BUILD_DIR)/,$(SRC_DIRS) $(GODDARD_SRC_DIRS) $(ULTRA_SRC_DIRS) $(ULTRA_BIN_DIRS) $(LIBGCC_SRC_DIRS) $(BIN_DIRS) $(TEXTURE_DIRS) $(TEXT_DIRS) $(SOUND_SAMPLE_DIRS) $(addprefix levels/,$(LEVEL_DIRS)) rsp include) $(SZP_DIR) $(addprefix $(SZP_DIR)/,$(VERSION)) $(SOUND_BIN_DIR) $(SOUND_BIN_DIR)/sequences/$(VERSION)
 
 # Make sure build directory exists before compiling anything
 DUMMY != mkdir -p $(ALL_DIRS)
@@ -493,13 +488,13 @@ $(BUILD_DIR)/levels/%/leveldata.bin: $(BUILD_DIR)/levels/%/leveldata.elf
 	$(V)$(EXTRACT_DATA_FOR_MIO) $< $@
 
 # Compress binary file
-$(BUILD_DIR)/%.mio0: $(BUILD_DIR)/%.bin
+$(BUILD_DIR)/%.szp: $(BUILD_DIR)/%.bin
 	$(call print,Compressing:,$<,$@)
-	$(V)$(MIO0TOOL) $< $@
+	$(V)$(SLIENC) $< $@
 
-# convert binary mio0 to object file
-$(BUILD_DIR)/%.mio0.o: $(BUILD_DIR)/%.mio0
-	$(call print,Converting MIO0 to ELF:,$<,$@)
+# convert binary slide compressed file to object file
+$(BUILD_DIR)/%.szp.o: $(BUILD_DIR)/%.szp
+	$(call print,Converting szp to ELF:,$<,$@)
 	$(V)$(LD) -r -b binary $< -o $@
 
 
@@ -680,7 +675,7 @@ $(BUILD_DIR)/libgcc.a: $(LIBGCC_O_FILES)
 	$(V)$(AR) rcs -o $@ $(LIBGCC_O_FILES)
 
 # Link SM64 ELF file
-$(ELF): $(O_FILES) $(MIO0_OBJ_FILES) $(SEG_FILES) $(BUILD_DIR)/$(LD_SCRIPT) undefined_syms.txt $(BUILD_DIR)/libultra.a $(BUILD_DIR)/libgoddard.a $(BUILD_DIR)/libgcc.a
+$(ELF): $(O_FILES) $(SZP_OBJ_FILES) $(SEG_FILES) $(BUILD_DIR)/$(LD_SCRIPT) undefined_syms.txt $(BUILD_DIR)/libultra.a $(BUILD_DIR)/libgoddard.a $(BUILD_DIR)/libgcc.a
 	@$(PRINT) "$(GREEN)Linking ELF file:  $(BLUE)$@ $(NO_COL)\n"
 	$(V)$(LD) -L $(BUILD_DIR) -T undefined_syms.txt -T $(BUILD_DIR)/$(LD_SCRIPT) -Map $(BUILD_DIR)/sm64.$(VERSION).map --no-check-sections $(addprefix -R ,$(SEG_FILES)) -o $@ $(O_FILES) -lultra -lgoddard -lgcc
 
