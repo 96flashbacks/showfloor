@@ -1,7 +1,7 @@
 # showfloor
 ![showfloorlogo](https://github.com/user-attachments/assets/255078c5-d31c-4284-a720-f1f2ddcefd4f)
 
----
+## Introduction
 
 **showfloor** is a reimplementation of [The Preservation Project](https://github.com/Sunlitspace542/tpp-mirror) (TPP) with improvements and details sourced from footage of the Shoshinkai 1995 demo. 
 
@@ -61,12 +61,12 @@ For more questions, join our [Discord server](https://discord.gg/CpxaEqg6ww).
 - elinspectorardilla
 
 #### Additional Programming
-- umm.heather
+- ummheather
 - iProgramInCpp
 
 #### Assets
 - Scraps
-- umm.heather
+- ummheather
 - 1up Guy
 - stalechilibeans
 - `K-Dubs΄
@@ -77,7 +77,7 @@ For more questions, join our [Discord server](https://discord.gg/CpxaEqg6ww).
 - duskewl/jadu
 - `K-Dubs΄
   
-### Contributors
+#### Contributors
 - emlimate
 - XKoop7321
 - xerox
@@ -96,11 +96,12 @@ For more questions, join our [Discord server](https://discord.gg/CpxaEqg6ww).
 - Xiartic
 - icehotlemonade
   
-### Special Thanks
+#### Special Thanks
 - Neverax
 - na0micakes
 - Matsilagi
 - lunr
+- CharD
 - Tony (Hard4Games)
 - aaali
 
@@ -122,9 +123,9 @@ For more questions, join our [Discord server](https://discord.gg/CpxaEqg6ww).
 - Xiartic
 - lunr
   
-### Original 'The Preservation Project' Contributors
+#### Original 'The Preservation Project' Contributors
 - 1up Guy
-- RedderBloxxer
+- Guestpiki
 - iProgramInCpp
 - Toru the Red Fox
 - CreamDream

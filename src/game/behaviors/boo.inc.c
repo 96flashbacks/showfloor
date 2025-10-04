@@ -99,8 +99,8 @@ static void boo_oscillate(s32 ignoreOpacity) {
         o->header.gfx.scale[2] = o->header.gfx.scale[0];
         o->oGravity = sins(o->oBooOscillationTimer) * o->oBooBaseScale;
 
-        if ((o->oPosY - o->oGraphYOffset - o->oFloorHeight) < (50 * o->oBooBaseScale) ){
-            if (o->oGravity < 0) 
+        if ((o->oPosY - o->oGraphYOffset - o->oFloorHeight) < (50 * o->oBooBaseScale)) {
+            if (o->oGravity < 0)
                 o->oGravity = -o->oGravity;
         }
 

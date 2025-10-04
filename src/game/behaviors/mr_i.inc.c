@@ -150,12 +150,12 @@ void mr_i_act_3(void) {
         obj_mark_for_deletion(o);
     }
 
-    if (o->oDistanceToMario > 2000.0f){
-		o->oAction = 1;
-		o->oMoveAngleYaw = 0;
-		o->oMoveAnglePitch = 0;
-		cur_obj_scale(1.0);
-	}
+    if (o->oDistanceToMario > 2000.0f) {
+        o->oAction = 1;
+        o->oMoveAngleYaw = 0;
+        o->oMoveAnglePitch = 0;
+        cur_obj_scale(1.0);
+    }
 }
 
 void mr_i_act_2(void) {

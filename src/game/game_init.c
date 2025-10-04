@@ -122,9 +122,9 @@ void init_z_buffer(void) {
 
     gDPSetColorImage(gDisplayListHead++, G_IM_FMT_RGBA, G_IM_SIZ_16b, SCREEN_WIDTH, gPhysicalZBuffer);
     gDPSetFillColor(gDisplayListHead++, GPACK_ZDZ(G_MAXFBZ, 0) << 16 | GPACK_ZDZ(G_MAXFBZ, 0));
-	gDPSetCycleType(gDisplayListHead++, G_CYC_FILL);
+    gDPSetCycleType(gDisplayListHead++, G_CYC_FILL);
 
-	gDPPipeSync(gDisplayListHead++);
+    gDPPipeSync(gDisplayListHead++);
     gDPFillRectangle(gDisplayListHead++, 0, BORDER_HEIGHT, SCREEN_WIDTH - 1,
                      SCREEN_HEIGHT - 1 - BORDER_HEIGHT);
 }
@@ -150,14 +150,14 @@ void clear_framebuffer(s32 color) {
     gDPSetRenderMode(gDisplayListHead++, G_RM_OPA_SURF, G_RM_OPA_SURF2);
     gDPSetCycleType(gDisplayListHead++, G_CYC_FILL);
 
-	gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, 0, 0, SCREEN_WIDTH-1, SCREEN_HEIGHT-1);
-	gDPSetFillColor(gDisplayListHead++, 0);
-	gDPFillRectangle(gDisplayListHead++, 0, 0, SCREEN_WIDTH-1, SCREEN_HEIGHT-1);
-	gDPPipeSync(gDisplayListHead++);
+    gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, 0, 0, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1);
+    gDPSetFillColor(gDisplayListHead++, 0);
+    gDPFillRectangle(gDisplayListHead++, 0, 0, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1);
+    gDPPipeSync(gDisplayListHead++);
 
-	gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, 2, 2, SCREEN_WIDTH-3, SCREEN_HEIGHT-3);
-	gDPSetFillColor(gDisplayListHead++, color);
-	gDPFillRectangle(gDisplayListHead++, 0, 0, SCREEN_WIDTH-1, SCREEN_HEIGHT-1);
+    gDPSetScissor(gDisplayListHead++, G_SC_NON_INTERLACE, 2, 2, SCREEN_WIDTH - 3, SCREEN_HEIGHT - 3);
+    gDPSetFillColor(gDisplayListHead++, color);
+    gDPFillRectangle(gDisplayListHead++, 0, 0, SCREEN_WIDTH - 1, SCREEN_HEIGHT - 1);
 
     gDPPipeSync(gDisplayListHead++);
 
@@ -167,7 +167,9 @@ void clear_framebuffer(s32 color) {
 /**
  * Resets the viewport, readying it for the final image.
  */
-void clear_viewport(Vp *viewport, s32 color) { // this function does NOT exist in 1995 according to the backup from February 6, 1996
+void clear_viewport(
+    Vp *viewport,
+    s32 color) { // this function does NOT exist in 1995 according to the backup from February 6, 1996
     s16 vpUlx = (viewport->vp.vtrans[0] - viewport->vp.vscale[0]) / 4 + 1;
     s16 vpUly = (viewport->vp.vtrans[1] - viewport->vp.vscale[1]) / 4 + 1;
     s16 vpLrx = (viewport->vp.vtrans[0] + viewport->vp.vscale[0]) / 4 - 2;
@@ -365,7 +367,8 @@ void read_controller_inputs(void) {
     s32 i;
     struct Controller *controller;
 
-    // If any controllers are plugged in, update the controller information. <- This was not done before at least Feburary 1996
+    // If any controllers are plugged in, update the controller information. <- This was not done before
+    // at least Feburary 1996
     osRecvMesg(&gSIEventMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
     osContGetReadData(&gControllerPads[0]);
 
@@ -391,7 +394,9 @@ void read_controller_inputs(void) {
             controller->stickMag = 0;
         }
     }
-	controller = ((gPlayer1Controller->stickX != 0.0f) | (gPlayer1Controller->stickY != 0.0f)) ? gPlayer1Controller : gPlayer2Controller;
+    controller = ((gPlayer1Controller->stickX != 0.0f) | (gPlayer1Controller->stickY != 0.0f))
+                     ? gPlayer1Controller
+                     : gPlayer2Controller;
 
     // For some reason, player 1's inputs are copied to player 3's port.
     // This potentially may have been a way the developers "recorded"
@@ -401,7 +406,8 @@ void read_controller_inputs(void) {
     gPlayer3Controller->stickX = controller->stickX;
     gPlayer3Controller->stickY = controller->stickY;
     gPlayer3Controller->stickMag = controller->stickMag;
-    gPlayer3Controller->buttonPressed = gPlayer1Controller->buttonPressed | gPlayer2Controller->buttonPressed;
+    gPlayer3Controller->buttonPressed =
+        gPlayer1Controller->buttonPressed | gPlayer2Controller->buttonPressed;
     gPlayer3Controller->buttonDown = gPlayer1Controller->buttonDown | gPlayer2Controller->buttonDown;
 }
 
@@ -413,13 +419,14 @@ void init_controllers(void) {
 
     // Set controller 1 to point to the set of status/pads for input 1 and
     // init the controllers.
-    //gControllers[0].statusData = &gControllerStatuses[0];
-    //gControllers[0].controllerData = &gControllerPads[0];
+    // gControllers[0].statusData = &gControllerStatuses[0];
+    // gControllers[0].controllerData = &gControllerPads[0];
     osContInit(&gSIEventMesgQueue, &gControllerBits, &gControllerStatuses[0]);
 
     // Strangely enough, the EEPROM probe for save data is done in this function.
     // Save Pak detection?
-    // osEepromProbe(&gSIEventMesgQueue); // This is commented out in the Feburary 1996 source backup. gEepromProbe variable doesn't exist neither.
+    // osEepromProbe(&gSIEventMesgQueue); // This is commented out in the Feburary 1996 source backup.
+    // gEepromProbe variable doesn't exist neither.
 
     // Loop over the 4 ports and link the controller structs to the appropriate
     // status and pad. Interestingly, although there are pointers to 3 controllers,
@@ -465,7 +472,7 @@ void setup_game_memory(void) {
     set_segment_base_addr(18, (void *) gPlayerAnimsMemAlloc[1]);
     setup_dma_table_list(&gPlayerAnimsBuf[0], gMarioAnims, gPlayerAnimsMemAlloc[0]);
     setup_dma_table_list(&gPlayerAnimsBuf[1], NULL, gPlayerAnimsMemAlloc[1]);
-	gPlayerAnimsBuf[1].dmaTable = gPlayerAnimsBuf[0].dmaTable;
+    gPlayerAnimsBuf[1].dmaTable = gPlayerAnimsBuf[0].dmaTable;
     // Setup Level Script Entry
     load_segment(0x10, _entrySegmentRomStart, _entrySegmentRomEnd, MEMORY_POOL_LEFT);
     // Setup Segment 2 (Fonts, Text, etc)
@@ -494,7 +501,7 @@ void thread5_game_loop(UNUSED void *arg) {
     addr = segmented_to_virtual(level_script_entry);
 
     play_music(SEQ_PLAYER_SFX, SEQUENCE_ARGS(0, SEQ_SOUND_PLAYER), 0);
-    //set_sound_mode(save_file_get_sound_mode());
+    // set_sound_mode(save_file_get_sound_mode());
     render_init();
 
     while (TRUE) {
@@ -509,7 +516,7 @@ void thread5_game_loop(UNUSED void *arg) {
         select_gfx_pool();
         read_controller_inputs();
 #if DEBUGSW
-		handle_debug_key_sequences();
+        handle_debug_key_sequences();
 #endif
         addr = level_script_execute(addr);
 

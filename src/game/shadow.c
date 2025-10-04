@@ -174,7 +174,8 @@ static f32 get_water_level_below_shadow(struct Shadow *s) { // ShadeWaterCheck
  * @param overwriteSolidity Flag for whether the existing shadow solidity should
  *                          be dimmed based on its distance to the floor
  */
-static s8 init_shadow(struct Shadow *s, f32 xPos, f32 yPos, f32 zPos, s16 shadowScale, u8 overwriteSolidity) { // ShadeSetStructureData
+static s8 init_shadow(struct Shadow *s, f32 xPos, f32 yPos, f32 zPos, s16 shadowScale,
+                      u8 overwriteSolidity) { // ShadeSetStructureData
     f32 waterLevel;
     f32 floorSteepness;
     struct FloorGeometry *floorGeometry;
@@ -236,7 +237,8 @@ static s8 init_shadow(struct Shadow *s, f32 xPos, f32 yPos, f32 zPos, s16 shadow
  *      3 = (-15,   0)         4 = (0,   0)         5 = (15,   0)
  *      6 = (-15,  15)         7 = (0,  15)         8 = (15,  15)
  */
-static void get_texture_coords_9_vertices(s8 vertexNum, s16 *textureX, s16 *textureY) { // ShadeCalcTexCoord_9P
+static void get_texture_coords_9_vertices(s8 vertexNum, s16 *textureX,
+                                          s16 *textureY) { // ShadeCalcTexCoord_9P
     *textureX = vertexNum % 3 * 15 - 15;
     *textureY = vertexNum / 3 * 15 - 15;
 }
@@ -247,7 +249,8 @@ static void get_texture_coords_9_vertices(s8 vertexNum, s16 *textureX, s16 *text
  *      0 = (-15, -15)         1 = (15, -15)
  *      2 = (-15,  15)         3 = (15,  15)
  */
-static void get_texture_coords_4_vertices(s8 vertexNum, s16 *textureX, s16 *textureY) { // ShadeCalcTexCoord_4P
+static void get_texture_coords_4_vertices(s8 vertexNum, s16 *textureX,
+                                          s16 *textureY) { // ShadeCalcTexCoord_4P
     *textureX = (vertexNum % 2) * 2 * 15 - 15;
     *textureY = (vertexNum / 2) * 2 * 15 - 15;
 }
@@ -262,7 +265,7 @@ static void get_texture_coords_4_vertices(s8 vertexNum, s16 *textureX, s16 *text
  * @param shadowVertexType One of SHADOW_WITH_9_VERTS or SHADOW_WITH_4_VERTS
  */
 static void make_shadow_vertex_at_xyz(Vtx *vertices, s8 index, f32 relX, f32 relY, f32 relZ, u8 alpha,
-                               s8 shadowVertexType) { // ShadeSetEachVtxData
+                                      s8 shadowVertexType) { // ShadeSetEachVtxData
     s16 vtxX = round_float(relX);
     s16 vtxY = round_float(relY);
     s16 vtxZ = round_float(relZ);
@@ -295,7 +298,8 @@ static f32 extrapolate_vertex_y_position(struct Shadow s, f32 vtxX, f32 vtxZ) { 
  * `get_texture_coords_4_vertices()`, which have similar functionality, but
  * return 15 times these values.
  */
-static void get_vertex_coords(s8 index, s8 shadowVertexType, s8 *xCoord, s8 *zCoord) { // ShadeCalcDevideParam
+static void get_vertex_coords(s8 index, s8 shadowVertexType, s8 *xCoord,
+                              s8 *zCoord) { // ShadeCalcDevideParam
     *xCoord = index % (3 - shadowVertexType) - 1;
     *zCoord = index / (3 - shadowVertexType) - 1;
 
@@ -323,7 +327,7 @@ static void get_vertex_coords(s8 index, s8 shadowVertexType, s8 *xCoord, s8 *zCo
  * behavior is overwritten.
  */
 static void calculate_vertex_xyz(s8 index, struct Shadow s, f32 *xPosVtx, f32 *yPosVtx, f32 *zPosVtx,
-                          s8 shadowVertexType) { // ShadeCalcXYZCoord
+                                 s8 shadowVertexType) { // ShadeCalcXYZCoord
     f32 tiltedScale = cosf(s.floorTilt * M_PI / 180.0) * s.shadowScale;
     f32 downwardAngle = s.floorDownwardAngle * M_PI / 180.0;
     f32 halfScale;
@@ -388,7 +392,8 @@ static s16 floor_local_tilt(struct Shadow s, f32 vtxX, f32 vtxY, f32 vtxZ) { // 
 /**
  * Make a particular vertex from a shadow, calculating its position and solidity.
  */
-static void make_shadow_vertex(Vtx *vertices, s8 index, struct Shadow s, s8 shadowVertexType) { // ShadeSetVtxData
+static void make_shadow_vertex(Vtx *vertices, s8 index, struct Shadow s,
+                               s8 shadowVertexType) { // ShadeSetVtxData
     f32 xPosVtx, yPosVtx, zPosVtx;
     f32 relX, relY, relZ;
 
@@ -429,7 +434,9 @@ static void make_shadow_vertex(Vtx *vertices, s8 index, struct Shadow s, s8 shad
 /**
  * Add a shadow to the given display list.
  */
-static void add_shadow_to_display_list(Gfx *displayListHead, Vtx *verts, s8 shadowVertexType) { // ShadeMakeDL, shadow shape was added after Shoshinkai build
+static void add_shadow_to_display_list(
+    Gfx *displayListHead, Vtx *verts,
+    s8 shadowVertexType) { // ShadeMakeDL, shadow shape was added after Shoshinkai build
     gSPDisplayList(displayListHead++, dl_shadow_circle);
     switch (shadowVertexType) {
         case SHADOW_WITH_9_VERTS:
@@ -449,8 +456,9 @@ static void add_shadow_to_display_list(Gfx *displayListHead, Vtx *verts, s8 shad
  * Linearly interpolate a shadow's solidity between zero and finalSolidity
  * depending on curr's relation to start and end.
  */
-static void linearly_interpolate_solidity_positive(struct Shadow *s, u8 finalSolidity, s16 curr, s16 start,
-                                            s16 end) { // ShadePlayerDensUp
+static void linearly_interpolate_solidity_positive(struct Shadow *s, u8 finalSolidity, s16 curr,
+                                                   s16 start,
+                                                   s16 end) { // ShadePlayerDensUp
     if (curr >= 0 && curr < start) {
         s->solidity = 0;
     } else if (end < curr) {
@@ -465,8 +473,9 @@ static void linearly_interpolate_solidity_positive(struct Shadow *s, u8 finalSol
  * depending on curr's relation to start and end. Note that if curr < start,
  * the solidity will be zero.
  */
-static void linearly_interpolate_solidity_negative(struct Shadow *s, u8 initialSolidity, s16 curr, s16 start,
-                                            s16 end) { // ShadePlayerDensDw
+static void linearly_interpolate_solidity_negative(struct Shadow *s, u8 initialSolidity, s16 curr,
+                                                   s16 start,
+                                                   s16 end) { // ShadePlayerDensDw
     // The curr < start case is not handled. Thus, if start != 0, this function
     // will have the surprising behavior of hiding the shadow until start.
     // This is not necessarily a bug, since this function is only used once,
@@ -481,7 +490,8 @@ static void linearly_interpolate_solidity_negative(struct Shadow *s, u8 initialS
 /**
  * Change a shadow's solidity based on the player's current animation frame.
  */
-static s8 correct_shadow_solidity_for_animations(s32 isLuigi, u8 initialSolidity, struct Shadow *shadow) { // ShadeCheckPlayerStatus
+static s8 correct_shadow_solidity_for_animations(s32 isLuigi, u8 initialSolidity,
+                                                 struct Shadow *shadow) { // ShadeCheckPlayerStatus
     struct Object *player;
     s8 ret;
     s16 animFrame;
@@ -530,7 +540,8 @@ static s8 correct_shadow_solidity_for_animations(s32 isLuigi, u8 initialSolidity
 /**
  * Create a circular shadow composed of 9 vertices.
  */
-static Gfx *create_shadow_circle_9_verts(f32 xPos, f32 yPos, f32 zPos, s16 shadowScale, u8 solidity) { // Shade_Normal_9Pnt
+static Gfx *create_shadow_circle_9_verts(f32 xPos, f32 yPos, f32 zPos, s16 shadowScale,
+                                         u8 solidity) { // Shade_Normal_9Pnt
     Vtx *verts;
     Gfx *displayList;
     struct Shadow shadow;
@@ -557,7 +568,8 @@ static Gfx *create_shadow_circle_9_verts(f32 xPos, f32 yPos, f32 zPos, s16 shado
 /**
  * Create a circular shadow composed of 4 vertices.
  */
-static Gfx *create_shadow_circle_4_verts(f32 xPos, f32 yPos, f32 zPos, s16 shadowScale, u8 solidity) { // Shade_Silent_Bank
+static Gfx *create_shadow_circle_4_verts(f32 xPos, f32 yPos, f32 zPos, s16 shadowScale,
+                                         u8 solidity) { // Shade_Silent_Bank
     Vtx *verts;
     Gfx *displayList;
     struct Shadow shadow;
@@ -587,7 +599,7 @@ static Gfx *create_shadow_circle_4_verts(f32 xPos, f32 yPos, f32 zPos, s16 shado
  * underneath it is totally flat.
  */
 static Gfx *create_shadow_circle_assuming_flat_ground(f32 xPos, f32 yPos, f32 zPos, s16 shadowScale,
-                                               u8 solidity) { // Shade_Silent_Flat
+                                                      u8 solidity) { // Shade_Silent_Flat
     Vtx *verts;
     Gfx *displayList;
     struct FloorGeometry *dummy; // only for calling find_floor_height_and_data
@@ -622,7 +634,8 @@ static Gfx *create_shadow_circle_assuming_flat_ground(f32 xPos, f32 yPos, f32 zP
  * Create a shadow under a player, correcting that shadow's opacity during
  * appropriate animations and other states.
  */
-static Gfx *create_shadow_player(f32 xPos, f32 yPos, f32 zPos, s16 shadowScale, u8 solidity, s32 isLuigi) { // Shade_Mario_Luigi
+static Gfx *create_shadow_player(f32 xPos, f32 yPos, f32 zPos, s16 shadowScale, u8 solidity,
+                                 s32 isLuigi) { // Shade_Mario_Luigi
     Vtx *verts;
     Gfx *displayList;
     struct Shadow shadow;

@@ -463,7 +463,7 @@ void bowser_act_walk_to_mario(void) {
     turnSpeed = 0x200;
 
     if (angleFromMario > turnSpeed)
-    facing = cur_obj_rotate_yaw_toward(o->oAngleToMario, turnSpeed);
+        facing = cur_obj_rotate_yaw_toward(o->oAngleToMario, turnSpeed);
 
     if (o->oSubAction == 0) {
         o->oBowserTimer = 0;

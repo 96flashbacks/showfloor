@@ -838,7 +838,7 @@ void render_dialog_entries(void) {
 
     // if the dialog entry is invalid, set the ID to DIALOG_NONE.
     if (dialog == segmented_to_virtual(NULL)) {
-        rmonpf(("Message not defined. (%d)\n",gDialogID));
+        rmonpf(("Message not defined. (%d)\n", gDialogID));
         gDialogID = DIALOG_NONE;
         return;
     }
@@ -1021,7 +1021,7 @@ short SelectMessageEvent(void) {
     struct DialogEntry *message = segmented_to_virtual(mlist[gMenuMode]);
 
     if (message == NULL) {
-        rmonpf(("Message not defined. (%d)\n",gMenuMode));
+        rmonpf(("Message not defined. (%d)\n", gMenuMode));
         gMenuMode = MENU_MODE_NONE;
         return 0;
     }

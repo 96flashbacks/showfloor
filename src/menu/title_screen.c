@@ -110,7 +110,7 @@ s32 intro_regular(void) {
     if (sPlayMarioGreeting < 30) {
         sPlayMarioGreeting++;
     }
-    
+
     print_intro_text();
 
     if (gPlayer1Controller->buttonPressed & START_BUTTON) {

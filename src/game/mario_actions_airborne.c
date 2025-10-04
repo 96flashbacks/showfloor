@@ -855,7 +855,11 @@ u32 common_air_knockback_step(struct MarioState *m, u32 landAction, u32 hardFall
                               f32 speed) {
     u32 stepResult;
 
-    mario_set_forward_vel(m, speed);
+    if (m->forwardVel > 0 && m->actionTimer++ == 0) {
+        mario_set_forward_vel(m, -speed);
+    } else {
+        mario_set_forward_vel(m, speed);
+    }
 
     stepResult = perform_air_step(m, 0);
     switch (stepResult) {
@@ -866,6 +870,8 @@ u32 common_air_knockback_step(struct MarioState *m, u32 landAction, u32 hardFall
         case AIR_STEP_LANDED:
             if (!check_fall_damage(m, hardFallAction)) {
                 set_mario_action(m, landAction, m->actionArg);
+                if (speed > 0 && m->actionArg == 2)
+                    mario_set_forward_vel(m, 0);
             }
             break;
 
@@ -913,7 +919,8 @@ s32 act_forward_air_kb(struct MarioState *m) {
         return TRUE;
     }
 
-    play_sound_if_no_flag(m, SOUND_MARIO_HAUGH, MARIO_MARIO_SOUND_PLAYED);
+    if (m->forwardVel < 0)
+        play_sound_if_no_flag(m, SOUND_MARIO_HAUGH, MARIO_MARIO_SOUND_PLAYED);
 
     common_air_knockback_step(m, ACT_FORWARD_GROUND_KB, ACT_HARD_FORWARD_GROUND_KB, 0x002D, 16.0f);
     return FALSE;

@@ -685,7 +685,7 @@ void set_camera_height(struct Camera *c, f32 goalHeight) {
 
         approach_camera_height(c, goalHeight, 5.f);
     } else {
-        camFloorHeight = find_floor(c->pos[0], c->pos[1] + 100.f, c->pos[2], &surface) + baseOff;
+        camFloorHeight = find_floor(c->pos[0], c->pos[1] + 200.f, c->pos[2], &surface) + baseOff;
         marioFloorHeight = baseOff + sMarioGeometry.currFloorHeight;
 
         if (camFloorHeight < marioFloorHeight) {
@@ -721,11 +721,8 @@ s16 look_down_slopes(s16 camYaw) {
 
     floorDY = find_floor(xOff, sMarioCamState->pos[1], zOff, &floor) - sMarioCamState->pos[1];
 
-    if (floor != NULL) {
-        if (floor->type != SURFACE_WALL_MISC && floorDY > 0) {
-            // Add the slope's angle of declination to the pitch
-            pitch += atan2s(40.f, floorDY);
-        }
+    if (floorDY > 0) {
+        pitch += atan2s(40.f, floorDY);
     }
 
     return pitch;
@@ -892,12 +889,10 @@ void radial_camera_move(struct Camera *c) {
         } else {
             if (c->mode == CAMERA_MODE_RADIAL) {
                 // sModeOffsetYaw only updates when mario is moving
-                if ((gCurrLevelNum == LEVEL_LLL) && gMarioStates[0].pos[2] < 6300
-                    && gMarioStates[0].pos[2] > 4300 && gMarioStates[0].pos[0] < 280) { // stupid
-                    rotateSpeed = 25.f;
+                if (gMarioStates[0].floor->type == SURFACE_WALL_MISC) {
+                    rotateSpeed = gMarioStates[0].forwardVel;
                 } else {
-                    rotateSpeed = gMarioStates[0].forwardVel
-                                  + 768.f; // TODO: check whether this is wrong or not later
+                    rotateSpeed = gMarioStates[0].forwardVel + 768.f;
                 }
                 camera_approach_s16_symmetric_bool(&sModeOffsetYaw, yawOffset, rotateSpeed);
             }
@@ -1254,9 +1249,10 @@ s32 update_fixed_camera(struct Camera *c, Vec3f focus, UNUSED Vec3f pos) {
 
     calc_y_to_curr_floor(&focusFloorOff, 1.f, 200.f, &focusFloorOff, 0.9f, 200.f);
     vec3f_copy(focus, sMarioCamState->pos);
-    focus[1] += focusFloorOff + 125.f;
+    focus[1] += focusFloorOff + 130.f;
     vec3f_get_dist_and_angle(focus, c->pos, &distCamToFocus, &faceAngle[0], &faceAngle[1]);
     faceAngle[2] = 0;
+    focus[0] -= 5.f;
 
     vec3f_copy(basePos, sFixedModeBasePosition);
     vec3f_add(basePos, sCastleEntranceOffset);
@@ -1268,8 +1264,8 @@ s32 update_fixed_camera(struct Camera *c, Vec3f focus, UNUSED Vec3f pos) {
         goalHeight = gLakituState.goalPos[1];
     }
 
-    if (300 > distCamToFocus) {
-        goalHeight += 300 - distCamToFocus;
+    if (250.f > distCamToFocus) {
+        goalHeight += 500.f - (distCamToFocus * 2.f);
     }
 
     ceilHeight = find_ceil(c->pos[0], goalHeight - 100.f, c->pos[2], &ceiling);
@@ -1280,7 +1276,7 @@ s32 update_fixed_camera(struct Camera *c, Vec3f focus, UNUSED Vec3f pos) {
     }
 
     if (gCameraMovementFlags & CAM_MOVE_ZOOMED_OUT) {
-        goalHeight += 424.f;
+        goalHeight += 400.f;
     }
 
     if (sStatusFlags & CAM_FLAG_SMOOTH_MOVEMENT) {
@@ -2765,11 +2761,8 @@ void init_camera(struct Camera *c) {
 
         //! Hardcoded position checks determine which cutscene to play when Mario enters castle grounds.
         case LEVEL_CASTLE_GROUNDS:
-            if (is_within_100_units_of_mario(-1328.f, 260.f, 4664.f) != 1) {
-                marioOffset[0] = -400.f;
-                marioOffset[2] = -800.f;
-            }
-            gLakituState.mode = CAMERA_MODE_FREE_ROAM;
+            marioOffset[0] = -400.f;
+            marioOffset[2] = -800.f;
             break;
         case LEVEL_CASTLE_COURTYARD:
             marioOffset[2] = -300.f;
@@ -2778,7 +2771,7 @@ void init_camera(struct Camera *c) {
             gCameraMovementFlags |= CAM_MOVE_ZOOMED_OUT;
             break;
         case LEVEL_CASTLE:
-            marioOffset[2] = 150.f;
+            marioOffset[2] = 190.f;
             break;
     }
     if (c->mode == CAMERA_MODE_8_DIRECTIONS) {
@@ -2808,7 +2801,7 @@ void init_camera(struct Camera *c) {
     vec3f_copy(gLakituState.pos, c->pos);
     vec3f_copy(gLakituState.focus, c->focus);
     if (c->mode == CAMERA_MODE_FIXED) {
-        vec3f_set(sFixedModeBasePosition, 724.f, 150.f, 883.f);
+        vec3f_set(sFixedModeBasePosition, 646.0f, 143.0f, 847.0f);
     }
     store_lakitu_cam_info_for_c_up(c);
     gLakituState.yaw = calculate_yaw(c->focus, c->pos);
@@ -4656,7 +4649,7 @@ void check_blocking_area_processing(const u8 *mode) {
 BAD_RETURN(s32) cam_castle_enter_lobby(struct Camera *c) {
     if (c->mode != CAMERA_MODE_FIXED) {
         sStatusFlags &= ~CAM_FLAG_SMOOTH_MOVEMENT;
-        vec3f_set(sFixedModeBasePosition, 724.f, 150.f, 883.f);
+        vec3f_set(sFixedModeBasePosition, 646.0f, 143.0f, 847.0f);
         c->mode = CAMERA_MODE_FIXED;
     }
 }
@@ -4711,8 +4704,7 @@ u32 set_mode_if_not_set_by_surface(struct Camera *c, u8 mode) {
 /**
  * Terminates a list of CameraTriggers.
  */
-#define NULL_TRIGGER                                                                                   \
-    { 0, NULL, 0, 0, 0, 0, 0, 0, 0 }
+#define NULL_TRIGGER { 0, NULL, 0, 0, 0, 0, 0, 0, 0 }
 
 /**
  * The Castle triggers are used to set the camera to fixed mode when entering the lobby, and to set it
@@ -5414,7 +5406,8 @@ BAD_RETURN(s32) cutscene_enter_bowser_arena_follow_mario(struct Camera *c) {
 
     mode_boss_fight_camera(c);
 
-    vec3f_get_dist_and_angle(sMarioCamState->pos, sCutsceneVars[0].point, &baseDist, &basePitch, &baseYaw);
+    vec3f_get_dist_and_angle(sMarioCamState->pos, sCutsceneVars[0].point, &baseDist, &basePitch,
+                             &baseYaw);
 
     finalYaw = baseYaw + (sModeOffsetYaw * 4);
 
@@ -5424,7 +5417,6 @@ BAD_RETURN(s32) cutscene_enter_bowser_arena_follow_mario(struct Camera *c) {
     c->focus[0] = sMarioCamState->pos[0];
     c->focus[1] = gMarioState->pos[1] + gMarioObject->hitboxHeight;
     c->focus[2] = sMarioCamState->pos[2];
-
 }
 
 /**
@@ -6744,7 +6736,7 @@ void approach_fov_45(struct MarioState *m) {
     f32 targetFoV = sFOVState.fov;
 
     if (m->area->camera->mode == CAMERA_MODE_FIXED && m->area->camera->cutscene == 0) {
-        targetFoV = 60.f;
+        targetFoV = 63.f;
     } else {
         targetFoV = 45.f;
     }

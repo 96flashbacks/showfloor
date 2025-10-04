@@ -101,7 +101,7 @@ void unknown_main_func(void) {
 #pragma GCC diagnostic pop
 }
 
-#define	STACK_CHECK_CODE	0x8877665544332211LL
+#define STACK_CHECK_CODE 0x8877665544332211LL
 
 void InitStackMemory(void) {
 #ifdef DEVELOP
@@ -114,10 +114,14 @@ void InitStackMemory(void) {
 
 void CheckStackMemory(void) {
 #ifdef DEVELOP
-    if (gIdleThreadStack [256] != STACK_CHECK_CODE)  rmonpf(("idle thread stack over\n"));
-    if (gThread3Stack [256] != STACK_CHECK_CODE)  rmonpf(("main thread stack over\n"));
-    if (gThread4Stack[256] != STACK_CHECK_CODE)  rmonpf(("audio thread stack over\n"));
-    if (gThread5Stack[256] != STACK_CHECK_CODE)  rmonpf(("graph thread stack over\n"));
+    if (gIdleThreadStack[256] != STACK_CHECK_CODE)
+        rmonpf(("idle thread stack over\n"));
+    if (gThread3Stack[256] != STACK_CHECK_CODE)
+        rmonpf(("main thread stack over\n"));
+    if (gThread4Stack[256] != STACK_CHECK_CODE)
+        rmonpf(("audio thread stack over\n"));
+    if (gThread5Stack[256] != STACK_CHECK_CODE)
+        rmonpf(("graph thread stack over\n"));
 #endif
 }
 
@@ -184,7 +188,7 @@ void start_sptask(s32 taskType) {
     } else {
         rmonpf(("(GFX) strat\n"));
         gActiveSPTask = sCurrentDisplaySPTask;
-		//osDpSetStatus(DPC_CLR_CLOCK_CTR | DPC_CLR_CMD_CTR | DPC_CLR_PIPE_CTR | DPC_CLR_TMEM_CTR);
+        // osDpSetStatus(DPC_CLR_CLOCK_CTR | DPC_CLR_CMD_CTR | DPC_CLR_PIPE_CTR | DPC_CLR_TMEM_CTR);
     }
 
     osSpTaskLoad(&gActiveSPTask->task);
@@ -215,7 +219,8 @@ void handle_vblank(void) {
 
     receive_new_tasks();
 
-    if (audCheck == 1) rmonpf(("audio task broken\n"));	/* DEBUG */
+    if (audCheck == 1)
+        rmonpf(("audio task broken\n")); /* DEBUG */
 
     // First try to kick off an audio task. If the gfx task is currently
     // running, we need to asynchronously interrupt it -- handle_sp_complete
@@ -300,8 +305,8 @@ void handle_dp_complete(void) {
     }
     rmonpf(("(GFX) end\n"));
     profiler_log_gfx_time(RDP_COMPLETE);
-//  sysTmrst = TRUE;
-//  ResetTime();
+    //  sysTmrst = TRUE;
+    //  ResetTime();
     sCurrentDisplaySPTask->state = SPTASK_STATE_FINISHED_DP;
     sCurrentDisplaySPTask = NULL;
 }
@@ -315,7 +320,8 @@ void thread3_main(UNUSED void *arg) {
 
     setup_mesg_queues();
     alloc_pool();
-    load_engine_code_segment(); // this line is not in the Feburary 1996 backup, but WHERE ELSE WOULD THE DATA BE LOADED THEN?
+    load_engine_code_segment(); // this line is not in the Feburary 1996 backup, but WHERE ELSE WOULD
+                                // THE DATA BE LOADED THEN?
 
     while (TRUE) {
         OSMesg msg;
@@ -382,8 +388,8 @@ void thread1_idle(UNUSED void *arg) {
     osCreatePiManager(OS_PRIORITY_PIMGR, &gPIMesgQueue, gPIMesgBuf, ARRAY_COUNT(gPIMesgBuf));
 #ifdef DEVELOP
     /* Start RMON  */ // rmonthreadstack was removed off final I believe
-    //create_thread(&gRmonThread, 0, rmonMain, NULL, rmonThreadStack+RMON_STACKSIZE64, OS_PRIORITY_RMON);
-    //osStartThread(&gRmonThread);
+    // create_thread(&gRmonThread, 0, rmonMain, NULL, rmonThreadStack+RMON_STACKSIZE64,
+    // OS_PRIORITY_RMON); osStartThread(&gRmonThread);
 #endif
     create_thread(&gMainThread, 3, thread3_main, NULL, gThread3Stack + 0x2000, 100);
     if (sysGvdActive == 0) {
@@ -399,19 +405,21 @@ void thread1_idle(UNUSED void *arg) {
 
 #if DEVELOP
 /********************************************************************************/
-/*	Read argument.																*/
+/*	Read argument.
+ */
 /********************************************************************************/
 static void ReadArgument(ArgRecord *argrec) {
     u32 i = 0;
-    u64 *argpt = (ulong *)RAMROM_APP_WRITE_ADDR;
+    u64 *argpt = (ulong *) RAMROM_APP_WRITE_ADDR;
 
     for (i = 0; i < SC_ARGSIZE; i++, argpt++) {
-        osPiRawReadIo((ulong)argpt, &argrec->word[index]);
+        osPiRawReadIo((ulong) argpt, &argrec->word[index]);
     }
 }
 
 /********************************************************************************/
-/*	Check debug options.														*/
+/*	Check debug options.
+ */
 /********************************************************************************/
 static void CheckDebugOption(ArgRecord *argrec) {
     u8 *chrpt = argrec->byte;
@@ -419,8 +427,12 @@ static void CheckDebugOption(ArgRecord *argrec) {
     for (chrpt = argrec->byte; *chrpt != '\0'; chrpt++) {
         if (*chrpt == '-') {
             switch (*++chrpt) {
-                case 'd': gDebugLevelSelect = 1; break;
-                case 'g': sysGvdActive = 1; break;
+                case 'd':
+                    gDebugLevelSelect = 1;
+                    break;
+                case 'g':
+                    sysGvdActive = 1;
+                    break;
             }
         }
     }
@@ -437,8 +449,8 @@ void main_func(void) {
     osInitialize();
     InitStackMemory();
 #if DEVELOP
-	ReadArgument(&argrec);
-	CheckDebugOption(&argrec);
+    ReadArgument(&argrec);
+    CheckDebugOption(&argrec);
 #endif
     create_thread(&gIdleThread, 1, thread1_idle, NULL, gIdleThreadStack + 0x800, 100);
     osStartThread(&gIdleThread);

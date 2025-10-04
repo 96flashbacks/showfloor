@@ -26,7 +26,7 @@
 #define BHV_CMD_GET_U32(index) (u32)(gCurBhvCommand[index])
 #define BHV_CMD_GET_VPTR(index) (void *) (gCurBhvCommand[index])
 
-#define BHV_CMD_GET_ADDR_OF_CMD(index) (uintptr_t)(&gCurBhvCommand[index])
+#define BHV_CMD_GET_ADDR_OF_CMD(index) (uintptr_t) (&gCurBhvCommand[index])
 
 static u16 gRandomSeed16;
 

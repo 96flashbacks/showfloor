@@ -109,7 +109,7 @@ COLOR ?= 1
 # display selected options unless 'make clean' or 'make distclean' is run
 ifeq ($(filter clean distclean,$(MAKECMDGOALS)),)
   $(info ==== Build Options ====)
-  $(info Version:        $(VERSION))
+  $(info Microcode:      $(GRUCODE))
   $(info Target:         $(TARGET))
   ifeq ($(COMPARE),1)
     $(info Compare ROM:    yes)

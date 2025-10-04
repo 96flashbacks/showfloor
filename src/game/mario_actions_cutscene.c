@@ -705,13 +705,13 @@ s32 act_exit_land_save_dialog(struct MarioState *m) {
     perform_ground_step(m);
     mario_set_forward_vel(m, m->forwardVel * 2);
     play_mario_landing_sound_once(m, SOUND_ACTION_TERRAIN_LANDING);
-    set_mario_animation(m, m->actionArg == 0 ? MARIO_ANIM_GENERAL_LAND
-                                                     : MARIO_ANIM_LAND_FROM_SINGLE_JUMP);
+    set_mario_animation(m,
+                        m->actionArg == 0 ? MARIO_ANIM_GENERAL_LAND : MARIO_ANIM_LAND_FROM_SINGLE_JUMP);
 
     if (is_anim_past_frame(m, 11) || is_anim_past_frame(m, 24)) {
         stationary_ground_step(m);
     }
-                                        
+
     if (is_anim_past_end(m)) {
         set_mario_action(m, ACT_IDLE, 0);
     }

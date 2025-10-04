@@ -1325,13 +1325,8 @@ s32 common_ground_knockback_action(struct MarioState *m, s32 animation, s32 arg2
     }
 
     if (perform_ground_step(m) == GROUND_STEP_LEFT_GROUND) {
-        if ((m->forwardVel >= 0.0f)) {
-            if (m->action != ACT_FORWARD_GROUND_KB) {
-                set_mario_action(m, ACT_FORWARD_GROUND_KB, arg3);
-            } else if (is_anim_at_end(m)) {
-                set_mario_action(m, ACT_IDLE, 0);
-            }
-            m->forwardVel = 0.0f;
+        if (m->forwardVel >= 0.0f) {
+            set_mario_action(m, ACT_FORWARD_AIR_KB, 2);
         } else {
             set_mario_action(m, ACT_BACKWARD_AIR_KB, arg3);
         }
@@ -1374,7 +1369,7 @@ s32 act_backward_ground_kb(struct MarioState *m) {
 }
 
 s32 act_forward_ground_kb(struct MarioState *m) {
-    common_ground_knockback_action(m, MARIO_ANIM_FORWARD_KB, 20, TRUE);
+    common_ground_knockback_action(m, MARIO_ANIM_FORWARD_KB, 36, TRUE);
     return FALSE;
 }
 

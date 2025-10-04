@@ -310,7 +310,7 @@ void *load_to_fixed_pool_addr(u8 *destAddr, u8 *srcStart, u8 *srcEnd) {
             osInvalDCache(dest, destSize);
         }
     } else {
-        rmonpf(("program code load failed AD=%08X ROM=%08X ALC=%08X\n",destAddr,srcSize,destSize));
+        rmonpf(("program code load failed AD=%08X ROM=%08X ALC=%08X\n", destAddr, srcSize, destSize));
     }
     return dest;
 }

@@ -414,7 +414,7 @@ s8 sTerrainSounds[7][6] = {
     { SOUND_TERRAIN_DEFAULT, SOUND_TERRAIN_STONE,  SOUND_TERRAIN_DEFAULT,
       SOUND_TERRAIN_DEFAULT, SOUND_TERRAIN_DEFAULT,SOUND_TERRAIN_DEFAULT }, // TERRAIN_STONE
     { SOUND_TERRAIN_SNOW,    SOUND_TERRAIN_DEFAULT,SOUND_TERRAIN_SNOW,
-      SOUND_TERRAIN_SNOW,     SOUND_TERRAIN_ICE,    SOUND_TERRAIN_DEFAULT }, // TERRAIN_SNOW
+      SOUND_TERRAIN_SNOW,    SOUND_TERRAIN_ICE,    SOUND_TERRAIN_DEFAULT }, // TERRAIN_SNOW
     { SOUND_TERRAIN_SAND,    SOUND_TERRAIN_STONE,  SOUND_TERRAIN_SAND,
       SOUND_TERRAIN_SAND,    SOUND_TERRAIN_STONE,  SOUND_TERRAIN_STONE }, // TERRAIN_SAND
     { SOUND_TERRAIN_SPOOKY,  SOUND_TERRAIN_SPOOKY, SOUND_TERRAIN_SPOOKY,
@@ -454,7 +454,6 @@ u32 mario_get_terrain_sound_addend(struct MarioState *m) {
                     floorSoundType = 1;
                     break;
 
-                case SURFACE_NOT_SLIPPERY:
                 case SURFACE_SLIPPERY:
                 case SURFACE_HARD_SLIPPERY:
                 case SURFACE_NO_CAM_COL_SLIPPERY:
@@ -472,6 +471,7 @@ u32 mario_get_terrain_sound_addend(struct MarioState *m) {
                     break;
 
                 case SURFACE_NOISE_DEFAULT:
+                case SURFACE_NOT_SLIPPERY:
                     floorSoundType = 4;
                     break;
 
