@@ -72,7 +72,7 @@ void tuxies_mother_act_1(void) {
                 // or 1, which is not affected by the bitwise AND.
                 o->prevObj->OBJECT_FIELD_S32(o->oInteractionSubtype) &= ~INT_SUBTYPE_DROP_IMMEDIATELY;
                 obj_set_behavior(o->prevObj, bhvUnused20E0);
-                spawn_default_star(7168.0f, -3207.0f, 6141.0f);
+                spawn_default_star(7168.0f, -3577.0f, 6141.0f);
                 o->oAction = 2;
             }
             break;

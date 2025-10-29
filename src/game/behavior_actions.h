@@ -181,7 +181,6 @@ void bhv_animated_texture_loop(void);
 void bhv_boo_in_castle_loop(void);
 void bhv_boo_with_cage_init(void);
 void bhv_boo_with_cage_loop(void);
-void bhv_boo_init(void);
 void bhv_courtyard_boo_triplet_init(void);
 void obj_set_secondary_camera_focus(void);
 void bhv_boo_loop(void);

@@ -107,7 +107,7 @@ void bhv_moving_blue_coin_loop(void) {
 
     switch (o->oAction) {
         case MOV_BCOIN_ACT_STILL:
-            if (is_point_within_radius_of_mario(o->oPosX, o->oPosY, o->oPosZ, 5000))
+            if (is_point_within_radius_of_mario(o->oPosX, o->oPosY, o->oPosZ, 4000))
                 o->oAction = 1;
             break;
 

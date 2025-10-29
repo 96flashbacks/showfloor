@@ -28,15 +28,11 @@ void add_tree_leaf_particles(struct MarioState *m) {
     f32 leafHeight;
 
     if (m->usedObj->behavior == segmented_to_virtual(bhvTree)) {
-        // make leaf effect spawn higher on the Shifting Sand Land palm tree
-        if (gCurrLevelNum == LEVEL_SSL) {
-            leafHeight = 250.0f;
-        } else {
-            leafHeight = 100.0f;
-        }
-        if (m->pos[1] - m->floorHeight > leafHeight) {
-            m->particleFlags |= PARTICLE_LEAF;
-        }
+        leafHeight = 100.0f;
+    }
+
+    if (m->pos[1] - m->floorHeight > leafHeight) {
+        m->particleFlags |= PARTICLE_LEAF;
     }
 }
 
@@ -49,7 +45,7 @@ void play_climbing_sounds(struct MarioState *m, s32 b) {
                        m->marioObj->header.gfx.cameraToObject);
         }
     } else {
-        play_sound(isOnTree ? SOUND_MOVING_SLIDE_DOWN_TREE : SOUND_MOVING_SLIDE_DOWN_POLE,
+        play_sound(isOnTree ? SOUND_ACTION_CLIMB_DOWN_TREE : SOUND_MOVING_SLIDE_DOWN_POLE,
                    m->marioObj->header.gfx.cameraToObject);
     }
 }

@@ -307,13 +307,6 @@ u32 common_air_action_step(struct MarioState *m, u32 landAction, s32 animation, 
 
     m->actionTimer++;
 
-    if (m->wall != NULL) {
-        s16 wallDYaw = atan2s(m->wall->normal.z, m->wall->normal.x) - m->faceAngle[1];
-        if ((wallDYaw < -0x6000 || wallDYaw > 0x6000) && m->forwardVel > 16) {
-            set_mario_action(m, ACT_AIR_HIT_WALL, 0);
-        }
-    }
-
     stepResult = perform_air_step(m, stepArg);
     switch (stepResult) {
         case AIR_STEP_NONE:
@@ -355,7 +348,7 @@ u32 common_air_action_step(struct MarioState *m, u32 landAction, s32 animation, 
                         if (m->forwardVel > 8.0f) {
                             mario_set_forward_vel(m, -8.0f);
                         }
-                        return set_mario_action(m, ACT_SOFT_BONK, 0);
+                        return set_mario_action(m, ACT_AIR_HIT_WALL, 0);
                     }
                 }
             } else {
@@ -855,7 +848,7 @@ u32 common_air_knockback_step(struct MarioState *m, u32 landAction, u32 hardFall
                               f32 speed) {
     u32 stepResult;
 
-    if (m->forwardVel > 0 && m->actionTimer++ == 0) {
+    if (m->forwardVel > 0 && m->actionTimer++ == 0 && m->actionArg == 2) {
         mario_set_forward_vel(m, -speed);
     } else {
         mario_set_forward_vel(m, speed);
@@ -1023,7 +1016,7 @@ s32 act_air_hit_wall(struct MarioState *m) {
     }
 
     set_mario_animation(m, MARIO_ANIM_START_WALLKICK);
-    return 0;
+    return FALSE;
 }
 
 s32 act_forward_rollout(struct MarioState *m) {

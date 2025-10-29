@@ -9,7 +9,7 @@ extern Gfx  RCP_main_tree[];
 /*	Hierarchy map data of MainTree.												*/
 /********************************************************************************/
 Hierarchy RCP_HmsMainTree[] = {
-	hmsHeader(800)
+	hmsHeader(2000)
 	hmsBegin()
 		hmsGfx(RM_SPRITE, RCP_main_tree)
 	hmsEnd()

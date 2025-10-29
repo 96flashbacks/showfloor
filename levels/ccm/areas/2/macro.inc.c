@@ -13,11 +13,13 @@ const MacroObject ccm_seg7_area_2_macro_objs[] = {
     MACRO_OBJECT(/*preset*/ macro_yellow_coin_2,        /*yaw*/   0, /*pos*/ -2836,   -93, -3147),
     MACRO_OBJECT(/*preset*/ macro_yellow_coin_2,        /*yaw*/   0, /*pos*/ -3035,  -186, -3343),
 
-    MACRO_OBJECT(/*preset*/ macro_moving_blue_coin,     /*yaw*/   0, /*pos*/  2120,  4250,  1829),
-    MACRO_OBJECT(/*preset*/ macro_moving_blue_coin,     /*yaw*/   0, /*pos*/  2020,  4250,  1729),
-    MACRO_OBJECT(/*preset*/ macro_moving_blue_coin,     /*yaw*/   0, /*pos*/  1920,  4250,  1629),
-    MACRO_OBJECT(/*preset*/ macro_moving_blue_coin,     /*yaw*/   0, /*pos*/  1820,  4250,  1529),
-    MACRO_OBJECT(/*preset*/ macro_moving_blue_coin,     /*yaw*/   0, /*pos*/  3120,  5750,  2829),
+    MACRO_OBJECT(/*preset*/ macro_moving_blue_coin,     /*yaw*/   0, /*pos*/  4032,  5355,  3743),
+    MACRO_OBJECT(/*preset*/ macro_moving_blue_coin,     /*yaw*/   0, /*pos*/  3615,  4821,  3336),
+
+    MACRO_OBJECT(/*preset*/ macro_moving_blue_coin,     /*yaw*/   0, /*pos*/  2417,  3752,  2141),
+    MACRO_OBJECT(/*preset*/ macro_moving_blue_coin,     /*yaw*/   0, /*pos*/  2165,  3552,  1885),
+    MACRO_OBJECT(/*preset*/ macro_moving_blue_coin,     /*yaw*/   0, /*pos*/  1815,  3352,  1539),
+   // MACRO_OBJECT(/*preset*/ macro_moving_blue_coin,     /*yaw*/   0, /*pos*/  1820,  4250,  1529),
 
     //MACRO_OBJECT(/*preset*/ macro_coin_line_horizontal, /*yaw*/  45, /*pos*/ -2900,   -65, -3175),
     //MACRO_OBJECT(/*preset*/ macro_coin_line_horizontal, /*yaw*/  45, /*pos*/    27,  2145,  -290),

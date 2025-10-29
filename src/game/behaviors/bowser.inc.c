@@ -202,11 +202,6 @@ s32 bowser_set_anim_look_down_stop_walk(void) {
 void bowser_init_camera_actions(void) {
     if (o->oBowserCamAct == BOWSER_CAM_ACT_IDLE) {
         o->oAction = BOWSER_ACT_WAIT;
-    } else if (o->oBowserCamAct == BOWSER_CAM_ACT_WALK) {
-        o->oAction = BOWSER_ACT_INTRO_WALK;
-        // Start with a big jump in BitFS to do a platform tilt
-    } else if (o->oBhvParams2ndByte == BOWSER_BP_BITFS) {
-        o->oAction = BOWSER_ACT_BIG_JUMP;
     } else {
         o->oAction = BOWSER_ACT_DEFAULT;
     }

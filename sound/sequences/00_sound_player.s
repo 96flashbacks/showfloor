@@ -4513,8 +4513,7 @@ chan_setlayer 0, .layer_2012
 chan_end
 
 .layer_2012:
-layer_portamento 0x81, 39, 255
-layer_note1 36, 0x26, 100
+layer_note1 39, 0x26, 100
 layer_end
 
 .sound_obj_boo_bounce_top:

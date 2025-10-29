@@ -382,7 +382,6 @@ s32 perform_air_quarter_step(struct MarioState *m, Vec3f intendedPos, u32 stepAr
         vec3f_copy(m->pos, nextPos);
         m->floor = floor;
         m->floorHeight = floorHeight;
-        return AIR_STEP_NONE;
     }
 
     vec3f_copy(m->pos, nextPos);
