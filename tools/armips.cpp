@@ -32,7 +32,6 @@ SOFTWARE.
 
 
 #define _CRT_SECURE_NO_WARNINGS
-#undef __STRICT_ANSI__
 
 #if defined(__clang__)
 #if __has_feature(cxx_exceptions)
@@ -52,6 +51,7 @@ SOFTWARE.
 #include <vector>
 #include <cstdlib>
 #include <cstdarg>
+#include <cstdint>
 #include <cctype>
 #include <cstring>
 #include <cmath>
@@ -15904,16 +15904,19 @@ int runFromCommandLine(const StringList& arguments, ArmipsArguments settings)
 #include <vector>
 #include <algorithm>
 
-#ifndef _WIN32
-#include <strings.h>
-#define _stricmp strcasecmp
-#endif
+#include <cctype>
 
 static bool stringEqualInsensitive(const std::string& a, const std::string& b)
 {
 	if (a.size() != b.size())
 		return false;
-	return _stricmp(a.c_str(),b.c_str()) == 0;
+	
+	auto compare = [](char c1, char c2)
+ 	{
+ 		return std::tolower(c1) == std::tolower(c2);
+ 	};
+
+    return std::equal(a.begin(), a.end(), b.begin(), compare);
 }
 
 bool compareSection(ElfSection* a, ElfSection* b)
