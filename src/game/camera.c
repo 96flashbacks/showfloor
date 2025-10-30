@@ -1853,6 +1853,15 @@ s16 update_default_camera(struct Camera *c) {
         }
     }
 
+    /*if (sMarioCamState->action & ACT_FLAG_ON_POLE) {
+        camFloorHeight = gMarioStates[0].usedObj->oPosY + 125.f;
+        if (sMarioCamState->pos[1] - 100.f > camFloorHeight) {
+            camFloorHeight = sMarioCamState->pos[1] - 100.f;
+        }
+        ceilHeight = CELL_HEIGHT_LIMIT;
+        vec3f_copy(c->focus, sMarioCamState->pos);
+    }*/
+
     if (sMarioCamState->action & ACT_FLAG_HANGING || sMarioCamState->action == ACT_RIDING_HOOT) {
         camFloorHeight = sMarioCamState->pos[1] + 400.f;
         if (c->mode == CAMERA_MODE_FREE_ROAM) {
