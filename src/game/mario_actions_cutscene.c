@@ -1098,11 +1098,11 @@ static void intro_cutscene_wait_for_dialog(struct MarioState *m) {
         m->statusForCamera->cameraEvent = CAM_EVENT_START_INTRO;
     }
 
-    if (m->actionTimer == 75) {
+    if (m->actionTimer == 65) {
         create_dialog_box(33);
-    } else if (m->actionTimer >= 75 && gMenuState < 3 && gDialogBoxAngle < 65.0f) {
+    } else if (m->actionTimer >= 65 && gMenuState < 3 && gDialogBoxAngle < 65.0f) {
         set_anim_to_frame(m, m->marioObj->header.gfx.animInfo.animFrame);
-    } else if (m->actionTimer >= 75 && gMenuState == 3) {
+    } else if (m->actionTimer >= 65 && gMenuState == 3) {
         if (gDialogBoxAngle < 30.0f) {
             set_anim_to_frame(m, m->marioObj->header.gfx.animInfo.animFrame);
         } else {

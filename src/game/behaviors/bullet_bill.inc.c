@@ -43,9 +43,6 @@ void bullet_bill_act_2(void) {
         spawn_object(o, MODEL_SMOKE, bhvWhitePuffSmoke);
         o->oForwardVel = 30.0f;
 
-        if (o->oDistanceToMario > 300.0f) {
-            cur_obj_rotate_yaw_toward(o->oAngleToMario, 0x100);
-        }
 
         if (o->oTimer == 50) {
             cur_obj_play_sound_2(SOUND_OBJ_POUNDING_CANNON);

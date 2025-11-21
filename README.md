@@ -77,28 +77,38 @@ For more questions, join our [Discord server](https://discord.gg/ynabeAS4eD).
 - duskewl/jadu
 - `K-Dubs΄
   
-#### Contributors
-- emlimate
-- XKoop7321
-- xerox
+### '96flashbacks' Server Contributors
+
+#### Additional Programming
 - Phil564
-- penguinlambz
-- RetroDev
 - Fluvian
-- skibidigurt
-- Woohale54
 - diesel64
-- Holo
+- penguinlambz
+
+#### Assets
 - toonjoey
 - Lurondor
-- sonicdude143
-- Diamond Hero
-- Xiartic
 - icehotlemonade
 - Neverax
+- Diamond Hero
+- Holo
+- sonicdude143
+
+#### Music & Audio
+- skibidigurt
+- RetroDev
+- emlimate
+- XKoop7321
+
+#### Miscellaneous Help
+- pack.san
+- Xiartic
+- WooHale54
+- timmy6259
+- Zucchino
+- xerox
   
 #### Special Thanks
-- Neverax
 - na0micakes
 - Matsilagi
 - lunr

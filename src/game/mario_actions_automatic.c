@@ -29,10 +29,10 @@ void add_tree_leaf_particles(struct MarioState *m) {
 
     if (m->usedObj->behavior == segmented_to_virtual(bhvTree)) {
         leafHeight = 100.0f;
-    }
 
-    if (m->pos[1] - m->floorHeight > leafHeight) {
-        m->particleFlags |= PARTICLE_LEAF;
+        if (m->pos[1] - m->floorHeight > leafHeight) {
+            m->particleFlags |= PARTICLE_LEAF;
+        }
     }
 }
 
@@ -128,14 +128,9 @@ s32 act_holding_pole(struct MarioState *m) {
 
     if (m->controller->stickY > 16.0f) {
         f32 poleTop = m->usedObj->hitboxHeight - 100.0f;
-        void *poleBehavior = virtual_to_segmented(0x13, m->usedObj->behavior);
 
         if (marioObj->oMarioPolePos < poleTop - 0.4f) {
             return set_mario_action(m, ACT_CLIMBING_POLE, 0);
-        }
-
-        if (poleBehavior != bhvGiantPole && m->controller->stickY > 50.0f) {
-            return set_mario_action(m, ACT_TOP_OF_POLE_TRANSITION, 0);
         }
     }
 

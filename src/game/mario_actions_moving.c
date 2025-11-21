@@ -79,8 +79,7 @@ void play_step_sound(struct MarioState *m, s16 frame1, s16 frame2) {
 }
 
 void align_with_floor(struct MarioState *m) {
-    m->pos[1] = m->floorHeight;
-    mtxf_align_terrain_triangle(sFloorAlignMatrix[m->unk00], m->pos, m->faceAngle[1], 40.0f);
+    mtxf_align_terrain_triangle(sFloorAlignMatrix[m->unk00], m->pos, m->faceAngle[1], 40.0f); // screaming2.mp3
     m->marioObj->header.gfx.throwMatrix = &sFloorAlignMatrix[m->unk00];
 }
 
@@ -227,12 +226,17 @@ s32 update_sliding(struct MarioState *m, f32 stopSpeed) {
         case SURFACE_CLASS_VERY_SLIPPERY:
             accel = 10.0f;
             lossFactor = m->intendedMag / 32.0f * forward * 0.02f + 0.98f;
-            break;
+        break;
 
         case SURFACE_CLASS_SLIPPERY:
+        if ((m->area->terrainType & TERRAIN_MASK) == TERRAIN_SNOW) {
             accel = 8.0f;
             lossFactor = m->intendedMag / 32.0f * forward * 0.02f + 0.96f;
-            break;
+        } else {
+            accel = 7.0f;
+            lossFactor = m->intendedMag / 32.0f * forward * 0.02f + 0.92f;
+        }
+        break;
 
         default:
             accel = 7.0f;
@@ -294,7 +298,7 @@ void apply_slope_accel(struct MarioState *m) {
                 slopeAccel = 2.7f;
                 break;
             default:
-                slopeAccel = 1.7f;
+                slopeAccel = 1.3f;
                 break;
             case SURFACE_CLASS_NOT_SLIPPERY:
                 slopeAccel = 0.0f;
@@ -954,6 +958,7 @@ s32 act_braking(struct MarioState *m) {
                m->marioObj->header.gfx.cameraToObject);
 
     set_mario_animation(m, MARIO_ANIM_SKID_ON_GROUND);
+    check_ledge_climb_down(m);
     return FALSE;
 }
 
@@ -1150,9 +1155,7 @@ void common_slide_action(struct MarioState *m, u32 endAction, u32 airAction, s32
             break;
 
         case GROUND_STEP_HIT_WALL:
-        if (!mario_floor_is_slippery(m)) {
-            slide_bonk(m, ACT_GROUND_BONK, endAction);
-        } else if (m->wall != NULL) {
+        if (m->wall != NULL) {
             // verify! may not be the correct handling
             set_mario_action(m, ACT_STOMACH_SLIDE, 0);
             break;

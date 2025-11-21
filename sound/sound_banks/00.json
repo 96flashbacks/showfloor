@@ -11,7 +11,7 @@
     },
     "instruments": {
         "inst0": {
-            "release_rate": 208,
+            "release_rate": 255,
             "envelope": "envelope0",
             "sound": "00_twirl"
         },

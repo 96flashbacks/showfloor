@@ -39,9 +39,9 @@ const LevelScript level_intro_splash_screen[] = {
 
     LOAD_AREA(/*area*/ 1),
     CALL(/*arg*/ 0, /*func*/ lvl_intro_update),
-    SLEEP(/*frames*/ 37),
-    TRANSITION(/*transType*/ WARP_TRANSITION_FADE_INTO_COLOR, /*time*/ 16, /*color*/ 0x00, 0x00, 0x00),
-    SLEEP(/*frames*/ 16),
+    SLEEP(/*frames*/ 30),
+    TRANSITION(/*transType*/ WARP_TRANSITION_FADE_INTO_COLOR, /*time*/ 13, /*color*/ 0x00, 0x00, 0x00),
+    SLEEP(/*frames*/ 13),
 
     /* This unused command is present in the original source code for this section and is it's only usage. 
      * It clears the current area, allowing the next are to be loaded. 

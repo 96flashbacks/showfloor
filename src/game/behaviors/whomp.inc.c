@@ -34,8 +34,6 @@ void whomp_init(void) {
     if (o->oDistanceToMario < 500.0f) {
         o->oAction = WHOMP_ACT_PATROL;
     }
-
-    whomp_play_sfx_from_pound_animation();
 }
 
 void whomp_turn(void) {
@@ -53,8 +51,6 @@ void whomp_turn(void) {
             o->oAction = WHOMP_ACT_PATROL;
         }
     }
-
-    whomp_play_sfx_from_pound_animation();
 }
 
 void whomp_patrol(void) {
@@ -62,9 +58,14 @@ void whomp_patrol(void) {
     f32 distWalked = cur_obj_lateral_dist_to_home();
 
     cur_obj_init_animation_with_accel_and_sound(0, 1.0f);
-    o->oForwardVel = 3.0f;
+    
+    if (cur_obj_check_anim_frame_in_range(0, 23)) {
+        o->oForwardVel = 9.0f;
+    } else {
+        o->oForwardVel = 0;
+    }
 
-    if (distWalked > 700.0f) {
+    if (distWalked > 450.0f) {
         o->oAction = WHOMP_ACT_TURN;
     } else if (marioAngle < 0x2000) {
         if (o->oDistanceToMario < 1500.0f) {
@@ -75,8 +76,6 @@ void whomp_patrol(void) {
             o->oAction = WHOMP_ACT_PREPARE;
         }
     }
-
-    whomp_play_sfx_from_pound_animation();
 }
 
 void whomp_prepare_jump(void) {
@@ -172,7 +171,6 @@ void bhv_whomp_loop(void) {
     cur_obj_call_action_function(sWhompActions);
     cur_obj_move_standard(-20);
     if (o->oAction != 9) {
-        cur_obj_hide_if_mario_far_away_y(1000.0f);
         load_object_collision_model();
     }
 }

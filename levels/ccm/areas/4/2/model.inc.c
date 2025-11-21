@@ -1,12 +1,4 @@
-// 0x0702A2A0 - 0x0702A2B8
-static const Lights1 ccm_seg7_lights_0702A2A0 = gdSPDefLights1(
-    0x3f, 0x3f, 0x3f,
-    0xff, 0xff, 0xff, 0x28, 0x28, 0x28
-);
-
-// we back in 2021 with this one omg
-// i promise to never import models this way ever again
-Vtx slider_6_dl_mesh_vtx_24[68] = {
+static const Vtx slider_7_dl_mesh_vtx_0[68] = {
 	{{ {907, 592, -4401}, 0, {2012, 990}, {176, 64, 75, 255} }},
 	{{ {907, 80, -5220}, 0, {0, -3098}, {129, 0, 0, 255} }},
 	{{ {907, 80, -4401}, 0, {0, 990}, {160, 0, 83, 255} }},
@@ -77,14 +69,8 @@ Vtx slider_6_dl_mesh_vtx_24[68] = {
 	{{ {907, 80, -4401}, 0, {0, -12300}, {160, 0, 83, 255} }},
 };
 
-// 0x0702A738 - 0x0702A8A0
-static const Gfx ccm_seg7_dl_0702A738[] = {
-    gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, slide_09000800),
-    gsDPLoadSync(),
-    gsDPLoadBlock(G_TX_LOADTILE, 0, 0, 64 * 32 - 1, CALC_DXT(64, G_IM_SIZ_16b_BYTES)),
-    gsSPLight(&ccm_seg7_lights_0702A2A0.l, 1),
-    gsSPLight(&ccm_seg7_lights_0702A2A0.a, 2),
-	gsSPVertex(slider_6_dl_mesh_vtx_24 + 0, 16, 0),
+static const Gfx slider_7_dl_mesh_tri_0[] = {
+	gsSPVertex(slider_7_dl_mesh_vtx_0 + 0, 16, 0),
 	gsSP1Triangle(0, 1, 2, 0),
 	gsSP1Triangle(0, 3, 1, 0),
 	gsSP1Triangle(4, 5, 6, 0),
@@ -93,7 +79,7 @@ static const Gfx ccm_seg7_dl_0702A738[] = {
 	gsSP1Triangle(8, 10, 11, 0),
 	gsSP1Triangle(12, 13, 14, 0),
 	gsSP1Triangle(12, 15, 13, 0),
-	gsSPVertex(slider_6_dl_mesh_vtx_24 + 16, 16, 0),
+	gsSPVertex(slider_7_dl_mesh_vtx_0 + 16, 16, 0),
 	gsSP1Triangle(0, 1, 2, 0),
 	gsSP1Triangle(0, 2, 3, 0),
 	gsSP1Triangle(4, 5, 6, 0),
@@ -102,7 +88,7 @@ static const Gfx ccm_seg7_dl_0702A738[] = {
 	gsSP1Triangle(8, 10, 11, 0),
 	gsSP1Triangle(12, 13, 14, 0),
 	gsSP1Triangle(12, 15, 13, 0),
-	gsSPVertex(slider_6_dl_mesh_vtx_24 + 32, 16, 0),
+	gsSPVertex(slider_7_dl_mesh_vtx_0 + 32, 16, 0),
 	gsSP1Triangle(0, 1, 2, 0),
 	gsSP1Triangle(0, 3, 1, 0),
 	gsSP1Triangle(4, 5, 6, 0),
@@ -111,7 +97,7 @@ static const Gfx ccm_seg7_dl_0702A738[] = {
 	gsSP1Triangle(8, 11, 9, 0),
 	gsSP1Triangle(12, 13, 14, 0),
 	gsSP1Triangle(12, 15, 13, 0),
-	gsSPVertex(slider_6_dl_mesh_vtx_24 + 48, 16, 0),
+	gsSPVertex(slider_7_dl_mesh_vtx_0 + 48, 16, 0),
 	gsSP1Triangle(0, 1, 2, 0),
 	gsSP1Triangle(0, 3, 1, 0),
 	gsSP1Triangle(4, 5, 6, 0),
@@ -120,33 +106,20 @@ static const Gfx ccm_seg7_dl_0702A738[] = {
 	gsSP1Triangle(8, 10, 11, 0),
 	gsSP1Triangle(12, 13, 14, 0),
 	gsSP1Triangle(12, 15, 13, 0),
-	gsSPVertex(slider_6_dl_mesh_vtx_24 + 64, 4, 0),
+	gsSPVertex(slider_7_dl_mesh_vtx_0 + 64, 4, 0),
 	gsSP1Triangle(0, 1, 2, 0),
 	gsSP1Triangle(0, 3, 1, 0),
 	gsSPEndDisplayList(),
 };
 
-// 0x0702A8A0 - 0x0702A948
 const Gfx slider_7_dl_mesh[] = {
-    gsDPPipeSync(),
-    gsDPSetCycleType(G_CYC_2CYCLE),
-    gsDPSetRenderMode(G_RM_FOG_SHADE_A, G_RM_AA_ZB_OPA_SURF2),
-    gsDPSetDepthSource(G_ZS_PIXEL),
-    gsDPSetFogColor(0, 0, 0, 255),
-    gsSPFogPosition(980, 1000),
-    gsSPSetGeometryMode(G_FOG),
-    gsDPSetCombineMode(G_CC_MODULATERGB, G_CC_PASS2),
-    gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0, G_TX_LOADTILE, 0, G_TX_WRAP | G_TX_NOMIRROR, G_TX_NOMASK, G_TX_NOLOD, G_TX_WRAP | G_TX_NOMIRROR, G_TX_NOMASK, G_TX_NOLOD),
-    gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
-    gsDPTileSync(),
-    gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 16, 0, G_TX_RENDERTILE, 0, G_TX_WRAP | G_TX_NOMIRROR, 5, G_TX_NOLOD, G_TX_CLAMP, 6, G_TX_NOLOD),
-    gsDPSetTileSize(0, 0, 0, (64 - 1) << G_TEXTURE_IMAGE_FRAC, (32 - 1) << G_TEXTURE_IMAGE_FRAC),
-    gsSPDisplayList(ccm_seg7_dl_0702A738),
-    gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_OFF),
-    gsDPPipeSync(),
-    gsDPSetCycleType(G_CYC_1CYCLE),
-    gsDPSetRenderMode(G_RM_AA_ZB_OPA_SURF, G_RM_NOOP2),
-    gsSPClearGeometryMode(G_FOG),
+	gsSPDisplayList(mat_slider_SidesMaterial_FF),
+    gsSPDisplayList(slider_7_dl_mesh_tri_0),
+	gsSPDisplayList(mat_revert_slider_Material),
+	gsDPPipeSync(),
+	gsSPSetGeometryMode(G_LIGHTING),
+	gsSPClearGeometryMode(G_TEXTURE_GEN),
     gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
-    gsSPEndDisplayList(),
+	gsSPTexture(65535, 65535, 0, 0, 0),
+	gsSPEndDisplayList(),
 };

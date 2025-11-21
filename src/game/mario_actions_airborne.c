@@ -526,7 +526,7 @@ s32 act_twirling(struct MarioState *m) {
         case 0:
             set_mario_animation(m, MARIO_ANIM_DOUBLE_JUMP_RISE);
             play_mario_sound(m, SOUND_ACTION_TERRAIN_JUMP, SOUND_MARIO_YAHOO);
-            if (m->vel[1] < 5.0f) {
+            if (m->vel[1] < 0.0f) {
                 m->actionArg = 1;
             }
             break;
@@ -768,7 +768,7 @@ s32 act_ground_pound(struct MarioState *m) {
                                                  : MARIO_ANIM_TRIPLE_JUMP_GROUND_POUND);
 
         if (m->actionTimer == 0) {
-            play_sound(SOUND_ACTION_KEY_SWISH, m->marioObj->header.gfx.cameraToObject);
+            play_sound(SOUND_ACTION_THROW, m->marioObj->header.gfx.cameraToObject);
             play_sound(SOUND_MARIO_HAUGH, m->marioObj->header.gfx.cameraToObject);
         }
 
@@ -1029,7 +1029,6 @@ s32 act_forward_rollout(struct MarioState *m) {
             m->actionState = 1;
         }
     }
-    play_mario_sound(m, SOUND_ACTION_TERRAIN_JUMP, 0);
 
     update_air_without_turn(m);
 
@@ -1074,8 +1073,6 @@ s32 act_backward_rollout(struct MarioState *m) {
             m->actionState = 1;
         }
     }
-
-    play_mario_sound(m, SOUND_ACTION_TERRAIN_JUMP, 0);
 
     update_air_without_turn(m);
 

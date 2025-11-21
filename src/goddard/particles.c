@@ -301,8 +301,8 @@ void func_80182A08(struct ObjParticle *ptc, struct GdVec3f *b) {
                 do {
                     sp20->unk38.x = gd_rand_float() * 50.0 - 25.0;
                     sp20->unk38.y = gd_rand_float() * 50.0 - 25.0;
-                    sp20->unk38.z = gd_rand_float() * 50.0;
-                } while (gd_vec3f_magnitude(&sp20->unk38) > 50.0);
+                    sp20->unk38.z = gd_rand_float() * 50.0 - 25.0;
+                } while (gd_vec3f_magnitude(&sp20->unk38) > 30.0);
                 sp20->unk38.x += b->x;
                 sp20->unk38.y += b->y;
                 sp20->unk38.z += b->z;
@@ -334,7 +334,7 @@ void move_particle(struct ObjParticle *ptc) {
         return;
     }
     if (ptc->unk60 == 3) {
-        sp40.x = -gViewUpdateCamera->unkE8[2][0] * 50.0f;
+        sp40.x = gViewUpdateCamera->unkE8[2][0] * 30.0f;
         sp40.y = -gViewUpdateCamera->unkE8[2][1] * 50.0f;
         sp40.z = gViewUpdateCamera->unkE8[2][2] * 50.0f;
         sp34.x = gViewUpdateCamera->unkE8[2][0] * -20.0f;

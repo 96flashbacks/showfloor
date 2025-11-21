@@ -941,12 +941,11 @@ layer_end
 .sound_action_spin:
 chan_setbank 0
 chan_setinstr 0
-chan_setdecayrelease 30
 chan_setlayer 0, .layer_556
 chan_end
 
 .layer_556:
-layer_note1 40, 0xc, 100
+layer_note1 39, 0xf, 100
 layer_end
 
 .sound_action_climb_up_tree:

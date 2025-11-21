@@ -298,9 +298,9 @@ static void common_idle_step(struct MarioState *m, s32 animation, s32 arg) {
 }
 
 static s32 act_water_idle(struct MarioState *m) {
-    if (m->input & INPUT_B_PRESSED) {
+    /*if (m->input & INPUT_B_PRESSED) {
         return set_mario_action(m, ACT_WATER_PUNCH, 0);
-    }
+    }*/
 
     if (m->input & INPUT_A_PRESSED) {
         return set_mario_action(m, ACT_BREASTSTROKE, 0);
@@ -328,9 +328,9 @@ static s32 act_hold_water_idle(struct MarioState *m) {
 }
 
 static s32 act_water_action_end(struct MarioState *m) {
-    if (m->input & INPUT_B_PRESSED) {
+    /*if (m->input & INPUT_B_PRESSED) {
         return set_mario_action(m, ACT_WATER_PUNCH, 0);
-    }
+    }*/
 
     if (m->input & INPUT_A_PRESSED) {
         return set_mario_action(m, ACT_BREASTSTROKE, 0);
@@ -448,9 +448,9 @@ static s32 act_breaststroke(struct MarioState *m) {
         sSwimStrength = MIN_SWIM_STRENGTH;
     }
 
-    if (m->input & INPUT_B_PRESSED) {
+    /*if (m->input & INPUT_B_PRESSED) {
         return set_mario_action(m, ACT_WATER_PUNCH, 0);
-    }
+    }*/
 
     if (++m->actionTimer == 14) {
         return set_mario_action(m, ACT_FLUTTER_KICK, 0);
@@ -493,9 +493,9 @@ static s32 act_breaststroke(struct MarioState *m) {
 }
 
 static s32 act_swimming_end(struct MarioState *m) {
-    if (m->input & INPUT_B_PRESSED) {
+    /*if (m->input & INPUT_B_PRESSED) {
         return set_mario_action(m, ACT_WATER_PUNCH, 0);
-    }
+    }*/
 
     if (m->actionTimer >= 15) {
         return set_mario_action(m, ACT_WATER_ACTION_END, 0);
@@ -526,9 +526,9 @@ static s32 act_swimming_end(struct MarioState *m) {
 }
 
 static s32 act_flutter_kick(struct MarioState *m) {
-    if (m->input & INPUT_B_PRESSED) {
+    /*if (m->input & INPUT_B_PRESSED) {
         return set_mario_action(m, ACT_WATER_PUNCH, 0);
-    }
+    }*/
 
     if (!(m->input & INPUT_A_DOWN)) {
         if (m->actionTimer == 0 && sSwimStrength < 280) {

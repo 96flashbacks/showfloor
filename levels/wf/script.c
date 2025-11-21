@@ -50,7 +50,7 @@ static const LevelScript script_func_local_3[] = {
     OBJECT(/*model*/ MODEL_THWOMP,            /*pos*/  3462, 1075, -3314, /*angle*/ 0,   90, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvThwomp2),
     OBJECT(/*model*/ MODEL_NONE,              /*pos*/  -856,  922,  3819, /*angle*/ 0,    0, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvBetaFishSplashSpawner),
     OBJECT(/*model*/ MODEL_PIRANHA_PLANT,     /*pos*/  1822, 2560,  -101, /*angle*/ 0,   90, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvPiranhaPlant),
-    OBJECT(/*model*/ MODEL_WHOMP,             /*pos*/ -2045, 2560,   604, /*angle*/ 0,    0, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvSmallWhomp),
+    OBJECT(/*model*/ MODEL_WHOMP,             /*pos*/ -1985, 2560,   604, /*angle*/ 0,    0, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvSmallWhomp),
     OBJECT(/*model*/ MODEL_BULLET_BILL,       /*pos*/  1280, 3712,   968, /*angle*/ 0,  180, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvBulletBill),
     OBJECT(/*model*/ MODEL_LEVEL_GEOMETRY_08, /*pos*/     0, 3584,     0, /*angle*/ 0,    0, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvTower),
     OBJECT(/*model*/ MODEL_LEVEL_GEOMETRY_09, /*pos*/  1280, 3584,   896, /*angle*/ 0,    0, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvBulletBillCannon),
