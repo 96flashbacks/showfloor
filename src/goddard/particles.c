@@ -437,7 +437,6 @@ void move_particle(struct ObjParticle *ptc) {
                 break;
             case 3:
                 if ((ptc->flags & 0x20) && !(ptc->flags & 0x10)) {
-                    func_80182A08(ptc, &sp40);
                     ptc->flags |= 0x10;
                 }
                 break;
