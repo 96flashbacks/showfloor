@@ -48,7 +48,7 @@ struct SPTask *sNextAudioSPTask = NULL;
 struct SPTask *sNextDisplaySPTask = NULL;
 u32 gNumVblanks = 0;
 s16 audCheck = 0;
-s8 gDebugLevelSelect = 0;
+s8 gDebugLevelSelect = 1;
 s8 sysGvdActive = 0;
 
 s8 gShowProfiler = FALSE;
