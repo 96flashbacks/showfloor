@@ -686,6 +686,7 @@ SECTIONS
     SZP_SEG(bidw_skybox, 0x0A000000)
 
     // Texture bins
+    SZP_SEG(spooky, 0x09000000)
     SZP_SEG(generic, 0x09000000)
     SZP_SEG(water, 0x09000000)
     SZP_SEG(slide, 0x09000000)
