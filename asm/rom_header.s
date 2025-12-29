@@ -11,7 +11,7 @@
 .word  0x74757C24               /* Checksum 2 */
 .word  0x00000000               /* Unknown */
 .word  0x00000000               /* Unknown */
-.ascii "SHOWFLOOR           "   /* Internal ROM name */
+.ascii "BACKSTAGE           "   /* Internal ROM name */
 .word  0x00000000               /* Unknown */
 .word  0x0000004E               /* Cartridge */
 .ascii "SM"                     /* Cartridge ID */
