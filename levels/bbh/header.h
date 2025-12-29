@@ -48,7 +48,7 @@ extern const GeoLayout geo_bbh_000EB0[];
 extern const GeoLayout geo_bbh_000F00[];
 
 // leveldata
-extern const Gfx bbh_seg7_dl_070075A8[];
+extern const Gfx ghost_house_1_dl_mesh[];
 extern const Gfx bbh_seg7_dl_07007940[];
 extern const Gfx bbh_seg7_dl_07007B90[];
 extern const Gfx bbh_seg7_dl_07007FD0[];
@@ -95,7 +95,7 @@ extern const Gfx bbh_seg7_dl_0701FD28[];
 extern const Gfx bbh_seg7_dl_0701FFE8[];
 extern const Gfx bbh_seg7_dl_070202F0[];
 extern const Gfx bbh_seg7_dl_070206F0[];
-extern const Collision bbh_seg7_collision_level[];
+extern const Collision ghost_house_collision[];
 extern const RoomData bbh_seg7_rooms[];
 extern const MacroObject bbh_seg7_macro_objs[];
 extern const Collision bbh_seg7_collision_staircase_step[];

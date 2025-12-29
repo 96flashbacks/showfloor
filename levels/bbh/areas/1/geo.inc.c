@@ -2,12 +2,12 @@
 const GeoLayout geo_bbh_000670[] = {
     GEO_NODE_START(),
     GEO_OPEN_NODE(),
-        GEO_DISPLAY_LIST(LAYER_OPAQUE, bbh_seg7_dl_070075A8),
-        GEO_DISPLAY_LIST(LAYER_ALPHA, bbh_seg7_dl_07007940),
+        GEO_DISPLAY_LIST(LAYER_OPAQUE, ghost_house_1_dl_mesh),
+        /*GEO_DISPLAY_LIST(LAYER_ALPHA, bbh_seg7_dl_07007940),
         GEO_DISPLAY_LIST(LAYER_OPAQUE, bbh_seg7_dl_07007B90),
         GEO_DISPLAY_LIST(LAYER_TRANSPARENT, bbh_seg7_dl_07007FD0),
         GEO_DISPLAY_LIST(LAYER_OPAQUE, bbh_seg7_dl_07008B58),
-        GEO_DISPLAY_LIST(LAYER_TRANSPARENT, bbh_seg7_dl_07008EA8),
+        GEO_DISPLAY_LIST(LAYER_TRANSPARENT, bbh_seg7_dl_07008EA8),*/
     GEO_CLOSE_NODE(),
     GEO_RETURN(),
 };
@@ -159,7 +159,7 @@ const GeoLayout geo_bbh_0008B0[] = {
 const GeoLayout geo_bbh_0008E8[] = {
     GEO_NODE_START(),
     GEO_OPEN_NODE(),
-        GEO_DISPLAY_LIST(LAYER_OPAQUE, bbh_seg7_dl_070075A8),
+        GEO_DISPLAY_LIST(LAYER_OPAQUE, ghost_house_1_dl_mesh),
         GEO_DISPLAY_LIST(LAYER_ALPHA, bbh_seg7_dl_07007940),
         GEO_DISPLAY_LIST(LAYER_OPAQUE, bbh_seg7_dl_07007B90),
         GEO_DISPLAY_LIST(LAYER_TRANSPARENT, bbh_seg7_dl_07007FD0),
@@ -178,7 +178,7 @@ const GeoLayout geo_bbh_0008E8[] = {
 const GeoLayout geo_bbh_000950[] = {
     GEO_NODE_START(),
     GEO_OPEN_NODE(),
-        GEO_DISPLAY_LIST(LAYER_OPAQUE, bbh_seg7_dl_070075A8),
+        GEO_DISPLAY_LIST(LAYER_OPAQUE, ghost_house_1_dl_mesh),
         GEO_DISPLAY_LIST(LAYER_ALPHA, bbh_seg7_dl_07007940),
         GEO_DISPLAY_LIST(LAYER_OPAQUE, bbh_seg7_dl_07007B90),
         GEO_DISPLAY_LIST(LAYER_TRANSPARENT, bbh_seg7_dl_07007FD0),
@@ -199,7 +199,7 @@ const GeoLayout geo_bbh_000950[] = {
 const GeoLayout geo_bbh_0009C8[] = {
     GEO_NODE_START(),
     GEO_OPEN_NODE(),
-        GEO_DISPLAY_LIST(LAYER_OPAQUE, bbh_seg7_dl_070075A8),
+        GEO_DISPLAY_LIST(LAYER_OPAQUE, ghost_house_1_dl_mesh),
         GEO_DISPLAY_LIST(LAYER_ALPHA, bbh_seg7_dl_07007940),
         GEO_DISPLAY_LIST(LAYER_OPAQUE, bbh_seg7_dl_07007B90),
         GEO_DISPLAY_LIST(LAYER_TRANSPARENT, bbh_seg7_dl_07007FD0),
@@ -215,7 +215,7 @@ const GeoLayout geo_bbh_0009C8[] = {
 const GeoLayout geo_bbh_000A18[] = {
     GEO_NODE_START(),
     GEO_OPEN_NODE(),
-        GEO_DISPLAY_LIST(LAYER_OPAQUE, bbh_seg7_dl_070075A8),
+        GEO_DISPLAY_LIST(LAYER_OPAQUE, ghost_house_1_dl_mesh),
         GEO_DISPLAY_LIST(LAYER_ALPHA, bbh_seg7_dl_07007940),
         GEO_DISPLAY_LIST(LAYER_OPAQUE, bbh_seg7_dl_07007B90),
         GEO_DISPLAY_LIST(LAYER_TRANSPARENT, bbh_seg7_dl_07007FD0),
@@ -230,7 +230,7 @@ const GeoLayout geo_bbh_000A18[] = {
 const GeoLayout geo_bbh_000A60[] = {
     GEO_NODE_START(),
     GEO_OPEN_NODE(),
-        GEO_DISPLAY_LIST(LAYER_OPAQUE, bbh_seg7_dl_070075A8),
+        GEO_DISPLAY_LIST(LAYER_OPAQUE, ghost_house_1_dl_mesh),
         GEO_DISPLAY_LIST(LAYER_ALPHA, bbh_seg7_dl_07007940),
         GEO_DISPLAY_LIST(LAYER_OPAQUE, bbh_seg7_dl_07007B90),
         GEO_DISPLAY_LIST(LAYER_TRANSPARENT, bbh_seg7_dl_07007FD0),
@@ -251,7 +251,7 @@ const GeoLayout geo_bbh_000A60[] = {
 const GeoLayout geo_bbh_000AD8[] = {
     GEO_NODE_START(),
     GEO_OPEN_NODE(),
-        GEO_DISPLAY_LIST(LAYER_OPAQUE, bbh_seg7_dl_070075A8),
+        GEO_DISPLAY_LIST(LAYER_OPAQUE, ghost_house_1_dl_mesh),
         GEO_DISPLAY_LIST(LAYER_ALPHA, bbh_seg7_dl_07007940),
         GEO_DISPLAY_LIST(LAYER_OPAQUE, bbh_seg7_dl_07007B90),
         GEO_DISPLAY_LIST(LAYER_TRANSPARENT, bbh_seg7_dl_07007FD0),
@@ -267,7 +267,7 @@ const GeoLayout geo_bbh_000AD8[] = {
 const GeoLayout geo_bbh_000B28[] = {
     GEO_NODE_START(),
     GEO_OPEN_NODE(),
-        GEO_DISPLAY_LIST(LAYER_OPAQUE, bbh_seg7_dl_070075A8),
+        GEO_DISPLAY_LIST(LAYER_OPAQUE, ghost_house_1_dl_mesh),
         GEO_DISPLAY_LIST(LAYER_ALPHA, bbh_seg7_dl_07007940),
         GEO_DISPLAY_LIST(LAYER_OPAQUE, bbh_seg7_dl_07007B90),
         GEO_DISPLAY_LIST(LAYER_TRANSPARENT, bbh_seg7_dl_07007FD0),
@@ -285,7 +285,7 @@ const GeoLayout geo_bbh_000B28[] = {
 const GeoLayout geo_bbh_000B88[] = {
     GEO_NODE_START(),
     GEO_OPEN_NODE(),
-        GEO_DISPLAY_LIST(LAYER_OPAQUE, bbh_seg7_dl_070075A8),
+        GEO_DISPLAY_LIST(LAYER_OPAQUE, ghost_house_1_dl_mesh),
         GEO_DISPLAY_LIST(LAYER_ALPHA, bbh_seg7_dl_07007940),
         GEO_DISPLAY_LIST(LAYER_OPAQUE, bbh_seg7_dl_07007B90),
         GEO_DISPLAY_LIST(LAYER_TRANSPARENT, bbh_seg7_dl_07007FD0),
@@ -481,10 +481,10 @@ const GeoLayout geo_bbh_000F00[] = {
             GEO_OPEN_NODE(),
                 GEO_CAMERA(4, 0, 2000, 6000, 0, 0, 0, geo_camera_main),
                 GEO_OPEN_NODE(),
-                    GEO_SWITCH_CASE(32, geo_switch_area),
+                    //GEO_SWITCH_CASE(32, geo_switch_area),
                     GEO_OPEN_NODE(),
                         GEO_BRANCH(1, geo_bbh_000670), // 0x0E000670
-                        GEO_BRANCH(1, geo_bbh_0006B0), // 0x0E0006B0
+                        /*GEO_BRANCH(1, geo_bbh_0006B0), // 0x0E0006B0
                         GEO_BRANCH(1, geo_bbh_0006E8), // 0x0E0006E8
                         GEO_BRANCH(1, geo_bbh_000730), // 0x0E000730
                         GEO_BRANCH(1, geo_bbh_000750), // 0x0E000750
@@ -514,7 +514,7 @@ const GeoLayout geo_bbh_000F00[] = {
                         GEO_BRANCH(1, geo_bbh_000DF0), // 0x0E000DF0
                         GEO_BRANCH(1, geo_bbh_000E40), // 0x0E000E40
                         GEO_BRANCH(1, geo_bbh_000E80), // 0x0E000E80
-                        GEO_BRANCH(1, geo_bbh_000EB0), // 0x0E000EB0
+                        GEO_BRANCH(1, geo_bbh_000EB0), // 0x0E000EB0*/
                     GEO_CLOSE_NODE(),
                     GEO_RENDER_OBJ(),
                     GEO_ASM(0, geo_envfx_main),
