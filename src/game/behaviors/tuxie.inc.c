@@ -240,9 +240,15 @@ Gfx *geo_switch_tuxie_mother_eyes(s32 run, struct GraphNode *node, UNUSED Mat4 *
          * after giving it back. The easiest way to check this is to see if she's
          * moving, since she only does when she's chasing Mario.
          */
-        if (segmented_to_virtual(bhvTuxiesMother) == obj->behavior)
-            if (obj->oForwardVel > 5.0f)
-                switchCase->selectedCase = 3;
+        if (segmented_to_virtual(bhvTuxiesMother) == obj->behavior) {
+            if (obj->oForwardVel > 5.0f) {
+                if (obj->oDistanceToMario < 170.f) {
+                    switchCase->selectedCase = 3;
+                } else {
+                    switchCase->selectedCase = 4;
+                }
+            }
+        }
     }
     return NULL;
 }

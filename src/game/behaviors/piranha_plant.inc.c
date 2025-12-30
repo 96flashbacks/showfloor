@@ -36,7 +36,7 @@ s32 piranha_plant_check_interactions(void) {
 
             // Spawn 20 intangible purple particles that quickly dissipate.
             for (i = 0; i < 20; i++) {
-                spawn_object(o, MODEL_PURPLE_MARBLE, bhvPurpleParticle);
+                spawn_object(o, MODEL_BUBBLE, bhvPurpleParticle);
             }
             o->oAction = PIRANHA_PLANT_ACT_ATTACKED;
         } else {
