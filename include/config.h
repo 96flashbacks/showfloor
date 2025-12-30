@@ -19,6 +19,9 @@
 // What's the point of hav ing a border?
 #define BORDER_HEIGHT 0
 
+// POW Build
+#define POWBUILD
+
 // Debug Build
 #define DEBUG
 
