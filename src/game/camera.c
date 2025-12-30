@@ -1219,7 +1219,7 @@ s32 update_parallel_tracking_camera(struct Camera *c, Vec3f focus, Vec3f pos) {
 
     // Update the camera focus and return the camera's yaw
     vec3f_copy(focus, marioPos);
-    vec3f_get_dist_and_angle(focus, pos, &camParDist, &pathPitch, &pathYaw);
+    vec3f_get_dist_and_angle(focus, pos, 0, 0, &pathYaw);
     return pathYaw;
 }
 
@@ -5969,22 +5969,22 @@ BAD_RETURN(s32) cutscene_non_painting_death(struct Camera *c) {
 }
 
 BAD_RETURN(s32) cutscene_intro_init(struct Camera *c) {
-    c->pos[1] += 140.0f; // original value was 145
-    rotate_and_move_vec3f(c->pos, sMarioCamState->pos, -0x20A, 0, 0x1A4);
+    c->pos[1] += 144.0f; // original value was 145
+    rotate_and_move_vec3f(c->pos, sMarioCamState->pos, -524, 0, 430);
 }
 
 BAD_RETURN(s32) cutscene_intro_rotate_camera(struct Camera *c) {
-    rotate_and_move_vec3f(c->pos, sMarioCamState->pos, 0, 0, -0x1C8);
+    rotate_and_move_vec3f(c->pos, sMarioCamState->pos, 0, 0, -456);
 
     if (gCutsceneTimer > 60) {
-        c->pos[0] = -1525.0f;
+        c->pos[0] = -1500.0f;
     }
 }
 
 BAD_RETURN(s32) cutscene_intro_zoom(struct Camera *c) {
-    rotate_and_move_vec3f(c->pos, sMarioCamState->pos, 0, 0x10, 0);
+    rotate_and_move_vec3f(c->pos, sMarioCamState->pos, 0, 16, 0);
     c->pos[1] += 0.50f;
-    c->pos[2] -= 1.5f;
+    c->pos[2] -= 1.1f;
 }
 
 BAD_RETURN(s32) cutscene_intro(struct Camera *c) {
