@@ -653,7 +653,7 @@ static void geo_process_shadow(struct GraphNodeShadow *node) {
         //! altogether.
         if (gCurGraphNodeHeldObject != NULL) {
             vec3f_copy(shadowPos, gCurGraphNodeObject->pos);
-            shadowScale = 0.0f;
+            shadowScale = node->shadowScale;
         } else {
             vec3f_copy(shadowPos, gCurGraphNodeObject->pos);
             shadowScale = node->shadowScale * gCurGraphNodeObject->scale[0];
