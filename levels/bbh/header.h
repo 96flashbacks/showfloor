@@ -49,7 +49,7 @@ extern const GeoLayout geo_bbh_000F00[];
 
 // leveldata
 extern const Gfx ghost_house_1_dl_mesh[];
-extern const Gfx bbh_seg7_dl_07007940[];
+extern const Gfx ghost_house_2_dl_mesh[];
 extern const Gfx bbh_seg7_dl_07007B90[];
 extern const Gfx bbh_seg7_dl_07007FD0[];
 extern const Gfx bbh_seg7_dl_07008B58[];

@@ -11321,9 +11321,9 @@ Gfx mat_revert_ghost_house_Bricks2[] = {
 };
 
 Gfx ghost_house_1_dl_mesh[] = {
-	gsSPDisplayList(mat_ghost_house_Void),
+	/*gsSPDisplayList(mat_ghost_house_Void),
 	gsSPDisplayList(ghost_house_1_dl_mesh_tri_0),
-	gsSPDisplayList(mat_revert_ghost_house_Void),
+	gsSPDisplayList(mat_revert_ghost_house_Void),*/
 	gsSPDisplayList(mat_ghost_house_BlueCarpet),
 	gsSPDisplayList(ghost_house_1_dl_mesh_tri_1),
 	gsSPDisplayList(mat_revert_ghost_house_BlueCarpet),
