@@ -11,9 +11,9 @@
 // Argument 10: Specify dynamic music tables for levels, if specified. _ for none.
 // Argument 11: Specify level camera table, if specified. _ for none.
 
-STUB_LEVEL(  "",               LEVEL_UNKNOWN_1,        COURSE_NONE,                                 20000,    0x00, 0x00, 0x00, _,         _)
-STUB_LEVEL(  "",               LEVEL_UNKNOWN_2,        COURSE_NONE,                                 20000,    0x00, 0x00, 0x00, _,         _)
-STUB_LEVEL(  "",               LEVEL_UNKNOWN_3,        COURSE_NONE,                                 20000,    0x00, 0x00, 0x00, _,         _)
+DEFINE_LEVEL("",               LEVEL_UNKNOWN_1,        COURSE_NONE,     castle,           generic,  20000,    0x00, 0x00, 0x00, _,         _)
+DEFINE_LEVEL("",               LEVEL_UNKNOWN_2,        COURSE_NONE,     athletic,         generic,  20000,    0x00, 0x00, 0x00, _,         _)
+DEFINE_LEVEL("",               LEVEL_UNKNOWN_3,        COURSE_NONE,     donjon,           generic,  20000,    0x00, 0x00, 0x00, _,         _)
 DEFINE_LEVEL("TERESA OBAKE",   LEVEL_BBH,              COURSE_BBH,      bbh,              spooky,   28000,    0x00, 0x00, 0x00, _,         _)
 DEFINE_LEVEL("YYAMA1 % YSLD1", LEVEL_CCM,              COURSE_CCM,      ccm,              slide,    17000,    0x00, 0x00, 0x00, _,         _)
 DEFINE_LEVEL("SELECT ROOM",    LEVEL_CASTLE,           COURSE_NONE,     castle_inside,    inside,   20000,    0x00, 0x00, 0x00, _,         sCamCastle)
@@ -42,10 +42,11 @@ STUB_LEVEL(  "IN THE FALL",    LEVEL_COTMC,            COURSE_COTMC,            
 STUB_LEVEL(  "EXT6 MARIO FLY", LEVEL_TOTWC,            COURSE_TOTWC,                                20000,    0x00, 0x00, 0x00, _,         _)
 DEFINE_LEVEL("KUPPA1",         LEVEL_BOWSER_1,         COURSE_BITDW,    bowser_1,         generic,  VAL_DIFF, 0x00, 0x00, 0x00, _,         _)
 STUB_LEVEL(  "EXT8 BLUE SKY",  LEVEL_WMOTR,            COURSE_WMOTR,                                20000,    0x00, 0x00, 0x00, _,         _)
-STUB_LEVEL(  "",               LEVEL_UNKNOWN_32,       COURSE_NONE,                                 20000,    0x70, 0x00, 0x00, _,         _)
+DEFINE_LEVEL("",               LEVEL_UNKNOWN_32,       COURSE_NONE,     yajima_test,      generic,  20000,    0x70, 0x00, 0x00, _,         _)
 STUB_LEVEL(  "KUPPA2",         LEVEL_BOWSER_2,         COURSE_BITFS,                                VAL_DIFF, 0x00, 0x00, 0x00, _,         _)
 STUB_LEVEL(  "KUPPA3",         LEVEL_BOWSER_3,         COURSE_BITS,                                 VAL_DIFF, 0x00, 0x00, 0x00, _,         _)
-STUB_LEVEL(  "",               LEVEL_UNKNOWN_35,       COURSE_NONE,                                 20000,    0x00, 0x00, 0x00, _,         _)
+DEFINE_LEVEL("",               LEVEL_UNKNOWN_35,       COURSE_NONE,     dummy,            generic,  20000,    0x00, 0x00, 0x00, _,         _)
 STUB_LEVEL(  "DONKEY % SLID2", LEVEL_TTM,              COURSE_TTM,                                  15000,    0x00, 0x00, 0x00, _,         _)
-STUB_LEVEL(  "",               LEVEL_UNKNOWN_37,       COURSE_NONE,                                 20000,    0x00, 0x00, 0x00, _,         _)
+DEFINE_LEVEL("",               LEVEL_UNKNOWN_37,       COURSE_NONE,     iwtest,           generic,  20000,    0x00, 0x00, 0x00, _,         _)
 STUB_LEVEL(  "",               LEVEL_UNKNOWN_38,       COURSE_NONE,                                 20000,    0x00, 0x00, 0x00, sDynUnk38, _)
+
