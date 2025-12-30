@@ -37,6 +37,7 @@ extern f32 gPaintingMarioYEntry;
 // This corresponds to the numbers used in debug level select, except they are
 // re-interpreted as hexadecimal numbers. TTM is course 36, so the id is 0x36
 // and the first water quad collection in TTM has id 0x3601.
+#define MOVTEX_AREA_CASTLE           (0x01 << 8)
 #define MOVTEX_AREA_BBH              (0x04 << 8)
 #define MOVTEX_AREA_CCM              (0x05 << 8)
 #define MOVTEX_AREA_INSIDE_CASTLE    (0x06 << 8)
@@ -57,6 +58,7 @@ extern f32 gPaintingMarioYEntry;
 #define MOVTEX_AREA_TTM              (0x36 << 8)
 
 // Quad collections
+#define CASTLE_MOVTEX_WATER                         (   0 | MOVTEX_AREA_CASTLE)
 #define BBH_MOVTEX_MERRY_GO_ROUND_WATER_ENTRANCE    (   0 | MOVTEX_AREA_BBH)
 #define BBH_MOVTEX_MERRY_GO_ROUND_WATER_SIDE        (   1 | MOVTEX_AREA_BBH)
 //#define CCM_MOVTEX_PENGUIN_PUDDLE_WATER             (   1 | MOVTEX_AREA_CCM)
