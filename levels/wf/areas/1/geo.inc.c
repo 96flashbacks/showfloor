@@ -15,7 +15,7 @@ const GeoLayout mountain_geo[] = {
             GEO_CAMERA(1, 0, 2000, 6000, 0, 3584, 0, geo_camera_main),
             GEO_OPEN_NODE(),
                GEO_DISPLAY_LIST(LAYER_OPAQUE, mountain_1_dl_mesh),
-               GEO_DISPLAY_LIST(LAYER_OPAQUE_DECAL, wf_seg7_dl_070052B8),
+               //GEO_DISPLAY_LIST(LAYER_OPAQUE_DECAL, wf_seg7_dl_070052B8),
                GEO_RENDER_OBJ(),
                GEO_ASM(     0, geo_movtex_pause_control),
                GEO_ASM(0x2401, geo_movtex_draw_water_regions),

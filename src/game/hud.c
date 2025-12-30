@@ -34,7 +34,7 @@ static s16 sPowerMeterStoredHealth;
 static struct PowerMeterHUD sPowerMeterHUD = {
     POWER_METER_HIDDEN,
     139,
-    166,
+    150,
     1.0,
 };
 
@@ -189,7 +189,7 @@ void handle_power_meter_actions(s16 numHealthWedges) {
     if (numHealthWedges < 8 && sPowerMeterStoredHealth == 8
         && sPowerMeterHUD.animation == POWER_METER_HIDDEN) {
         sPowerMeterHUD.animation = POWER_METER_EMPHASIZED;
-        sPowerMeterHUD.y = 166;
+        sPowerMeterHUD.y = 150;
     }
 
     // Show power meter if health is full, has 8
@@ -210,7 +210,7 @@ void handle_power_meter_actions(s16 numHealthWedges) {
         if (sPowerMeterHUD.animation == POWER_METER_HIDDEN
             || sPowerMeterHUD.animation == POWER_METER_EMPHASIZED) {
             sPowerMeterHUD.animation = POWER_METER_DEEMPHASIZING;
-            sPowerMeterHUD.y = 166;
+            sPowerMeterHUD.y = 150;
         }
         sPowerMeterVisibleTimer = 0;
     }
