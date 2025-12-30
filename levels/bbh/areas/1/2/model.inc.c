@@ -1,10 +1,10 @@
 Lights1 ghost_house_Crash1_lights = gdSPDefLights1(
-	0x7F, 0x7F, 0x7F,
-	0xFF, 0xFF, 0xFF, 0x49, 0x49, 0x49);
+	0x3F, 0x3F, 0x3F,
+	0xFF, 0xFF, 0xFF, 0x28, 0x28, 0x28);
 
 Lights1 ghost_house_Crash2_lights = gdSPDefLights1(
-	0x7F, 0x7F, 0x7F,
-	0xFF, 0xFF, 0xFF, 0x49, 0x49, 0x49);
+	0x3F, 0x3F, 0x3F,
+	0xFF, 0xFF, 0xFF, 0x28, 0x28, 0x28);
 
 Gfx ghost_house_crash1_ci8_aligner[] = {gsSPEndDisplayList()};
 u8 ghost_house_crash1_ci8[] = {
@@ -726,7 +726,7 @@ Gfx ghost_house_2_dl_mesh_tri_1[] = {
 Gfx mat_ghost_house_Crash1[] = {
 	gsSPSetLights1(ghost_house_Crash1_lights),
 	gsDPPipeSync(),
-	gsDPSetCombineLERP(TEXEL0, SHADE, TEXEL0_ALPHA, SHADE, 0, 0, 0, ENVIRONMENT, TEXEL0, SHADE, TEXEL0_ALPHA, SHADE, 0, 0, 0, ENVIRONMENT),
+	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT),
 	gsDPSetAlphaDither(G_AD_NOISE),
 	gsDPSetTextureLUT(G_TT_RGBA16),
 	gsSPTexture(65535, 65535, 0, 0, 1),
@@ -751,7 +751,7 @@ Gfx mat_revert_ghost_house_Crash1[] = {
 Gfx mat_ghost_house_Crash2[] = {
 	gsSPSetLights1(ghost_house_Crash2_lights),
 	gsDPPipeSync(),
-	gsDPSetCombineLERP(TEXEL0, SHADE, TEXEL0_ALPHA, SHADE, 0, 0, 0, ENVIRONMENT, TEXEL0, SHADE, TEXEL0_ALPHA, SHADE, 0, 0, 0, ENVIRONMENT),
+	gsDPSetCombineLERP(TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT, TEXEL0, 0, SHADE, 0, 0, 0, 0, ENVIRONMENT),
 	gsDPSetAlphaDither(G_AD_NOISE),
 	gsDPSetTextureLUT(G_TT_RGBA16),
 	gsSPTexture(65535, 65535, 0, 0, 1),
