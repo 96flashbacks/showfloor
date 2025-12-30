@@ -940,7 +940,6 @@ u32 interact_flame(struct MarioState *m, UNUSED u32 interactType, struct Object 
             play_sound(SOUND_GENERAL_FLAME_OUT, m->marioObj->header.gfx.cameraToObject);
         } else {
             m->marioObj->oMarioBurnTimer = 0;
-            update_mario_sound_and_camera(m);
             play_sound(SOUND_MARIO_WAAAOOOW, m->marioObj->header.gfx.cameraToObject);
 
             if ((m->action & ACT_FLAG_AIR) && m->vel[1] <= 0.0f) {

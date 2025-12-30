@@ -89,62 +89,62 @@ ALIGNED8 static const Texture bowser_seg6_texture_0602BC38[] = {
 
 // 0x0602CC38
 ALIGNED8 static const Texture bowser_seg6_texture_0602CC38[] = {
-#include "actors/bowser/bowser_eye_left_0.rgba16.inc.c"
+#include "actors/bowser/bowser_blue_eye_unused.rgba16.inc.c"
 };
 
 // 0x0602DC38
 ALIGNED8 static const Texture bowser_seg6_texture_0602DC38[] = {
-#include "actors/bowser/bowser_eye_half_closed_0.rgba16.inc.c"
+#include "actors/bowser/bowser_blue_eye_unused.rgba16.inc.c"
 };
 
 // 0x0602EC38
 ALIGNED8 static const Texture bowser_seg6_texture_0602EC38[] = {
-#include "actors/bowser/bowser_eye_closed_0.rgba16.inc.c"
+#include "actors/bowser/bowser_blue_eye_unused.rgba16.inc.c"
 };
 
 // 0x0602FC38
 ALIGNED8 static const Texture bowser_seg6_texture_0602FC38[] = {
-#include "actors/bowser/bowser_eye_center_0.rgba16.inc.c"
+#include "actors/bowser/bowser_blue_eye_unused.rgba16.inc.c"
 };
 
 // 0x06030C38
 ALIGNED8 static const Texture bowser_seg6_texture_06030C38[] = {
-#include "actors/bowser/bowser_eye_right_0.rgba16.inc.c"
+#include "actors/bowser/bowser_blue_eye_unused.rgba16.inc.c"
 };
 
 // 0x06031C38
 ALIGNED8 static const Texture bowser_seg6_texture_06031C38[] = {
-#include "actors/bowser/bowser_eye_far_left_0.rgba16.inc.c"
+#include "actors/bowser/bowser_blue_eye_unused.rgba16.inc.c"
 };
 
 // 0x06032C38
 ALIGNED8 static const Texture bowser_seg6_texture_06032C38[] = {
-#include "actors/bowser/bowser_eye_left_1.rgba16.inc.c"
+#include "actors/bowser/bowser_blue_eye_unused.rgba16.inc.c"
 };
 
 // 0x06033C38
 ALIGNED8 static const Texture bowser_seg6_texture_06033C38[] = {
-#include "actors/bowser/bowser_eye_half_closed_1.rgba16.inc.c"
+#include "actors/bowser/bowser_blue_eye_unused.rgba16.inc.c"
 };
 
 // 0x06034C38
 ALIGNED8 static const Texture bowser_seg6_texture_06034C38[] = {
-#include "actors/bowser/bowser_eye_closed_1.rgba16.inc.c"
+#include "actors/bowser/bowser_blue_eye_unused.rgba16.inc.c"
 };
 
 // 0x06035C38
 ALIGNED8 static const Texture bowser_seg6_texture_06035C38[] = {
-#include "actors/bowser/bowser_eye_center_1.rgba16.inc.c"
+#include "actors/bowser/bowser_blue_eye_unused.rgba16.inc.c"
 };
 
 // 0x06036C38
 ALIGNED8 static const Texture bowser_seg6_texture_06036C38[] = {
-#include "actors/bowser/bowser_eye_right_1.rgba16.inc.c"
+#include "actors/bowser/bowser_blue_eye_unused.rgba16.inc.c"
 };
 
 // 0x06037C38
 ALIGNED8 static const Texture bowser_seg6_texture_06037C38[] = {
-#include "actors/bowser/bowser_eye_far_left_1.rgba16.inc.c"
+#include "actors/bowser/bowser_blue_eye_unused.rgba16.inc.c"
 };
 
 // 0x06038C38
