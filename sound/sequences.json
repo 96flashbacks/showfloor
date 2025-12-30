@@ -10,7 +10,7 @@
     "07_level_boss_koopa": ["12"],
     "08_level_snow": null,
     "09_level_slide": null,
-    "0A_level_spooky": null,
+    "0A_level_spooky": ["10", "21"],
     "0B_event_piranha_plant": null,
     "0C_level_underground": null,
     "0D_menu_star_select": null,

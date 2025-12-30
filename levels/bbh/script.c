@@ -18,30 +18,35 @@
 
 
 static const LevelScript script_func_local_1[] = {
-  
     RETURN(),
 };
 
 static const LevelScript script_func_local_2[] = {
-   
+    OBJECT(/*model*/ MODEL_MR_I, /*pos*/ 1705, -13, -1650, 0, 90, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvMrI),
+    OBJECT(/*model*/ MODEL_MR_I, /*pos*/ -524, 0, -794, 0, 90, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvMrI),
+    OBJECT(/*model*/ MODEL_MR_I, /*pos*/ -610, 0, -571, 0, -125, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvMrI),
+    OBJECT(/*model*/ MODEL_MR_I, /*pos*/ -710, 0, -366, 0, -90, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvMrI),
+    OBJECT(/*model*/ MODEL_MR_I, /*pos*/ -288, 0, -191, 0, -50, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvMrI),
+    OBJECT(/*model*/ MODEL_MR_I, /*pos*/ 0, 0, 440, 0, -50, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvMrI),
     RETURN(),
 };
 
 static const LevelScript script_func_local_3[] = {
-    OBJECT_WITH_ACTS(/*model*/ MODEL_BOO,                        /*pos*/    20,   100,  -908, /*angle*/ 0, 0, 0,   /*bhvParam*/ 0, /*bhv*/ bhvBoo,                 /*acts*/ ACT_2 | ACT_3 | ACT_4 | ACT_5 | ACT_6),
-    OBJECT_WITH_ACTS(/*model*/ MODEL_BOO,                        /*pos*/  3150,   100,   398, /*angle*/ 0, 0, 0,   /*bhvParam*/ 0, /*bhv*/ bhvBoo,                 /*acts*/ ACT_2 | ACT_3 | ACT_4 | ACT_5 | ACT_6),
-    OBJECT_WITH_ACTS(/*model*/ MODEL_BOO,                        /*pos*/ -2000,   150,  -800, /*angle*/ 0, 0, 0,   /*bhvParam*/ 0, /*bhv*/ bhvBoo,                 /*acts*/ ACT_2 | ACT_3 | ACT_4 | ACT_5 | ACT_6),
-    OBJECT_WITH_ACTS(/*model*/ MODEL_BOO,                        /*pos*/  2851,   100,  2289, /*angle*/ 0, 0, 0,   /*bhvParam*/ 0, /*bhv*/ bhvBoo,                 /*acts*/ ACT_2 | ACT_3 | ACT_4 | ACT_5 | ACT_6),
-    OBJECT_WITH_ACTS(/*model*/ MODEL_BOO,                        /*pos*/ -1551,   100, -1018, /*angle*/ 0, 0, 0,   /*bhvParam*/ 0, /*bhv*/ bhvBoo,                 /*acts*/ ACT_2 | ACT_3 | ACT_4 | ACT_5 | ACT_6),
-    OBJECT_WITH_ACTS(/*model*/ MODEL_BOO,                        /*pos*/   581,  1850,  -206, /*angle*/ 0, -90, 0, /*bhvParam*/ 0, /*bhv*/ bhvBoo,                 /*acts*/ ALL_ACTS),
-
+    OBJECT(/*model*/ MODEL_BOO,                        /*pos*/ 2049, 0, 680, 0, -180, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvBoo),
+    OBJECT(/*model*/ MODEL_BOO,                        /*pos*/ 2185, 0, 120, 0, -180, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvBoo),
+    OBJECT(/*model*/ MODEL_BOO,                        /*pos*/ 1675, 0, 341, 0, 0, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvBoo),
+    OBJECT(/*model*/ MODEL_BOO,                        /*pos*/ -1244, 0, 874, 0, 0, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvBoo),
+    OBJECT(/*model*/ MODEL_BOO,                        /*pos*/ -676, 0, 1742, 0, -180, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvBoo),
+    OBJECT(/*model*/ MODEL_BOO,                        /*pos*/ 699, 0, -2125, 0, -180, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvBoo),
+    OBJECT(/*model*/ MODEL_BOO,                        /*pos*/ 699, 0, -1118, 0, 90, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvBoo),
+    OBJECT(/*model*/ MODEL_BOO,                        /*pos*/ 2299, 0, -2118, 0, 135, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvBoo),
+    OBJECT(/*model*/ MODEL_BOO,                        /*pos*/ 1099, 0, -1118, 0, -55, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvBoo),
     RETURN(),
 };
 
 static const LevelScript script_func_local_4[] = {
-    OBJECT_WITH_ACTS(/*model*/ MODEL_STAR, /*pos*/ -2030, 1350,  1940, /*angle*/ 0, 0, 0,  /*bhvParam*/ BPARAM1(STAR_INDEX_ACT_3), /*bhv*/ bhvStar,                    /*acts*/ ALL_ACTS),
-    //OBJECT_WITH_ACTS(/*model*/ MODEL_NONE, /*pos*/  -204, 1100,  1576, /*angle*/ 0, 0, 0,  /*bhvParam*/ BPARAM1(STAR_INDEX_ACT_4), /*bhv*/ bhvHiddenRedCoinStar,    /*acts*/ ALL_ACTS),
-    OBJECT_WITH_ACTS(/*model*/ MODEL_NONE, /*pos*/   923, 1741,  -332, /*angle*/ 0, 18, 0, /*bhvParam*/ BPARAM1(STAR_INDEX_ACT_6) | BPARAM2(0x01), /*bhv*/ bhvMrI,                    /*acts*/ ALL_ACTS),
+    OBJECT(/*model*/ MODEL_STAR,  /*pos*/   -1600, 144, 744, /*angle*/ 0, 0, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvStar),
+    OBJECT(/*model*/ MODEL_STAR,  /*pos*/   1815, 200, 1595, /*angle*/ 0, 0, 0, /*bhvParam*/ 0x01000000, /*bhv*/ bhvStar),
     RETURN(),
 };
 
@@ -61,7 +66,7 @@ const LevelScript level_bbh_entry[] = {
     JUMP_LINK(script_func_global_1),
     JUMP_LINK(script_func_global_10),
     JUMP_LINK(script_func_global_18),
-    //LOAD_MODEL_FROM_GEO(MODEL_BBH_HAUNTED_DOOR,           haunted_door_geo),
+    LOAD_MODEL_FROM_GEO(MODEL_CASTLE_DOOR,               RCP_HmsMainDoor),
     /*LOAD_MODEL_FROM_GEO(MODEL_BBH_STAIRCASE_STEP,         geo_bbh_0005B0),
     LOAD_MODEL_FROM_GEO(MODEL_BBH_TILTING_FLOOR_PLATFORM, geo_bbh_0005C8),
     LOAD_MODEL_FROM_GEO(MODEL_BBH_TUMBLING_PLATFORM,      geo_bbh_0005E0),
@@ -71,15 +76,19 @@ const LevelScript level_bbh_entry[] = {
     LOAD_MODEL_FROM_GEO(MODEL_BBH_MERRY_GO_ROUND,         geo_bbh_000640),
     LOAD_MODEL_FROM_GEO(MODEL_BBH_WOODEN_TOMB,            geo_bbh_000658),*/
 
-    AREA(/*index*/ 1, geo_bbh_000F00),
+    AREA(/*index*/ 1, Bbh_area_1),
         JUMP_LINK(script_func_local_1),
         JUMP_LINK(script_func_local_2),
         JUMP_LINK(script_func_local_3),
         JUMP_LINK(script_func_local_4),
-        OBJECT(/*model*/ MODEL_NONE, /*pos*/ 666, 796, 5350, /*angle*/ 0, 180, 0, /*bhvParam*/ BPARAM2(WARP_NODE_0A), /*bhv*/ bhvSpinAirborneWarp),
-        WARP_NODE(/*id*/ WARP_NODE_0A,      /*destLevel*/ LEVEL_BBH,              /*destArea*/ 1, /*destNode*/ WARP_NODE_0A, /*flags*/ WARP_NO_CHECKPOINT),
-        WARP_NODE(/*id*/ WARP_NODE_SUCCESS, /*destLevel*/ LEVEL_CASTLE_COURTYARD, /*destArea*/ 1, /*destNode*/ WARP_NODE_0A, /*flags*/ WARP_NO_CHECKPOINT),
-        WARP_NODE(/*id*/ WARP_NODE_DEATH,   /*destLevel*/ LEVEL_CASTLE_COURTYARD, /*destArea*/ 1, /*destNode*/ WARP_NODE_0B, /*flags*/ WARP_NO_CHECKPOINT),
+        OBJECT(/*model*/ MODEL_NONE, /*pos*/ -700, 0, -1650, /*angle*/ 0, 90, 0, /*bhvParam*/ BPARAM2(WARP_NODE_0A), /*bhv*/ bhvSpinAirborneWarp),
+        OBJECT(/*model*/ MODEL_CASTLE_DOOR,       /*pos*/ 1727, 0, -939, 0, -180, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvDoor),
+        OBJECT(/*model*/ MODEL_CASTLE_DOOR,       /*pos*/ -935, 0, -517, 0, 90, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvDoor),
+        OBJECT(/*model*/ MODEL_CASTLE_DOOR,       /*pos*/ -583, 0, 939, 0, -180, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvDoor),
+        OBJECT(/*model*/ MODEL_CASTLE_DOOR,       /*pos*/ 939, 0, 517, 0, -95, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvDoor),
+        OBJECT(/*model*/ MODEL_CASTLE_DOOR,       /*pos*/ 939, 0, 1573, 0, 90, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvDoor),
+        OBJECT(/*model*/ MODEL_CASTLE_DOOR,       /*pos*/ 931, 0, -1683, 0, 90, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvDoor),
+        OBJECT(/*model*/ MODEL_CASTLE_DOOR,       /*pos*/ -1287, 0, 59, 0, 0, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvDoor),
         TERRAIN(/*terrainData*/ ghost_house_collision),
         MACRO_OBJECTS(/*objList*/ bbh_seg7_macro_objs),
         ROOMS(/*surfaceRooms*/ bbh_seg7_rooms),
@@ -89,7 +98,7 @@ const LevelScript level_bbh_entry[] = {
     END_AREA(),
 
     FREE_LEVEL_POOL(),
-    MARIO_POS(/*area*/ 1, /*yaw*/ 180, /*pos*/ 0, 0, 0),
+    MARIO_POS(/*area*/ 1, /*yaw*/ 90, /*pos*/ -700, 0, -1650),
     CALL(/*arg*/ 0, /*func*/ lvl_init_or_update),
     CALL_LOOP(/*arg*/ 1, /*func*/ lvl_init_or_update),
     CLEAR_LEVEL(),
