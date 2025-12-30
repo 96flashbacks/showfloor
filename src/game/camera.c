@@ -1335,13 +1335,11 @@ s32 update_boss_fight_camera(struct Camera *c, Vec3f focus, Vec3f pos) {
     // Get boss's position and whether Mario is holding it.
     if ((o = gSecondCameraFocus) != NULL) {
         object_pos_to_vec3f(secondFocus, o);
-        heldState = o->oHeldState;
     } else {
         // If no boss is there, just rotate around the area's center point.
         secondFocus[0] = c->areaCenX;
         secondFocus[1] = sMarioCamState->pos[1];
         secondFocus[2] = c->areaCenZ;
-        heldState = 0;
     }
 
     focusDistance = calc_abs_dist(sMarioCamState->pos, secondFocus) * 1.5f;
@@ -1350,11 +1348,6 @@ s32 update_boss_fight_camera(struct Camera *c, Vec3f focus, Vec3f pos) {
     }
     if (focusDistance > 5000.f) {
         focusDistance = 5000.f;
-    }
-
-    // If holding the boss, add a slight offset to secondFocus so that the spinning is more pronounced.
-    if (heldState == 1) {
-        offset_rotated(secondFocus, sMarioCamState->pos, holdFocOffset, sMarioCamState->faceAngle);
     }
 
     // Set the camera focus to the average of Mario and secondFocus

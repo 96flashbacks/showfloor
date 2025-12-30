@@ -1,0 +1,545 @@
+/* Stage select texture icon */
+
+//#include "stage1_icon_texture.dat"
+//#include "stage2_icon_texture.dat"
+//#include "stage3_icon_texture.dat"
+//#include "stage4_icon_texture.dat"
+//#include "stage5_icon_texture.dat"
+//#include "stage6_icon_texture.dat"
+//#include "stage7_icon_texture.dat"
+//#include "stage8_icon_texture.dat"
+
+#define		TEX_WIDTH		  	64
+#define		TEX_HEIGHT			32
+#define		BITS_PER_TEXEL		16
+#define		TTDN				 1
+
+#define		X_ZAHYOU	 		2048
+#define		Y_ZAHYOU	 		1024
+
+ALIGNED8 static const Texture stage5_icon000[] = {
+#include "textures/debug_level_select/stage5_icon000.rgba16.inc.c"
+};
+ALIGNED8 static const Texture stage5_icon001[] = {
+#include "textures/debug_level_select/stage5_icon001.rgba16.inc.c"
+};
+ALIGNED8 static const Texture stage5_icon002[] = {
+#include "textures/debug_level_select/stage5_icon002.rgba16.inc.c"
+};
+ALIGNED8 static const Texture stage5_icon003[] = {
+#include "textures/debug_level_select/stage5_icon003.rgba16.inc.c"
+};
+ALIGNED8 static const Texture stage5_icon004[] = {
+#include "textures/debug_level_select/stage5_icon004.rgba16.inc.c"
+};
+ALIGNED8 static const Texture stage5_icon005[] = {
+#include "textures/debug_level_select/stage5_icon005.rgba16.inc.c"
+};
+ALIGNED8 static const Texture stage5_icon006[] = {
+#include "textures/debug_level_select/stage5_icon006.rgba16.inc.c"
+};
+ALIGNED8 static const Texture stage5_icon007[] = {
+#include "textures/debug_level_select/stage5_icon007.rgba16.inc.c"
+};
+
+#define stage1_icon000 stage5_icon000
+#define stage1_icon001 stage1_icon000
+#define stage1_icon002 stage1_icon000
+#define stage1_icon003 stage1_icon000
+#define stage1_icon004 stage1_icon000
+#define stage1_icon005 stage1_icon000
+#define stage1_icon006 stage1_icon000
+#define stage1_icon007 stage1_icon000
+
+#define stage2_icon000 stage1_icon000
+#define stage2_icon001 stage1_icon000
+#define stage2_icon002 stage1_icon000
+#define stage2_icon003 stage1_icon000
+#define stage2_icon004 stage1_icon000
+#define stage2_icon005 stage1_icon000
+#define stage2_icon006 stage1_icon000
+#define stage2_icon007 stage1_icon000
+
+#define stage3_icon000 stage1_icon000
+#define stage3_icon001 stage1_icon000
+#define stage3_icon002 stage1_icon000
+#define stage3_icon003 stage1_icon000
+#define stage3_icon004 stage1_icon000
+#define stage3_icon005 stage1_icon000
+#define stage3_icon006 stage1_icon000
+#define stage3_icon007 stage1_icon000
+
+#define stage4_icon000 stage1_icon000
+#define stage4_icon001 stage1_icon000
+#define stage4_icon002 stage1_icon000
+#define stage4_icon003 stage1_icon000
+#define stage4_icon004 stage1_icon000
+#define stage4_icon005 stage1_icon000
+#define stage4_icon006 stage1_icon000
+#define stage4_icon007 stage1_icon000
+
+#define stage6_icon000 stage1_icon000
+#define stage6_icon001 stage1_icon000
+#define stage6_icon002 stage1_icon000
+#define stage6_icon003 stage1_icon000
+#define stage6_icon004 stage1_icon000
+#define stage6_icon005 stage1_icon000
+#define stage6_icon006 stage1_icon000
+#define stage6_icon007 stage1_icon000
+
+#define stage7_icon000 stage1_icon000
+#define stage7_icon001 stage1_icon000
+#define stage7_icon002 stage1_icon000
+#define stage7_icon003 stage1_icon000
+#define stage7_icon004 stage1_icon000
+#define stage7_icon005 stage1_icon000
+#define stage7_icon006 stage1_icon000
+#define stage7_icon007 stage1_icon000
+
+#define stage8_icon000 stage1_icon000
+#define stage8_icon001 stage1_icon000
+#define stage8_icon002 stage1_icon000
+#define stage8_icon003 stage1_icon000
+#define stage8_icon004 stage1_icon000
+#define stage8_icon005 stage1_icon000
+#define stage8_icon006 stage1_icon000
+#define stage8_icon007 stage1_icon000
+
+/* ================================================================================================
+	: Vtx data for one stage select icon.
+===================================================================================================	*/
+static Vtx vtx_title_stagesel[] = {
+	{   -256,    128,      0,    0,          0,          0, 0xff, 0xff, 0xff, 0xff }, 
+	{      0,    128,      0,    0,   X_ZAHYOU,          0, 0xff, 0xff, 0xff, 0xff }, 
+	{      0,    256,      0,    0,   X_ZAHYOU,   Y_ZAHYOU, 0xff, 0xff, 0xff, 0xff }, 
+	{   -256,    256,      0,    0,          0,   Y_ZAHYOU, 0xff, 0xff, 0xff, 0xff }, 
+	{      0,    128,      0,    0,          0,          0, 0xff, 0xff, 0xff, 0xff }, 
+	{    256,    128,      0,    0,   X_ZAHYOU,          0, 0xff, 0xff, 0xff, 0xff }, 
+	{    256,    256,      0,    0,   X_ZAHYOU,   Y_ZAHYOU, 0xff, 0xff, 0xff, 0xff }, 
+	{      0,    256,      0,    0,          0,   Y_ZAHYOU, 0xff, 0xff, 0xff, 0xff }, 
+	{   -256,      0,      0,    0,          0,          0, 0xff, 0xff, 0xff, 0xff }, 
+	{      0,      0,      0,    0,   X_ZAHYOU,          0, 0xff, 0xff, 0xff, 0xff }, 
+	{      0,    128,      0,    0,   X_ZAHYOU,   Y_ZAHYOU, 0xff, 0xff, 0xff, 0xff }, 
+	{   -256,    128,      0,    0,          0,   Y_ZAHYOU, 0xff, 0xff, 0xff, 0xff }, 
+	{      0,      0,      0,    0,          0,          0, 0xff, 0xff, 0xff, 0xff }, 
+	{    256,      0,      0,    0,   X_ZAHYOU,          0, 0xff, 0xff, 0xff, 0xff }, 
+	{    256,    128,      0,    0,   X_ZAHYOU,   Y_ZAHYOU, 0xff, 0xff, 0xff, 0xff }, 
+	{      0,    128,      0,    0,          0,   Y_ZAHYOU, 0xff, 0xff, 0xff, 0xff }, 
+	{   -256,   -128,      0,    0,          0,          0, 0xff, 0xff, 0xff, 0xff }, 
+	{      0,   -128,      0,    0,   X_ZAHYOU,          0, 0xff, 0xff, 0xff, 0xff }, 
+	{      0,      0,      0,    0,   X_ZAHYOU,   Y_ZAHYOU, 0xff, 0xff, 0xff, 0xff }, 
+	{   -256,      0,      0,    0,          0,   Y_ZAHYOU, 0xff, 0xff, 0xff, 0xff }, 
+	{      0,   -128,      0,    0,          0,          0, 0xff, 0xff, 0xff, 0xff }, 
+	{    256,   -128,      0,    0,   X_ZAHYOU,          0, 0xff, 0xff, 0xff, 0xff }, 
+	{    256,      0,      0,    0,   X_ZAHYOU,   Y_ZAHYOU, 0xff, 0xff, 0xff, 0xff }, 
+	{      0,      0,      0,    0,          0,   Y_ZAHYOU, 0xff, 0xff, 0xff, 0xff }, 
+	{   -256,   -256,      0,    0,          0,          0, 0xff, 0xff, 0xff, 0xff }, 
+	{      0,   -256,      0,    0,   X_ZAHYOU,          0, 0xff, 0xff, 0xff, 0xff }, 
+	{      0,   -128,      0,    0,   X_ZAHYOU,   Y_ZAHYOU, 0xff, 0xff, 0xff, 0xff }, 
+	{   -256,   -128,      0,    0,          0,   Y_ZAHYOU, 0xff, 0xff, 0xff, 0xff }, 
+	{      0,   -256,      0,    0,          0,          0, 0xff, 0xff, 0xff, 0xff }, 
+	{    256,   -256,      0,    0,   X_ZAHYOU,          0, 0xff, 0xff, 0xff, 0xff }, 
+	{    256,   -128,      0,    0,   X_ZAHYOU,   Y_ZAHYOU, 0xff, 0xff, 0xff, 0xff }, 
+	{      0,   -128,      0,    0,          0,   Y_ZAHYOU, 0xff, 0xff, 0xff, 0xff }, 
+};
+
+/* ================================================================================================
+		: Static display-list to treat texture mapping.
+===================================================================================================	*/
+static Gfx Tex_Init[] = {
+//	gsSPTexture(2048, 2048, TTDN, 1, 1),
+	gsSPTexture(65535, 65535, 0, 0, 1),
+	gsDPSetCombineMode(G_CC_DECALRGBA, G_CC_DECALRGBA),
+	gsSPEndDisplayList(), 
+};
+
+static Gfx Tex_Set[] = {
+//	gsDPLoadBlock(0, 0, TTDN, (TEX_WIDTH*TEX_HEIGHT), (1 << 11)/(TEX_WIDTH*BITS_PER_TEXEL/64)),
+//	gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, (TEX_WIDTH*BITS_PER_TEXEL/64), 0, TTDN, 0, 1,0,0, 1,0,0),
+//	gsDPSetTileSize(0, 0, TTDN, (TEX_WIDTH << 2), (TEX_HEIGHT << 2)),
+	gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b_LOAD_BLOCK, 0, 0, 7, 0, G_TX_CLAMP | G_TX_NOMIRROR, 0, 0, G_TX_CLAMP | G_TX_NOMIRROR, 0, 0),
+	gsDPLoadBlock(7, 0, 0, 2047, 128),
+	gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 16, 0, 0, 0, G_TX_CLAMP | G_TX_NOMIRROR, 5, 0, G_TX_CLAMP | G_TX_NOMIRROR, 6, 0),
+	gsDPSetTileSize(0, 0, 0, 252, 124),
+	gsSPEndDisplayList(), 
+};
+
+/* ================================================================================================
+		: Display-list to draw each stage select icon.
+===================================================================================================	*/
+Gfx RCP_TitleStageSel1[] = {
+	gsSPDisplayList(Tex_Init),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, TEX_WIDTH, stage1_icon000),
+	gsSPDisplayList(Tex_Set),
+	gsSPVertex(&vtx_title_stagesel[0], 4, 0), 
+	gsSP1Triangle( 0, 1, 2, 0),
+	gsSP1Triangle( 0, 2, 3, 0),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, TEX_WIDTH, stage1_icon001),
+	gsSPDisplayList(Tex_Set),
+	gsSPVertex(&vtx_title_stagesel[4], 4, 0), 
+	gsSP1Triangle( 0, 1, 2, 0),
+	gsSP1Triangle( 0, 2, 3, 0),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, TEX_WIDTH, stage1_icon002),
+	gsSPDisplayList(Tex_Set),
+	gsSPVertex(&vtx_title_stagesel[8], 4, 0), 
+	gsSP1Triangle( 0, 1, 2, 0),
+	gsSP1Triangle( 0, 2, 3, 0),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, TEX_WIDTH, stage1_icon003),
+	gsSPDisplayList(Tex_Set),
+	gsSPVertex(&vtx_title_stagesel[12], 4, 0), 
+	gsSP1Triangle( 0, 1, 2, 0),
+	gsSP1Triangle( 0, 2, 3, 0),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, TEX_WIDTH, stage1_icon004),
+	gsSPDisplayList(Tex_Set),
+	gsSPVertex(&vtx_title_stagesel[16], 4, 0), 
+	gsSP1Triangle( 0, 1, 2, 0),
+	gsSP1Triangle( 0, 2, 3, 0),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, TEX_WIDTH, stage1_icon005),
+	gsSPDisplayList(Tex_Set),
+	gsSPVertex(&vtx_title_stagesel[20], 4, 0), 
+	gsSP1Triangle( 0, 1, 2, 0),
+	gsSP1Triangle( 0, 2, 3, 0),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, TEX_WIDTH, stage1_icon006),
+	gsSPDisplayList(Tex_Set),
+	gsSPVertex(&vtx_title_stagesel[24], 4, 0), 
+	gsSP1Triangle( 0, 1, 2, 0),
+	gsSP1Triangle( 0, 2, 3, 0),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, TEX_WIDTH, stage1_icon007),
+	gsSPDisplayList(Tex_Set),
+	gsSPVertex(&vtx_title_stagesel[28], 4, 0), 
+	gsSP1Triangle( 0, 1, 2, 0),
+	gsSP1Triangle( 0, 2, 3, 0),
+//	gsSPTexture(2048, 2048, TTDN, 0, 1),
+	gsSPTexture(65535, 65535, 0, 0, 0),
+	gsDPSetCombineMode(G_CC_PRIMITIVE, G_CC_PRIMITIVE),
+	gsSPEndDisplayList(),
+};
+
+Gfx RCP_TitleStageSel2[] = {
+	gsSPDisplayList(Tex_Init),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, TEX_WIDTH, stage2_icon000),
+	gsSPDisplayList(Tex_Set),
+	gsSPVertex(&vtx_title_stagesel[0], 4, 0), 
+	gsSP1Triangle( 0, 1, 2, 0),
+	gsSP1Triangle( 0, 2, 3, 0),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, TEX_WIDTH, stage2_icon001),
+	gsSPDisplayList(Tex_Set),
+	gsSPVertex(&vtx_title_stagesel[4], 4, 0), 
+	gsSP1Triangle( 0, 1, 2, 0),
+	gsSP1Triangle( 0, 2, 3, 0),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, TEX_WIDTH, stage2_icon002),
+	gsSPDisplayList(Tex_Set),
+	gsSPVertex(&vtx_title_stagesel[8], 4, 0), 
+	gsSP1Triangle( 0, 1, 2, 0),
+	gsSP1Triangle( 0, 2, 3, 0),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, TEX_WIDTH, stage2_icon003),
+	gsSPDisplayList(Tex_Set),
+	gsSPVertex(&vtx_title_stagesel[12], 4, 0), 
+	gsSP1Triangle( 0, 1, 2, 0),
+	gsSP1Triangle( 0, 2, 3, 0),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, TEX_WIDTH, stage2_icon004),
+	gsSPDisplayList(Tex_Set),
+	gsSPVertex(&vtx_title_stagesel[16], 4, 0), 
+	gsSP1Triangle( 0, 1, 2, 0),
+	gsSP1Triangle( 0, 2, 3, 0),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, TEX_WIDTH, stage2_icon005),
+	gsSPDisplayList(Tex_Set),
+	gsSPVertex(&vtx_title_stagesel[20], 4, 0), 
+	gsSP1Triangle( 0, 1, 2, 0),
+	gsSP1Triangle( 0, 2, 3, 0),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, TEX_WIDTH, stage2_icon006),
+	gsSPDisplayList(Tex_Set),
+	gsSPVertex(&vtx_title_stagesel[24], 4, 0), 
+	gsSP1Triangle( 0, 1, 2, 0),
+	gsSP1Triangle( 0, 2, 3, 0),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, TEX_WIDTH, stage2_icon007),
+	gsSPDisplayList(Tex_Set),
+	gsSPVertex(&vtx_title_stagesel[28], 4, 0), 
+	gsSP1Triangle( 0, 1, 2, 0),
+	gsSP1Triangle( 0, 2, 3, 0),
+	gsSPTexture(2048, 2048, TTDN, 0, 1),
+	gsDPSetCombineMode(G_CC_PRIMITIVE, G_CC_PRIMITIVE),
+	gsSPEndDisplayList(),
+};
+
+Gfx RCP_TitleStageSel3[] = {
+	gsSPDisplayList(Tex_Init),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, TEX_WIDTH, stage3_icon000),
+	gsSPDisplayList(Tex_Set),
+	gsSPVertex(&vtx_title_stagesel[0], 4, 0), 
+	gsSP1Triangle( 0, 1, 2, 0),
+	gsSP1Triangle( 0, 2, 3, 0),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, TEX_WIDTH, stage3_icon001),
+	gsSPDisplayList(Tex_Set),
+	gsSPVertex(&vtx_title_stagesel[4], 4, 0), 
+	gsSP1Triangle( 0, 1, 2, 0),
+	gsSP1Triangle( 0, 2, 3, 0),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, TEX_WIDTH, stage3_icon002),
+	gsSPDisplayList(Tex_Set),
+	gsSPVertex(&vtx_title_stagesel[8], 4, 0), 
+	gsSP1Triangle( 0, 1, 2, 0),
+	gsSP1Triangle( 0, 2, 3, 0),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, TEX_WIDTH, stage3_icon003),
+	gsSPDisplayList(Tex_Set),
+	gsSPVertex(&vtx_title_stagesel[12], 4, 0), 
+	gsSP1Triangle( 0, 1, 2, 0),
+	gsSP1Triangle( 0, 2, 3, 0),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, TEX_WIDTH, stage3_icon004),
+	gsSPDisplayList(Tex_Set),
+	gsSPVertex(&vtx_title_stagesel[16], 4, 0), 
+	gsSP1Triangle( 0, 1, 2, 0),
+	gsSP1Triangle( 0, 2, 3, 0),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, TEX_WIDTH, stage3_icon005),
+	gsSPDisplayList(Tex_Set),
+	gsSPVertex(&vtx_title_stagesel[20], 4, 0), 
+	gsSP1Triangle( 0, 1, 2, 0),
+	gsSP1Triangle( 0, 2, 3, 0),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, TEX_WIDTH, stage3_icon006),
+	gsSPDisplayList(Tex_Set),
+	gsSPVertex(&vtx_title_stagesel[24], 4, 0), 
+	gsSP1Triangle( 0, 1, 2, 0),
+	gsSP1Triangle( 0, 2, 3, 0),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, TEX_WIDTH, stage3_icon007),
+	gsSPDisplayList(Tex_Set),
+	gsSPVertex(&vtx_title_stagesel[28], 4, 0), 
+	gsSP1Triangle( 0, 1, 2, 0),
+	gsSP1Triangle( 0, 2, 3, 0),
+	gsSPTexture(2048, 2048, TTDN, 0, 1),
+	gsDPSetCombineMode(G_CC_PRIMITIVE, G_CC_PRIMITIVE),
+	gsSPEndDisplayList(),
+};
+
+Gfx RCP_TitleStageSel4[] = {
+	gsSPDisplayList(Tex_Init),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, TEX_WIDTH, stage4_icon000),
+	gsSPDisplayList(Tex_Set),
+	gsSPVertex(&vtx_title_stagesel[0], 4, 0), 
+	gsSP1Triangle( 0, 1, 2, 0),
+	gsSP1Triangle( 0, 2, 3, 0),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, TEX_WIDTH, stage4_icon001),
+	gsSPDisplayList(Tex_Set),
+	gsSPVertex(&vtx_title_stagesel[4], 4, 0), 
+	gsSP1Triangle( 0, 1, 2, 0),
+	gsSP1Triangle( 0, 2, 3, 0),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, TEX_WIDTH, stage4_icon002),
+	gsSPDisplayList(Tex_Set),
+	gsSPVertex(&vtx_title_stagesel[8], 4, 0), 
+	gsSP1Triangle( 0, 1, 2, 0),
+	gsSP1Triangle( 0, 2, 3, 0),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, TEX_WIDTH, stage4_icon003),
+	gsSPDisplayList(Tex_Set),
+	gsSPVertex(&vtx_title_stagesel[12], 4, 0), 
+	gsSP1Triangle( 0, 1, 2, 0),
+	gsSP1Triangle( 0, 2, 3, 0),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, TEX_WIDTH, stage4_icon004),
+	gsSPDisplayList(Tex_Set),
+	gsSPVertex(&vtx_title_stagesel[16], 4, 0), 
+	gsSP1Triangle( 0, 1, 2, 0),
+	gsSP1Triangle( 0, 2, 3, 0),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, TEX_WIDTH, stage4_icon005),
+	gsSPDisplayList(Tex_Set),
+	gsSPVertex(&vtx_title_stagesel[20], 4, 0), 
+	gsSP1Triangle( 0, 1, 2, 0),
+	gsSP1Triangle( 0, 2, 3, 0),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, TEX_WIDTH, stage4_icon006),
+	gsSPDisplayList(Tex_Set),
+	gsSPVertex(&vtx_title_stagesel[24], 4, 0), 
+	gsSP1Triangle( 0, 1, 2, 0),
+	gsSP1Triangle( 0, 2, 3, 0),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, TEX_WIDTH, stage4_icon007),
+	gsSPDisplayList(Tex_Set),
+	gsSPVertex(&vtx_title_stagesel[28], 4, 0), 
+	gsSP1Triangle( 0, 1, 2, 0),
+	gsSP1Triangle( 0, 2, 3, 0),
+	gsSPTexture(2048, 2048, TTDN, 0, 1),
+	gsDPSetCombineMode(G_CC_PRIMITIVE, G_CC_PRIMITIVE),
+	gsSPEndDisplayList(),
+};
+
+Gfx RCP_TitleStageSel5[] = {
+	gsSPDisplayList(Tex_Init),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, TEX_WIDTH, stage5_icon000),
+	gsSPDisplayList(Tex_Set),
+	gsSPVertex(&vtx_title_stagesel[0], 4, 0), 
+	gsSP1Triangle( 0, 1, 2, 0),
+	gsSP1Triangle( 0, 2, 3, 0),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, TEX_WIDTH, stage5_icon001),
+	gsSPDisplayList(Tex_Set),
+	gsSPVertex(&vtx_title_stagesel[4], 4, 0), 
+	gsSP1Triangle( 0, 1, 2, 0),
+	gsSP1Triangle( 0, 2, 3, 0),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, TEX_WIDTH, stage5_icon002),
+	gsSPDisplayList(Tex_Set),
+	gsSPVertex(&vtx_title_stagesel[8], 4, 0), 
+	gsSP1Triangle( 0, 1, 2, 0),
+	gsSP1Triangle( 0, 2, 3, 0),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, TEX_WIDTH, stage5_icon003),
+	gsSPDisplayList(Tex_Set),
+	gsSPVertex(&vtx_title_stagesel[12], 4, 0), 
+	gsSP1Triangle( 0, 1, 2, 0),
+	gsSP1Triangle( 0, 2, 3, 0),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, TEX_WIDTH, stage5_icon004),
+	gsSPDisplayList(Tex_Set),
+	gsSPVertex(&vtx_title_stagesel[16], 4, 0), 
+	gsSP1Triangle( 0, 1, 2, 0),
+	gsSP1Triangle( 0, 2, 3, 0),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, TEX_WIDTH, stage5_icon005),
+	gsSPDisplayList(Tex_Set),
+	gsSPVertex(&vtx_title_stagesel[20], 4, 0), 
+	gsSP1Triangle( 0, 1, 2, 0),
+	gsSP1Triangle( 0, 2, 3, 0),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, TEX_WIDTH, stage5_icon006),
+	gsSPDisplayList(Tex_Set),
+	gsSPVertex(&vtx_title_stagesel[24], 4, 0), 
+	gsSP1Triangle( 0, 1, 2, 0),
+	gsSP1Triangle( 0, 2, 3, 0),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, TEX_WIDTH, stage5_icon007),
+	gsSPDisplayList(Tex_Set),
+	gsSPVertex(&vtx_title_stagesel[28], 4, 0), 
+	gsSP1Triangle( 0, 1, 2, 0),
+	gsSP1Triangle( 0, 2, 3, 0),
+	gsSPTexture(2048, 2048, TTDN, 0, 1),
+	gsDPSetCombineMode(G_CC_PRIMITIVE, G_CC_PRIMITIVE),
+	gsSPEndDisplayList(),
+};
+
+Gfx RCP_TitleStageSel6[] = {
+	gsSPDisplayList(Tex_Init),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, TEX_WIDTH, stage6_icon000),
+	gsSPDisplayList(Tex_Set),
+	gsSPVertex(&vtx_title_stagesel[0], 4, 0), 
+	gsSP1Triangle( 0, 1, 2, 0),
+	gsSP1Triangle( 0, 2, 3, 0),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, TEX_WIDTH, stage6_icon001),
+	gsSPDisplayList(Tex_Set),
+	gsSPVertex(&vtx_title_stagesel[4], 4, 0), 
+	gsSP1Triangle( 0, 1, 2, 0),
+	gsSP1Triangle( 0, 2, 3, 0),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, TEX_WIDTH, stage6_icon002),
+	gsSPDisplayList(Tex_Set),
+	gsSPVertex(&vtx_title_stagesel[8], 4, 0), 
+	gsSP1Triangle( 0, 1, 2, 0),
+	gsSP1Triangle( 0, 2, 3, 0),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, TEX_WIDTH, stage6_icon003),
+	gsSPDisplayList(Tex_Set),
+	gsSPVertex(&vtx_title_stagesel[12], 4, 0), 
+	gsSP1Triangle( 0, 1, 2, 0),
+	gsSP1Triangle( 0, 2, 3, 0),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, TEX_WIDTH, stage6_icon004),
+	gsSPDisplayList(Tex_Set),
+	gsSPVertex(&vtx_title_stagesel[16], 4, 0), 
+	gsSP1Triangle( 0, 1, 2, 0),
+	gsSP1Triangle( 0, 2, 3, 0),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, TEX_WIDTH, stage6_icon005),
+	gsSPDisplayList(Tex_Set),
+	gsSPVertex(&vtx_title_stagesel[20], 4, 0), 
+	gsSP1Triangle( 0, 1, 2, 0),
+	gsSP1Triangle( 0, 2, 3, 0),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, TEX_WIDTH, stage6_icon006),
+	gsSPDisplayList(Tex_Set),
+	gsSPVertex(&vtx_title_stagesel[24], 4, 0), 
+	gsSP1Triangle( 0, 1, 2, 0),
+	gsSP1Triangle( 0, 2, 3, 0),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, TEX_WIDTH, stage6_icon007),
+	gsSPDisplayList(Tex_Set),
+	gsSPVertex(&vtx_title_stagesel[28], 4, 0), 
+	gsSP1Triangle( 0, 1, 2, 0),
+	gsSP1Triangle( 0, 2, 3, 0),
+	gsSPTexture(2048, 2048, TTDN, 0, 1),
+	gsDPSetCombineMode(G_CC_PRIMITIVE, G_CC_PRIMITIVE),
+	gsSPEndDisplayList(),
+};
+
+Gfx RCP_TitleStageSel7[] = {
+	gsSPDisplayList(Tex_Init),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, TEX_WIDTH, stage7_icon000),
+	gsSPDisplayList(Tex_Set),
+	gsSPVertex(&vtx_title_stagesel[0], 4, 0), 
+	gsSP1Triangle( 0, 1, 2, 0),
+	gsSP1Triangle( 0, 2, 3, 0),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, TEX_WIDTH, stage7_icon001),
+	gsSPDisplayList(Tex_Set),
+	gsSPVertex(&vtx_title_stagesel[4], 4, 0), 
+	gsSP1Triangle( 0, 1, 2, 0),
+	gsSP1Triangle( 0, 2, 3, 0),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, TEX_WIDTH, stage7_icon002),
+	gsSPDisplayList(Tex_Set),
+	gsSPVertex(&vtx_title_stagesel[8], 4, 0), 
+	gsSP1Triangle( 0, 1, 2, 0),
+	gsSP1Triangle( 0, 2, 3, 0),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, TEX_WIDTH, stage7_icon003),
+	gsSPDisplayList(Tex_Set),
+	gsSPVertex(&vtx_title_stagesel[12], 4, 0), 
+	gsSP1Triangle( 0, 1, 2, 0),
+	gsSP1Triangle( 0, 2, 3, 0),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, TEX_WIDTH, stage7_icon004),
+	gsSPDisplayList(Tex_Set),
+	gsSPVertex(&vtx_title_stagesel[16], 4, 0), 
+	gsSP1Triangle( 0, 1, 2, 0),
+	gsSP1Triangle( 0, 2, 3, 0),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, TEX_WIDTH, stage7_icon005),
+	gsSPDisplayList(Tex_Set),
+	gsSPVertex(&vtx_title_stagesel[20], 4, 0), 
+	gsSP1Triangle( 0, 1, 2, 0),
+	gsSP1Triangle( 0, 2, 3, 0),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, TEX_WIDTH, stage7_icon006),
+	gsSPDisplayList(Tex_Set),
+	gsSPVertex(&vtx_title_stagesel[24], 4, 0), 
+	gsSP1Triangle( 0, 1, 2, 0),
+	gsSP1Triangle( 0, 2, 3, 0),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, TEX_WIDTH, stage7_icon007),
+	gsSPDisplayList(Tex_Set),
+	gsSPVertex(&vtx_title_stagesel[28], 4, 0), 
+	gsSP1Triangle( 0, 1, 2, 0),
+	gsSP1Triangle( 0, 2, 3, 0),
+	gsSPTexture(2048, 2048, TTDN, 0, 1),
+	gsDPSetCombineMode(G_CC_PRIMITIVE, G_CC_PRIMITIVE),
+	gsSPEndDisplayList(),
+};
+
+Gfx RCP_TitleStageSel8[] = {
+	gsSPDisplayList(Tex_Init),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, TEX_WIDTH, stage8_icon000),
+	gsSPDisplayList(Tex_Set),
+	gsSPVertex(&vtx_title_stagesel[0], 4, 0), 
+	gsSP1Triangle( 0, 1, 2, 0),
+	gsSP1Triangle( 0, 2, 3, 0),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, TEX_WIDTH, stage8_icon001),
+	gsSPDisplayList(Tex_Set),
+	gsSPVertex(&vtx_title_stagesel[4], 4, 0), 
+	gsSP1Triangle( 0, 1, 2, 0),
+	gsSP1Triangle( 0, 2, 3, 0),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, TEX_WIDTH, stage8_icon002),
+	gsSPDisplayList(Tex_Set),
+	gsSPVertex(&vtx_title_stagesel[8], 4, 0), 
+	gsSP1Triangle( 0, 1, 2, 0),
+	gsSP1Triangle( 0, 2, 3, 0),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, TEX_WIDTH, stage8_icon003),
+	gsSPDisplayList(Tex_Set),
+	gsSPVertex(&vtx_title_stagesel[12], 4, 0), 
+	gsSP1Triangle( 0, 1, 2, 0),
+	gsSP1Triangle( 0, 2, 3, 0),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, TEX_WIDTH, stage8_icon004),
+	gsSPDisplayList(Tex_Set),
+	gsSPVertex(&vtx_title_stagesel[16], 4, 0), 
+	gsSP1Triangle( 0, 1, 2, 0),
+	gsSP1Triangle( 0, 2, 3, 0),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, TEX_WIDTH, stage8_icon005),
+	gsSPDisplayList(Tex_Set),
+	gsSPVertex(&vtx_title_stagesel[20], 4, 0), 
+	gsSP1Triangle( 0, 1, 2, 0),
+	gsSP1Triangle( 0, 2, 3, 0),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, TEX_WIDTH, stage8_icon006),
+	gsSPDisplayList(Tex_Set),
+	gsSPVertex(&vtx_title_stagesel[24], 4, 0), 
+	gsSP1Triangle( 0, 1, 2, 0),
+	gsSP1Triangle( 0, 2, 3, 0),
+	gsDPSetTextureImage(G_IM_FMT_RGBA, G_IM_SIZ_16b, TEX_WIDTH, stage8_icon007),
+	gsSPDisplayList(Tex_Set),
+	gsSPVertex(&vtx_title_stagesel[28], 4, 0), 
+	gsSP1Triangle( 0, 1, 2, 0),
+	gsSP1Triangle( 0, 2, 3, 0),
+	gsSPTexture(2048, 2048, TTDN, 0, 1),
+	gsDPSetCombineMode(G_CC_PRIMITIVE, G_CC_PRIMITIVE),
+	gsSPEndDisplayList(),
+};
