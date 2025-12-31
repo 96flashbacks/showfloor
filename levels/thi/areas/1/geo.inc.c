@@ -15,7 +15,7 @@ const GeoLayout thi_geo_000608[] = {
             GEO_OPEN_NODE(),
                 GEO_CAMERA(1, 0, 2000, 6000, 0, 0, 0, geo_camera_main),
                 GEO_OPEN_NODE(),
-                    GEO_DISPLAY_LIST(LAYER_OPAQUE, thi_seg7_dl_07005260),
+                    GEO_DISPLAY_LIST(LAYER_OPAQUE, big_world_1_dl_mesh),
                     GEO_DISPLAY_LIST(LAYER_OPAQUE, thi_seg7_dl_07006968),
                     GEO_DISPLAY_LIST(LAYER_ALPHA, thi_seg7_dl_07007008),
                     GEO_DISPLAY_LIST(LAYER_TRANSPARENT, thi_seg7_dl_070072E8),
