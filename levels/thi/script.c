@@ -53,7 +53,7 @@ const LevelScript level_thi_entry[] = {
         JUMP_LINK(script_func_local_1),
         JUMP_LINK(script_func_local_5),
         JUMP_LINK(script_func_local_4),*/
-        TERRAIN(/*terrainData*/ thi_seg7_area_1_collision),
+        TERRAIN(/*terrainData*/ big_world_collision),
         //MACRO_OBJECTS(/*objList*/ thi_seg7_area_1_macro_objs),
         SET_BACKGROUND_MUSIC(/*settingsPreset*/ 0x0000, /*seq*/ SEQ_LEVEL_GRASS),
         TERRAIN_TYPE(/*terrainType*/ TERRAIN_GRASS),

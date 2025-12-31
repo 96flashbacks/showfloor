@@ -25,7 +25,7 @@ extern const Gfx thi_seg7_dl_07007930[];
 //extern const Gfx thi_seg7_dl_07009670[];
 //extern const Gfx thi_seg7_dl_07009D50[];
 //extern const Gfx thi_seg7_dl_07009F58[];
-extern const Collision thi_seg7_area_1_collision[];
+extern const Collision big_world_collision[];
 extern const Collision thi_seg7_area_2_collision[];
 extern const Collision thi_seg7_area_3_collision[];
 extern const MacroObject thi_seg7_area_1_macro_objs[];
