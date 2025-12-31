@@ -102,25 +102,26 @@ void unknown_main_func(void) {
 }
 
 #define STACK_CHECK_CODE 0x8877665544332211LL
+#define GET_AS_U64(v) ((u64*)&v)
 
 void InitStackMemory(void) {
 #ifdef DEVELOP
-    gIdleThreadStack[256] = STACK_CHECK_CODE;
-    gThread3Stack[256] = STACK_CHECK_CODE;
-    gThread4Stack[256] = STACK_CHECK_CODE;
-    gThread5Stack[256] = STACK_CHECK_CODE;
+    GET_AS_U64(gIdleThreadStack)[256] = STACK_CHECK_CODE;
+    GET_AS_U64(gThread3Stack)[256] = STACK_CHECK_CODE;
+    GET_AS_U64(gThread4Stack)[256] = STACK_CHECK_CODE;
+    GET_AS_U64(gThread5Stack)[256] = STACK_CHECK_CODE;
 #endif
 }
 
 void CheckStackMemory(void) {
 #ifdef DEVELOP
-    if (gIdleThreadStack[256] != STACK_CHECK_CODE)
+    if (GET_AS_U64(gIdleThreadStack)[256] != STACK_CHECK_CODE)
         rmonpf(("idle thread stack over\n"));
-    if (gThread3Stack[256] != STACK_CHECK_CODE)
+    if (GET_AS_U64(gThread3Stack)[256] != STACK_CHECK_CODE)
         rmonpf(("main thread stack over\n"));
-    if (gThread4Stack[256] != STACK_CHECK_CODE)
+    if (GET_AS_U64(gThread4Stack)[256] != STACK_CHECK_CODE)
         rmonpf(("audio thread stack over\n"));
-    if (gThread5Stack[256] != STACK_CHECK_CODE)
+    if (GET_AS_U64(gThread5Stack)[256] != STACK_CHECK_CODE)
         rmonpf(("graph thread stack over\n"));
 #endif
 }
@@ -403,7 +404,7 @@ void thread1_idle(UNUSED void *arg) {
     }
 }
 
-#if DEVELOP
+#ifdef RAMROM_ARGUMENTS
 /********************************************************************************/
 /*	Read argument.
  */
@@ -440,7 +441,7 @@ static void CheckDebugOption(ArgRecord *argrec) {
 #endif
 
 void main_func(void) {
-#if DEVELOP
+#ifdef RAMROM_ARGUMENTS
     ArgRecord argrec;
 #else
     UNUSED u8 filler[64];
@@ -448,7 +449,7 @@ void main_func(void) {
 
     osInitialize();
     InitStackMemory();
-#if DEVELOP
+#ifdef RAMROM_ARGUMENTS
     ReadArgument(&argrec);
     CheckDebugOption(&argrec);
 #endif

@@ -803,6 +803,9 @@ f64 gd_sqrt_d(f64 x) {
     return sqrtf(x);
 }
 
+#ifdef DEVELOP
+#define gd_printf rmonpf
+#else
 /**
  * Unused
  */
@@ -908,6 +911,7 @@ void gd_printf(const char *format, ...) {
         fatal_printf("printf too long");
     }
 }
+#endif
 
 /* 24A19C -> 24A1D4 */
 void gd_exit(UNUSED s32 code) {

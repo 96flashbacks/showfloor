@@ -32,4 +32,12 @@
 #include <PR/libaudio.h>
 #include <PR/libultra.h>
 
+// stubbed out printf, set to osSyncPrintf if build type was DEVELOP
+extern void osSyncPrintf(const char* fmt, ...);
+#ifdef DEVELOP
+#define rmonpf osSyncPrintf
+#else
+#define rmonpf
+#endif
+
 #endif

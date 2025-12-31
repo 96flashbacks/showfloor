@@ -10,6 +10,9 @@
 // "#define printf(...) /* nothing */" wasn't an option.)
 // This macro is separate from the gd_printf function; one probably
 // forwarded to the other, but it is hard to tell in which direction.
+#ifdef DEVELOP
+#define printf rmonpf
+#else
 #ifdef __GNUC__
 #define printf(...)                                       \
     _Pragma ("GCC diagnostic push")                       \
@@ -18,6 +21,7 @@
     _Pragma ("GCC diagnostic pop")
 #else
 #define printf
+#endif
 #endif
 
 // structs

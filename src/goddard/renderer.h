@@ -43,7 +43,11 @@ f32 get_time_scale(void);
 f64 gd_sin_d(f64 x);
 f64 gd_cos_d(f64 x);
 f64 gd_sqrt_d(f64 x);
+#ifdef DEVELOP
+#define gd_printf rmonpf
+#else
 void gd_printf(const char *format, ...);
+#endif
 void gd_exit(UNUSED s32 code) NORETURN;
 void gd_free(void *ptr);
 void *gd_allocblock(u32 size);

@@ -46,6 +46,15 @@ ifeq ($(GRUCODE),f3d_20E)
   DEFINES += FAST3D_20E=1
 endif
 
+# DEVELOP - fake IS-Viewer presence and print normally disabled messages
+#   1 - includes code & runs it
+#   0 - does not
+DEVELOP ?= 1
+$(eval $(call validate-option,DEVELOP,0 1))
+ifeq ($(DEVELOP),1)
+  DEFINES += DEVELOP=1
+endif
+
 # USE_QEMU_IRIX - when ido is selected, select which way to emulate IRIX programs
 #   1 - use qemu-irix
 #   0 - statically recompile the IRIX programs

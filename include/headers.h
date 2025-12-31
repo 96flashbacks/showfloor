@@ -29,7 +29,7 @@
  * build switches
  */
 #define	DEBUGSW		0
-#define	DEVELOP		0
+// #define	DEVELOP		0
 #define	VERSION_E3	0
 
 /*

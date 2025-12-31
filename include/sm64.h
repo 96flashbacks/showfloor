@@ -399,7 +399,4 @@
 
 #define C_BUTTONS     (U_CBUTTONS | D_CBUTTONS | L_CBUTTONS | R_CBUTTONS   )
 
-// stubbed out printf, set to osSyncPrintf if build type was DEVELOP. needs a full version of libultra for a reimplementation.
-#define rmonpf
-
 #endif // SM64_H

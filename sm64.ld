@@ -267,6 +267,7 @@ SECTIONS
         BUILD_DIR/libultra.a:__osGetCause.o(.text);
         BUILD_DIR/libultra.a:__osAtomicDec.o(.text);
         BUILD_DIR/libultra.a:guLookAtRef.o(.text); /* Fast3DEX2 only */
+        BUILD_DIR/libultra.a:osSyncPrintf.o(.text);
         BUILD_DIR/lib/rsp.o(.text);
 
         /* data */
