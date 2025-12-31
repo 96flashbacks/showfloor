@@ -133,13 +133,21 @@ extern const u8 spooky_0900B000[];
 extern const u8 spooky_0900B800[];
 
 // water
+extern const u8 water_09000000[];
+extern const u8 water_09000800[];
 extern const u8 water_09001800[];
+extern const u8 water_09002800[];
 extern const u8 water_09003800[];
 extern const u8 water_09004800[];
+extern const u8 water_09005800[];
+extern const u8 water_09006000[];
 extern const u8 water_09006800[];
 extern const u8 water_09007800[];
+extern const u8 water_09008800[];
 extern const u8 water_09009000[];
 extern const u8 water_0900A000[];
+extern const u8 water_0900A800[];
+extern const u8 water_0900B800[];
 
 // effect
 extern const u8 *const flower_bubbles_textures_ptr_0B002008[];
