@@ -18,6 +18,32 @@ extern const u8 generic_09004800[];
 extern const u8 generic_09005000[];
 extern const u8 generic_09005800[];
 
+// grass
+extern const u8 grass_09000000[];
+extern const u8 grass_09000800[];
+extern const u8 grass_09001000[];
+extern const u8 grass_09001800[];
+extern const u8 grass_09002000[];
+extern const u8 grass_09002800[];
+extern const u8 grass_09003000[];
+extern const u8 grass_09003800[];
+extern const u8 grass_09004000[];
+extern const u8 grass_09004800[];
+extern const u8 grass_09005000[];
+extern const u8 grass_09005800[];
+extern const u8 grass_09006000[];
+extern const u8 grass_09006800[];
+extern const u8 grass_09007000[];
+extern const u8 grass_09007800[];
+extern const u8 grass_09008000[];
+extern const u8 grass_09008800[];
+extern const u8 grass_09009000[];
+extern const u8 grass_09009800[];
+extern const u8 grass_0900A000[];
+extern const u8 grass_0900A800[];
+extern const u8 grass_0900B000[];
+extern const u8 grass_0900B800[];
+
 // inside
 extern const u8 inside_09000000[];
 extern const u8 inside_09001000[];
