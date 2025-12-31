@@ -14,7 +14,7 @@ extern const GeoLayout thi_geo_00079C[];
 
 // leveldata
 extern const Gfx big_world_1_dl_mesh[];
-extern const Gfx thi_seg7_dl_07006968[];
+extern const Gfx big_world_2_dl_mesh[];
 extern const Gfx thi_seg7_dl_07007008[];
 extern const Gfx thi_seg7_dl_070072E8[];
 extern const Gfx thi_seg7_dl_070073C0[];
