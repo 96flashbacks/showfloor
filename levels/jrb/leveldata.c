@@ -11,4 +11,5 @@
 #include "make_const_nonconst.h"
 #include "levels/jrb/texture.inc.c"
 #include "levels/jrb/areas/1/1/model.inc.c"
+#include "levels/jrb/areas/1/2/model.inc.c"
 #include "levels/jrb/areas/1/collision.inc.c"
