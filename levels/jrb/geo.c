@@ -20,4 +20,3 @@
 #include "levels/jrb/sliding_box/geo.inc.c"
 #include "levels/jrb/wooden_ship/geo.inc.c"
 #include "levels/jrb/areas/1/geo.inc.c"
-#include "levels/jrb/areas/2/geo.inc.c"

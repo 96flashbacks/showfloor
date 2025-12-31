@@ -33,9 +33,4 @@
 #include "levels/jrb/unused_lid/collision.inc.c"
 #include "levels/jrb/areas/1/trajectory.inc.c"
 #include "levels/jrb/areas/1/movtext.inc.c"
-#include "levels/jrb/areas/2/1/model.inc.c"
-#include "levels/jrb/areas/2/2/model.inc.c"
-#include "levels/jrb/areas/2/3/model.inc.c"
-#include "levels/jrb/areas/2/collision.inc.c"
-//#include "levels/jrb/areas/2/macro.inc.c"
-#include "levels/jrb/areas/2/movtext.inc.c"
+
