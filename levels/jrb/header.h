@@ -12,6 +12,7 @@ extern const GeoLayout jrb_geo_000A18[];
 // leveldata
 extern const Gfx sunken_ship_1_dl_mesh[];
 extern const Gfx sunken_ship_2_dl_mesh[];
+extern const Gfx sunken_ship_3_dl_mesh[];
 
 
 extern const Collision sunken_ship_collision[];

@@ -17,6 +17,7 @@ const GeoLayout jrb_geo_000A18[] = {
                 GEO_OPEN_NODE(),
                     GEO_DISPLAY_LIST(LAYER_OPAQUE, sunken_ship_1_dl_mesh),
                     GEO_DISPLAY_LIST(LAYER_OPAQUE, sunken_ship_2_dl_mesh),
+                    GEO_DISPLAY_LIST(LAYER_ALPHA,  sunken_ship_3_dl_mesh),
                     /*GEO_ASM(   0, geo_movtex_pause_control),
                     GEO_ASM(0x1201, geo_movtex_draw_water_regions),
                     GEO_ASM(0x1205, geo_movtex_draw_water_regions),*/
