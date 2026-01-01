@@ -1,3 +1,5 @@
+
+#ifdef POWBUILD
 static const Vtx mountain_8_dl_mesh_vtx_0[40] = {
 	{{ {3227, 1075, -4095}, 0, {-23665, 1008}, {0, 0, 127, 255} }},
 	{{ {4096, 1075, -4095}, 0, {-7397, 1008}, {0, 0, 127, 255} }},
@@ -79,3 +81,50 @@ const Gfx mountain_8_dl_mesh[] = {
 	gsSPTexture(65535, 65535, 0, 0, 0),
 	gsSPEndDisplayList(),
 };
+#else
+static const Vtx mountain_8_dl_mesh_vtx_0[16] = {
+	{{ {3227, 1075, -4095}, 0, {-23665, 1008}, {255, 255, 255, 255} }},
+	{{ {4096, 1124, -4095}, 0, {-7397, -16}, {255, 255, 255, 255} }},
+	{{ {3227, 1124, -4095}, 0, {-23665, -16}, {255, 255, 255, 255} }},
+	{{ {4096, 1075, -4095}, 0, {-7397, 1008}, {255, 255, 255, 255} }},
+	{{ {4096, 1124, -3071}, 0, {12667, -16}, {255, 255, 255, 255} }},
+	{{ {4096, 1075, -3071}, 0, {12667, 1008}, {255, 255, 255, 255} }},
+	{{ {4096, 1075, 1536}, 0, {26945, 1002}, {255, 255, 255, 255} }},
+	{{ {4096, 1124, 1536}, 0, {26945, -15}, {255, 255, 255, 255} }},
+	{{ {4096, 995, 2254}, 0, {12044, -15}, {255, 255, 255, 0} }},
+	{{ {4096, 946, 2254}, 0, {12044, 1002}, {255, 255, 255, 0} }},
+	{{ {4096, 969, 4096}, 0, {-26212, -15}, {255, 255, 255, 0} }},
+	{{ {4096, 920, 4096}, 0, {-26212, 1002}, {255, 255, 255, 0} }},
+	{{ {4096, 920, 4096}, 0, {-1590, 1002}, {255, 255, 255, 0} }},
+	{{ {4096, 969, 4096}, 0, {-1590, -15}, {255, 255, 255, 0} }},
+	{{ {3226, 969, 4096}, 0, {-19655, -15}, {255, 255, 255, 0} }},
+	{{ {3226, 920, 4096}, 0, {-19655, 1002}, {255, 255, 255, 0} }},
+};
+
+static const Gfx mountain_8_dl_mesh_tri_0[] = {
+	gsSPVertex(mountain_8_dl_mesh_vtx_0 + 0, 16, 0),
+	gsSP1Triangle(0, 1, 2, 0),
+	gsSP1Triangle(0, 3, 1, 0),
+	gsSP1Triangle(3, 4, 1, 0),
+	gsSP1Triangle(3, 5, 4, 0),
+	gsSP1Triangle(6, 7, 8, 0),
+	gsSP1Triangle(6, 8, 9, 0),
+	gsSP1Triangle(9, 8, 10, 0),
+	gsSP1Triangle(9, 10, 11, 0),
+	gsSP1Triangle(12, 13, 14, 0),
+	gsSP1Triangle(12, 14, 15, 0),
+	gsSPEndDisplayList(),
+};
+
+const Gfx mountain_8_dl_mesh[] = {
+	gsSPDisplayList(mat_mountain_FenceMaterial),
+	gsSPDisplayList(mountain_8_dl_mesh_tri_0),
+	gsSPDisplayList(mat_revert_mountain_FenceMaterial),
+	gsDPPipeSync(),
+	gsSPSetGeometryMode(G_LIGHTING),
+	gsSPClearGeometryMode(G_TEXTURE_GEN),
+    gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
+	gsSPTexture(65535, 65535, 0, 0, 0),
+	gsSPEndDisplayList(),
+};
+#endif

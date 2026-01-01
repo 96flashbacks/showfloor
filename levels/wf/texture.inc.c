@@ -103,6 +103,15 @@ ALIGNED8 static const u8 wf_seg7_texture_0700AE00[] = {
 #include "levels/wf/20.rgba16.inc.c"
 };
 
+#ifdef POWBUILD
+ALIGNED8 static const u8 wf_seg7_texture_areamap_top[] = {
+#include "levels/wf/areamap_mountain_top_pow.rgba16.inc.c"
+};
+
+ALIGNED8 static const u8 wf_seg7_texture_areamap_bottom[] = {
+#include "levels/wf/areamap_mountain_bottom_pow.rgba16.inc.c"
+};
+#else
 ALIGNED8 static const u8 wf_seg7_texture_areamap_top[] = {
 #include "levels/wf/areamap_mountain_top.rgba16.inc.c"
 };
@@ -110,3 +119,4 @@ ALIGNED8 static const u8 wf_seg7_texture_areamap_top[] = {
 ALIGNED8 static const u8 wf_seg7_texture_areamap_bottom[] = {
 #include "levels/wf/areamap_mountain_bottom.rgba16.inc.c"
 };
+#endif
