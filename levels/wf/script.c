@@ -60,7 +60,9 @@ static const LevelScript script_func_local_3[] = {
     OBJECT(/*model*/ MODEL_LEVEL_GEOMETRY_08, /*pos*/     0, 3584,     0, /*angle*/ 0,    0, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvTower),
     OBJECT(/*model*/ MODEL_LEVEL_GEOMETRY_09, /*pos*/  1280, 3584,   896, /*angle*/ 0,    0, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvBulletBillCannon),
     OBJECT(/*model*/ MODEL_NONE,              /*pos*/     0, 3483,     0, /*angle*/ 0,    0, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvTowerPlatformGroup),
+    #ifdef POWBUILD
     OBJECT(/*model*/ MODEL_HOOT,              /*pos*/  2560,  700,  4608, /*angle*/ 0,    0, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvHoot),
+    #endif
     RETURN(),
 };
 
