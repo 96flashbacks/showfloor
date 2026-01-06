@@ -298,6 +298,7 @@
 #define MODEL_TTM_YELLOW_SMILEY                   0x38        // ttm_geo_000D4C
 #define MODEL_TTM_STAR_SMILEY                     0x39        // ttm_geo_000D84
 #define MODEL_TTM_MOON_SMILEY                     0x3A        // ttm_geo_000DBC
+#define MODEL_CCM_CHIMNEY                         0x3B        // chimney_geo
 
 // actor model IDs
 
