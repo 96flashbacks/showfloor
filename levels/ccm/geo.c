@@ -21,6 +21,7 @@
 #include "levels/ccm/areas/4/geo.inc.c"
 
 #include "levels/ccm/blue_smiley/geo.inc.c"
+#include "levels/ccm/chimney/geo.inc.c"
 #include "levels/ccm/yellow_smiley/geo.inc.c"
 #include "levels/ccm/star_smiley/geo.inc.c"
 #include "levels/ccm/moon_smiley/geo.inc.c"

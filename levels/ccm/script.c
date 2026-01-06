@@ -27,6 +27,8 @@ static const LevelScript script_func_local_1[] = {
 static const LevelScript script_func_local_2[] = {
     OBJECT(/*model*/ MODEL_PENGUIN,          /*pos*/  7296, -4096,  6085, /*angle*/ 0, 0, 0, /*bhvParam*/ 0x01000000, /*bhv*/ bhvTuxiesMother),
     OBJECT(/*model*/ MODEL_STAR,             /*pos*/  5625, -3578,  5379, /*angle*/ 0, 0, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvStar),
+    OBJECT(/*model*/ MODEL_CCM_CHIMNEY,       /*pos*/   7465, -4086, 4977, /*angle*/ 0, 0, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvStaticObject),
+    OBJECT(/*model*/ MODEL_CCM_CHIMNEY,       /*pos*/    2877, 4260, -195, /*angle*/ 0, 0, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvStaticObject),
     RETURN(),
 };
 
@@ -74,11 +76,12 @@ const LevelScript level_ccm_entry[] = {
     LOAD_MODEL_FROM_GEO(MODEL_TTM_YELLOW_SMILEY,     ccm_geo_000D4C),
     LOAD_MODEL_FROM_GEO(MODEL_TTM_STAR_SMILEY,       ccm_geo_000D84),
     LOAD_MODEL_FROM_GEO(MODEL_TTM_MOON_SMILEY,       ccm_geo_000DBC),
+    LOAD_MODEL_FROM_GEO(MODEL_CCM_CHIMNEY,              chimney_geo),
 
     AREA(/*index*/ 1, snow_slider_geo),
         OBJECT(/*model*/ MODEL_NONE, /*pos*/  1846,  5420, -1641, /*angle*/ 0,   0, 0, /*bhvParam*/ 0x000A0000, /*bhv*/ bhvSpinAirborneWarp),
-        OBJECT(/*model*/ MODEL_NONE, /*pos*/  7987, -3993,  4638, /*angle*/ 0,   0, 0, /*bhvParam*/ 0x00140000, /*bhv*/ bhvWarp),
-        OBJECT(/*model*/ MODEL_NONE, /*pos*/  2868,  4220,  -204, /*angle*/ 0, -90, 0, /*bhvParam*/ 0x0F1E0000, /*bhv*/ bhvWarp),
+        OBJECT(/*model*/ MODEL_NONE, /*pos*/   7465, -4086, 4977, /*angle*/ 0,   0, 0, /*bhvParam*/ 0x00140000, /*bhv*/ bhvWarp),
+        OBJECT(/*model*/ MODEL_NONE, /*pos*/    2877, 4260, -195, /*angle*/ 0, -90, 0, /*bhvParam*/ 0x0F1E0000, /*bhv*/ bhvWarp),
         WARP_NODE(/*id*/ WARP_NODE_0A,      /*destLevel*/ LEVEL_CCM,    /*destArea*/ 1, /*destNode*/ WARP_NODE_0A, /*flags*/ WARP_NO_CHECKPOINT),
         WARP_NODE(/*id*/ WARP_NODE_14,      /*destLevel*/ LEVEL_CCM,    /*destArea*/ 1, /*destNode*/ WARP_NODE_1E, /*flags*/ WARP_NO_CHECKPOINT),
         WARP_NODE(/*id*/ WARP_NODE_1E,      /*destLevel*/ LEVEL_CCM,    /*destArea*/ 2, /*destNode*/ WARP_NODE_0A, /*flags*/ WARP_NO_CHECKPOINT),
