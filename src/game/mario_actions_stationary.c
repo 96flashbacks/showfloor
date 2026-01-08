@@ -826,9 +826,11 @@ s32 mario_execute_stationary_action(struct MarioState *m) {
     }
     /* clang-format on */
 
+#ifdef POWBUILD
     if (!cancel && (m->input & INPUT_IN_WATER)) {
         m->particleFlags |= PARTICLE_IDLE_WATER_WAVE;
     }
+#endif
 
     return cancel;
 }

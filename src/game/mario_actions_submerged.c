@@ -261,9 +261,11 @@ static void common_idle_step(struct MarioState *m, s32 animation, s32 arg) {
         m->forwardVel = 12.0f;
     }
 
+#ifdef POWBUILD
     if (m->forwardVel > 2.0f) {
         set_swimming_at_surface_particles(m, PARTICLE_WAVE_TRAIL);
     }
+#endif
 
     if (m->faceAngle[0] < targetPitch) {
         if ((m->faceAngle[0] += 0x200) > targetPitch) {
@@ -293,8 +295,9 @@ static void common_idle_step(struct MarioState *m, s32 animation, s32 arg) {
     } else {
         set_mario_anim_with_accel(m, animation, arg);
     }
-
+#ifdef POWBUILD
     set_swimming_at_surface_particles(m, PARTICLE_IDLE_WATER_WAVE);
+#endif
 }
 
 static s32 act_water_idle(struct MarioState *m) {
@@ -412,7 +415,9 @@ static void common_swimming_step(struct MarioState *m, s16 swimStrength) {
 
     m->marioBodyState->headAngle[0] = approach_s32(m->marioBodyState->headAngle[0], 0, 0x200, 0x200);
 
+#ifdef POWBUILD
     set_swimming_at_surface_particles(m, PARTICLE_WAVE_TRAIL);
+#endif
 }
 
 static void play_swimming_noise(struct MarioState *m) {
@@ -831,14 +836,13 @@ static s32 act_water_plunge(struct MarioState *m) {
 
     stepResult = perform_water_step(m);
 
-    #ifdef POWBUILD
     if (m->actionState == 0) {
         play_sound(SOUND_ACTION_UNKNOWN430, m->marioObj->header.gfx.cameraToObject);
-
+#ifdef POWBUILD
         m->particleFlags |= PARTICLE_WATER_SPLASH;
+#endif
         m->actionState = 1;
     }
-    #endif
 
     if (stepResult == WATER_STEP_HIT_FLOOR || m->vel[1] >= endVSpeed || m->actionTimer > 20) {
         switch (stateFlags) {
@@ -878,8 +882,9 @@ static s32 act_water_plunge(struct MarioState *m) {
             set_mario_animation(m, MARIO_ANIM_FALL_WITH_LIGHT_OBJ);
             break;
     }
-
+#ifdef POWBUILD
     m->particleFlags |= PARTICLE_PLUNGE_BUBBLE;
+#endif
     return FALSE;
 }
 
