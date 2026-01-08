@@ -18,8 +18,8 @@
 #include "levels/thi/areas/1/6/model.inc.c"
 #include "levels/thi/areas/1/7/model.inc.c"
 #include "levels/thi/areas/1/collision.inc.c"
-/*#include "levels/thi/areas/1/macro.inc.c"
-#include "levels/thi/areas/2/macro.inc.c"
+#include "levels/thi/areas/1/macro.inc.c"
+/*#include "levels/thi/areas/2/macro.inc.c"
 #include "levels/thi/areas/3/macro.inc.c"*/
 #include "levels/thi/areas/1/6/collision.inc.c"
 #include "levels/thi/areas/1/trajectory.inc.c"
