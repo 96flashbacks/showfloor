@@ -68,6 +68,7 @@ DECLARE_SEGMENT(clouds_skybox_mio0)
 DECLARE_SEGMENT(bitfs_skybox_mio0)
 DECLARE_SEGMENT(wdw_skybox_mio0)
 DECLARE_SEGMENT(cloud_floor_skybox_mio0)
+DECLARE_SEGMENT(bbh_skybox_mio0)
 DECLARE_SEGMENT(bidw_skybox_mio0)
 DECLARE_SEGMENT(bits_skybox_mio0)
 

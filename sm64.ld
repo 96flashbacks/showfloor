@@ -684,6 +684,7 @@ SECTIONS
     SZP_SEG(bitfs_skybox, 0x0A000000)
     SZP_SEG(wdw_skybox, 0x0A000000)
     SZP_SEG(cloud_floor_skybox, 0x0A000000)
+    SZP_SEG(bbh_skybox, 0x0A000000)
     SZP_SEG(bidw_skybox, 0x0A000000)
 
     // Texture bins

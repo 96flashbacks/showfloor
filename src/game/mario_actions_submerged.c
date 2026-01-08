@@ -831,12 +831,14 @@ static s32 act_water_plunge(struct MarioState *m) {
 
     stepResult = perform_water_step(m);
 
+    #ifdef POWBUILD
     if (m->actionState == 0) {
         play_sound(SOUND_ACTION_UNKNOWN430, m->marioObj->header.gfx.cameraToObject);
 
         m->particleFlags |= PARTICLE_WATER_SPLASH;
         m->actionState = 1;
     }
+    #endif
 
     if (stepResult == WATER_STEP_HIT_FLOOR || m->vel[1] >= endVSpeed || m->actionTimer > 20) {
         switch (stateFlags) {
