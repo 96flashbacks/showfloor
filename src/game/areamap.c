@@ -11,18 +11,25 @@
 #include "level_update.h"
 #include "headers.h"
 
-#include "levels/wf/header.h"
-#include "levels/castle_grounds/header.h"
-#include "levels/castle_courtyard/header.h"
+#include "levels/bbh/header.h"
 #include "levels/ccm/header.h"
+#include "levels/ddd/header.h"
+#include "levels/jrb/header.h"
+#include "levels/thi/header.h"
+#include "levels/castle_grounds/header.h"
 #include "levels/lll/header.h"
 #include "levels/ddd/header.h"
+#include "levels/wf/header.h"
+#include "levels/castle_courtyard/header.h"
 
 /*
  * map pointers
  */
 struct AreaMapData *gMapPtrs[] = {
+    &areaMap_04_01, /* big boo's haunt  */
     &areaMap_05_01, /* cool cool mountain  */
+    &areaMap_12_01, /* jolly roger bay */
+    &areaMap_13_01, /* tiny-huge island */
     &areaMap_16_01, /* castle grounds */
     &areaMap_22_01, /* lethal lava land */
     &areaMap_23_01, /* dire dire docks - area 1 */

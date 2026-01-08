@@ -30,6 +30,7 @@ const GeoLayout thi_geo_000608[] = {
         GEO_ZBUFFER(0),
         GEO_OPEN_NODE(),
             GEO_ASM(0, geo_cannon_circle_base),
+            GEO_ASM(3, AreaMap),
         GEO_CLOSE_NODE(),
     GEO_CLOSE_NODE(),
     GEO_END(),

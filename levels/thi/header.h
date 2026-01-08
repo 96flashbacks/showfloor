@@ -3,6 +3,7 @@
 
 #include "types.h"
 #include "game/moving_texture.h"
+#include "game/areamap.h"
 
 // geo
 extern const GeoLayout thi_geo_0005B0[];
@@ -35,6 +36,7 @@ extern const Collision thi_seg7_collision_top_trap[];
 extern const Trajectory thi_seg7_trajectory_koopa[];
 extern const struct MovtexQuadCollection thi_movtex_area1_water[];
 extern const struct MovtexQuadCollection thi_movtex_area2_water[];
+extern struct AreaMapData areaMap_13_01;
 
 // script
 extern const LevelScript level_thi_entry[];

@@ -3,6 +3,7 @@
 
 #include "types.h"
 #include "game/moving_texture.h"
+#include "game/areamap.h"
 
 // geo
 
@@ -16,6 +17,7 @@ extern const Gfx sunken_ship_3_dl_mesh[];
 
 
 extern const Collision sunken_ship_collision[];
+extern struct AreaMapData areaMap_12_01;
 
 
 // script

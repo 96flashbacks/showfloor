@@ -26,7 +26,7 @@ const GeoLayout courtyard_geo[] = {
       GEO_CLOSE_NODE(),
       GEO_ZBUFFER(0),
       GEO_OPEN_NODE(),
-        GEO_ASM(6, AreaMap),
+        GEO_ASM(9, AreaMap),
       GEO_CLOSE_NODE(),
    GEO_CLOSE_NODE(),
    GEO_END(),

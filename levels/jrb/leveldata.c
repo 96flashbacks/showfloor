@@ -7,6 +7,7 @@
 #include "special_presets.h"
 #include "textures.h"
 #include "dialog_ids.h"
+#include "game/areamap.h"
 
 #include "make_const_nonconst.h"
 #include "levels/jrb/texture.inc.c"
@@ -14,3 +15,5 @@
 #include "levels/jrb/areas/1/2/model.inc.c"
 #include "levels/jrb/areas/1/3/model.inc.c"
 #include "levels/jrb/areas/1/collision.inc.c"
+#include "levels/jrb/areas/1/movtext.inc.c"
+#include "levels/jrb/areas/1/areamap.inc.c"

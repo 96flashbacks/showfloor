@@ -176,6 +176,10 @@ const GeoLayout Bbh_area_1[] = {
 				GEO_CLOSE_NODE(),
 			GEO_CLOSE_NODE(),
 		GEO_CLOSE_NODE(),
+		GEO_ZBUFFER(0),
+		GEO_OPEN_NODE(),
+			GEO_ASM(0, AreaMap),
+		GEO_CLOSE_NODE(),
 	GEO_CLOSE_NODE(),
 	GEO_END(),
 };
