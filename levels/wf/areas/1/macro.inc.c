@@ -1,6 +1,4 @@
 const MacroObject mountain_macro[] = {
-    MACRO_OBJECT(/*preset*/ macro_yellow_coin_1,        /*yaw*/   0, /*pos*/ 1720, 2560,  2250), //top right coin
-    MACRO_OBJECT(/*preset*/ macro_yellow_coin_1,        /*yaw*/   0, /*pos*/ 1740, 2560,  2536), //top left coin
     MACRO_OBJECT(/*preset*/ macro_yellow_coin_1,        /*yaw*/   0, /*pos*/ 1924, 2560,  2558), //bottom left coin
     MACRO_OBJECT(/*preset*/ macro_yellow_coin_1,        /*yaw*/   0, /*pos*/-1164, 1024,  3890), // cannon coin right
     MACRO_OBJECT(/*preset*/ macro_yellow_coin_1,        /*yaw*/   0, /*pos*/-1365, 1024,  3890), // cannon coin middle
