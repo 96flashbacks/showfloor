@@ -62,6 +62,27 @@ extern const u8 inside_09008000[];
 extern const u8 inside_09009000[];
 extern const u8 inside_09009800[];
 
+
+// machine
+extern const u8 machine_09000000[];
+extern const u8 machine_09000800[];
+extern const u8 machine_09001000[];
+extern const u8 machine_09001800[];
+extern const u8 machine_09002000[];
+extern const u8 machine_09002800[];
+extern const u8 machine_09003000[];
+extern const u8 machine_09003800[];
+extern const u8 machine_09004000[];
+extern const u8 machine_09005000[];
+extern const u8 machine_09005800[];
+extern const u8 machine_09006000[];
+extern const u8 machine_09006800[];
+extern const u8 machine_09007000[];
+extern const u8 machine_09007800[];
+extern const u8 machine_09008000[];
+extern const u8 machine_09008400[];
+
+
 // outside
 extern const u8 outside_09000800[];
 extern const u8 outside_09001000[];

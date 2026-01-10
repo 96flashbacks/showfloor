@@ -24,7 +24,7 @@ STUB_LEVEL(  "YUKIYAMA2",      LEVEL_SL,               COURSE_SL,               
 STUB_LEVEL(  "POOL KAI",       LEVEL_WDW,              COURSE_WDW,                                  17000,    0x00, 0x00, 0x00, _,         _)
 DEFINE_LEVEL("TINBOTU", LEVEL_JRB,              COURSE_JRB,      jrb,              water,    20000,    0x00, 0x00, 0x00, _,         _)
 DEFINE_LEVEL("BIG WORLD",      LEVEL_THI,              COURSE_THI,      thi,              grass,    20000,    0x00, 0x00, 0x00, _,         _)
-STUB_LEVEL(  "CLOCK TOWER",    LEVEL_TTC,              COURSE_TTC,                                  18000,    0x00, 0x00, 0x00, _,         _)
+DEFINE_LEVEL("CLOCK TOWER",    LEVEL_TTC,              COURSE_TTC,      ttc,              machine,  18000,    0x18, 0x18, 0x18, _,         _)
 STUB_LEVEL(  "", LEVEL_RR,               COURSE_RR,                                   20000,    0x00, 0x00, 0x00, _,         _)
 DEFINE_LEVEL("MAIN MAP",       LEVEL_CASTLE_GROUNDS,   COURSE_NONE,     castle_grounds,   outside,  25000,    0x00, 0x00, 0x00, _,         _)
 STUB_LEVEL(  "YOKO SCRL", LEVEL_BITDW,            COURSE_BITDW,                                16000,    0x00, 0x00, 0x00, _,         _)
