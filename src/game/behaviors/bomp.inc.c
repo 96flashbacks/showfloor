@@ -27,7 +27,11 @@ void bhv_small_bomp_loop(void) {
 
             if (o->oTimer == 15.0) {
                 o->oAction = BOMP_ACT_EXTEND;
+                #ifdef POWBUILD
                 o->oForwardVel = 40.0f;
+                #else
+                o->oForwardVel = 32.0f;
+                #endif
             }
             break;
 
@@ -36,8 +40,12 @@ void bhv_small_bomp_loop(void) {
                 o->oPosX = 3830.0f;
                 o->oForwardVel = 0;
             }
-
-            if (o->oTimer == 60) {
+            #ifdef POWBUILD
+            if (o->oTimer == 60)
+            #else 
+            if (o->oTimer == 16.0)
+            #endif
+            {
                 o->oAction = BOMP_ACT_RETRACT;
                 o->oForwardVel = 10.0f;
                 o->oMoveAngleYaw -= 0x8000;
