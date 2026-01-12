@@ -427,7 +427,7 @@ s32 update_spiral_stairs_camera(struct Camera *c, Vec3f, Vec3f);
 typedef s32 (*CameraTransition)(struct Camera *c, Vec3f, Vec3f);
 CameraTransition sModeTransitions[] = { NULL,
                                         update_radial_camera,
-                                        NULL,
+                                        update_outward_radial_camera,
                                         update_behind_mario_camera,
                                         update_mario_camera,
                                         unused_update_mode_5_camera,
@@ -823,6 +823,11 @@ void radial_camera_move(struct Camera *c) {
         maxAreaYaw = DEGREES(25); // causes the camera to stop sooner when entering snow slider
     }
 
+    if (c->mode == CAMERA_MODE_OUTWARD_RADIAL) {
+        areaDistX = -areaDistX;
+        areaDistZ = -areaDistZ;
+    }
+
     // Avoid obstructing walls
     avoidStatus = rotate_camera_around_walls(c, c->pos, &avoidYaw, 0x400);
     if (avoidStatus == 3) {
@@ -900,6 +905,9 @@ void radial_camera_move(struct Camera *c) {
                 */
                 rotateSpeed = 777.f * sins(turnYaw);
                 camera_approach_s16_symmetric_bool(&sModeOffsetYaw, yawOffset, rotateSpeed);
+            }
+            if (c->mode == CAMERA_MODE_OUTWARD_RADIAL) {
+                sModeOffsetYaw = offset_yaw_outward_radial(c, atan2s(areaDistZ, areaDistX));
             }
         }
     }
@@ -1017,6 +1025,51 @@ void mode_8_directions_camera(struct Camera *c) {
     c->pos[0] = pos[0];
     c->pos[2] = pos[2];
     sAreaYawChange = sAreaYaw - oldAreaYaw;
+    set_camera_height(c, pos[1]);
+}
+
+/**
+ * Updates the camera in outward radial mode.
+ * sModeOffsetYaw is calculated in radial_camera_move, which calls offset_yaw_outward_radial
+ */
+s32 update_outward_radial_camera(struct Camera *c, Vec3f focus, Vec3f pos) {
+    f32 xDistFocToMario = sMarioCamState->pos[0] - c->areaCenX;
+    f32 zDistFocToMario = sMarioCamState->pos[2] - c->areaCenZ;
+    s16 camYaw = atan2s(zDistFocToMario, xDistFocToMario) + sModeOffsetYaw + DEGREES(180);
+    s16 pitch = look_down_slopes(camYaw);
+    f32 baseDist = 1000.f;
+    // A base offset of 80.f is ~= Mario's eye height
+    f32 yOff = 80.f;
+    f32 posY;
+    f32 focusY;
+
+    sAreaYaw = camYaw - sModeOffsetYaw - DEGREES(180);
+    calc_y_to_curr_floor(&posY, 1.f, 200.f, &focusY, 0.9f, 200.f);
+    focus_on_mario(focus, pos, posY + yOff, focusY + yOff, sLakituDist + baseDist, pitch, camYaw);
+
+    return camYaw;
+}
+
+/**
+ * Input and updates for the outward radial mode.
+ */
+void mode_outward_radial_camera(struct Camera *c) {
+    Vec3f pos;
+    s16 oldAreaYaw = sAreaYaw;
+
+    if (gCameraMovementFlags & CAM_MOVING_INTO_MODE) {
+        update_yaw_and_dist_from_c_up(c);
+    }
+    radial_camera_input_default(c);
+    radial_camera_move(c);
+    lakitu_zoom(400.f, 0x900);
+    c->nextYaw = update_outward_radial_camera(c, c->focus, pos);
+    c->pos[0] = pos[0];
+    c->pos[2] = pos[2];
+    sAreaYawChange = sAreaYaw - oldAreaYaw;
+    if (sMarioCamState->action == ACT_RIDING_HOOT) {
+        pos[1] += 500.f;
+    }
     set_camera_height(c, pos[1]);
 }
 
@@ -2599,6 +2652,10 @@ void update_camera(struct Camera *c) {
                 mode_lakitu_camera(c);
                 break;
 
+            case CAMERA_MODE_OUTWARD_RADIAL:
+                mode_outward_radial_camera(c);
+                break;
+
             case CAMERA_MODE_FREE_ROAM:
                 mode_lakitu_camera(c);
                 break;
@@ -3959,6 +4016,48 @@ void shake_camera_roll(s16 *roll) {
     }
 }
 
+/**
+ * Add an offset to the camera's yaw, used in levels that are inside a rectangular building, like the
+ * pyramid or TTC.
+ */
+s32 offset_yaw_outward_radial(struct Camera *c, s16 areaYaw) {
+    s16 yawGoal = DEGREES(60);
+    s16 yaw = sModeOffsetYaw;
+    f32 distFromAreaCenter;
+    Vec3f areaCenter;
+    s16 dYaw;
+    switch (gCurrLevelArea) {
+        case AREA_TTC:
+            areaCenter[0] = c->areaCenX;
+            areaCenter[1] = sMarioCamState->pos[1];
+            areaCenter[2] = c->areaCenZ;
+            distFromAreaCenter = calc_abs_dist(areaCenter, sMarioCamState->pos);
+            if (800.f > distFromAreaCenter) {
+                yawGoal = 0x3800;
+            }
+            break;
+    }
+    dYaw = gMarioStates[0].forwardVel / 32.f * 128.f;
+
+    if (sAreaYawChange < 0) {
+        camera_approach_s16_symmetric_bool(&yaw, -yawGoal, dYaw);
+    }
+    if (sAreaYawChange > 0) {
+        camera_approach_s16_symmetric_bool(&yaw, yawGoal, dYaw);
+    }
+    // When the final yaw is out of [-60,60] degrees, approach yawGoal faster than dYaw will ever be,
+    // making the camera lock in one direction until yawGoal drops below 60 (or Mario presses a C button)
+    if (yaw < -DEGREES(60)) {
+        //! Maybe they meant to reverse yawGoal's sign?
+        camera_approach_s16_symmetric_bool(&yaw, -yawGoal, 0x200);
+    }
+    if (yaw > DEGREES(60)) {
+        //! Maybe they meant to reverse yawGoal's sign?
+        camera_approach_s16_symmetric_bool(&yaw, yawGoal, 0x200);
+    }
+    return yaw;
+}
+
 void play_camera_buzz_if_cdown(void) {
     if (gPlayer1Controller->buttonPressed & D_CBUTTONS) {
         play_sound_button_change_blocked();
@@ -4815,6 +4914,9 @@ s16 camera_course_processing(struct Camera *c) {
                 }
                 //! @bug this does nothing
                 gLakituState.defMode = CAMERA_MODE_FREE_ROAM;
+                break;
+            case AREA_TTC:
+                set_mode_if_not_set_by_surface(c, CAMERA_MODE_OUTWARD_RADIAL);
                 break;
         }
     }

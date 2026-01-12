@@ -11,6 +11,10 @@ extern const Gfx bullet_bill_seg5_dl_0500E678[];
 extern const Gfx bullet_bill_seg5_dl_0500E730[];
 extern const Gfx bullet_bill_seg5_dl_0500E8A8[];
 
+// heave_ho
+extern Hierarchy RCP_HmsEnemyomurobo[];
+extern AnimePtr omurobo_anime[];
+
 // hoot
 extern const GeoLayout hoot_geo[];
 extern const Gfx hoot_seg5_dl_05001B80[];

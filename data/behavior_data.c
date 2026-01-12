@@ -30,6 +30,7 @@
 #include "levels/ddd/header.h"
 #include "levels/wf/header.h"
 #include "levels/ccm/header.h"
+#include "levels/ttc/header.h"
 
 #include "make_const_nonconst.h"
 #include "behavior_data.h"
@@ -1126,6 +1127,32 @@ const BehaviorScript bhvPiranhaPlantWakingBubbles[] = {
         CALL_NATIVE(bhv_piranha_plant_waking_bubbles_loop),
     END_REPEAT(),
     DEACTIVATE(),
+};
+
+const BehaviorScript bhvHeaveHo[] = {
+    BEGIN(OBJ_LIST_GENACTOR),
+    OR_INT(oFlags, (OBJ_FLAG_COMPUTE_ANGLE_TO_MARIO | OBJ_FLAG_HOLDABLE | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    LOAD_ANIMATIONS(oAnimations, omurobo_anime),
+    ANIMATE(0),
+    SET_OBJ_PHYSICS(/*Wall hitbox radius*/ 200, /*Gravity*/ -400, /*Bounciness*/ -50, /*Drag strength*/ 1000, /*Friction*/ 1000, /*Buoyancy*/ 600, /*Unused*/ 0, 0),
+    SPAWN_OBJ(/*Model*/ MODEL_NONE, /*Behavior*/ bhvHeaveHoThrowMario),
+    SET_INT(oInteractType, INTERACT_GRABBABLE),
+    SET_INT(oInteractionSubtype, INT_SUBTYPE_NOT_GRABBABLE | INT_SUBTYPE_GRABS_MARIO),
+    SET_HITBOX(/*Radius*/ 120, /*Height*/ 100),
+    SET_HOME(),
+    SET_INT(oIntangibleTimer, 0),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_heave_ho_loop),
+    END_LOOP(),
+};
+
+const BehaviorScript bhvHeaveHoThrowMario[] = {
+    BEGIN(OBJ_LIST_GENACTOR),
+    OR_INT(oFlags, (OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    BILLBOARD(),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_heave_ho_throw_mario_loop),
+    END_LOOP(),
 };
 
 const BehaviorScript bhvBulletBill[] = {
@@ -2501,5 +2528,116 @@ const BehaviorScript bhvBird[] = {
     SCALE(/*Unused*/ 0, /*Field*/ 70),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_bird_update),
+    END_LOOP(),
+};
+
+const BehaviorScript bhvTTCRotatingSolid[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    OR_INT(oFlags, (OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    SET_HOME(),
+    SET_FLOAT(oCollisionDistance, 450),
+    CALL_NATIVE(bhv_ttc_rotating_solid_init),
+    SET_INT(oTTCRotatingSolidNumTurns, 1),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_ttc_rotating_solid_update),
+        CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+};
+
+const BehaviorScript bhvTTCPendulum[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    LOAD_COLLISION_DATA(ttc_seg7_collision_clock_pendulum),
+    OR_INT(oFlags, (OBJ_FLAG_COMPUTE_ANGLE_TO_MARIO | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    SET_FLOAT(oCollisionDistance, 1500),
+    CALL_NATIVE(bhv_ttc_pendulum_init),
+    SET_FLOAT(oTTCPendulumAccelDir, 1),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_ttc_pendulum_update),
+        CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+};
+
+const BehaviorScript bhvTTCTreadmill[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    OR_INT(oFlags, (OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    SET_FLOAT(oCollisionDistance, 750),
+    CALL_NATIVE(bhv_ttc_treadmill_init),
+    DELAY(1),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_ttc_treadmill_update),
+        CALL_NATIVE(cur_obj_compute_vel_xz),
+        CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+};
+
+const BehaviorScript bhvTTCMovingBar[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    LOAD_COLLISION_DATA(ttc_seg7_collision_sliding_surface),
+    OR_INT(oFlags, (OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    SET_HOME(),
+    SET_FLOAT(oCollisionDistance, 550),
+    CALL_NATIVE(bhv_ttc_moving_bar_init),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_ttc_moving_bar_update),
+        CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+};
+
+const BehaviorScript bhvTTCCog[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    OR_INT(oFlags, (OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    SET_FLOAT(oCollisionDistance, 400),
+    CALL_NATIVE(bhv_ttc_cog_init),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_ttc_cog_update),
+        CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+};
+
+const BehaviorScript bhvTTCPitBlock[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    OR_INT(oFlags, (OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    SET_HOME(),
+    SET_FLOAT(oCollisionDistance, 350),
+    CALL_NATIVE(bhv_ttc_pit_block_init),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_ttc_pit_block_update),
+        CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+};
+
+const BehaviorScript bhvTTCElevator[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    LOAD_COLLISION_DATA(ttc_seg7_collision_clock_platform),
+    OR_INT(oFlags, (OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    SET_HOME(),
+    SET_FLOAT(oCollisionDistance, 400),
+    CALL_NATIVE(bhv_ttc_elevator_init),
+    SET_FLOAT(oTTCElevatorDir, 1),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_ttc_elevator_update),
+        CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+};
+
+const BehaviorScript bhvTTC2DRotator[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    LOAD_COLLISION_DATA(ttc_seg7_collision_clock_main_rotation),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    SET_FLOAT(oCollisionDistance, 1800),
+    CALL_NATIVE(bhv_ttc_2d_rotator_init),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_ttc_2d_rotator_update),
+    END_LOOP(),
+};
+
+const BehaviorScript bhvTTCSpinner[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    LOAD_COLLISION_DATA(ttc_seg7_collision_rotating_clock_platform2),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    SET_FLOAT(oCollisionDistance, 450),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_ttc_spinner_update),
+        CALL_NATIVE(load_object_collision_model),
     END_LOOP(),
 };

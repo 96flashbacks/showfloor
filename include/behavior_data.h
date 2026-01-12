@@ -86,6 +86,8 @@ extern const BehaviorScript bhvAnotherTiltingPlatform[];
 extern const BehaviorScript bhvSquarishPathMoving[];
 extern const BehaviorScript bhvPiranhaPlantBubble[];
 extern const BehaviorScript bhvPiranhaPlantWakingBubbles[];
+extern const BehaviorScript bhvHeaveHo[];
+extern const BehaviorScript bhvHeaveHoThrowMario[];
 extern const BehaviorScript bhvBulletBill[];
 extern const BehaviorScript bhvWhitePuffSmoke[];
 extern const BehaviorScript bhvBowserTailAnchor[];
@@ -225,6 +227,15 @@ extern const BehaviorScript bhvSmallPiranhaFlame[];
 extern const BehaviorScript bhvFireSpitter[];
 extern const BehaviorScript bhvFlyguyFlame[];
 extern const BehaviorScript bhvBird[];
+extern const BehaviorScript bhvTTCRotatingSolid[];
+extern const BehaviorScript bhvTTCPendulum[];
+extern const BehaviorScript bhvTTCTreadmill[];
+extern const BehaviorScript bhvTTCMovingBar[];
+extern const BehaviorScript bhvTTCCog[];
+extern const BehaviorScript bhvTTCPitBlock[];
+extern const BehaviorScript bhvTTCElevator[];
+extern const BehaviorScript bhvTTC2DRotator[];
+extern const BehaviorScript bhvTTCSpinner[];
 extern const BehaviorScript bhvBubba[];
 
 #endif // BEHAVIOR_DATA_H

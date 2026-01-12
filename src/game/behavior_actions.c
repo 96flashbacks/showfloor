@@ -126,6 +126,8 @@ Gfx *geo_move_mario_part_from_parent(s32 run, UNUSED struct GraphNode *node, Mat
     return NULL;
 }
 
+#include "behaviors/heave_ho.inc.c"
+
 // not in behavior file
 // n is the number of objects to spawn, r if the rate of change of phase (frequency?)
 void spawn_sparkle_particles(s32 n, s32 a1, s32 a2, s32 r) {

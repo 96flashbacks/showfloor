@@ -20,6 +20,7 @@
 #include "level_update.h"
 #include "levels/ccm/header.h"
 #include "levels/lll/header.h"
+#include "levels/ttc/header.h"
 #include "mario.h"
 #include "mario_actions_cutscene.h"
 #include "memory.h"
@@ -57,12 +58,53 @@ f32 sObjSavedPosX;
 f32 sObjSavedPosY;
 f32 sObjSavedPosZ;
 
+//! Although having no return value, this function
+//! must be u32 to match other functions on -O2.
+static BAD_RETURN(u32) obj_perform_position_op(s32 op) {
+    switch (op) {
+        case POS_OP_SAVE_POSITION:
+            sObjSavedPosX = o->oPosX;
+            sObjSavedPosY = o->oPosY;
+            sObjSavedPosZ = o->oPosZ;
+            break;
+
+        case POS_OP_COMPUTE_VELOCITY:
+            o->oVelX = o->oPosX - sObjSavedPosX;
+            o->oVelY = o->oPosY - sObjSavedPosY;
+            o->oVelZ = o->oPosZ - sObjSavedPosZ;
+            break;
+
+        case POS_OP_RESTORE_POSITION:
+            o->oPosX = sObjSavedPosX;
+            o->oPosY = sObjSavedPosY;
+            o->oPosZ = sObjSavedPosZ;
+            break;
+    }
+}
+
+static void obj_set_dist_from_home(f32 distFromHome) {
+    o->oPosX = o->oHomeX + distFromHome * coss(o->oMoveAngleYaw);
+    o->oPosZ = o->oHomeZ + distFromHome * sins(o->oMoveAngleYaw);
+}
+
 static void obj_compute_vel_from_move_pitch(f32 speed) {
     o->oForwardVel = speed * coss(o->oMoveAnglePitch);
     o->oVelY = speed * -sins(o->oMoveAnglePitch);
 }
 
 static s32 clamp_s16(s16 *value, s16 minimum, s16 maximum) {
+    if (*value <= minimum) {
+        *value = minimum;
+    } else if (*value >= maximum) {
+        *value = maximum;
+    } else {
+        return FALSE;
+    }
+
+    return TRUE;
+}
+
+static s32 clamp_f32(f32 *value, f32 minimum, f32 maximum) {
     if (*value <= minimum) {
         *value = minimum;
     } else if (*value >= maximum) {
@@ -98,6 +140,16 @@ static s32 obj_move_pitch_approach(s16 target, s16 delta) {
     return FALSE;
 }
 
+static s32 obj_face_yaw_approach(s16 targetYaw, s16 deltaYaw) {
+    o->oFaceAngleYaw = approach_s16_symmetric(o->oFaceAngleYaw, targetYaw, deltaYaw);
+
+    if ((s16) o->oFaceAngleYaw == targetYaw) {
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
 static s32 obj_face_roll_approach(s16 targetRoll, s16 deltaRoll) {
     o->oFaceAngleRoll = approach_s16_symmetric(o->oFaceAngleRoll, targetRoll, deltaRoll);
 
@@ -116,6 +168,14 @@ static void obj_roll_to_match_yaw_turn(s16 targetYaw, s16 maxRoll, s16 rollSpeed
 
 static s16 random_linear_offset(s16 base, s16 range) {
     return base + (s16) (range * random_float());
+}
+
+static s16 random_mod_offset(s16 base, s16 step, s16 mod) {
+    return base + step * (random_u16() % mod);
+}
+
+static s16 obj_random_fixed_turn(s16 delta) {
+    return o->oMoveAngleYaw + (s16) random_sign() * delta;
 }
 
 static void obj_die_if_health_non_positive(void) {
@@ -222,6 +282,15 @@ struct ObjectHitbox sPiranhaPlantFireHitbox = {
 
 #include "behaviors/flame.inc.c"
 #include "behaviors/horizontal_grindel.inc.c"
+#include "behaviors/ttc_rotating_solid.inc.c"
+#include "behaviors/ttc_pendulum.inc.c"
+#include "behaviors/ttc_treadmill.inc.c" // TODO
+#include "behaviors/ttc_moving_bar.inc.c"
+#include "behaviors/ttc_cog.inc.c"
+#include "behaviors/ttc_pit_block.inc.c"
+#include "behaviors/ttc_elevator.inc.c"
+#include "behaviors/ttc_2d_rotator.inc.c"
+#include "behaviors/ttc_spinner.inc.c"
 
 void obj_set_speed_to_zero(void) {
     o->oForwardVel = o->oVelY = 0.0f;
