@@ -17,17 +17,13 @@
 
 static const LevelScript script_func_local_1[] = {
     OBJECT(/*model*/ MODEL_NONE,   /*pos*/ -1080,  -840,  1573, /*angle*/ 0,   0, 0, /*bhvParam*/ BPARAM2(86), /*bhv*/ bhvPoleGrabbing),
-    OBJECT(/*model*/ MODEL_THWOMP, /*pos*/  1919,  6191,  1919, /*angle*/ 0, 225, 0, /*bhvParam*/ BPARAM2(0),  /*bhv*/ bhvThwomp),
+    OBJECT(/*model*/ MODEL_THWOMP, /*pos*/ -1580,  3072,   988, /*angle*/ 0, 225, 0, /*bhvParam*/ BPARAM2(0),  /*bhv*/ bhvThwomp),
     RETURN(),
 };
 
 static const LevelScript script_func_local_2[] = {
-    OBJECT_WITH_ACTS(/*model*/ MODEL_STAR,   /*pos*/ -1450, -1130, -1050, /*angle*/ 0,   0, 0, /*bhvParam*/ BPARAM1(STAR_INDEX_ACT_1), /*bhv*/ bhvStar,                 /*acts*/ ALL_ACTS),
-    OBJECT_WITH_ACTS(/*model*/ MODEL_STAR,   /*pos*/ -1850,   300,  -950, /*angle*/ 0,   0, 0, /*bhvParam*/ BPARAM1(STAR_INDEX_ACT_2), /*bhv*/ bhvStar,                 /*acts*/ ALL_ACTS),
-    OBJECT_WITH_ACTS(/*model*/ MODEL_STAR,   /*pos*/ -1300, -2250, -1300, /*angle*/ 0,   0, 0, /*bhvParam*/ BPARAM1(STAR_INDEX_ACT_3), /*bhv*/ bhvStar,                 /*acts*/ ALL_ACTS),
-    OBJECT_WITH_ACTS(/*model*/ MODEL_STAR,   /*pos*/  2200,  7300,  2210, /*angle*/ 0,   0, 0, /*bhvParam*/ BPARAM1(STAR_INDEX_ACT_4), /*bhv*/ bhvStar,                 /*acts*/ ALL_ACTS),
-    OBJECT_WITH_ACTS(/*model*/ MODEL_STAR,   /*pos*/ -1050,  2400,  -790, /*angle*/ 0,   0, 0, /*bhvParam*/ BPARAM1(STAR_INDEX_ACT_5), /*bhv*/ bhvStar,                 /*acts*/ ALL_ACTS),
-    //OBJECT_WITH_ACTS(/*model*/ MODEL_NONE,   /*pos*/  1815, -3200,   800, /*angle*/ 0,   0, 0, /*bhvParam*/ BPARAM1(STAR_INDEX_ACT_6), /*bhv*/ bhvHiddenRedCoinStar, /*acts*/ ALL_ACTS),
+    OBJECT(/*model*/ MODEL_STAR, /*pos*/ -1260, -2280, -1260, /*angle*/ 0,   0, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvStar),
+    OBJECT(/*model*/ MODEL_STAR, /*pos*/ -1140, 6200, -780,   /*angle*/ 0,   0, 0, /*bhvParam*/ 0x01000000, /*bhv*/ bhvStar),
     RETURN(),
 };
 
@@ -51,7 +47,7 @@ const LevelScript level_ttc_entry[] = {
     LOAD_MODEL_FROM_GEO(MODEL_TTC_PUSH_BLOCK,        ttc_geo_0002C8),
     LOAD_MODEL_FROM_GEO(MODEL_TTC_ROTATING_HEXAGON,  ttc_geo_0002E0),
     LOAD_MODEL_FROM_GEO(MODEL_TTC_ROTATING_TRIANGLE, ttc_geo_0002F8),
-    LOAD_MODEL_FROM_GEO(MODEL_TTC_PIT_BLOCK,         ttc_geo_000310),
+    LOAD_MODEL_FROM_GEO(MODEL_TTC_PIT_BLOCK,         ttc_geo_000328),
     LOAD_MODEL_FROM_GEO(MODEL_TTC_PIT_BLOCK_UNUSED,  ttc_geo_000328),
     LOAD_MODEL_FROM_GEO(MODEL_TTC_ELEVATOR_PLATFORM, ttc_geo_000340),
     LOAD_MODEL_FROM_GEO(MODEL_TTC_CLOCK_HAND,        ttc_geo_000358),
@@ -60,20 +56,20 @@ const LevelScript level_ttc_entry[] = {
     LOAD_MODEL_FROM_GEO(MODEL_TTC_LARGE_GEAR,        ttc_geo_0003A0),
 
     AREA(/*index*/ 1, ttc_geo_0003B8),
-        OBJECT(/*model*/ MODEL_NONE, /*pos*/ 1417, -3822, -548, /*angle*/ 0, 316, 0, /*bhvParam*/ BPARAM2(WARP_NODE_0A), /*bhv*/ bhvSpinAirborneWarp),
+        OBJECT(/*model*/ MODEL_NONE, /*pos*/ 1046, -4822, -266, /*angle*/ 0, 192, 0, /*bhvParam*/ BPARAM2(WARP_NODE_0A), /*bhv*/ bhvSpinAirborneWarp),
         WARP_NODE(/*id*/ WARP_NODE_0A,      /*destLevel*/ LEVEL_TTC,    /*destArea*/ 1, /*destNode*/ WARP_NODE_0A, /*flags*/ WARP_NO_CHECKPOINT),
         WARP_NODE(/*id*/ WARP_NODE_SUCCESS, /*destLevel*/ LEVEL_CASTLE, /*destArea*/ 2, /*destNode*/ WARP_NODE_35, /*flags*/ WARP_NO_CHECKPOINT),
         WARP_NODE(/*id*/ WARP_NODE_DEATH,   /*destLevel*/ LEVEL_CASTLE, /*destArea*/ 2, /*destNode*/ WARP_NODE_67, /*flags*/ WARP_NO_CHECKPOINT),
         JUMP_LINK(script_func_local_1),
         JUMP_LINK(script_func_local_2),
         TERRAIN(/*terrainData*/ ttc_seg7_collision_level),
-        //MACRO_OBJECTS(/*objList*/ ttc_seg7_macro_objs),
+        MACRO_OBJECTS(/*objList*/ ttc_seg7_macro_objs),
         SET_BACKGROUND_MUSIC(/*settingsPreset*/ 0x0001, /*seq*/ SEQ_LEVEL_SLIDE),
         TERRAIN_TYPE(/*terrainType*/ TERRAIN_STONE),
     END_AREA(),
 
     FREE_LEVEL_POOL(),
-    MARIO_POS(/*area*/ 1, /*yaw*/ 316, /*pos*/ 1417, -4822, -548),
+    MARIO_POS(/*area*/ 1, /*yaw*/ 192, /*pos*/ 1417, -4822, -548),
     CALL(/*arg*/ 0, /*func*/ lvl_init_or_update),
     CALL_LOOP(/*arg*/ 1, /*func*/ lvl_init_or_update),
     CLEAR_LEVEL(),

@@ -22,9 +22,9 @@ extern const GeoLayout ttc_geo_0003A0[];
 extern const GeoLayout ttc_geo_0003B8[];
 
 // leveldata
-extern const Gfx ttc_seg7_dl_0700AD38[];
-extern const Gfx ttc_seg7_dl_0700B1D8[];
-extern const Gfx ttc_seg7_dl_0700E878[];
+extern const Gfx ttc_1_dl_mesh[];
+extern const Gfx ttc_2_dl_mesh[];
+extern const Gfx ttc_3_dl_mesh[];
 extern const Gfx ttc_seg7_dl_0700ECB8[];
 extern const Gfx ttc_seg7_dl_0700EFE0[];
 extern const Gfx ttc_seg7_dl_0700F760[];

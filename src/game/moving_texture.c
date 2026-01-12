@@ -120,15 +120,23 @@ float gPaintingMarioYEntry = 0.0f;
 /// Variable to ensure the initial Wet-Dry World water level is set only once
 s32 gWDWWaterLevelSet = FALSE;
 
+extern u8 ttc_yellow_triangle[];
+
 /**
  * An array for converting a movtex texture id to a pointer that can
  * be passed to gDPSetTextureImage.
  */
 u8 *gMovtexIdToTexture[] = { texture_waterbox_water, texture_waterbox_mist, texture_waterbox_jrb_water,
-                             texture_waterbox_unknown_water, texture_waterbox_lava };
+                             texture_waterbox_unknown_water, texture_waterbox_lava,
+                             ttc_yellow_triangle, ttc_yellow_triangle, ttc_yellow_triangle };
 
 extern Gfx castle_grounds_dl_waterfall[];
 extern s16 castle_grounds_movtex_tris_waterfall[];
+extern s16 ttc_movtex_tris_big_surface_treadmill[];
+extern Gfx ttc_dl_surface_treadmill_begin[];
+extern Gfx ttc_dl_surface_treadmill_end[];
+extern Gfx ttc_dl_surface_treadmill[];
+extern s16 ttc_movtex_tris_small_surface_treadmill[];
 
 /**
  * MovtexObjects that have no color attributes per vertex (though the mesh
@@ -141,6 +149,26 @@ struct MovtexObject gMovtexNonColored[] = {
       dl_waterbox_rgba16_begin, dl_waterbox_end, castle_grounds_dl_waterfall, 0xff, 0xff, 0xff, 0xb4,
       LAYER_TRANSPARENT_INTER },
 
+    { 0x00000000, 0x00000000, 0, NULL, NULL, NULL, NULL, 0x00, 0x00, 0x00, 0x00, 0x00000000 },
+};
+
+/**
+ * MovtexObjects that have color attributes per vertex.
+ */
+struct MovtexObject gMovtexColored[] = {
+    { MOVTEX_TREADMILL_BIG, TEX_YELLOW_TRI_TTC, 12, ttc_movtex_tris_big_surface_treadmill,
+      ttc_dl_surface_treadmill_begin, ttc_dl_surface_treadmill_end, ttc_dl_surface_treadmill, 0xff,
+      0xff, 0xff, 0xff, LAYER_OPAQUE },
+    { MOVTEX_TREADMILL_SMALL, TEX_YELLOW_TRI_TTC, 12, ttc_movtex_tris_small_surface_treadmill,
+      ttc_dl_surface_treadmill_begin, ttc_dl_surface_treadmill_end, ttc_dl_surface_treadmill, 0xff,
+      0xff, 0xff, 0xff, LAYER_OPAQUE },
+    { 0x00000000, 0x00000000, 0, NULL, NULL, NULL, NULL, 0x00, 0x00, 0x00, 0x00, 0x00000000 },
+};
+
+/**
+ * Treated identically to gMovtexColored.
+ */
+struct MovtexObject gMovtexColored2[] = {
     { 0x00000000, 0x00000000, 0, NULL, NULL, NULL, NULL, 0x00, 0x00, 0x00, 0x00, 0x00000000 },
 };
 
@@ -627,4 +655,98 @@ Gfx *geo_movtex_draw_nocolor(s32 callContext, struct GraphNode *node, UNUSED Mat
         }
     }
     return gfx;
+}
+
+/**
+ * Function for a geo node that draws a MovtexObject in the gMovtexColored list,
+ * but it doesn't call update_moving_texture_offset since that happens in
+ * geo_movtex_update_horizontal. This is for when a MovtexObject has multiple
+ * instances (like TTC treadmills) so you don't want the animation speed to
+ * increase the more instances there are.
+ */
+Gfx *geo_movtex_draw_colored_no_update(s32 callContext, struct GraphNode *node, UNUSED Mat4 mtx) {
+    s32 i;
+    s16 *movtexVerts;
+    struct GraphNodeGenerated *asGenerated;
+    Gfx *gfx = NULL;
+
+    if (callContext == GEO_CONTEXT_RENDER) {
+        i = 0;
+        asGenerated = (struct GraphNodeGenerated *) node;
+        while (gMovtexColored[i].movtexVerts != 0) {
+            if (gMovtexColored[i].geoId == asGenerated->parameter) {
+                asGenerated->fnNode.node.flags =
+                    (asGenerated->fnNode.node.flags & 0xFF) | (gMovtexColored[i].layer << 8);
+                movtexVerts = segmented_to_virtual(gMovtexColored[i].movtexVerts);
+                gfx = movtex_gen_list(movtexVerts, &gMovtexColored[i], MOVTEX_LAYOUT_COLORED);
+                break;
+            }
+            i++;
+        }
+    }
+    return gfx;
+}
+
+/**
+ * Exact copy of geo_movtex_draw_colored_no_update, but now using the gMovtexColored2 array.
+ * Used for the sand pits in SSL, both outside and inside the pyramid.
+ */
+Gfx *geo_movtex_draw_colored_2_no_update(s32 callContext, struct GraphNode *node, UNUSED Mat4 mtx) {
+    s32 i;
+    s16 *movtexVerts;
+    struct GraphNodeGenerated *asGenerated;
+    Gfx *gfx = NULL;
+
+    if (callContext == GEO_CONTEXT_RENDER) {
+        i = 0;
+        asGenerated = (struct GraphNodeGenerated *) node;
+        while (gMovtexColored2[i].movtexVerts != 0) {
+            if (gMovtexColored2[i].geoId == asGenerated->parameter) {
+                asGenerated->fnNode.node.flags =
+                    (asGenerated->fnNode.node.flags & 0xFF) | (gMovtexColored2[i].layer << 8);
+                movtexVerts = segmented_to_virtual(gMovtexColored2[i].movtexVerts);
+                gfx = movtex_gen_list(movtexVerts, &gMovtexColored2[i], MOVTEX_LAYOUT_COLORED);
+                break;
+            }
+            i++;
+        }
+    }
+    return gfx;
+}
+
+/**
+ * Make textures move horizontally by simply adding a number to the 's' texture coordinate.
+ * Used for:
+ * - treadmills in Tick Tock Clock
+ * - sand pits outside and inside the pyramid in Shifting Sand
+ * Note that the drawing for these happen in different nodes with functions
+ * geo_movtex_draw_colored_no_update and geo_movtex_draw_colored_2_no_update.
+ * Usually the updating happens in the same function that draws it, but in
+ * these cases the same model has multiple instances, and you don't want the
+ * model to update multiple times.
+ * Note that the final TTC only has one big treadmill though.
+ */
+Gfx *geo_movtex_update_horizontal(s32 callContext, struct GraphNode *node, UNUSED Mat4 mtx) {
+    void *movtexVerts;
+
+    if (callContext == GEO_CONTEXT_RENDER) {
+        struct GraphNodeGenerated *asGenerated = (struct GraphNodeGenerated *) node;
+
+        switch (asGenerated->parameter) {
+            case MOVTEX_SSL_SAND_PIT_OUTSIDE:
+                movtexVerts = segmented_to_virtual(ttc_movtex_tris_small_surface_treadmill);
+                break;
+            case MOVTEX_SSL_SAND_PIT_PYRAMID:
+                movtexVerts = segmented_to_virtual(ttc_movtex_tris_big_surface_treadmill);
+                break;
+            case MOVTEX_TREADMILL_BIG:
+                movtexVerts = segmented_to_virtual(ttc_movtex_tris_big_surface_treadmill);
+                break;
+            case MOVTEX_TREADMILL_SMALL:
+                movtexVerts = segmented_to_virtual(ttc_movtex_tris_small_surface_treadmill);
+                break;
+        }
+        update_moving_texture_offset(movtexVerts, MOVTEX_ATTR_COLORED_S);
+    }
+    return NULL;
 }
