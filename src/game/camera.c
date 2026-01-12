@@ -786,8 +786,6 @@ void radial_camera_move(struct Camera *c) {
     UNUSED s32 unused2 = 0;
     f32 areaDistX = sMarioCamState->pos[0] - c->areaCenX;
     f32 areaDistZ = sMarioCamState->pos[2] - c->areaCenZ;
-    s16 turnYawDeg;
-    s16 fuckYaw;
     UNUSED s32 filler;
 
     // The angle from the camera to the pivot subtracted from mario's angle
