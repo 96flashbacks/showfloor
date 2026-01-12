@@ -64,7 +64,7 @@ const LevelScript level_ttc_entry[] = {
         JUMP_LINK(script_func_local_2),
         TERRAIN(/*terrainData*/ ttc_seg7_collision_level),
         MACRO_OBJECTS(/*objList*/ ttc_seg7_macro_objs),
-        SET_BACKGROUND_MUSIC(/*settingsPreset*/ 0x0001, /*seq*/ SEQ_LEVEL_SLIDE),
+        SET_BACKGROUND_MUSIC(/*settingsPreset*/ 0x0001, /*seq*/ SEQ_LEVEL_GRASS),
         TERRAIN_TYPE(/*terrainType*/ TERRAIN_STONE),
     END_AREA(),
 
