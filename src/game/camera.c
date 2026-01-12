@@ -786,6 +786,8 @@ void radial_camera_move(struct Camera *c) {
     UNUSED s32 unused2 = 0;
     f32 areaDistX = sMarioCamState->pos[0] - c->areaCenX;
     f32 areaDistZ = sMarioCamState->pos[2] - c->areaCenZ;
+    s16 turnYawDeg;
+    s16 fuckYaw;
     UNUSED s32 filler;
 
     // The angle from the camera to the pivot subtracted from mario's angle
@@ -897,8 +899,18 @@ void radial_camera_move(struct Camera *c) {
                    rotateSpeed is based on the direction and velocity of mario. if you are moving
                    parallel to the angle from the camera to the pivot, the camera will NOT turn.
                    if you are moving adjacent to it, the camera WILL turn.
+
+                   01/12/26 edit: the rotation speed peaks when mario runs diagonally (45 degrees)
+                   relative to the camera pivot. the speed decreases as mario runs more perpendicular,
+                   or at least that's kind of how this is supposed to work
+
+                   the cam's rotatespeed is SUPPOSED to peak at 1024 when mario runs diagonally (as seen
+                   in footage) but i cannot get that to be the case without completely screwing up the
+                   wf and lll spawn camera angles...... xd. 
+                   
+                   so for now it'll have fuckass coefficients tuned to match said them.
                 */
-                rotateSpeed = 777.f * sins(turnYaw);
+                rotateSpeed = 1024.f * sins(turnYaw) * (0.52f + 0.48f * coss(turnYaw));
                 camera_approach_s16_symmetric_bool(&sModeOffsetYaw, yawOffset, rotateSpeed);
             }
         }
