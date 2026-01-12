@@ -908,7 +908,7 @@ void radial_camera_move(struct Camera *c) {
                    in footage) but i cannot get that to be the case without completely screwing up the
                    wf and lll spawn camera angles...... xd. 
                    
-                   so for now it'll have fuckass coefficients tuned to match said them.
+                   so for now it'll have fuckass coefficients tuned to match them.
                 */
                 rotateSpeed = 1024.f * sins(turnYaw) * (0.52f + 0.48f * coss(turnYaw));
                 camera_approach_s16_symmetric_bool(&sModeOffsetYaw, yawOffset, rotateSpeed);
