@@ -27,7 +27,7 @@ const GeoLayout water_land_area_1_geo[] = {
       GEO_CLOSE_NODE(),
       GEO_ZBUFFER(0),
       GEO_OPEN_NODE(),
-         GEO_ASM(3, AreaMap),
+         GEO_ASM(6, AreaMap),
       GEO_CLOSE_NODE(),
    GEO_CLOSE_NODE(),
    GEO_END(),

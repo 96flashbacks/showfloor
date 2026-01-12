@@ -61,12 +61,14 @@ struct Skybox sSkyBoxInfo[2];
 
 typedef const u8 *const SkyboxTexture[80];
 
+extern SkyboxTexture bbh_skybox_ptrlist;
 extern SkyboxTexture bidw_skybox_ptrlist;
 extern SkyboxTexture bitfs_skybox_ptrlist;
 extern SkyboxTexture ccm_skybox_ptrlist;
 extern SkyboxTexture cloud_floor_skybox_ptrlist;
 extern SkyboxTexture water_skybox_ptrlist;
 extern SkyboxTexture wdw_skybox_ptrlist;
+extern SkyboxTexture thi_skybox_ptrlist;
 
 SkyboxTexture *sSkyboxTextures[10] = {
     &water_skybox_ptrlist,
@@ -75,7 +77,7 @@ SkyboxTexture *sSkyboxTextures[10] = {
     &cloud_floor_skybox_ptrlist,
     &ccm_skybox_ptrlist,
     NULL, /* we can clean this table up later */
-    NULL,
+    &bbh_skybox_ptrlist,
     &bidw_skybox_ptrlist,
     NULL,
     NULL,

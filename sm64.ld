@@ -684,6 +684,7 @@ SECTIONS
     SZP_SEG(bitfs_skybox, 0x0A000000)
     SZP_SEG(wdw_skybox, 0x0A000000)
     SZP_SEG(cloud_floor_skybox, 0x0A000000)
+    SZP_SEG(bbh_skybox, 0x0A000000)
     SZP_SEG(bidw_skybox, 0x0A000000)
 
     // Texture bins
@@ -694,6 +695,7 @@ SECTIONS
     SZP_SEG(outside, 0x09000000)
     SZP_SEG(inside, 0x09000000)
     SZP_SEG(effect, 0x0B000000)
+    SZP_SEG(machine, 0x09000000)
     SZP_SEG(grass, 0x09000000)
 
 #define STUB_LEVEL(_0, _1, _2, _3, _4, _5, _6, _7, _8)

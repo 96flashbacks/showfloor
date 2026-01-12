@@ -100,9 +100,9 @@ s32 check_common_hold_idle_cancels(struct MarioState *m) {
 }
 
 s32 act_idle(struct MarioState *m) {
-    if (!(m->actionArg & 1) && m->health < 0x500) {
+    /*if (!(m->actionArg & 1) && m->health < 0x500) {
         return set_mario_action(m, ACT_PANTING, 0);
-    }
+    }*/
 
     if (check_common_idle_cancels(m)) {
         return TRUE;
@@ -826,9 +826,11 @@ s32 mario_execute_stationary_action(struct MarioState *m) {
     }
     /* clang-format on */
 
+#ifdef POWBUILD
     if (!cancel && (m->input & INPUT_IN_WATER)) {
         m->particleFlags |= PARTICLE_IDLE_WATER_WAVE;
     }
+#endif
 
     return cancel;
 }

@@ -3,6 +3,7 @@
 
 #include "types.h"
 #include "game/moving_texture.h"
+#include "game/areamap.h"
 
 // geo
 extern const GeoLayout Bbh_dl_0_geo[];
@@ -91,6 +92,7 @@ extern const Collision bbh_seg7_collision_merry_go_round[];
 extern const Collision bbh_seg7_collision_coffin[];
 extern const struct MovtexQuadCollection bbh_movtex_merry_go_round_water_entrance[];
 extern const struct MovtexQuadCollection bbh_movtex_merry_go_round_water_side[];
+extern struct AreaMapData areaMap_04_01;
 
 // script
 extern const LevelScript level_bbh_entry[];

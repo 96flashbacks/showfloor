@@ -22,8 +22,8 @@ static const LevelScript script_func_local_1[] = {
 };
 
 static const LevelScript script_func_local_2[] = {
-    OBJECT(/*model*/ MODEL_MR_I, /*pos*/ 1705, -13, -1650, 0, 90, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvMrI),
-    OBJECT(/*model*/ MODEL_MR_I, /*pos*/ -524, 0, -794, 0, 90, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvMrI),
+    OBJECT(/*model*/ MODEL_MR_I, /*pos*/ 1705, 0, -1650, 0, 90, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvMrI),
+    OBJECT(/*model*/ MODEL_MR_I, /*pos*/ -524, 0, -805, 0, 90, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvMrI),
     OBJECT(/*model*/ MODEL_MR_I, /*pos*/ -610, 0, -571, 0, -125, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvMrI),
     OBJECT(/*model*/ MODEL_MR_I, /*pos*/ -710, 0, -366, 0, -90, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvMrI),
     OBJECT(/*model*/ MODEL_MR_I, /*pos*/ -288, 0, -191, 0, -50, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvMrI),
@@ -32,15 +32,15 @@ static const LevelScript script_func_local_2[] = {
 };
 
 static const LevelScript script_func_local_3[] = {
-    OBJECT(/*model*/ MODEL_BOO,                        /*pos*/ 2049, 0, 680, 0, -180, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvBoo),
-    OBJECT(/*model*/ MODEL_BOO,                        /*pos*/ 2185, 0, 120, 0, -180, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvBoo),
-    OBJECT(/*model*/ MODEL_BOO,                        /*pos*/ 1675, 0, 341, 0, 0, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvBoo),
+    OBJECT(/*model*/ MODEL_BOO,                        /*pos*/ 2248, 50, 465, 0, -140, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvBoo),
+    OBJECT(/*model*/ MODEL_BOO,                        /*pos*/ 1845, 50, -40, 0, -180, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvBoo),
+    OBJECT(/*model*/ MODEL_BOO,                        /*pos*/ 1453, 50, 716, 0, 0, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvBoo),
     OBJECT(/*model*/ MODEL_BOO,                        /*pos*/ -1244, 0, 874, 0, 0, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvBoo),
-    OBJECT(/*model*/ MODEL_BOO,                        /*pos*/ -676, 0, 1742, 0, -180, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvBoo),
-    OBJECT(/*model*/ MODEL_BOO,                        /*pos*/ 699, 0, -2125, 0, -180, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvBoo),
-    OBJECT(/*model*/ MODEL_BOO,                        /*pos*/ 699, 0, -1118, 0, 90, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvBoo),
-    OBJECT(/*model*/ MODEL_BOO,                        /*pos*/ 2299, 0, -2118, 0, 135, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvBoo),
-    OBJECT(/*model*/ MODEL_BOO,                        /*pos*/ 1099, 0, -1118, 0, -55, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvBoo),
+    OBJECT(/*model*/ MODEL_BOO,                        /*pos*/ -676, 0, 1742, 0, 0, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvBoo),
+    OBJECT(/*model*/ MODEL_BOO,                        /*pos*/ 660, 50, -2090, 0, 90, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvBoo),
+    OBJECT(/*model*/ MODEL_BOO,                        /*pos*/ 660, 50, -1210, 0, 90, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvBoo),
+    OBJECT(/*model*/ MODEL_BOO,                        /*pos*/ 2299, 50, -2118, 0, 135, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvBoo),
+    OBJECT(/*model*/ MODEL_BOO,                        /*pos*/ 1099, 50, -1118, 0, -55, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvBoo),
     RETURN(),
 };
 
@@ -77,7 +77,7 @@ const LevelScript level_bbh_entry[] = {
     LOAD_MODEL_FROM_GEO(MODEL_BBH_WOODEN_TOMB,            geo_bbh_000658),*/
 
     AREA(/*index*/ 1, Bbh_area_1),
-        JUMP_LINK(script_func_local_1),
+        //JUMP_LINK(script_func_local_1),
         JUMP_LINK(script_func_local_2),
         JUMP_LINK(script_func_local_3),
         JUMP_LINK(script_func_local_4),
@@ -85,7 +85,7 @@ const LevelScript level_bbh_entry[] = {
         OBJECT(/*model*/ MODEL_CASTLE_DOOR,       /*pos*/ 1727, 0, -939, 0, -180, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvDoor),
         OBJECT(/*model*/ MODEL_CASTLE_DOOR,       /*pos*/ -935, 0, -517, 0, 90, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvDoor),
         OBJECT(/*model*/ MODEL_CASTLE_DOOR,       /*pos*/ -583, 0, 939, 0, -180, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvDoor),
-        OBJECT(/*model*/ MODEL_CASTLE_DOOR,       /*pos*/ 939, 0, 517, 0, -95, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvDoor),
+        OBJECT(/*model*/ MODEL_CASTLE_DOOR,       /*pos*/ 939, 0, 517, 0, -90, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvDoor),
         OBJECT(/*model*/ MODEL_CASTLE_DOOR,       /*pos*/ 939, 0, 1573, 0, 90, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvDoor),
         OBJECT(/*model*/ MODEL_CASTLE_DOOR,       /*pos*/ 931, 0, -1683, 0, 90, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvDoor),
         OBJECT(/*model*/ MODEL_CASTLE_DOOR,       /*pos*/ -1287, 0, 59, 0, 0, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvDoor),
@@ -93,7 +93,6 @@ const LevelScript level_bbh_entry[] = {
         MACRO_OBJECTS(/*objList*/ bbh_seg7_macro_objs),
         ROOMS(/*surfaceRooms*/ bbh_seg7_rooms),
         SHOW_DIALOG(/*index*/ 0x00, DIALOG_098),
-        SET_BACKGROUND_MUSIC(/*settingsPreset*/ 0x0006, /*seq*/ SEQ_LEVEL_SPOOKY),
         TERRAIN_TYPE(/*terrainType*/ TERRAIN_SPOOKY),
     END_AREA(),
 

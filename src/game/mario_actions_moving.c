@@ -1632,7 +1632,9 @@ s32 mario_execute_moving_action(struct MarioState *m) {
     /* clang-format on */
 
     if (!cancel && (m->input & INPUT_IN_WATER)) {
+#ifdef POWBUILD
         m->particleFlags |= PARTICLE_WAVE_TRAIL;
+#endif
         m->particleFlags &= ~PARTICLE_DUST;
     }
 

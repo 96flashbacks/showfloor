@@ -7,6 +7,7 @@
 #include "special_presets.h"
 #include "textures.h"
 #include "dialog_ids.h"
+#include "game/areamap.h"
 
 #include "make_const_nonconst.h"
 #include "levels/thi/texture.inc.c"
@@ -18,9 +19,10 @@
 #include "levels/thi/areas/1/6/model.inc.c"
 #include "levels/thi/areas/1/7/model.inc.c"
 #include "levels/thi/areas/1/collision.inc.c"
-/*#include "levels/thi/areas/1/macro.inc.c"
-#include "levels/thi/areas/2/macro.inc.c"
+#include "levels/thi/areas/1/macro.inc.c"
+/*#include "levels/thi/areas/2/macro.inc.c"
 #include "levels/thi/areas/3/macro.inc.c"*/
 #include "levels/thi/areas/1/6/collision.inc.c"
 #include "levels/thi/areas/1/trajectory.inc.c"
 #include "levels/thi/areas/1/movtext.inc.c"
+#include "levels/thi/areas/1/areamap.inc.c"

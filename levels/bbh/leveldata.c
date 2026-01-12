@@ -7,6 +7,7 @@
 #include "special_presets.h"
 #include "textures.h"
 #include "dialog_ids.h"
+#include "game/areamap.h"
 
 #include "make_const_nonconst.h"
 #include "levels/bbh/texture.inc.c"
@@ -70,3 +71,4 @@
 #include "levels/bbh/merry_go_round/collision.inc.c"
 #include "levels/bbh/coffin/collision.inc.c"
 #include "levels/bbh/areas/1/movtext.inc.c"
+#include "levels/bbh/areas/1/areamap.inc.c"

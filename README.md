@@ -63,6 +63,11 @@ For more questions, join our [Discord server](https://discord.gg/ynabeAS4eD).
 - stalechilibeans
 - `K-Dubs΄
 
+#### Music & Audio
+- `K-Dubs΄
+- 1up Guy
+- stalechilibeans
+
 #### Research & Playtesting
 - Scraps
 - Sleekflash16
@@ -88,6 +93,7 @@ For more questions, join our [Discord server](https://discord.gg/ynabeAS4eD).
 
 #### Music & Audio
 - skibidigurt
+- toonjoey
 - RetroDev
 - emlimate
 - XKoop7321

@@ -32,3 +32,11 @@ ALIGNED8 static const Texture bbh_seg7_texture_07003400[] = {
 ALIGNED8 static const Texture bbh_seg7_texture_07004400[] = {
 #include "levels/bbh/6.rgba16.inc.c"
 };
+
+ALIGNED8 static const u8 bbh_seg7_texture_areamap_top[] = {
+#include "levels/bbh/areamap_ghost_house_top.rgba16.inc.c"
+};
+
+ALIGNED8 static const u8 bbh_seg7_texture_areamap_bottom[] = {
+#include "levels/bbh/areamap_ghost_house_bottom.rgba16.inc.c"
+};

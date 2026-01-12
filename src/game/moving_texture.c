@@ -357,6 +357,7 @@ Gfx *movtex_gen_quads_id(s16 id, s16 y, void *movetexQuadsSegmented) {
 }
 
 extern u8 castle_movtex_water[];
+extern u8 jrb_movtex_area1_water[];
 extern u8 thi_movtex_area1_water[];
 extern u8 castle_grounds_movtex_water[];
 extern u8 ddd_movtex_area1_water[];
@@ -371,6 +372,8 @@ void *get_quad_collection_from_id(u32 id) {
     switch (id) {
         case CASTLE_MOVTEX_WATER:
             return castle_movtex_water;
+        case JRB_MOVTEX_WATER:
+            return jrb_movtex_area1_water;
         case THI_MOVTEX_AREA1_WATER:
             return thi_movtex_area1_water;
         case CASTLE_GROUNDS_MOVTEX_WATER:
