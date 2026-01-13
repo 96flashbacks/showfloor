@@ -62,3 +62,52 @@ ALIGNED8 const Texture generic_09005000[] = {
 ALIGNED8 const Texture generic_09005800[] = {
 #include "textures/generic/generic_textures.05800.rgba16.inc.c"
 };
+// 0x09006000
+ALIGNED8 const Texture generic_09006000[] = {
+#include "textures/generic/generic_textures.06000.rgba16.inc.c"
+};
+
+// 0x09007000
+ALIGNED8 const Texture generic_09007000[] = {
+#include "textures/generic/generic_textures.07000.rgba16.inc.c"
+};
+
+// 0x09007800
+ALIGNED8 const Texture generic_09007800[] = {
+#include "textures/generic/generic_textures.07800.rgba16.inc.c"
+};
+
+// 0x09008000
+ALIGNED8 const Texture generic_09008000[] = {
+#include "textures/generic/generic_textures.08000.rgba16.inc.c"
+};
+
+// 0x09008800
+ALIGNED8 const Texture generic_09008800[] = {
+#include "textures/generic/generic_textures.08800.rgba16.inc.c"
+};
+
+// 0x09009000
+ALIGNED8 const Texture generic_09009000[] = {
+#include "textures/generic/generic_textures.09000.rgba16.inc.c"
+};
+
+// 0x09009800
+ALIGNED8 const Texture generic_09009800[] = {
+#include "textures/generic/generic_textures.09800.rgba16.inc.c"
+};
+
+// 0x0900A000
+ALIGNED8 const Texture generic_0900A000[] = {
+#include "textures/generic/generic_textures.0A000.rgba16.inc.c"
+};
+
+// 0x0900A800
+ALIGNED8 const Texture generic_0900A800[] = {
+#include "textures/generic/generic_textures.0A800.rgba16.inc.c"
+};
+
+// 0x0900B000
+ALIGNED8 const Texture generic_0900B000[] = {
+#include "textures/generic/generic_textures.0B000.ia16.inc.c"
+};

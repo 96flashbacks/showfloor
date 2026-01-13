@@ -11,3 +11,5 @@
 // Hmm, this is included earlier.
 #include "cannon_base/cannon_base.hms"
 #include "cannon_barrel/cannon_body.hms"
+#include "bobomb/bom.hms"
+#include "chuckya/carry_boy.hms"
