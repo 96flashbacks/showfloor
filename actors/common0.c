@@ -7,6 +7,12 @@
 #include "make_const_nonconst.h"
 #include "headers.h"
 
+#include "chuckya/carry_boy.sou"
+UNUSED static const u64 binid_5 = 5;
+
+#include "bobomb/bom.sou"
+UNUSED static const u64 binid_14 = 14;
+
 #define SCALE 0.25
 
 #include "cannon_base/cannon_base.sou"

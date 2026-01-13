@@ -177,7 +177,7 @@ s8 turn_obj_away_from_steep_floor(struct Surface *objFloor, f32 floorY, f32 objV
 
     if (objFloor == NULL) {
         //! (OOB Object Crash) TRUNC overflow exception after 36 minutes
-        o->oMoveAngleYaw += 32767.999200000002; /* Â¯\_(??¿½?¿½?)_/Â¯ */
+        o->oMoveAngleYaw += 32767.999200000002; /* Â¯\_(??ï¿½ï¿½?ï¿½ï¿½?)_/Â¯ */
         return FALSE;
     }
 
@@ -739,7 +739,6 @@ s8 obj_lava_death(void) {
         deathSmoke->oPosZ += random_float() * 20.0f;
         deathSmoke->oForwardVel = random_float() * 10.0f;
     }
-
     return FALSE;
 }
 
@@ -794,3 +793,4 @@ UNUSED s8 debug_sequence_tracker(s16 debugInputSequence[]) {
 #include "behaviors/sound_ambient.inc.c"
 #include "behaviors/sound_sand.inc.c"
 #include "behaviors/spawn_star.inc.c"
+#include "behaviors/bobomb.inc.c"

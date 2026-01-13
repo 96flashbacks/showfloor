@@ -57,6 +57,7 @@ static s16 sBooHitRotations[] = {
 #include "behaviors/rotating_platform.inc.c"
 #include "behaviors/warp.inc.c"
 #include "behaviors/white_puff_explode.inc.c"
+#include "behaviors/chuckya.inc.c"
 
 // not in behavior file
 static struct SpawnParticlesInfo sMistParticles = {

@@ -1,0 +1,98 @@
+/*==================================================================================================
+		carryboy Shape Hms Data 																			   
+====================================================================================================*/
+
+extern Gfx RCP_carry_boy_carry9[];
+extern Gfx RCP_carry_boy_carry0[];
+extern Gfx RCP_carry_boy_carry1[];
+extern Gfx RCP_carry_boy_carry8[];
+extern Gfx RCP_carry_boy_carry7[];
+extern Gfx RCP_carry_boy_carry5[];
+extern Gfx RCP_carry_boy_carry2[];
+extern Gfx RCP_carry_boy_carry6[];
+extern Gfx RCP_carry_boy_carry3[];
+extern Gfx RCP_carry_boy_carry4[];
+/*-------------------------------------------------------------*/
+/*	Hms data 			                                       */
+/*-------------------------------------------------------------*/
+
+Hierarchy RCP_HmsEnemycarryboy[] = {
+ hmsShadow(100,150,1)
+ hmsBegin()
+ hmsScale(0.25f)
+    hmsBegin()
+      hmsJoint(RM_SURF,NULL,0,0,0)
+      hmsBegin()
+         hmsJoint(RM_SURF,NULL,0,0,0)  /* ,jnt47_1,(28) */
+         hmsBegin()
+            hmsJoint(RM_SURF,NULL,281,0,0)  /* ,chn46,(27) */
+            hmsBegin()
+               hmsJoint(RM_SURF,NULL,0,0,0)  /* ,jnt46_1,(26) */
+               hmsBegin()
+                  hmsJoint(RM_SURF,RCP_carry_boy_carry9,0,0,0)  /* ,carry_grip,(25) */
+                  hmsJoint(RM_SURF,NULL,113,-152,0)  /* ,chn45,(24) */
+                  hmsBegin()
+                     hmsJoint(RM_SURF,NULL,0,0,0)  /* ,jnt45_1,(11) */
+                     hmsBegin()
+                        hmsJoint(RM_SURF,NULL,74,0,0)  /* ,jnt45_2,(8) */
+                        hmsBegin()
+                           hmsJoint(RM_SURF,NULL,96,0,0)  /* ,eff45,(5) */
+                           hmsBegin()
+                              hmsJoint(RM_SURF,RCP_carry_boy_carry0,0,0,0)  /* ,carry_hairA,(0) */
+                           hmsEnd()
+                        hmsEnd()
+                        hmsJoint(RM_SURF,RCP_carry_boy_carry1,0,0,0)  /* ,carry_hairB,(1) */
+                     hmsEnd()
+                  hmsEnd()
+                  hmsJoint(RM_SURF,RCP_carry_boy_carry8,0,0,0)  /* ,carry_eye,(23) */
+                  hmsJoint(RM_SURF,RCP_carry_boy_carry7,0,0,0)  /* ,carry_body,(22) */
+                  hmsJoint(RM_SURF,NULL,1,0,0)  /* ,chn29,(21) */
+                  hmsBegin()
+                     hmsJoint(RM_SURF,NULL,0,0,0)  /* ,jnt29_1,(18) */
+                     hmsBegin()
+                        hmsJoint(RM_SURF,NULL,209,0,0)  /* ,eff29,(16) */
+                        hmsBegin()
+                           hmsJoint(RM_SURF,RCP_carry_boy_carry5,0,0,0)  /* ,carry_Larm,(14) */
+                           hmsJoint(RM_SURF,NULL,0,0,0)  /* ,chn42,(12) */
+                           hmsBegin()
+                              hmsJoint(RM_SURF,NULL,0,0,0)  /* ,jnt42_1,(9) */
+                              hmsBegin()
+                                 hmsJoint(RM_SURF,NULL,95,0,0)  /* ,eff42,(6) */
+                                 hmsBegin()
+                                    hmsJoint(RM_SURF,RCP_carry_boy_carry2,0,0,0)  /* ,carry_Lhand,(2) */
+                                 hmsEnd()
+                              hmsEnd()
+                           hmsEnd()
+                        hmsEnd()
+                     hmsEnd()
+                  hmsEnd()
+                  hmsJoint(RM_SURF,NULL,1,0,0)  /* ,chn31,(20) */
+                  hmsBegin()
+                     hmsJoint(RM_SURF,NULL,0,0,0)  /* ,jnt31_1,(19) */
+                     hmsBegin()
+                        hmsJoint(RM_SURF,NULL,209,0,0)  /* ,eff31,(17) */
+                        hmsBegin()
+                           hmsJoint(RM_SURF,RCP_carry_boy_carry6,0,0,0)  /* ,carry_Rarm,(15) */
+                           hmsJoint(RM_SURF,NULL,0,0,0)  /* ,chn44,(13) */
+                           hmsBegin()
+                              hmsJoint(RM_SURF,NULL,0,0,0)  /* ,jnt44_1,(10) */
+                              hmsBegin()
+                                 hmsJoint(RM_SURF,NULL,95,0,0)  /* ,eff44,(7) */
+                                 hmsBegin()
+                                    hmsJoint(RM_SURF,RCP_carry_boy_carry3,0,0,0)  /* ,carry_Rhand,(3) */
+									 hmsCProg(0, geo_update_held_mario_pos) 
+                                hmsEnd()
+                              hmsEnd()
+                           hmsEnd()
+                        hmsEnd()
+                     hmsEnd()
+                  hmsEnd()
+               hmsEnd()
+            hmsEnd()
+            hmsJoint(RM_SURF,RCP_carry_boy_carry4,0,0,0)  /* ,carry_foot,(4) */
+         hmsEnd()
+      hmsEnd()
+   hmsEnd()
+ hmsEnd()
+ hmsExit()
+};

@@ -30,13 +30,13 @@ static struct MacroPreset sMacroObjectPresets[] = {
     /* macro_fish_spawner_few_blue       */ { bhvFishSpawner, MODEL_NONE, FISH_SPAWNER_BP_FEW_BLUE },
     /* macro_unknown_28                  */ { bhvBetaFishSplashSpawner, MODEL_NONE, 0 },
     /* macro_cannon_open                 */ { bhvCannon, MODEL_CANNON_BASE, 0 },
-    /* macro_unknown_40                  */ { bhvCarrySomething1, MODEL_UNKNOWN_7D, 0 }, // unused
+    /* macro_chuckya                     */ { bhvChuckya, MODEL_CHUCKYA, 0 },
     /* macro_empty_52                    */ { bhvYellowCoin, MODEL_YELLOW_COIN, 0 },
     /* macro_empty_80                    */ { bhvYellowCoin, MODEL_YELLOW_COIN, 0 },
     /* macro_bullet_bill_cannon          */ { bhvBulletBill, MODEL_BULLET_BILL, 0 }, // unused
     /* macro_heave_ho                    */ { bhvHeaveHo, MODEL_HEAVE_HO, 0 },
     /* macro_thwomp                      */ { bhvThwomp, MODEL_THWOMP, 0 }, // unused
-    /* macro_empty_90                    */ { bhvYellowCoin, MODEL_YELLOW_COIN, 0 },
+    /* macro_bobomb                      */ { bhvBobomb, MODEL_BLACK_BOBOMB, 0},
     /* macro_empty_91                    */ { bhvYellowCoin, MODEL_YELLOW_COIN, 0 },
     /* macro_empty_92                    */ { bhvYellowCoin, MODEL_YELLOW_COIN, 0 },
     /* macro_small_bully                 */ { bhvSmallBully, MODEL_BULLY, 0 },
