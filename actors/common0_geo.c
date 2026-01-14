@@ -13,3 +13,4 @@
 #include "cannon_barrel/cannon_body.hms"
 #include "bobomb/bom.hms"
 #include "chuckya/carry_boy.hms"
+#include "goomba/kuribo.hms"

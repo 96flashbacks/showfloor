@@ -144,6 +144,9 @@ static const LevelScript script_exec_ ## folder [] = { \
 const LevelScript script_func_global_1[] = {
     LOAD_MODEL_FROM_GEO(MODEL_CANNON_BARREL,           RCP_HmsCannonBody),
     LOAD_MODEL_FROM_GEO(MODEL_CANNON_BASE,             RCP_HmsCannonBase),
+    LOAD_MODEL_FROM_GEO(MODEL_GOOMBA,                  RCP_HmsEnemykuribo),
+    LOAD_MODEL_FROM_GEO(MODEL_KOOPA_WITH_SHELL,        RCP_HmsEnemynokonoko),
+    LOAD_MODEL_FROM_GEO(MODEL_CHUCKYA,                 RCP_HmsEnemycarryboy),
     RETURN(),
 };
 

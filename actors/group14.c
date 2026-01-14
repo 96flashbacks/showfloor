@@ -8,6 +8,9 @@
 #include "geo_commands.h"
 #include "headers.h"
 
+#include "koopa/nokonoko.sou"
+UNUSED static const u64 binid_2 = 2;
+
 #include "piranha_plant/pakun.sou"
 UNUSED static const u64 binid_3 = 3;
 
