@@ -7,3 +7,5 @@
 
 #include "common1.h"
 #include "group14.h"
+
+#include "koopa/nokonoko.hms"

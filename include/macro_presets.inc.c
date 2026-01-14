@@ -30,6 +30,7 @@ static struct MacroPreset sMacroObjectPresets[] = {
     /* macro_fish_spawner_few_blue       */ { bhvFishSpawner, MODEL_NONE, FISH_SPAWNER_BP_FEW_BLUE },
     /* macro_unknown_28                  */ { bhvBetaFishSplashSpawner, MODEL_NONE, 0 },
     /* macro_cannon_open                 */ { bhvCannon, MODEL_CANNON_BASE, 0 },
+    /* macro_unknown_40                  */ { bhvCarrySomething1, MODEL_UNKNOWN_7D, 0 }, // unused
     /* macro_chuckya                     */ { bhvChuckya, MODEL_CHUCKYA, 0 },
     /* macro_empty_52                    */ { bhvYellowCoin, MODEL_YELLOW_COIN, 0 },
     /* macro_empty_80                    */ { bhvYellowCoin, MODEL_YELLOW_COIN, 0 },
@@ -37,7 +38,7 @@ static struct MacroPreset sMacroObjectPresets[] = {
     /* macro_heave_ho                    */ { bhvHeaveHo, MODEL_HEAVE_HO, 0 },
     /* macro_thwomp                      */ { bhvThwomp, MODEL_THWOMP, 0 }, // unused
     /* macro_bobomb                      */ { bhvBobomb, MODEL_BLACK_BOBOMB, 0},
-    /* macro_empty_91                    */ { bhvYellowCoin, MODEL_YELLOW_COIN, 0 },
+    /* macro_goomba                      */ { bhvGoomba, MODEL_GOOMBA, 0 },
     /* macro_empty_92                    */ { bhvYellowCoin, MODEL_YELLOW_COIN, 0 },
     /* macro_small_bully                 */ { bhvSmallBully, MODEL_BULLY, 0 },
     /* macro_big_bully                   */ { bhvSmallBully, MODEL_BULLY_BOSS, 0 }, // unused
@@ -226,10 +227,10 @@ static struct MacroPreset sMacroObjectPresets[] = {
     /* macro_ttc_large_treadmill_2       */ { bhvTTCTreadmill, MODEL_TTC_LARGE_TREADMILL, TTC_TREADMILL_BP_LARGE_2 },
     /* macro_ttc_small_treadmill_2       */ { bhvTTCTreadmill, MODEL_TTC_SMALL_TREADMILL, TTC_TREADMILL_BP_SMALL_2 },
     /* macro_empty_361                   */ { bhvYellowCoin, MODEL_YELLOW_COIN, 0 },
-    /* macro_empty_362                   */ { bhvYellowCoin, MODEL_YELLOW_COIN, 0 },
-    /* macro_empty_363                   */ { bhvYellowCoin, MODEL_YELLOW_COIN, 0 },
-    /* macro_empty_364                   */ { bhvYellowCoin, MODEL_YELLOW_COIN, 0 },
-    /* macro_empty_365                   */ { bhvYellowCoin, MODEL_YELLOW_COIN, 0 },
+    /* macro_huge_goomba                 */ { bhvGoomba, MODEL_GOOMBA, GOOMBA_SIZE_HUGE },
+    /* macro_tiny_goomba                 */ { bhvGoomba, MODEL_GOOMBA, GOOMBA_SIZE_TINY },
+    /* macro_goomba_triplet_spawner      */ { bhvGoombaTripletSpawner, MODEL_NONE, GOOMBA_TRIPLET_SPAWNER_BP_EXTRA_GOOMBAS(0) | GOOMBA_SIZE_REGULAR },
+    /* macro_goomba_quintuplet_spawner   */ { bhvGoombaTripletSpawner, MODEL_NONE, GOOMBA_TRIPLET_SPAWNER_BP_EXTRA_GOOMBAS(2) | GOOMBA_SIZE_REGULAR }, // unused
 };
 
 STATIC_ASSERT(ARRAY_COUNT(sMacroObjectPresets) == macro_count,
