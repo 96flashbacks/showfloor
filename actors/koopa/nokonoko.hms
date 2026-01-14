@@ -1,0 +1,61 @@
+/*-------------------------------------------------------------*/
+/*	Hms data 			                                       */
+/*-------------------------------------------------------------*/
+
+extern Gfx RCP_nokonoko_down0[];
+extern Gfx RCP_nokonoko_down1[];
+extern Gfx RCP_nokonoko_down2[];
+extern Gfx RCP_nokonoko_down3[];
+extern Gfx RCP_nokonoko_down4[];
+extern Gfx RCP_nokonoko_down5[];
+extern Gfx RCP_nokonoko_down6[];
+extern Gfx RCP_nokonoko_down7[];
+extern Gfx RCP_nokonoko_down8[];
+extern Gfx RCP_nokonoko_down9[];
+
+Hierarchy RCP_HmsEnemynokonoko[] = {
+ hmsShadow(100,150,1)
+ hmsBegin()
+ hmsScale(0.25f)
+    hmsBegin()
+      hmsJoint(RM_SURF,NULL,0,68,-14)  /* ,chn2,(14) */
+      hmsBegin()
+         hmsJoint(RM_SURF,RCP_nokonoko_down9,0,0,0)  /* ,noko_body1,(13) */
+         hmsBegin()
+            hmsJoint(RM_SURF,RCP_nokonoko_down8,114,0,0)  /* ,noko_head1,(12) */
+            hmsJoint(RM_SURF,NULL,-29,39,60)  /* ,chn8,(11) */
+            hmsBegin()
+               hmsJoint(RM_SURF,RCP_nokonoko_down1,0,0,0)  /* ,noko_leg1,(1) */
+               hmsBegin()
+                  hmsJoint(RM_SURF,RCP_nokonoko_down0,60,0,0)  /* ,noku_foot1,(0) */
+               hmsEnd()
+            hmsEnd()
+            hmsJoint(RM_SURF,NULL,-29,39,-60)  /* ,chn6,(10) */
+            hmsBegin()
+               hmsJoint(RM_SURF,RCP_nokonoko_down3,0,0,0)  /* ,noko_leg2,(3) */
+               hmsBegin()
+                  hmsJoint(RM_SURF,RCP_nokonoko_down2,60,0,0)  /* ,noku_foot2,(2) */
+               hmsEnd()
+            hmsEnd()
+            hmsJoint(RM_SURF,NULL,55,25,-73)  /* ,chn3,(9) */
+            hmsBegin()
+               hmsJoint(RM_SURF,RCP_nokonoko_down5,0,0,0)  /* ,cyl2,(5) */
+               hmsBegin()
+                  hmsJoint(RM_SURF,RCP_nokonoko_down4,54,0,0)  /* ,noko_hand3,(4) */
+               hmsEnd()
+            hmsEnd()
+            hmsJoint(RM_SURF,NULL,55,25,74)  /* ,chn5,(8) */
+            hmsBegin()
+               hmsJoint(RM_SURF,RCP_nokonoko_down7,0,0,0)  /* ,cyl1,(7) */
+               hmsBegin()
+                  hmsJoint(RM_SURF,RCP_nokonoko_down6,54,0,0)  /* ,noko_hand1,(6) */
+               hmsEnd()
+            hmsEnd()
+         hmsEnd()
+      hmsEnd()
+   hmsEnd()
+ hmsEnd()
+ hmsExit()
+};
+
+

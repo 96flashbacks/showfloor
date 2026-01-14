@@ -34,4 +34,15 @@ extern const Gfx gfx_bbom[];
 extern const Gfx gfx_rbom[];
 extern AnimePtr bom_anime[];
 
+// goomba
+extern Hierarchy RCP_HmsEnemykuribo[];
+extern Gfx kuribo_light_sourcex[];
+extern Gfx gfx_kuri_body[];
+extern Gfx RCP_kuribo_walk3[];
+extern Gfx RCP_kuribo_walk2[];
+extern Gfx gfx_kuri_head1[];
+extern Gfx gfx_kuri_head2[];
+extern Gfx RCP_kuribo_walk0[];
+extern Gfx RCP_kuribo_walk1[];
+extern AnimePtr kuribo_anime[];
 #endif

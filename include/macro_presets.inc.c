@@ -28,16 +28,17 @@ static struct MacroPreset sMacroObjectPresets[] = {
     /* macro_bouncing_fireball_1         */ { bhvBouncingFireball, MODEL_NONE, 0 }, // unused
     /* macro_fish_spawner_many_blue      */ { bhvFishSpawner, MODEL_NONE, FISH_SPAWNER_BP_MANY_BLUE }, // unused
     /* macro_fish_spawner_few_blue       */ { bhvFishSpawner, MODEL_NONE, FISH_SPAWNER_BP_FEW_BLUE },
-    /* macro_unknown_28                  */ { bhvBetaFishSplashSpawner, MODEL_NONE, 0 },
+    /* macro_huge_goomba                 */ { bhvGoomba, MODEL_GOOMBA, GOOMBA_SIZE_HUGE },
+    /* macro_tiny_goomba                 */ { bhvGoomba, MODEL_GOOMBA, GOOMBA_SIZE_TINY },
+    /* macro_goomba_triplet_spawner      */ { bhvGoombaTripletSpawner, MODEL_NONE, GOOMBA_TRIPLET_SPAWNER_BP_EXTRA_GOOMBAS(0) | GOOMBA_SIZE_REGULAR },
+    /* macro_goomba_quintuplet_spawner   */ { bhvGoombaTripletSpawner, MODEL_NONE, GOOMBA_TRIPLET_SPAWNER_BP_EXTRA_GOOMBAS(2) | GOOMBA_SIZE_REGULAR }, // unused
     /* macro_cannon_open                 */ { bhvCannon, MODEL_CANNON_BASE, 0 },
     /* macro_chuckya                     */ { bhvChuckya, MODEL_CHUCKYA, 0 },
-    /* macro_empty_52                    */ { bhvYellowCoin, MODEL_YELLOW_COIN, 0 },
-    /* macro_empty_80                    */ { bhvYellowCoin, MODEL_YELLOW_COIN, 0 },
     /* macro_bullet_bill_cannon          */ { bhvBulletBill, MODEL_BULLET_BILL, 0 }, // unused
     /* macro_heave_ho                    */ { bhvHeaveHo, MODEL_HEAVE_HO, 0 },
     /* macro_thwomp                      */ { bhvThwomp, MODEL_THWOMP, 0 }, // unused
     /* macro_bobomb                      */ { bhvBobomb, MODEL_BLACK_BOBOMB, 0},
-    /* macro_empty_91                    */ { bhvYellowCoin, MODEL_YELLOW_COIN, 0 },
+    /* macro_goomba                      */ { bhvGoomba, MODEL_GOOMBA, 0 },
     /* macro_empty_92                    */ { bhvYellowCoin, MODEL_YELLOW_COIN, 0 },
     /* macro_small_bully                 */ { bhvSmallBully, MODEL_BULLY, 0 },
     /* macro_big_bully                   */ { bhvSmallBully, MODEL_BULLY_BOSS, 0 }, // unused
@@ -229,7 +230,6 @@ static struct MacroPreset sMacroObjectPresets[] = {
     /* macro_empty_362                   */ { bhvYellowCoin, MODEL_YELLOW_COIN, 0 },
     /* macro_empty_363                   */ { bhvYellowCoin, MODEL_YELLOW_COIN, 0 },
     /* macro_empty_364                   */ { bhvYellowCoin, MODEL_YELLOW_COIN, 0 },
-    /* macro_empty_365                   */ { bhvYellowCoin, MODEL_YELLOW_COIN, 0 },
 };
 
 STATIC_ASSERT(ARRAY_COUNT(sMacroObjectPresets) == macro_count,

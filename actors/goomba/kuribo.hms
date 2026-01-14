@@ -1,0 +1,45 @@
+/*-------------------------------------------------------------*/
+/*	Hms data 	                                       */
+/*-------------------------------------------------------------*/
+extern Gfx kuribo_light_sourcex[];
+extern Gfx gfx_kuri_body[];
+extern Gfx RCP_kuribo_walk3[];
+extern Gfx RCP_kuribo_walk2[];
+extern Gfx gfx_kuri_head1[];
+extern Gfx gfx_kuri_head2[];
+extern Gfx RCP_kuribo_walk0[];
+extern Gfx RCP_kuribo_walk1[];
+
+Hierarchy RCP_HmsEnemykuribo[] = {
+ hmsShadow(100,150,1)
+ hmsBegin()
+ hmsScale(0.25f)
+    hmsBegin()
+      hmsJoint(RM_SURF,kuribo_light_sourcex,0,0,0)   		/* ,chn1,(6) */
+      hmsBegin()
+
+
+
+         hmsJoint(RM_SURF,RCP_kuribo_walk3,0,0,0)  		/* ,kuri_body1,(5) */
+
+         hmsBegin()
+            hmsJoint(RM_SURF,RCP_kuribo_walk2,48,0,0)  	/* ,kuri_head1,(4) */
+			//hmsSelect(2, ControlShapeAnime)
+			hmsBegin()
+	            //hmsJoint(RM_SURF,NULL,48,0,0)	/* ,kuri_head1,(4) */
+    	        //hmsJoint(RM_SURF,NULL,48,0,0)	/* ,kuri_head2,(4) */
+			hmsEnd()
+            hmsJoint(RM_SURF,NULL,-60,-16,45)  				/* ,chn2,(3) */
+            hmsBegin()
+               hmsJoint(RM_SURF,RCP_kuribo_walk0,0,0,0)  	/* ,kuri_Lfoot1,(0) */
+            hmsEnd()
+            hmsJoint(RM_SURF,NULL,-60,-16,-45)  			/* ,chn4,(2) */
+            hmsBegin()
+               hmsJoint(RM_SURF,RCP_kuribo_walk1,0,0,0)  	/* ,kuri_Rfoot1,(1) */
+            hmsEnd()
+         hmsEnd()
+      hmsEnd()
+   hmsEnd()
+ hmsEnd()
+ hmsExit()
+};
