@@ -40,6 +40,7 @@ enum MacroPresets {
     macro_empty_95,
     macro_bouncing_fireball_2,
     macro_flamethrower,
+    macro_empty_99,
     macro_empty_100,
     macro_empty_101,
     macro_empty_102,
@@ -184,7 +185,6 @@ enum MacroPresets {
     macro_empty_287,
     macro_empty_288,
     macro_mr_i,
-
     macro_empty_294,
     macro_empty_295,
     macro_empty_296,

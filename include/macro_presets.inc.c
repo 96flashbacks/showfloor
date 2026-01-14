@@ -230,6 +230,7 @@ static struct MacroPreset sMacroObjectPresets[] = {
     /* macro_empty_362                   */ { bhvYellowCoin, MODEL_YELLOW_COIN, 0 },
     /* macro_empty_363                   */ { bhvYellowCoin, MODEL_YELLOW_COIN, 0 },
     /* macro_empty_364                   */ { bhvYellowCoin, MODEL_YELLOW_COIN, 0 },
+    /* macro_empty_365                   */ { bhvYellowCoin, MODEL_YELLOW_COIN, 0 },
 };
 
 STATIC_ASSERT(ARRAY_COUNT(sMacroObjectPresets) == macro_count,
