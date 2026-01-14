@@ -122,13 +122,13 @@ void bhv_goomba_init(void) {
 /**
  * Enter the jump action and set initial y velocity.
  */
-static void goomba_begin_jump(void) {
+/*static void goomba_begin_jump(void) {
     cur_obj_play_sound_2(SOUND_OBJ_GOOMBA_ALERT);
 
     o->oAction = GOOMBA_ACT_JUMP;
     o->oForwardVel = 0.0f;
     o->oVelY = 50.0f / 3.0f * o->oGoombaScale;
-}
+}*/
 
 /**
  * If spawned by a triplet spawner, mark the flag in the spawner to indicate that
@@ -223,7 +223,7 @@ static void goomba_act_attacked_mario(void) {
     } else {
         //! This can happen even when the goomba is already in the air. It's
         //  hard to chain these in practice
-        goomba_begin_jump();
+        //goomba_begin_jump();
         o->oGoombaTargetYaw = o->oAngleToMario;
         o->oGoombaTurningAwayFromWall = FALSE;
     }
