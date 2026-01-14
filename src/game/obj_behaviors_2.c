@@ -41,6 +41,15 @@
 
 #define o gCurrentObject
 
+void huge_goomba_weakly_attacked(void);
+
+void wiggler_jumped_on_attack_handler(void) {
+    cur_obj_play_sound_2(SOUND_OBJ_WIGGLER_ATTACKED);
+    o->oAction = WIGGLER_ACT_JUMPED_ON;
+    o->oForwardVel = o->oVelY = 0.0f;
+    o->oWigglerSquishSpeed = 0.4f;
+}
+
 /* BSS (declared to force order) */
 extern s32 sNumActiveFirePiranhaPlants;
 extern s32 sNumKilledFirePiranhaPlants;
@@ -57,16 +66,6 @@ struct Object *sMasterTreadmill;
 f32 sObjSavedPosX;
 f32 sObjSavedPosY;
 f32 sObjSavedPosZ;
-
-void wiggler_jumped_on_attack_handler(void);
-void huge_goomba_weakly_attacked(void);
-
-void wiggler_jumped_on_attack_handler(void) {
-    cur_obj_play_sound_2(SOUND_OBJ_WIGGLER_ATTACKED);
-    o->oAction = WIGGLER_ACT_JUMPED_ON;
-    o->oForwardVel = o->oVelY = 0.0f;
-    o->oWigglerSquishSpeed = 0.4f;
-}
 
 //! Although having no return value, this function
 //! must be u32 to match other functions on -O2.

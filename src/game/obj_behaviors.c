@@ -177,7 +177,7 @@ s8 turn_obj_away_from_steep_floor(struct Surface *objFloor, f32 floorY, f32 objV
 
     if (objFloor == NULL) {
         //! (OOB Object Crash) TRUNC overflow exception after 36 minutes
-        o->oMoveAngleYaw += 32767.999200000002; /* ¯\_(??��?��?)_/¯ */
+        o->oMoveAngleYaw += 32767.999200000002; /* Â¯\_(??¿½?¿½?)_/Â¯ */
         return FALSE;
     }
 
@@ -739,6 +739,7 @@ s8 obj_lava_death(void) {
         deathSmoke->oPosZ += random_float() * 20.0f;
         deathSmoke->oForwardVel = random_float() * 10.0f;
     }
+
     return FALSE;
 }
 

@@ -24,27 +24,9 @@ static struct ObjectHitbox sKoopaHitbox = {
 };
 
 /**
- * Attack handlers for unshelled koopa and tiny shelled koopa.
- */
-static u8 sKoopaUnshelledAttackHandlers[] = {
-    /* ATTACK_PUNCH:                 */ ATTACK_HANDLER_KNOCKBACK,
-    /* ATTACK_KICK_OR_TRIP:          */ ATTACK_HANDLER_KNOCKBACK,
-    /* ATTACK_FROM_ABOVE:            */ ATTACK_HANDLER_SQUISHED,
-    /* ATTACK_GROUND_POUND_OR_TWIRL: */ ATTACK_HANDLER_SQUISHED,
-    /* ATTACK_FAST_ATTACK:           */ ATTACK_HANDLER_KNOCKBACK,
-    /* ATTACK_FROM_BELOW:            */ ATTACK_HANDLER_KNOCKBACK,
-};
-
-/**
  * Attack handlers for regular sized shelled koopa.
  */
 static u8 sKoopaShelledAttackHandlers[] = {
-   // /* ATTACK_PUNCH:                 */ ATTACK_HANDLER_SPECIAL_KOOPA_LOSE_SHELL,
-   // /* ATTACK_KICK_OR_TRIP:          */ ATTACK_HANDLER_SPECIAL_KOOPA_LOSE_SHELL,
-   // /* ATTACK_FROM_ABOVE:            */ ATTACK_HANDLER_SPECIAL_KOOPA_LOSE_SHELL,
-   // /* ATTACK_GROUND_POUND_OR_TWIRL: */ ATTACK_HANDLER_SPECIAL_KOOPA_LOSE_SHELL,
-   // /* ATTACK_FAST_ATTACK:           */ ATTACK_HANDLER_SPECIAL_KOOPA_LOSE_SHELL,
-   // /* ATTACK_FROM_BELOW:            */ ATTACK_HANDLER_SPECIAL_KOOPA_LOSE_SHELL,
     /* ATTACK_PUNCH:                 */ ATTACK_HANDLER_KNOCKBACK,
     /* ATTACK_KICK_OR_TRIP:          */ ATTACK_HANDLER_KNOCKBACK,
     /* ATTACK_FROM_ABOVE:            */ ATTACK_HANDLER_SQUISHED,
@@ -52,24 +34,6 @@ static u8 sKoopaShelledAttackHandlers[] = {
     /* ATTACK_FAST_ATTACK:           */ ATTACK_HANDLER_KNOCKBACK,
     /* ATTACK_FROM_BELOW:            */ ATTACK_HANDLER_KNOCKBACK,
 };
-
-/**
- * Data to control the behavior of each instance of Koopa the Quick.
- */
-struct KoopaTheQuickProperties {
-    s16 initDialogID;
-    s16 winDialogID;
-    Trajectory const *path;
-    Vec3s starPos;
-};
-
-/**
- * Properties for the BoB race and the THI race.
- */
-/*static struct KoopaTheQuickProperties sKoopaTheQuickProperties[] = {
-    { DIALOG_005, DIALOG_007, bob_seg7_trajectory_koopa, { 3030, 4500, -4600 } },
-    { DIALOG_009, DIALOG_031, thi_seg7_trajectory_koopa, { 7100, -1300, -6000 } },
-};*/
 
 /**
  * Initialization function.
@@ -317,7 +281,7 @@ static void koopa_shelled_update(void) {
         obj_handle_attacks(&sKoopaHitbox, o->oAction, sKoopaShelledAttackHandlers);
     } else {
         // If tiny koopa, die after attacking mario.
-        obj_handle_attacks(&sKoopaHitbox, KOOPA_SHELLED_ACT_DIE, sKoopaUnshelledAttackHandlers);
+        obj_handle_attacks(&sKoopaHitbox, KOOPA_SHELLED_ACT_DIE, sKoopaShelledAttackHandlers);
         if (o->oAction == KOOPA_SHELLED_ACT_DIE) {
             obj_die_if_health_non_positive();
         }
