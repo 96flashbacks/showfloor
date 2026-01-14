@@ -6,7 +6,7 @@ const GeoLayout bob_geo_000488[] = {
       GEO_OPEN_NODE(),
          GEO_NODE_ORTHO(100),
          GEO_OPEN_NODE(),
-            GEO_BACKGROUND(BACKGROUND_BELOW_CLOUDS, geo_skybox_main),
+            GEO_BACKGROUND(BACKGROUND_OCEAN_SKY, geo_skybox_main),
          GEO_CLOSE_NODE(),
       GEO_CLOSE_NODE(),
       GEO_ZBUFFER(1),

@@ -293,7 +293,7 @@ static void koopa_shelled_update(void) {
 void bhv_koopa_update(void) {
     // PARTIAL_UPDATE
 
-    o->oDeathSound = SOUND_OBJ_KOOPA_FLYGUY_DEATH;
+    o->oDeathSound = SOUND_OBJ_DYING_ENEMY1;
     if (obj_update_standard_actions(o->oKoopaAgility * 1.5f)) {
         o->oKoopaDistanceToMario = o->oDistanceToMario;
         o->oKoopaAngleToMario = o->oAngleToMario;
