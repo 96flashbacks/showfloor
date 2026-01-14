@@ -186,9 +186,9 @@ void chuckya_act_0(void) {
 
     cur_obj_init_animation_with_sound(4);
 
-    if (o->oForwardVel > 1.0f) {
+    /*if (o->oForwardVel > 1.0f) {
         cur_obj_play_sound_1(SOUND_AIR_CHUCKYA_MOVE);
-    }
+    }*/
 
     print_debug_bottom_up("fg %d", sp3C);
     print_debug_bottom_up("sp %d", o->oForwardVel);
@@ -221,7 +221,7 @@ void chuckya_act_1(void) {
         } else {
             cur_obj_init_animation_with_sound(3);
             if (cur_obj_check_anim_frame(18)) {
-                cur_obj_play_sound_2(SOUND_OBJ_UNKNOWN4);
+                //cur_obj_play_sound_2(SOUND_OBJ_UNKNOWN4);
                 o->oChuckyaUnk88 = 2;
                 o->oAction = 3;
                 o->oInteractStatus &= ~INT_STATUS_GRABBED_MARIO;
@@ -243,7 +243,8 @@ void chuckya_act_2(void) {
     if (o->oMoveFlags & (OBJ_MOVE_HIT_WALL | OBJ_MOVE_MASK_IN_WATER | OBJ_MOVE_LANDED)) {
         obj_mark_for_deletion(o);
         obj_spawn_loot_yellow_coins(o, 5, 20.0f);
-        spawn_mist_particles_with_sound(SOUND_OBJ_CHUCKYA_DEATH);
+        //spawn_mist_particles_with_sound(SOUND_OBJ_CHUCKYA_DEATH);
+        cur_obj_play_sound_2(SOUND_OBJ_DYING_ENEMY1);
     }
 }
 
@@ -261,7 +262,7 @@ void chuckya_move(void) {
     if (o->oInteractStatus & INT_STATUS_GRABBED_MARIO) {
         o->oAction = 1;
         o->oChuckyaUnk88 = 1;
-        cur_obj_play_sound_2(SOUND_OBJ_UNKNOWN3);
+        //cur_obj_play_sound_2(SOUND_OBJ_UNKNOWN3);
     }
 }
 

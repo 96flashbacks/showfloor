@@ -245,19 +245,21 @@ static void obj_set_knockback_action(s32 attackType) {
 }
 
 static void obj_set_squished_action(void) {
-    cur_obj_play_sound_2(SOUND_OBJ_STOMPED);
+    //cur_obj_play_sound_2(SOUND_OBJ_STOMPED);
     o->oAction = OBJ_ACT_SQUISHED;
 }
 
 static void obj_die_if_health_non_positive(void) {
     if (o->oHealth <= 0) {
         if (o->oDeathSound == 0) {
-            spawn_mist_particles_with_sound(SOUND_OBJ_DEFAULT_DEATH);
+            //spawn_mist_particles_with_sound(SOUND_OBJ_DEFAULT_DEATH);
+            cur_obj_play_sound_2(SOUND_OBJ_DEFAULT_DEATH);
         } else if (o->oDeathSound > 0) {
-            spawn_mist_particles_with_sound(o->oDeathSound);
-        } else {
-            spawn_mist_particles();
-        }
+            //spawn_mist_particles_with_sound(o->oDeathSound);
+            cur_obj_play_sound_2(o->oDeathSound);
+        } //else {
+            //spawn_mist_particles();
+        //}
 
         // This doesn't do anything
         obj_spawn_loot_yellow_coins(o, o->oNumLootCoins, 20.0f);
