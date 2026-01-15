@@ -1,302 +1,156 @@
 /***************************************************************************************************
-
 							      Funlike Data for Ultra64 Mario     							    
-
 							                                     (dosun.n2u) 							    
-
 ****************************************************************************************************/
 
-
+#define	DOSUN_SCALE		1
 
 /* back wall mode */
-
-short dosun_info[] = {
-
+extern short dosun_info[] = {
 /*------------------VertexData ---------------------------*/
 
-
-
 	BGCHECKCODE_POINT, 20,
-
-	  157,  252,  -78,
-
-	   93,  330,    0,
-
-	  157,  252,   79,
-
-	  106,  252, -156,
-
-	  -92,  330,    0,
-
-	    0,  302,  102,
-
-	  106,  252,  157,
-
-	    0,  302, -101,
-
-	 -156,  252,   79,
-
-	 -156,  252,  -78,
-
-	 -105,  252, -156,
-
-	 -105,  252,  157,
-
-	  106,    0, -256,
-
-	 -105,    0, -256,
-
-	 -156,    0, -278,
-
-	 -105,    0,  157,
-
-	  106,    0,  157,
-
-	  157,    0,   79,
-
-	 -156,    0,   79,
-
-	  157,    0, -278,
-
-
+	  157*DOSUN_SCALE,  252*DOSUN_SCALE,  -78*DOSUN_SCALE,
+	   93*DOSUN_SCALE,  330*DOSUN_SCALE,    0*DOSUN_SCALE,
+	  157*DOSUN_SCALE,  252*DOSUN_SCALE,   79*DOSUN_SCALE,
+	  106*DOSUN_SCALE,  252*DOSUN_SCALE, -156*DOSUN_SCALE,
+	  -92*DOSUN_SCALE,  330*DOSUN_SCALE,    0*DOSUN_SCALE,
+	    0*DOSUN_SCALE,  302*DOSUN_SCALE,  102*DOSUN_SCALE,
+	  106*DOSUN_SCALE,  252*DOSUN_SCALE,  157*DOSUN_SCALE,
+	    0*DOSUN_SCALE,  302*DOSUN_SCALE, -101*DOSUN_SCALE,
+	 -156*DOSUN_SCALE,  252*DOSUN_SCALE,   79*DOSUN_SCALE,
+	 -156*DOSUN_SCALE,  252*DOSUN_SCALE,  -78*DOSUN_SCALE,
+	 -105*DOSUN_SCALE,  252*DOSUN_SCALE, -156*DOSUN_SCALE,
+	 -105*DOSUN_SCALE,  252*DOSUN_SCALE,  157*DOSUN_SCALE,
+	  106*DOSUN_SCALE,    0*DOSUN_SCALE, -256*DOSUN_SCALE,
+	 -105*DOSUN_SCALE,    0*DOSUN_SCALE, -256*DOSUN_SCALE,
+	 -156*DOSUN_SCALE,    0*DOSUN_SCALE, -278*DOSUN_SCALE,
+	 -105*DOSUN_SCALE,    0*DOSUN_SCALE,  157*DOSUN_SCALE,
+	  106*DOSUN_SCALE,    0*DOSUN_SCALE,  157*DOSUN_SCALE,
+	  157*DOSUN_SCALE,    0*DOSUN_SCALE,   79*DOSUN_SCALE,
+	 -156*DOSUN_SCALE,    0*DOSUN_SCALE,   79*DOSUN_SCALE,
+	  157*DOSUN_SCALE,    0*DOSUN_SCALE, -278*DOSUN_SCALE,
 
 /*--------------------- BG Face Data ---------------------------*/
 
 
-
-
-
 	BGCHECKCODE_NORMAL, 36,
-
 	    3,   10,    7,
-
 	    0,    1,    2,
-
 	    3,    1,    0,
-
 	    1,    4,    5,
-
 	    2,    1,    6,
-
 	    7,    4,    1,
-
 	    5,    6,    1,
-
 	    7,    1,    3,
-
 	    8,    4,    9,
-
 	    7,   10,    4,
-
 	    4,   11,    5,
-
 	    8,   11,    4,
-
 	    9,    4,   10,
-
 	   11,    6,    5,
-
 	    0,   12,    3,
-
 	    3,   13,   10,
-
 	    3,   12,   13,
-
 	   18,   19,   17,
-
 	   10,   13,   14,
-
 	   10,   14,    9,
-
 	    8,   15,   11,
-
 	   11,   15,   16,
-
 	   11,   16,    6,
-
 	    6,   16,   17,
-
 	    6,   17,    2,
-
 	    9,   18,    8,
-
 	    8,   18,   15,
-
 	    9,   14,   18,
-
 	    0,   19,   12,
-
 	    2,   19,    0,
-
 	    2,   17,   19,
-
 	   18,   16,   15,
-
 	   18,   17,   16,
-
 	   18,   14,   13,
-
 	   18,   13,   12,
-
 	   18,   12,   19,
-
-
 
 	BGCHECKCODE_PLANEEND,
 
 
-
-
-
 	BGCHECKCODE_ALLEND,
-
 };
-
-
-
 
 
 /* right & back wall mode */
-
-short dosun_info2[] = {
-
+extern short dosun_info2[] = {
 /*------------------VertexData ---------------------------*/
 
-
-
 	BGCHECKCODE_POINT, 20,
-
-	  157,  252,  -78,
-
-	   93,  330,    0,
-
-	  157,  252,   79,
-
-	  106,  252, -156,
-
-	  -92,  330,    0,
-
-	    0,  302,  102,
-
-	  106,  252,  157,
-
-	    0,  302, -101,
-
-	 -156,  252,   79,
-
-	 -156,  252,  -78,
-
-	 -105,  252, -156,
-
-	 -105,  252,  157,
-
-	  106,    0, -256,
-
-	 -105,    0, -256,
-
-	 -156,    0, -278,
-
-	 -105,    0,  157,
-
-	  106,    0,  157,
-
-	  157,    0,   79,
-
-	 -156,    0,   79,
-
-	  157,    0, -278,
-
-
+	  157*DOSUN_SCALE,  252*DOSUN_SCALE,  -78*DOSUN_SCALE,
+	   93*DOSUN_SCALE,  330*DOSUN_SCALE,    0*DOSUN_SCALE,
+	  157*DOSUN_SCALE,  252*DOSUN_SCALE,   79*DOSUN_SCALE,
+	  106*DOSUN_SCALE,  252*DOSUN_SCALE, -156*DOSUN_SCALE,
+	  -92*DOSUN_SCALE,  330*DOSUN_SCALE,    0*DOSUN_SCALE,
+	    0*DOSUN_SCALE,  302*DOSUN_SCALE,  102*DOSUN_SCALE,
+	  106*DOSUN_SCALE,  252*DOSUN_SCALE,  157*DOSUN_SCALE,
+	    0*DOSUN_SCALE,  302*DOSUN_SCALE, -101*DOSUN_SCALE,
+	 -156*DOSUN_SCALE,  252*DOSUN_SCALE,   79*DOSUN_SCALE,
+	 -156*DOSUN_SCALE,  252*DOSUN_SCALE,  -78*DOSUN_SCALE,
+	 -105*DOSUN_SCALE,  252*DOSUN_SCALE, -156*DOSUN_SCALE,
+	 -105*DOSUN_SCALE,  252*DOSUN_SCALE,  157*DOSUN_SCALE,
+	  256*DOSUN_SCALE,    0*DOSUN_SCALE, -156*DOSUN_SCALE,
+	 -105*DOSUN_SCALE,    0*DOSUN_SCALE, -156*DOSUN_SCALE,
+	 -156*DOSUN_SCALE,    0*DOSUN_SCALE,  -78*DOSUN_SCALE,
+	 -105*DOSUN_SCALE,    0*DOSUN_SCALE,  257*DOSUN_SCALE,
+	  256*DOSUN_SCALE,    0*DOSUN_SCALE,  257*DOSUN_SCALE,
+	  257*DOSUN_SCALE,    0*DOSUN_SCALE,   79*DOSUN_SCALE,
+	 -156*DOSUN_SCALE,    0*DOSUN_SCALE,   79*DOSUN_SCALE,
+	  257*DOSUN_SCALE,    0*DOSUN_SCALE,  -78*DOSUN_SCALE,
 
 /*--------------------- BG Face Data ---------------------------*/
 
 
-
-
-
 	BGCHECKCODE_NORMAL, 36,
-
 	    3,   10,    7,
-
 	    0,    1,    2,
-
 	    3,    1,    0,
-
 	    1,    4,    5,
-
 	    2,    1,    6,
-
 	    7,    4,    1,
-
 	    5,    6,    1,
-
 	    7,    1,    3,
-
 	    8,    4,    9,
-
 	    7,   10,    4,
-
 	    4,   11,    5,
-
 	    8,   11,    4,
-
 	    9,    4,   10,
-
 	   11,    6,    5,
-
 	    0,   12,    3,
-
 	    3,   13,   10,
-
 	    3,   12,   13,
-
 	   18,   19,   17,
-
 	   10,   13,   14,
-
 	   10,   14,    9,
-
 	    8,   15,   11,
-
 	   11,   15,   16,
-
 	   11,   16,    6,
-
 	    6,   16,   17,
-
 	    6,   17,    2,
-
 	    9,   18,    8,
-
 	    8,   18,   15,
-
 	    9,   14,   18,
-
 	    0,   19,   12,
-
 	    2,   19,    0,
-
 	    2,   17,   19,
-
 	   18,   16,   15,
-
 	   18,   17,   16,
-
 	   18,   14,   13,
-
 	   18,   13,   12,
-
 	   18,   12,   19,
-
-
 
 	BGCHECKCODE_PLANEEND,
 
 
-
-
-
 	BGCHECKCODE_ALLEND,
-
 };
 
+
+static long long int	dosunflk_dummy = 0 ;
