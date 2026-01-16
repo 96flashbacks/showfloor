@@ -52,6 +52,8 @@ void bhv_chuckya_anchor_mario_loop(void);
 void bhv_goomba_init(void);
 void bhv_goomba_update(void);
 void bhv_goomba_triplet_spawner_update(void);
+void bhv_hana_init(void);
+void bhv_hana_update(void);
 void bhv_koopa_init(void);
 void bhv_koopa_update(void);
 void bhv_rotating_platform_loop(void);

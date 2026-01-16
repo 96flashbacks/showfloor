@@ -537,6 +537,7 @@ static void treat_far_home_as_mario(f32 threshold) {
 
 #include "behaviors/koopa.inc.c" // TODO: Text arg field name
 #include "behaviors/goomba.inc.c"
+#include "behaviors/hana.inc.c"
 
 /**
  * Used by bowser, fly guy, piranha plant, and fire spitters.

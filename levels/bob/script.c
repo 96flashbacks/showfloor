@@ -69,6 +69,7 @@ const LevelScript level_bob_entry[] = {
     JUMP_LINK(script_func_global_4),
     JUMP_LINK(script_func_global_15),
     LOAD_MODEL_FROM_GEO(MODEL_BUBBLY_TREE,      RCP_HmsMainTree),
+    //LOAD_MODEL_FROM_GEO(MODEL_HANA,      RCP_HmsEnemyhana),
     //LOAD_MODEL_FROM_GEO(MODEL_BOB_SEESAW_PLATFORM,  bob_geo_000458),
     //LOAD_MODEL_FROM_GEO(MODEL_BOB_BARS_GRILLS,      bob_geo_000470),
 
@@ -81,7 +82,8 @@ const LevelScript level_bob_entry[] = {
         OBJECT(/*model*/ MODEL_NONE, /*pos*/  1680,  3835, -5523, /*angle*/ 0, -153, 0, /*behParam*/ 0x000C0000, /*beh*/ bhvFadingWarp),
         OBJECT(/*model*/ MODEL_NONE, /*pos*/ -6612,  1024, -3351, /*angle*/ 0, 107, 0,  /*behParam*/ 0x000D0000, /*beh*/ bhvFadingWarp),
         OBJECT(/*model*/ MODEL_NONE, /*pos*/  1980,   768,  6618, /*angle*/ 0, -151, 0, /*behParam*/ 0x000E0000, /*beh*/ bhvFadingWarp),
-        OBJECT(/*model*/ MODEL_CHUCKYA,      /*pos*/  4238,  816,  5869, /*angle*/ 0, 0, 0,   /*behParam*/ 0x00000000, /*beh*/ bhvChuckya),
+        //OBJECT(/*model*/ MODEL_CHUCKYA,      /*pos*/  3066,  4293,  -6527, /*angle*/ 0, 0, 0,   /*behParam*/ 0x00000000, /*beh*/ bhvChuckya),
+        //OBJECT(/*model*/ MODEL_HANA,      /*pos*/  -1900,     0,  3450, /*angle*/ 0, 0, 0,   /*behParam*/ 0x00000000, /*beh*/ bhvHana),
         WARP_NODE(/*id*/ 0x0A, /*destLevel*/ LEVEL_BOB, /*destArea*/ 0x01, /*destNode*/ 0x0A, /*flags*/ WARP_NO_CHECKPOINT),
         WARP_NODE(/*id*/ 0x0B, /*destLevel*/ LEVEL_BOB, /*destArea*/ 0x01, /*destNode*/ 0x0C, /*flags*/ WARP_NO_CHECKPOINT),
         WARP_NODE(/*id*/ 0x0C, /*destLevel*/ LEVEL_BOB, /*destArea*/ 0x01, /*destNode*/ 0x0B, /*flags*/ WARP_NO_CHECKPOINT),
