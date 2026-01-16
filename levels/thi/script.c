@@ -11,11 +11,13 @@
 #include "levels/scripts.h"
 
 #include "actors/common1.h"
+#include "actors/common0.h"
 
 #include "make_const_nonconst.h"
 #include "levels/thi/header.h"
 
 static const LevelScript script_func_local_4[] = {
+    LOAD_MODEL_FROM_GEO(MODEL_HANA,      RCP_HmsEnemyhana),
     OBJECT(/*model*/ MODEL_STAR,  /*pos*/   400, 4300, -1200,  /*angle*/ 0, 0, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvStar),
     OBJECT(/*model*/ MODEL_STAR,  /*pos*/   -1900, -900, 6800, /*angle*/ 0, 0, 0, /*bhvParam*/ 0x01000000, /*bhv*/ bhvStar),
     OBJECT(/*model*/ MODEL_CHUCKYA,  /*pos*/   -1908, 2202, -595, /*angle*/ 0, 0, 0, /*bhvParam*/ 0x01000000, /*bhv*/ bhvChuckya),
@@ -37,7 +39,6 @@ const LevelScript level_thi_entry[] = {
     ALLOC_LEVEL_POOL(),
     MARIO(/*model*/ MODEL_MARIO, /*bhvParam*/ BPARAM4(0x01), /*bhv*/ bhvMario),
     JUMP_LINK(script_func_global_1),
-    LOAD_MODEL_FROM_GEO(MODEL_HANA,      RCP_HmsEnemyhana),
     JUMP_LINK(script_func_local_4),
     //JUMP_LINK(script_func_global_15),
     //LOAD_MODEL_FROM_GEO(MODEL_THI_BUBBLY_TREE,     bubbly_tree_geo),
