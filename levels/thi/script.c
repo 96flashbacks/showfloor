@@ -37,6 +37,7 @@ const LevelScript level_thi_entry[] = {
     ALLOC_LEVEL_POOL(),
     MARIO(/*model*/ MODEL_MARIO, /*bhvParam*/ BPARAM4(0x01), /*bhv*/ bhvMario),
     JUMP_LINK(script_func_global_1),
+    LOAD_MODEL_FROM_GEO(MODEL_HANA,      RCP_HmsEnemyhana),
     JUMP_LINK(script_func_local_4),
     //JUMP_LINK(script_func_global_15),
     //LOAD_MODEL_FROM_GEO(MODEL_THI_BUBBLY_TREE,     bubbly_tree_geo),
