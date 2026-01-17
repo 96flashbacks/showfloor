@@ -227,9 +227,9 @@ void big_bully_spawn_minion(s32 arg0, s32 arg1, s32 arg2, s16 arg3) {
 }
 
 void bhv_big_bully_with_minions_init(void) {
-    big_bully_spawn_minion(4454, 307, -5426, 0);
-    big_bully_spawn_minion(3840, 307, -6041, 0);
-    big_bully_spawn_minion(3226, 307, -5426, 0);
+    big_bully_spawn_minion(2818, 307, -2758, 0);
+    big_bully_spawn_minion(3387, 307, -3207, 0);
+    big_bully_spawn_minion(3826, 307, -2758, 0);
 
     o->header.gfx.node.flags |= GRAPH_RENDER_INVISIBLE;
 
