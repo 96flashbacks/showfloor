@@ -1,0 +1,161 @@
+/*-------------------------------------------------------------*/
+/*	Hms data 			                                       */
+/*-------------------------------------------------------------*/
+
+extern const RCP_hana_walk0[];
+extern const RCP_hana_walk1[];
+extern const RCP_hana_walk2[];
+extern const RCP_hana_walk3[];
+extern const RCP_hana_walk4[];
+extern const RCP_hana_walk5[];
+extern const RCP_hana_walk6[];
+extern const RCP_hana_walk7[];
+extern const RCP_hana_walk8[];
+extern const RCP_hana_walk9[];
+extern const RCP_hana_walk10[];
+extern const RCP_hana_walk11[];
+extern const RCP_hana_walk12[];
+extern const RCP_hana_walk13[];
+extern const RCP_hana_walk14[];
+extern const RCP_hana_walk15[];
+extern const RCP_hana_walk16[];
+extern const RCP_hana_walk17[];
+extern const RCP_hana_walk18[];
+extern const RCP_hana_walk19[];
+extern const RCP_hana_walk20[];
+extern const RCP_hana_walk21[];
+extern const RCP_hana_walk22[];
+extern const RCP_hana_walk23[];
+extern const RCP_hana_walk24[];
+extern const RCP_hana_walk25[];
+extern const hana_light_sourcex[];
+
+
+Hierarchy RCP_HmsEnemyhana[] = {
+ hmsScale(0.25f)
+    hmsBegin()
+      hmsJoint(RM_SURF,hana_light_sourcex,0,116,0)  /* ,chn1,(57) */
+      hmsBegin()
+         hmsJoint(RM_SURF,NULL,0,6,0)  /* ,jnt1_1,(56) */
+         hmsBegin()
+            hmsJoint(RM_SURF,NULL,143,0,0)  /* ,jnt1_2,(55) */
+            hmsBegin()
+               hmsJoint(RM_SURF,NULL,157,0,0)  /* ,jnt1_3,(52) */
+               hmsBegin()
+                  hmsJoint(RM_SURF,RCP_hana_walk22,0,0,0)  /* ,hana_head,(41) */
+                  hmsJoint(RM_SURF,RCP_hana_walk21,0,0,0)  /* ,hana_eye,(34) */
+                  hmsJoint(RM_SURF,RCP_hana_walk20,0,0,0)  /* ,hana_mouth,(27) */
+                  hmsJoint(RM_SURF,RCP_hana_walk19,0,0,0)  /* ,hana_flower,(20) */
+                  hmsJoint(RM_SURF,NULL,143,0,0)  /* ,eff1,(19) */
+                  hmsBegin()
+                     hmsJoint(RM_SURF,RCP_hana_walk0,0,0,0)  /* ,hana_nose,(0) */
+                  hmsEnd()
+               hmsEnd()
+               hmsJoint(RM_SURF,RCP_hana_walk23,0,0,0)  /* ,hana_bodyA,(48) */
+               hmsJoint(RM_SURF,NULL,-16,23,-50)  /* ,chn5,(45) */
+               hmsBegin()
+                  hmsJoint(RM_SURF,NULL,0,0,0)  /* ,jnt5_1,(35) */
+                  hmsBegin()
+                     hmsJoint(RM_SURF,NULL,39,0,0)  /* ,jnt5_2,(28) */
+                     hmsBegin()
+                        hmsJoint(RM_SURF,NULL,41,0,0)  /* ,jnt5_3,(21) */
+                        hmsBegin()
+                           hmsJoint(RM_SURF,RCP_hana_walk1,0,0,0)  /* ,hana_RfootA,(1) */
+                        hmsEnd()
+                        hmsJoint(RM_SURF,RCP_hana_walk2,0,0,0)  /* ,cyl3,(2) */
+                     hmsEnd()
+                     hmsJoint(RM_SURF,RCP_hana_walk3,0,0,0)  /* ,cyl4,(3) */
+                  hmsEnd()
+               hmsEnd()
+               hmsJoint(RM_SURF,NULL,-16,23,50)  /* ,chn3,(42) */
+               hmsBegin()
+                  hmsJoint(RM_SURF,NULL,0,0,0)  /* ,jnt3_1,(36) */
+                  hmsBegin()
+                     hmsJoint(RM_SURF,NULL,39,0,0)  /* ,jnt3_2,(29) */
+                     hmsBegin()
+                        hmsJoint(RM_SURF,NULL,41,0,0)  /* ,jnt3_3,(22) */
+                        hmsBegin()
+                           hmsJoint(RM_SURF,RCP_hana_walk4,0,0,0)  /* ,hana_LfootA,(4) */
+                        hmsEnd()
+                        hmsJoint(RM_SURF,RCP_hana_walk5,0,0,0)  /* ,cyl2,(5) */
+                     hmsEnd()
+                     hmsJoint(RM_SURF,RCP_hana_walk6,0,0,0)  /* ,cyl1,(6) */
+                  hmsEnd()
+               hmsEnd()
+            hmsEnd()
+            hmsJoint(RM_SURF,NULL,0,2,0)  /* ,chn2,(54) */
+            hmsBegin()
+               hmsJoint(RM_SURF,NULL,0,0,0)  /* ,jnt2_1,(53) */
+               hmsBegin()
+                  hmsJoint(RM_SURF,NULL,143,0,0)  /* ,eff2,(51) */
+                  hmsBegin()
+                     hmsJoint(RM_SURF,RCP_hana_walk24,0,0,0)  /* ,hana_bodyC,(49) */
+                     hmsJoint(RM_SURF,NULL,0,-29,50)  /* ,chn7,(46) */
+                     hmsBegin()
+                        hmsJoint(RM_SURF,NULL,0,0,0)  /* ,jnt7_1,(37) */
+                        hmsBegin()
+                           hmsJoint(RM_SURF,NULL,39,0,0)  /* ,jnt7_2,(30) */
+                           hmsBegin()
+                              hmsJoint(RM_SURF,NULL,41,0,0)  /* ,jnt7_3,(23) */
+                              hmsBegin()
+                                 hmsJoint(RM_SURF,RCP_hana_walk7,0,0,0)  /* ,hana_LfootC,(7) */
+                              hmsEnd()
+                              hmsJoint(RM_SURF,RCP_hana_walk8,0,0,0)  /* ,cyl7,(8) */
+                           hmsEnd()
+                           hmsJoint(RM_SURF,RCP_hana_walk9,0,0,0)  /* ,cyl8,(9) */
+                        hmsEnd()
+                     hmsEnd()
+                     hmsJoint(RM_SURF,NULL,0,-29,-50)  /* ,chn11,(43) */
+                     hmsBegin()
+                        hmsJoint(RM_SURF,NULL,0,0,0)  /* ,jnt11_1,(38) */
+                        hmsBegin()
+                           hmsJoint(RM_SURF,NULL,39,0,0)  /* ,jnt11_2,(31) */
+                           hmsBegin()
+                              hmsJoint(RM_SURF,NULL,41,0,0)  /* ,jnt11_3,(24) */
+                              hmsBegin()
+                                 hmsJoint(RM_SURF,RCP_hana_walk10,0,0,0)  /* ,hana_RfootC,(10) */
+                              hmsEnd()
+                              hmsJoint(RM_SURF,RCP_hana_walk11,0,0,0)  /* ,cyl11,(11) */
+                           hmsEnd()
+                           hmsJoint(RM_SURF,RCP_hana_walk12,0,0,-5)  /* ,cyl12,(12) */
+                        hmsEnd()
+                     hmsEnd()
+                  hmsEnd()
+               hmsEnd()
+            hmsEnd()
+            hmsJoint(RM_SURF,RCP_hana_walk25,0,0,0)  /* ,hana_bodyB,(50) */
+            hmsJoint(RM_SURF,NULL,0,31,-50)  /* ,chn9,(47) */
+            hmsBegin()
+               hmsJoint(RM_SURF,NULL,0,0,0)  /* ,jnt9_1,(39) */
+               hmsBegin()
+                  hmsJoint(RM_SURF,NULL,39,0,0)  /* ,jnt9_2,(32) */
+                  hmsBegin()
+                     hmsJoint(RM_SURF,NULL,41,0,0)  /* ,jnt9_3,(25) */
+                     hmsBegin()
+                        hmsJoint(RM_SURF,RCP_hana_walk13,0,0,0)  /* ,hana_RfootB,(13) */
+                     hmsEnd()
+                     hmsJoint(RM_SURF,RCP_hana_walk14,0,0,0)  /* ,cyl9,(14) */
+                  hmsEnd()
+                  hmsJoint(RM_SURF,RCP_hana_walk15,0,0,0)  /* ,cyl10,(15) */
+               hmsEnd()
+            hmsEnd()
+            hmsJoint(RM_SURF,NULL,0,31,50)  /* ,chn6,(44) */
+            hmsBegin()
+               hmsJoint(RM_SURF,NULL,0,0,0)  /* ,jnt6_1,(40) */
+               hmsBegin()
+                  hmsJoint(RM_SURF,NULL,39,0,0)  /* ,jnt6_2,(33) */
+                  hmsBegin()
+                     hmsJoint(RM_SURF,NULL,41,0,0)  /* ,jnt6_3,(26) */
+                     hmsBegin()
+                        hmsJoint(RM_SURF,RCP_hana_walk16,0,0,0)  /* ,hana_LfootB,(16) */
+                     hmsEnd()
+                     hmsJoint(RM_SURF,RCP_hana_walk17,0,0,0)  /* ,cyl5,(17) */
+                  hmsEnd()
+                  hmsJoint(RM_SURF,RCP_hana_walk18,0,0,0)  /* ,cyl6,(18) */
+               hmsEnd()
+            hmsEnd()
+         hmsEnd()
+      hmsEnd()
+   hmsEnd()
+ hmsExit()
+};

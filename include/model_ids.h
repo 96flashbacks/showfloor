@@ -501,6 +501,7 @@
 //#define MODEL_SEAWEED                     0xC1        // seaweed_geo
 //#define MODEL_AMP                         0xC2        // dAmpGeo
 //#define MODEL_BOBOMB_BUDDY                0xC3        // bobomb_buddy_geo
+#define MODEL_HANA                0xC4        // wiggler
 // find me
 // find me
 // find me

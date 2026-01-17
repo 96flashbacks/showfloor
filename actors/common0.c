@@ -13,6 +13,9 @@ UNUSED static const u64 binid_5 = 5;
 #include "goomba/kuribo.sou"
 UNUSED static const u64 binid_13 = 13;
 
+#include "wiggler/hana.sou"
+UNUSED static const u64 binid_15 = 15;
+
 #include "bobomb/bom.sou"
 UNUSED static const u64 binid_14 = 14;
 

@@ -678,6 +678,19 @@
     #define GOOMBA_TRIPLET_SPAWNER_BP_EXTRA_GOOMBAS_MASK (0x000000FF & ~GOOMBA_BP_SIZE_MASK)
     #define GOOMBA_TRIPLET_SPAWNER_BP_EXTRA_GOOMBAS(num) ((num) << 2)
 
+/* Hana */
+/* oAction */
+#define HANA_ACT_WALK           0
+#define HANA_ACT_ATTACKED_MARIO 1
+#define HANA_ACT_JUMP           2
+
+/* oBhvParams2ndByte */
+#define HANA_SIZE_REGULAR                 0
+#define HANA_SIZE_HUGE                    1
+#define HANA_SIZE_TINY                    2
+#define HANA_BP_SIZE_MASK                 (HANA_SIZE_REGULAR | HANA_SIZE_HUGE | HANA_SIZE_TINY)
+#define HANA_BP_TRIPLET_RESPAWN_FLAG_MASK (0x000000FF & ~HANA_BP_SIZE_MASK)
+
 /* Wooden Post */
     /* oBhvParams */
     #define WOODEN_POST_BP_NO_COINS_MASK 0x0000FF00

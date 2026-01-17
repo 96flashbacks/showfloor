@@ -12,5 +12,6 @@
 #include "bobomb/bom.hms"
 #include "chuckya/carry_boy.hms"
 #include "goomba/kuribo.hms"
+#include "wiggler/hana.hms"
 #include "cannon_base/cannon_base.hms"
 #include "cannon_barrel/cannon_body.hms"

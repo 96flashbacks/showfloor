@@ -11,13 +11,17 @@
 #include "levels/scripts.h"
 
 #include "actors/common1.h"
+#include "actors/common0.h"
 
 #include "make_const_nonconst.h"
 #include "levels/thi/header.h"
 
 static const LevelScript script_func_local_4[] = {
+    LOAD_MODEL_FROM_GEO(MODEL_HANA,      RCP_HmsEnemyhana),
     OBJECT(/*model*/ MODEL_STAR,  /*pos*/   400, 4300, -1200,  /*angle*/ 0, 0, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvStar),
     OBJECT(/*model*/ MODEL_STAR,  /*pos*/   -1900, -900, 6800, /*angle*/ 0, 0, 0, /*bhvParam*/ 0x01000000, /*bhv*/ bhvStar),
+    OBJECT(/*model*/ MODEL_CHUCKYA,  /*pos*/   -1908, 2202, -595, /*angle*/ 0, 0, 0, /*bhvParam*/ 0x01000000, /*bhv*/ bhvChuckya),
+    OBJECT(/*model*/ MODEL_HANA,  /*pos*/   -6193, -2969, 6121, /*angle*/ 0, 0, 0, /*bhvParam*/ 0x01000000, /*bhv*/ bhvHana),
     RETURN(),
 };
 

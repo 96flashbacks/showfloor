@@ -35,6 +35,7 @@ extern const BehaviorScript bhvChuckya[];
 extern const BehaviorScript bhvChuckyaAnchorMario[];
 extern const BehaviorScript bhvGoomba[];
 extern const BehaviorScript bhvGoombaTripletSpawner[];
+extern const BehaviorScript bhvHana[];
 extern const BehaviorScript bhvKoopa[];
 extern const BehaviorScript bhvRotatingPlatform[];
 extern const BehaviorScript bhvTower[];
