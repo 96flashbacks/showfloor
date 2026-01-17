@@ -241,7 +241,7 @@ void bhv_big_bully_with_minions_init(void) {
 void big_bully_spawn_star(void) {
     spawn_mist_particles();
 
-    spawn_default_star(3850.0f, 600.0f, -5600.0f);
+    spawn_default_star(3241.0f, 300.0f, -3000.0f);
 }
 
 void bhv_big_bully_with_minions_loop(void) {
