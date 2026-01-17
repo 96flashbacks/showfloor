@@ -67,6 +67,7 @@ For more questions, join our [Discord server](https://discord.gg/ynabeAS4eD).
 - `K-Dubs΄
 - 1up Guy
 - stalechilibeans
+- ummheather
 
 #### Research & Playtesting
 - Scraps
@@ -78,7 +79,7 @@ For more questions, join our [Discord server](https://discord.gg/ynabeAS4eD).
 
 #### Additional Programming
 - Phil564
-- Fluvian
+- klorfmorf/Fluvian
 - diesel64
 - penguinlambz
 
@@ -89,7 +90,7 @@ For more questions, join our [Discord server](https://discord.gg/ynabeAS4eD).
 - Neverax
 - Diamond Hero
 - Holo
-- sonicdude143
+- Mr. Hatsman/sonicdude143
 
 #### Music & Audio
 - skibidigurt
@@ -99,12 +100,12 @@ For more questions, join our [Discord server](https://discord.gg/ynabeAS4eD).
 - XKoop7321
 
 #### Miscellaneous Help
-- pack.san
+- packrcrackr
 - Xiartic
 - WooHale54
 - timmy6259
 - Zucchino
-- xerox
+- Xerox
   
 #### Special Thanks
 - na0micakes
@@ -118,7 +119,7 @@ For more questions, join our [Discord server](https://discord.gg/ynabeAS4eD).
 ### Original 'The Preservation Project' Team
 
 #### Programming
-- Fluvian
+- klorfmorf/Fluvian
 - Marionova
   
 #### Assets
