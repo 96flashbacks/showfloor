@@ -211,7 +211,7 @@ void bhv_bully_loop(void) {
             break;
     }
 
-    set_object_visibility(o, 3000);
+    set_object_visibility(o, 6000);
 }
 
 // sp38 = arg0
