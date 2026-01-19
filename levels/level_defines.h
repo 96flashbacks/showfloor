@@ -35,7 +35,7 @@ STUB_LEVEL(  "",    LEVEL_BITS,             COURSE_BITS,                        
 DEFINE_LEVEL("FIRE BUBBLE", LEVEL_LLL,              COURSE_LLL,      lll,              generic,  22000,    0x00, 0x00, 0x00, _,         _)
 DEFINE_LEVEL("WATER LAND",     LEVEL_DDD,              COURSE_DDD,      ddd,              water,    17000,    0x00, 0x00, 0x00, sDynDDD,   _)
 DEFINE_LEVEL("MOUNTAIN",       LEVEL_WF,               COURSE_WF,       wf,               generic,  13000,    0x00, 0x00, 0x00, _,         _)
-STUB_LEVEL(  "CAVE DUNGEON", LEVEL_HMC,              COURSE_HMC,                                  16000,    0x00, 0x00, 0x00, _,         _)
+STUB_LEVEL(  "TITLEDEMO", LEVEL_HMC,              COURSE_HMC,                                  16000,    0x00, 0x00, 0x00, _,         _)
 DEFINE_LEVEL("URANIWA",        LEVEL_CASTLE_COURTYARD, COURSE_NONE,     castle_courtyard, outside,  20000,    0x00, 0x00, 0x00, _,         _)
 STUB_LEVEL(  "", LEVEL_PSS,              COURSE_PSS,                                  20000,    0x00, 0x00, 0x00, _,         _)
 STUB_LEVEL(  "",    LEVEL_COTMC,            COURSE_COTMC,                                18000,    0x00, 0x00, 0x00, _,         _)
