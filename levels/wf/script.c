@@ -60,9 +60,7 @@ static const LevelScript script_func_local_3[] = {
     OBJECT(/*model*/ MODEL_LEVEL_GEOMETRY_08, /*pos*/     0, 3584,     0, /*angle*/ 0,    0, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvTower),
     OBJECT(/*model*/ MODEL_LEVEL_GEOMETRY_09, /*pos*/  1280, 3584,   896, /*angle*/ 0,    0, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvBulletBillCannon),
     OBJECT(/*model*/ MODEL_NONE,              /*pos*/     0, 3483,     0, /*angle*/ 0,    0, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvTowerPlatformGroup),
-    #ifdef POWBUILD
     OBJECT(/*model*/ MODEL_HOOT,              /*pos*/  2560,  700,  4608, /*angle*/ 0,    0, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvHoot),
-    #endif
     RETURN(),
 };
 
@@ -114,11 +112,7 @@ const LevelScript level_wf_entry[] = {
     LOAD_MODEL_FROM_GEO(MODEL_WF_TOWER_SQUARE_PLATORM_ELEVATOR, wf_geo_000B60),
 
     AREA(/*index*/ 1, mountain_geo),
-        #ifdef POWBUILD
-        OBJECT(/*model*/ MODEL_NONE, /*pos*/  2560, 1256, 5120, /*angle*/ 0, 100, 0, /*bhvParam*/ BPARAM2(WARP_NODE_0A), /*bhv*/ bhvSpinAirborneWarp),
-        #else
-        OBJECT(/*model*/ MODEL_NONE, /*pos*/  3405, 1920, 3968, /*angle*/ 0, 100, 0, /*bhvParam*/ BPARAM2(WARP_NODE_0A), /*bhv*/ bhvSpinAirborneWarp),
-        #endif
+        OBJECT(/*model*/ MODEL_NONE, /*pos*/  2560,  256, 5120, /*angle*/ 0, 100, 0, /*bhvParam*/ BPARAM2(WARP_NODE_0A), /*bhv*/ bhvSpinAirborneWarp),
         WARP_NODE(/*id*/ WARP_NODE_0A,      /*destLevel*/ LEVEL_WF,     /*destArea*/ 1, /*destNode*/ WARP_NODE_0A, /*flags*/ WARP_NO_CHECKPOINT),
         WARP_NODE(/*id*/ WARP_NODE_0B,      /*destLevel*/ LEVEL_WF,     /*destArea*/ 1, /*destNode*/ WARP_NODE_0C, /*flags*/ WARP_NO_CHECKPOINT),
         WARP_NODE(/*id*/ WARP_NODE_0C,      /*destLevel*/ LEVEL_WF,     /*destArea*/ 1, /*destNode*/ WARP_NODE_0B, /*flags*/ WARP_NO_CHECKPOINT),
@@ -136,11 +130,7 @@ const LevelScript level_wf_entry[] = {
     END_AREA(),
 
     FREE_LEVEL_POOL(),
-    #ifdef POWBUILD
-    MARIO_POS(/*area*/ 1, /*yaw*/ 90, /*pos*/ 2560,  256, 5120),
-    #else
-    MARIO_POS(/*area*/ 1, /*yaw*/ 90, /*pos*/ 3405, 920, 3968),
-    #endif
+    MARIO_POS(/*area*/ 1, /*yaw*/ 64, /*pos*/ 2560,  256, 5120),
     CALL(/*arg*/ 0, /*func*/ lvl_init_or_update),
     CALL_LOOP(/*arg*/ 1, /*func*/ lvl_init_or_update),
     CLEAR_LEVEL(),
