@@ -211,7 +211,7 @@ void bhv_bully_loop(void) {
             break;
     }
 
-    set_object_visibility(o, 3000);
+    set_object_visibility(o, 6000);
 }
 
 // sp38 = arg0
@@ -227,9 +227,9 @@ void big_bully_spawn_minion(s32 arg0, s32 arg1, s32 arg2, s16 arg3) {
 }
 
 void bhv_big_bully_with_minions_init(void) {
-    big_bully_spawn_minion(2818, 307, -2758, 0);
-    big_bully_spawn_minion(3387, 307, -3207, 0);
-    big_bully_spawn_minion(3826, 307, -2758, 0);
+    big_bully_spawn_minion(2818, 307, -1758, 0);
+    big_bully_spawn_minion(3387, 307, -2207, 0);
+    big_bully_spawn_minion(3826, 307, -1758, 0);
 
     o->header.gfx.node.flags |= GRAPH_RENDER_INVISIBLE;
 
@@ -241,7 +241,7 @@ void bhv_big_bully_with_minions_init(void) {
 void big_bully_spawn_star(void) {
     spawn_mist_particles();
 
-    spawn_default_star(3241.0f, 300.0f, -3000.0f);
+    spawn_default_star(3166.0f, 600.0f, -1952.0f);
 }
 
 void bhv_big_bully_with_minions_loop(void) {
