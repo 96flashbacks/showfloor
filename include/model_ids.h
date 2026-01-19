@@ -404,7 +404,7 @@
 //#define MODEL_WOODEN_POST                 0x6B        // wooden_post_geo
 
 // group 15
-//#define MODEL_MIPS                        0x64        // mips_geo
+#define MODEL_MIPS                        0x64        // mips_geo
 //#define MODEL_BOO_CASTLE                  0x65        // boo_castle_geo
 //#define MODEL_LAKITU                      0x66        // lakitu_geo
 
