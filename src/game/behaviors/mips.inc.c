@@ -12,17 +12,16 @@ void bhv_mips_init(void) {
         o->oBhvParams2ndByte = MIPS_BP_15_STARS;
         o->oMipsForwardVelocity = 40.0f;
 
-    o->oInteractionSubtype = INT_SUBTYPE_HOLDABLE_NPC;
-
 #ifndef VERSION_JP
     o->oGravity = 15.0f;
 #else
     o->oGravity = 2.5f;
 #endif
-    o->oFriction = 0.89f;
-    o->oBuoyancy = 1.2f;
+    o->oFriction = 0.99f;
+    o->oBuoyancy = 1.4f;
 
-    cur_obj_init_animation(3);
+    cur_obj_init_animation(0);
+    o->oAction = MIPS_ACT_WAIT_FOR_NEARBY_MARIO;
 }
 
 /**
@@ -41,18 +40,47 @@ void bhv_mips_act_wait_for_nearby_mario(void) {
     collisionFlags = object_step();
 
     // If Mario is within 500 units...
-
+    if (is_point_within_radius_of_mario(o->oPosX, o->oPosY, o->oPosZ, 500)) {
+        // Call it quits.
+        cur_obj_init_animation(1);
+        o->oAction = MIPS_ACT_FOLLOW_PATH;
+    } else {
+        // Resume path following.
+        o->oAction = MIPS_ACT_WAIT_FOR_ANIMATION_DONE;
+    }
 }
 /**
  * Continue to follow our path around the basement area.
  */
+ void bhv_mips_act_follow_path(void) {
+    s16 collisionFlags = 0;
+
+    // Set start waypoint and follow the path from there.
+    //! Uninitialized parameter, but the parameter is unused in the called function
+
+
+    // Update velocity and angle and do movement.
+
+    o->oForwardVel = 15.0f;
+    collisionFlags = object_step();
+
+    // If we are at the end of the path, do idle animation and wait for Mario.
+        cur_obj_init_animation(1);
+    // Play sounds during walk animation.
+
+    if (cur_obj_check_if_near_animation_end() == TRUE) {
+        cur_obj_play_sound_2(SOUND_OBJ_MIPS_RABBIT);
+        o->oAction = MIPS_ACT_WAIT_FOR_NEARBY_MARIO;
+    }
+
+}
 
 /**
  * Seems to wait until the current animation is done, then go idle.
  */
 void bhv_mips_act_wait_for_animation_done(void) {
     if (cur_obj_check_if_near_animation_end() == TRUE) {
-        cur_obj_init_animation(3);
+        cur_obj_init_animation(0);
         o->oAction = MIPS_ACT_IDLE;
     }
 }
@@ -86,6 +114,7 @@ void bhv_mips_act_idle(void) {
 
     o->oForwardVel = 0.0f;
     collisionFlags = object_step();
+    o->oAction = MIPS_ACT_WAIT_FOR_NEARBY_MARIO;
 
     // Spawn a star if he was just picked up for the first time.
     if (o->oMipsStarStatus == MIPS_STAR_STATUS_SHOULD_SPAWN_STAR) {
@@ -101,6 +130,10 @@ void bhv_mips_free(void) {
     switch (o->oAction) {
         case MIPS_ACT_WAIT_FOR_NEARBY_MARIO:
             bhv_mips_act_wait_for_nearby_mario();
+            break;
+        
+        case MIPS_ACT_FOLLOW_PATH:
+            bhv_mips_act_follow_path();
             break;
 
         case MIPS_ACT_WAIT_FOR_ANIMATION_DONE:
@@ -121,8 +154,6 @@ void bhv_mips_free(void) {
  * Handles MIPS being held by Mario.
  */
 void bhv_mips_held(void) {
-    s16 dialogID;
-
     o->header.gfx.node.flags |= GRAPH_RENDER_INVISIBLE;
     cur_obj_init_animation(4); // Held animation.
     cur_obj_set_pos_relative(gMarioObject, 0, 60.0f, 100.0f);
@@ -139,7 +170,7 @@ void bhv_mips_held(void) {
 void bhv_mips_dropped(void) {
     cur_obj_get_dropped();
     o->header.gfx.node.flags &= ~GRAPH_RENDER_INVISIBLE;
-    cur_obj_init_animation(3);
+    cur_obj_init_animation(0);
     o->oHeldState = HELD_FREE;
     cur_obj_become_tangible();
     o->oForwardVel = 3.0f;
@@ -156,7 +187,7 @@ void bhv_mips_thrown(void) {
     o->oFlags &= ~OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW;
     cur_obj_init_animation(2);
     cur_obj_become_tangible();
-    o->oForwardVel = 25.0f;
+    o->oForwardVel = 40.0f;
     o->oVelY = 20.0f;
     o->oAction = MIPS_ACT_FALL_DOWN;
 }
