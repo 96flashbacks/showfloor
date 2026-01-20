@@ -1,3 +1,4 @@
+#ifdef POWBUILD
 static const Vtx mountain_15_dl_mesh_vtx_0[20] = {
 	{{ {-1023, -153, 767}, 0, {-500, 492}, {166, 0, 90, 255} }},
 	{{ {-1535, 102, 255}, 0, {-3592, -552}, {166, 0, 90, 255} }},
@@ -205,7 +206,6 @@ const Gfx mountain_15_dl_mesh[] = {
 	gsSPDisplayList(mountain_15_dl_mesh_tri_1),
 	gsSPDisplayList(mat_mountain_FlowerMaterial),
 	gsSPDisplayList(mountain_15_dl_mesh_tri_2),
-	gsSPDisplayList(mat_mountain_FlowerSideMaterial),
 	gsSPDisplayList(mountain_15_dl_mesh_tri_3),
 	gsDPPipeSync(),
 	gsSPSetGeometryMode(G_LIGHTING),
@@ -307,3 +307,129 @@ const Gfx mountain_15_lod_dl_mesh[] = {
 	gsSPTexture(65535, 65535, 0, 0, 0),
 	gsSPEndDisplayList(),
 };
+#else
+Vtx mountain_15_dl_mesh_vtx_0[20] = {
+	{{ {-1023, -153, 767}, 0, {-500, 492}, {166, 0, 90, 255} }},
+	{{ {-1535, 102, 255}, 0, {-3592, -552}, {166, 0, 90, 255} }},
+	{{ {-1535, -153, 255}, 0, {-3592, 492}, {166, 0, 90, 255} }},
+	{{ {-1023, 102, 767}, 0, {-500, -552}, {166, 0, 90, 255} }},
+	{{ {513, 102, -768}, 0, {-1616, -552}, {127, 0, 0, 255} }},
+	{{ {513, 102, 255}, 0, {-6084, -552}, {127, 0, 0, 255} }},
+	{{ {513, -153, 255}, 0, {-6084, 492}, {127, 0, 0, 255} }},
+	{{ {513, -153, -768}, 0, {-1616, 492}, {127, 0, 0, 255} }},
+	{{ {513, -153, 255}, 0, {-6084, 492}, {90, 0, 90, 255} }},
+	{{ {513, 102, 255}, 0, {-6084, -552}, {90, 0, 90, 255} }},
+	{{ {1, 102, 767}, 0, {-10220, -552}, {90, 0, 90, 255} }},
+	{{ {1, -153, 767}, 0, {-10220, 492}, {90, 0, 90, 255} }},
+	{{ {-1535, -153, 255}, 0, {-3596, 492}, {129, 0, 0, 255} }},
+	{{ {-1535, 102, -768}, 0, {-8060, -552}, {129, 0, 0, 255} }},
+	{{ {-1535, -153, -768}, 0, {-8060, 492}, {129, 0, 0, 255} }},
+	{{ {-1535, 102, 255}, 0, {-3596, -552}, {129, 0, 0, 255} }},
+	{{ {1, -153, 767}, 0, {3976, 496}, {0, 0, 127, 255} }},
+	{{ {-1023, 102, 767}, 0, {-496, -552}, {0, 0, 127, 255} }},
+	{{ {-1023, -153, 767}, 0, {-496, 496}, {0, 0, 127, 255} }},
+	{{ {1, 102, 767}, 0, {3976, -552}, {0, 0, 127, 255} }},
+};
+
+Gfx mountain_15_dl_mesh_tri_0[] = {
+	gsSPVertex(mountain_15_dl_mesh_vtx_0 + 0, 16, 0),
+	gsSP1Triangle(0, 1, 2, 0),
+	gsSP1Triangle(0, 3, 1, 0),
+	gsSP1Triangle(4, 5, 6, 0),
+	gsSP1Triangle(4, 6, 7, 0),
+	gsSP1Triangle(8, 9, 10, 0),
+	gsSP1Triangle(8, 10, 11, 0),
+	gsSP1Triangle(12, 13, 14, 0),
+	gsSP1Triangle(12, 15, 13, 0),
+	gsSPVertex(mountain_15_dl_mesh_vtx_0 + 16, 4, 0),
+	gsSP1Triangle(0, 1, 2, 0),
+	gsSP1Triangle(0, 3, 1, 0),
+	gsSPEndDisplayList(),
+};
+
+Vtx mountain_15_dl_mesh_vtx_1[6] = {
+	{{ {513, 102, -768}, 0, {-1007, 2885}, {0, 127, 0, 255} }},
+	{{ {1, 102, 767}, 0, {1016, -3179}, {0, 127, 0, 255} }},
+	{{ {513, 102, 255}, 0, {-1006, -1157}, {0, 127, 0, 255} }},
+	{{ {-1023, 102, 767}, 0, {5061, -3179}, {0, 127, 0, 255} }},
+	{{ {-1535, 102, 255}, 0, {7084, -1156}, {0, 127, 0, 255} }},
+	{{ {-1535, 102, -768}, 0, {7084, 2885}, {0, 127, 0, 255} }},
+};
+
+Gfx mountain_15_dl_mesh_tri_1[] = {
+	gsSPVertex(mountain_15_dl_mesh_vtx_1 + 0, 6, 0),
+	gsSP1Triangle(0, 1, 2, 0),
+	gsSP1Triangle(0, 3, 1, 0),
+	gsSP1Triangle(0, 4, 3, 0),
+	gsSP1Triangle(5, 4, 0, 0),
+	gsSPEndDisplayList(),
+};
+
+const Gfx mountain_15_dl_mesh[] = {
+	gsSPDisplayList(mat_mountain_BrickMaterial),
+	gsSPDisplayList(mountain_15_dl_mesh_tri_0),
+	gsSPDisplayList(mat_mountain_GrassMaterial),
+	gsSPDisplayList(mountain_15_dl_mesh_tri_1),
+	gsDPPipeSync(),
+	gsSPSetGeometryMode(G_LIGHTING),
+	gsSPClearGeometryMode(G_TEXTURE_GEN),
+    gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
+	gsSPTexture(65535, 65535, 0, 0, 0),
+	gsSPEndDisplayList(),
+};
+
+Vtx mountain_15_lod_dl_mesh_vtx_0[6] = {
+	{{ {513, 102, -768}, 0, {-1007, 2885}, {0, 127, 0, 255} }},
+	{{ {1, 102, 767}, 0, {1016, -3179}, {0, 127, 0, 255} }},
+	{{ {513, 102, 255}, 0, {-1006, -1157}, {0, 127, 0, 255} }},
+	{{ {-1023, 102, 767}, 0, {5061, -3179}, {0, 127, 0, 255} }},
+	{{ {-1535, 102, 255}, 0, {7084, -1156}, {0, 127, 0, 255} }},
+	{{ {-1535, 102, -768}, 0, {7084, 2885}, {0, 127, 0, 255} }},
+};
+
+Gfx mountain_15_lod_dl_mesh_tri_0[] = {
+	gsSPVertex(mountain_15_lod_dl_mesh_vtx_0 + 0, 6, 0),
+	gsSP1Triangle(0, 1, 2, 0),
+	gsSP1Triangle(0, 3, 1, 0),
+	gsSP1Triangle(0, 4, 3, 0),
+	gsSP1Triangle(5, 4, 0, 0),
+	gsSPEndDisplayList(),
+};
+
+const Gfx mountain_15_lod_dl_mesh[] = {
+	gsSPDisplayList(mat_mountain_GrassMaterial),
+	gsSPDisplayList(mountain_15_lod_dl_mesh_tri_0),
+	gsDPPipeSync(),
+	gsSPSetGeometryMode(G_LIGHTING),
+	gsSPClearGeometryMode(G_TEXTURE_GEN),
+    gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
+	gsSPTexture(65535, 65535, 0, 0, 0),
+	gsSPEndDisplayList(),
+};
+
+static const Vtx mountain_15_shadow_dl_mesh_vtx_0[4] = {
+	{{ {-818, 102, -460}, 0, {990, 0}, {255, 255, 255, 255} }},
+	{{ {-1228, 102, -460}, 0, {0, 0}, {255, 255, 255, 255} }},
+	{{ {-1228, 102, -50}, 0, {0, 990}, {255, 255, 255, 255} }},
+	{{ {-818, 102, -50}, 0, {990, 990}, {255, 255, 255, 255} }},
+};
+
+static const Gfx mountain_15_shadow_dl_mesh_tri_0[] = {
+	gsSPVertex(mountain_15_shadow_dl_mesh_vtx_0 + 0, 4, 0),
+	gsSP1Triangle(0, 1, 2, 0),
+	gsSP1Triangle(0, 2, 3, 0),
+	gsSPEndDisplayList(),
+};
+
+const Gfx mountain_15_shadow_dl_mesh[] = {
+	gsSPDisplayList(mat_mountain_ShadowMaterial),
+	gsSPDisplayList(mountain_15_shadow_dl_mesh_tri_0),
+	gsSPDisplayList(mat_revert_mountain_ShadowMaterial),
+	gsDPPipeSync(),
+	gsSPSetGeometryMode(G_LIGHTING),
+	gsSPClearGeometryMode(G_TEXTURE_GEN),
+    gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
+	gsSPTexture(65535, 65535, 0, 0, 0),
+	gsSPEndDisplayList(),
+};
+#endif
