@@ -358,12 +358,6 @@ VADPCM_ENC            := $(TOOLS_DIR)/vadpcm_enc
 EXTRACT_DATA_FOR_MIO  := $(TOOLS_DIR)/extract_data_for_mio
 SKYCONV               := $(TOOLS_DIR)/skyconv
 FLIPS                 := $(TOOLS_DIR)/flips
-# Use the system installed armips if available. Otherwise use the one provided with this repository.
-ifneq (,$(call find-command,armips))
-  RSPASM              := armips
-else
-  RSPASM              := $(TOOLS_DIR)/armips
-endif
 ENDIAN_BITWIDTH       := $(BUILD_DIR)/endian-and-bitwidth
 EMULATOR = mupen64plus
 EMU_FLAGS = --noosd
