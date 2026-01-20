@@ -23,6 +23,7 @@
 #include "actors/group12.h"
 #include "actors/group13.h"
 #include "actors/group14.h"
+#include "actors/group15.h"
 #include "actors/group17.h"
 #include "levels/castle_inside/header.h"
 #include "levels/castle_grounds/header.h"
@@ -2749,3 +2750,18 @@ const BehaviorScript bhvTTCSpinner[] = {
         CALL_NATIVE(load_object_collision_model),
     END_LOOP(),
 };
+
+const BehaviorScript bhvMips[] = {
+    BEGIN(OBJ_LIST_GENACTOR),
+    OR_INT(oFlags, (OBJ_FLAG_HOLDABLE | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    LOAD_ANIMATIONS(oAnimations, RCP_RabbitAnime),
+    SET_INT(oInteractType, INTERACT_GRABBABLE),
+    DROP_TO_FLOOR(),
+    SET_HITBOX(/*Radius*/ 50, /*Height*/ 75),
+    SET_INT(oIntangibleTimer, 0),
+    CALL_NATIVE(bhv_mips_init),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_mips_loop),
+    END_LOOP(),
+};
+

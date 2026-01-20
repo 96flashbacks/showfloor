@@ -25,6 +25,7 @@ ACTOR_GROUPS := \
     group12 \
     group13 \
     group14 \
+    group15 \
     group17 \
     common0 \
     common1
@@ -117,6 +118,7 @@ $(BUILD_DIR)/actors/group10.elf: SEGMENT_ADDRESS := 0x05000000
 $(BUILD_DIR)/actors/group12.elf: SEGMENT_ADDRESS := 0x06000000
 $(BUILD_DIR)/actors/group13.elf: SEGMENT_ADDRESS := 0x06000000
 $(BUILD_DIR)/actors/group14.elf: SEGMENT_ADDRESS := 0x06000000
+$(BUILD_DIR)/actors/group15.elf: SEGMENT_ADDRESS := 0x06000000
 $(BUILD_DIR)/actors/group17.elf: SEGMENT_ADDRESS := 0x06000000
 $(BUILD_DIR)/actors/common0.elf: SEGMENT_ADDRESS := 0x08000000
 $(BUILD_DIR)/actors/common1.elf: SEGMENT_ADDRESS := 0x03000000

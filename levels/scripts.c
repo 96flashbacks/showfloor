@@ -20,6 +20,7 @@
 #include "actors/group12.h"
 #include "actors/group13.h"
 #include "actors/group14.h"
+#include "actors/group15.h"
 #include "actors/group17.h"
 
 #include "levels/intro/header.h"
@@ -186,6 +187,11 @@ const LevelScript script_func_global_10[] = {
 
 const LevelScript script_func_global_11[] = {
     LOAD_MODEL_FROM_GEO(MODEL_BIRDS,                   birds_geo),
+    RETURN(),
+};
+
+const LevelScript script_func_global_12[] = {
+    LOAD_MODEL_FROM_GEO(MODEL_MIPS,                    RCP_rabbitHierarchy),
     RETURN(),
 };
 

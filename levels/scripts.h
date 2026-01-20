@@ -13,6 +13,7 @@ extern const LevelScript script_func_global_5[];
 extern const LevelScript script_func_global_8[];
 extern const LevelScript script_func_global_10[];
 extern const LevelScript script_func_global_11[];
+extern const LevelScript script_func_global_12[];
 extern const LevelScript script_func_global_13[];
 extern const LevelScript script_func_global_14[];
 extern const LevelScript script_func_global_15[];

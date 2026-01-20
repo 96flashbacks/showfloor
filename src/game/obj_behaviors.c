@@ -795,3 +795,4 @@ UNUSED s8 debug_sequence_tracker(s16 debugInputSequence[]) {
 #include "behaviors/sound_sand.inc.c"
 #include "behaviors/spawn_star.inc.c"
 #include "behaviors/bobomb.inc.c"
+#include "behaviors/mips.inc.c"
