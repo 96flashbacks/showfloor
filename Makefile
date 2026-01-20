@@ -284,7 +284,7 @@ else
     ACPP      := $(QEMU_IRIX) -silent -L $(IRIX_ROOT) $(IRIX_ROOT)/usr/lib/acpp
     COPT      := $(QEMU_IRIX) -silent -L $(IRIX_ROOT) $(IRIX_ROOT)/usr/lib/copt
   else
-    IDO_ROOT  := $(TOOLS_DIR)/ido-static-recomp/build/out
+    IDO_ROOT  := $(TOOLS_DIR)/ido-5.3-recomp-linux
     CC        := $(IDO_ROOT)/cc
     ACPP      := $(IDO_ROOT)/acpp
     COPT      := $(IDO_ROOT)/copt
