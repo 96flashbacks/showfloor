@@ -1,4 +1,3 @@
-
 /**
  * Behavior for bhvKoopa and bhvKoopaRaceEndpoint.
  * bhvKoopa includes normal, unshelled, tiny, and Koopa the Quick.
@@ -113,8 +112,8 @@ static void koopa_walk_start(void) {
  * Walk until oKoopaCountdown hits zero, then increment sub-action.
  */
 static void koopa_walk(void) {
-    cur_obj_init_animation_with_sound(9);
-    koopa_play_footstep_sound(2, 17);
+    //cur_obj_init_animation_with_sound(9);
+    //koopa_play_footstep_sound(2, 17);
 
     if (o->oKoopaCountdown != 0) {
         o->oKoopaCountdown--;
@@ -170,8 +169,8 @@ static void koopa_shelled_act_walk(void) {
  * away.
  */
 static void koopa_shelled_act_run_from_mario(void) {
-    cur_obj_init_animation_with_sound(1);
-    koopa_play_footstep_sound(0, 11);
+    //cur_obj_init_animation_with_sound(1);
+    //koopa_play_footstep_sound(0, 11);
 
     // If far from home, run toward it
     if (o->oDistanceToMario >= 25000.0f) {
@@ -228,7 +227,7 @@ static void koopa_shelled_act_lying(void) {
  */
 void shelled_koopa_attack_handler(s32 attackType) {
     if (o->header.gfx.scale[0] > 0.8f) {
-        cur_obj_play_sound_2(SOUND_OBJ_KOOPA_DAMAGE);
+        //cur_obj_play_sound_2(SOUND_OBJ_KOOPA_DAMAGE);
 
         //o->oKoopaMovementType = KOOPA_BP_UNSHELLED;
         //o->oAction = KOOPA_UNSHELLED_ACT_LYING;
