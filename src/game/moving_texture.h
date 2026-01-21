@@ -43,6 +43,7 @@ extern f32 gPaintingMarioYEntry;
 #define MOVTEX_AREA_INSIDE_CASTLE    (0x06 << 8)
 #define MOVTEX_AREA_HMC              (0x07 << 8)
 #define MOVTEX_AREA_SSL              (0x08 << 8)
+#define MOVTEX_AREA_BOB              (0x09 << 8)
 #define MOVTEX_AREA_SL               (0x10 << 8)
 #define MOVTEX_AREA_WDW              (0x11 << 8)
 #define MOVTEX_AREA_JRB              (0x12 << 8)
@@ -83,6 +84,7 @@ extern f32 gPaintingMarioYEntry;
 #define WF_MOVTEX_WATER                             (   1 | MOVTEX_AREA_WF)
 #define CASTLE_COURTYARD_MOVTEX_STAR_STATUE_WATER   (   1 | MOVTEX_AREA_CASTLE_COURTYARD)
 #define TTM_MOVTEX_PUDDLE                           (   1 | MOVTEX_AREA_TTM)
+#define BOB_MOVTEX_WATER                            (   1 | MOVTEX_AREA_BOB)
 
 // Non-colored, unique movtex meshes (drawn in level geo)
 #define MOVTEX_PYRAMID_SAND_PATHWAY_FRONT (1 | MOVTEX_AREA_SSL)
@@ -100,6 +102,7 @@ extern f32 gPaintingMarioYEntry;
 #define MOVTEX_TTM_BEGIN_PUDDLE_WATERFALL (3 | MOVTEX_AREA_TTM)
 #define MOVTEX_TTM_END_PUDDLE_WATERFALL   (4 | MOVTEX_AREA_TTM)
 #define MOVTEX_TTM_PUDDLE_WATERFALL       (5 | MOVTEX_AREA_TTM)
+#define MOVTEX_BOB_WATERFALL              (1 | MOVTEX_AREA_BOB)
 
 // Colored, unique movtex meshes (drawn in level geo)
 #define MOVTEX_SSL_PYRAMID_SIDE    (1 | MOVTEX_AREA_SSL)

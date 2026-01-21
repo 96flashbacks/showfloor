@@ -9,3 +9,5 @@
 #include "group14.h"
 
 #include "koopa/nokonoko.hms"
+#include "wanwano/wanwan.hms"
+#include "koopa_goal_flag/animed.hms"

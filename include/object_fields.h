@@ -357,6 +357,18 @@
 #define /*0x0F4*/ oCapUnkF4 OBJECT_FIELD_S32(0x1B)
 #define /*0x0F8*/ oCapUnkF8 OBJECT_FIELD_S32(0x1C)
 
+/* Chain Chomp */
+#define /*0x0F4*/ oChainChompSegments                     OBJECT_FIELD_CHAIN_SEGMENT(0x1B)
+#define /*0x0F8*/ oChainChompMaxDistFromPivotPerChainPart OBJECT_FIELD_F32(0x1C)
+#define /*0x0FC*/ oChainChompMaxDistBetweenChainParts     OBJECT_FIELD_F32(0x1D)
+#define /*0x100*/ oChainChompDistToPivot                  OBJECT_FIELD_F32(0x1E)
+#define /*0x104*/ oChainChompUnk104                       OBJECT_FIELD_F32(0x1F)
+#define /*0x108*/ oChainChompRestrictedByChain            OBJECT_FIELD_S32(0x20)
+#define /*0x10C*/ oChainChompTargetPitch                  OBJECT_FIELD_S32(0x21)
+#define /*0x110*/ oChainChompNumLunges                    OBJECT_FIELD_S32(0x22)
+#define /*0x1AC*/ oChainChompReleaseStatus                OBJECT_FIELD_S32(0x49)
+#define /*0x1B0*/ oChainChompHitGate                      OBJECT_FIELD_S32(0x4A)
+
 /* Checkerboard Platform */
 #define /*0x0F8*/ oCheckerBoardPlatformUnkF8  OBJECT_FIELD_S32(0x1C) // oAction like
 #define /*0x0FC*/ oCheckerBoardPlatformUnkFC  OBJECT_FIELD_S32(0x1D)

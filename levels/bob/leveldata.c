@@ -10,6 +10,7 @@
 
 #include "make_const_nonconst.h"
 #include "levels/bob/texture.inc.c"
+#include "levels/bob/material.inc.c"
 #include "levels/bob/areas/1/1/model.inc.c"
 #include "levels/bob/areas/1/2/model.inc.c"
 #include "levels/bob/areas/1/3/model.inc.c"
@@ -20,5 +21,6 @@
 #include "levels/bob/areas/1/collision.inc.c"
 #include "levels/bob/areas/1/macro.inc.c"
 #include "levels/bob/seesaw_platform/collision.inc.c"
+#include "levels/bob/areas/1/movtext.inc.c"
 #include "levels/bob/grate_door/collision.inc.c"
 #include "levels/bob/areas/1/trajectory.inc.c"

@@ -18,6 +18,7 @@
 #include "interaction.h"
 #include "level_table.h"
 #include "level_update.h"
+#include "levels/bob/header.h"
 #include "levels/ccm/header.h"
 #include "levels/lll/header.h"
 #include "levels/ttc/header.h"
@@ -48,6 +49,30 @@ void wiggler_jumped_on_attack_handler(void) {
     o->oAction = WIGGLER_ACT_JUMPED_ON;
     o->oForwardVel = o->oVelY = 0.0f;
     o->oWigglerSquishSpeed = 0.4f;
+}
+
+static s16 obj_get_pitch_from_vel(void) {
+    return -atan2s(o->oForwardVel, o->oVelY);
+}
+
+/**
+ * Show dialog proposing a race.
+ * If the player accepts the race, then leave time stop enabled and Mario in the
+ * text action so that the racing object can wait before starting the race.
+ * If the player declines the race, then disable time stop and allow Mario to
+ * move again.
+ */
+static s32 obj_update_race_proposition_dialog(s16 dialogID) {
+    s32 dialogResponse =
+        cur_obj_update_dialog_with_cutscene(MARIO_DIALOG_LOOK_UP,
+        (DIALOG_FLAG_TURN_TO_MARIO | DIALOG_FLAG_TIME_STOP_ENABLED), CUTSCENE_RACE_DIALOG, dialogID);
+
+    if (dialogResponse == DIALOG_RESPONSE_NO) {
+        set_mario_npc_dialog(MARIO_DIALOG_STOP);
+        disable_time_stop_including_mario();
+    }
+
+    return dialogResponse;
 }
 
 /* BSS (declared to force order) */
@@ -172,6 +197,16 @@ static s32 obj_move_pitch_approach(s16 target, s16 delta) {
     o->oMoveAnglePitch = approach_s16_symmetric(o->oMoveAnglePitch, target, delta);
 
     if ((s16) o->oMoveAnglePitch == target) {
+        return TRUE;
+    }
+
+    return FALSE;
+}
+
+static s32 obj_face_pitch_approach(s16 targetPitch, s16 deltaPitch) {
+    o->oFaceAnglePitch = approach_s16_symmetric(o->oFaceAnglePitch, targetPitch, deltaPitch);
+
+    if ((s16) o->oFaceAnglePitch == targetPitch) {
         return TRUE;
     }
 
@@ -395,7 +430,30 @@ static s16 obj_random_fixed_turn(s16 delta) {
     return o->oMoveAngleYaw + (s16) random_sign() * delta;
 }
 
+static s32 oscillate_toward(s32 *value, f32 *vel, s32 target, f32 velCloseToZero, f32 accel,
+                            f32 slowdown) {
+    s32 startValue = *value;
+    *value += (s32) *vel;
 
+    if (*value == target
+        || ((*value - target) * (startValue - target) < 0 && *vel > -velCloseToZero
+            && *vel < velCloseToZero)) {
+        *value = target;
+        *vel = 0.0f;
+        return TRUE;
+    } else {
+        if (*value >= target) {
+            accel = -accel;
+        }
+        if (*vel * accel < 0.0f) {
+            accel *= slowdown;
+        }
+
+        *vel += accel;
+    }
+
+    return FALSE;
+}
 
 UNUSED static void obj_unused_die(void) {
     o->oHealth = 0;
@@ -537,7 +595,9 @@ static void treat_far_home_as_mario(f32 threshold) {
 
 #include "behaviors/koopa.inc.c" // TODO: Text arg field name
 #include "behaviors/goomba.inc.c"
+#include "behaviors/chain_chomp.inc.c" // TODO: chain_chomp_sub_act_lunge documentation
 #include "behaviors/hana.inc.c"
+#include "behaviors/seesaw_platform.inc.c"
 
 /**
  * Used by bowser, fly guy, piranha plant, and fire spitters.

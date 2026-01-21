@@ -18,6 +18,10 @@ extern Gfx RCP_nokonoko_down8[];
 extern Gfx RCP_nokonoko_down9[];
 extern AnimePtr nokonoko_anime[];
 
+// koopa_flag
+extern Hierarchy RCP_Hmsflag[];
+extern Gfx RCP_flag[];
+
 // piranha_plant
 extern Hierarchy RCP_HmsEnemypakun_angry[];
 extern AnimePtr pakun_anime[];
@@ -26,5 +30,9 @@ extern AnimePtr pakun_anime[];
 extern Hierarchy RCP_HmsEnemywallman[];
 extern AnimePtr wallman_anime[];
 extern short wallman_info[];
+
+// whomp
+extern Hierarchy RCP_HmsEnemywanwan[];
+extern AnimePtr wanwan_anime[];
 
 #endif

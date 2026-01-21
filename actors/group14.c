@@ -8,6 +8,9 @@
 #include "geo_commands.h"
 #include "headers.h"
 
+#include "koopa_goal_flag/animed.sou"
+UNUSED static const u64 binid_1 = 1;
+
 #include "koopa/nokonoko.sou"
 UNUSED static const u64 binid_2 = 2;
 
@@ -17,3 +20,6 @@ UNUSED static const u64 binid_3 = 3;
 #include "whomp/wallman.sou"
 #include "whomp/wallman.flk"
 UNUSED static const u64 binid_4 = 4;
+
+#include "wanwano/wanwan.sou"
+UNUSED static const u64 binid_5 = 5;

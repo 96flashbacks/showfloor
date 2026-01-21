@@ -55,8 +55,8 @@ static struct MacroPreset sMacroObjectPresets[] = {
     /* macro_empty_116                   */ { bhvYellowCoin, MODEL_YELLOW_COIN, 0 },
     /* macro_empty_117                   */ { bhvYellowCoin, MODEL_YELLOW_COIN, 0 },
     /* macro_empty_118                   */ { bhvYellowCoin, MODEL_YELLOW_COIN, 0 },
-    /* macro_empty_119                   */ { bhvYellowCoin, MODEL_YELLOW_COIN, 0 },
-    /* macro_empty_120                   */ { bhvYellowCoin, MODEL_YELLOW_COIN, 0 },
+    /* macro_bob_koopa_the_quick         */ { bhvKoopa, MODEL_KOOPA_WITH_SHELL, KOOPA_BP_KOOPA_THE_QUICK_BOB }, // unused
+    /* macro_koopa_race_endpoint         */ { bhvYellowCoin, MODEL_YELLOW_COIN, 0 },
     /* macro_empty_121                   */ { bhvYellowCoin, MODEL_YELLOW_COIN, 0 },
     /* macro_empty_122                   */ { bhvYellowCoin, MODEL_YELLOW_COIN, 0 },
     /* macro_empty_124                   */ { bhvYellowCoin, MODEL_YELLOW_COIN, 0 },
@@ -164,7 +164,7 @@ static struct MacroPreset sMacroObjectPresets[] = {
     /* macro_piranha_plant               */ { bhvPiranhaPlant, MODEL_PIRANHA_PLANT, 0 }, // unused
     /* macro_empty_254                   */ { bhvYellowCoin, MODEL_YELLOW_COIN, 0 },
     /* macro_whomp                       */ { bhvSmallWhomp, MODEL_WHOMP, 0 },
-    /* macro_empty_257                   */ { bhvYellowCoin, MODEL_YELLOW_COIN, 0 },
+    /* macro_chain_chomp                 */ { bhvChainChomp, MODEL_CHAIN_CHOMP, 0 },
     /* macro_empty_264                   */ { bhvYellowCoin, MODEL_YELLOW_COIN, 0 },
     /* macro_empty_265                   */ { bhvYellowCoin, MODEL_YELLOW_COIN, 0 },
     /* macro_empty_266                   */ { bhvYellowCoin, MODEL_YELLOW_COIN, 0 },
