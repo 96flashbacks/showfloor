@@ -284,10 +284,39 @@ else
     ACPP      := $(QEMU_IRIX) -silent -L $(IRIX_ROOT) $(IRIX_ROOT)/usr/lib/acpp
     COPT      := $(QEMU_IRIX) -silent -L $(IRIX_ROOT) $(IRIX_ROOT)/usr/lib/copt
   else
-    IDO_ROOT  := $(TOOLS_DIR)/ido-5.3-recomp-linux
-    CC        := $(IDO_ROOT)/cc
-    ACPP      := $(IDO_ROOT)/acpp
-    COPT      := $(IDO_ROOT)/copt
+    # Detect host platform for IDO recomp binaries (allow override via IDO_PLATFORM)
+    ifndef IDO_PLATFORM
+      DETECTED_OS := $(shell uname -s)
+      ifeq ($(DETECTED_OS),Linux)
+        DETECTED_ARCH := $(shell uname -m)
+        ifeq ($(DETECTED_ARCH),aarch64)
+          IDO_PLATFORM := linux-arm
+        else
+          IDO_PLATFORM := linux
+        endif
+      else ifeq ($(DETECTED_OS),Darwin)
+        IDO_PLATFORM := macos
+      else ifneq (,$(findstring MINGW,$(DETECTED_OS)))
+        IDO_PLATFORM := windows
+      else ifneq (,$(findstring MSYS,$(DETECTED_OS)))
+        IDO_PLATFORM := windows
+      else ifneq (,$(findstring CYGWIN,$(DETECTED_OS)))
+        IDO_PLATFORM := windows
+      else
+        $(error Unsupported platform: $(DETECTED_OS))
+      endif
+    endif
+
+    # Windows binaries carry the .exe suffix
+    IDO_EXE_SUFFIX :=
+    ifeq ($(IDO_PLATFORM),windows)
+      IDO_EXE_SUFFIX := .exe
+    endif
+
+    IDO_ROOT  := $(TOOLS_DIR)/ido-5.3-recomp-$(IDO_PLATFORM)
+    CC        := $(IDO_ROOT)/cc$(IDO_EXE_SUFFIX)
+    ACPP      := $(IDO_ROOT)/acpp$(IDO_EXE_SUFFIX)
+    COPT      := $(IDO_ROOT)/copt$(IDO_EXE_SUFFIX)
   endif
 endif
 LD            := $(CROSS)ld
