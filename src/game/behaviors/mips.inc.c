@@ -1,4 +1,3 @@
-
 /**
  * Behavior for MIPS (everyone's favorite yellow rabbit).
  */
@@ -12,11 +11,7 @@ void bhv_mips_init(void) {
         o->oBhvParams2ndByte = MIPS_BP_15_STARS;
         o->oMipsForwardVelocity = 40.0f;
 
-#ifndef VERSION_JP
-    o->oGravity = 15.0f;
-#else
     o->oGravity = 2.5f;
-#endif
     o->oFriction = 0.99f;
     o->oBuoyancy = 1.4f;
 
@@ -69,7 +64,7 @@ void bhv_mips_act_wait_for_nearby_mario(void) {
     // Play sounds during walk animation.
 
     if (cur_obj_check_if_near_animation_end() == TRUE) {
-        cur_obj_play_sound_2(SOUND_OBJ_MIPS_RABBIT);
+        cur_obj_play_sound_2(SOUND_OBJ_MRI_SHOOT);
         o->oAction = MIPS_ACT_WAIT_FOR_NEARBY_MARIO;
     }
 
@@ -158,10 +153,6 @@ void bhv_mips_held(void) {
     cur_obj_init_animation(4); // Held animation.
     cur_obj_set_pos_relative(gMarioObject, 0, 60.0f, 100.0f);
     cur_obj_become_intangible();
-
-    
-        
-    
 }
 
 /**

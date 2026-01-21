@@ -28,17 +28,16 @@ void bobomb_spawn_coin(void) {
 }
 
 void bobomb_act_explode(void) {
-    struct Object *explosion;
-	o->oBobombFuseTimer = 151;
-	cur_obj_init_animation(1);
-    if (o->oTimer <= 12)
-	cur_obj_init_animation(1);	
-    else {
-        explosion = spawn_object(o, MODEL_EXPLOSION, bhvExplosion);
-        explosion->oGraphYOffset += 50.0f;
-		explosion->oBhvParams = o->oBhvParams;
+    cur_obj_init_animation(1);
+    if (o->oTimer < 5) {
+        cur_obj_scale(1.0 + (f32) o->oTimer / 5.0);
+    } else {
+        struct Object *explosion = spawn_object(o, MODEL_EXPLOSION, bhvExplosion);
+        explosion->oGraphYOffset += 100.0f;
+
         bobomb_spawn_coin();
         create_respawner(MODEL_BLACK_BOBOMB, bhvBobomb, 3000);
+
         o->activeFlags = ACTIVE_FLAG_DEACTIVATED;
     }
 }
@@ -92,9 +91,9 @@ void bobomb_act_chase_mario(void) {
     o->oForwardVel = 20.0f;
     collisionFlags = object_step();
 
-    if (animFrame == 5 || animFrame == 16) {
-        cur_obj_play_sound_2(SOUND_OBJ_BOBOMB_WALK);
-    }
+    //if (animFrame == 5 || animFrame == 16) {
+    //    cur_obj_play_sound_2(SOUND_OBJ_BOBOMB_WALK);
+    //}
 
     obj_turn_toward_object(o, gMarioObject, 16, 0x800);
     obj_check_floor_death(collisionFlags, sObjFloor);
