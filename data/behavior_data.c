@@ -366,6 +366,31 @@ const BehaviorScript bhvKoopa[] = {
     END_LOOP(),
 };
 
+//please add ktq Okay good
+
+//const BehaviorScript bhvKoopaRaceEndpoint[] = {
+//    BEGIN(OBJ_LIST_DEFAULT),
+//    OR_INT(oFlags, (OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+//    DROP_TO_FLOOR(),
+//    SPAWN_CHILD_WITH_PARAM(/*Bhv param*/ 0, /*Model*/ MODEL_KOOPA_FLAG, /*Behavior*/ bhvKoopaFlag),
+//    BEGIN_LOOP(),
+//        CALL_NATIVE(bhv_koopa_race_endpoint_update),
+//    END_LOOP(),
+//};
+
+const BehaviorScript bhvKoopaFlag[] = {
+    BEGIN(OBJ_LIST_POLELIKE),
+    SET_INTERACT_TYPE(INTERACT_POLE),
+    SET_HITBOX(/*Radius*/ 80, /*Height*/ 700),
+    SET_INT(oIntangibleTimer, 0),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    DROP_TO_FLOOR(),
+    ANIMATE(0),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_pole_base_loop),
+    END_LOOP(),
+};
+
 const BehaviorScript bhvMrIBody[] = {
     BEGIN(OBJ_LIST_DEFAULT),
     OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
@@ -651,6 +676,61 @@ const BehaviorScript bhvGoombaTripletSpawner[] = {
     END_LOOP(),
 };
 
+const BehaviorScript bhvChainChomp[] = {
+    BEGIN(OBJ_LIST_GENACTOR),
+    OR_INT(oFlags, (OBJ_FLAG_COMPUTE_ANGLE_TO_MARIO | OBJ_FLAG_ACTIVE_FROM_AFAR | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    DROP_TO_FLOOR(),
+    LOAD_ANIMATIONS(oAnimations, wanwan_anime),
+    ANIMATE(0),
+    SET_OBJ_PHYSICS(/*Wall hitbox radius*/ 0, /*Gravity*/ -400, /*Bounciness*/ -50, /*Drag strength*/ 0, /*Friction*/ 1000, /*Buoyancy*/ 200, /*Unused*/ 0, 0),
+    HIDE(),
+    SET_HOME(),
+    SET_FLOAT(oGraphYOffset, 240),
+    SCALE(/*Unused*/ 0, /*Field*/ 200),
+    SPAWN_CHILD_WITH_PARAM(/*Bhv param*/ 0, /*Model*/ MODEL_WOODEN_POST, /*Behavior*/ bhvWoodenPost),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_chain_chomp_update),
+    END_LOOP(),
+};
+
+const BehaviorScript bhvChainChompChainPart[] = {
+    BEGIN(OBJ_LIST_GENACTOR),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    BILLBOARD(),
+    SET_OBJ_PHYSICS(/*Wall hitbox radius*/ 0, /*Gravity*/ -400, /*Bounciness*/ -50, /*Drag strength*/ 1000, /*Friction*/ 1000, /*Buoyancy*/ 200, /*Unused*/ 0, 0),
+    SET_FLOAT(oGraphYOffset, 40),
+    SCALE(/*Unused*/ 0, /*Field*/ 200),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_chain_chomp_chain_part_update),
+    END_LOOP(),
+};
+
+const BehaviorScript bhvWoodenPost[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    //LOAD_COLLISION_DATA(poundable_pole_collision_06002490),
+    OR_INT(oFlags, (OBJ_FLAG_COMPUTE_ANGLE_TO_MARIO | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    SET_OBJ_PHYSICS(/*Wall hitbox radius*/ 0, /*Gravity*/ -400, /*Bounciness*/ -50, /*Drag strength*/ 1000, /*Friction*/ 1000, /*Buoyancy*/ 200, /*Unused*/ 0, 0),
+    SET_INT(oNumLootCoins, 5),
+    DROP_TO_FLOOR(),
+    SET_HOME(),
+    SCALE(/*Unused*/ 0, /*Field*/ 50),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_wooden_post_update),
+        //CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+};
+
+/*const BehaviorScript bhvChainChompGate[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    LOAD_COLLISION_DATA(bob_seg7_collision_chain_chomp_gate),
+    OR_INT(oFlags, (OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    CALL_NATIVE(bhv_chain_chomp_gate_init),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_chain_chomp_gate_update),
+        CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+};*/
+
 const BehaviorScript bhvHana[] = {
     BEGIN(OBJ_LIST_PUSHABLE),
     OR_INT(oFlags, (OBJ_FLAG_COMPUTE_ANGLE_TO_MARIO | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
@@ -661,6 +741,16 @@ const BehaviorScript bhvHana[] = {
     CALL_NATIVE(bhv_hana_init),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_hana_update),
+    END_LOOP(),
+};
+
+const BehaviorScript bhvSeesawPlatform[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    OR_INT(oFlags, (OBJ_FLAG_COMPUTE_ANGLE_TO_MARIO | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    CALL_NATIVE(bhv_seesaw_platform_init),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_seesaw_platform_update),
+        CALL_NATIVE(load_object_collision_model),
     END_LOOP(),
 };
 

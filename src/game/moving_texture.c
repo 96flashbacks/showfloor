@@ -130,6 +130,8 @@ u8 *gMovtexIdToTexture[] = { texture_waterbox_water, texture_waterbox_mist, text
                              texture_waterbox_unknown_water, texture_waterbox_lava,
                              ttc_yellow_triangle, ttc_yellow_triangle, ttc_yellow_triangle };
 
+extern Gfx bob_dl_waterfall[];
+extern s16 bob_movtex_tris_waterfall[];
 extern Gfx castle_grounds_dl_waterfall[];
 extern s16 castle_grounds_movtex_tris_waterfall[];
 extern s16 ttc_movtex_tris_big_surface_treadmill[];
@@ -147,6 +149,9 @@ struct MovtexObject gMovtexNonColored[] = {
     // The waterfall outside the castle
     { MOVTEX_CASTLE_WATERFALL, TEXTURE_WATER, 15, castle_grounds_movtex_tris_waterfall,
       dl_waterbox_rgba16_begin, dl_waterbox_end, castle_grounds_dl_waterfall, 0xff, 0xff, 0xff, 0xb4,
+      LAYER_TRANSPARENT_INTER },
+    { MOVTEX_BOB_WATERFALL, TEXTURE_WATER, 10, bob_movtex_tris_waterfall,
+      dl_waterbox_rgba16_begin, dl_waterbox_end, bob_dl_waterfall, 0xff, 0xff, 0xff, 0xb4,
       LAYER_TRANSPARENT_INTER },
 
     { 0x00000000, 0x00000000, 0, NULL, NULL, NULL, NULL, 0x00, 0x00, 0x00, 0x00, 0x00000000 },
@@ -384,6 +389,7 @@ Gfx *movtex_gen_quads_id(s16 id, s16 y, void *movetexQuadsSegmented) {
     return NULL;
 }
 
+extern u8 bob_movtex_water[];
 extern u8 castle_movtex_water[];
 extern u8 jrb_movtex_area1_water[];
 extern u8 thi_movtex_area1_water[];
@@ -398,6 +404,8 @@ extern u8 castle_courtyard_movtex_star_statue_water[];
  */
 void *get_quad_collection_from_id(u32 id) {
     switch (id) {
+        case BOB_MOVTEX_WATER:
+            return bob_movtex_water;
         case CASTLE_MOVTEX_WATER:
             return castle_movtex_water;
         case JRB_MOVTEX_WATER:

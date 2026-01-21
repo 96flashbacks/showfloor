@@ -1,0 +1,43 @@
+
+/*==================================================================================================
+		wanwan Shape Hms Data 																			   
+====================================================================================================*/
+
+extern Gfx RCP_wanwan_anim2[];
+extern Gfx RCP_wanwan_anim0[];
+extern Gfx RCP_wanwan_anim4[];
+extern Gfx RCP_wanwan_anim3[];
+extern Gfx RCP_wanwan_anim1[];
+/*-------------------------------------------------------------*/
+/*	Hms data 			                                       */
+/*-------------------------------------------------------------*/
+
+Hierarchy RCP_HmsEnemywanwan[] = {
+ hmsShadow(200,150,1)
+ hmsBegin()
+ hmsScale(0.25f)
+    hmsBegin()
+      hmsJoint(RM_SURF,NULL,0,0,0)					/* ,XXX, */
+      hmsBegin()
+         hmsJoint(RM_SURF,RCP_wanwan_anim2,0,0,0)  /* ,wan_bodyB,(2) */
+         hmsJoint(RM_SURF,RCP_wanwan_anim0,0,0,0)  /* ,wan_toothB,(0) */
+      hmsEnd()
+      hmsJoint(RM_SURF,NULL,0,0,0)  /* ,chn2,(5) */
+      hmsBegin()
+         hmsJoint(RM_SURF,RCP_wanwan_anim4,0,0,0)  /* ,wan_bodyA,(4) */
+         hmsJoint(RM_SURF,RCP_wanwan_anim3,0,0,0)  /* ,wan_toothA,(3) */
+         hmsJoint(RM_SPRITE,RCP_wanwan_anim1,0,0,0)  /* ,wan_eye,(1) */
+      hmsEnd()
+   hmsEnd()
+ hmsEnd()
+ hmsEnd()
+ hmsExit()
+};
+
+
+
+// extern AnimeRecord wanwan_anim_anm[];
+// extern Hierarchy RCP_HmsEnemywanwan_anim[];
+/*=============================================================*/
+/*  END END */
+/*=============================================================*/

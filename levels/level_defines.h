@@ -19,7 +19,7 @@ DEFINE_LEVEL("YYAMA1 % YSLD", LEVEL_CCM,              COURSE_CCM,      ccm,     
 DEFINE_LEVEL("SELECT ROOM",    LEVEL_CASTLE,           COURSE_NONE,     castle_inside,    inside,   20000,    0x00, 0x00, 0x00, _,         sCamCastle)
 STUB_LEVEL(  "",         LEVEL_ENDING,           COURSE_CAKE_END,                             20000,    0x00, 0x00, 0x00, _,         _)
 STUB_LEVEL(  "SABAKU", LEVEL_SSL,              COURSE_SSL,                                  15000,    0x00, 0x00, 0x00, _,         _)
-DEFINE_LEVEL("BATTLE FIELD",   LEVEL_BOB,              COURSE_BOB,      bob,              generic,  15000,    0x08, 0x08, 0x08, _,         _)
+DEFINE_LEVEL("BATTLE FIELD",   LEVEL_BOB,              COURSE_BOB,      bob,              generic,  15000,    0x08, 0x08, 0x08, _,         sCamBOB)
 STUB_LEVEL(  "YUKIYAMA2",      LEVEL_SL,               COURSE_SL,                                   14000,    0x00, 0x00, 0x00, _,         _)
 STUB_LEVEL(  "POOL KAI",       LEVEL_WDW,              COURSE_WDW,                                  17000,    0x00, 0x00, 0x00, _,         _)
 DEFINE_LEVEL("TINBOTU", LEVEL_JRB,              COURSE_JRB,      jrb,              water,    20000,    0x00, 0x00, 0x00, _,         _)

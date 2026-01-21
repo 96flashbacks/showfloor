@@ -1,0 +1,61 @@
+
+/**
+ * Behavior for bhvSeesawPlatform.
+ */
+
+/**
+ * Collision models for the different seesaw platforms.
+ */
+static Collision const *sSeesawPlatformCollisionModels[] = {
+    bob_seg7_collision_bridge,
+};
+
+/**
+ * Init function for bhvSeesawPlatform.
+ */
+void bhv_seesaw_platform_init(void) {
+    o->collisionData = segmented_to_virtual(sSeesawPlatformCollisionModels[o->oBhvParams2ndByte]);
+
+    // The S-shaped seesaw platform in BitS is large, so increase its collision
+    // distance
+    if (o->oBhvParams2ndByte == 2) {
+        o->oCollisionDistance = 2000.0f;
+    }
+}
+
+/**
+ * Update function for bhvSeesawPlatform.
+ */
+void bhv_seesaw_platform_update(void) {
+    UNUSED s32 startPitch = o->oFaceAnglePitch;
+    o->oFaceAnglePitch += (s32) o->oSeesawPlatformPitchVel;
+
+    if (absf(o->oSeesawPlatformPitchVel) > 10.0f) {
+        cur_obj_play_sound_1(SOUND_ENV_BOAT_ROCKING1);
+    }
+
+    if (gMarioObject->platform == o) {
+        // Rotate toward mario
+        f32 rotation = o->oDistanceToMario * coss(o->oAngleToMario - o->oMoveAngleYaw);
+        UNUSED u8 filler[4];
+
+        // Deceleration is faster than acceleration
+        if (o->oSeesawPlatformPitchVel * rotation < 0) {
+            rotation *= 0.04f;
+        } else {
+            rotation *= 0.02f;
+        }
+
+        o->oSeesawPlatformPitchVel += rotation;
+        clamp_f32(&o->oSeesawPlatformPitchVel, -50.0f, 50.0f);
+    } else {
+        // Rotate back to 0
+        oscillate_toward(
+            /* value          */ &o->oFaceAnglePitch,
+            /* vel            */ &o->oSeesawPlatformPitchVel,
+            /* target         */ 0.0f,
+            /* velCloseToZero */ 6.0f,
+            /* accel          */ 3.0f,
+            /* slowdown       */ 3.0f);
+    }
+}

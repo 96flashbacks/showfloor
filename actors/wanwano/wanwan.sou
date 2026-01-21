@@ -1,0 +1,547 @@
+/*==================================================================================================
+		wanwan Shape Gfx Data 																			   
+====================================================================================================*/
+
+/**************************************************************/
+/*	shape data wanwan_anim (skeleton & animation) */
+/**************************************************************/
+
+#define ShapeColor_wanwan_anim(r,g,b)   ShapeColor(r,g,b)
+#define ShapeColor_wan_eye(r,g,b)   ShapeColor(r,g,b)
+
+/*-------------------------------------------------------------*/
+/*	light data                                                 */
+/*-------------------------------------------------------------*/
+
+static Lights1 light_wanwan_anim[]={
+	ShapeColor_wanwan_anim(255,255,255),
+	ShapeColor_wanwan_anim(13,15,22),
+	ShapeColor_wanwan_anim(150,0,0),
+};
+
+static Lights1 light_wan_eye[] = {
+	ShapeColor_wan_eye(255,255,255),
+};
+
+/*-------------------------------------------------------------*/
+/*	textures                                                   */
+/*-------------------------------------------------------------*/
+
+static unsigned short wanme_txt[] = {
+    0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  
+    0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  
+    0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  
+    0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  
+    0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  
+    0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  
+    0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  
+    0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  
+    0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  
+    0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  
+    0xfffe,  0xfffe,  0xfffe,  0xfffe,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xdef7,  0xdef7,  0xdef7,  0xdef7,  0xdef7,  0xdef7,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xfffe,  0xfffe,  0xfffe,  0xfffe,  
+    0xfffe,  0xfffe,  0xfffe,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xbdef,  0x739d,  0x2109,  0x1085,  0x18c7,  0x4a53,  0x6b5b,  0xbdef,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xfffe,  0xfffe,  0xfffe,  
+    0xfffe,  0xf7bc,  0xf7bc,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xbdef,  0x4211,  0x1085,  0x0001,  0x0001,  0x0001,  0x0001,  0x0001,  0x4211,  0xbdef,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xfffe,  0xfffe,  0xfffe,  
+    0xf7bc,  0xef7a,  0xef7b,  0xf7bd,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xdef7,  0x318d,  0x1085,  0x0001,  0x0001,  0x0001,  0x0001,  0x0001,  0x0001,  0x0001,  0x5295,  0xdef7,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xfffe,  0xf7bc,  
+    0xef7a,  0xe738,  0xe739,  0xef7b,  0xf7bd,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xdef7,  0x294b,  0x0001,  0x0001,  0x0001,  0x0001,  0x0001,  0x0001,  0x0001,  0x0001,  0x2109,  0xdef7,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xf7bc,  0xf7bc,  
+    0xef7a,  0xe738,  0xe739,  0xef7b,  0xf7bd,  0xf7bd,  0xffff,  0xffff,  0xffff,  0xffff,  0xdef7,  0x2109,  0x0001,  0x0001,  0x0001,  0x0001,  0x0001,  0x0001,  0x0001,  0x0001,  0x1085,  0xdef7,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xf7bd,  0xef7a,  0xef7a,  
+    0xe738,  0xdef6,  0xdef7,  0xe739,  0xef7b,  0xf7bd,  0xffff,  0xffff,  0xffff,  0xffff,  0xdef7,  0x18c7,  0x0001,  0x0001,  0x0001,  0x0001,  0x0001,  0x0001,  0x0001,  0x0001,  0x1085,  0xdef7,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xf7bd,  0xef7b,  0xe738,  0xef7a,  
+    0xe738,  0xdef6,  0xdef7,  0xdef7,  0xef7b,  0xf7bd,  0xffff,  0xffff,  0xffff,  0xffff,  0xdef7,  0x294b,  0x0001,  0x0001,  0x0001,  0x0001,  0x0001,  0x0001,  0x0001,  0x0001,  0x318d,  0xdef7,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xf7bd,  0xef7b,  0xe739,  0xe738,  0xef7a,  
+    0xe738,  0xdef6,  0xd6b5,  0xdef7,  0xe739,  0xef7b,  0xf7bd,  0xffff,  0xffff,  0xffff,  0xdef7,  0x4211,  0x0843,  0x0001,  0x0001,  0x0001,  0x0001,  0x0001,  0x0843,  0x1085,  0x39cf,  0xdef7,  0xffff,  0xffff,  0xffff,  0xffff,  0xf7bd,  0xf7bd,  0xef7b,  0xdef7,  0xdef6,  0xef7a,  
+    0xe738,  0xdef6,  0xd6b4,  0xd6b5,  0xdef7,  0xef7b,  0xf7bd,  0xf7bd,  0xffff,  0xffff,  0xe739,  0xbdef,  0x294b,  0x0843,  0x0001,  0x0001,  0x0001,  0x0843,  0x1085,  0x294b,  0xbdef,  0xffff,  0xffff,  0xffff,  0xffff,  0xf7bd,  0xf7bd,  0xef7b,  0xe739,  0xdef7,  0xd6b4,  0xe738,  
+    0xe738,  0xd6b4,  0xd6b4,  0xd6b5,  0xdef7,  0xe739,  0xef7b,  0xf7bd,  0xf7bd,  0xffff,  0xffff,  0xe739,  0xbdef,  0x318d,  0x18c7,  0x1085,  0x18c7,  0x294b,  0x4211,  0xbdef,  0xffff,  0xffff,  0xffff,  0xffff,  0xf7bd,  0xef7b,  0xef7b,  0xe739,  0xdef7,  0xd6b4,  0xd6b4,  0xdef6,  
+    0xdef6,  0xd6b4,  0xce72,  0xd6b4,  0xdef7,  0xdef7,  0xe739,  0xef7b,  0xf7bd,  0xffff,  0xffff,  0xf7bd,  0xdef7,  0xdef7,  0xdef7,  0xdef7,  0xdef7,  0xdef7,  0xdef7,  0xffff,  0xffff,  0xffff,  0xf7bd,  0xf7bd,  0xef7b,  0xe739,  0xe739,  0xdef7,  0xd6b4,  0xce72,  0xce72,  0xdef6,  
+    0xd6b4,  0xd6b4,  0xce72,  0xce72,  0xd6b5,  0xdef7,  0xdef7,  0xe739,  0xef7b,  0xf7bd,  0xf7bd,  0xffff,  0xf7bd,  0xf7bd,  0xf7bd,  0xf7bd,  0xffff,  0xf7bd,  0xf7bd,  0xf7bd,  0xf7bd,  0xf7bd,  0xef7b,  0xef7b,  0xe739,  0xe739,  0xdef7,  0xd6b5,  0xd6b4,  0xce72,  0xce72,  0xd6b4,  
+    0xd6b4,  0xce72,  0xce72,  0xce72,  0xd6b4,  0xd6b5,  0xdef7,  0xdef7,  0xe739,  0xef7b,  0xf7bd,  0xf7bd,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xffff,  0xf7bd,  0xf7bd,  0xef7b,  0xe739,  0xe739,  0xdef7,  0xdef7,  0xd6b5,  0xd6b4,  0xce72,  0xce72,  0xce72,  0xce72,  
+    0xce72,  0xce72,  0xce72,  0xce72,  0xd6b4,  0xd6b4,  0xd6b5,  0xd6b5,  0xdef7,  0xe739,  0xef7b,  0xef7b,  0xf7bd,  0xf7bd,  0xf7bd,  0xf7bd,  0xf7bd,  0xf7bd,  0xf7bd,  0xef7b,  0xef7b,  0xe739,  0xe739,  0xdef7,  0xd6b5,  0xd6b5,  0xd6b4,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  
+    0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xd6b4,  0xd6b4,  0xd6b5,  0xd6b5,  0xdef7,  0xe739,  0xef7b,  0xef7b,  0xef7b,  0xf7bd,  0xf7bd,  0xf7bd,  0xf7bd,  0xef7b,  0xef7b,  0xe739,  0xe739,  0xdef7,  0xd6b5,  0xd6b5,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  
+    0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xd6b5,  0xd6b5,  0xdef7,  0xdef7,  0xe739,  0xef7b,  0xef7b,  0xef7b,  0xef7b,  0xef7b,  0xef7b,  0xe739,  0xe739,  0xdef7,  0xdef7,  0xd6b5,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  
+    0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xd6b5,  0xd6b5,  0xdef7,  0xdef7,  0xdef7,  0xe739,  0xe739,  0xe739,  0xe739,  0xef7b,  0xe739,  0xdef7,  0xdef7,  0xd6b5,  0xd6b4,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  
+    0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xd6b4,  0xd6b5,  0xd6b5,  0xd6b5,  0xdef7,  0xdef7,  0xdef7,  0xdef7,  0xdef7,  0xdef7,  0xd6b5,  0xd6b4,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  
+    0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xd6b5,  0xd6b5,  0xd6b5,  0xce73,  0xce73,  0xce73,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  
+    0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  
+    0xd6b4,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xd6b4,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xce72,  0xd6b4,  
+};
+
+/*-------------------------------------------------------------*/
+/*	vertex & polygon data                                      */
+/*-------------------------------------------------------------*/
+
+static Vtx vtx_wanwan_anim0[]={
+	{281,6,-451,0,0,0,45,-5,-118,0},
+	{223,-71,-469,0,0,0,45,-5,-118,0},
+	{181,6,-490,0,0,0,45,-5,-118,0},
+	{399,6,-401,0,0,0,49,-18,-115,255},
+	{322,-105,-415,0,0,0,49,-18,-115,255},
+	{281,6,-451,0,0,0,49,-18,-115,255},
+	{458,6,-260,0,0,0,115,-20,-48,255},
+	{400,-155,-330,0,0,0,115,-20,-48,255},
+	{399,6,-401,0,0,0,115,-20,-48,255},
+	{563,6,0,0,0,0,114,-29,-45,255},
+	{451,-210,-138,0,0,0,114,-29,-45,255},
+	{458,6,-260,0,0,0,114,-29,-45,255},
+	{458,6,260,0,0,0,114,-30,46,255},
+	{451,-210,138,0,0,0,114,-30,46,255},
+	{563,6,0,0,0,0,114,-30,46,255},
+	{399,6,401,0,0,0,115,-20,48,255},
+	{400,-155,330,0,0,0,115,-20,48,0},
+	{458,6,260,0,0,0,115,-20,48,0},
+	{281,6,451,0,0,0,49,-18,115,255},
+	{322,-105,415,0,0,0,49,-18,115,255},
+	{399,6,401,0,0,0,49,-18,115,255},
+	{181,6,490,0,0,0,45,-5,118,255},
+	{223,-71,469,0,0,0,45,-5,118,255},
+	{281,6,451,0,0,0,45,-5,118,255},
+};
+Vtx vtx_wanwan_anim1[12] = {
+	{{ {333, -250, 423}, 0, {990, 0}, {112, 224, 51, 255} }},
+	{{ {478, -46, 235}, 0, {0, 990}, {112, 224, 51, 255} }},
+	{{ {392, -25, 436}, 0, {990, 990}, {112, 224, 51, 255} }},
+	{{ {333, -250, 423}, 0, {990, 0}, {112, 224, 51, 255} }},
+	{{ {419, -271, 221}, 0, {0, 0}, {112, 224, 51, 255} }},
+	{{ {478, -46, 235}, 0, {0, 990}, {112, 224, 51, 255} }},
+	{{ {392, -25, -436}, 0, {990, 990}, {112, 224, 205, 255} }},
+	{{ {478, -46, -235}, 0, {0, 990}, {112, 224, 205, 255} }},
+	{{ {333, -250, -423}, 0, {990, 0}, {112, 224, 205, 255} }},
+	{{ {478, -46, -235}, 0, {0, 990}, {112, 224, 205, 255} }},
+	{{ {419, -271, -221}, 0, {0, 0}, {112, 224, 205, 255} }},
+	{{ {333, -250, -423}, 0, {990, 0}, {112, 224, 205, 255} }},
+};
+static Vtx vtx_wanwan_anim2[]={
+	{-156,533,-156,0,0,0,-34,117,-34,0},
+	{-220,533,0,0,0,0,-48,117,0,0},
+	{0,577,0,0,0,0,0,127,0,0},
+	{-288,408,-288,0,0,0,-63,90,-63,255},
+	{-408,408,0,0,0,0,-89,90,0,255},
+	{-377,220,-377,0,0,0,-82,48,-82,255},
+	{-533,220,0,0,0,0,-117,48,0,255},
+	{-408,0,-408,0,0,0,-89,0,-89,255},
+	{-577,0,0,0,0,0,-127,0,0,255},
+	{-377,220,377,0,0,0,-82,48,82,255},
+	{-408,0,408,0,0,0,-89,0,89,255},
+	{-288,408,288,0,0,0,-63,90,63,255},
+	{-156,533,156,0,0,0,-34,117,34,255},
+	{0,533,-220,0,0,0,0,117,-48,255},
+	{0,408,-408,0,0,0,0,90,-89,255},
+	{0,220,-533,0,0,0,0,48,-117,255},
+	{-377,220,-377,0,0,0,-82,48,-82,255},
+	{0,220,-533,0,0,0,0,48,-117,0},
+	{0,0,-577,0,0,0,0,24,-124,0},
+	{-408,0,-408,0,0,0,-89,0,-89,255},
+	{0,220,533,0,0,0,0,48,117,255},
+	{-377,220,377,0,0,0,-82,48,82,255},
+	{-408,0,408,0,0,0,-89,0,89,255},
+	{0,0,577,0,0,0,0,24,124,255},
+	{0,408,408,0,0,0,0,90,89,255},
+	{-288,408,288,0,0,0,-63,90,63,255},
+	{0,533,220,0,0,0,0,117,48,255},
+	{-156,533,156,0,0,0,-34,117,34,255},
+	{0,577,0,0,0,0,0,127,0,255},
+	{156,533,-156,0,0,0,34,117,-34,255},
+	{0,533,-220,0,0,0,0,117,-48,255},
+	{288,408,-288,0,0,0,63,90,-63,255},
+	{0,533,-220,0,0,0,0,117,-48,255},
+	{288,408,-288,0,0,0,63,90,-63,0},
+	{0,408,-408,0,0,0,0,90,-89,0},
+	{377,220,-377,0,0,0,82,48,-82,255},
+	{0,220,-533,0,0,0,0,48,-117,255},
+	{408,0,-408,0,0,0,88,24,-88,255},
+	{0,0,-577,0,0,0,0,24,-124,255},
+	{377,220,377,0,0,0,82,48,82,255},
+	{0,220,533,0,0,0,0,48,117,255},
+	{0,0,577,0,0,0,0,24,124,255},
+	{408,0,408,0,0,0,88,24,88,255},
+	{288,408,288,0,0,0,63,90,63,255},
+	{0,408,408,0,0,0,0,90,89,255},
+	{156,533,156,0,0,0,34,117,34,255},
+	{0,533,220,0,0,0,0,117,48,255},
+	{0,577,0,0,0,0,0,127,0,255},
+	{220,533,0,0,0,0,48,117,0,255},
+	{156,533,-156,0,0,0,34,117,-34,0},
+	{0,577,0,0,0,0,0,127,0,0},
+	{408,408,0,0,0,0,89,90,0,255},
+	{288,408,-288,0,0,0,63,90,-63,255},
+	{533,220,0,0,0,0,117,48,0,255},
+	{377,220,-377,0,0,0,82,48,-82,255},
+	{577,0,0,0,0,0,124,24,0,255},
+	{408,0,-408,0,0,0,88,24,-88,255},
+	{377,220,377,0,0,0,82,48,82,255},
+	{408,0,408,0,0,0,88,24,88,255},
+	{288,408,288,0,0,0,63,90,63,255},
+	{156,533,156,0,0,0,34,117,34,255},
+	{0,0,-577,0,0,0,0,-127,0,0},
+	{408,0,-408,0,0,0,0,-127,0,0},
+	{577,0,0,0,0,0,0,-127,0,0},
+	{408,0,408,0,0,0,0,-127,0,255},
+	{0,0,577,0,0,0,0,-127,0,255},
+};
+static Vtx vtx_wanwan_anim3[]={
+	{181,-6,-490,0,0,0,45,5,-118,0},
+	{223,71,-469,0,0,0,45,5,-118,0},
+	{281,-6,-451,0,0,0,45,5,-118,0},
+	{281,-6,-451,0,0,0,49,17,-115,255},
+	{322,105,-416,0,0,0,49,17,-115,255},
+	{399,-6,-401,0,0,0,49,17,-115,255},
+	{399,-6,-401,0,0,0,112,36,-47,255},
+	{375,158,-330,0,0,0,112,36,-47,255},
+	{458,-6,-260,0,0,0,112,36,-47,255},
+	{458,-6,-260,0,0,0,115,26,-46,255},
+	{454,225,-138,0,0,0,115,26,-46,255},
+	{563,-6,0,0,0,0,115,26,-46,255},
+	{563,-6,0,0,0,0,115,26,46,255},
+	{454,225,138,0,0,0,115,26,46,255},
+	{458,-6,260,0,0,0,115,26,46,255},
+	{458,-6,260,0,0,0,112,36,47,255},
+	{375,158,330,0,0,0,112,36,47,0},
+	{399,-6,401,0,0,0,112,36,47,0},
+	{399,-6,401,0,0,0,49,17,115,255},
+	{322,105,416,0,0,0,49,17,115,255},
+	{281,-6,451,0,0,0,49,17,115,255},
+	{281,-6,451,0,0,0,45,5,118,255},
+	{223,71,469,0,0,0,45,5,118,255},
+	{181,-6,490,0,0,0,45,5,118,255},
+};
+static Vtx vtx_wanwan_anim4[]={
+	{0,-577,0,0,0,0,0,-127,0,0},
+	{-220,-533,0,0,0,0,-48,-117,0,0},
+	{-156,-533,-156,0,0,0,-34,-117,-34,0},
+	{-408,-408,0,0,0,0,-89,-90,0,255},
+	{-288,-408,-288,0,0,0,-63,-90,-63,255},
+	{-533,-220,0,0,0,0,-117,-48,0,255},
+	{-377,-220,-377,0,0,0,-82,-48,-82,255},
+	{-577,0,0,0,0,0,-127,0,0,255},
+	{-408,0,-408,0,0,0,-89,0,-89,255},
+	{-408,0,408,0,0,0,-89,0,89,255},
+	{-377,-220,377,0,0,0,-82,-48,82,255},
+	{-288,-408,288,0,0,0,-63,-90,63,255},
+	{-156,-533,156,0,0,0,-34,-117,34,255},
+	{0,-533,-220,0,0,0,0,-117,-48,255},
+	{0,-408,-408,0,0,0,0,-90,-89,255},
+	{0,-220,-533,0,0,0,0,-47,-117,255},
+	{-408,0,-408,0,0,0,-89,0,-89,255},
+	{0,0,-577,0,0,0,18,-27,-122,0},
+	{0,-220,-533,0,0,0,0,-47,-117,0},
+	{-377,-220,-377,0,0,0,-82,-48,-82,255},
+	{0,0,577,0,0,0,0,-24,124,255},
+	{-408,0,408,0,0,0,-89,0,89,255},
+	{-377,-220,377,0,0,0,-82,-48,82,255},
+	{0,-220,533,0,0,0,2,-50,116,255},
+	{-288,-408,288,0,0,0,-63,-90,63,255},
+	{0,-408,408,0,0,0,3,-89,90,255},
+	{-156,-533,156,0,0,0,-34,-117,34,255},
+	{0,-533,220,0,0,0,0,-117,48,255},
+	{0,-577,0,0,0,0,0,-127,0,255},
+	{0,-533,-220,0,0,0,0,-117,-48,255},
+	{156,-533,-156,0,0,0,34,-117,-34,255},
+	{0,-408,-408,0,0,0,0,-90,-89,255},
+	{288,-408,-288,0,0,0,63,-88,-65,0},
+	{156,-533,-156,0,0,0,34,-117,-34,0},
+	{0,-533,-220,0,0,0,0,-117,-48,255},
+	{0,-220,-533,0,0,0,0,-47,-117,255},
+	{367,-215,-367,0,0,0,82,-48,-83,255},
+	{0,0,-577,0,0,0,18,-27,-122,255},
+	{408,0,-408,0,0,0,97,-30,-75,255},
+	{408,0,408,0,0,0,75,-30,97,255},
+	{0,0,577,0,0,0,0,-24,124,255},
+	{0,-220,533,0,0,0,2,-50,116,255},
+	{367,-215,367,0,0,0,83,-48,82,255},
+	{0,-408,408,0,0,0,3,-89,90,255},
+	{288,-408,288,0,0,0,65,-88,63,255},
+	{0,-533,220,0,0,0,0,-117,48,255},
+	{156,-533,156,0,0,0,34,-117,34,255},
+	{0,-577,0,0,0,0,0,-127,0,255},
+	{156,-533,156,0,0,0,34,-117,34,0},
+	{0,-533,220,0,0,0,0,-117,48,0},
+	{156,-533,-156,0,0,0,34,-117,-34,255},
+	{220,-533,0,0,0,0,48,-117,0,255},
+	{288,-408,-288,0,0,0,63,-88,-65,255},
+	{408,-408,0,0,0,0,90,-89,-3,255},
+	{367,-215,-367,0,0,0,82,-48,-83,255},
+	{533,-220,0,0,0,0,117,-49,0,255},
+	{408,0,-408,0,0,0,97,-30,-75,255},
+	{577,0,0,0,0,0,122,-27,18,255},
+	{408,0,408,0,0,0,75,-30,97,255},
+	{367,-215,367,0,0,0,83,-48,82,255},
+	{288,-408,288,0,0,0,65,-88,63,255},
+	{0,0,577,0,0,0,0,127,0,0},
+	{408,0,408,0,0,0,0,127,0,0},
+	{577,0,0,0,0,0,0,127,0,0},
+	{408,0,-408,0,0,0,0,127,0,255},
+	{0,0,-577,0,0,0,0,127,0,255},
+};
+Gfx RCP_wanwan_anim0[]={
+	gsSPLight((&light_wanwan_anim[0].l[0]),1),
+	gsSPLight((&light_wanwan_anim[0].a),2),
+	gsSPVertex(&vtx_wanwan_anim0[0],15,0),
+	gsSP1Triangle(0,1,2,0),
+	gsSP1Triangle(3,4,5,0),
+	gsSP1Triangle(6,7,8,0),
+	gsSP1Triangle(9,10,11,0),
+	gsSP1Triangle(12,13,14,0),
+	gsSPVertex(&vtx_wanwan_anim0[15],9,0),
+	gsSP1Triangle(0,1,2,0),
+	gsSP1Triangle(3,4,5,0),
+	gsSP1Triangle(6,7,8,0),
+	gsSPEndDisplayList()
+};
+Gfx RCP_wanwan_anim1_0[] = {
+	gs_Tani_LoadTextureImage2(wanme_txt, G_IM_FMT_RGBA, G_IM_SIZ_16b, 32, 32, 0, 7),
+
+	gsSPLight((&light_wan_eye[0].l[0]),1 ),
+	gsSPLight((&light_wan_eye[0].a   ),2 ),
+
+	gsSPVertex(vtx_wanwan_anim1 + 0, 12, 0),
+	gsSP1Triangle(0, 1, 2, 0),
+	gsSP1Triangle(3, 4, 5, 0),
+	gsSP1Triangle(6, 7, 8, 0),
+	gsSP1Triangle(9, 10, 11, 0),
+	gsSPEndDisplayList(),
+};
+Gfx RCP_wanwan_anim2[]={
+	gsSPLight((&light_wanwan_anim[1].l[0]),1),
+	gsSPLight((&light_wanwan_anim[1].a),2),
+	gsSPVertex(&vtx_wanwan_anim2[0],16,0),
+	gsSP1Triangle(0,1,2,0),
+	gsSP1Triangle(1,0,3,0),
+	gsSP1Triangle(1,3,4,0),
+	gsSP1Triangle(4,3,5,0),
+	gsSP1Triangle(4,5,6,0),
+	gsSP1Triangle(6,5,7,0),
+	gsSP1Triangle(6,7,8,0),
+	gsSP1Triangle(9,6,8,0),
+	gsSP1Triangle(9,8,10,0),
+	gsSP1Triangle(11,4,6,0),
+	gsSP1Triangle(11,6,9,0),
+	gsSP1Triangle(12,1,4,0),
+	gsSP1Triangle(12,4,11,0),
+	gsSP1Triangle(1,12,2,0),
+	gsSP1Triangle(13,0,2,0),
+	gsSP1Triangle(0,13,14,0),
+	gsSP1Triangle(0,14,3,0),
+	gsSP1Triangle(3,14,15,0),
+	gsSP1Triangle(3,15,5,0),
+	gsSPVertex(&vtx_wanwan_anim2[16],16,0),
+	gsSP1Triangle(0,1,2,0),
+	gsSP1Triangle(0,2,3,0),
+	gsSP1Triangle(4,5,6,0),
+	gsSP1Triangle(4,6,7,0),
+	gsSP1Triangle(8,9,5,0),
+	gsSP1Triangle(8,5,4,0),
+	gsSP1Triangle(10,11,9,0),
+	gsSP1Triangle(10,9,8,0),
+	gsSP1Triangle(11,10,12,0),
+	gsSP1Triangle(13,14,12,0),
+	gsSP1Triangle(14,13,15,0),
+	gsSPVertex(&vtx_wanwan_anim2[32],16,0),
+	gsSP1Triangle(0,1,2,0),
+	gsSP1Triangle(2,1,3,0),
+	gsSP1Triangle(2,3,4,0),
+	gsSP1Triangle(4,3,5,0),
+	gsSP1Triangle(4,5,6,0),
+	gsSP1Triangle(7,8,9,0),
+	gsSP1Triangle(7,9,10,0),
+	gsSP1Triangle(11,12,8,0),
+	gsSP1Triangle(11,8,7,0),
+	gsSP1Triangle(13,14,12,0),
+	gsSP1Triangle(13,12,11,0),
+	gsSP1Triangle(14,13,15,0),
+	gsSPVertex(&vtx_wanwan_anim2[48],13,0),
+	gsSP1Triangle(0,1,2,0),
+	gsSP1Triangle(1,0,3,0),
+	gsSP1Triangle(1,3,4,0),
+	gsSP1Triangle(4,3,5,0),
+	gsSP1Triangle(4,5,6,0),
+	gsSP1Triangle(6,5,7,0),
+	gsSP1Triangle(6,7,8,0),
+	gsSP1Triangle(5,9,10,0),
+	gsSP1Triangle(5,10,7,0),
+	gsSP1Triangle(3,11,9,0),
+	gsSP1Triangle(3,9,5,0),
+	gsSP1Triangle(0,12,11,0),
+	gsSP1Triangle(0,11,3,0),
+	gsSP1Triangle(12,0,2,0),
+	gsSPLight((&light_wanwan_anim[2].l[0]),1),
+	gsSPLight((&light_wanwan_anim[2].a),2),
+	gsSPVertex(&vtx_wanwan_anim2[61],5,0),
+	gsSP1Triangle(0,1,2,0),
+	gsSP1Triangle(0,2,3,0),
+	gsSP1Triangle(0,3,4,0),
+	gsSPEndDisplayList()
+};
+Gfx RCP_wanwan_anim3[]={
+	gsSPLight((&light_wanwan_anim[0].l[0]),1),
+	gsSPLight((&light_wanwan_anim[0].a),2),
+	gsSPVertex(&vtx_wanwan_anim3[0],15,0),
+	gsSP1Triangle(0,1,2,0),
+	gsSP1Triangle(3,4,5,0),
+	gsSP1Triangle(6,7,8,0),
+	gsSP1Triangle(9,10,11,0),
+	gsSP1Triangle(12,13,14,0),
+	gsSPVertex(&vtx_wanwan_anim3[15],9,0),
+	gsSP1Triangle(0,1,2,0),
+	gsSP1Triangle(3,4,5,0),
+	gsSP1Triangle(6,7,8,0),
+	gsSPEndDisplayList()
+};
+Gfx RCP_wanwan_anim4[]={
+	gsSPLight((&light_wanwan_anim[1].l[0]),1),
+	gsSPLight((&light_wanwan_anim[1].a),2),
+	gsSPVertex(&vtx_wanwan_anim4[0],16,0),
+	gsSP1Triangle(0,1,2,0),
+	gsSP1Triangle(3,4,2,0),
+	gsSP1Triangle(3,2,1,0),
+	gsSP1Triangle(5,6,4,0),
+	gsSP1Triangle(5,4,3,0),
+	gsSP1Triangle(7,8,6,0),
+	gsSP1Triangle(7,6,5,0),
+	gsSP1Triangle(9,7,5,0),
+	gsSP1Triangle(9,5,10,0),
+	gsSP1Triangle(10,5,3,0),
+	gsSP1Triangle(10,3,11,0),
+	gsSP1Triangle(11,3,1,0),
+	gsSP1Triangle(11,1,12,0),
+	gsSP1Triangle(0,12,1,0),
+	gsSP1Triangle(0,2,13,0),
+	gsSP1Triangle(4,14,13,0),
+	gsSP1Triangle(4,13,2,0),
+	gsSP1Triangle(6,15,14,0),
+	gsSP1Triangle(6,14,4,0),
+	gsSPVertex(&vtx_wanwan_anim4[16],15,0),
+	gsSP1Triangle(0,1,2,0),
+	gsSP1Triangle(0,2,3,0),
+	gsSP1Triangle(4,5,6,0),
+	gsSP1Triangle(4,6,7,0),
+	gsSP1Triangle(7,6,8,0),
+	gsSP1Triangle(7,8,9,0),
+	gsSP1Triangle(9,8,10,0),
+	gsSP1Triangle(9,10,11,0),
+	gsSP1Triangle(12,11,10,0),
+	gsSP1Triangle(12,13,14,0),
+	gsSPVertex(&vtx_wanwan_anim4[31],16,0),
+	gsSP1Triangle(0,1,2,0),
+	gsSP1Triangle(0,2,3,0),
+	gsSP1Triangle(4,5,1,0),
+	gsSP1Triangle(4,1,0,0),
+	gsSP1Triangle(6,7,5,0),
+	gsSP1Triangle(6,5,4,0),
+	gsSP1Triangle(8,9,10,0),
+	gsSP1Triangle(8,10,11,0),
+	gsSP1Triangle(11,10,12,0),
+	gsSP1Triangle(11,12,13,0),
+	gsSP1Triangle(13,12,14,0),
+	gsSP1Triangle(13,14,15,0),
+	gsSPVertex(&vtx_wanwan_anim4[47],14,0),
+	gsSP1Triangle(0,1,2,0),
+	gsSP1Triangle(0,3,4,0),
+	gsSP1Triangle(5,6,4,0),
+	gsSP1Triangle(5,4,3,0),
+	gsSP1Triangle(7,8,6,0),
+	gsSP1Triangle(7,6,5,0),
+	gsSP1Triangle(9,10,8,0),
+	gsSP1Triangle(9,8,7,0),
+	gsSP1Triangle(10,11,12,0),
+	gsSP1Triangle(10,12,8,0),
+	gsSP1Triangle(8,12,13,0),
+	gsSP1Triangle(8,13,6,0),
+	gsSP1Triangle(6,13,1,0),
+	gsSP1Triangle(6,1,4,0),
+	gsSP1Triangle(0,4,1,0),
+	gsSPLight((&light_wanwan_anim[2].l[0]),1),
+	gsSPLight((&light_wanwan_anim[2].a),2),
+	gsSPVertex(&vtx_wanwan_anim4[61],5,0),
+	gsSP1Triangle(0,1,2,0),
+	gsSP1Triangle(0,2,3,0),
+	gsSP1Triangle(0,3,4,0),
+	gsSPEndDisplayList()
+};
+
+Gfx RCP_wanwan_anim1[] = {
+	gsDPPipeSync(),
+	gsDPSetCombineMode(G_CC_MODULATERGBA, G_CC_MODULATERGBA),
+	gsDPSetTile(G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0, 7, 0,  0,0,0, 0,0,0),
+
+	gsSPTexture(0xffff,0xffff, 0, 0, G_ON),
+
+	gs_Tani_SetUpTileDescrip(G_IM_FMT_RGBA, G_IM_SIZ_16b, 32, 32,  0, 0, G_TX_CLAMP|G_TX_NOMIRROR, 5, G_TX_NOLOD, G_TX_CLAMP|G_TX_NOMIRROR, 5, G_TX_NOLOD),
+
+		gsSPDisplayList(RCP_wanwan_anim1_0),
+
+	gsSPTexture(0xffff, 0xffff, 0, 0, G_OFF),
+
+	gsDPPipeSync(),
+	gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
+	gsSPEndDisplayList() 
+};
+
+/**************** 
+(0),wan_toothB,RCP_wanwan_anim0,NULL,(-1),NULL,(-1),0,0,0
+(1),wan_eye,RCP_wanwan_anim1,NULL,(-1),NULL,(-1),0,0,0
+(2),wan_bodyB,RCP_wanwan_anim2,wan_toothB,(0),NULL,(-1),0,0,0
+(3),wan_toothA,RCP_wanwan_anim3,wan_eye,(1),NULL,(-1),0,0,0
+(4),wan_bodyA,RCP_wanwan_anim4,wan_toothA,(3),NULL,(-1),0,0,0
+(5),chn2,NULL,NULL,(-1),wan_bodyA,(4),0,0,0
+(6),chn1,light_sourcex,chn2,(5),wan_bodyB,(2),0,0,0
+****************/ 
+
+/*-------------------------------------------------------------*/
+/*	animation data                                      */
+/*-------------------------------------------------------------*/
+
+static short wanwan_anim_prm[]={
+	    0,16383,-27134,-27517,-28462,-29669,-30834,-31654,
+	-31828,-30546,-28060,-25659,-24631,-25476,-27377,-29657,
+	-31635,-32630,-31928,-30021,-28045,-27134,28594,28870,
+	29545,30394,31190,31709,31723,30546,28375,26314,
+	25465,26258,27988,30060,31879,-32684,32380,30896,
+	29325,28594,-27134,-27517,-28462,-29669,-30834,-31654,
+	-31828,-30546,-28060,-25659,-24631,-25476,-27377,-29657,
+	-31635,-32630,-31928,-30021,-28045,-27134,28594,28870,
+	29545,30394,31190,31709,31723,30546,28375,26314,
+	25465,26258,27988,30060,31879,-32684,32380,30896,
+	29325,28594,28594,28870,29545,30394,31190,31709,
+	31723,30546,28375,26314,25465,26258,27988,30060,
+	31879,-32684,32380,30896,29325,28594,16383,};
+
+static unsigned short wanwan_anim_tbl[]= {
+	     1,     0,	/* chn1(6) */
+	     1,     0,
+	     1,     0,
+	     1,     0,	/* chn1(6) */
+	     1,     1,
+	     1,     0,
+	     1,     0,	/* wan_bodyB(2) */
+	     1,     0,
+	    20,    42,
+	     1,     0,	/* wan_toothB(0) */
+	     1,     0,
+	    20,     2,
+	     1,     0,	/* chn2(5) */
+	     1,   102,
+	     1,     0,
+	     1,     0,	/* wan_bodyA(4) */
+	     1,     0,
+	    20,    82,
+	     1,     0,	/* wan_toothA(3) */
+	     1,     0,
+	    20,    62,
+	     1,     0,	/* wan_eye(1) */
+	     1,     0,
+	    20,    22,
+};
+
+AnimeRecord wanwan_anim_anm={
+	MAP_ANIM_NORMAL,	/* attr 	*/
+	0,					/* code 	*/
+	0,					/* start 	*/
+	0,					/* loop 	*/
+	20,
+	7,
+	wanwan_anim_prm,
+	wanwan_anim_tbl
+};
+
+/*=================================================================================================*/
+/*		Animation Total																               */
+/*=================================================================================================*/
+AnimePtr wanwan_anime[] = {
+	&wanwan_anim_anm,
+};

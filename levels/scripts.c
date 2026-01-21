@@ -219,6 +219,8 @@ const LevelScript script_func_global_15[] = {
     LOAD_MODEL_FROM_GEO(MODEL_KOOPA_WITH_SHELL,        RCP_HmsEnemynokonoko),
     LOAD_MODEL_FROM_GEO(MODEL_PIRANHA_PLANT,           RCP_HmsEnemypakun_angry),
     LOAD_MODEL_FROM_GEO(MODEL_WHOMP,                   RCP_HmsEnemywallman),
+    LOAD_MODEL_FROM_GEO(MODEL_CHAIN_CHOMP,             RCP_HmsEnemywanwan),
+    LOAD_MODEL_FROM_GEO(MODEL_KOOPA_FLAG,              RCP_Hmsflag),
     RETURN(),
 };
 
