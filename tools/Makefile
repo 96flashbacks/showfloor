@@ -7,10 +7,15 @@ CC           := gcc
 CXX          := g++
 CFLAGS       := -I . -I sm64tools -Wall -Wextra -Wno-unused-parameter -pedantic -O2 -s
 LDFLAGS      := -lm
-ALL_PROGRAMS := textconv patch_elf_32bit aifc_decode aiff_extract_codebook vadpcm_enc tabledesign extract_data_for_mio skyconv slienc
+ALL_PROGRAMS := armips textconv patch_elf_32bit aifc_decode aiff_extract_codebook vadpcm_enc tabledesign extract_data_for_mio skyconv slienc
 LIBAUDIOFILE := audiofile/libaudiofile.a
 
-BUILD_PROGRAMS := $(ALL_PROGRAMS)
+# Only build armips from tools if it is not found on the system
+ifeq ($(call find-command,armips),)
+  BUILD_PROGRAMS := $(ALL_PROGRAMS)
+else
+  BUILD_PROGRAMS := $(filter-out armips,$(ALL_PROGRAMS))
+endif
 
 default: all
 
@@ -34,6 +39,14 @@ extract_data_for_mio_SOURCES := extract_data_for_mio.c
 
 skyconv_SOURCES := skyconv.c sm64tools/n64graphics.c sm64tools/utils.c
 
+armips: CC := $(CXX)
+armips_SOURCES := armips.cpp
+armips_CFLAGS  := -std=gnu++11 -fno-exceptions -fno-rtti -pipe
+armips_LDFLAGS := -pthread
+ifeq ($(HOST_ENV),MinGW)
+  armips_LDFLAGS += -municode
+endif
+
 ifeq ($(shell uname -s),Linux)
   BUILD_PROGRAMS += flips
 endif
@@ -52,20 +65,25 @@ slienc_CFLAGS :=
 
 all-except-recomp: $(LIBAUDIOFILE) $(BUILD_PROGRAMS)
 
-all: all-except-recomp
+all: all-except-recomp ido-static-recomp
 
 clean:
 	$(RM) $(ALL_PROGRAMS)
 	$(MAKE) -C audiofile clean
+	$(MAKE) -C ido-static-recomp clean
 
 define COMPILE
 $(1): $($1_SOURCES)
 	$$(CC) $(CFLAGS) $($1_CFLAGS) $$^ -o $$@ $($1_LDFLAGS) $(LDFLAGS)
 endef
 
+ido-static-recomp:
+	@$(MAKE) -C ido-static-recomp setup
+	@$(MAKE) -C ido-static-recomp
+
 $(foreach p,$(BUILD_PROGRAMS),$(eval $(call COMPILE,$(p))))
 
 $(LIBAUDIOFILE):
 	@$(MAKE) -C audiofile
 
-.PHONY: all all-except-recomp clean default
+.PHONY: all all-except-recomp clean default ido-static-recomp
