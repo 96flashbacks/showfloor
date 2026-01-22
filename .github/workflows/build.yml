@@ -43,6 +43,8 @@ jobs:
             
             Commit message from latest build:
             ${{github.event.head_commit.message}}
-        files: ${{github.event.repository.name}}-${{github.ref_name}}.bps
+        files: |
+          ${{github.event.repository.name}}-${{github.ref_name}}.bps
+          ${{github.event.repository.name}}-${{github.ref_name}}-hle.bps
         clear_attachments: false
         prerelease: true
