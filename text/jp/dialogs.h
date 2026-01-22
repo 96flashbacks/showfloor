@@ -1,10 +1,9 @@
 // Parameters: dialog enum ID, (unused), lines per box, left offset, width
 
-DEFINE_DIALOG(DIALOG_000, 1, 5, 30, 205, _("\
+DEFINE_DIALOG(DIALOG_000, 1, 4, 52, 200, _("\
 ここはキケンな\n\
 せんじょうのどまんなか。\n\
-まずは\n\
-やまのてっぺんのたいほう\n\
+まずはやまのてっぺん\n\
 をめざしてみましょう"))
 
 DEFINE_DIALOG(DIALOG_001, 1, 4, 95, 205, _("\
