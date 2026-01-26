@@ -3,6 +3,7 @@
 #include "behavior_data.h"
 #include "model_ids.h"
 #include "seq_ids.h"
+#include "dialog_ids.h"
 #include "segment_symbols.h"
 #include "level_commands.h"
 
@@ -65,6 +66,7 @@ const LevelScript level_ttc_entry[] = {
         TERRAIN(/*terrainData*/ ttc_seg7_collision_level),
         MACRO_OBJECTS(/*objList*/ ttc_seg7_macro_objs),
         SET_BACKGROUND_MUSIC(/*settingsPreset*/ 0x0001, /*seq*/ SEQ_LEVEL_GRASS),
+        SHOW_DIALOG(/*index*/ 0x00, DIALOG_170),
         TERRAIN_TYPE(/*terrainType*/ TERRAIN_STONE),
     END_AREA(),
 
