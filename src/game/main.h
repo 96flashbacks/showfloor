@@ -32,18 +32,6 @@ extern s8 D_8032C650;
 extern s8 gShowProfiler;
 extern s8 gShowDebugText;
 
-/////// FROM https://github.com/HackerN64/HackerSM64, START
-// Special struct that keeps track of whether its timer has been set.
-//  Without this check, there is a bug at high CPU loads in which
-//  the RCP timer gets set twice and the game tries to
-//  insert __osBaseTimer into a ring buffer that only contains itself,
-//  causing a particularly messy crash.
-typedef struct {
-    u8 started;
-    OSTimer timer;
-} OSTimerEx;
-/////// END
-
 void set_vblank_handler(s32 index, struct VblankHandler *handler, OSMesgQueue *queue, OSMesg *msg);
 void dispatch_audio_sptask(struct SPTask *spTask);
 void exec_display_list(struct SPTask *spTask);
