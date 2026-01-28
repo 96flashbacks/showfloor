@@ -1,6 +1,5 @@
 #include <ultra64.h>
 #include <stdio.h>
-#include "PR/os.h"
 
 #include "sm64.h"
 #include "audio/external.h"
@@ -12,14 +11,12 @@
 #include "segments.h"
 #include "segment_symbols.h"
 #include "main.h"
-#include "crash.h"
 
 // Message IDs
 #define MESG_SP_COMPLETE 100
 #define MESG_DP_COMPLETE 101
 #define MESG_VI_VBLANK 102
 #define MESG_START_GFX_SPTASK 103
-#define MESG_RCP_HUNG 105
 
 OSThread gRmonThread; // unused?
 OSThread gIdleThread;
@@ -315,27 +312,6 @@ void handle_dp_complete(void) {
     sCurrentDisplaySPTask = NULL;
 }
 
-/////// FROM https://github.com/HackerN64/HackerSM64, START
-#if defined(TARGET_N64)
-OSTimerEx RCPHangTimer;
-void start_rcp_hang_timer(void) {
-    if (RCPHangTimer.started == FALSE) {
-        osSetTimer(&RCPHangTimer.timer, OS_USEC_TO_CYCLES(3000000), (OSTime) 0, &gIntrMesgQueue, (OSMesg) MESG_RCP_HUNG);
-        RCPHangTimer.started = TRUE;
-    }
-}
-
-void stop_rcp_hang_timer(void) {
-    osStopTimer(&RCPHangTimer.timer);
-    RCPHangTimer.started = FALSE;
-}
-
-void alert_rcp_hung_up(void) {
-    error("RCP IS HUNG UP! Please check your display lists for any errors.");
-}
-#endif
-/////// END
-
 void thread3_main(UNUSED void *arg) {
     create_thread(&gSoundThread, 4, thread4_sound, NULL, gThread4Stack + 0x2000, 20);
     osStartThread(&gSoundThread);
@@ -347,9 +323,6 @@ void thread3_main(UNUSED void *arg) {
     alloc_pool();
     load_engine_code_segment(); // this line is not in the Feburary 1996 backup, but WHERE ELSE WOULD
                                 // THE DATA BE LOADED THEN?
-#if defined(TARGET_N64)
-    crash_log_init();           // this is not john nintendo approved
-#endif
 
     while (TRUE) {
         OSMesg msg;
@@ -363,22 +336,11 @@ void thread3_main(UNUSED void *arg) {
                 handle_sp_complete();
                 break;
             case MESG_DP_COMPLETE:
-#if defined(TARGET_N64)
-                stop_rcp_hang_timer();
-#endif
                 handle_dp_complete();
                 break;
             case MESG_START_GFX_SPTASK:
-#if defined(TARGET_N64)
-                start_rcp_hang_timer();
-#endif
                 start_gfx_sptask();
                 break;
-#if defined(TARGET_N64)
-            case MESG_RCP_HUNG:
-                alert_rcp_hung_up();
-                break;
-#endif
         }
         CheckStackMemory();
     }
