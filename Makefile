@@ -266,10 +266,10 @@ IQUE_LD_PATH := $(TOOLS_DIR)/ique_ld
 # detect prefix for MIPS toolchain
 ifneq      ($(call find-command,mips-linux-gnu-ld),)
   CROSS := mips-linux-gnu-
-else ifneq ($(call find-command,mips64-linux-gnu-ld),)
-  CROSS := mips64-linux-gnu-
 else ifneq ($(call find-command,mips64-elf-ld),)
   CROSS := mips64-elf-
+else ifneq ($(call find-command,mips64-linux-gnu-ld),)
+  CROSS := mips64-linux-gnu-
 else
   $(error Unable to detect a suitable MIPS toolchain installed)
 endif
