@@ -27,7 +27,7 @@ DEFINE_LEVEL("BIG WORLD",      LEVEL_THI,              COURSE_THI,      thi,    
 DEFINE_LEVEL("CLOCK TOWER",    LEVEL_TTC,              COURSE_TTC,      ttc,              machine,  18000,    0x00, 0x00, 0x00, _,         _)
 STUB_LEVEL(  "", LEVEL_RR,               COURSE_RR,                                   20000,    0x00, 0x00, 0x00, _,         _)
 DEFINE_LEVEL("MAIN MAP",       LEVEL_CASTLE_GROUNDS,   COURSE_NONE,     castle_grounds,   outside,  25000,    0x00, 0x00, 0x00, _,         _)
-STUB_LEVEL(  "YOKO SCRL", LEVEL_BITDW,            COURSE_BITDW,                                16000,    0x00, 0x00, 0x00, _,         _)
+DEFINE_LEVEL("YOKO SCRL", LEVEL_BITDW,            COURSE_BITDW,    bitdw,            sky,      16000,    0x28, 0x28, 0x28, _,         _)
 STUB_LEVEL(  "", LEVEL_VCUTM,            COURSE_VCUTM,                                30000,    0x00, 0x00, 0x00, _,         _)
 STUB_LEVEL(  "", LEVEL_BITFS,            COURSE_BITFS,                                16000,    0x00, 0x00, 0x00, _,         _)
 STUB_LEVEL(  "",    LEVEL_SA,               COURSE_SA,                                   20000,    0x00, 0x00, 0x00, _,         _)

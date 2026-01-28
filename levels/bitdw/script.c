@@ -1,0 +1,91 @@
+#include <ultra64.h>
+#include "sm64.h"
+#include "behavior_data.h"
+#include "model_ids.h"
+#include "seq_ids.h"
+#include "dialog_ids.h"
+#include "segment_symbols.h"
+#include "level_commands.h"
+
+#include "game/level_update.h"
+
+#include "levels/scripts.h"
+
+#include "actors/common1.h"
+
+#include "make_const_nonconst.h"
+#include "levels/bitdw/header.h"
+
+static const LevelScript script_func_local_2[] = {
+    OBJECT(/*model*/ MODEL_NONE, /*pos*/ -3092, -2795, 2842, /*angle*/ 0, 0, 0, /*bhvParam*/ 0, /*bhv*/ bhvFlamethrower),
+    OBJECT(/*model*/ MODEL_NONE, /*pos*/  2463, -2386, 2844, /*angle*/ 0, 0, 0, /*bhvParam*/ 0, /*bhv*/ bhvFlamethrower),
+    RETURN(),
+};
+
+const LevelScript level_bitdw_entry[] = {
+    INIT_LEVEL(),
+    LOAD_MIO0        (/*seg*/ 0x07, _bitdw_segment_7SegmentRomStart, _bitdw_segment_7SegmentRomEnd),
+    LOAD_MIO0        (/*seg*/ 0x0A, _bidw_skybox_mio0SegmentRomStart, _bidw_skybox_mio0SegmentRomEnd),
+    LOAD_MIO0_TEXTURE(/*seg*/ 0x09, _sky_mio0SegmentRomStart, _sky_mio0SegmentRomEnd),
+    //LOAD_MIO0        (/*seg*/ 0x05, _group11_mio0SegmentRomStart, _group11_mio0SegmentRomEnd),
+    //LOAD_RAW         (/*seg*/ 0x0C, _group11_geoSegmentRomStart,  _group11_geoSegmentRomEnd),
+    LOAD_MIO0        (/*seg*/ 0x06, _group17_mio0SegmentRomStart, _group17_mio0SegmentRomEnd),
+    LOAD_RAW         (/*seg*/ 0x0D, _group17_geoSegmentRomStart,  _group17_geoSegmentRomEnd),
+    LOAD_MIO0        (/*seg*/ 0x08, _common0_mio0SegmentRomStart, _common0_mio0SegmentRomEnd),
+    LOAD_RAW         (/*seg*/ 0x0F, _common0_geoSegmentRomStart,  _common0_geoSegmentRomEnd),
+    ALLOC_LEVEL_POOL(),
+    MARIO(/*model*/ MODEL_MARIO, /*bhvParam*/ BPARAM4(0x01), /*bhv*/ bhvMario),
+    JUMP_LINK(script_func_global_12),
+    JUMP_LINK(script_func_global_18),
+    JUMP_LINK(script_func_global_1),
+    LOAD_MODEL_FROM_GEO(MODEL_LEVEL_GEOMETRY_03,       geo_bitdw_0003C0),
+    LOAD_MODEL_FROM_GEO(MODEL_LEVEL_GEOMETRY_04,       geo_bitdw_0003D8),
+    LOAD_MODEL_FROM_GEO(MODEL_LEVEL_GEOMETRY_05,       geo_bitdw_0003F0),
+    LOAD_MODEL_FROM_GEO(MODEL_LEVEL_GEOMETRY_06,       geo_bitdw_000408),
+    LOAD_MODEL_FROM_GEO(MODEL_LEVEL_GEOMETRY_07,       geo_bitdw_000420),
+    LOAD_MODEL_FROM_GEO(MODEL_LEVEL_GEOMETRY_08,       geo_bitdw_000438),
+    LOAD_MODEL_FROM_GEO(MODEL_LEVEL_GEOMETRY_09,       geo_bitdw_000450),
+    LOAD_MODEL_FROM_GEO(MODEL_LEVEL_GEOMETRY_0A,       geo_bitdw_000468),
+    LOAD_MODEL_FROM_GEO(MODEL_LEVEL_GEOMETRY_0B,       geo_bitdw_000480),
+    LOAD_MODEL_FROM_GEO(MODEL_LEVEL_GEOMETRY_0C,       geo_bitdw_000498),
+    LOAD_MODEL_FROM_GEO(MODEL_LEVEL_GEOMETRY_0D,       geo_bitdw_0004B0),
+    LOAD_MODEL_FROM_GEO(MODEL_LEVEL_GEOMETRY_0E,       geo_bitdw_0004C8),
+    LOAD_MODEL_FROM_GEO(MODEL_LEVEL_GEOMETRY_0F,       geo_bitdw_0004E0),
+    LOAD_MODEL_FROM_GEO(MODEL_LEVEL_GEOMETRY_10,       geo_bitdw_0004F8),
+    LOAD_MODEL_FROM_GEO(MODEL_LEVEL_GEOMETRY_11,       geo_bitdw_000510),
+    //LOAD_MODEL_FROM_GEO(MODEL_BITDW_WARP_PIPE,         warp_pipe_geo),
+    LOAD_MODEL_FROM_GEO(MODEL_BITDW_SQUARE_PLATFORM,   geo_bitdw_000558),
+    LOAD_MODEL_FROM_GEO(MODEL_BITDW_SEESAW_PLATFORM,   geo_bitdw_000540),
+    LOAD_MODEL_FROM_GEO(MODEL_BITDW_SLIDING_PLATFORM,  geo_bitdw_000528),
+    LOAD_MODEL_FROM_GEO(MODEL_BITDW_FERRIS_WHEEL_AXLE, geo_bitdw_000570),
+    LOAD_MODEL_FROM_GEO(MODEL_BITDW_BLUE_PLATFORM,     geo_bitdw_000588),
+    LOAD_MODEL_FROM_GEO(MODEL_BITDW_STAIRCASE_FRAME4,  geo_bitdw_0005A0),
+    LOAD_MODEL_FROM_GEO(MODEL_BITDW_STAIRCASE_FRAME3,  geo_bitdw_0005B8),
+    LOAD_MODEL_FROM_GEO(MODEL_BITDW_STAIRCASE_FRAME2,  geo_bitdw_0005D0),
+    LOAD_MODEL_FROM_GEO(MODEL_BITDW_STAIRCASE_FRAME1,  geo_bitdw_0005E8),
+    LOAD_MODEL_FROM_GEO(MODEL_BITDW_STAIRCASE,         geo_bitdw_000600),
+
+    AREA(/*index*/ 1, geo_bitdw_000618),
+        OBJECT(/*model*/ MODEL_NONE,            /*pos*/ -7443, -2153, 3886, /*angle*/ 0, 90, 0, /*bhvParam*/ BPARAM2(WARP_NODE_0A), /*bhv*/ bhvAirborneWarp),
+        //OBJECT(/*model*/ MODEL_BITDW_WARP_PIPE, /*pos*/  6816,  2860,   -7, /*angle*/ 0, 0, 0,  /*bhvParam*/ BPARAM2(WARP_NODE_0B), /*bhv*/ bhvWarpPipe),
+        OBJECT(/*model*/ MODEL_NONE,            /*pos*/  5910,  3500,   -7, /*angle*/ 0, 90, 0, /*bhvParam*/ BPARAM2(WARP_NODE_0C), /*bhv*/ bhvDeathWarp),
+        WARP_NODE(/*id*/ WARP_NODE_0A,    /*destLevel*/ LEVEL_BITDW,    /*destArea*/ 1, /*destNode*/ WARP_NODE_0A, /*flags*/ WARP_NO_CHECKPOINT),
+        WARP_NODE(/*id*/ WARP_NODE_0B,    /*destLevel*/ LEVEL_BOWSER_1, /*destArea*/ 1, /*destNode*/ WARP_NODE_0A, /*flags*/ WARP_NO_CHECKPOINT),
+        WARP_NODE(/*id*/ WARP_NODE_0C,    /*destLevel*/ LEVEL_BITDW,    /*destArea*/ 1, /*destNode*/ WARP_NODE_0C, /*flags*/ WARP_NO_CHECKPOINT),
+        WARP_NODE(/*id*/ WARP_NODE_DEATH, /*destLevel*/ LEVEL_CASTLE,   /*destArea*/ 1, /*destNode*/ WARP_NODE_25, /*flags*/ WARP_NO_CHECKPOINT),
+        JUMP_LINK(script_func_local_2),
+        TERRAIN(/*terrainData*/ bitdw_seg7_collision_level),
+        MACRO_OBJECTS(/*objList*/ bitdw_seg7_macro_objs),
+        SHOW_DIALOG(/*index*/ 0x00, DIALOG_090),
+        SET_BACKGROUND_MUSIC(/*settingsPreset*/ 0x0000, /*seq*/ SEQ_LEVEL_KOOPA_ROAD),
+        TERRAIN_TYPE(/*terrainType*/ TERRAIN_STONE),
+    END_AREA(),
+
+    FREE_LEVEL_POOL(),
+    MARIO_POS(/*area*/ 1, /*yaw*/ 90, /*pos*/ -7443, -3153, 3886),
+    CALL(/*arg*/ 0, /*func*/ lvl_init_or_update),
+    CALL_LOOP(/*arg*/ 1, /*func*/ lvl_init_or_update),
+    CLEAR_LEVEL(),
+    SLEEP_BEFORE_EXIT(/*frames*/ 1),
+    EXIT(),
+};

@@ -694,6 +694,7 @@ SECTIONS
     SZP_SEG(spooky, 0x09000000)
     SZP_SEG(generic, 0x09000000)
     SZP_SEG(water, 0x09000000)
+    SZP_SEG(sky, 0x09000000)
     SZP_SEG(slide, 0x09000000)
     SZP_SEG(outside, 0x09000000)
     SZP_SEG(inside, 0x09000000)
