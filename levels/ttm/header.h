@@ -14,7 +14,7 @@ extern const GeoLayout ttm_geo_0007D8[];
 extern const GeoLayout ttm_geo_000808[];
 extern const GeoLayout ttm_geo_000830[];
 extern const GeoLayout ttm_geo_000858[];
-extern const GeoLayout ttm_geo_000880[];
+//extern const GeoLayout ttm_geo_000880[];
 extern const GeoLayout ttm_geo_0008A8[];
 extern const GeoLayout ttm_geo_0008D0[];
 extern const GeoLayout ttm_geo_0008F8[];
@@ -26,7 +26,7 @@ extern const GeoLayout ttm_geo_0009C0[];
 extern const GeoLayout ttm_geo_0009F0[];
 extern const GeoLayout ttm_geo_000A18[];
 extern const GeoLayout ttm_geo_000A40[];
-extern const GeoLayout ttm_geo_000A70[];
+extern const GeoLayout ttm_geo_000A70[]; // this is the onee. i'll keep the others for now because i'm lazy
 extern const GeoLayout ttm_geo_000B5C[];
 extern const GeoLayout ttm_geo_000BEC[];
 extern const GeoLayout ttm_geo_000C84[];
@@ -37,9 +37,9 @@ extern const GeoLayout ttm_geo_000DBC[];
 extern const GeoLayout ttm_geo_000DF4[];
 
 // leveldata
-extern const Gfx ttm_seg7_dl_0700A120[];
-extern const Gfx ttm_seg7_dl_0700A2E0[];
-extern const Gfx ttm_seg7_dl_0700A8C0[];
+extern const Gfx ttm_1_dl_mesh[];
+extern const Gfx ttm_2_dl_mesh[];
+extern const Gfx ttm_3_dl_mesh[];
 extern const Gfx ttm_seg7_dl_0700AB08[];
 extern const Gfx ttm_seg7_dl_0700AF90[];
 extern const Gfx ttm_seg7_dl_0700B0D0[];
