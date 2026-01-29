@@ -22,6 +22,7 @@
 #include "levels/ccm/header.h"
 #include "levels/lll/header.h"
 #include "levels/ttc/header.h"
+#include "levels/bitdw/header.h"
 #include "mario.h"
 #include "mario_actions_cutscene.h"
 #include "memory.h"
@@ -598,6 +599,7 @@ static void treat_far_home_as_mario(f32 threshold) {
 #include "behaviors/chain_chomp.inc.c" // TODO: chain_chomp_sub_act_lunge documentation
 #include "behaviors/hana.inc.c"
 #include "behaviors/seesaw_platform.inc.c"
+#include "behaviors/ferris_wheel.inc.c"
 
 /**
  * Used by bowser, fly guy, piranha plant, and fire spitters.

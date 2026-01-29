@@ -41,6 +41,8 @@ extern const BehaviorScript bhvWoodenPost[];
 extern const BehaviorScript bhvChainChompGate[];
 extern const BehaviorScript bhvHana[];
 extern const BehaviorScript bhvSeesawPlatform[];
+extern const BehaviorScript bhvFerrisWheelAxle[];
+extern const BehaviorScript bhvFerrisWheelPlatform[];
 extern const BehaviorScript bhvKoopa[];
 //extern const BehaviorScript bhvKoopaRaceEndpoint[];
 extern const BehaviorScript bhvKoopaFlag[];

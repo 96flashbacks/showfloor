@@ -32,6 +32,7 @@
 #include "levels/wf/header.h"
 #include "levels/ccm/header.h"
 #include "levels/ttc/header.h"
+#include "levels/bitdw/header.h"
 
 #include "make_const_nonconst.h"
 #include "behavior_data.h"
@@ -754,6 +755,26 @@ const BehaviorScript bhvSeesawPlatform[] = {
     END_LOOP(),
 };
 
+const BehaviorScript bhvFerrisWheelAxle[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    ADD_INT(oMoveAngleYaw, 0x4000),
+    CALL_NATIVE(bhv_ferris_wheel_axle_init),
+    BEGIN_LOOP(),
+        ADD_INT(oFaceAngleRoll, 400),
+        CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+};
+
+const BehaviorScript bhvFerrisWheelPlatform[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_ferris_wheel_platform_update),
+        CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+};
+
 const BehaviorScript bhvRotatingPlatform[] = {
     BEGIN(OBJ_LIST_SURFACE),
     OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
@@ -1305,6 +1326,17 @@ const BehaviorScript bhvAnotherTiltingPlatform[] = {
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_tilting_inverted_pyramid_loop),
         CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+};
+
+
+const BehaviorScript bhvSquarishPathMoving[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    LOAD_COLLISION_DATA(bitdw_seg7_collision_moving_pyramid),
+    SET_HOME(),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_squarish_path_moving_loop),
     END_LOOP(),
 };
 
