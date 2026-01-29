@@ -17,7 +17,7 @@
     "0E_event_powerup": null,
     "0F_event_metal_cap": null,
     "10_event_koopa_message": null,
-    "11_level_koopa_road": null,
+    "11_level_koopa_road": ["19"],
     "12_event_high_score": null,
     "13_event_merry_go_round": null,
     "14_event_race": null,

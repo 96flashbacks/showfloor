@@ -5,5 +5,5 @@ struct AreaMapData areaMap_12_01 = {
 	/* Map X */      260.0f,
 	/* Arrow X */      0.0f,
 	/* Arrow Y */      0.0f,
-    /* Size */         1.0f,
+	/* Size */         1.3f,
 };

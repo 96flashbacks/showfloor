@@ -35,7 +35,8 @@ const LevelScript level_jrb_entry[] = {
     JUMP_LINK(script_func_global_14),*/
 
     AREA(/*index*/ 1, jrb_geo_000A18),
-        OBJECT(/*model*/ MODEL_NONE, /*pos*/ -6750, 2126, 1482, /*angle*/ 0, 90, 0, /*bhvParam*/ BPARAM2(WARP_NODE_0A), /*bhv*/ bhvSpinAirborneWarp),
+        OBJECT(/*model*/ MODEL_STAR,  /*pos*/   677, -3856, -1724, /*angle*/ 0,   0, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvStar),
+        OBJECT(/*model*/ MODEL_NONE, /*pos*/         0, 102, 5158, /*angle*/ 0, -180, 0, /*bhvParam*/ BPARAM2(WARP_NODE_0A), /*bhv*/ bhvSpinAirborneWarp),
         WARP_NODE(/*id*/ WARP_NODE_0A,         /*destLevel*/ LEVEL_JRB,    /*destArea*/ 1, /*destNode*/ WARP_NODE_0A, /*flags*/ WARP_NO_CHECKPOINT),
         WARP_NODE(/*id*/ WARP_NODE_WARP_FLOOR, /*destLevel*/ LEVEL_JRB,    /*destArea*/ 2, /*destNode*/ WARP_NODE_0A, /*flags*/ WARP_NO_CHECKPOINT),
         WARP_NODE(/*id*/ WARP_NODE_SUCCESS,    /*destLevel*/ LEVEL_CASTLE, /*destArea*/ 1, /*destNode*/ WARP_NODE_35, /*flags*/ WARP_NO_CHECKPOINT),
@@ -45,13 +46,13 @@ const LevelScript level_jrb_entry[] = {
         //JUMP_LINK(script_func_local_2),
         //JUMP_LINK(script_func_local_3),
         TERRAIN(/*terrainData*/ sunken_ship_collision),
-        //MACRO_OBJECTS(/*objList*/ jrb_seg7_area_1_macro_objs),
+        MACRO_OBJECTS(/*objList*/ sunken_ship_macro_objs),
         SET_BACKGROUND_MUSIC(/*settingsPreset*/ 0x0003, /*seq*/ SEQ_LEVEL_WATER),
         TERRAIN_TYPE(/*terrainType*/ TERRAIN_WATER),
     END_AREA(),
 
     FREE_LEVEL_POOL(),
-    MARIO_POS(/*area*/ 1, /*yaw*/ 45, /*pos*/ -3300, 2286, -1267),
+    MARIO_POS(/*area*/ 1, /*yaw*/ -180, /*pos*/ 0, 102, 5158),
     CALL(/*arg*/ 0, /*func*/ lvl_init_or_update),
     CALL_LOOP(/*arg*/ 1, /*func*/ lvl_init_or_update),
     CLEAR_LEVEL(),

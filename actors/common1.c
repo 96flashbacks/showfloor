@@ -16,6 +16,10 @@ UNUSED static const u64 binid_1 = 1;
 #include "coin/coin.sou"
 UNUSED static const u64 binid_3 = 3;
 
+#include "warp_pipe/model.inc.c"
+#include "warp_pipe/collision.inc.c"
+UNUSED static const u64 binid_4 = 4;
+
 #include "door/door.sou"
 UNUSED static const u64 binid_5 = 5;
 

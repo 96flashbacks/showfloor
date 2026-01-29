@@ -2,6 +2,7 @@
 #define BITDW_HEADER_H
 
 #include "types.h"
+#include "game/areamap.h"
 
 // geo
 extern const GeoLayout geo_bitdw_0003C0[];
@@ -70,6 +71,7 @@ extern const Collision bitdw_seg7_collision_0700FA3C[];
 extern const Collision bitdw_seg7_collision_0700FB5C[];
 extern const Collision bitdw_seg7_collision_0700FC7C[];
 extern const Collision bitdw_seg7_collision_0700FD9C[];
+extern struct AreaMapData areaMap_28_01;
 
 // script
 extern const LevelScript level_bitdw_entry[];

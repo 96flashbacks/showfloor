@@ -1,4 +1,3 @@
-
 /*==================================================================================================
 		wanwan Shape Hms Data 																			   
 ====================================================================================================*/
@@ -26,7 +25,7 @@ Hierarchy RCP_HmsEnemywanwan[] = {
       hmsBegin()
          hmsJoint(RM_SURF,RCP_wanwan_anim4,0,0,0)  /* ,wan_bodyA,(4) */
          hmsJoint(RM_SURF,RCP_wanwan_anim3,0,0,0)  /* ,wan_toothA,(3) */
-         hmsJoint(RM_SPRITE,RCP_wanwan_anim1,0,0,0)  /* ,wan_eye,(1) */
+         hmsJoint(RM_SURF,RCP_wanwan_anim1,0,0,0)  /* ,wan_eye,(1) */
       hmsEnd()
    hmsEnd()
  hmsEnd()

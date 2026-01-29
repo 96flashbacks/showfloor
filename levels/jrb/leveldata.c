@@ -14,6 +14,8 @@
 #include "levels/jrb/areas/1/1/model.inc.c"
 #include "levels/jrb/areas/1/2/model.inc.c"
 #include "levels/jrb/areas/1/3/model.inc.c"
+#include "levels/jrb/areas/1/4/model.inc.c"
 #include "levels/jrb/areas/1/collision.inc.c"
 #include "levels/jrb/areas/1/movtext.inc.c"
 #include "levels/jrb/areas/1/areamap.inc.c"
+#include "levels/jrb/areas/1/macro.inc.c"

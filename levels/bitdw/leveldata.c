@@ -7,6 +7,7 @@
 #include "special_presets.h"
 #include "textures.h"
 #include "dialog_ids.h"
+#include "game/areamap.h"
 
 #include "make_const_nonconst.h"
 #include "levels/bitdw/texture.inc.c"
@@ -48,3 +49,4 @@
 #include "levels/bitdw/collapsing_stairs_3/collision.inc.c"
 #include "levels/bitdw/collapsing_stairs_4/collision.inc.c"
 #include "levels/bitdw/collapsing_stairs_5/collision.inc.c"
+#include "levels/bitdw/areas/1/areamap.inc.c"

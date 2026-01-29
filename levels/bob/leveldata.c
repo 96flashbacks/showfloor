@@ -7,6 +7,7 @@
 #include "special_presets.h"
 #include "textures.h"
 #include "dialog_ids.h"
+#include "game/areamap.h"
 
 #include "make_const_nonconst.h"
 #include "levels/bob/texture.inc.c"
@@ -24,3 +25,4 @@
 #include "levels/bob/areas/1/movtext.inc.c"
 #include "levels/bob/grate_door/collision.inc.c"
 #include "levels/bob/areas/1/trajectory.inc.c"
+#include "levels/bob/areas/1/areamap.inc.c"
