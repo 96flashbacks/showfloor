@@ -167,6 +167,7 @@ INSIDE_TEXTURES                 := $(wildcard $(TEXTURE_DIR)/inside/*.png)
 WATER_TEXTURES                  := $(wildcard $(TEXTURE_DIR)/water/*.png)
 SKY_TEXTURES                    := $(wildcard $(TEXTURE_DIR)/sky/*.png)
 MACHINE_TEXTURES                := $(wildcard $(TEXTURE_DIR)/machine/*.png)
+MOUNTAIN_TEXTURES               := $(wildcard $(TEXTURE_DIR)/mountain/*.png)
 GRASS_TEXTURES                  := $(wildcard $(TEXTURE_DIR)/grass/*.png)
 
 # Texture Files
@@ -181,6 +182,7 @@ $(BUILD_DIR)/bin/inside.o:          $(INSIDE_TEXTURES:%.png=$(BUILD_DIR)/%.inc.c
 $(BUILD_DIR)/bin/water.o:           $(WATER_TEXTURES:%.png=$(BUILD_DIR)/%.inc.c)
 $(BUILD_DIR)/bin/sky.o:             $(SKY_TEXTURES:%.png=$(BUILD_DIR)/%.inc.c)
 $(BUILD_DIR)/bin/machine.o:         $(MACHINE_TEXTURES:%.png=$(BUILD_DIR)/%.inc.c)
+$(BUILD_DIR)/bin/mountain.o:        $(MOUNTAIN_TEXTURES:%.png=$(BUILD_DIR)/%.inc.c)
 $(BUILD_DIR)/bin/grass.o:           $(GRASS_TEXTURES:%.png=$(BUILD_DIR)/%.inc.c)
 
 # Others
@@ -196,6 +198,7 @@ $(BUILD_DIR)/bin/inside.elf:             SEGMENT_ADDRESS := 0x09000000
 $(BUILD_DIR)/bin/water.elf:              SEGMENT_ADDRESS := 0x09000000
 $(BUILD_DIR)/bin/sky.elf:                SEGMENT_ADDRESS := 0x09000000
 $(BUILD_DIR)/bin/machine.elf:            SEGMENT_ADDRESS := 0x09000000
+$(BUILD_DIR)/bin/mountain.elf:           SEGMENT_ADDRESS := 0x09000000
 $(BUILD_DIR)/bin/grass.elf:              SEGMENT_ADDRESS := 0x09000000
 
 # --------------------------------------
