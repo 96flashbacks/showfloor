@@ -16,25 +16,16 @@
 #include "make_const_nonconst.h"
 #include "levels/bitdw/header.h"
 
-static const LevelScript script_func_local_1[] = {
+static const LevelScript script_func_local_2[] = {
     OBJECT(/*model*/ MODEL_BITDW_SQUARE_PLATFORM,   /*pos*/ -1966, -3154,  3586, /*angle*/ 0, 0, 0,  /*bhvParam*/ BPARAM2(0x00), /*bhv*/ bhvSquarishPathMoving),
     OBJECT(/*model*/ MODEL_BITDW_SQUARE_PLATFORM,   /*pos*/ -1352, -3154,  4200, /*angle*/ 0, 0, 0,  /*bhvParam*/ BPARAM2(0x02), /*bhv*/ bhvSquarishPathMoving),
-    OBJECT(/*model*/ MODEL_BITDW_SQUARE_PLATFORM,   /*pos*/ -2963,  1017, -2464, /*angle*/ 0, 0, 0,  /*bhvParam*/ BPARAM2(0x00), /*bhv*/ bhvSquarishPathMoving),
-    OBJECT(/*model*/ MODEL_BITDW_SQUARE_PLATFORM,   /*pos*/ -2349,  1017, -1849, /*angle*/ 0, 0, 0,  /*bhvParam*/ BPARAM2(0x02), /*bhv*/ bhvSquarishPathMoving),
-    OBJECT(/*model*/ MODEL_BITDW_SQUARE_PLATFORM,   /*pos*/ -2349,  1017, -1235, /*angle*/ 0, 0, 0,  /*bhvParam*/ BPARAM2(0x00), /*bhv*/ bhvSquarishPathMoving),
-    OBJECT(/*model*/ MODEL_BITDW_SQUARE_PLATFORM,   /*pos*/ -1735,  1017,  -621, /*angle*/ 0, 0, 0,  /*bhvParam*/ BPARAM2(0x02), /*bhv*/ bhvSquarishPathMoving),
-    //OBJECT(/*model*/ MODEL_BITDW_SEESAW_PLATFORM,   /*pos*/  1491,  1273,   512, /*angle*/ 0, 90, 0, /*bhvParam*/ 0, /*bhv*/ bhvSeesawPlatform),
-    //OBJECT(/*model*/ MODEL_BITDW_SEESAW_PLATFORM,   /*pos*/  -147,   894,   512, /*angle*/ 0, 90, 0, /*bhvParam*/ 0, /*bhv*/ bhvSeesawPlatform),
-    //OBJECT(/*model*/ MODEL_BITDW_SLIDING_PLATFORM,  /*pos*/ -5728,   819, -2151, /*angle*/ 0, 0, 0,  /*bhvParam*/ BPARAM1(0x03) | BPARAM2(0xCE), /*bhv*/ bhvSlidingPlatform2),
-    OBJECT(/*model*/ MODEL_BITDW_FERRIS_WHEEL_AXLE, /*pos*/  -204, -1924,  3381, /*angle*/ 0, 0, 0,  /*bhvParam*/ BPARAM2(0x01), /*bhv*/ bhvFerrisWheelAxle),
-    //OBJECT(/*model*/ MODEL_BITDW_STAIRCASE,         /*pos*/  5279,  1740,    -6, /*angle*/ 0, 0, 0,  /*bhvParam*/ BPARAM2(0x01), /*bhv*/ bhvAnimatesOnFloorSwitchPress),
-    //BJECT(/*model*/ MODEL_PURPLE_SWITCH,           /*pos*/  3922,  1740,    -7, /*angle*/ 0, 0, 0,  /*bhvParam*/ 0, /*bhv*/ bhvFloorSwitchAnimatesObject),
-    RETURN(),
-};
-
-static const LevelScript script_func_local_2[] = {
-    OBJECT(/*model*/ MODEL_NONE, /*pos*/ -3092, -2795, 2842, /*angle*/ 0, 0, 0, /*bhvParam*/ 0, /*bhv*/ bhvFlamethrower),
-    OBJECT(/*model*/ MODEL_NONE, /*pos*/  2463, -2386, 2844, /*angle*/ 0, 0, 0, /*bhvParam*/ 0, /*bhv*/ bhvFlamethrower),
+    OBJECT(/*model*/ MODEL_BITDW_SQUARE_PLATFORM,   /*pos*/ -1850, 1016, -1849, /*angle*/ 0, 0, 0,  /*bhvParam*/ BPARAM2(0x02), /*bhv*/ bhvSquarishPathMoving),
+    OBJECT(/*model*/ MODEL_BITDW_SQUARE_PLATFORM,   /*pos*/ -2464, 1016, -2463, /*angle*/ 0, 0, 0,  /*bhvParam*/ BPARAM2(0x00), /*bhv*/ bhvSquarishPathMoving),
+    OBJECT(/*model*/ MODEL_BITDW_SQUARE_PLATFORM,   /*pos*/ -2454, 1016, -621, /*angle*/ 0, 0, 0,  /*bhvParam*/ BPARAM2(0x02), /*bhv*/ bhvSquarishPathMoving),
+    OBJECT(/*model*/ MODEL_BITDW_SQUARE_PLATFORM,   /*pos*/ -3068, 1016, -1235, /*angle*/ 0, 0, 0,  /*bhvParam*/ BPARAM2(0x00), /*bhv*/ bhvSquarishPathMoving),
+    OBJECT(/*model*/ MODEL_BITDW_FERRIS_WHEEL_AXLE, /*pos*/   -204, -1924, 3381, /*angle*/ 0, 0, 0, /*bhvParam*/ 1, /*bhv*/ bhvFerrisWheelAxle),
+    OBJECT(/*model*/ MODEL_NONE, /*pos*/ -3092, -2795, 3046, /*angle*/ 0, 0, 0, /*bhvParam*/ 0, /*bhv*/ bhvFlamethrower),
+    OBJECT(/*model*/ MODEL_NONE, /*pos*/  2463, -2386, 3048, /*angle*/ 0, 0, 0, /*bhvParam*/ 0, /*bhv*/ bhvFlamethrower),
     RETURN(),
 };
 
@@ -69,7 +60,7 @@ const LevelScript level_bitdw_entry[] = {
     LOAD_MODEL_FROM_GEO(MODEL_LEVEL_GEOMETRY_0F,       geo_bitdw_0004E0),
     LOAD_MODEL_FROM_GEO(MODEL_LEVEL_GEOMETRY_10,       geo_bitdw_0004F8),
     LOAD_MODEL_FROM_GEO(MODEL_LEVEL_GEOMETRY_11,       geo_bitdw_000510),
-    //LOAD_MODEL_FROM_GEO(MODEL_BITDW_WARP_PIPE,         warp_pipe_geo),
+    LOAD_MODEL_FROM_GEO(MODEL_BITDW_WARP_PIPE,         warp_pipe_geo),
     LOAD_MODEL_FROM_GEO(MODEL_BITDW_SQUARE_PLATFORM,   geo_bitdw_000558),
     LOAD_MODEL_FROM_GEO(MODEL_BITDW_SEESAW_PLATFORM,   geo_bitdw_000540),
     LOAD_MODEL_FROM_GEO(MODEL_BITDW_SLIDING_PLATFORM,  geo_bitdw_000528),
@@ -82,24 +73,23 @@ const LevelScript level_bitdw_entry[] = {
     LOAD_MODEL_FROM_GEO(MODEL_BITDW_STAIRCASE,         geo_bitdw_000600),
 
     AREA(/*index*/ 1, geo_bitdw_000618),
-        OBJECT(/*model*/ MODEL_NONE,            /*pos*/ -7443, -2153, 3886, /*angle*/ 0, 90, 0, /*bhvParam*/ BPARAM2(WARP_NODE_0A), /*bhv*/ bhvAirborneWarp),
-        //OBJECT(/*model*/ MODEL_BITDW_WARP_PIPE, /*pos*/  6816,  2860,   -7, /*angle*/ 0, 0, 0,  /*bhvParam*/ BPARAM2(WARP_NODE_0B), /*bhv*/ bhvWarpPipe),
+        OBJECT(/*model*/ MODEL_NONE,            /*pos*/ -7443, -2153,  3886, /*angle*/ 0, 90, 0, /*bhvParam*/ BPARAM2(WARP_NODE_0A), /*bhv*/ bhvAirborneWarp),
+        OBJECT(/*model*/ MODEL_BITDW_WARP_PIPE, /*pos*/  -4904, 1126, -312, /*angle*/ 0, 0, 0,  /*bhvParam*/ BPARAM2(WARP_NODE_0B), /*bhv*/ bhvWarpPipe),
         OBJECT(/*model*/ MODEL_NONE,            /*pos*/  5910,  3500,   -7, /*angle*/ 0, 90, 0, /*bhvParam*/ BPARAM2(WARP_NODE_0C), /*bhv*/ bhvDeathWarp),
         WARP_NODE(/*id*/ WARP_NODE_0A,    /*destLevel*/ LEVEL_BITDW,    /*destArea*/ 1, /*destNode*/ WARP_NODE_0A, /*flags*/ WARP_NO_CHECKPOINT),
         WARP_NODE(/*id*/ WARP_NODE_0B,    /*destLevel*/ LEVEL_BOWSER_1, /*destArea*/ 1, /*destNode*/ WARP_NODE_0A, /*flags*/ WARP_NO_CHECKPOINT),
         WARP_NODE(/*id*/ WARP_NODE_0C,    /*destLevel*/ LEVEL_BITDW,    /*destArea*/ 1, /*destNode*/ WARP_NODE_0C, /*flags*/ WARP_NO_CHECKPOINT),
         WARP_NODE(/*id*/ WARP_NODE_DEATH, /*destLevel*/ LEVEL_CASTLE,   /*destArea*/ 1, /*destNode*/ WARP_NODE_25, /*flags*/ WARP_NO_CHECKPOINT),
-        JUMP_LINK(script_func_local_1),
         JUMP_LINK(script_func_local_2),
         TERRAIN(/*terrainData*/ bitdw_seg7_collision_level),
         MACRO_OBJECTS(/*objList*/ bitdw_seg7_macro_objs),
         SHOW_DIALOG(/*index*/ 0x00, DIALOG_090),
-        SET_BACKGROUND_MUSIC(/*settingsPreset*/ 0x0000, /*seq*/ SEQ_LEVEL_KOOPA_ROAD),
+        SET_BACKGROUND_MUSIC(/*settingsPreset*/ 0x0002, /*seq*/ SEQ_LEVEL_BOSS_KOOPA),
         TERRAIN_TYPE(/*terrainType*/ TERRAIN_STONE),
     END_AREA(),
 
     FREE_LEVEL_POOL(),
-    MARIO_POS(/*area*/ 1, /*yaw*/ 90, /*pos*/ -7443, -3153, 3886),
+    MARIO_POS(/*area*/ 1, /*yaw*/ 90, /*pos*/ -7443, -3153,  3886),
     CALL(/*arg*/ 0, /*func*/ lvl_init_or_update),
     CALL_LOOP(/*arg*/ 1, /*func*/ lvl_init_or_update),
     CLEAR_LEVEL(),

@@ -2,7 +2,7 @@
 const GeoLayout geo_bitdw_0003D8[] = {
     GEO_CULLING_RADIUS(2300),
     GEO_OPEN_NODE(),
-        GEO_DISPLAY_LIST(LAYER_OPAQUE, bitdw_seg7_dl_070032F8),
+        GEO_DISPLAY_LIST(LAYER_OPAQUE, bttdw_2_dl_mesh),
     GEO_CLOSE_NODE(),
     GEO_END(),
 };

@@ -10,6 +10,7 @@
 #include "mist/geo.inc.c"
 #include "explosion/bombfire.hms"
 #include "coin/coin.hms"
+#include "warp_pipe/geo.inc.c"
 #include "door/door.hms"
 #include "flame/geo.inc.c"
 #include "blue_fish/geo.inc.c"

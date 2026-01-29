@@ -3,6 +3,7 @@
 
 #include "types.h"
 #include "game/moving_texture.h"
+#include "game/areamap.h"
 
 // geo
 extern const GeoLayout bob_geo_000458[];
@@ -11,7 +12,7 @@ extern const GeoLayout bob_geo_000488[];
 
 // leveldata
 extern const Gfx bob_1_dl_mesh[];
-extern const Gfx bob_2_dl_mesh[];
+extern const Gfx bob_pazair_mesh[];
 extern const Gfx bob_3_dl_mesh[];
 extern const Gfx bob_4_dl_mesh[];
 extern const Gfx bob_5_dl_mesh[];
@@ -28,6 +29,7 @@ extern const Trajectory bob_seg7_trajectory_koopa[];
 extern Movtex bob_movtex_tris_waterfall[];
 extern const Gfx bob_dl_waterfall[];
 extern const struct MovtexQuadCollection bob_movtex_water[];
+extern struct AreaMapData areaMap_27_01;
 
 // script
 extern const LevelScript level_bob_entry[];

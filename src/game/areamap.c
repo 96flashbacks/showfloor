@@ -12,6 +12,8 @@
 #include "headers.h"
 
 #include "levels/bbh/header.h"
+#include "levels/bitdw/header.h"
+#include "levels/bob/header.h"
 #include "levels/ccm/header.h"
 #include "levels/ddd/header.h"
 #include "levels/jrb/header.h"
@@ -35,7 +37,9 @@ struct AreaMapData *gMapPtrs[] = {
     &areaMap_23_01, /* dire dire docks - area 1 */
     &areaMap_23_02, /* dire dire docks - area 2 */
     &areaMap_24_01, /* whomp's fortress */
-    &areaMap_26_01  /* courtyard */
+    &areaMap_26_01, /* courtyard */
+    &areaMap_27_01,  /* bob'omb battlefield  */
+    &areaMap_28_01  /* bowser in the dark world/yoko scrl  */
 };
 
 /*

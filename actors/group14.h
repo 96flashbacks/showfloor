@@ -4,6 +4,10 @@
 #include "types.h"
 #include "headers.h"
 
+// chain_ball
+extern const GeoLayout metallic_ball_geo[];
+extern const Gfx chain_ball_seg6_dl_060212E8[];
+
 // koopa
 extern Hierarchy RCP_HmsEnemynokonoko[];
 extern Gfx RCP_nokonoko_down0[];
