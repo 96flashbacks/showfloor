@@ -11,6 +11,7 @@
 
 #include "make_const_nonconst.h"
 #include "levels/bitdw/texture.inc.c"
+#include "levels/bitdw/material.inc.c"
 #include "levels/bitdw/areas/1/1/model.inc.c"
 #include "levels/bitdw/areas/1/starting_platform/model.inc.c"
 #include "levels/bitdw/areas/1/large_platform/model.inc.c"

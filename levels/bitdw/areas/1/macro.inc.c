@@ -2,7 +2,7 @@
 const MacroObject bitdw_seg7_macro_objs[] = {
     //MACRO_OBJECT               (/*preset*/ macro_box_metal_cap,               /*yaw*/   0, /*pos*/ -6420, -2900,  3880),
     //MACRO_OBJECT               (/*preset*/ macro_coin_ring_horizontal_flying, /*yaw*/   0, /*pos*/ -1660, -3000,  3900),
-    MACRO_OBJECT               (/*preset*/ macro_coin_line_horizontal,        /*yaw*/   0, /*pos*/ -2400,  -800,  1900),
+    //MACRO_OBJECT               (/*preset*/ macro_coin_line_horizontal,        /*yaw*/   0, /*pos*/ -2400,  -800,  1900),
     
 // amps go here
 
@@ -14,15 +14,29 @@ const MacroObject bitdw_seg7_macro_objs[] = {
     //MACRO_OBJECT               (/*preset*/ macro_coin_line_horizontal,        /*yaw*/  90, /*pos*/  1660, -1980,  3660),
     MACRO_OBJECT               (/*preset*/ macro_goomba,                      /*yaw*/   0, /*pos*/  3180,  1020,   240),
     MACRO_OBJECT               (/*preset*/ macro_goomba,                      /*yaw*/   0, /*pos*/  2860,  1020,   580),
-    //MACRO_OBJECT               (/*preset*/ macro_yellow_coin_1,               /*yaw*/   0, /*pos*/  4640,  2360,     0),
-    //MACRO_OBJECT               (/*preset*/ macro_yellow_coin_1,               /*yaw*/   0, /*pos*/  4900,  2600,     0),
-    //MACRO_OBJECT               (/*preset*/ macro_yellow_coin_1,               /*yaw*/   0, /*pos*/  5180,  2820,     0),
-    //MACRO_OBJECT               (/*preset*/ macro_yellow_coin_1,               /*yaw*/   0, /*pos*/  2760,  1940,   500),
-    //MACRO_OBJECT               (/*preset*/ macro_yellow_coin_1,               /*yaw*/   0, /*pos*/  2760,  1940,   180),
-    //MACRO_OBJECT               (/*preset*/ macro_yellow_coin_2,               /*yaw*/   0, /*pos*/ -2460,   812,   800),
-    //MACRO_OBJECT               (/*preset*/ macro_yellow_coin_2,               /*yaw*/   0, /*pos*/ -3080,   813,   840),
-    //MACRO_OBJECT               (/*preset*/ macro_yellow_coin_2,               /*yaw*/   0, /*pos*/ -3660,   873,   620),
-    //MACRO_OBJECT               (/*preset*/ macro_yellow_coin_2,               /*yaw*/   0, /*pos*/ -4060,  1011,   240),
+    MACRO_OBJECT               (/*preset*/ macro_yellow_coin_1,               /*yaw*/   0, /*pos*/  -1966, -2954, 3586),
+    MACRO_OBJECT               (/*preset*/ macro_yellow_coin_1,               /*yaw*/   0, /*pos*/  -1966, -2854, 3586),
+    MACRO_OBJECT               (/*preset*/ macro_yellow_coin_1,               /*yaw*/   0, /*pos*/  -1966, -2754, 3586),
+    MACRO_OBJECT               (/*preset*/ macro_yellow_coin_1,               /*yaw*/   0, /*pos*/  -1352, -2954, 4200),
+    MACRO_OBJECT               (/*preset*/ macro_yellow_coin_1,               /*yaw*/   0, /*pos*/  -1352, -2854, 4200),
+    MACRO_OBJECT               (/*preset*/ macro_yellow_coin_1,               /*yaw*/   0, /*pos*/  -1352, -2754, 4200),
+    MACRO_OBJECT               (/*preset*/ macro_yellow_coin_1,               /*yaw*/   0, /*pos*/  -2406, -1223, 1842),
+    MACRO_OBJECT               (/*preset*/ macro_yellow_coin_1,               /*yaw*/   0, /*pos*/  -2406, -1121, 1587),
+    MACRO_OBJECT               (/*preset*/ macro_yellow_coin_1,               /*yaw*/   0, /*pos*/  -2406, -1320, 2130),
+    MACRO_OBJECT               (/*preset*/ macro_yellow_coin_1,               /*yaw*/   0, /*pos*/  1470, 959, -2118),
+    MACRO_OBJECT               (/*preset*/ macro_yellow_coin_1,               /*yaw*/   0, /*pos*/  -3068, 1216, -1235),
+    MACRO_OBJECT               (/*preset*/ macro_yellow_coin_1,               /*yaw*/   0, /*pos*/  -3068, 1316, -1235),
+    MACRO_OBJECT               (/*preset*/ macro_yellow_coin_1,               /*yaw*/   0, /*pos*/  -3068, 1416, -1235),
+    MACRO_OBJECT               (/*preset*/ macro_yellow_coin_1,               /*yaw*/   0, /*pos*/  -2454, 1216, -621),
+    MACRO_OBJECT               (/*preset*/ macro_yellow_coin_1,               /*yaw*/   0, /*pos*/  -2454, 1316, -621),
+    MACRO_OBJECT               (/*preset*/ macro_yellow_coin_1,               /*yaw*/   0, /*pos*/  -2454, 1416, -621),
+    MACRO_OBJECT               (/*preset*/ macro_yellow_coin_1,               /*yaw*/   0, /*pos*/  -2464, 1216, -2463),
+    MACRO_OBJECT               (/*preset*/ macro_yellow_coin_1,               /*yaw*/   0, /*pos*/  -2464, 1316, -2463),
+    MACRO_OBJECT               (/*preset*/ macro_yellow_coin_1,               /*yaw*/   0, /*pos*/  -2464, 1416, -2463),
+    MACRO_OBJECT               (/*preset*/ macro_yellow_coin_1,               /*yaw*/   0, /*pos*/  -1850, 1216, -1849),
+    MACRO_OBJECT               (/*preset*/ macro_yellow_coin_1,               /*yaw*/   0, /*pos*/  -1850, 1316, -1849),
+    MACRO_OBJECT               (/*preset*/ macro_yellow_coin_1,               /*yaw*/   0, /*pos*/  -1850, 1416, -1849),
+    MACRO_OBJECT               (/*preset*/ macro_yellow_coin_1,               /*yaw*/   0, /*pos*/  -3088, -2947, 3894),
    
 // and another amp goes here
 

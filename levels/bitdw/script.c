@@ -24,8 +24,8 @@ static const LevelScript script_func_local_2[] = {
     OBJECT(/*model*/ MODEL_BITDW_SQUARE_PLATFORM,   /*pos*/ -2454, 1016, -621, /*angle*/ 0, 0, 0,  /*bhvParam*/ BPARAM2(0x02), /*bhv*/ bhvSquarishPathMoving),
     OBJECT(/*model*/ MODEL_BITDW_SQUARE_PLATFORM,   /*pos*/ -3068, 1016, -1235, /*angle*/ 0, 0, 0,  /*bhvParam*/ BPARAM2(0x00), /*bhv*/ bhvSquarishPathMoving),
     OBJECT(/*model*/ MODEL_BITDW_FERRIS_WHEEL_AXLE, /*pos*/   -204, -1924, 3381, /*angle*/ 0, 0, 0, /*bhvParam*/ 1, /*bhv*/ bhvFerrisWheelAxle),
-    OBJECT(/*model*/ MODEL_NONE, /*pos*/ -3092, -2795, 2842, /*angle*/ 0, 0, 0, /*bhvParam*/ 0, /*bhv*/ bhvFlamethrower),
-    OBJECT(/*model*/ MODEL_NONE, /*pos*/  2463, -2386, 2844, /*angle*/ 0, 0, 0, /*bhvParam*/ 0, /*bhv*/ bhvFlamethrower),
+    OBJECT(/*model*/ MODEL_NONE, /*pos*/ -3092, -2795, 3046, /*angle*/ 0, 0, 0, /*bhvParam*/ 0, /*bhv*/ bhvFlamethrower),
+    OBJECT(/*model*/ MODEL_NONE, /*pos*/  2463, -2386, 3048, /*angle*/ 0, 0, 0, /*bhvParam*/ 0, /*bhv*/ bhvFlamethrower),
     RETURN(),
 };
 
