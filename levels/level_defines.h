@@ -46,7 +46,7 @@ DEFINE_LEVEL("YAJIMA TEST",               LEVEL_UNKNOWN_32,       COURSE_NONE,  
 STUB_LEVEL(  "",         LEVEL_BOWSER_2,         COURSE_BITFS,                                VAL_DIFF, 0x00, 0x00, 0x00, _,         _)
 STUB_LEVEL(  "",         LEVEL_BOWSER_3,         COURSE_BITS,                                 VAL_DIFF, 0x00, 0x00, 0x00, _,         _)
 DEFINE_LEVEL("DUMMY",               LEVEL_UNKNOWN_35,       COURSE_NONE,     dummy,            generic,  20000,    0x00, 0x00, 0x00, _,         _)
-STUB_LEVEL(  "DONKEY", LEVEL_TTM,              COURSE_TTM,                                  15000,    0x00, 0x00, 0x00, _,         _)
+DEFINE_LEVEL(  "DONKEY", LEVEL_TTM,              COURSE_TTM,      ttm,              mountain, 15000,    0x08, 0x08, 0x08, _,         _)
 DEFINE_LEVEL("IWTEST",               LEVEL_UNKNOWN_37,       COURSE_NONE,     iwtest,           generic,  20000,    0x00, 0x00, 0x00, _,         _)
 STUB_LEVEL(  "CAVE DUNGEON", LEVEL_HMC,              COURSE_HMC,                                  16000,    0x00, 0x00, 0x00, _,         _)
 

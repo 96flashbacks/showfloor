@@ -93,6 +93,28 @@ extern const u8 machine_09007800[];
 extern const u8 machine_09008000[];
 extern const u8 machine_09008400[];
 
+// mountain
+extern const u8 mountain_09000000[];
+extern const u8 mountain_09000800[];
+extern const u8 mountain_09001800[];
+extern const u8 mountain_09002800[];
+extern const u8 mountain_09003000[];
+extern const u8 mountain_09003800[];
+extern const u8 mountain_09004000[];
+extern const u8 mountain_09004800[];
+extern const u8 mountain_09005000[];
+extern const u8 mountain_09005800[];
+extern const u8 mountain_09006800[];
+extern const u8 mountain_09007000[];
+extern const u8 mountain_09007800[];
+extern const u8 mountain_09008000[];
+extern const u8 mountain_09008800[];
+extern const u8 mountain_09009800[];
+extern const u8 mountain_0900A000[];
+extern const u8 mountain_0900A800[];
+extern const u8 mountain_0900B000[];
+extern const u8 mountain_0900B800[];
+extern const u8 mountain_0900C000[];
 
 // outside
 extern const u8 outside_09000800[];
