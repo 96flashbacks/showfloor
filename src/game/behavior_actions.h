@@ -43,6 +43,8 @@ void bhv_particle_loop(void);
 void bhv_water_waves_init(void);
 void bhv_small_bubbles_loop(void);
 void bhv_fish_group_loop(void);
+void bhv_ukiki_init(void);
+void bhv_ukiki_loop(void);
 void bhv_cannon_base_loop(void);
 void bhv_cannon_barrel_loop(void);
 void bhv_cannon_base_unused_loop(void);

@@ -20,6 +20,7 @@ ACTOR_GROUPS := \
     group2  \
     group4  \
     group7  \
+	group6  \
     group9  \
     group10 \
     group12 \
@@ -65,7 +66,7 @@ SKEETER_DIRS     := skeeter seaweed water_mine cyan_fish bub water_ring treasure
 KLEPTO_DIRS      := klepto eyerok pokey tornado
 SEA_DIRS         := clam_shell manta sushi unagi whirlpool
 AMP_DIRS         := blue_coin_switch amp cannon_lid cannon_base cannon_barrel chuckya purple_switch checkerboard_platform heart flyguy breakable_box exclamation_box goomba bobomb metal_box exclamation_box_outline test_platform koopa_shell
-MOLE_DIRS        := monty_mole_hole monty_mole smoke ukiki fwoosh
+MOLE_DIRS        := monty_mole_hole monty_mole smoke monkey fwoosh
 LAKITU_DIRS      := lakitu_cameraman toad mips boo_castle
 PEACH_DIRS       := bird peach yoshi
 BOWSER_DIRS      := bowser_flame impact_ring yellow_sphere bowser bomb impact_smoke
@@ -97,6 +98,7 @@ $(BUILD_DIR)/actors/group0.o:  $(MARIO_WATER_TEXTURES:%.png=$(BUILD_DIR)/%.inc.c
 $(BUILD_DIR)/actors/group1.o:  $(HOOT_THWOMP_TEXTURES:%.png=$(BUILD_DIR)/%.inc.c)
 $(BUILD_DIR)/actors/group2.o:  $(BULLY_BLARGG_TEXTURES:%.png=$(BUILD_DIR)/%.inc.c)
 $(BUILD_DIR)/actors/group4.o:  $(SEA_CREATURES_TEXTURES:%.png=$(BUILD_DIR)/%.inc.c)
+$(BUILD_DIR)/actors/group6.o:  $(MOLE_UKIKI_TEXTURES:%.png=$(BUILD_DIR)/%.inc.c)
 $(BUILD_DIR)/actors/group7.o:  $(SPINDRIFT_PENGUIN_TEXTURES:%.png=$(BUILD_DIR)/%.inc.c)
 $(BUILD_DIR)/actors/group9.o:  $(BOO_BOOKEND_TEXTURES:%.png=$(BUILD_DIR)/%.inc.c)
 $(BUILD_DIR)/actors/group10.o: $(PEACH_TOADSTOOL_TEXTURES:%.png=$(BUILD_DIR)/%.inc.c)
@@ -112,6 +114,7 @@ $(BUILD_DIR)/actors/group0.elf:  SEGMENT_ADDRESS := 0x04000000
 $(BUILD_DIR)/actors/group1.elf:  SEGMENT_ADDRESS := 0x05000000
 $(BUILD_DIR)/actors/group2.elf:  SEGMENT_ADDRESS := 0x05000000
 $(BUILD_DIR)/actors/group4.elf:  SEGMENT_ADDRESS := 0x05000000
+$(BUILD_DIR)/actors/group6.elf:  SEGMENT_ADDRESS := 0x05000000
 $(BUILD_DIR)/actors/group7.elf:  SEGMENT_ADDRESS := 0x05000000
 $(BUILD_DIR)/actors/group9.elf:  SEGMENT_ADDRESS := 0x05000000
 $(BUILD_DIR)/actors/group10.elf: SEGMENT_ADDRESS := 0x05000000
