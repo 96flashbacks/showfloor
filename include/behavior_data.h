@@ -141,6 +141,7 @@ extern const BehaviorScript bhvFewBlueFishSpawner[];
 extern const BehaviorScript bhvFishSpawner[];
 extern const BehaviorScript bhvFishCommon[];
 extern const BehaviorScript bhvFish[];
+extern const BehaviorScript bhvUkiki[];
 extern const BehaviorScript bhvChirpChirp[];
 extern const BehaviorScript bhvChirpChirpUnused[];
 extern const BehaviorScript bhvBub[];

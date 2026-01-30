@@ -14,6 +14,7 @@
 #include "actors/group1.h"
 #include "actors/group2.h"
 #include "actors/group4.h"
+#include "actors/group6.h"
 #include "actors/group7.h"
 #include "actors/group9.h"
 #include "actors/group10.h"
@@ -172,6 +173,11 @@ const LevelScript script_func_global_4[] = {
 
 const LevelScript script_func_global_5[] = {
     LOAD_MODEL_FROM_GEO(MODEL_SUSHI,                   RCP_HmsEnemyShark),
+    RETURN(),
+};
+
+const LevelScript script_func_global_7[] = {
+    LOAD_MODEL_FROM_GEO(MODEL_UKIKI,                   RCP_HmsEnemymonky_F_run),
     RETURN(),
 };
 

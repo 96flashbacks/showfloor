@@ -339,7 +339,7 @@
 // group 6
 //#define MODEL_DL_MONTY_MOLE_HOLE          0x54        // monty_mole_hole_seg5_dl_05000840
 //#define MODEL_MONTY_MOLE                  0x55        // monty_mole_geo
-//#define MODEL_UKIKI                       0x56        // ukiki_geo
+#define MODEL_UKIKI                       0x56        // ukiki_geo
 //#define MODEL_FWOOSH                      0x57        // fwoosh_geo
 
 // group 7
