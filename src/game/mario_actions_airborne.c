@@ -64,7 +64,7 @@ s32 check_fall_damage(struct MarioState *m, u32 hardFallAction) {
 
     if (m->action != ACT_TWIRLING && m->floor->type != SURFACE_BURNING) {
         if (m->vel[1] < -55.0f) {
-            if (fallHeight > 3000.0f) {
+            if (fallHeight > 1800.0f) {
                 m->hurtCounter += 16;
                 return drop_and_set_mario_action(m, hardFallAction, 4);
             } else if (fallHeight > damageHeight && !mario_floor_is_slippery(m)) {
