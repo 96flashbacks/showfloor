@@ -15,6 +15,11 @@
 #include "make_const_nonconst.h"
 #include "levels/ttm/header.h"
 
+static const LevelScript script_func_local_1[] = {
+    OBJECT(/*model*/ MODEL_TTM_ROLLING_LOG,    /*pos*/  4360, -1722,  4001, /*angle*/ 0,  48, 0, /*bhvParam*/ 0, /*bhv*/ bhvTTMRollingLog),
+    RETURN(),
+};
+
 const LevelScript level_ttm_entry[] = {
     INIT_LEVEL(),
     LOAD_MIO0        (/*seg*/ 0x07, _ttm_segment_7SegmentRomStart, _ttm_segment_7SegmentRomEnd),
@@ -67,7 +72,7 @@ const LevelScript level_ttm_entry[] = {
         WARP_NODE(/*id*/ WARP_NODE_16, /*destLevel*/ LEVEL_TTM, /*destArea*/ 1, /*destNode*/ WARP_NODE_15, /*flags*/ WARP_NO_CHECKPOINT),
         WARP_NODE(/*id*/ WARP_NODE_SUCCESS,    /*destLevel*/ LEVEL_CASTLE, /*destArea*/ 2, /*destNode*/ WARP_NODE_34, /*flags*/ WARP_NO_CHECKPOINT),
         WARP_NODE(/*id*/ WARP_NODE_DEATH,      /*destLevel*/ LEVEL_CASTLE, /*destArea*/ 2, /*destNode*/ WARP_NODE_66, /*flags*/ WARP_NO_CHECKPOINT),
-
+        JUMP_LINK(script_func_local_1),
         TERRAIN(/*terrainData*/ ttm_collision),
         //MACRO_OBJECTS(/*objList*/ ttm_seg7_area_1_macro_objs),
         SET_BACKGROUND_MUSIC(/*settingsPreset*/ 0x0000, /*seq*/ SEQ_LEVEL_GRASS),

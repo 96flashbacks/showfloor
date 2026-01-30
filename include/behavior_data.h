@@ -163,6 +163,7 @@ extern const BehaviorScript bhvBoo[];
 extern const BehaviorScript bhvGhostHuntBoo[]; // we can cock about with this later
 extern const BehaviorScript bhvInsideCannon[];
 extern const BehaviorScript bhvStar[];
+extern const BehaviorScript bhvTTMRollingLog[];
 extern const BehaviorScript bhvStaticObject[];
 extern const BehaviorScript bhvCastleFloorTrap[];
 extern const BehaviorScript bhvFloorTrapInCastle[];

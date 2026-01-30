@@ -34,6 +34,7 @@
 #include "levels/ccm/header.h"
 #include "levels/ttc/header.h"
 #include "levels/bitdw/header.h"
+#include "levels/ttm/header.h"
 
 #include "make_const_nonconst.h"
 #include "behavior_data.h"
@@ -2758,6 +2759,19 @@ const BehaviorScript bhvStar[] = {
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_collect_star_loop),
         ANIMATE_TEXTURE(oAnimState, 2),
+    END_LOOP(),
+};
+
+const BehaviorScript bhvTTMRollingLog[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    LOAD_COLLISION_DATA(ttm_seg7_collision_pitoune_2),
+    SET_HOME(),
+    SET_FLOAT(oCollisionDistance, 2000),
+    CALL_NATIVE(bhv_ttm_rolling_log_init),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_rolling_log_loop),
+        CALL_NATIVE(load_object_collision_model),
     END_LOOP(),
 };
 

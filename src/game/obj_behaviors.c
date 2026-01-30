@@ -789,6 +789,7 @@ UNUSED s8 debug_sequence_tracker(s16 debugInputSequence[]) {
 #include "behaviors/celebration_star.inc.c"
 #include "behaviors/drawbridge.inc.c"
 #include "behaviors/bomp.inc.c"
+#include "behaviors/rolling_log.inc.c"
 #include "behaviors/sliding_platform.inc.c"
 #include "behaviors/sound_birds.inc.c"
 #include "behaviors/sound_ambient.inc.c"
