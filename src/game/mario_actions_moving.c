@@ -346,8 +346,17 @@ s32 apply_slope_decel(struct MarioState *m, f32 decelCoef) {
     s32 stopped = FALSE;
 
     switch (mario_get_floor_class(m)) {
+        case SURFACE_CLASS_VERY_SLIPPERY:
+            decel = decelCoef * 0.2f;
+            break;
+        case SURFACE_CLASS_SLIPPERY:
+            decel = decelCoef * 0.5f;
+            break;
         default:
-            decel = decelCoef * 0.85f;
+            decel = decelCoef * 1.0f;
+            break;
+        case SURFACE_CLASS_NOT_SLIPPERY:
+            decel = decelCoef * 2.0f;
             break;
     }
 
