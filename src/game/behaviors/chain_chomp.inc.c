@@ -176,7 +176,7 @@ static void chain_chomp_sub_act_turn(void) {
             if (o->oMoveFlags & OBJ_MOVE_MASK_ON_GROUND) {
                 // Increase the maximum distance from the pivot and enter
                 // the lunging sub-action.
-                cur_obj_play_sound_2(SOUND_OBJ2_PIRANHA_PLANT_BITE);
+                cur_obj_play_sound_2(SOUND_GENERAL_CHAIN_CHOMP2);
 
                 o->oSubAction = CHAIN_CHOMP_SUB_ACT_LUNGE;
                 o->oChainChompMaxDistFromPivotPerChainPart = 900.0f / 5;
@@ -190,7 +190,7 @@ static void chain_chomp_sub_act_turn(void) {
             }
         } else {
             if (o->oMoveFlags & OBJ_MOVE_MASK_ON_GROUND) {
-                cur_obj_play_sound_2(SOUND_OBJ_MRI_DEATH);
+                //cur_obj_play_sound_2(SOUND_OBJ_MRI_DEATH);
                 o->oForwardVel = 10.0f;
                 o->oVelY = 20.0f;
             }
@@ -198,7 +198,7 @@ static void chain_chomp_sub_act_turn(void) {
     } else {
         o->oTimer = 0;
         if (o->oMoveFlags & OBJ_MOVE_MASK_ON_GROUND) {
-            cur_obj_play_sound_2(SOUND_OBJ_MRI_DEATH);
+            //cur_obj_play_sound_2(SOUND_OBJ_MRI_DEATH);
             o->oForwardVel = 10.0f;
             o->oVelY = 20.0f;
         }

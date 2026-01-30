@@ -2856,19 +2856,9 @@ layer_end
 .sound_general_chain_chomp2:
 chan_setbank 7
 chan_setinstr 8
-chan_setval 15
-chan_call .set_reverb
-chan_setlayer 0, .layer_14C6
-chan_setlayer 1, .layer_14E3
 chan_setval 1
-chan_call .delay
-chan_setenvelope .envelope_3368
-chan_setbank 1
-chan_setinstr 7
-chan_setval 13
-chan_call .delay
-chan_setbank 7
-chan_setinstr 8
+chan_call .set_reverb
+chan_setlayer 0, .layer_14E3
 chan_end
 
 .layer_14C6:
@@ -2883,10 +2873,8 @@ layer_note0 58, 0xc, 118, 127
 layer_end
 
 .layer_14E3:
-layer_loop 2
 layer_portamento 0x81, 36, 255
-layer_note1 24, 0x18, 127
-layer_loopend
+layer_note1 22, 0x18, 127
 layer_end
 
 .sound_general_door_turn_key:
