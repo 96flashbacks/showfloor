@@ -134,6 +134,14 @@ extern Gfx bob_dl_waterfall[];
 extern s16 bob_movtex_tris_waterfall[];
 extern Gfx castle_grounds_dl_waterfall[];
 extern s16 castle_grounds_movtex_tris_waterfall[];
+extern s16 ttm_movtex_tris_begin_waterfall[];
+extern Gfx ttm_dl_waterfall[];
+extern s16 ttm_movtex_tris_end_waterfall[];
+extern s16 ttm_movtex_tris_begin_puddle_waterfall[];
+extern Gfx ttm_dl_bottom_waterfall[];
+extern s16 ttm_movtex_tris_end_puddle_waterfall[];
+extern s16 ttm_movtex_tris_puddle_waterfall[];
+extern Gfx ttm_dl_puddle_waterfall[];
 extern s16 ttc_movtex_tris_big_surface_treadmill[];
 extern Gfx ttc_dl_surface_treadmill_begin[];
 extern Gfx ttc_dl_surface_treadmill_end[];
@@ -154,6 +162,22 @@ struct MovtexObject gMovtexNonColored[] = {
       dl_waterbox_rgba16_begin, dl_waterbox_end, bob_dl_waterfall, 0xff, 0xff, 0xff, 0xb4,
       LAYER_TRANSPARENT_INTER },
 
+    // Tall, Tall mountain has water going from the top to the bottom of the mountain.
+    { MOVTEX_TTM_BEGIN_WATERFALL, TEXTURE_WATER, 6, ttm_movtex_tris_begin_waterfall,
+      dl_waterbox_rgba16_begin, dl_waterbox_end, ttm_dl_waterfall, 0xff, 0xff, 0xff, 0xb4,
+      LAYER_TRANSPARENT },
+    { MOVTEX_TTM_END_WATERFALL, TEXTURE_WATER, 6, ttm_movtex_tris_end_waterfall,
+      dl_waterbox_rgba16_begin, dl_waterbox_end, ttm_dl_waterfall, 0xff, 0xff, 0xff, 0xb4,
+      LAYER_TRANSPARENT },
+    { MOVTEX_TTM_BEGIN_PUDDLE_WATERFALL, TEXTURE_WATER, 4, ttm_movtex_tris_begin_puddle_waterfall,
+      dl_waterbox_rgba16_begin, dl_waterbox_end, ttm_dl_bottom_waterfall, 0xff, 0xff, 0xff, 0xb4,
+      LAYER_TRANSPARENT_INTER },
+    { MOVTEX_TTM_END_PUDDLE_WATERFALL, TEXTURE_WATER, 4, ttm_movtex_tris_end_puddle_waterfall,
+      dl_waterbox_rgba16_begin, dl_waterbox_end, ttm_dl_bottom_waterfall, 0xff, 0xff, 0xff, 0xb4,
+      LAYER_TRANSPARENT_INTER },
+    { MOVTEX_TTM_PUDDLE_WATERFALL, TEXTURE_WATER, 8, ttm_movtex_tris_puddle_waterfall,
+      dl_waterbox_rgba16_begin, dl_waterbox_end, ttm_dl_puddle_waterfall, 0xff, 0xff, 0xff, 0xb4,
+      LAYER_TRANSPARENT_INTER },
     { 0x00000000, 0x00000000, 0, NULL, NULL, NULL, NULL, 0x00, 0x00, 0x00, 0x00, 0x00000000 },
 };
 
@@ -398,6 +422,7 @@ extern u8 ddd_movtex_area1_water[];
 extern u8 ddd_movtex_area2_water[];
 extern u8 wf_movtex_water[];
 extern u8 castle_courtyard_movtex_star_statue_water[];
+extern u8 ttm_movtex_puddle[];
 
 /**
  * Find the quadCollection for a given quad collection id.
@@ -422,6 +447,8 @@ void *get_quad_collection_from_id(u32 id) {
             return wf_movtex_water;
         case CASTLE_COURTYARD_MOVTEX_STAR_STATUE_WATER:
             return castle_courtyard_movtex_star_statue_water;
+        case TTM_MOVTEX_PUDDLE:
+            return ttm_movtex_puddle;
         default:
             return NULL;
     }
