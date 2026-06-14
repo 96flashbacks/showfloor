@@ -128,8 +128,7 @@ int main(int argc, char **argv)
     }
 
     /* copy input filename */
-    strncpy(filename, argv[1], sizeof(filename) - 1);
-    filename[sizeof(filename) - 1] = '\0';
+    snprintf(filename, sizeof(filename) - 4, "%s", argv[1]);
 
     /* open input file */
     fp = fopen(filename, "rb");
@@ -155,8 +154,7 @@ int main(int argc, char **argv)
     /* make output filename (.szp) */
     i = 0;
     while (filename[i] != '\0' && filename[i] != '.') i++;
-    filename[i] = '\0';
-    strcat(filename, ".szp");
+    snprintf(filename + i, sizeof(filename) - (size_t)i, ".szp");
 
     /* open output file */
     fp = fopen(filename, "wb");
