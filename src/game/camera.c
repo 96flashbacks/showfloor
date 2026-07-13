@@ -2688,9 +2688,11 @@ void update_camera(struct Camera *c) {
     
     gLakituState.lastFrameAction = sMarioCamState->action;
 
-    print_text_fmt_int(16, 48, "X %d", c->pos[0]);
-    print_text_fmt_int(16, 32, "Y %d", c->pos[1]);
-    print_text_fmt_int(16, 16, "Z %d", c->pos[2]);
+    // camera matching 
+    
+    // print_text_fmt_int(16, 48, "X %d", c->pos[0]);
+    // print_text_fmt_int(16, 32, "Y %d", c->pos[1]);
+    // print_text_fmt_int(16, 16, "Z %d", c->pos[2]);
 }
 
 /**
