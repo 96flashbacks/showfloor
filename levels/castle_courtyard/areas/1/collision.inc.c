@@ -825,8 +825,8 @@ const Collision courtyard_collision[] = {
 	COL_TRI_STOP(),
 	COL_SPECIAL_INIT(15),
 	SPECIAL_OBJECT_WITH_YAW(/*preset*/ special_null_start,       /*pos*/    15,    0,   202, /*yaw*/ 128), // unused, probably an early way to set intial position
-	SPECIAL_OBJECT(/*preset*/ special_bubble_tree,       /*pos*/   822,   9,   208),
-	SPECIAL_OBJECT(/*preset*/ special_bubble_tree,       /*pos*/  -823,   9,   208),
+	SPECIAL_OBJECT(/*preset*/ special_bubble_tree,       /*pos*/   822,   0,   208),
+	SPECIAL_OBJECT(/*preset*/ special_bubble_tree,       /*pos*/  -823,   0,   208),
 	SPECIAL_OBJECT(/*preset*/ special_bubble_tree,       /*pos*/ -2293, -204, -410),
 	SPECIAL_OBJECT(/*preset*/ special_bubble_tree,       /*pos*/ -2820, -204, -1280),
 	SPECIAL_OBJECT(/*preset*/ special_bubble_tree,       /*pos*/ -2560, -204, -1888),
@@ -836,8 +836,8 @@ const Collision courtyard_collision[] = {
 	SPECIAL_OBJECT(/*preset*/ special_bubble_tree,       /*pos*/  2676, -204, -843),
 	SPECIAL_OBJECT(/*preset*/ special_bubble_tree,       /*pos*/  2290, -204, -1256),
 	SPECIAL_OBJECT(/*preset*/ special_bubble_tree,       /*pos*/  2432, -204, -2048),
-	SPECIAL_OBJECT(/*preset*/ special_bubble_tree,       /*pos*/ -3195,   9,   317),
-	SPECIAL_OBJECT(/*preset*/ special_bubble_tree,       /*pos*/  3185,   9,   317),
+	SPECIAL_OBJECT(/*preset*/ special_bubble_tree,       /*pos*/ -3195,   0,   317),
+	SPECIAL_OBJECT(/*preset*/ special_bubble_tree,       /*pos*/  3185,   0,   317),
 	SPECIAL_OBJECT_WITH_YAW_AND_PARAM(/*preset*/ special_castle_door_warp, /*pos*/     0,    0,   461, /*yaw*/   0, /*bhvParam2*/ 1), /* moved back here for consistency and accuracy */
 	COL_WATER_BOX_INIT(1),
 	COL_WATER_BOX(0, -656, -1963, 674, -659, 0),
