@@ -22,7 +22,7 @@ static const LevelScript script_func_local_1[] = {
     WARP_NODE(/*id*/ WARP_NODE_02, /*destLevel*/ LEVEL_CASTLE,         /*destArea*/ 3, /*destNode*/ WARP_NODE_02, /*flags*/ WARP_NO_CHECKPOINT),
     OBJECT(/*model*/ MODEL_NONE, /*pos*/     0,   900, -1710, /*angle*/ 0, 180, 0, /*bhvParam*/ BPARAM2(WARP_NODE_03), /*bhv*/ bhvDeathWarp),
     WARP_NODE(/*id*/ WARP_NODE_03, /*destLevel*/ LEVEL_CASTLE_GROUNDS, /*destArea*/ 1, /*destNode*/ WARP_NODE_03, /*flags*/ WARP_NO_CHECKPOINT),
-    OBJECT(/*model*/ MODEL_NONE, /*pos*/ -1515,   260, -4962, /*angle*/ 0, 180, 0, /*bhvParam*/ BPARAM2(WARP_NODE_04), /*bhv*/ bhvSpinAirborneCircleWarp),
+    OBJECT(/*model*/ MODEL_NONE, /*pos*/ -1528,   260,  4890, /*angle*/ 0, 180, 0, /*bhvParam*/ BPARAM2(WARP_NODE_04), /*bhv*/ bhvSpinAirborneCircleWarp),
     WARP_NODE(/*id*/ WARP_NODE_04, /*destLevel*/ LEVEL_CASTLE_GROUNDS, /*destArea*/ 1, /*destNode*/ WARP_NODE_04, /*flags*/ WARP_NO_CHECKPOINT),
     OBJECT(/*model*/ MODEL_NONE, /*pos*/ -3379,  -815, -2025, /*angle*/ 0,   0, 0, /*bhvParam*/ BPARAM1(60) | BPARAM2(WARP_NODE_05), /*bhv*/ bhvWarp),
     OBJECT(/*model*/ MODEL_NONE, /*pos*/ -3379,  -500, -2025, /*angle*/ 0, 180, 0, /*bhvParam*/ BPARAM2(WARP_NODE_06), /*bhv*/ bhvLaunchDeathWarp),
@@ -75,7 +75,7 @@ const LevelScript level_castle_grounds_entry[] = {
     END_AREA(),
 
     FREE_LEVEL_POOL(),
-    MARIO_POS(/*area*/ 1, /*yaw*/ 180, /*pos*/ -1515, 260, -4962),
+    MARIO_POS(/*area*/ 1, /*yaw*/ 180, /*pos*/ -1515, 260, 4962),
     CALL(/*arg*/ 0, /*func*/ lvl_init_or_update),
     CALL_LOOP(/*arg*/ 1, /*func*/ lvl_init_or_update),
     CLEAR_LEVEL(),
