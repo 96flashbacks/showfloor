@@ -2688,9 +2688,9 @@ void update_camera(struct Camera *c) {
     
     gLakituState.lastFrameAction = sMarioCamState->action;
 
-    //print_text_fmt_int(16, 48, "X %d", c->pos[0]);
-    //print_text_fmt_int(16, 32, "Y %d", c->pos[1]);
-    //print_text_fmt_int(16, 16, "Z %d", c->pos[2]);
+    print_text_fmt_int(16, 48, "X %d", c->pos[0]);
+    print_text_fmt_int(16, 32, "Y %d", c->pos[1]);
+    print_text_fmt_int(16, 16, "Z %d", c->pos[2]);
 }
 
 /**
@@ -6039,12 +6039,10 @@ BAD_RETURN(s32) cutscene_intro_init(struct Camera *c) {
 
     // Fix dist (xzdist = ~300)
     dist = 315.f;
+    yaw = sMarioCamState->faceAngle[1] - 5120;
     vec3f_set_dist_and_angle(sMarioCamState->pos, c->pos, dist, pitch, yaw);
 
     c->pos[1] = 360.f;
-
-    // rotate a lil to make it more accurate 
-    rotate_and_move_vec3f(c->pos, sMarioCamState->pos, 0, 0, -60); 
 }
 
 BAD_RETURN(s32) cutscene_intro_rotate_camera(struct Camera *c) {
@@ -6053,7 +6051,12 @@ BAD_RETURN(s32) cutscene_intro_rotate_camera(struct Camera *c) {
      *  2.56° per frame / ~466 angle units, but in game that turns 
      *  too slowly. For now, 468 seems like a better match
      */
-    rotate_and_move_vec3f(c->pos, sMarioCamState->pos, 0, 0, -468); 
+    f32 dist;
+    s16 pitch, yaw;
+
+    vec3f_get_dist_and_angle(sMarioCamState->pos, c->pos, &dist, &pitch, &yaw);
+    yaw -= 468.f;
+    vec3f_set_dist_and_angle(sMarioCamState->pos, c->pos, dist, pitch, yaw);
     
 }
 
