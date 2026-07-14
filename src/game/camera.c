@@ -2834,7 +2834,10 @@ void init_camera(struct Camera *c) {
             break;
         case LEVEL_CASTLE:
             vec3f_set(marioOffset, 0.f, 0.f, 0xc0);
-            if (gMarioStates->faceAngle[1] == (s16)0x8000) { // reimplement
+            // patchwork 
+            if (gMarioStates->faceAngle[1] == (s16)0x8000
+                && sMarioCamState->action != ACT_DEATH_EXIT
+                && sMarioCamState->action != ACT_EXIT_AIRBORNE) {
                 sFOVState.fov = 64.f;
             } else {
                 sFOVState.fov = 45.f;
@@ -6040,8 +6043,8 @@ BAD_RETURN(s32) cutscene_intro_init(struct Camera *c) {
     vec3f_get_dist_and_angle(sMarioCamState->pos, c->pos, &dist, &pitch, &yaw);
 
     // Fix dist (xzdist = ~300)
-    dist = 315.f;
-    yaw = sMarioCamState->faceAngle[1] - 5120;
+    dist = 317.f;
+    yaw = sMarioCamState->faceAngle[1] - 5080;
     vec3f_set_dist_and_angle(sMarioCamState->pos, c->pos, dist, pitch, yaw);
 
     c->pos[1] = 360.f;
@@ -6128,14 +6131,19 @@ BAD_RETURN(s32) cutscene_enter_painting(struct Camera *c) {
  *
  * cvar1 is the camera's position relative to Mario
  * cvar2 is the camera's focus relative to Mario
+ * cvar3 is the position the camera should begin moving from
  */
+
+ 
 BAD_RETURN(s32) cutscene_exit_painting_start(struct Camera *c) {
     if (gMarioStates->faceAngle[1] == (s16)0x8000) {
+        vec3f_set(sCutsceneVars[3].point, -150.f, 100.f, 500.f);
         vec3f_set(sCutsceneVars[2].point, -200.f, 10.f, 1168.f);
         vec3f_set(sCutsceneVars[1].point, -58.f, 0.f, 444.f);
     } else {
-        vec3f_set(sCutsceneVars[2].point, -180.f, -120.f, 1100.f);
-        vec3f_set(sCutsceneVars[1].point, -58.f, -50.f, 444.f);
+        vec3f_set(sCutsceneVars[3].point, -180.f, -140.f, 1100.f);
+        vec3f_set(sCutsceneVars[2].point, -180.f, -140.f, 1100.f);
+        vec3f_set(sCutsceneVars[1].point, -58.f, -40.f, 444.f);
     }
 
     vec3f_copy(sCutsceneVars[0].point, sMarioCamState->pos);
@@ -6146,6 +6154,9 @@ BAD_RETURN(s32) cutscene_exit_painting_start(struct Camera *c) {
 
     offset_rotated(c->focus, sCutsceneVars[0].point, sCutsceneVars[1].point, sCutsceneVars[0].angle);
     offset_rotated(c->pos, sCutsceneVars[0].point, sCutsceneVars[2].point, sCutsceneVars[0].angle);
+
+    offset_rotated(gLakituState.curPos, sCutsceneVars[0].point, sCutsceneVars[3].point, sCutsceneVars[0].angle);
+
 }
 
 /**
