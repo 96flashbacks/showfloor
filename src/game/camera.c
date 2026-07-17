@@ -2688,8 +2688,14 @@ void update_camera(struct Camera *c) {
     
     gLakituState.lastFrameAction = sMarioCamState->action;
 
-    // Cameras values for alignment in Blender
-    /*vec3f_get_dist_and_angle(gLakituState.focus, gLakituState.pos, &camDist, &camPitch, &camYaw);
+    // Camera values for alignment in Blender
+    /*{ 
+        
+    f32 camDist;
+    s16 camPitch;
+    s16 camYaw;
+    
+    vec3f_get_dist_and_angle(gLakituState.focus, gLakituState.pos, &camDist, &camPitch, &camYaw);
     
     print_text_fmt_int(16, 48, "X%d", gLakituState.curPos[0]);
     print_text_fmt_int(16, 32, "Y%d", ( gLakituState.curPos[2] ) * -1 );
@@ -2697,7 +2703,9 @@ void update_camera(struct Camera *c) {
 
     print_text_fmt_int(96, 48, "X%d", 900 - (camPitch * 3600 / 0x10000));
     print_text_fmt_int(96, 32, "Y%d", gLakituState.roll * 3600 / 0x10000);
-    print_text_fmt_int(96, 16, "Z%d", camYaw * 3600 / 0x10000);*/
+    print_text_fmt_int(96, 16, "Z%d", camYaw * 3600 / 0x10000);
+
+    }*/
 }
 
 /**
