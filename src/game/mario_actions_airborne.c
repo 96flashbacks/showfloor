@@ -751,9 +751,9 @@ s32 act_ground_pound(struct MarioState *m) {
 
     if (m->actionState == 0) {
         if (m->vel[1] > 0.0f) {
-            m->vel[1] = 0.0f;
+            m->vel[1] -= 1.0f; // Strengthen Mario's gravity if he's moving up
         }
-
+        
         if (m->actionTimer < 10) {
             yOffset = 20 - 2 * m->actionTimer;
             if (m->pos[1] + yOffset + 160.0f < m->ceilHeight) {
@@ -765,18 +765,17 @@ s32 act_ground_pound(struct MarioState *m) {
 
         stepResult = perform_air_step(m, 0);
         mario_set_forward_vel(m, 0.0f);
-        set_mario_animation(m, m->actionArg == 0 ? MARIO_ANIM_START_GROUND_POUND
-                                                 : MARIO_ANIM_TRIPLE_JUMP_GROUND_POUND);
 
+        set_mario_animation(m, MARIO_ANIM_START_GROUND_POUND);
+        
         if (m->actionTimer == 0) {
             play_sound(SOUND_ACTION_THROW, m->marioObj->header.gfx.cameraToObject);
             play_sound(SOUND_MARIO_HAUGH, m->marioObj->header.gfx.cameraToObject);
         }
 
-        m->actionTimer += 1;
-
+        m->actionTimer++;
         if (m->actionTimer >= m->marioObj->header.gfx.animInfo.curAnim->loopEnd + 4
-            || stepResult == AIR_STEP_LANDED) {
+            || stepResult == AIR_STEP_LANDED) { // Added AIR_STEP_LANDING check if Mario hits the ground during the 1st half
             m->actionState = 1;
         }
     } else {
