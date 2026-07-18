@@ -15,7 +15,6 @@
 #include "levels/ccm/material.inc.c"
 #include "levels/ccm/areas/1/1/model.inc.c"
 #include "levels/ccm/areas/1/2/model.inc.c"
-#include "levels/ccm/areas/1/3/model.inc.c"
 #include "levels/ccm/areas/1/collision.inc.c"
 #include "levels/ccm/areas/2/1/model.inc.c"
 #include "levels/ccm/areas/3/1/model.inc.c"

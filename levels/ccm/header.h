@@ -20,7 +20,6 @@ extern const GeoLayout ccm_geo_000DF4[];
 // leveldata
 extern const Gfx snow_slider_1_dl_mesh[];
 extern const Gfx snow_slider_2_dl_mesh[];
-extern const Gfx snow_slider_3_dl_mesh[];
 extern const Collision snow_slider_collision[];
 extern const Gfx slider_1_dl_mesh[];
 extern const Gfx slider_4_dl_mesh[];
