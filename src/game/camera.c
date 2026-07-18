@@ -2688,6 +2688,7 @@ void update_camera(struct Camera *c) {
     
     gLakituState.lastFrameAction = sMarioCamState->action;
 
+    #ifdef DEBUG
     // Camera values for alignment in Blender.
     { 
 
@@ -2713,6 +2714,7 @@ void update_camera(struct Camera *c) {
         }
 
     }
+    #endif
 }
 
 /**

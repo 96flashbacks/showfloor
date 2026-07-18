@@ -113,7 +113,7 @@ void render_areamap_arrow_dl(Gfx **dlist, struct AreaMapData *areaMap) {
  * Creates the areamap's display lists, nearly identical implementation to init_skybox_display_list
  */
 Gfx *init_areamap_dls(struct AreaMapData *areaMap) {
-    s32 dlCommandCount = 6 + 6 + 16; // Command count from TPP
+    s32 dlCommandCount = 6 + 16 + 6; // 6 for the start and end, 16 for the base and 6 for the arrow
     void *areamap = alloc_display_list(dlCommandCount * sizeof(Gfx));
     Gfx *dlist = areamap;
 
@@ -143,10 +143,13 @@ Gfx *init_areamap_dls(struct AreaMapData *areaMap) {
  */
 void update_areamap() {
     if (gPlayer3Controller->buttonPressed & R_TRIG) {
-        if (sAreamapStatus == STATUS_HIDDEN) {
-            sAreamapStatus = STATUS_SHOWING;
-        } else if (sAreamapStatus == STATUS_VISIBLE) {
-            sAreamapStatus = STATUS_HIDING;
+        switch (sAreamapStatus) {
+            case STATUS_HIDDEN:  
+                sAreamapStatus = STATUS_SHOWING;
+                break;
+            case STATUS_VISIBLE:
+                sAreamapStatus = STATUS_HIDING;
+                break;
         }
     }
 
@@ -164,8 +167,6 @@ void update_areamap() {
                 sAreamapY = 300.f;
                 sAreamapStatus = STATUS_HIDDEN;
             }
-            break;
-        default:
             break;
     }
 }
