@@ -2688,24 +2688,31 @@ void update_camera(struct Camera *c) {
     
     gLakituState.lastFrameAction = sMarioCamState->action;
 
-    // Camera values for alignment in Blender
-    /*{ 
+    // Camera values for alignment in Blender.
+    { 
         
-    f32 camDist;
-    s16 camPitch;
-    s16 camYaw;
+        f32 camDist;
+        s16 camPitch;
+        s16 camYaw;
+        
+        vec3f_get_dist_and_angle(gLakituState.focus, gLakituState.pos, &camDist, &camPitch, &camYaw);
     
-    vec3f_get_dist_and_angle(gLakituState.focus, gLakituState.pos, &camDist, &camPitch, &camYaw);
-    
-    print_text_fmt_int(16, 48, "X%d", gLakituState.curPos[0]);
-    print_text_fmt_int(16, 32, "Y%d", ( gLakituState.curPos[2] ) * -1 );
-    print_text_fmt_int(16, 16, "Z%d", gLakituState.curPos[1]);
+        if (gPlayer1Controller->buttonDown & L_TRIG)    { 
 
-    print_text_fmt_int(96, 48, "X%d", 900 - (camPitch * 3600 / 0x10000));
-    print_text_fmt_int(96, 32, "Y%d", gLakituState.roll * 3600 / 0x10000);
-    print_text_fmt_int(96, 16, "Z%d", camYaw * 3600 / 0x10000);
+            // xyz pos == n / 100 in blender
+            // xyz rot == n / 10 in blender
 
-    }*/
+            print_text_fmt_int(16, 48, "X%d", gLakituState.curPos[0]);
+            print_text_fmt_int(16, 32, "Y%d", ( gLakituState.curPos[2] ) * -1 );
+            print_text_fmt_int(16, 16, "Z%d", gLakituState.curPos[1]);
+
+            print_text_fmt_int(96, 48, "X%d", 900 - (camPitch * 3600 / 0x10000));
+            print_text_fmt_int(96, 32, "Y%d", gLakituState.roll * 3600 / 0x10000);
+            print_text_fmt_int(96, 16, "Z%d", camYaw * 3600 / 0x10000);    
+        
+        }
+
+    }
 }
 
 /**
@@ -6174,7 +6181,7 @@ BAD_RETURN(s32) cutscene_exit_painting_start(struct Camera *c) {
 
 /**
  * Decrease cvar2's x and z offset, moving closer to Mario.
- */
+ */ 
 BAD_RETURN(s32) cutscene_exit_painting_move_to_mario(struct Camera *c) {
     Vec3f pos;
 
