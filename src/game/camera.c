@@ -914,7 +914,7 @@ void radial_camera_move(struct Camera *c) {
                 
                 switch (gCurrLevelNum) {
                     case LEVEL_WF:
-                        rotateSpeed = 150;
+                        rotateSpeed = 125;
                         if (gCameraMovementFlags & CAM_FLAG_SPAWN) rotateSpeed = 0x38;
                         break;
                     case LEVEL_LLL:
@@ -922,11 +922,11 @@ void radial_camera_move(struct Camera *c) {
                         if (gCameraMovementFlags & CAM_FLAG_SPAWN) rotateSpeed = 0x12;
                         break;
                     case LEVEL_CCM:
-                        rotateSpeed = 160;
+                        rotateSpeed = 150;
                         if (gCameraMovementFlags & CAM_FLAG_SPAWN) rotateSpeed = 0xB0;
                         break;
                     case LEVEL_DDD:
-                        rotateSpeed = 100;
+                        rotateSpeed = 125;
                         if (gCameraMovementFlags & CAM_FLAG_SPAWN) rotateSpeed = 0x60;
                         break;
                 }
@@ -2690,7 +2690,7 @@ void update_camera(struct Camera *c) {
 
     // Camera values for alignment in Blender.
     { 
-        
+
         f32 camDist;
         s16 camPitch;
         s16 camYaw;
