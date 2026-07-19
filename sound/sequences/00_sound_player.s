@@ -2295,7 +2295,7 @@ chan_setlayer 0, .layer_10E3
 chan_end
 
 .layer_10E3:
-layer_note1 39, 0x30, 145
+layer_note1 39, 0x38, 145
 layer_end
 
 .sound_general_open_iron_door:
