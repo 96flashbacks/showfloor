@@ -499,7 +499,7 @@
 
 /* Menu Sound Effects */
 #define SOUND_MENU_CHANGE_SELECT                 /* 0x7000F880 */ SOUND_ARG_LOAD(SOUND_BANK_MENU,     0x00, 0xF8, SOUND_DISCRETE)
-#define SOUND_MENU_REVERSE_PAUSE                 /* 0x70010000 */ SOUND_ARG_LOAD(SOUND_BANK_MENU,     0x01, 0x00, 0) // unverified, unused
+#define SOUND_MENU_REVERSE_PAUSE                 /* 0x70010080 */ SOUND_ARG_LOAD(SOUND_BANK_MENU,     0x01, 0x00, SOUND_DISCRETE) // unverified, unused
 #define SOUND_MENU_PAUSE                         /* 0x7002F080 */ SOUND_ARG_LOAD(SOUND_BANK_MENU,     0x02, 0xF0, SOUND_DISCRETE)
 #define SOUND_MENU_PAUSE_2                       /* 0x7003FF80 */ SOUND_ARG_LOAD(SOUND_BANK_MENU,     0x03, 0xFF, SOUND_DISCRETE)
 #define SOUND_MENU_MESSAGE_APPEAR                /* 0x70040080 */ SOUND_ARG_LOAD(SOUND_BANK_MENU,     0x04, 0x00, SOUND_DISCRETE)

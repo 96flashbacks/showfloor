@@ -800,13 +800,9 @@ void render_dialog_entries(void) {
                 play_sound(SOUND_MENU_MESSAGE_APPEAR, gGlobalSoundSource);
             }
 
-            if (gDialogBoxType == DIALOG_TYPE_ROTATE) {
-                gDialogBoxAngle -= 5.0;
-                gDialogBoxScale -= 1.0;
-            } else {
-                gDialogBoxAngle -= 5.0;
-                gDialogBoxScale -= 1.0;
-            }
+            // Slower movement than the final game
+            gDialogBoxAngle -= 5.0;
+            gDialogBoxScale -= 1.0;
 
             if (gDialogBoxAngle == 0.0f) {
                 gMenuState = MENU_STATE_DIALOG_OPEN;
@@ -850,6 +846,7 @@ void render_dialog_entries(void) {
                 gDialogResponse = gMenuLineNum;
             }
 
+            // Slower movement than the final game
             gDialogBoxAngle += 5.0f;
             gDialogBoxScale += 1.0f;
 
@@ -898,51 +895,44 @@ void set_menu_mode(s16 mode) {
     }
 }
 
-/* some necessary macro defintions I'm too lazy to find the decomp equivalents to */
-#define SELECT 1
-#define NA_SYS_CURSOR 0x7000F881
-#define NA_SYS_ENTER 0x70010081
-#define NA_SYS_PAUSE_ON 0x7002FF81
-#define NA_SYS_PAUSE_OFF 0x7003FF81
-
-void DrawSelectCursor(char line_min, char line_max) {
-    unsigned char str;
-
-    str = 0x00;
+/*
+ * The original function for rendering the pause menu cursor from Message/message.sou, 
+ * very similar to handle_menu_scrolling and render_dialog_triangle_choice from vanilla
+*/ 
+void DrawSelectCursor(char line_min,char line_max) {
+    u8 index = 0;
 
     if (gPlayer3Controller->rawStickY > 60) {
-        str += 0x08;
+        index += 0x08;
     }
 
     if (gPlayer3Controller->rawStickY < -60) {
-        str += 0x04;
+        index += 0x04;
     }
 
     if (gPlayer3Controller->rawStickX > 60) {
-        str += 0x02;
+        index += 0x02;
     }
 
     if (gPlayer3Controller->rawStickX < -60) {
-        str += 0x01;
+        index+= 0x01;
     }
 
-    if (((str ^ gMenuHoldKeyIndex) & str) == 0x08) {
+    if (((index ^ gMenuHoldKeyIndex) & index) == 0x08) {
         gMenuLineNum--;
-
         if (gMenuLineNum < line_min) {
             gMenuLineNum = line_min;
         } else {
-            play_sound(NA_SYS_CURSOR, gGlobalSoundSource); // Sound CURSOL
+            play_sound(SOUND_MENU_CHANGE_SELECT, gGlobalSoundSource); //Sound CURSOL
         }
     }
 
-    if (((str ^ gMenuHoldKeyIndex) & str) == 0x04) {
+    if (((index ^ gMenuHoldKeyIndex) & index) == 0x04) {
         gMenuLineNum++;
-
         if (gMenuLineNum > line_max) {
             gMenuLineNum = line_max;
         } else {
-            play_sound(NA_SYS_CURSOR, gGlobalSoundSource); // Sound CURSOL
+            play_sound(SOUND_MENU_CHANGE_SELECT, gGlobalSoundSource); //Sound CURSOL
         }
     }
 
@@ -951,79 +941,91 @@ void DrawSelectCursor(char line_min, char line_max) {
         gMenuHoldKeyIndex = 0;
     } else {
         gMenuHoldKeyTimer++;
-        gMenuHoldKeyIndex = str;
+        gMenuHoldKeyIndex = index;
     }
 
-    if ((str & 0x0c) == 0) {
+    if ((index & 0x0C) == 0) {
         gMenuHoldKeyTimer = 0;
     }
 
-    create_dl_translation_matrix(MENU_MTX_PUSH, 5.0f, 2.0f - (gMenuLineNum * 20), 0.0f);
+    create_dl_translation_matrix(MENU_MTX_PUSH, 5, 2 - (gMenuLineNum * 20), 0);
     gDPSetEnvColor(gDisplayListHead++, 255, 255, 255, 255);
     gSPDisplayList(gDisplayListHead++, dl_draw_triangle);
     gSPPopMatrix(gDisplayListHead++, G_MTX_MODELVIEW);
 }
 
+/*
+ * The original function for rendering the early pause menu box from Message/message.sou,
+ * very similar to render_dialog_entries from vanilla
+*/
 short SelectMessageEvent(void) {
-    short ret_num;
+    s16 index;
+    
+    void **dialogTable;
+    struct DialogEntry *dialog;
 
-    void **mlist = segmented_to_virtual(seg2_debug_text_table);
-    struct DialogEntry *message = segmented_to_virtual(mlist[gMenuMode]);
+    dialogTable = segmented_to_virtual(seg2_debug_text_table);
+    dialog = segmented_to_virtual(dialogTable[gMenuMode]);
 
-    if (message == NULL) {
-        rmonpf(("Message not defined. (%d)\n", gMenuMode));
+    if (dialog == NULL) {
+        rmonpf(("Message not defined. (%d)\n",gMenuMode));
         gMenuMode = MENU_MODE_NONE;
         return 0;
     }
 
     switch (gMenuState) {
-        case 0:
+        case MENU_STATE_DIALOG_OPENING:
             if (gDialogBoxAngle == 70.0f) {
-                level_set_transition(-1, NULL);                  // Window Open!
-                play_sound(NA_SYS_PAUSE_ON, gGlobalSoundSource); // Sound ON
+                level_set_transition(-1, NULL); //Window Open!
+                play_sound(SOUND_MENU_PAUSE, gGlobalSoundSource); //Sound ON
             }
 
-            gDialogBoxAngle -= 5.0f;
-            gDialogBoxScale -= 1.0f;
+            // Slower movement than the final game
+            gDialogBoxAngle -= 5.0;
+            gDialogBoxScale -= 1.0;
 
             if (gDialogBoxAngle == 0.0f) {
-                gMenuState = 1;
+                gMenuState = MENU_STATE_DIALOG_OPEN;
                 gMenuLineNum = 2;
             }
 
             break;
-        case 1:
-            gDialogBoxAngle = 0.0f; // Message Draw!
 
-            if (gPlayer3Controller->buttonPressed & A_BUTTON
-                || gPlayer3Controller->buttonPressed & START_BUTTON) {
-                play_sound(NA_SYS_ENTER, gGlobalSoundSource); // Sound Enter
-                gMenuState = 3;
+        case MENU_STATE_DIALOG_OPEN: 
+            gDialogBoxAngle = 0.0f; //Message Draw!
+
+            if ((gPlayer3Controller->buttonPressed & A_BUTTON)
+                || (gPlayer3Controller->buttonPressed & START_BUTTON)) {
+                play_sound(SOUND_MENU_REVERSE_PAUSE, gGlobalSoundSource); //Sound Enter
+                gMenuState = MENU_STATE_DIALOG_CLOSING;
             }
 
             break;
-        case 3:
+
+        case MENU_STATE_DIALOG_CLOSING:
             if (gDialogBoxAngle == 20.0f) {
-                level_set_transition(0, NULL);                    // Window Close!
-                play_sound(NA_SYS_PAUSE_OFF, gGlobalSoundSource); // Sound ON
+                level_set_transition(0, NULL); //Window Close!
+                play_sound(SOUND_MENU_PAUSE_2, gGlobalSoundSource); //Sound ON
             }
 
+            // Slower movement than the final game
             gDialogBoxAngle += 5.0f;
             gDialogBoxScale += 1.0f;
 
-            if (gDialogBoxAngle == 90.0f) {
-                gMenuState = 0;
+            if (gDialogBoxAngle == DIALOG_BOX_ANGLE_DEFAULT) {
+                gMenuState = MENU_STATE_DEFAULT;
                 gMenuMode = MENU_MODE_NONE;
                 gDialogPageStartStrIndex = 0;
-                ret_num = gMenuLineNum - 1;
-                return ret_num;
+                index = gMenuLineNum - 1;
+				return(index);
             }
+
             break;
     }
 
-    render_dialog_box_type(message, message->linesPerBox);
-    DrawSelectCursor(2, message->linesPerBox);
-    handle_dialog_text_and_pages(message);
+    render_dialog_box_type(dialog, dialog->linesPerBox);
+    DrawSelectCursor(2, dialog->linesPerBox);
+    handle_dialog_text_and_pages(dialog);
 
     return 0;
 }
