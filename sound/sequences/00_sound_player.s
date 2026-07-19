@@ -1504,7 +1504,7 @@ chan_end
 .layer_96E:
 layer_somethingon
 .layer_96F:
-layer_note1 40, 0x8, 86
+layer_note1 38, 0x12c, 90
 layer_jump .layer_96F
 layer_end
 
