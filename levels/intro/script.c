@@ -25,37 +25,41 @@ const LevelScript level_intro_splash_screen[] = {
     LOAD_RAW(/*seg*/ 0x13, _behaviorSegmentRomStart, _behaviorSegmentRomEnd),
     LOAD_MIO0(/*seg*/ 0x07, _intro_segment_7SegmentRomStart, _intro_segment_7SegmentRomEnd),
     LOAD_MIO0_TEXTURE(/*seg*/ 0x0A, _title_screen_bg_mio0SegmentRomStart, _title_screen_bg_mio0SegmentRomEnd),
+    
+    // Loads both the Nintendo logo and Mario head as 2 areas
     ALLOC_LEVEL_POOL(),
-
     AREA(/*index*/ 1, intro_geo_0002D0),
     END_AREA(),
-
     AREA(/*index*/ 2, intro_geo_mario_head_regular),
     END_AREA(),
-
     FREE_LEVEL_POOL(),
+
     SLEEP(/*frames*/ 1),
     BLACKOUT(/*active*/ FALSE),
 
     LOAD_AREA(/*area*/ 1),
-    CALL(/*arg*/ 0, /*func*/ lvl_intro_update),
+    CALL(/*arg*/ LVL_INTRO_PLAY_ITS_A_ME_MARIO, /*func*/ lvl_intro_update),
     SLEEP(/*frames*/ 30),
     TRANSITION(/*transType*/ WARP_TRANSITION_FADE_INTO_COLOR, /*time*/ 13, /*color*/ 0x00, 0x00, 0x00),
     SLEEP(/*frames*/ 13),
 
-    /* This unused command is present in the original source code for this section and is it's only usage. 
-     * It clears the current area, allowing the next are to be loaded. 
+    /* This unused command is present in the original source code for this section and is its only usage. 
+     * It clears the current area, allowing the next area to be loaded. 
      * Even though it doesn't have a use in the retail source code, it does now have an affect, 
-     * allowing the next area with the Mario head to be loaded, which was most likekly its original intention here.
+     * allowing the next area with the Mario head to be loaded, which was most likely its original intention here.
      */
     CMD2A(/*unk2*/ 1),
     SLEEP(/*frames*/ 2),
 
+    /* Unlike the final game there's no jump to the Mario head level script,
+     * the Mario head loop is instead executed directly here as area 2,
+     * as jumping to the regular script would take a very long time to load.
+     */
     LOAD_AREA(/*area*/ 2),
-    SET_MENU_MUSIC(/*seq*/ 0x0002),
+    SET_MENU_MUSIC(/*seq*/ SEQ_MENU_TITLE_SCREEN),
     TRANSITION(/*transType*/ WARP_TRANSITION_FADE_FROM_STAR, /*time*/ 20, /*color*/ 0x00, 0x00, 0x00),
     SLEEP(/*frames*/ 20),
-    CALL_LOOP(/*arg*/ 1, /*func*/ lvl_intro_update),
+    CALL_LOOP(/*arg*/ LVL_INTRO_REGULAR, /*func*/ lvl_intro_update),
     JUMP_IF(/*op*/ OP_EQ, /*arg*/ 100, script_intro_L1),
     JUMP_IF(/*op*/ OP_EQ, /*arg*/ 101, script_intro_L2),
     JUMP(script_intro_L4),
