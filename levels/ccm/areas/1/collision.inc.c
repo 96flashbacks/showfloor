@@ -1169,7 +1169,6 @@ const Collision snow_slider_collision[] = {
 	COL_TRI(347, 141, 16),
 	COL_TRI(10, 369, 371),
 	COL_TRI(352, 345, 313),
-	COL_TRI(151, 365, 477),
 	COL_TRI(85, 84, 312),
 	COL_TRI(387, 359, 481),
 	COL_TRI(339, 356, 324),
@@ -1421,7 +1420,7 @@ const Collision snow_slider_collision[] = {
 	COL_TRI(478, 465, 467),
 	COL_TRI(476, 479, 477),
 	COL_TRI(478, 467, 476),
-	COL_TRI(151, 477, 143),
+	COL_TRI(365, 477, 143),
 	COL_TRI(451, 449, 377),
 	COL_TRI(447, 451, 450),
 	COL_TRI(450, 401, 447),
@@ -1453,6 +1452,7 @@ const Collision snow_slider_collision[] = {
 	COL_TRI(453, 236, 256),
 	COL_TRI(73, 500, 273),
 	COL_TRI(73, 75, 500),
+	COL_TRI(365, 143, 151),
 	COL_TRI_STOP(),
 	COL_END()
 };
