@@ -526,7 +526,7 @@ void anim_and_audio_for_walk(struct MarioState *m) {
                 break;
 
             case 3:
-                if (val04 < 6.0f) {
+                if (val04 < 7.0f) {
                     m->actionTimer = 2;
                 } else {
                     //! (Speed Crash) If Mario's speed is more than 2^17.
