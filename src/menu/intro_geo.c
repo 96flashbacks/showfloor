@@ -9,15 +9,6 @@
 #include "types.h"
 #include "buffers/framebuffers.h"
 #include "game/game_init.h"
-#include "audio/external.h"
-
-// frame counts for the zoom in, hold, and zoom out of title model
-#define INTRO_STEPS_ZOOM_IN 20
-#define INTRO_STEPS_HOLD_1 75
-#define INTRO_STEPS_ZOOM_OUT 91
-
-// background types
-#define INTRO_BACKGROUND_SUPER_MARIO 0
 
 struct GraphNodeMore {
     /*0x00*/ struct GraphNode node;
@@ -25,34 +16,27 @@ struct GraphNodeMore {
     /*0x18*/ u32 unk18;
 };
 
-// intro geo bss
-static s16 sIntroFrameCounter;
-
 /**
- * Geo callback to render the "Super Mario 64" logo on the title screen
+ * Geo callback to render the Nintendo logo on the title screen
  */
-Gfx *geo_intro_super_mario_64_logo(s32 state, struct GraphNode *node, UNUSED void *context) {
+Gfx *geo_intro_nintendo_logo(s32 state, struct GraphNode *node, UNUSED void *context) {
     struct GraphNode *graphNode = node;
     Gfx *dl = NULL;
     Gfx *dlIter = NULL;
     Mtx *scaleMat;
 
-    if (state != 1) {
-        sIntroFrameCounter = 0;
-    } else if (state == 1) {
+    if (state == 1) {
         graphNode->flags = (graphNode->flags & 0xFF) | (LAYER_OPAQUE << 8);
         scaleMat = alloc_display_list(sizeof(*scaleMat));
         dl = alloc_display_list(4 * sizeof(*dl));
         dlIter = dl;
 
-        guScale(scaleMat, 2.5f, 2.5f, 0.0f); /* feel free to adjust scaling */
+        guScale(scaleMat, 2.5f, 2.5f, 0.0f);
 
         gSPMatrix(dlIter++, scaleMat, G_MTX_MODELVIEW | G_MTX_MUL | G_MTX_PUSH);
         gSPDisplayList(dlIter++, &gfx_nintendo_logo); // draw model
         gSPPopMatrix(dlIter++, G_MTX_MODELVIEW);
         gSPEndDisplayList(dlIter);
-
-        sIntroFrameCounter++;
     }
     return dl;
 }
@@ -61,8 +45,6 @@ Gfx *geo_intro_super_mario_64_logo(s32 state, struct GraphNode *node, UNUSED voi
  * Generates a display list for a single background tile
  *
  * @param index            which tile to render (value from 0 to 11)
- * @param backgroundTable  array describing which image to use for each tile (0 denotes a "Super Mario
- * 64" image, and 1 denotes a "Game Over" image)
  */
 static Gfx *intro_backdrop_one_image(s32 index) {
     // intro screen background display lists for each of four 80x20 textures
@@ -99,13 +81,6 @@ static Gfx *intro_backdrop_one_image(s32 index) {
     gSPEndDisplayList(displayListIter);
     return displayList;
 }
-
-static s8 introBackgroundIndexTable[] = {
-    INTRO_BACKGROUND_SUPER_MARIO, INTRO_BACKGROUND_SUPER_MARIO, INTRO_BACKGROUND_SUPER_MARIO,
-    INTRO_BACKGROUND_SUPER_MARIO, INTRO_BACKGROUND_SUPER_MARIO, INTRO_BACKGROUND_SUPER_MARIO,
-    INTRO_BACKGROUND_SUPER_MARIO, INTRO_BACKGROUND_SUPER_MARIO, INTRO_BACKGROUND_SUPER_MARIO,
-    INTRO_BACKGROUND_SUPER_MARIO, INTRO_BACKGROUND_SUPER_MARIO, INTRO_BACKGROUND_SUPER_MARIO,
-};
 
 /**
  * Geo callback to render the intro background tiles
