@@ -1887,63 +1887,17 @@ layer_note1 56, 0xa, 127
 layer_jump .layer_BAA
 
 .channel2_table:
-sound_ref .sound_mario_jump_yah
-sound_ref .sound_mario_jump_wah
+sound_ref .sound_mario_jump_huah
+sound_ref .sound_mario_jump_uh
 sound_ref .sound_mario_jump_hoo
 sound_ref .sound_mario_haugh
-sound_ref .sound_mario_yahoo
-sound_ref .sound_mario_haugh
-sound_ref .sound_mario_hrmm
-sound_ref .sound_mario_haugh
+sound_ref .sound_mario_yahaa
+sound_ref .sound_mario_hold
 sound_ref .sound_mario_whoa
-sound_ref .sound_mario_eeuh
-sound_ref .sound_mario_attacked
-sound_ref .sound_mario_attacked
-sound_ref .sound_mario_here_we_go
-sound_ref .sound_mario_haugh
-sound_ref .sound_mario_haugh
-sound_ref .sound_mario_haugh
-sound_ref .sound_mario_waaaooow
-sound_ref .sound_mario_haugh
-sound_ref .sound_mario_haugh
-sound_ref .sound_mario_haugh
-sound_ref .sound_mario_waaaooow
-sound_ref .sound_mario_waaaooow
-sound_ref .sound_mario_haugh
-sound_ref .sound_mario_haugh
-sound_ref .sound_mario_haugh
-sound_ref .sound_mario_haugh
-sound_ref .sound_mario_haugh
-sound_ref .sound_mario_haugh
-sound_ref .sound_mario_haugh
-sound_ref .sound_mario_haugh
-sound_ref .sound_mario_jump_hoo
-sound_ref .sound_mario_jump_hoo
-sound_ref .sound_mario_haugh
-sound_ref .sound_mario_haugh
-sound_ref .sound_mario_haugh
-sound_ref .sound_mario_haugh
-sound_ref .sound_mario_jump_wah
-sound_ref .sound_mario_haugh
-sound_ref .sound_mario_hrmm
-sound_ref .sound_mario_haugh
-sound_ref .sound_mario_jump_hoo
-sound_ref .sound_mario_jump_hoo
-sound_ref .sound_mario_jump_hoo
-sound_ref .sound_mario_jump_hoo
-sound_ref .sound_mario_jump_hoo
-sound_ref .sound_mario_jump_hoo
-sound_ref .sound_mario_jump_hoo
-sound_ref .sound_mario_jump_hoo
-sound_ref .sound_mario_jump_hoo
-sound_ref .sound_mario_jump_hoo
-sound_ref .sound_mario_jump_hoo
-sound_ref .sound_mario_jump_hoo
-sound_ref .sound_mario_jump_hoo
-sound_ref .sound_mario_jump_hoo
-sound_ref .sound_mario_jump_hoo
-sound_ref .sound_mario_jump_hoo
-
+sound_ref .sound_mario_climb
+sound_ref .sound_mario_no
+sound_ref .sound_mario_yeah
+sound_ref .sound_mario_scream
 
 .sound_mario_jump_hoo:
 chan_setbank 8
@@ -1955,7 +1909,7 @@ chan_end
 layer_note1 38, 0x64, 127
 layer_end
 
-.sound_mario_jump_wah:
+.sound_mario_jump_uh:
 chan_setbank 8
 chan_setinstr 1
 chan_setlayer 0, .layer_C4E
@@ -1967,7 +1921,7 @@ layer_portamento 0x1, 42, 15
 layer_note1 41, 0x26, 127
 layer_end
 
-.sound_mario_jump_yah:
+.sound_mario_jump_huah:
 chan_setbank 8
 chan_setinstr 2
 chan_setlayer 0, .layer_C5C
@@ -1978,8 +1932,8 @@ layer_note1 44, 0x24, 127
 layer_end
 
 .sound_mario_haugh:
-chan_setbank 10
-chan_setinstr 1
+chan_setbank 8
+chan_setinstr 3
 chan_setlayer 0, .layer_C6C
 chan_end
 
@@ -1987,7 +1941,7 @@ chan_end
 layer_note1 42, 0x6f, 127
 layer_end
 
-.sound_mario_yahoo:
+.sound_mario_yahaa:
 chan_setbank 8
 chan_setinstr 4
 chan_setlayer 0, .layer_C7C
@@ -1997,9 +1951,9 @@ chan_end
 layer_note1 41, 0x6f, 110
 layer_end
 
-.sound_mario_hrmm:
+.sound_mario_hold:
 chan_setbank 8
-chan_setinstr 6
+chan_setinstr 5
 chan_setlayer 0, .layer_CA4
 chan_end
 
@@ -2007,20 +1961,9 @@ chan_end
 layer_note1 43, 0x1e, 110
 layer_end
 
-.sound_mario_wah2:
-chan_setbank 8
-chan_setinstr 7
-chan_setlayer 0, .layer_CB2
-chan_end
-
-.layer_CB2:
-layer_transpose -3
-layer_note1 39, 0x1c, 127
-layer_end
-
 .sound_mario_whoa:
 chan_setbank 8
-chan_setinstr 8
+chan_setinstr 6
 chan_setlayer 0, .layer_CC0
 chan_end
 
@@ -2028,9 +1971,9 @@ chan_end
 layer_note1 37, 0x18, 110
 layer_end
 
-.sound_mario_eeuh:
+.sound_mario_climb:
 chan_setbank 8
-chan_setinstr 9
+chan_setinstr 7
 chan_setlayer 0, .layer_CCE
 chan_end
 
@@ -2038,9 +1981,9 @@ chan_end
 layer_note1 43, 0x30, 105
 layer_end
 
-.sound_mario_attacked:
+.sound_mario_no:
 chan_setbank 8
-chan_setinstr 10
+chan_setinstr 8
 chan_setlayer 0, .layer_CDC
 chan_end
 
@@ -2048,9 +1991,9 @@ chan_end
 layer_note1 37, 0x5f, 127
 layer_end
 
-.sound_mario_here_we_go:
+.sound_mario_yeah:
 chan_setbank 8
-chan_setinstr 12
+chan_setinstr 9
 chan_setlayer 0, .layer_CF8
 chan_end
 
@@ -2058,53 +2001,14 @@ chan_end
 layer_note1 38, 0x85, 127
 layer_end
 
-.sound_mario_waaaooow:
-chan_setbank 10
-chan_setinstr 0
+.sound_mario_scream:
+chan_setbank 8
+chan_setinstr 10
 chan_setlayer 0, .layer_D33
 chan_end
 
 .layer_D33:
 layer_note1 40, 0xaa, 127
-layer_end
-
-.sound_mario_haha:
-chan_setbank 8
-chan_setinstr 3
-chan_setlayer 0, .layer_D42
-chan_end
-
-.layer_D42:
-layer_transpose -1
-layer_note1 39, 0x4d, 120
-layer_end
-
-.sound_mario_uh2:
-chan_setbank 10
-chan_setinstr 6
-chan_setlayer 0, .layer_D50
-chan_end
-
-.layer_D50:
-layer_transpose -2
-layer_note1 43, 0x1e, 105
-layer_end
-
-.layer_DAC:
-layer_transpose -2
-layer_delay 0x8
-layer_note1 40, 0x3c, 100
-layer_end
-
-.sound_mario_coughing1:
-chan_setbank 10
-chan_setinstr 7
-chan_setlayer 0, .layer_DBC
-chan_end
-
-.layer_DBC:
-layer_transpose -2
-layer_note1 39, 0x10, 115
 layer_end
 
 .channel38_table:

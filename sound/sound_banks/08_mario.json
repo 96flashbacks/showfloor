@@ -1,4 +1,4 @@
-{//this entire soundbank needs cleaned up a lot
+{
     "date": "1996-02-14",
     "sample_bank": "sfx_mario",
     "envelopes": {
@@ -18,71 +18,65 @@
         "inst1": {
             "release_rate": 208,
             "envelope": "envelope0",
-            "sound": "01_mario_jump_wah"
+            "sound": "01_mario_jump_uh"
         },
         "inst2": {
             "release_rate": 208,
             "envelope": "envelope0",
-            "sound": "02_mario_yah"
+            "sound": "02_mario_jump_huah"
+        },
+        "inst3": {
+            "release_rate": 208,
+            "envelope": "envelope0",
+            "sound": "03_mario_haugh"
         },
         "inst4": {
             "release_rate": 208,
             "envelope": "envelope0",
-            "sound": "04_mario_yahoo"
+            "sound": "04_mario_yahaa"
+        },
+        "inst5": {
+            "release_rate": 208,
+            "envelope": "envelope0",
+            "sound": "05_mario_hold"
         },
         "inst6": {
             "release_rate": 208,
             "envelope": "envelope0",
-            "sound": "06_mario_hrmm"
+            "sound": "06_mario_whoa"
+        },
+        "inst7": {
+            "release_rate": 208,
+            "envelope": "envelope0",
+            "sound": "07_mario_climb"
         },
         "inst8": {
             "release_rate": 208,
             "envelope": "envelope0",
-            "sound": "08_mario_whoa"
+            "sound": "08_mario_no"
         },
         "inst9": {
             "release_rate": 208,
             "envelope": "envelope0",
-            "sound": "09_mario_eeuh"
+            "sound": "09_mario_yeah"
         },
         "inst10": {
             "release_rate": 208,
             "envelope": "envelope0",
-            "sound": "0A_mario_attacked"
-        },
-        "inst12": {
-            "release_rate": 208,
-            "envelope": "envelope0",
-            "sound": "0C_mario_here_we_go"
+            "sound": "0A_mario_scream"
         }
     },
     "instrument_list": [
         "inst0",
         "inst1",
         "inst2",
-        null,
+        "inst3",
         "inst4",
-        null,
+        "inst5",
         "inst6",
-        null,
+        "inst7",
         "inst8",
         "inst9",
-        "inst10",
-        null,
-        "inst12",
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null
+        "inst10"
     ]
 }

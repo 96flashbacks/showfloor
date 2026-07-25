@@ -254,7 +254,7 @@ void play_sound_if_no_flag(struct MarioState *m, u32 soundBits, u32 flags) {
  */
 void play_mario_jump_sound(struct MarioState *m) {
     if (!(m->flags & MARIO_MARIO_SOUND_PLAYED)) {
-        play_sound(SOUND_MARIO_YAH_WAH_HOO + ((gAudioRandom % 3) << 16),
+        play_sound(SOUND_MARIO_SINGLE_JUMP + ((gAudioRandom % 3) << 16),
                    m->marioObj->header.gfx.cameraToObject);
         m->flags |= MARIO_MARIO_SOUND_PLAYED;
     }

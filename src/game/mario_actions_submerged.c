@@ -753,7 +753,7 @@ static s32 act_forward_water_kb(struct MarioState *m) {
 }
 
 static s32 act_water_shocked(struct MarioState *m) {
-    play_sound_if_no_flag(m, SOUND_MARIO_WAAAOOOW, MARIO_ACTION_SOUND_PLAYED);
+    play_sound_if_no_flag(m, SOUND_MARIO_SCREAM, MARIO_ACTION_SOUND_PLAYED);
     play_sound(SOUND_MOVING_SHOCKED, m->marioObj->header.gfx.cameraToObject);
 
     if (set_mario_animation(m, MARIO_ANIM_SHOCKED) == 0) {

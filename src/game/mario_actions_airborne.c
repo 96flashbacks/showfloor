@@ -31,7 +31,7 @@ s32 lava_boost_on_wall(struct MarioState *m) {
 
     m->hurtCounter += 12;
 
-    play_sound(SOUND_MARIO_WAAAOOOW, m->marioObj->header.gfx.cameraToObject);
+    play_sound(SOUND_MARIO_SCREAM, m->marioObj->header.gfx.cameraToObject);
     update_mario_sound_and_camera(m);
     return drop_and_set_mario_action(m, ACT_LAVA_BOOST, 1);
 }
@@ -500,6 +500,7 @@ s32 act_wall_kick_air(struct MarioState *m) {
         return set_mario_action(m, ACT_GROUND_POUND, 0);
     }
 
+    // No play_mario_jump_sound here, so it doesn't play when doing wall kicks
     common_air_action_step(m, ACT_JUMP_LAND, MARIO_ANIM_SLIDEJUMP, AIR_STEP_CHECK_LEDGE_GRAB);
     return FALSE;
 }
@@ -518,7 +519,7 @@ s32 act_twirling(struct MarioState *m) {
         case 0:
             m->angleVel[1] = approach_s32(m->angleVel[1], 0x1040, 0x340, 0x200);            
             set_mario_animation(m, MARIO_ANIM_DOUBLE_JUMP_RISE);
-            play_mario_sound(m, SOUND_ACTION_TERRAIN_JUMP, SOUND_MARIO_YAHOO);
+            play_mario_sound(m, SOUND_ACTION_TERRAIN_JUMP, SOUND_MARIO_YAHAA);
             
             if (m->vel[1] < 0.0f) {
                 m->actionArg = 1;
@@ -630,7 +631,6 @@ s32 act_air_throw(struct MarioState *m) {
         mario_throw_held_object(m);
     }
 
-    play_sound_if_no_flag(m, SOUND_MARIO_WAH2, MARIO_MARIO_SOUND_PLAYED);
     set_mario_animation(m, MARIO_ANIM_THROW_LIGHT_OBJECT);
     update_air_without_turn(m);
 
@@ -939,7 +939,7 @@ s32 act_thrown_backward(struct MarioState *m) {
         landAction = ACT_BACKWARD_GROUND_KB;
     }
 
-    play_sound_if_no_flag(m, SOUND_MARIO_WAAAOOOW, MARIO_MARIO_SOUND_PLAYED);
+    play_sound_if_no_flag(m, SOUND_MARIO_SCREAM, MARIO_MARIO_SOUND_PLAYED);
 
     common_air_knockback_step(m, landAction, ACT_HARD_BACKWARD_GROUND_KB, 0x0002, m->forwardVel);
 
@@ -957,7 +957,7 @@ s32 act_thrown_forward(struct MarioState *m) {
         landAction = ACT_FORWARD_GROUND_KB;
     }
 
-    play_sound_if_no_flag(m, SOUND_MARIO_WAAAOOOW, MARIO_MARIO_SOUND_PLAYED);
+    play_sound_if_no_flag(m, SOUND_MARIO_SCREAM, MARIO_MARIO_SOUND_PLAYED);
 
     if (common_air_knockback_step(m, landAction, ACT_HARD_FORWARD_GROUND_KB, 0x002D, m->forwardVel)
         == AIR_STEP_NONE) {
@@ -1182,7 +1182,7 @@ s32 act_hold_butt_slide_air(struct MarioState *m) {
 }
 
 s32 act_lava_boost(struct MarioState *m) {
-    play_sound_if_no_flag(m, SOUND_MARIO_WAAAOOOW, MARIO_MARIO_SOUND_PLAYED);
+    play_sound_if_no_flag(m, SOUND_MARIO_SCREAM, MARIO_MARIO_SOUND_PLAYED);
 
     if (!(m->input & INPUT_NONZERO_ANALOG)) {
         m->forwardVel = approach_f32(m->forwardVel, 0.0f, 0.35f, 0.35f);
@@ -1196,7 +1196,7 @@ s32 act_lava_boost(struct MarioState *m) {
                 m->actionState = 0;
                 m->hurtCounter += 12;
                 m->vel[1] = 84.0f;
-                play_sound(SOUND_MARIO_WAAAOOOW, m->marioObj->header.gfx.cameraToObject);
+                play_sound(SOUND_MARIO_SCREAM, m->marioObj->header.gfx.cameraToObject);
             } else {
                 play_mario_heavy_landing_sound(m, SOUND_ACTION_TERRAIN_BODY_HIT_GROUND);
                 if (m->actionState < 2 && m->vel[1] < 0.0f) {
@@ -1242,7 +1242,7 @@ s32 act_shot_from_cannon(struct MarioState *m) {
 
     mario_set_forward_vel(m, m->forwardVel);
 
-    play_sound_if_no_flag(m, SOUND_MARIO_YAHOO, MARIO_MARIO_SOUND_PLAYED);
+    play_sound_if_no_flag(m, SOUND_MARIO_YAHAA, MARIO_MARIO_SOUND_PLAYED);
 
     switch (perform_air_step(m, 0)) {
         case AIR_STEP_NONE:
@@ -1415,7 +1415,7 @@ s32 act_vertical_wind(struct MarioState *m) {
     s16 intendedDYaw = m->intendedYaw - m->faceAngle[1];
     f32 intendedMag = m->intendedMag / 32.0f;
 
-    play_sound_if_no_flag(m, SOUND_MARIO_HERE_WE_GO, MARIO_MARIO_SOUND_PLAYED);
+    play_sound_if_no_flag(m, SOUND_MARIO_YEAH, MARIO_MARIO_SOUND_PLAYED);
     if (m->actionState == 0) {
         set_mario_animation(m, MARIO_ANIM_FORWARD_SPINNING_FLIP);
         if (m->marioObj->header.gfx.animInfo.animFrame == 1) {

@@ -309,7 +309,7 @@ void general_star_dance_handler(struct MarioState *m) {
                 break;
 
             case 42:
-                play_sound(SOUND_MARIO_HERE_WE_GO, m->marioObj->header.gfx.cameraToObject);
+                play_sound(SOUND_MARIO_YEAH, m->marioObj->header.gfx.cameraToObject);
                 break;
 
             case 80:
@@ -734,7 +734,7 @@ s32 act_death_exit(struct MarioState *m) {
 
 s32 act_unused_death_exit(struct MarioState *m) {
     if (launch_mario_until_land(m, ACT_FREEFALL_LAND_STOP, MARIO_ANIM_GENERAL_FALL, 0.0f)) {
-        play_sound(SOUND_MARIO_ATTACKED, m->marioObj->header.gfx.cameraToObject);
+        play_sound(SOUND_MARIO_NO, m->marioObj->header.gfx.cameraToObject);
         m->numLives--;
         // restore 7.75 units of health
         m->healCounter = 31;
@@ -746,7 +746,7 @@ s32 act_unused_death_exit(struct MarioState *m) {
 
 s32 act_falling_death_exit(struct MarioState *m) {
     if (launch_mario_until_land(m, ACT_DEATH_EXIT_LAND, MARIO_ANIM_GENERAL_FALL, 0.0f)) {
-        play_sound(SOUND_MARIO_ATTACKED, m->marioObj->header.gfx.cameraToObject);
+        play_sound(SOUND_MARIO_NO, m->marioObj->header.gfx.cameraToObject);
         m->numLives--;
         // restore 7.75 units of health
         m->healCounter = 31;
@@ -760,7 +760,7 @@ s32 act_falling_death_exit(struct MarioState *m) {
 s32 act_special_exit_airborne(struct MarioState *m) {
     struct Object *marioObj = m->marioObj;
 
-    play_sound_if_no_flag(m, SOUND_MARIO_YAHOO, MARIO_MARIO_SOUND_PLAYED);
+    play_sound_if_no_flag(m, SOUND_MARIO_YAHAA, MARIO_MARIO_SOUND_PLAYED);
 
     if (m->actionTimer++ < 11) {
         marioObj->header.gfx.node.flags &= ~GRAPH_RENDER_ACTIVE;
@@ -1008,7 +1008,7 @@ s32 act_squished(struct MarioState *m) {
             } else {
                 if (m->invincTimer == 0) {
                     m->hurtCounter += 12;
-                    play_sound_if_no_flag(m, SOUND_MARIO_ATTACKED, MARIO_MARIO_SOUND_PLAYED);
+                    play_sound_if_no_flag(m, SOUND_MARIO_NO, MARIO_MARIO_SOUND_PLAYED);
                 }
 
                 // Both of the 1.8's are really floats, but one of them has to

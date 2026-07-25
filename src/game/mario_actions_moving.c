@@ -1120,9 +1120,7 @@ void common_slide_action(struct MarioState *m, u32 endAction, u32 airAction, s32
     switch (perform_ground_step(m)) {
         case GROUND_STEP_LEFT_GROUND:
             set_mario_action(m, airAction, 0);
-            if (m->forwardVel < -102.0f || 102.0f < m->forwardVel) {
-                play_sound(SOUND_MARIO_PUNCH_WAH, m->marioObj->header.gfx.cameraToObject);
-            }
+            // There seems to be no sound when sliding of a ledge based on the footage
             break;
 
         case GROUND_STEP_NONE:
@@ -1276,7 +1274,7 @@ s32 common_ground_knockback_action(struct MarioState *m, s32 animation, s32 arg2
     s32 animFrame;
 
     if (m->action != ACT_FORWARD_GROUND_KB)
-        play_sound_if_no_flag(m, SOUND_MARIO_ATTACKED, MARIO_MARIO_SOUND_PLAYED);
+        play_sound_if_no_flag(m, SOUND_MARIO_NO, MARIO_MARIO_SOUND_PLAYED);
 
     if (m->forwardVel > 32.0f) {
         m->forwardVel = 32.0f;

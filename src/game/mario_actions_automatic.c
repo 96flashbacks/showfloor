@@ -111,7 +111,7 @@ s32 act_holding_pole(struct MarioState *m) {
 
     if (m->input & INPUT_A_PRESSED) {
         add_tree_leaf_particles(m);
-		play_mario_jump_sound(m);
+		play_mario_jump_sound(m); // play_mario_jump_sound call here to make Mario play a sound only after jumping off a pole
         m->faceAngle[1] += 0x8000;
         return set_mario_action(m, ACT_WALL_KICK_AIR, 0);
     }
@@ -168,6 +168,7 @@ s32 act_climbing_pole(struct MarioState *m) {
 
     if (m->input & INPUT_A_PRESSED) {
         add_tree_leaf_particles(m);
+		play_mario_jump_sound(m); // play_mario_jump_sound call here to make Mario play a sound only after jumping off a pole
         m->faceAngle[1] += 0x8000;
         return set_mario_action(m, ACT_WALL_KICK_AIR, 0);
     }
@@ -590,7 +591,7 @@ s32 act_ledge_climb_slow(struct MarioState *m) {
         return check_common_action_exits(m);
     }
 
-    play_sound_if_no_flag(m, SOUND_MARIO_EEUH, MARIO_MARIO_SOUND_PLAYED);
+    play_sound_if_no_flag(m, SOUND_MARIO_CLIMB, MARIO_MARIO_SOUND_PLAYED);
 
     update_ledge_climb(m, MARIO_ANIM_SLOW_LEDGE_GRAB, ACT_IDLE);
 
@@ -620,7 +621,7 @@ s32 act_ledge_climb_fast(struct MarioState *m) {
         return let_go_of_ledge(m);
     }
 
-    play_sound_if_no_flag(m, SOUND_MARIO_EEUH, MARIO_MARIO_SOUND_PLAYED);
+    play_sound_if_no_flag(m, SOUND_MARIO_CLIMB, MARIO_MARIO_SOUND_PLAYED);
 
     update_ledge_climb(m, MARIO_ANIM_FAST_LEDGE_GRAB, ACT_IDLE);
 
