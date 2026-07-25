@@ -3352,6 +3352,7 @@
 "sound/samples/sfx_mario/08_mario_no.aiff": [0,{"jp":["@sound",91],"us":["@sound",92],"eu":["@sound",92],"sh":["@sound",92],"cn":["@sound",92]}],
 "sound/samples/sfx_mario/09_mario_yeah.aiff": [0,{"jp":["@sound",92],"us":["@sound",93],"eu":["@sound",93],"sh":["@sound",93],"cn":["@sound",93]}],
 "sound/samples/sfx_mario/0A_mario_scream.aiff": [0,{"jp":["@sound",93],"us":["@sound",94],"eu":["@sound",94],"sh":["@sound",94],"cn":["@sound",94]}],
+"sound/samples/sfx_mario_peach/00_mario_waaaooow.aiff": [0,{"jp":["@sound",106],"us":["@sound",118],"eu":["@sound",118],"sh":["@sound",118],"cn":["@sound",118]}],
 "sound/samples/sfx_terrain/00_step_default.aiff": [0,{"jp":["@sound",6],"us":["@sound",6],"eu":["@sound",6],"sh":["@sound",6],"cn":["@sound",6]}],
 "sound/samples/sfx_terrain/01_step_grass.aiff": [0,{"jp":["@sound",7],"us":["@sound",7],"eu":["@sound",7],"sh":["@sound",7],"cn":["@sound",7]}],
 "sound/samples/sfx_terrain/02_step_stone.aiff": [0,{"jp":["@sound",8],"us":["@sound",8],"eu":["@sound",8],"sh":["@sound",8],"cn":["@sound",8]}],

@@ -17,7 +17,6 @@
         }
     },
     "instrument_list": [
-        "inst0",
-        null
+        "inst0"
     ]
 }
