@@ -902,7 +902,7 @@ s32 act_backward_air_kb(struct MarioState *m) {
 
     play_sound_if_no_flag(m, SOUND_MARIO_HAUGH, MARIO_MARIO_SOUND_PLAYED);
 
-    common_air_knockback_step(m, ACT_BACKWARD_GROUND_KB, ACT_HARD_BACKWARD_GROUND_KB, 0x0002, -16.0f);
+    common_air_knockback_step(m, ACT_BACKWARD_GROUND_KB, ACT_HARD_BACKWARD_GROUND_KB, MARIO_ANIM_BACKWARD_AIR_KB, -16.0f);
     return FALSE;
 }
 
@@ -914,20 +914,20 @@ s32 act_forward_air_kb(struct MarioState *m) {
     if (m->forwardVel < 0)
         play_sound_if_no_flag(m, SOUND_MARIO_HAUGH, MARIO_MARIO_SOUND_PLAYED);
 
-    common_air_knockback_step(m, ACT_FORWARD_GROUND_KB, ACT_HARD_FORWARD_GROUND_KB, 0x002D, 16.0f);
+    common_air_knockback_step(m, ACT_FORWARD_GROUND_KB, ACT_HARD_FORWARD_GROUND_KB, MARIO_ANIM_AIR_FORWARD_KB, 16.0f);
     return FALSE;
 }
 
 s32 act_hard_backward_air_kb(struct MarioState *m) {
     play_sound_if_no_flag(m, SOUND_MARIO_HAUGH, MARIO_MARIO_SOUND_PLAYED);
-    common_air_knockback_step(m, ACT_HARD_BACKWARD_GROUND_KB, ACT_HARD_BACKWARD_GROUND_KB, 0x0002,
+    common_air_knockback_step(m, ACT_HARD_BACKWARD_GROUND_KB, ACT_HARD_BACKWARD_GROUND_KB, MARIO_ANIM_BACKWARD_AIR_KB,
                               -16.0f);
     return FALSE;
 }
 
 s32 act_hard_forward_air_kb(struct MarioState *m) {
     play_sound_if_no_flag(m, SOUND_MARIO_HAUGH, MARIO_MARIO_SOUND_PLAYED);
-    common_air_knockback_step(m, ACT_HARD_FORWARD_GROUND_KB, ACT_HARD_FORWARD_GROUND_KB, 0x002D, 16.0f);
+    common_air_knockback_step(m, ACT_HARD_FORWARD_GROUND_KB, ACT_HARD_FORWARD_GROUND_KB, MARIO_ANIM_AIR_FORWARD_KB, 16.0f);
     return FALSE;
 }
 
@@ -941,7 +941,7 @@ s32 act_thrown_backward(struct MarioState *m) {
 
     play_sound_if_no_flag(m, SOUND_MARIO_SCREAM, MARIO_MARIO_SOUND_PLAYED);
 
-    common_air_knockback_step(m, landAction, ACT_HARD_BACKWARD_GROUND_KB, 0x0002, m->forwardVel);
+    common_air_knockback_step(m, landAction, ACT_HARD_BACKWARD_GROUND_KB, MARIO_ANIM_BACKWARD_AIR_KB, m->forwardVel);
 
     m->forwardVel *= 0.98f;
     return FALSE;
@@ -959,7 +959,7 @@ s32 act_thrown_forward(struct MarioState *m) {
 
     play_sound_if_no_flag(m, SOUND_MARIO_SCREAM, MARIO_MARIO_SOUND_PLAYED);
 
-    if (common_air_knockback_step(m, landAction, ACT_HARD_FORWARD_GROUND_KB, 0x002D, m->forwardVel)
+    if (common_air_knockback_step(m, landAction, ACT_HARD_FORWARD_GROUND_KB, MARIO_ANIM_AIR_FORWARD_KB, m->forwardVel)
         == AIR_STEP_NONE) {
         pitch = atan2s(m->forwardVel, -m->vel[1]);
         if (pitch > 0x1800) {
@@ -980,7 +980,7 @@ s32 act_soft_bonk(struct MarioState *m) {
 
     play_sound_if_no_flag(m, SOUND_MARIO_HAUGH, MARIO_MARIO_SOUND_PLAYED);
 
-    common_air_knockback_step(m, ACT_FREEFALL_LAND, ACT_HARD_BACKWARD_GROUND_KB, 0x0056, m->forwardVel);
+    common_air_knockback_step(m, ACT_FREEFALL_LAND, ACT_HARD_BACKWARD_GROUND_KB, MARIO_ANIM_GENERAL_FALL, m->forwardVel);
     return FALSE;
 }
 
@@ -1299,7 +1299,7 @@ s32 act_flying(struct MarioState *m) {
         if (m->actionArg == 0) {
             set_mario_animation(m, MARIO_ANIM_FLY_FROM_CANNON);
         } else {
-            set_mario_animation(m, MARIO_ANIM_FORWARD_SPINNING_FLIP);
+            //set_mario_animation(m, MARIO_ANIM_FORWARD_SPINNING_FLIP);
             if (m->marioObj->header.gfx.animInfo.animFrame == 1) {
                 play_sound(SOUND_ACTION_SPIN, m->marioObj->header.gfx.cameraToObject);
             }
@@ -1392,7 +1392,7 @@ s32 act_riding_hoot(struct MarioState *m) {
     m->faceAngle[1] = 0x4000 - m->usedObj->oMoveAngleYaw;
 
     if (m->actionState == 0) {
-        set_mario_animation(m, MARIO_ANIM_HANG_ON_CEILING);
+        //set_mario_animation(m, MARIO_ANIM_HANG_ON_CEILING);
         if (is_anim_at_end(m)) {
             set_mario_animation(m, MARIO_ANIM_HANG_ON_OWL);
             m->actionState = 1;
@@ -1407,7 +1407,7 @@ s32 act_riding_hoot(struct MarioState *m) {
 
 s32 act_top_of_pole_jump(struct MarioState *m) {
     play_mario_jump_sound(m);
-    common_air_action_step(m, ACT_FREEFALL_LAND, MARIO_ANIM_HANDSTAND_JUMP, AIR_STEP_CHECK_LEDGE_GRAB);
+    //common_air_action_step(m, ACT_FREEFALL_LAND, MARIO_ANIM_HANDSTAND_JUMP, AIR_STEP_CHECK_LEDGE_GRAB);
     return FALSE;
 }
 
@@ -1417,7 +1417,7 @@ s32 act_vertical_wind(struct MarioState *m) {
 
     play_sound_if_no_flag(m, SOUND_MARIO_YEAH, MARIO_MARIO_SOUND_PLAYED);
     if (m->actionState == 0) {
-        set_mario_animation(m, MARIO_ANIM_FORWARD_SPINNING_FLIP);
+        //set_mario_animation(m, MARIO_ANIM_FORWARD_SPINNING_FLIP);
         if (m->marioObj->header.gfx.animInfo.animFrame == 1) {
             play_sound(SOUND_ACTION_SPIN, m->marioObj->header.gfx.cameraToObject);
         }

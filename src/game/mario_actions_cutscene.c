@@ -321,8 +321,7 @@ void general_star_dance_handler(struct MarioState *m) {
 
 s32 act_star_dance(struct MarioState *m) {
     m->faceAngle[1] = m->area->camera->yaw;
-    set_mario_animation(m, m->actionState == 2 ? MARIO_ANIM_RETURN_FROM_STAR_DANCE
-                                               : MARIO_ANIM_STAR_DANCE);
+    set_mario_animation(m, MARIO_ANIM_STAR_DANCE);
     general_star_dance_handler(m);
     if (m->actionState != 2 && m->actionTimer >= 40) {
         m->marioBodyState->handState = MARIO_HAND_PEACE_SIGN;
@@ -333,8 +332,7 @@ s32 act_star_dance(struct MarioState *m) {
 
 s32 act_star_dance_water(struct MarioState *m) {
     m->faceAngle[1] = m->area->camera->yaw;
-    set_mario_animation(m, m->actionState == 2 ? MARIO_ANIM_RETURN_FROM_WATER_STAR_DANCE
-                                               : MARIO_ANIM_WATER_STAR_DANCE);
+    set_mario_animation(m, MARIO_ANIM_WATER_STAR_DANCE);
     vec3f_copy(m->marioObj->header.gfx.pos, m->pos);
     vec3s_set(m->marioObj->header.gfx.angle, 0, m->faceAngle[1], 0);
     general_star_dance_handler(m);
@@ -371,7 +369,7 @@ s32 common_death_handler(struct MarioState *m, s32 animation, s32 frameToDeathWa
 
 s32 act_standing_death(struct MarioState *m) {
     if (m->input & INPUT_IN_POISON_GAS) {
-        return set_mario_action(m, ACT_SUFFOCATION, 0);
+       // return set_mario_action(m, ACT_SUFFOCATION, 0);
     }
 
     common_death_handler(m, MARIO_ANIM_DYING_FALL_OVER, 80);
@@ -382,12 +380,12 @@ s32 act_standing_death(struct MarioState *m) {
 }
 
 s32 act_electrocution(struct MarioState *m) {
-    common_death_handler(m, MARIO_ANIM_ELECTROCUTION, 43);
+    //common_death_handler(m, MARIO_ANIM_ELECTROCUTION, 43);
     return FALSE;
 }
 
 s32 act_suffocation(struct MarioState *m) {
-    common_death_handler(m, MARIO_ANIM_SUFFOCATING, 86);
+    //common_death_handler(m, MARIO_ANIM_SUFFOCATING, 86);
     return FALSE;
 }
 
@@ -442,7 +440,7 @@ s32 act_unlocking_star_door(struct MarioState *m) {
             }
             m->marioObj->oMarioReadingSignDPosX = m->pos[0];
             m->marioObj->oMarioReadingSignDPosZ = m->pos[2];
-            set_mario_animation(m, MARIO_ANIM_SUMMON_STAR);
+            //set_mario_animation(m, MARIO_ANIM_SUMMON_STAR);
             m->actionState++;
             break;
         case 1:
@@ -450,7 +448,7 @@ s32 act_unlocking_star_door(struct MarioState *m) {
             break;
         case 2:
             if (m->actionTimer++ == 70) {
-                set_mario_animation(m, MARIO_ANIM_RETURN_STAR_APPROACH_DOOR);
+                //set_mario_animation(m, MARIO_ANIM_RETURN_STAR_APPROACH_DOOR);
                 m->actionState++;
             }
             break;

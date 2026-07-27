@@ -222,7 +222,7 @@ s32 act_waking_up(struct MarioState *m) {
 
     stationary_ground_step(m);
 
-    set_mario_animation(m, !m->actionArg ? MARIO_ANIM_WAKE_FROM_SLEEP : MARIO_ANIM_WAKE_FROM_LYING);
+    set_mario_animation(m, MARIO_ANIM_WAKE_FROM_SLEEP);
 
     return FALSE;
 }

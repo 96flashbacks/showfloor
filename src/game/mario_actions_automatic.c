@@ -259,12 +259,12 @@ s32 act_top_of_pole_transition(struct MarioState *m) {
 
     marioObj->oMarioPoleYawVel = 0;
     if (m->actionArg == 0) {
-        set_mario_animation(m, MARIO_ANIM_START_HANDSTAND);
+        //set_mario_animation(m, MARIO_ANIM_START_HANDSTAND);
         if (is_anim_at_end(m)) {
             return set_mario_action(m, ACT_TOP_OF_POLE, 0);
         }
     } else {
-        set_mario_animation(m, MARIO_ANIM_RETURN_FROM_HANDSTAND);
+        //set_mario_animation(m, MARIO_ANIM_RETURN_FROM_HANDSTAND);
         if (m->marioObj->header.gfx.animInfo.animFrame == 0) {
             return set_mario_action(m, ACT_HOLDING_POLE, 0);
         }
@@ -286,7 +286,7 @@ s32 act_top_of_pole(struct MarioState *m) {
 
     m->faceAngle[1] -= m->controller->stickX * 16.0f;
 
-    set_mario_animation(m, MARIO_ANIM_HANDSTAND_IDLE);
+    //set_mario_animation(m, MARIO_ANIM_HANDSTAND_IDLE);
     set_pole_position(m, return_mario_anim_y_translation(m));
     return FALSE;
 }
@@ -397,7 +397,7 @@ s32 act_start_hanging(struct MarioState *m) {
         return set_mario_action(m, ACT_FREEFALL, 0);
     }
 
-    set_mario_animation(m, MARIO_ANIM_HANG_ON_CEILING);
+    //set_mario_animation(m, MARIO_ANIM_HANG_ON_CEILING);
     play_sound_if_no_flag(m, SOUND_ACTION_HANGING_STEP, MARIO_ACTION_SOUND_PLAYED);
     update_hang_stationary(m);
 
@@ -426,9 +426,9 @@ s32 act_hanging(struct MarioState *m) {
     }
 
     if (m->actionArg & 1) {
-        set_mario_animation(m, MARIO_ANIM_HANDSTAND_LEFT);
+        //set_mario_animation(m, MARIO_ANIM_HANDSTAND_LEFT);
     } else {
-        set_mario_animation(m, MARIO_ANIM_HANDSTAND_RIGHT);
+        //set_mario_animation(m, MARIO_ANIM_HANDSTAND_RIGHT);
     }
 
     update_hang_stationary(m);
@@ -450,9 +450,9 @@ s32 act_hang_moving(struct MarioState *m) {
     }
 
     if (m->actionArg & 1) {
-        set_mario_animation(m, MARIO_ANIM_MOVE_ON_WIRE_NET_RIGHT);
+        //set_mario_animation(m, MARIO_ANIM_MOVE_ON_WIRE_NET_RIGHT);
     } else {
-        set_mario_animation(m, MARIO_ANIM_MOVE_ON_WIRE_NET_LEFT);
+        //set_mario_animation(m, MARIO_ANIM_MOVE_ON_WIRE_NET_LEFT);
     }
 
     if (m->marioObj->header.gfx.animInfo.animFrame == 12) {

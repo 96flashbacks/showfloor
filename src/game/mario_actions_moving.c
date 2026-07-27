@@ -1158,7 +1158,7 @@ s32 common_slide_action_with_jump(struct MarioState *m, u32 stopAction, u32 jump
 
 s32 act_butt_slide(struct MarioState *m) {
     s32 cancel = common_slide_action_with_jump(m, ACT_BUTT_SLIDE_STOP, ACT_JUMP, ACT_BUTT_SLIDE_AIR,
-                                               MARIO_ANIM_SLIDE_MOTIONLESS); // remove MARIO_ANIM_SLIDE
+                                               MARIO_ANIM_SLIDE_MOTIONLESS);
     return cancel;
 }
 
@@ -1348,10 +1348,10 @@ s32 act_soft_forward_ground_kb(struct MarioState *m) {
 }
 
 s32 act_ground_bonk(struct MarioState *m) {
-    s32 animFrame = common_ground_knockback_action(m, MARIO_ANIM_GROUND_BONK, 32, TRUE);
+    /*s32 animFrame = common_ground_knockback_action(m, MARIO_ANIM_GROUND_BONK, 32, TRUE);
     if (animFrame == 41) {
         play_mario_landing_sound(m, SOUND_ACTION_TERRAIN_LANDING);
-    }
+    }*/
     return FALSE;
 }
 
