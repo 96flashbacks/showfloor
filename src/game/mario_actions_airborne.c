@@ -1391,13 +1391,8 @@ s32 act_riding_hoot(struct MarioState *m) {
 
     m->faceAngle[1] = 0x4000 - m->usedObj->oMoveAngleYaw;
 
-    if (m->actionState == 0) {
-        //set_mario_animation(m, MARIO_ANIM_HANG_ON_CEILING);
-        if (is_anim_at_end(m)) {
-            set_mario_animation(m, MARIO_ANIM_HANG_ON_OWL);
-            m->actionState = 1;
-        }
-    }
+    set_mario_animation(m, MARIO_ANIM_HANG_ON_OWL);
+    m->actionState = 1;
 
     // vec3f_set(m->vel, 0.0f, 0.0f, 0.0f);
     vec3f_set(m->marioObj->header.gfx.pos, m->pos[0], m->pos[1], m->pos[2]);
