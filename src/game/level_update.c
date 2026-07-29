@@ -136,9 +136,6 @@ void set_mario_initial_action(struct MarioState *m, u32 spawnType, u32 actionArg
         case MARIO_SPAWN_UNKNOWN_03:
             set_mario_action(m, ACT_EMERGE_FROM_PIPE, 0);
             break;
-        case MARIO_SPAWN_TELEPORT:
-            set_mario_action(m, ACT_TELEPORT_FADE_IN, 0);
-            break;
         case MARIO_SPAWN_INSTANT_ACTIVE:
             set_mario_action(m, ACT_IDLE, 0);
             break;
@@ -225,9 +222,6 @@ void init_mario_after_warp(void) {
             break;
         case MARIO_SPAWN_DOOR_WARP:
             play_transition(WARP_TRANSITION_FADE_FROM_CIRCLE, 0x10, 0x00, 0x00, 0x00);
-            break;
-        case MARIO_SPAWN_TELEPORT:
-            play_transition(WARP_TRANSITION_FADE_FROM_COLOR, 0x14, 0xFF, 0xFF, 0xFF);
             break;
         case MARIO_SPAWN_SPIN_AIRBORNE:
             play_transition(WARP_TRANSITION_FADE_FROM_COLOR, 0x1A, 0xFF, 0xFF, 0xFF);

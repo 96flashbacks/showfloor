@@ -32,7 +32,7 @@
 #define MARIO_SPAWN_DOOR_WARP             0x01
 #define MARIO_SPAWN_UNKNOWN_02            0x02
 #define MARIO_SPAWN_UNKNOWN_03            0x03
-#define MARIO_SPAWN_TELEPORT              0x04
+//#define MARIO_SPAWN_TELEPORT              0x04
 #define MARIO_SPAWN_INSTANT_ACTIVE        0x10
 #define MARIO_SPAWN_SWIMMING              0x11
 #define MARIO_SPAWN_AIRBORNE              0x12

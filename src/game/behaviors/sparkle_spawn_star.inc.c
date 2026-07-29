@@ -15,7 +15,7 @@ struct ObjectHitbox sSparkleSpawnStarHitbox = {
 void bhv_spawned_star_init(void) {
     s32 starIndex;
 
-    if (!(o->oInteractionSubtype & INT_SUBTYPE_NO_EXIT)) {
+    if (!(o->oInteractionSubtype & 0)) {
         o->oBhvParams = o->parentObj->oBhvParams;
     }
 
@@ -87,7 +87,7 @@ void bhv_spawned_star_loop(void) {
             o->oForwardVel = 0;
             o->oVelY = 20.0f;
             o->oGravity = -1.0f;
-            if (o->oInteractionSubtype & INT_SUBTYPE_NO_EXIT) {
+            if (o->oInteractionSubtype & 0) {
                 play_power_star_jingle(FALSE);
             } else {
                 play_power_star_jingle(TRUE);
@@ -123,6 +123,6 @@ void bhv_spawned_star_loop(void) {
 void bhv_spawn_star_no_level_exit(u32 starIndex) {
     struct Object *star = spawn_object(o, MODEL_STAR, bhvSpawnedStarNoLevelExit);
     star->oBhvParams = starIndex << 24;
-    star->oInteractionSubtype = INT_SUBTYPE_NO_EXIT;
+    star->oInteractionSubtype = 0;
     obj_set_angle(star, 0, 0, 0);
 }

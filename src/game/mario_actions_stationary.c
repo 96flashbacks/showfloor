@@ -12,7 +12,6 @@
 #include "mario_actions_stationary.h"
 #include "mario_step.h"
 #include "memory.h"
-#include "save_file.h"
 #include "sound_init.h"
 #include "surface_terrains.h"
 
@@ -130,7 +129,7 @@ s32 act_idle(struct MarioState *m) {
         }
 
         if (is_anim_at_end(m)) {
-            ++m->actionState; /* 'm->actionState = 3;' should work should this not */
+            m->actionState++; // Simple actionState increase like act_start_sleeping
         }
     }
 
@@ -180,7 +179,7 @@ s32 act_start_sleeping(struct MarioState *m) {
     }
 
     stationary_ground_step(m);
-    return 0;
+    return FALSE;
 }
 
 s32 act_sleeping(struct MarioState *m) {
@@ -190,6 +189,7 @@ s32 act_sleeping(struct MarioState *m) {
         return set_mario_action(m, ACT_WAKING_UP, m->actionState);
     }
 
+    // Disabled check for missing floors behind Mario so he can sleep in every spot he can idle on
     /*if (m->pos[1] - find_floor_height_relative_polar(m, -0x8000, 60.0f) > 24.0f) {
         return set_mario_action(m, ACT_WAKING_UP, m->actionState);
     }*/
@@ -318,9 +318,7 @@ s32 act_crouching(struct MarioState *m) {
         return set_mario_action(m, ACT_START_CRAWLING, 0);
     }
 
-    /*if (m->input & INPUT_B_PRESSED) {
-        return set_mario_action(m, ACT_PUNCHING, 0);
-    }*/
+    // No punching while crouching
 
     stationary_ground_step(m);
     set_mario_animation(m, MARIO_ANIM_CROUCHING);
@@ -536,6 +534,7 @@ s32 act_stop_crawling(struct MarioState *m) {
 }
 
 s32 act_shockwave_bounce(struct MarioState *m) {
+    // Much more simple than the final game, only sets Mario to the knockback state
     if (m->actionTimer == 0) {
         if (m->marioObj->oInteractStatus & INT_STATUS_MARIO_KNOCKBACK_DMG) {
             return hurt_and_set_mario_action(m, ACT_BACKWARD_GROUND_KB, 0, 0xc);
@@ -610,7 +609,6 @@ s32 act_side_flip_land_stop(struct MarioState *m) {
 }
 
 s32 act_freefall_land_stop(struct MarioState *m) {
-
     // cancel backwards momentum when landing from freefall
     if (m->forwardVel < 0) {
         m->forwardVel = 0;
@@ -776,12 +774,11 @@ s32 check_common_stationary_cancels(struct MarioState *m) {
         return drop_and_set_mario_action(m, ACT_SQUISHED, 0);
     }
 
-    if (m->action != ACT_UNKNOWN_0002020E) {
-        if (m->health < 0x100) {
-            update_mario_sound_and_camera(m);
-            return drop_and_set_mario_action(m, ACT_STANDING_DEATH, 0);
-        }
+    if (m->health < 0x100) {
+        update_mario_sound_and_camera(m);
+        return drop_and_set_mario_action(m, ACT_STANDING_DEATH, 0);
     }
+
     return FALSE;
 }
 

@@ -304,12 +304,7 @@ struct MarioState {
     /*0xB2*/ u8 hurtCounter;
     /*0xB3*/ u8 healCounter;
     /*0xB4*/ u8 squishTimer;
-    /*0xB5*/ u8 fadeWarpOpacity;
-    /*0xB6*/ u16 capTimer;
-    /*0xB8*/ s16 prevNumStarsForDialog;
     /*0xBC*/ f32 peakHeight;
-    /*0xC0*/ f32 quicksandDepth;
-    /*0xC4*/ f32 gettingBlownGravity;
              u8 pretipTimer;
              u8 sleepTimer;
 };

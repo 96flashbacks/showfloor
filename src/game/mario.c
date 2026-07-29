@@ -785,7 +785,6 @@ static u32 set_mario_action_airborne(struct MarioState *m, u32 action, u32 actio
             break;
 
         case ACT_WALL_KICK_AIR:
-        case ACT_TOP_OF_POLE_JUMP:
             set_mario_y_vel_based_on_fspeed(m, 62.0f, 0.0f);
             if (m->forwardVel < 24.0f) {
                 m->forwardVel = 24.0f;
@@ -875,10 +874,6 @@ static u32 set_mario_action_moving(struct MarioState *m, u32 action, UNUSED u32 
  * Transition for certain submerged actions, which is actually just the metal jump actions.
  */
 static u32 set_mario_action_submerged(struct MarioState *m, u32 action, UNUSED u32 actionArg) {
-    if (action == ACT_METAL_WATER_JUMP || action == ACT_HOLD_METAL_WATER_JUMP) {
-        m->vel[1] = 32.0f;
-    }
-
     return action;
 }
 
@@ -1250,7 +1245,6 @@ void update_mario_joystick_inputs(struct MarioState *m) {
  * Resolves wall collisions, and updates a variety of inputs.
  */
 void update_mario_geometry_inputs(struct MarioState *m) {
-    f32 gasLevel;
     f32 ceilToFloorDist;
 
     f32_find_wall_collision(&m->pos[0], &m->pos[1], &m->pos[2], 60.0f, 50.0f);
@@ -1268,7 +1262,6 @@ void update_mario_geometry_inputs(struct MarioState *m) {
     }
 
     m->ceilHeight = vec3f_find_ceil(m->pos, m->floorHeight, &m->ceil);
-    gasLevel = find_poison_gas_level(m->pos[0], m->pos[2]);
     m->waterLevel = find_water_level(m->pos[0], m->pos[2]);
 
     if (m->floor != NULL) {
@@ -1295,11 +1288,6 @@ void update_mario_geometry_inputs(struct MarioState *m) {
         if (m->pos[1] < (m->waterLevel - 10)) {
             m->input |= INPUT_IN_WATER;
         }
-
-        if (m->pos[1] < (gasLevel - 100.0f)) {
-            m->input |= INPUT_IN_POISON_GAS;
-        }
-
     } else {
         level_trigger_warp(m, WARP_OP_DEATH);
     }
@@ -1461,8 +1449,6 @@ void mario_reset_bodystate(struct MarioState *m) {
     bodyState->handState = MARIO_HAND_FISTS;
     bodyState->modelState = 0;
     bodyState->wingFlutter = FALSE;
-
-    m->flags &= ~MARIO_METAL_SHOCK;
 }
 
 /**
@@ -1476,11 +1462,6 @@ void mario_update_hitbox_and_cap_model(struct MarioState *m) {
         m->marioObj->hitboxHeight = 100.0f;
     } else {
         m->marioObj->hitboxHeight = 160.0f;
-    }
-
-    if ((m->flags & MARIO_TELEPORTING) && (m->fadeWarpOpacity != 0xFF)) {
-        bodyState->modelState &= ~0xFF;
-        bodyState->modelState |= (0x100 | m->fadeWarpOpacity);
     }
 }
 
@@ -1630,7 +1611,6 @@ void init_mario_from_save_file(void) {
     gMarioState->numLives = 2;
     gMarioState->health = 0x880;
 
-    gMarioState->prevNumStarsForDialog = gMarioState->numStars;
     gMarioState->unkB0 = 0xBD;
 
     gHudDisplay.coins = 0;

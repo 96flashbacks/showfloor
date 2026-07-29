@@ -666,42 +666,26 @@ void set_camera_height(struct Camera *c, f32 goalHeight) {
     f32 baseOff = 125.f;
     f32 camCeilHeight = find_ceil(c->pos[0], gLakituState.goalPos[1] - 50.f, c->pos[2], &surface);
 
-    if (sMarioCamState->action & ACT_FLAG_HANGING) {
-        marioCeilHeight = sMarioGeometry.currCeilHeight;
-        marioFloorHeight = sMarioGeometry.currFloorHeight;
+    camFloorHeight = find_floor(c->pos[0], c->pos[1] + 200.f, c->pos[2], &surface) + baseOff;
+    marioFloorHeight = baseOff + sMarioGeometry.currFloorHeight;
 
-        if (marioFloorHeight < marioCeilHeight - 400.f) {
-            marioFloorHeight = marioCeilHeight - 400.f;
-        }
-
-        goalHeight = marioFloorHeight + (marioCeilHeight - marioFloorHeight) * 0.4f;
-
-        if (sMarioCamState->pos[1] - 400 > goalHeight) {
-            goalHeight = sMarioCamState->pos[1] - 400;
-        }
-
-        approach_camera_height(c, goalHeight, 5.f);
-    } else {
-        camFloorHeight = find_floor(c->pos[0], c->pos[1] + 200.f, c->pos[2], &surface) + baseOff;
-        marioFloorHeight = baseOff + sMarioGeometry.currFloorHeight;
-
-        if (camFloorHeight < marioFloorHeight) {
-            camFloorHeight = marioFloorHeight;
-        }
-        if (goalHeight < camFloorHeight) {
-            goalHeight = camFloorHeight;
-            c->pos[1] = goalHeight;
-        }
-        approach_camera_height(c, goalHeight, 30.f);
-        if (camCeilHeight != CELL_HEIGHT_LIMIT) {
-            camCeilHeight -= baseOff;
-            if ((c->pos[1] > camCeilHeight && sMarioGeometry.currFloorHeight + baseOff < camCeilHeight)
-                || (sMarioGeometry.currCeilHeight != CELL_HEIGHT_LIMIT
-                    && sMarioGeometry.currCeilHeight > camCeilHeight && c->pos[1] > camCeilHeight)) {
-                c->pos[1] = camCeilHeight;
-            }
+    if (camFloorHeight < marioFloorHeight) {
+        camFloorHeight = marioFloorHeight;
+    }
+    if (goalHeight < camFloorHeight) {
+        goalHeight = camFloorHeight;
+        c->pos[1] = goalHeight;
+    }
+    approach_camera_height(c, goalHeight, 30.f);
+    if (camCeilHeight != CELL_HEIGHT_LIMIT) {
+        camCeilHeight -= baseOff;
+        if ((c->pos[1] > camCeilHeight && sMarioGeometry.currFloorHeight + baseOff < camCeilHeight)
+            || (sMarioGeometry.currCeilHeight != CELL_HEIGHT_LIMIT
+                && sMarioGeometry.currCeilHeight > camCeilHeight && c->pos[1] > camCeilHeight)) {
+            c->pos[1] = camCeilHeight;
         }
     }
+
 }
 
 /**
@@ -1027,6 +1011,7 @@ void mode_radial_camera(struct Camera *c) {
     c->pos[0] = pos[0];
     c->pos[2] = pos[2];
     sAreaYawChange = sAreaYaw - oldAreaYaw;
+    // Unlike the final game, this check for riding Hoot is used in the demo
     if (sMarioCamState->action == ACT_RIDING_HOOT) {
         pos[1] += 500.f;
     }
@@ -1589,17 +1574,15 @@ s32 mode_behind_mario(struct Camera *c) {
 }
 
 /**
- * Update the camera in slide and hoot mode.
+ * Update the camera in slide mode.
  *
  * In slide mode, keep the camera 800 units from Mario
  */
 s16 update_slide_camera(struct Camera *c) {
     struct Surface *floor;
     f32 floorHeight;
-    Vec3f pos;
     f32 distCamToFocus;
     f32 maxCamDist;
-    f32 pitchScale;
     s16 camPitch;
     s16 camYaw;
     UNUSED struct MarioState *marioState = &gMarioStates[0];
@@ -1615,49 +1598,24 @@ s16 update_slide_camera(struct Camera *c) {
     vec3f_get_dist_and_angle(c->focus, c->pos, &distCamToFocus, &camPitch, &camYaw);
     maxCamDist = 800.f;
 
-    // In hoot mode, zoom further out and rotate faster
-    if (sMarioCamState->action == ACT_RIDING_HOOT) {
-        maxCamDist = 1000.f;
-        goalPitch = 0x2800;
-        camera_approach_s16_symmetric_bool(&camYaw, goalYaw, 0x100);
-    } else {
-        camera_approach_s16_symmetric_bool(&camYaw, goalYaw, 0x80);
-    }
+    camera_approach_s16_symmetric_bool(&camYaw, goalYaw, 0x80);
     camera_approach_s16_symmetric_bool(&camPitch, goalPitch, 0x140);
 
-    // Hoot mode
-    if (sMarioCamState->action != ACT_RIDING_HOOT
-        && sMarioGeometry.currFloorType == SURFACE_DEATH_PLANE) {
-        vec3f_set_dist_and_angle(c->focus, pos, maxCamDist + sLakituDist, camPitch, camYaw);
-        c->pos[0] = pos[0];
-        c->pos[2] = pos[2];
-        if (gMarioStates[0].action != ACT_FORWARD_AIR_KB && gMarioStates[0].actionArg != 2) {
-            camera_approach_f32_symmetric_bool(&c->pos[1], c->focus[1], 30.f);
-        }
-        vec3f_get_dist_and_angle(c->pos, c->focus, &distCamToFocus, &camPitch, &camYaw);
-        pitchScale = (distCamToFocus - maxCamDist + sLakituDist) / 10000.f;
-        if (pitchScale > 1.f) {
-            pitchScale = 1.f;
-        }
-        camPitch += 0x1000 * pitchScale;
-        vec3f_set_dist_and_angle(c->pos, c->focus, distCamToFocus, camPitch, camYaw);
+    // No 'Hoot mode', riding hoot simply uses the same camera mode as Mountain (radial)
 
-        // Slide mode
-    } else {
-        vec3f_set_dist_and_angle(c->focus, c->pos, maxCamDist + sLakituDist, camPitch, camYaw);
-        sStatusFlags |= CAM_FLAG_BLOCK_SMOOTH_MOVEMENT;
+    vec3f_set_dist_and_angle(c->focus, c->pos, maxCamDist + sLakituDist, camPitch, camYaw);
+    sStatusFlags |= CAM_FLAG_BLOCK_SMOOTH_MOVEMENT;
 
-        // Stay above the slide floor
-        floorHeight = find_floor(c->pos[0], c->pos[1], c->pos[2], &floor) + 125.f;
-        if (c->pos[1] < floorHeight) {
-            c->pos[1] = floorHeight;
-        }
-        // Stay closer than maxCamDist
-        vec3f_get_dist_and_angle(c->focus, c->pos, &distCamToFocus, &camPitch, &camYaw);
-        if (distCamToFocus > maxCamDist + sLakituDist) {
-            distCamToFocus = maxCamDist + sLakituDist;
-            vec3f_set_dist_and_angle(c->focus, c->pos, distCamToFocus, camPitch, camYaw);
-        }
+    // Stay above the slide floor
+    floorHeight = find_floor(c->pos[0], c->pos[1], c->pos[2], &floor) + 125.f;
+    if (c->pos[1] < floorHeight) {
+        c->pos[1] = floorHeight;
+    }
+    // Stay closer than maxCamDist
+    vec3f_get_dist_and_angle(c->focus, c->pos, &distCamToFocus, &camPitch, &camYaw);
+    if (distCamToFocus > maxCamDist + sLakituDist) {
+        distCamToFocus = maxCamDist + sLakituDist;
+        vec3f_set_dist_and_angle(c->focus, c->pos, distCamToFocus, camPitch, camYaw);
     }
 
     camYaw = calculate_yaw(c->focus, c->pos);
@@ -1905,15 +1863,6 @@ s16 update_default_camera(struct Camera *c) {
         if ((gasHeight += 130.f) > c->pos[1]) {
             c->pos[1] = gasHeight;
         }
-    }
-
-    if (sMarioCamState->action & ACT_FLAG_HANGING || sMarioCamState->action == ACT_RIDING_HOOT) {
-        camFloorHeight = sMarioCamState->pos[1] + 400.f;
-        if (c->mode == CAMERA_MODE_FREE_ROAM) {
-            camFloorHeight -= 100.f;
-        }
-        ceilHeight = 20000.f;
-        vec3f_copy(c->focus, sMarioCamState->pos);
     }
 
     if (camFloorHeight != -11000.f) {
@@ -2665,7 +2614,7 @@ void update_camera(struct Camera *c) {
                 mode_parallel_tracking_camera(c);
                 break;
 
-            case CAMERA_MODE_SLIDE_HOOT:
+            case CAMERA_MODE_SLIDE:
                 mode_slide_camera(c);
                 break;
 
@@ -4332,7 +4281,6 @@ u8 get_cutscene_from_mario_status(struct Camera *c) {
                 break;
             case ACT_STAR_DANCE_EXIT:
             case ACT_STAR_DANCE_WATER:
-            case ACT_STAR_DANCE_NO_EXIT:
                 cutscene = CUTSCENE_DANCE_DEFAULT;
                 break;
         }
@@ -6467,8 +6415,7 @@ BAD_RETURN(s32) cutscene_door_mode(struct Camera *c) {
     c->yaw = c->nextYaw;
 
     // Loop until Mario is no longer using the door
-    if (sMarioCamState->action != ACT_ENTERING_STAR_DOOR && sMarioCamState->action != ACT_PULLING_DOOR
-        && sMarioCamState->action != ACT_PUSHING_DOOR) {   
+    if (sMarioCamState->action != ACT_PULLING_DOOR && sMarioCamState->action != ACT_PUSHING_DOOR) {   
         gCutsceneTimer = CUTSCENE_STOP;
         c->cutscene = 0;
     }

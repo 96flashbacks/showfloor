@@ -37,7 +37,6 @@ extern const BehaviorScript bhvBulletBillCannon[];
 extern const BehaviorScript bhvRotatingCounterClockwise[];
 extern const BehaviorScript bhvWFRotatingWoodenPlatform[];
 extern const BehaviorScript bhvExitPodiumWarp[];
-extern const BehaviorScript bhvFadingWarp[];
 extern const BehaviorScript bhvWarp[];
 extern const BehaviorScript bhvWarpPipe[];
 extern const BehaviorScript bhvWhitePuffExplosion[];

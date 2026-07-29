@@ -94,7 +94,7 @@
 #define CAMERA_MODE_CLOSE             0x04 // Inside Castle / Big Boo's Haunt
 #define CAMERA_MODE_C_UP              0x06
 #define CAMERA_MODE_WATER_SURFACE     0x08
-#define CAMERA_MODE_SLIDE_HOOT        0x09
+#define CAMERA_MODE_SLIDE        0x09
 #define CAMERA_MODE_INSIDE_CANNON     0x0A
 #define CAMERA_MODE_BOSS_FIGHT        0x0B
 #define CAMERA_MODE_PARALLEL_TRACKING 0x0C

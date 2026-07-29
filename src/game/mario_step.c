@@ -357,12 +357,6 @@ s32 perform_air_quarter_step(struct MarioState *m, Vec3f intendedPos, u32 stepAr
         if (m->vel[1] >= 0.0f) {
             m->vel[1] = 0.0f;
 
-            //! Uses referenced ceiling instead of ceil (ceiling hang upwarp)
-            if ((stepArg & AIR_STEP_CHECK_HANG) && m->ceil != NULL
-                && m->ceil->type == SURFACE_HANGABLE) {
-                return AIR_STEP_GRABBED_CEILING;
-            }
-
             return AIR_STEP_NONE;
         }
 
@@ -386,6 +380,7 @@ s32 perform_air_quarter_step(struct MarioState *m, Vec3f intendedPos, u32 stepAr
         vec3f_copy(m->pos, nextPos);
         m->floor = floor;
         m->floorHeight = floorHeight;
+        // No 'return AIR_STEP_NONE' here, which makes Mario bonk on ledges much more often
     }
 
     vec3f_copy(m->pos, nextPos);
@@ -446,11 +441,6 @@ void apply_gravity(struct MarioState *m) {
         apply_twirl_gravity(m);
     } else if (m->action == ACT_SHOT_FROM_CANNON) {
         m->vel[1] -= 1.3f;
-        if (m->vel[1] < -75.0f) {
-            m->vel[1] = -75.0f;
-        }
-    } else if (m->action == ACT_BBH_ENTER_SPIN) {
-        m->vel[1] -= 2.0f;
         if (m->vel[1] < -75.0f) {
             m->vel[1] = -75.0f;
         }
@@ -518,7 +508,6 @@ s32 perform_air_step(struct MarioState *m, u32 stepArg) {
         }
 
         if (quarterStepResult == AIR_STEP_LANDED || quarterStepResult == AIR_STEP_GRABBED_LEDGE
-            || quarterStepResult == AIR_STEP_GRABBED_CEILING
             || quarterStepResult == AIR_STEP_HIT_LAVA_WALL) {
             break;
         }
