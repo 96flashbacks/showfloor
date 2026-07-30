@@ -359,7 +359,7 @@ s32 perform_air_quarter_step(struct MarioState *m, Vec3f intendedPos, u32 stepAr
         }
 
         if (wallDYaw < -0x6000 || wallDYaw > 0x6000) {
-            m->flags |= MARIO_UNKNOWN_30;
+            m->flags |= MARIO_AIR_HIT_WALL;
             return AIR_STEP_HIT_WALL;
         }
     }
@@ -384,7 +384,7 @@ void apply_twirl_gravity(struct MarioState *m) {
 }
 
 u32 should_strengthen_gravity_for_jump_ascent(struct MarioState *m) {
-    if (!(m->flags & MARIO_UNKNOWN_08)) {
+    if (!(m->flags & MARIO_JUMPING)) {
         return FALSE;
     }
 

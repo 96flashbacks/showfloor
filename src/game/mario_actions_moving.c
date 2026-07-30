@@ -80,8 +80,8 @@ void play_step_sound(struct MarioState *m, s16 frame1, s16 frame2) {
 
 void align_with_floor(struct MarioState *m) {
     m->pos[1] = m->floorHeight;
-    mtxf_align_terrain_triangle(sFloorAlignMatrix[m->unk00], m->pos, m->faceAngle[1], 40.0f);
-    m->marioObj->header.gfx.throwMatrix = &sFloorAlignMatrix[m->unk00];
+    mtxf_align_terrain_triangle(sFloorAlignMatrix[m->playerID], m->pos, m->faceAngle[1], 40.0f);
+    m->marioObj->header.gfx.throwMatrix = &sFloorAlignMatrix[m->playerID];
 }
 
 s32 begin_walking_action(struct MarioState *m, f32 forwardVel, u32 action, u32 actionArg) {
@@ -584,7 +584,7 @@ void push_or_sidle_wall(struct MarioState *m, Vec3f startPos) {
     }
 
     if (m->wall == NULL || dWallAngle <= -0x71C8 || dWallAngle >= 0x71C8) {
-        m->flags |= MARIO_UNKNOWN_31;
+        m->flags |= MARIO_PUSHING;
         set_mario_animation(m, MARIO_ANIM_PUSHING);
         play_step_sound(m, 6, 18);
     } else {
@@ -626,7 +626,7 @@ s32 act_walking(struct MarioState *m) {
         return TRUE;
     }
 
-    if (m->input & INPUT_UNKNOWN_5) {
+    if (m->input & INPUT_IDLE) {
         return begin_braking_action(m);
     }
 
@@ -723,7 +723,7 @@ s32 act_hold_walking(struct MarioState *m) {
         return set_jumping_action(m, ACT_HOLD_JUMP, 0);
     }
 
-    if (m->input & INPUT_UNKNOWN_5) {
+    if (m->input & INPUT_IDLE) {
         return set_mario_action(m, ACT_HOLD_IDLE, 0);
     }
 
@@ -765,7 +765,7 @@ s32 act_hold_heavy_walking(struct MarioState *m) {
         return drop_and_set_mario_action(m, ACT_BEGIN_SLIDING, 0);
     }
 
-    if (m->input & INPUT_UNKNOWN_5) {
+    if (m->input & INPUT_IDLE) {
         return set_mario_action(m, ACT_HOLD_HEAVY_IDLE, 0);
     }
 
@@ -798,7 +798,7 @@ s32 act_turning_around(struct MarioState *m) {
         return set_jumping_action(m, ACT_SIDE_FLIP, 0);
     }
 
-    if (m->input & INPUT_UNKNOWN_5) {
+    if (m->input & INPUT_IDLE) {
         return set_mario_action(m, ACT_BRAKING, 0);
     }
 
@@ -913,7 +913,7 @@ s32 act_crawling(struct MarioState *m) {
         return TRUE;
     }
 
-    if (m->input & INPUT_UNKNOWN_5) {
+    if (m->input & INPUT_IDLE) {
         return set_mario_action(m, ACT_STOP_CRAWLING, 0);
     }
 

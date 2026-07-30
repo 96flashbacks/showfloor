@@ -739,7 +739,7 @@ void geo_obj_init_animation(struct GraphNodeObject *graphNode, struct Animation 
     if (graphNode->animInfo.curAnim != anim) {
         graphNode->animInfo.curAnim = anim;
         graphNode->animInfo.animFrame =
-            anim->startFrame + ((anim->flags & ANIM_FLAG_BACKWARD) ? 1 : -1);
+            anim->startFrame + ((anim->flags & ANIM_FLAG_FORWARD) ? 1 : -1);
         graphNode->animInfo.animAccel = 0;
         graphNode->animInfo.animYTrans = 0;
     }
@@ -757,7 +757,7 @@ void geo_obj_init_animation_accel(struct GraphNodeObject *graphNode, struct Anim
         graphNode->animInfo.curAnim = anim;
         graphNode->animInfo.animYTrans = 0;
         graphNode->animInfo.animFrameAccelAssist =
-            (anim->startFrame << 16) + ((anim->flags & ANIM_FLAG_BACKWARD) ? animAccel : -animAccel);
+            (anim->startFrame << 16) + ((anim->flags & ANIM_FLAG_FORWARD) ? animAccel : -animAccel);
         graphNode->animInfo.animFrame = graphNode->animInfo.animFrameAccelAssist >> 16;
     }
 
@@ -794,7 +794,7 @@ s16 geo_update_animation_frame(struct AnimInfo *obj, s32 *accelAssist) {
     s32 result;
     struct Animation *anim = obj->curAnim;
 
-    if (obj->animTimer == gAreaUpdateCounter || anim->flags & ANIM_FLAG_2) {
+    if (obj->animTimer == gAreaUpdateCounter || anim->flags & ANIM_FLAG_NO_ACCEL) {
         if (accelAssist != NULL) {
             accelAssist[0] = obj->animFrameAccelAssist;
         }
@@ -802,7 +802,7 @@ s16 geo_update_animation_frame(struct AnimInfo *obj, s32 *accelAssist) {
         return obj->animFrame;
     }
 
-    if (anim->flags & ANIM_FLAG_BACKWARD) {
+    if (anim->flags & ANIM_FLAG_FORWARD) {
         if (obj->animAccel != 0) {
             result = obj->animFrameAccelAssist - obj->animAccel;
         } else {
