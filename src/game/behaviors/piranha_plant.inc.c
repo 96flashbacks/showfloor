@@ -104,7 +104,6 @@ void piranha_plant_attacked(void) {
  */
 void piranha_plant_act_shrink_and_die(void) {
     if (o->oTimer == 0) {
-        cur_obj_play_sound_2(SOUND_OBJ_DYING_ENEMY1);
         o->oPiranhaPlantScale = 1.0f;
     }
 

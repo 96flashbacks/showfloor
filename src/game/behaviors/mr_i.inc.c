@@ -113,10 +113,6 @@ void mr_i_act_3(void) {
         o->oMoveAnglePitch = (1.0 - coss(0x4000 * sp2C)) * -0x4000;
         cur_obj_shake_y(4.0f);
     } else if (o->oTimer < 96) {
-        if (o->oTimer == 64) {
-            cur_obj_play_sound_2(SOUND_OBJ_MRI_DEATH);
-        }
-
         sp30 = (f32) (o->oTimer - 63) / 32;
         o->oMoveAngleYaw += sp34 * coss(0x4000 * sp2C);
         o->oMoveAnglePitch = (1.0 - coss(0x4000 * sp2C)) * -0x4000;
