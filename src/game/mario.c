@@ -79,10 +79,10 @@ s16 set_mario_animation(struct MarioState *m, s32 targetAnimID) {
         o->header.gfx.animInfo.animAccel = 0;
         o->header.gfx.animInfo.animYTrans = m->unkB0;
 
-        if (targetAnim->flags & ANIM_FLAG_2) {
+        if (targetAnim->flags & ANIM_FLAG_NO_ACCEL) {
             o->header.gfx.animInfo.animFrame = targetAnim->startFrame;
         } else {
-            if (targetAnim->flags & ANIM_FLAG_BACKWARD) {
+            if (targetAnim->flags & ANIM_FLAG_FORWARD) {
                 o->header.gfx.animInfo.animFrame = targetAnim->startFrame + 1;
             } else {
                 o->header.gfx.animInfo.animFrame = targetAnim->startFrame - 1;
@@ -113,10 +113,10 @@ s16 set_mario_anim_with_accel(struct MarioState *m, s32 targetAnimID, s32 accel)
         o->header.gfx.animInfo.curAnim = targetAnim;
         o->header.gfx.animInfo.animYTrans = m->unkB0;
 
-        if (targetAnim->flags & ANIM_FLAG_2) {
+        if (targetAnim->flags & ANIM_FLAG_NO_ACCEL) {
             o->header.gfx.animInfo.animFrameAccelAssist = (targetAnim->startFrame << 0x10);
         } else {
-            if (targetAnim->flags & ANIM_FLAG_BACKWARD) {
+            if (targetAnim->flags & ANIM_FLAG_FORWARD) {
                 o->header.gfx.animInfo.animFrameAccelAssist = (targetAnim->startFrame << 0x10) + accel;
             } else {
                 o->header.gfx.animInfo.animFrameAccelAssist = (targetAnim->startFrame << 0x10) - accel;
@@ -139,13 +139,13 @@ void set_anim_to_frame(struct MarioState *m, s16 animFrame) {
     struct Animation *curAnim = animInfo->curAnim;
 
     if (animInfo->animAccel != 0) {
-        if (curAnim->flags & ANIM_FLAG_BACKWARD) {
+        if (curAnim->flags & ANIM_FLAG_FORWARD) {
             animInfo->animFrameAccelAssist = (animFrame << 0x10) + animInfo->animAccel;
         } else {
             animInfo->animFrameAccelAssist = (animFrame << 0x10) - animInfo->animAccel;
         }
     } else {
-        if (curAnim->flags & ANIM_FLAG_BACKWARD) {
+        if (curAnim->flags & ANIM_FLAG_FORWARD) {
             animInfo->animFrame = animFrame + 1;
         } else {
             animInfo->animFrame = animFrame - 1;
@@ -160,7 +160,7 @@ s32 is_anim_past_frame(struct MarioState *m, s16 animFrame) {
     struct Animation *curAnim = animInfo->curAnim;
 
     if (animInfo->animAccel != 0) {
-        if (curAnim->flags & ANIM_FLAG_BACKWARD) {
+        if (curAnim->flags & ANIM_FLAG_FORWARD) {
             isPastFrame =
                 (animInfo->animFrameAccelAssist > acceleratedFrame)
                 && (acceleratedFrame >= (animInfo->animFrameAccelAssist - animInfo->animAccel));
@@ -170,7 +170,7 @@ s32 is_anim_past_frame(struct MarioState *m, s16 animFrame) {
                 && (acceleratedFrame <= (animInfo->animFrameAccelAssist + animInfo->animAccel));
         }
     } else {
-        if (curAnim->flags & ANIM_FLAG_BACKWARD) {
+        if (curAnim->flags & ANIM_FLAG_FORWARD) {
             isPastFrame = (animInfo->animFrame == (animFrame + 1));
         } else {
             isPastFrame = ((animInfo->animFrame + 1) == animFrame);
@@ -215,12 +215,12 @@ void update_mario_pos_for_anim(struct MarioState *m) {
 
     flags = find_mario_anim_flags_and_translation(m->marioObj, m->faceAngle[1], translation);
 
-    if (flags & (ANIM_FLAG_HOR_TRANS | ANIM_FLAG_6)) {
+    if (flags & (ANIM_FLAG_HOR_TRANS | ANIM_FLAG_NO_TRANS)) {
         m->pos[0] += (f32) translation[0];
         m->pos[2] += (f32) translation[2];
     }
 
-    if (flags & (ANIM_FLAG_VERT_TRANS | ANIM_FLAG_6)) {
+    if (flags & (ANIM_FLAG_VERT_TRANS | ANIM_FLAG_NO_TRANS)) {
         m->pos[1] += (f32) translation[1];
     }
 }
@@ -820,7 +820,7 @@ static u32 set_mario_action_airborne(struct MarioState *m, u32 action, u32 actio
     }
 
     m->peakHeight = m->pos[1];
-    m->flags |= MARIO_UNKNOWN_08;
+    m->flags |= MARIO_JUMPING;
 
     return action;
 }
@@ -931,7 +931,7 @@ u32 set_mario_action(struct MarioState *m, u32 action, u32 actionArg) {
     m->flags &= ~(MARIO_ACTION_SOUND_PLAYED | MARIO_MARIO_SOUND_PLAYED);
 
     if (!(m->action & ACT_FLAG_AIR)) {
-        m->flags &= ~MARIO_UNKNOWN_18;
+        m->flags &= ~MARIO_FALL_SOUND_PLAYED;
     }
 
     // Initialize the action information.
@@ -1318,7 +1318,7 @@ void update_mario_inputs(struct MarioState *m) {
     }
 
     if (!(m->input & (INPUT_NONZERO_ANALOG | INPUT_A_PRESSED))) {
-        m->input |= INPUT_UNKNOWN_5;
+        m->input |= INPUT_IDLE;
     }
 
     // These 3 flags are defined by Bowser stomping attacks
@@ -1434,7 +1434,7 @@ void update_mario_info_for_cam(struct MarioState *m) {
 
     vec3s_copy(m->statusForCamera->faceAngle, m->faceAngle);
 
-    if (!(m->flags & MARIO_UNKNOWN_25)) {
+    if (!(m->flags & MARIO_LEDGE_CLIMB_CAMERA)) {
         vec3f_copy(m->statusForCamera->pos, m->pos);
     }
 }

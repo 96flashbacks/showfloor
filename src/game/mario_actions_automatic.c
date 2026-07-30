@@ -293,7 +293,7 @@ void update_ledge_climb_camera(struct MarioState *m) {
     m->statusForCamera->pos[2] = m->pos[2] + sp4 * coss(m->faceAngle[1]);
     m->statusForCamera->pos[1] = m->pos[1];
     m->actionTimer++;
-    m->flags |= MARIO_UNKNOWN_25;
+    m->flags |= MARIO_LEDGE_CLIMB_CAMERA;
 }
 
 void update_ledge_climb(struct MarioState *m, s32 animation, u32 endAction) {
