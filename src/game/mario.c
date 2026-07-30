@@ -1594,7 +1594,7 @@ void init_mario(void) {
 }
 
 void init_mario_from_save_file(void) {
-    gMarioState->unk00 = 0;
+    gMarioState->playerID = 0;
     gMarioState->flags = 0;
     gMarioState->action = 0;
     gMarioState->spawnInfo = &gPlayerSpawnInfos[0];

@@ -185,7 +185,7 @@ void hoot_action_loop(void) { // ajsfhkjadsf
             hoot_player_set_yaw();
 
             if (o->oPosY > 7000.0f) {
-                gMarioObject->oInteractStatus |= INT_STATUS_MARIO_UNK7;
+                gMarioObject->oInteractStatus |= INT_STATUS_MARIO_DROP_FROM_HOOT;
             }
 
             hoot_carry_step(20, xPrev, zPrev);
