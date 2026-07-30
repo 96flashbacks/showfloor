@@ -5168,22 +5168,6 @@ void copy_spline_segment(struct CutsceneSplinePoint dst[], struct CutsceneSpline
 }
 
 /**
- * Triggers Mario to enter a dialog state. This is used to make Mario look at the focus of a cutscene,
- * for example, bowser.
- * @param state 0 = stop, 1 = start, 2 = start and look up, and 3 = start and look down
- *
- * @return if Mario left the dialog state, return CUTSCENE_LOOP, else return gCutsceneTimer
- */
-s16 cutscene_common_set_dialog_state(s32 state) {
-    s16 timer = gCutsceneTimer;
-    // If the dialog ended, return CUTSCENE_LOOP, which would end the cutscene shot
-    if (set_mario_npc_dialog(state) == MARIO_DIALOG_STATUS_SPEAK) {
-        timer = CUTSCENE_LOOP;
-    }
-    return timer;
-}
-
-/**
  * Store camera info for the cannon opening cutscene
  */
 void store_info_cannon(struct Camera *c) {

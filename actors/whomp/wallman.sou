@@ -528,9 +528,9 @@ static Gfx RCP_wallman_Rhand[] = {
 Hierarchy RCP_HmsEnemywallman[] = {
  hmsHeader(1000)
  hmsBegin()
- hmsScale(0.24f) // it's set to 0.25f in the leak but 0.24f matches SuperMarioStadium3
+ hmsScale(0.25f)
     hmsBegin()
-      hmsJoint(RM_SURF,NULL,5,181,0)  /* chn18(11) */
+      hmsJoint(RM_SURF,NULL,5,81,0)  /* chn18(11) */ // Different root offset like Bowser
       hmsBegin()
          hmsJoint(RM_SURF,RCP_wallman_body,0,0,0)  /* wallman_body(10) */
          hmsBegin()

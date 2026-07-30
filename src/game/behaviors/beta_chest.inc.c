@@ -15,12 +15,7 @@ void bhv_beta_chest_bottom_init(void) {
     // Set the object's model
     cur_obj_set_model(MODEL_TREASURE_CHEST_BASE);
 
-    // ??? Pointless code?
-    // Maybe chests were originally intended to have random yaws.
-    // Shoshinkai 1995 footage shows chests in DDD scattered around
-    // a point with different yaws. Maybe this feature was lazily
-    // cancelled by setting the yaw to 0, right before this beta
-    // object was discarded?
+    // Randomize the yaw
     o->oFaceAngleYaw = o->oMoveAngleYaw = random_u16();
 
     // Spawn the chest lid 97 units in the +Y direction and 77 units in the -Z direction.
@@ -54,7 +49,7 @@ void bhv_beta_chest_lid_loop(void) {
             if (o->oTimer == 0) {
                 // Spawn the bubble 80 units in the -Y direction and 120 units in the +Z direction.
                 spawn_object_relative(0, 0, -80, 120, o, MODEL_BUBBLE, bhvWaterAirBubble);
-                play_sound(SOUND_GENERAL_CLAM_SHELL1, o->header.gfx.cameraToObject);
+                // No sound when opening the chest
             }
 
             // Rotate the lid 0x400 (1024) angle units per frame backwards.

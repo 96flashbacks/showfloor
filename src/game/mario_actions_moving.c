@@ -127,18 +127,8 @@ void check_ledge_climb_down(struct MarioState *m) {
     }
 }
 
-void slide_bonk(struct MarioState *m, u32 fastAction, u32 slowAction) {
-    if (m->forwardVel > 16.0f) {
-        mario_bonk_reflection(m, TRUE);
-        drop_and_set_mario_action(m, fastAction, 0);
-    } else {
-        mario_set_forward_vel(m, 0.0f);
-        set_mario_action(m, slowAction, 0);
-    }
-}
-
 s32 set_triple_jump_action(struct MarioState *m, UNUSED u32 action, UNUSED u32 actionArg) {
-    if (m->forwardVel > 20.0f) { /* why does this need to be its own function, nintendo? */
+    if (m->forwardVel > 20.0f) {
         return set_mario_action(m, ACT_TWIRLING, 0);
     } else {
         return set_mario_action(m, ACT_JUMP, 0);
@@ -191,8 +181,6 @@ void update_sliding_angle(struct MarioState *m, f32 accel, f32 lossFactor) {
     m->vel[0] = m->slideVelX;
     m->vel[1] = 0.0f;
     m->vel[2] = m->slideVelZ;
-
-    mario_update_windy_ground(m);
 
     //! Speed is capped a frame late (butt slide HSG)
     m->forwardVel = sqrtf(m->slideVelX * m->slideVelX + m->slideVelZ * m->slideVelZ);
@@ -321,8 +309,6 @@ void apply_slope_accel(struct MarioState *m) {
     m->vel[0] = m->slideVelX;
     m->vel[1] = 0.0f;
     m->vel[2] = m->slideVelZ;
-
-    mario_update_windy_ground(m);
 }
 
 s32 apply_landing_accel(struct MarioState *m, f32 frictionFactor) {
@@ -365,19 +351,6 @@ s32 apply_slope_decel(struct MarioState *m, f32 decelCoef) {
     }
 
     apply_slope_accel(m);
-    return stopped;
-}
-
-s32 update_decelerating_speed(struct MarioState *m) {
-    s32 stopped = FALSE;
-
-    if ((m->forwardVel = approach_f32(m->forwardVel, 0.0f, 1.0f, 1.0f)) == 0.0f) {
-        stopped = TRUE;
-    }
-
-    mario_set_forward_vel(m, m->forwardVel);
-    mario_update_windy_ground(m);
-
     return stopped;
 }
 
@@ -424,7 +397,6 @@ s32 check_ground_dive_or_punch(struct MarioState *m) {
     UNUSED u8 filler[4];
 
     if (m->input & INPUT_B_PRESSED) {
-        //! Speed kick (shoutouts to SimpleFlips)
         if (m->forwardVel >= 29.0f && m->controller->stickMag > 48.0f) {
             m->vel[1] = 20.0f;
             return set_mario_action(m, ACT_DIVE, 1);
@@ -674,6 +646,7 @@ s32 act_walking(struct MarioState *m) {
     switch (perform_ground_step(m)) {
         case GROUND_STEP_LEFT_GROUND:
             set_mario_action(m, ACT_FREEFALL, 0);
+            // Falling animation not set, causes Mario to walk mid-air for a frame
             break;
 
         case GROUND_STEP_NONE:
@@ -837,8 +810,7 @@ s32 act_turning_around(struct MarioState *m) {
         return begin_walking_action(m, 8.0f, ACT_FINISH_TURNING_AROUND, 0);
     }
 
-    play_sound(SOUND_MOVING_TERRAIN_SLIDE + m->terrainSoundAddend,
-               m->marioObj->header.gfx.cameraToObject);
+    play_sound(SOUND_MOVING_TERRAIN_SLIDE + m->terrainSoundAddend, m->marioObj->header.gfx.cameraToObject);
 
     switch (perform_ground_step(m)) {
         case GROUND_STEP_LEFT_GROUND:
@@ -913,11 +885,12 @@ s32 act_braking(struct MarioState *m) {
         case GROUND_STEP_NONE:
             m->particleFlags |= PARTICLE_DUST;
             break;
+        // Missing GROUND_STEP_HIT_WALL check like act_turning_around (Game Zero 4:57)
     }
 
     play_sound(SOUND_MOVING_TERRAIN_SLIDE + m->terrainSoundAddend, m->marioObj->header.gfx.cameraToObject);
     set_mario_animation(m, MARIO_ANIM_SKID_ON_GROUND);
-    check_ledge_climb_down(m); // Mario could ledge grab from braking, as seen in Game Zero
+    check_ledge_climb_down(m); // Mario could ledge grab from braking (Game Zero 3:42)
     return FALSE;
 }
 
@@ -996,7 +969,7 @@ s32 act_burning_ground(struct MarioState *m) {
         m->forwardVel = 48.0f;
     }
 
-    m->forwardVel = approach_f32(m->forwardVel, 24.0f, 4.0f, 1.0f);
+    m->forwardVel = approach_f32(m->forwardVel, 24.0f, 4.0f, 1.0f); // 24 instead of 32
 
     if (m->input & INPUT_NONZERO_ANALOG) {
         m->faceAngle[1] =
@@ -1199,7 +1172,7 @@ s32 common_ground_knockback_action(struct MarioState *m, s32 animation, s32 arg2
     animFrame = set_mario_animation(m, animation);
     if (animFrame < arg2) {
         apply_landing_accel(m, 0.9f);
-    }
+    } // No accel cap on knockback (Game Zero 11:18)
 
     if (perform_ground_step(m) == GROUND_STEP_LEFT_GROUND) {
         if (m->forwardVel >= 0.0f) {
@@ -1334,6 +1307,8 @@ s32 common_landing_cancels(struct MarioState *m, struct LandingAction *landingAc
     }
 
     m->doubleJumpTimer = landingAction->unk02;
+
+    // Sliding didn't cancel landing in the demo (Game Zero 6:43)
 
     if (m->input & INPUT_FIRST_PERSON) {
         return set_mario_action(m, landingAction->endAction, 0);

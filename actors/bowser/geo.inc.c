@@ -2,7 +2,7 @@
 const GeoLayout bowser_geo_0000D8[] = {
     GEO_SHADOW(SHADOW_CIRCLE_9_VERTS, 0x9B, 400),
     GEO_OPEN_NODE(),
-        GEO_ANIMATED_PART(LAYER_OPAQUE, 0, -8, -24, bowser_seg6_dl_06040210),
+        GEO_ANIMATED_PART(LAYER_OPAQUE, 0, -8, -24, bowser_seg6_dl_06040210), // Differnet root position (lower and farther back)
         GEO_OPEN_NODE(),
             GEO_ANIMATED_PART(LAYER_OPAQUE, -89, -2, -18, NULL),
             GEO_OPEN_NODE(),
@@ -331,13 +331,11 @@ const GeoLayout bowser_geo[] = {
         GEO_OPEN_NODE(),
             GEO_NODE_START(),
             GEO_OPEN_NODE(),
-                GEO_ASM(0, geo_bits_bowser_coloring),
                 GEO_BRANCH(1, bowser_geo_0000D8),
             GEO_CLOSE_NODE(),
 
             GEO_NODE_START(),
             GEO_OPEN_NODE(),
-                GEO_ASM(0, geo_bits_bowser_coloring),
                 GEO_BRANCH(1, bowser_geo_000424),
             GEO_CLOSE_NODE(),
         GEO_CLOSE_NODE(),
@@ -355,13 +353,11 @@ const GeoLayout bowser_geo_no_shadow[] = {
         GEO_OPEN_NODE(),
             GEO_NODE_START(),
             GEO_OPEN_NODE(),
-                GEO_ASM(0, geo_bits_bowser_coloring),
                 GEO_BRANCH(1, bowser_geo_0000D8),
             GEO_CLOSE_NODE(),
 
             GEO_NODE_START(),
             GEO_OPEN_NODE(),
-                GEO_ASM(0, geo_bits_bowser_coloring),
                 GEO_BRANCH(1, bowser_geo_000770),
             GEO_CLOSE_NODE(),
         GEO_CLOSE_NODE(),

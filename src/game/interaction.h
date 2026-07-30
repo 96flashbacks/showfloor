@@ -17,7 +17,7 @@
 #define INTERACT_BREAKABLE      /* 0x00000200 */ (1 <<  9)
 //#define INTERACT_STRONG_WIND    /* 0x00000400 */ (1 << 10)
 #define INTERACT_WARP_DOOR      /* 0x00000800 */ (1 << 11)
-#define INTERACT_STAR_OR_KEY    /* 0x00001000 */ (1 << 12)
+#define INTERACT_STAR           /* 0x00001000 */ (1 << 12)
 #define INTERACT_WARP           /* 0x00002000 */ (1 << 13)
 #define INTERACT_CANNON_BASE    /* 0x00004000 */ (1 << 14)
 #define INTERACT_BOUNCE_TOP     /* 0x00008000 */ (1 << 15)
@@ -34,7 +34,7 @@
 //#define INTERACT_BBH_ENTRANCE   /* 0x08000000 */ (1 << 27)
 //#define INTERACT_SNUFIT_BULLET  /* 0x10000000 */ (1 << 28)
 //#define INTERACT_IGLOO_BARRIER  /* 0x40000000 */ (1 << 30)
-#define INTERACT_UNKNOWN_31     /* 0x80000000 */ (1 << 31)
+//#define INTERACT_UNKNOWN_31     /* 0x80000000 */ (1 << 31)
 
 
 // INTERACT_WARP
@@ -57,7 +57,7 @@
 //INTERACT_BOUNCE_TOP
 //#define INT_SUBTYPE_TWIRL_BOUNCE 0x00000080
 
-// INTERACT_STAR_OR_KEY
+// INTERACT_STAR
 //#define INT_SUBTYPE_NO_EXIT 0x00000400
 //#define INT_SUBTYPE_GRAND_STAR 0x00000800
 

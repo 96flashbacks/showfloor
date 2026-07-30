@@ -91,7 +91,6 @@ void spawn_mist_particles_variable(s32 count, s32 offsetY, f32 size) {
     cur_obj_spawn_particles(&sMistParticles);
 }
 
-#include "behaviors/sparkle_spawn_star.inc.c"
 #include "behaviors/coin.inc.c"
 #include "behaviors/door.inc.c"
 #include "behaviors/thwomp.inc.c"

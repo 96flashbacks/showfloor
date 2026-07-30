@@ -68,17 +68,13 @@ extern SkyboxTexture cloud_floor_skybox_ptrlist;
 extern SkyboxTexture water_skybox_ptrlist;
 extern SkyboxTexture wdw_skybox_ptrlist;
 
-SkyboxTexture *sSkyboxTextures[10] = {
+SkyboxTexture *sSkyboxTextures[6] = {
     &water_skybox_ptrlist,
     &bitfs_skybox_ptrlist,
     &wdw_skybox_ptrlist,
     &cloud_floor_skybox_ptrlist,
     &ccm_skybox_ptrlist,
-    NULL, /* we can clean this table up later */
-    NULL,
     &bidw_skybox_ptrlist,
-    NULL,
-    NULL,
 };
 
 /**

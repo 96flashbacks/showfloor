@@ -16,11 +16,7 @@
 #define BACKGROUND_UNDERWATER_CITY  2
 #define BACKGROUND_BELOW_CLOUDS     3
 #define BACKGROUND_SNOW_MOUNTAINS   4
-#define BACKGROUND_DESERT           5
-#define BACKGROUND_HAUNTED          6
-#define BACKGROUND_GREEN_SKY        7
-#define BACKGROUND_ABOVE_CLOUDS     8
-#define BACKGROUND_PURPLE_SKY       9
+#define BACKGROUND_GREEN_SKY        5
 
 // geo layout macros
 

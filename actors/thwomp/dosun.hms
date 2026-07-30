@@ -10,7 +10,7 @@ extern Gfx gfx_dosun[];
 /*	Hierarchy map data of Dosun.												*/
 /********************************************************************************/
 Hierarchy RCP_HmsDosun[] = {
-	hmsShadow(300, 155, 1)
+	hmsShadow(300, 155, 2) // Different shadow type than the iQue source original
 	hmsBegin()
 		hmsGfx(RM_SURF, gfx_dosun)
 	hmsEnd()

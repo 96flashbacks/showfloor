@@ -47,7 +47,7 @@ u8 sDelayInvincTimer;
 s16 sInvulnerable;
 u32 interact_coin(struct MarioState *, u32, struct Object *);
 u32 interact_water_ring(struct MarioState *, u32, struct Object *);
-u32 interact_star_or_key(struct MarioState *, u32, struct Object *);
+u32 interact_star(struct MarioState *, u32, struct Object *);
 u32 interact_warp(struct MarioState *, u32, struct Object *);
 u32 interact_warp_door(struct MarioState *, u32, struct Object *);
 u32 interact_door(struct MarioState *, u32, struct Object *);
@@ -71,7 +71,7 @@ struct InteractionHandler {
 static struct InteractionHandler sInteractionHandlers[] = {
     { INTERACT_COIN, interact_coin },
     { INTERACT_WATER_RING, interact_water_ring },
-    { INTERACT_STAR_OR_KEY, interact_star_or_key },
+    { INTERACT_STAR, interact_star },
     //{ INTERACT_BBH_ENTRANCE, interact_bbh_entrance },
     { INTERACT_WARP, interact_warp },
     { INTERACT_WARP_DOOR, interact_warp_door },
@@ -626,7 +626,7 @@ u32 interact_water_ring(struct MarioState *m, UNUSED u32 interactType, struct Ob
     return FALSE;
 }
 
-u32 interact_star_or_key(struct MarioState *m, UNUSED u32 interactType, struct Object *o) {
+u32 interact_star(struct MarioState *m, UNUSED u32 interactType, struct Object *o) {
     u32 starIndex;
     u32 starGrabAction = ACT_STAR_DANCE_EXIT;
 
@@ -669,8 +669,6 @@ u32 interact_star_or_key(struct MarioState *m, UNUSED u32 interactType, struct O
 }
 
 u32 interact_warp(struct MarioState *m, UNUSED u32 interactType, struct Object *o) {
-    u32 action;
-
     if (m->action != ACT_EMERGE_FROM_PIPE) {
         o->oInteractStatus = INT_STATUS_INTERACTED;
         m->interactObj = o;
@@ -984,8 +982,6 @@ u32 interact_hoot(struct MarioState *m, UNUSED u32 interactType, struct Object *
 }
 
 u32 interact_grabbable(struct MarioState *m, u32 interactType, struct Object *o) {
-    const BehaviorScript *script = virtual_to_segmented(0x13, o->behavior);
-
     if (o->oInteractionSubtype & INT_SUBTYPE_KICKABLE) {
         u32 interaction = determine_interaction(m, o);
         if (interaction & (INT_KICK | INT_TRIP)) {
@@ -1009,70 +1005,8 @@ u32 interact_grabbable(struct MarioState *m, u32 interactType, struct Object *o)
         }
     }
 
-    return FALSE;
-}
+    // No hitbox on grabbable objects that aren't Bowser (baby penguins)
 
-u32 mario_can_talk(struct MarioState *m, u32 arg) {
-    s16 val6;
-
-    if ((m->action & ACT_FLAG_IDLE) != 0x00000000) {
-        return TRUE;
-    }
-
-    if (m->action == ACT_WALKING) {
-        if (arg) {
-            return TRUE;
-        }
-
-        val6 = m->marioObj->header.gfx.animInfo.animID;
-
-        if (val6 == 0x0080 || val6 == 0x007F || val6 == 0x006C) {
-            return TRUE;
-        }
-    }
-
-    return FALSE;
-}
-
-#define READ_MASK (INPUT_B_PRESSED)
-
-#define SIGN_RANGE 0x38E3
-
-u32 check_read_sign(struct MarioState *m, struct Object *o) {
-    if ((m->input & READ_MASK) && mario_can_talk(m, 0) && object_facing_mario(m, o, SIGN_RANGE)) {
-        s16 facingDYaw = (s16) (o->oMoveAngleYaw + 0x8000) - m->faceAngle[1];
-        if (facingDYaw >= -SIGN_RANGE && facingDYaw <= SIGN_RANGE) {
-            f32 targetX = o->oPosX + 105.0f * sins(o->oMoveAngleYaw);
-            f32 targetZ = o->oPosZ + 105.0f * coss(o->oMoveAngleYaw);
-
-            m->marioObj->oMarioReadingSignDYaw = facingDYaw;
-            m->marioObj->oMarioReadingSignDPosX = targetX - m->pos[0];
-            m->marioObj->oMarioReadingSignDPosZ = targetZ - m->pos[2];
-
-            m->interactObj = o;
-            m->usedObj = o;
-            return set_mario_action(m, ACT_READING_SIGN, 0);
-        }
-    }
-
-    return FALSE;
-}
-
-u32 check_npc_talk(struct MarioState *m, struct Object *o) {
-    if ((m->input & READ_MASK) && mario_can_talk(m, 1)) {
-        s16 facingDYaw = mario_obj_angle_to_object(m, o) - m->faceAngle[1];
-        if (facingDYaw >= -0x4000 && facingDYaw <= 0x4000) {
-            o->oInteractStatus = INT_STATUS_INTERACTED;
-
-            m->interactObj = o;
-            m->usedObj = o;
-
-            push_mario_out_of_object(m, o, -10.0f);
-            return set_mario_action(m, ACT_WAITING_FOR_DIALOG, 0);
-        }
-    }
-
-    push_mario_out_of_object(m, o, -10.0f);
     return FALSE;
 }
 

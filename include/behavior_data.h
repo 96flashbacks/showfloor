@@ -40,8 +40,6 @@ extern const BehaviorScript bhvExitPodiumWarp[];
 extern const BehaviorScript bhvWarp[];
 extern const BehaviorScript bhvWarpPipe[];
 extern const BehaviorScript bhvWhitePuffExplosion[];
-extern const BehaviorScript bhvSpawnedStar[];
-extern const BehaviorScript bhvSpawnedStarNoLevelExit[];
 extern const BehaviorScript bhvCoinInsideBoo[];
 extern const BehaviorScript bhvCoinFormationSpawn[];
 extern const BehaviorScript bhvCoinFormation[];

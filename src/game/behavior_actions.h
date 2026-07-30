@@ -360,18 +360,11 @@ void bhv_volcano_trap_loop(void);
 Gfx *geo_move_mario_part_from_parent(s32 run, UNUSED struct GraphNode *node, Mat4 mtx);
 
 // Bowser
-Gfx *geo_bits_bowser_coloring(s32 run, struct GraphNode *node, UNUSED s32 a2);
 Gfx *geo_update_body_rot_from_parent(s32 run, UNUSED struct GraphNode *node, Mat4 mtx);
 Gfx *geo_switch_bowser_eyes(s32 run, struct GraphNode *node, UNUSED Mat4 *mtx);
 
 // Tuxie
 Gfx *geo_switch_tuxie_mother_eyes(s32 run, struct GraphNode *node, UNUSED Mat4 *mtx);
-
-// Cap switch
-Gfx *geo_update_held_mario_pos(s32 run, UNUSED struct GraphNode *node, Mat4 mtx);
-
-// Bowser key cutscene
-Gfx *geo_scale_bowser_key(s32 run, struct GraphNode *node, UNUSED f32 mtx[4][4]);
 
 // Water splash
 extern struct WaterDropletParams gShallowWaterSplashDropletParams;

@@ -603,16 +603,15 @@ static Gfx *create_shadow_circle_assuming_flat_ground(f32 xPos, f32 yPos, f32 zP
     Vtx *verts;
     Gfx *displayList;
     struct FloorGeometry *dummy; // only for calling find_floor_height_and_data
-    f32 distBelowFloor;
     f32 floorHeight = find_floor_height_and_data(xPos, yPos, zPos, &dummy);
-    f32 radius = shadowScale / 2;
+    f32 distBelowFloor = floorHeight - yPos;
+    f32 radius;
 
-    if (floorHeight < FLOOR_LOWER_LIMIT_SHADOW) {
-        return NULL;
-    } else {
-        distBelowFloor = floorHeight - yPos;
-    }
-
+    // Changed so the shadow scales and dims, Thwomps appear to use this shadow type in footage
+    shadowScale = scale_shadow_with_distance(shadowScale, yPos - floorHeight);
+    radius = shadowScale / 2;
+    solidity = dim_shadow_with_distance(solidity, yPos - floorHeight);
+    
     verts = alloc_display_list(4 * sizeof(Vtx));
     displayList = alloc_display_list(5 * sizeof(Gfx));
 

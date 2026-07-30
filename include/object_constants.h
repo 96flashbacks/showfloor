@@ -232,20 +232,13 @@
     #define BOWSER_ACT_DANCE                3
     #define BOWSER_ACT_DEAD                 4
     #define BOWSER_ACT_WAIT                 5
-    #define BOWSER_ACT_INTRO_WALK           6
-    #define BOWSER_ACT_CHARGE_MARIO         7
-    #define BOWSER_ACT_SPIT_FIRE_INTO_SKY   8
-    #define BOWSER_ACT_SPIT_FIRE_ONTO_FLOOR 9
-    #define BOWSER_ACT_HIT_EDGE             10
-    #define BOWSER_ACT_TURN_FROM_EDGE       11
-    #define BOWSER_ACT_HIT_MINE             12
-    #define BOWSER_ACT_BIG_JUMP             13
-    #define BOWSER_ACT_WALK_TO_MARIO        14
-    #define BOWSER_ACT_BREATH_FIRE          15
-    #define BOWSER_ACT_TELEPORT             16
-    #define BOWSER_ACT_QUICK_JUMP           17
-    #define BOWSER_ACT_UNUSED_SLOW_WALK     18
-    #define BOWSER_ACT_TILT_LAVA_PLATFORM   19
+    #define BOWSER_ACT_HIT_EDGE             6
+    #define BOWSER_ACT_TURN_FROM_EDGE       7
+    #define BOWSER_ACT_HIT_MINE             8
+    #define BOWSER_ACT_WALK_TO_MARIO        9
+    #define BOWSER_ACT_BREATH_FIRE          10
+    #define BOWSER_ACT_QUICK_JUMP           11
+    #define BOWSER_ACT_IDLE                 12 // unused in the final game (BOWSER_ACT_UNUSED_SLOW_WALK)
 
     /* Animations */
     #define BOWSER_ANIM_STAND_UP            0
@@ -276,11 +269,6 @@
     #define BOWSER_ANIM_FLIP                25
     #define BOWSER_ANIM_STAND_UP_FROM_FLIP  26
 
-    /* oBhvParams2ndByte */
-    #define BOWSER_BP_BITDW 0
-    #define BOWSER_BP_BITFS 1
-    #define BOWSER_BP_BITS  2
-
     /* oBowserCamAct */
     #define BOWSER_CAM_ACT_IDLE 0
     #define BOWSER_CAM_ACT_WALK 1
@@ -291,8 +279,6 @@
     #define BOWSER_STATUS_ANGLE_CENTER  (1 <<  2) // 0x00000004
     #define BOWSER_STATUS_DIST_MARIO    (1 <<  3) // 0x00000008
     #define BOWSER_STATUS_DIST_CENTER   (1 <<  4) // 0x00000010
-    #define BOWSER_STATUS_BIG_JUMP      (1 << 16) // 0x00010000
-    #define BOWSER_STATUS_FIRE_SKY      (1 << 17) // 0x00020000
 
     /* oBowserGrabbedStatus */
     #define BOWSER_GRAB_STATUS_NONE     0
@@ -305,17 +291,6 @@
     #define BOWSER_SUB_ACT_DEAD_WAIT                2
     #define BOWSER_SUB_ACT_DEAD_DEFAULT_END         3
     #define BOWSER_SUB_ACT_DEAD_DEFAULT_END_OVER    4
-    #define BOWSER_SUB_ACT_DEAD_FINAL_END           10
-    #define BOWSER_SUB_ACT_DEAD_FINAL_END_OVER      11
-
-    #define BOWSER_SUB_ACT_CHARGE_START             0
-    #define BOWSER_SUB_ACT_CHARGE_RUN               1
-    #define BOWSER_SUB_ACT_CHARGE_END               2
-    #define BOWSER_SUB_ACT_CHARGE_SLIP              3
-
-    #define BOWSER_SUB_ACT_TELEPORT_START           0
-    #define BOWSER_SUB_ACT_TELEPORT_MOVE            1
-    #define BOWSER_SUB_ACT_TELEPORT_STOP            2
 
     #define BOWSER_SUB_ACT_HIT_MINE_START           0
     #define BOWSER_SUB_ACT_HIT_MINE_FALL            1
@@ -325,12 +300,6 @@
     #define BOWSER_SUB_ACT_JUMP_ON_STAGE_START      1
     #define BOWSER_SUB_ACT_JUMP_ON_STAGE_LAND       2
     #define BOWSER_SUB_ACT_JUMP_ON_STAGE_STOP       3
-
-/* Bowser BitS Platform */
-    /* oAction */
-    #define BOWSER_BITS_PLAT_ACT_START 0
-    #define BOWSER_BITS_PLAT_ACT_CHECK 1
-    #define BOWSER_BITS_PLAT_ACT_FALL  2
 
 /* Fish Spawer */
     /* oAction */

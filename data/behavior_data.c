@@ -635,24 +635,6 @@ const BehaviorScript bhvWhitePuffExplosion[] = {
     END_LOOP(),
 };
 
-const BehaviorScript bhvSpawnedStar[] = {
-    BEGIN(OBJ_LIST_LEVEL),
-    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
-    SET_INT(oBhvParams2ndByte, 1),
-    GOTO(bhvSpawnedStarNoLevelExit + 1 + 1),
-};
-
-const BehaviorScript bhvSpawnedStarNoLevelExit[] = {
-    BEGIN(OBJ_LIST_LEVEL),
-    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
-    // Spawned star - common:
-    SET_HOME(),
-    CALL_NATIVE(bhv_spawned_star_init),
-    BEGIN_LOOP(),
-        CALL_NATIVE(bhv_spawned_star_loop),
-    END_LOOP(),
-};
-
 const BehaviorScript bhvCoinInsideBoo[] = {
     BEGIN(OBJ_LIST_LEVEL),
     SET_HITBOX(/*Radius*/ 100, /*Height*/ 64),

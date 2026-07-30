@@ -188,6 +188,12 @@ void play_painting_eject_sound(void) {
     }
 }
 
+/**
+ * Plays the scream music when entering the bowser hallway, with 2 different variants.
+ * Nearly identical functionality to play_infinite_stairs_music from the final game
+ * 
+ * Called from threads: thread5_game_loop
+ */
 void play_bowser_hallway_music(void) {
     u8 shouldPlay = FALSE;
 
@@ -203,9 +209,14 @@ void play_bowser_hallway_music(void) {
     if (sPlayingBowserHallway ^ shouldPlay) {
         sPlayingBowserHallway = shouldPlay;
         if (shouldPlay) {
-            play_secondary_music(0x23, 0x4B, 0xFF, 0);
+            // Different hallway music per door entered
+            if (gMarioState->action == ACT_PUSHING_DOOR) {
+                play_secondary_music(0x23, 0x4B, 0xFF, 0);
+            } else if (gMarioState->action == ACT_PULLING_DOOR) {
+                play_secondary_music(0x24, 0x4B, 0xFF, 0);
+            }
         } else {
-            func_80321080(1200);
+            func_80321080(1200); // Fade out the music if it shouldn't play
         }
     }
 }

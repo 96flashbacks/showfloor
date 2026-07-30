@@ -80,67 +80,30 @@ s32 check_dive_in_air(struct MarioState *m) {
     return FALSE;
 }
 
-s32 check_horizontal_wind(struct MarioState *m) {
-    struct Surface *floor;
-    f32 speed;
-    s16 pushAngle;
-
-    floor = m->floor;
-
-    if (floor->type == SURFACE_HORIZONTAL_WIND) {
-        pushAngle = floor->force << 8;
-
-        m->slideVelX += 1.2f * sins(pushAngle);
-        m->slideVelZ += 1.2f * coss(pushAngle);
-
-        speed = sqrtf(m->slideVelX * m->slideVelX + m->slideVelZ * m->slideVelZ);
-
-        if (speed > 48.0f) {
-            m->slideVelX = m->slideVelX * 48.0f / speed;
-            m->slideVelZ = m->slideVelZ * 48.0f / speed;
-            speed = 32.0f; //! This was meant to be 48?
-        } else if (speed > 32.0f) {
-            speed = 32.0f;
-        }
-
-        m->vel[0] = m->slideVelX;
-        m->vel[2] = m->slideVelZ;
-        m->slideYaw = atan2s(m->slideVelZ, m->slideVelX);
-        m->forwardVel = speed * coss(m->faceAngle[1] - m->slideYaw);
-
-        play_sound(SOUND_ENV_WIND2, m->marioObj->header.gfx.cameraToObject);
-        return TRUE;
-    }
-
-    return FALSE;
-}
-
 void update_air_with_turn(struct MarioState *m) {
     s16 intendedDYaw;
     f32 intendedMag;
 
-    if (!check_horizontal_wind(m)) {
-        m->forwardVel = approach_f32(m->forwardVel, 0.0f, 0.35f, 0.35f);
+    m->forwardVel = approach_f32(m->forwardVel, 0.0f, 0.35f, 0.35f);
 
-        if (m->input & INPUT_NONZERO_ANALOG) {
-            intendedDYaw = m->intendedYaw - m->faceAngle[1];
-            intendedMag = m->intendedMag / 32.0f;
+    if (m->input & INPUT_NONZERO_ANALOG) {
+        intendedDYaw = m->intendedYaw - m->faceAngle[1];
+        intendedMag = m->intendedMag / 32.0f;
 
-            m->forwardVel += 1.5f * coss(intendedDYaw) * intendedMag;
-            m->faceAngle[1] += 512.0f * sins(intendedDYaw) * intendedMag;
-        }
-
-        //! Uncapped air speed. Net positive when moving forward.
-        if (m->forwardVel > 32.0f) {
-            m->forwardVel -= 1.0f;
-        }
-        if (m->forwardVel < -16.0f) {
-            m->forwardVel += 2.0f;
-        }
-
-        m->vel[0] = m->slideVelX = m->forwardVel * sins(m->faceAngle[1]);
-        m->vel[2] = m->slideVelZ = m->forwardVel * coss(m->faceAngle[1]);
+        m->forwardVel += 1.5f * coss(intendedDYaw) * intendedMag;
+        m->faceAngle[1] += 512.0f * sins(intendedDYaw) * intendedMag;
     }
+
+    //! Uncapped air speed. Net positive when moving forward.
+    if (m->forwardVel > 32.0f) {
+        m->forwardVel -= 1.0f;
+    }
+    if (m->forwardVel < -16.0f) {
+        m->forwardVel += 2.0f;
+    }
+
+    m->vel[0] = m->slideVelX = m->forwardVel * sins(m->faceAngle[1]);
+    m->vel[2] = m->slideVelZ = m->forwardVel * coss(m->faceAngle[1]);
 }
 
 void update_air_without_turn(struct MarioState *m) {
@@ -148,34 +111,33 @@ void update_air_without_turn(struct MarioState *m) {
     s16 intendedDYaw;
     f32 intendedMag;
 
-    if (!check_horizontal_wind(m)) { // same thing
-        m->forwardVel = approach_f32(m->forwardVel, 0.0f, 0.35f, 0.35f);
+    m->forwardVel = approach_f32(m->forwardVel, 0.0f, 0.35f, 0.35f);
 
-        if (m->input & INPUT_NONZERO_ANALOG) {
-            intendedDYaw = m->intendedYaw - m->faceAngle[1];
-            intendedMag = m->intendedMag / 32.0f;
+    if (m->input & INPUT_NONZERO_ANALOG) {
+        intendedDYaw = m->intendedYaw - m->faceAngle[1];
+        intendedMag = m->intendedMag / 32.0f;
 
-            m->forwardVel += intendedMag * coss(intendedDYaw) * 1.5f;
-            sidewaysSpeed = intendedMag * sins(intendedDYaw) * 10.0f;
-        }
-
-        //! Uncapped air speed. Net positive when moving forward.
-        if (m->forwardVel > 32.0f) {
-            m->forwardVel -= 1.0f;
-        }
-        if (m->forwardVel < -16.0f) {
-            m->forwardVel += 2.0f;
-        }
-
-        m->slideVelX = m->forwardVel * sins(m->faceAngle[1]);
-        m->slideVelZ = m->forwardVel * coss(m->faceAngle[1]);
-
-        m->slideVelX += sidewaysSpeed * sins(m->faceAngle[1] + 0x4000);
-        m->slideVelZ += sidewaysSpeed * coss(m->faceAngle[1] + 0x4000);
-
-        m->vel[0] = m->slideVelX;
-        m->vel[2] = m->slideVelZ;
+        m->forwardVel += intendedMag * coss(intendedDYaw) * 1.5f;
+        sidewaysSpeed = intendedMag * sins(intendedDYaw) * 10.0f;
     }
+
+    //! Uncapped air speed. Net positive when moving forward.
+    if (m->forwardVel > 32.0f) {
+        m->forwardVel -= 1.0f;
+    }
+    if (m->forwardVel < -16.0f) {
+        m->forwardVel += 2.0f;
+    }
+
+    m->slideVelX = m->forwardVel * sins(m->faceAngle[1]);
+    m->slideVelZ = m->forwardVel * coss(m->faceAngle[1]);
+
+    m->slideVelX += sidewaysSpeed * sins(m->faceAngle[1] + 0x4000);
+    m->slideVelZ += sidewaysSpeed * coss(m->faceAngle[1] + 0x4000);
+
+    m->vel[0] = m->slideVelX;
+    m->vel[2] = m->slideVelZ;
+
 }
 
 void update_lava_boost_or_twirling(struct MarioState *m) {

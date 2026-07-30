@@ -114,37 +114,6 @@ u32 mario_push_off_steep_floor(struct MarioState *m, u32 action, u32 actionArg) 
     return set_mario_action(m, action, actionArg);
 }
 
-u32 mario_update_windy_ground(struct MarioState *m) {
-    struct Surface *floor = m->floor;
-
-    if (floor->type == SURFACE_HORIZONTAL_WIND) {
-        f32 pushSpeed;
-        s16 pushAngle = floor->force << 8;
-
-        if (m->action & ACT_FLAG_MOVING) {
-            s16 pushDYaw = m->faceAngle[1] - pushAngle;
-
-            pushSpeed = m->forwardVel > 0.0f ? -m->forwardVel * 0.5f : -8.0f;
-
-            if (pushDYaw > -0x4000 && pushDYaw < 0x4000) {
-                pushSpeed *= -1.0f;
-            }
-
-            pushSpeed *= coss(pushDYaw);
-        } else {
-            pushSpeed = 3.2f + (gGlobalTimer % 4);
-        }
-
-        m->vel[0] += pushSpeed * sins(pushAngle);
-        m->vel[2] += pushSpeed * coss(pushAngle);
-
-        play_sound(SOUND_ENV_WIND2, m->marioObj->header.gfx.cameraToObject);
-        return TRUE;
-    }
-
-    return FALSE;
-}
-
 void stop_and_set_height_to_floor(struct MarioState *m) {
     struct Object *marioObj = m->marioObj;
 
@@ -159,22 +128,16 @@ void stop_and_set_height_to_floor(struct MarioState *m) {
 }
 
 s32 stationary_ground_step(struct MarioState *m) {
-    u32 takeStep;
     struct Object *marioObj = m->marioObj;
     u32 stepResult = GROUND_STEP_NONE;
 
     mario_set_forward_vel(m, 0.0f);
 
-    takeStep = mario_update_windy_ground(m);
-    if (takeStep) {
-        stepResult = perform_ground_step(m);
-    } else {
-        //! This is responsible for several stationary downwarps.
-        m->pos[1] = m->floorHeight;
+    //! This is responsible for several stationary downwarps.
+    m->pos[1] = m->floorHeight;
 
-        vec3f_copy(marioObj->header.gfx.pos, m->pos);
-        vec3s_set(marioObj->header.gfx.angle, 0, m->faceAngle[1], 0);
-    }
+    vec3f_copy(marioObj->header.gfx.pos, m->pos);
+    vec3s_set(marioObj->header.gfx.angle, 0, m->faceAngle[1], 0);
 
     return stepResult;
 }

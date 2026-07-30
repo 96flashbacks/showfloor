@@ -52,115 +52,6 @@ struct Object *spawn_obj_at_mario_rel_yaw(struct MarioState *m, s32 model,
     return o;
 }
 
-/**
- * mario_ready_to_speak: Determine if Mario is able to speak to a NPC
- * The following conditions must be met in order for Mario to be considered
- * ready to speak.
- * 1: Mario's action must be in the stationary or moving action groups, or if
- *    not, he must be in the "waiting for dialog" state.
- * 2: Mario mat not be be invulnerable.
- * 3: Mario must not be in first person mode.
- */
-s32 mario_ready_to_speak(void) {
-    u32 actionGroup = gMarioState->action & ACT_GROUP_MASK;
-    s32 isReadyToSpeak = FALSE;
-
-    if ((gMarioState->action == ACT_WAITING_FOR_DIALOG || actionGroup == ACT_GROUP_STATIONARY
-         || actionGroup == ACT_GROUP_MOVING)
-        && (!(gMarioState->action & (ACT_FLAG_INVULNERABLE))
-            && gMarioState->action != ACT_FIRST_PERSON)) {
-        isReadyToSpeak = TRUE;
-    }
-
-    return isReadyToSpeak;
-}
-
-// (can) place Mario in dialog?
-// initiate dialog?
-// return values:
-// 0 = not in dialog
-// 1 = starting dialog
-// 2 = speaking
-s32 set_mario_npc_dialog(s32 actionArg) {
-    s32 dialogState = MARIO_DIALOG_STATUS_NONE;
-
-    // in dialog
-    if (gMarioState->action == ACT_READING_NPC_DIALOG) {
-        if (gMarioState->actionState < 8) {
-            dialogState = MARIO_DIALOG_STATUS_START; // starting dialog
-        }
-        if (gMarioState->actionState == 8) {
-            if (actionArg == MARIO_DIALOG_STOP) {
-                gMarioState->actionState++; // exit dialog
-            } else {
-                dialogState = MARIO_DIALOG_STATUS_SPEAK;
-            }
-        }
-    } else if (actionArg != 0 && mario_ready_to_speak()) {
-        gMarioState->usedObj = gCurrentObject;
-        set_mario_action(gMarioState, ACT_READING_NPC_DIALOG, actionArg);
-        dialogState = MARIO_DIALOG_STATUS_START; // starting dialog
-    }
-
-    return dialogState;
-}
-
-// actionargs:
-// 1 : no head turn
-// 2 : look up
-// 3 : look down
-// actionstate values:
-// 0 - 7: looking toward npc
-// 8: in dialog
-// 9 - 22: looking away from npc
-// 23: end
-s32 act_reading_npc_dialog(struct MarioState *m) {
-    s32 headTurnAmount = 0;
-    s16 angleToNPC;
-
-    if (m->actionArg == MARIO_DIALOG_LOOK_UP) {
-        headTurnAmount = -1024;
-    }
-    if (m->actionArg == MARIO_DIALOG_LOOK_DOWN) {
-        headTurnAmount = 384;
-    }
-
-    if (m->actionState < 8) {
-        // turn to NPC
-        angleToNPC = mario_obj_angle_to_object(m, m->usedObj);
-        m->faceAngle[1] =
-            angleToNPC - approach_s32((angleToNPC - m->faceAngle[1]) << 16 >> 16, 0, 2048, 2048);
-        // turn head to npc
-        m->actionTimer += headTurnAmount;
-        // set animation
-        set_mario_animation(m, m->heldObj == NULL ? MARIO_ANIM_FIRST_PERSON
-                                                  : MARIO_ANIM_IDLE_WITH_LIGHT_OBJ);
-    } else if (m->actionState >= 9 && m->actionState < 17) {
-        // look back from facing NPC
-        m->actionTimer -= headTurnAmount;
-    } else if (m->actionState == 23) {
-        set_mario_action(m, m->heldObj == NULL ? ACT_IDLE : ACT_HOLD_IDLE, 0);
-    }
-    vec3f_copy(m->marioObj->header.gfx.pos, m->pos);
-    vec3s_set(m->marioObj->header.gfx.angle, 0, m->faceAngle[1], 0);
-    vec3s_set(m->marioBodyState->headAngle, m->actionTimer, 0, 0);
-
-    if (m->actionState != 8) {
-        m->actionState++;
-    }
-
-    return FALSE;
-}
-
-// puts Mario in a state where he's waiting for (npc) dialog; doesn't do much
-s32 act_waiting_for_dialog(struct MarioState *m) {
-    set_mario_animation(m,
-                        m->heldObj == NULL ? MARIO_ANIM_FIRST_PERSON : MARIO_ANIM_IDLE_WITH_LIGHT_OBJ);
-    vec3f_copy(m->marioObj->header.gfx.pos, m->pos);
-    vec3s_set(m->marioObj->header.gfx.angle, 0, m->faceAngle[1], 0);
-    return FALSE;
-}
-
 // makes Mario disappear and triggers warp
 s32 act_disappeared(struct MarioState *m) {
     set_mario_animation(m, MARIO_ANIM_A_POSE);
@@ -202,46 +93,6 @@ s32 act_reading_automatic_dialog(struct MarioState *m) {
         }
     }
 
-    return FALSE;
-}
-
-s32 act_reading_sign(struct MarioState *m) {
-    struct Object *marioObj = m->marioObj;
-
-    play_sound_if_no_flag(m, SOUND_ACTION_READ_SIGN, MARIO_ACTION_SOUND_PLAYED);
-
-    switch (m->actionState) {
-        // start dialog
-        case 0:
-            trigger_cutscene_dialog(1);
-            enable_time_stop();
-            // reading sign
-            set_mario_animation(m, MARIO_ANIM_FIRST_PERSON);
-            m->actionState = 1;
-            // intentional fall through
-        // turn toward sign
-        case 1:
-            m->faceAngle[1] += marioObj->oMarioPoleUnk108 / 11;
-            m->pos[0] += marioObj->oMarioReadingSignDPosX / 11.0f;
-            m->pos[2] += marioObj->oMarioReadingSignDPosZ / 11.0f;
-            // create the text box
-            if (m->actionTimer++ == 10) {
-                create_dialog_inverted_box(m->usedObj->oBhvParams2ndByte);
-                m->actionState = 2;
-            }
-            break;
-        // in dialog
-        case 2:
-            // dialog finished
-            if (gCamera->cutscene == 0) {
-                disable_time_stop();
-                set_mario_action(m, ACT_IDLE, 0);
-            }
-            break;
-    }
-
-    vec3f_copy(marioObj->header.gfx.pos, m->pos);
-    vec3s_set(marioObj->header.gfx.angle, 0, m->faceAngle[1], 0);
     return FALSE;
 }
 
@@ -861,10 +712,7 @@ s32 mario_execute_cutscene_action(struct MarioState *m) {
         case ACT_STAR_DANCE_WATER:           cancel = act_star_dance_water(m);           break;
         case ACT_FALL_AFTER_STAR_GRAB:       cancel = act_fall_after_star_grab(m);       break;
         case ACT_READING_AUTOMATIC_DIALOG:   cancel = act_reading_automatic_dialog(m);   break;
-        case ACT_READING_NPC_DIALOG:         cancel = act_reading_npc_dialog(m);         break;
         case ACT_DEBUG_FREE_MOVE:            cancel = act_debug_free_move(m);            break;
-        case ACT_READING_SIGN:               cancel = act_reading_sign(m);               break;
-        case ACT_WAITING_FOR_DIALOG:         cancel = act_waiting_for_dialog(m);         break;
         case ACT_STANDING_DEATH:             cancel = act_standing_death(m);             break;
         case ACT_DEATH_ON_STOMACH:           cancel = act_death_on_stomach(m);           break;
         case ACT_DEATH_ON_BACK:              cancel = act_death_on_back(m);              break;
