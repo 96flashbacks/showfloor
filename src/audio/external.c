@@ -129,13 +129,7 @@ s16 sDynDDD[] = {
     DYN2(MARIO_Y_GE, 100, MARIO_IS_IN_AREA, AREA_DDD_SUB & 0xf, 2),
     1,
 };
-s16 sDynUnk38[] = {
-    SEQ_LEVEL_UNDERGROUND,
-    DYN1(MARIO_IS_IN_AREA, 1, 3),
-    DYN1(MARIO_IS_IN_AREA, 2, 4),
-    DYN1(MARIO_IS_IN_AREA, 3, 7),
-    0,
-};
+
 s16 sDynNone[] = { SEQ_SOUND_PLAYER, 0 };
 
 u8 sCurrentMusicDynamic = 0xff;
@@ -211,33 +205,8 @@ u8 sBackgroundMusicDefaultVolume[] = {
     75,  // SEQ_LEVEL_WATER
     75,  // SEQ_LEVEL_HOT
     75,  // SEQ_LEVEL_BOSS_KOOPA
-    70,  // SEQ_LEVEL_SNOW
-    65,  // SEQ_LEVEL_SLIDE
-    80,  // SEQ_LEVEL_SPOOKY
-    65,  // SEQ_EVENT_PIRANHA_PLANT
-    85,  // SEQ_LEVEL_UNDERGROUND
-    75,  // SEQ_MENU_STAR_SELECT
-    65,  // SEQ_EVENT_POWERUP
-    70,  // SEQ_EVENT_METAL_CAP
-    65,  // SEQ_EVENT_KOOPA_MESSAGE
-    70,  // SEQ_LEVEL_KOOPA_ROAD
-    70,  // SEQ_EVENT_HIGH_SCORE
-    65,  // SEQ_EVENT_MERRY_GO_ROUND
-    80,  // SEQ_EVENT_RACE
-    70,  // SEQ_EVENT_CUTSCENE_STAR_SPAWN
-    85,  // SEQ_EVENT_BOSS
-    75,  // SEQ_EVENT_CUTSCENE_COLLECT_KEY
-    75,  // SEQ_EVENT_ENDLESS_STAIRS
-    85,  // SEQ_LEVEL_BOSS_KOOPA_FINAL
-    70,  // SEQ_EVENT_CUTSCENE_CREDITS
-    80,  // SEQ_EVENT_SOLVE_PUZZLE
-    80,  // SEQ_EVENT_TOAD_MESSAGE
-    70,  // SEQ_EVENT_PEACH_MESSAGE
-    75,  // SEQ_EVENT_CUTSCENE_INTRO
-    80,  // SEQ_EVENT_CUTSCENE_VICTORY
-    70,  // SEQ_EVENT_CUTSCENE_ENDING
-    65,  // SEQ_MENU_FILE_SELECT
-    0,   // SEQ_EVENT_CUTSCENE_LAKITU (not in JP)
+    80,  // SEQ_KOOPA_HALLWAY_SCREAM_LEFT
+    80,  // SEQ_KOOPA_HALLWAY_SCREAM_RIGHT
 };
 
 STATIC_ASSERT(ARRAY_COUNT(sBackgroundMusicDefaultVolume) == SEQ_COUNT,
@@ -312,7 +281,6 @@ static void update_game_sound(void);
 static void fade_channel_volume_scale(u8 player, u8 channelId, u8 targetScale, u16 fadeTimer);
 void process_level_music_dynamics(void);
 static u8 begin_background_music_fade(u16 fadeDuration);
-void func_80320ED8(void);
 
 /**
  * Called from threads: thread3_main, thread5_game_loop
@@ -1331,7 +1299,6 @@ void process_level_music_dynamics(void) {
 
     func_8031F96C(0);
     func_8031F96C(2);
-    func_80320ED8();
     if (sMusicDynamicDelay != 0) {
         sMusicDynamicDelay--;
     } else {
@@ -1524,8 +1491,7 @@ void seq_player_unlower_volume(u8 player, u16 fadeDuration) {
 static u8 begin_background_music_fade(u16 fadeDuration) {
     u8 targetVolume = 0xff;
 
-    if (sCurrentBackgroundMusicSeqId == SEQUENCE_NONE
-        || sCurrentBackgroundMusicSeqId == SEQ_EVENT_CUTSCENE_CREDITS) {
+    if (sCurrentBackgroundMusicSeqId == SEQUENCE_NONE) {
         return 0xff;
     }
 
@@ -1913,27 +1879,6 @@ u16 get_current_background_music(void) {
 }
 
 /**
- * Called from threads: thread4_sound, thread5_game_loop (EU only)
- */
-void func_80320ED8(void) {
-    if (gSequencePlayers[SEQ_PLAYER_ENV].enabled
-        || sBackgroundMusicMaxTargetVolume == TARGET_VOLUME_UNSET) {
-        return;
-    }
-
-    sBackgroundMusicMaxTargetVolume = TARGET_VOLUME_UNSET;
-    begin_background_music_fade(50);
-
-    if (sBackgroundMusicTargetVolume != TARGET_VOLUME_UNSET
-        && (D_80332120 == SEQ_EVENT_MERRY_GO_ROUND || D_80332120 == SEQ_EVENT_PIRANHA_PLANT)) {
-        seq_player_play_sequence(SEQ_PLAYER_ENV, D_80332120, 1);
-        if (D_80332124 != 0xff) {
-            seq_player_fade_to_target_volume(SEQ_PLAYER_ENV, 1, D_80332124);
-        }
-    }
-}
-
-/**
  * Called from threads: thread5_game_loop
  */
 void play_secondary_music(u8 seqId, u8 bgMusicVolume, u8 volume, u16 fadeTimer) {
@@ -2007,67 +1952,6 @@ void func_803210D4(u16 fadeDuration) {
 void play_course_clear(void) {
     seq_player_play_sequence(SEQ_PLAYER_ENV, SEQ_EVENT_CUTSCENE_COLLECT_STAR, 0);
     sBackgroundMusicMaxTargetVolume = TARGET_VOLUME_IS_PRESENT_FLAG | 0;
-    begin_background_music_fade(50);
-}
-
-/**
- * Called from threads: thread5_game_loop
- */
-void play_peachs_jingle(void) {
-    seq_player_play_sequence(SEQ_PLAYER_ENV, SEQ_EVENT_PEACH_MESSAGE, 0);
-    sBackgroundMusicMaxTargetVolume = TARGET_VOLUME_IS_PRESENT_FLAG | 0;
-    begin_background_music_fade(50);
-}
-
-/**
- * Plays the puzzle jingle. Plays the dadada dadada *dadada* jingle
- * that usually plays when you solve a "puzzle", like chests, talking to
- * yoshi, releasing chain chomp, opening the pyramid top, etc.
- *
- * Called from threads: thread5_game_loop
- */
-void play_puzzle_jingle(void) {
-    seq_player_play_sequence(SEQ_PLAYER_ENV, SEQ_EVENT_SOLVE_PUZZLE, 0);
-    sBackgroundMusicMaxTargetVolume = TARGET_VOLUME_IS_PRESENT_FLAG | 20;
-    begin_background_music_fade(50);
-}
-
-/**
- * Called from threads: thread5_game_loop
- */
-void play_star_fanfare(void) {
-    seq_player_play_sequence(SEQ_PLAYER_ENV, SEQ_EVENT_HIGH_SCORE, 0);
-    sBackgroundMusicMaxTargetVolume = TARGET_VOLUME_IS_PRESENT_FLAG | 20;
-    begin_background_music_fade(50);
-}
-
-/**
- * Called from threads: thread5_game_loop
- */
-void play_power_star_jingle(u8 arg0) {
-    if (!arg0) {
-        sBackgroundMusicTargetVolume = 0;
-    }
-    seq_player_play_sequence(SEQ_PLAYER_ENV, SEQ_EVENT_CUTSCENE_STAR_SPAWN, 0);
-    sBackgroundMusicMaxTargetVolume = TARGET_VOLUME_IS_PRESENT_FLAG | 20;
-    begin_background_music_fade(50);
-}
-
-/**
- * Called from threads: thread5_game_loop
- */
-void play_race_fanfare(void) {
-    seq_player_play_sequence(SEQ_PLAYER_ENV, SEQ_EVENT_RACE, 0);
-    sBackgroundMusicMaxTargetVolume = TARGET_VOLUME_IS_PRESENT_FLAG | 20;
-    begin_background_music_fade(50);
-}
-
-/**
- * Called from threads: thread5_game_loop
- */
-void play_toads_jingle(void) {
-    seq_player_play_sequence(SEQ_PLAYER_ENV, SEQ_EVENT_TOAD_MESSAGE, 0);
-    sBackgroundMusicMaxTargetVolume = TARGET_VOLUME_IS_PRESENT_FLAG | 20;
     begin_background_music_fade(50);
 }
 

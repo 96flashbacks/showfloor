@@ -211,9 +211,9 @@ void play_bowser_hallway_music(void) {
         if (shouldPlay) {
             // Different hallway music per door entered
             if (gMarioState->action == ACT_PUSHING_DOOR) {
-                play_secondary_music(0x23, 0x4B, 0xFF, 0);
+                play_secondary_music(SEQ_KOOPA_HALLWAY_SCREAM_LEFT, 0x4B, 0xFF, 0);
             } else if (gMarioState->action == ACT_PULLING_DOOR) {
-                play_secondary_music(0x24, 0x4B, 0xFF, 0);
+                play_secondary_music(SEQ_KOOPA_HALLWAY_SCREAM_RIGHT, 0x4B, 0xFF, 0);
             }
         } else {
             func_80321080(1200); // Fade out the music if it shouldn't play
@@ -249,54 +249,6 @@ void fadeout_level_music(s16 fadeTimer) {
 void play_cutscene_music(u16 seqArgs) {
     play_music(SEQ_PLAYER_LEVEL, seqArgs, 0);
     sCurrentMusic = seqArgs;
-}
-
-/**
- * Called from threads: thread5_game_loop
- */
-void play_shell_music(void) {
-    play_music(SEQ_PLAYER_LEVEL, SEQUENCE_ARGS(4, SEQ_EVENT_POWERUP | SEQ_VARIATION), 0);
-    sCurrentShellMusic = SEQUENCE_ARGS(4, SEQ_EVENT_POWERUP | SEQ_VARIATION);
-}
-
-/**
- * Called from threads: thread5_game_loop
- */
-void stop_shell_music(void) {
-    if (sCurrentShellMusic != MUSIC_NONE) {
-        stop_background_music(sCurrentShellMusic);
-        sCurrentShellMusic = MUSIC_NONE;
-    }
-}
-
-/**
- * Called from threads: thread5_game_loop
- */
-void play_cap_music(u16 seqArgs) {
-    play_music(SEQ_PLAYER_LEVEL, seqArgs, 0);
-    if (sCurrentCapMusic != MUSIC_NONE && sCurrentCapMusic != seqArgs) {
-        stop_background_music(sCurrentCapMusic);
-    }
-    sCurrentCapMusic = seqArgs;
-}
-
-/**
- * Called from threads: thread5_game_loop
- */
-void fadeout_cap_music(void) {
-    if (sCurrentCapMusic != MUSIC_NONE) {
-        fadeout_background_music(sCurrentCapMusic, 600);
-    }
-}
-
-/**
- * Called from threads: thread5_game_loop
- */
-void stop_cap_music(void) {
-    if (sCurrentCapMusic != MUSIC_NONE) {
-        stop_background_music(sCurrentCapMusic);
-        sCurrentCapMusic = MUSIC_NONE;
-    }
 }
 
 /**

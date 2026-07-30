@@ -30,11 +30,6 @@ void play_bowser_hallway_music(void);
 void set_background_music(u16 seqArgs, s16 fadeTimer);
 void fadeout_level_music(s16 fadeTimer);
 void play_cutscene_music(u16 seqArgs);
-void play_shell_music(void);
-void stop_shell_music(void);
-void play_cap_music(u16 seqArgs);
-void fadeout_cap_music(void);
-void stop_cap_music(void);
 void audio_game_loop_tick(void);
 void thread4_sound(UNUSED void *arg);
 

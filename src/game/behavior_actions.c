@@ -188,7 +188,6 @@ s32 set_obj_anim_with_accel_and_sound(s16 a0, s16 a1, s32 a2) {
 #include "behaviors/wdw_water_level.inc.c"
 #include "behaviors/boo.inc.c"
 #include "behaviors/bbh_tilting_trap.inc.c"
-#include "behaviors/bbh_merry_go_round.inc.c"
 #include "behaviors/static_checkered_platform.inc.c"
 #include "behaviors/beta_bowser_anchor.inc.c"
 #include "behaviors/castle_floor_trap.inc.c"

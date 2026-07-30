@@ -4,8 +4,8 @@
     "envelopes": {
         "envelope0": [
             [2, 32700],
-            [1, 32700],
-            [32700, 29430],
+            [187, 0],
+            [32700, 0],
             "hang"
         ],
         "envelope1": [
@@ -25,81 +25,38 @@
             [1, 32700],
             [32700, 29430],
             "hang"
-        ],
-        "envelope4": [
-            [2, 32700],
-            [1, 32700],
-            [32700, 29430],
-            "hang"
-        ],
-        "envelope5": [
-            [2, 32700],
-            [1, 32700],
-            [32700, 29430],
-            "hang"
-        ],
-        "envelope6": [
-            [2, 32700],
-            [1, 32700],
-            [32700, 29430],
-            "hang"
         ]
     },
     "instruments": {
         "inst0": {
-            "release_rate": 19,
-            "normal_range_lo": 29,
-            "normal_range_hi": 63,
+            "release_rate": 100,
+            "normal_range_lo": 55,
+            "normal_range_hi": 56,
             "envelope": "envelope0",
-            "sound_lo": "3B_acoustic_guitar_A1",
-            "sound": "3C_acoustic_guitar_E3",
-            "sound_hi": "3D_acoustic_guitar_B6"
+            "sound_lo": "2A_tabla_riff_1",
+            "sound": "2B_tabla_riff_2",
+            "sound_hi": "2C_tabla_riff_3"
         },
         "inst1": {
-            "release_rate": 208,
+            "release_rate": 10,
             "envelope": "envelope1",
-            "sound": "2E_accordion_C4"
+            "sound": "22_boys_choir_Bb4"
         },
         "inst2": {
-            "release_rate": 208,
+            "release_rate": 90,
             "envelope": "envelope2",
-            "sound": "2E_accordion_C4"
+            "sound": "28_sitar_1_A2"
         },
         "inst3": {
-            "release_rate": 208,
+            "release_rate": 20,
             "envelope": "envelope3",
-            "sound": "16_french_horns_C3"
-        },
-        "inst4": {
-            "release_rate": 208,
-            "envelope": "envelope4",
-            "sound": "16_french_horns_C3"
-        },
-        "inst5": {
-            "release_rate": 10,
-            "normal_range_lo": 24,
-            "envelope": "envelope5",
-            "sound_lo": "0E_hihat_closed",
-            "sound": "0F_hihat_open"
-        },
-        "inst6": {
-            "release_rate": 208,
-            "envelope": "envelope6",
-            "sound": "2F_sleigh_bells"
+            "sound": "39_sitar_2_C#3"
         }
     },
     "instrument_list": [
         "inst0",
         "inst1",
         "inst2",
-        null,
-        null,
-        null,
-        "inst3",
-        "inst4",
-        null,
-        null,
-        "inst5",
-        "inst6"
+        "inst3"
     ]
 }

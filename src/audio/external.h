@@ -51,12 +51,6 @@ void play_secondary_music(u8 seqId, u8 bgMusicVolume, u8 volume, u16 fadeTimer);
 void func_80321080(u16 fadeTimer);
 void func_803210D4(u16 fadeOutTime);
 void play_course_clear(void);
-void play_peachs_jingle(void);
-void play_puzzle_jingle(void);
-void play_star_fanfare(void);
-void play_power_star_jingle(u8 arg0);
-void play_race_fanfare(void);
-void play_toads_jingle(void);
 void sound_reset(void);
 void audio_set_sound_mode(u8 arg0);
 
