@@ -12,14 +12,10 @@ enum ShadowType {
     SHADOW_CIRCLE_9_VERTS = 0,
     SHADOW_CIRCLE_4_VERTS = 1,
     SHADOW_CIRCLE_4_VERTS_FLAT_UNUSED = 2,
-    SHADOW_SQUARE_PERMANENT = 10,
-    SHADOW_SQUARE_SCALABLE = 11,
-    SHADOW_SQUARE_TOGGLABLE = 12,
     /**
      * This defines an offset after which rectangular shadows with custom
      * widths and heights can be defined.
      */
-    SHADOW_RECTANGLE_HARDCODED_OFFSET = 50,
     SHADOW_CIRCLE_LUIGI = 98,
     SHADOW_CIRCLE_MARIO = 99
 };
