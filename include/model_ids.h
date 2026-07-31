@@ -491,7 +491,7 @@
 #define MODEL_UNKNOWN_B8                  0xB8        // referenced in special presets as a static object. Unknown usage
 #define MODEL_FISH                        0xB9        // fish_geo - fish without shadow, used
 #define MODEL_FISH_SHADOW                 0xBA        // fish_shadow_geo - fish with shadow, unused
-//#define MODEL_BUTTERFLY                   0xBB        // butterfly_geo
+#define MODEL_BUTTERFLY                   0xBB        // butterfly_geo
 //#define MODEL_BLACK_BOBOMB                0xBC        // black_bobomb_geo
 // find me
 //#define MODEL_KOOPA_SHELL                 0xBE        // koopa_shell_geo

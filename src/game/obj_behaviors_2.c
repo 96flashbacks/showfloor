@@ -88,6 +88,16 @@ static s32 approach_f32_ptr(f32 *px, f32 target, f32 delta) {
     return FALSE;
 }
 
+static s16 obj_turn_pitch_toward_mario(f32 targetOffsetY, s16 turnAmount) {
+    s16 targetPitch;
+
+    o->oPosY -= targetOffsetY;
+    targetPitch = obj_turn_toward_object(o, gMarioObject, O_MOVE_ANGLE_PITCH_INDEX, turnAmount);
+    o->oPosY += targetOffsetY;
+
+    return targetPitch;
+}
+
 static s32 obj_move_pitch_approach(s16 target, s16 delta) {
     o->oMoveAnglePitch = approach_s16_symmetric(o->oMoveAnglePitch, target, delta);
 
@@ -221,10 +231,9 @@ struct ObjectHitbox sPiranhaPlantFireHitbox = {
 };
 
 #include "behaviors/flame.inc.c"
-#include "behaviors/horizontal_grindel.inc.c"
 
 void obj_set_speed_to_zero(void) {
     o->oForwardVel = o->oVelY = 0.0f;
 }
 
-#include "behaviors/bird.inc.c"
+#include "behaviors/triplet_butterfly.inc.c"

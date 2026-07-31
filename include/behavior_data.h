@@ -221,7 +221,7 @@ extern const BehaviorScript bhvStar[];
 extern const BehaviorScript bhvSmallPiranhaFlame[];
 extern const BehaviorScript bhvFireSpitter[];
 extern const BehaviorScript bhvFlyguyFlame[];
-extern const BehaviorScript bhvBird[];
+extern const BehaviorScript bhvTripletButterfly[];
 extern const BehaviorScript bhvBubba[];
 
 #endif // BEHAVIOR_DATA_H

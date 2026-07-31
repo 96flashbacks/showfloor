@@ -9,6 +9,7 @@
 
 #include "mist/geo.inc.c"
 #include "explosion/bombfire.hms"
+#include "butterfly/geo.inc.c"
 #include "coin/coin.hms"
 #include "door/door.hms"
 #include "flame/geo.inc.c"

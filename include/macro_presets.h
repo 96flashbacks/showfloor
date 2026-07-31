@@ -31,6 +31,7 @@ enum MacroPresets {
     macro_bullet_bill_cannon,
     macro_empty_83,
     macro_thwomp,
+    macro_butterfly_triplet,
     macro_empty_90,
     macro_empty_91,
     macro_empty_92,

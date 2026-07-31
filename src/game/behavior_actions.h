@@ -343,7 +343,6 @@ void bhv_fire_piranha_plant_update(void);
 void bhv_small_piranha_flame_loop(void);
 void bhv_fire_spitter_update(void);
 void bhv_fly_guy_flame_loop(void);
-void bhv_bird_update(void);
 void bhv_coffin_spawner_loop(void);
 void bhv_coffin_loop(void);
 void bhv_clam_loop(void);

@@ -36,6 +36,7 @@ static struct MacroPreset sMacroObjectPresets[] = {
     /* macro_bullet_bill_cannon          */ { bhvBulletBill, MODEL_BULLET_BILL, 0 }, // unused
     /* macro_empty_83                    */ { bhvYellowCoin, MODEL_YELLOW_COIN, 0 },
     /* macro_thwomp                      */ { bhvThwomp, MODEL_THWOMP, 0 }, // unused
+    /* macro_butterfly_triplet           */ { bhvTripletButterfly, MODEL_BUTTERFLY, 0 },
     /* macro_empty_90                    */ { bhvYellowCoin, MODEL_YELLOW_COIN, 0 },
     /* macro_empty_91                    */ { bhvYellowCoin, MODEL_YELLOW_COIN, 0 },
     /* macro_empty_92                    */ { bhvYellowCoin, MODEL_YELLOW_COIN, 0 },

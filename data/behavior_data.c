@@ -2465,14 +2465,16 @@ const BehaviorScript bhvFlyguyFlame[] = {
     END_LOOP(),
 };
 
-const BehaviorScript bhvBird[] = {
-    BEGIN(OBJ_LIST_DEFAULT),
+const BehaviorScript bhvTripletButterfly[] = {
+    BEGIN(OBJ_LIST_GENACTOR),
     OR_INT(oFlags, (OBJ_FLAG_COMPUTE_ANGLE_TO_MARIO | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
-    LOAD_ANIMATIONS(oAnimations, birds_seg5_anims_050009E8),
+    LOAD_ANIMATIONS(oAnimations, butterfly_seg3_anims_030056B0),
     ANIMATE(0),
     HIDE(),
-    SCALE(/*Unused*/ 0, /*Field*/ 70),
+    SET_HOME(),
+    SET_OBJ_PHYSICS(/*Wall hitbox radius*/ 0, /*Gravity*/ 0, /*Bounciness*/ 0, /*Drag strength*/ 0, /*Friction*/ 1000, /*Buoyancy*/ 200, /*Unused*/ 0, 0),
+    SET_FLOAT(oTripletButterflyScale, 1),
     BEGIN_LOOP(),
-        CALL_NATIVE(bhv_bird_update),
+        CALL_NATIVE(bhv_triplet_butterfly_update),
     END_LOOP(),
 };

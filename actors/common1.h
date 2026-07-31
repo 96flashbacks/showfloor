@@ -29,6 +29,12 @@ extern const Gfx blue_fish_seg3_dl_0301C0A8[];
 extern const Gfx blue_fish_seg3_dl_0301C150[];
 extern const struct Animation *const blue_fish_seg3_anims_0301C2B0[];
 
+// butterfly
+extern const GeoLayout butterfly_geo[];
+extern const Gfx butterfly_seg3_dl_03005408[];
+extern const Gfx butterfly_seg3_dl_030054A0[];
+extern const struct Animation *const butterfly_seg3_anims_030056B0[];
+
 // coin
 extern Hierarchy RCP_HmsItemCoin[];
 

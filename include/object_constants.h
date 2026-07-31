@@ -1065,8 +1065,6 @@
     /* oAction */
     #define TRIPLET_BUTTERFLY_ACT_INIT     0
     #define TRIPLET_BUTTERFLY_ACT_WANDER   1
-    #define TRIPLET_BUTTERFLY_ACT_ACTIVATE 2
-    #define TRIPLET_BUTTERFLY_ACT_EXPLODE  3
 
     /* oBhvParams2ndByte */
     #define TRIPLET_BUTTERFLY_BP_SPAWN_TYPE_SPAWNER   (0 << 0)
@@ -1075,12 +1073,6 @@
     #define TRIPLET_BUTTERFLY_BP_SPAWN_TYPE_MASK      (TRIPLET_BUTTERFLY_BP_SPAWN_TYPE_SPAWNER | \
                                                        TRIPLET_BUTTERFLY_BP_SPAWN_TYPE_SPAWNED_1 | \
                                                        TRIPLET_BUTTERFLY_BP_SPAWN_TYPE_SPAWNED_2)
-    #define TRIPLET_BUTTERFLY_BP_NO_BOMBS             (1 << 2)
-
-    /* oTripletButterflyType */
-    #define TRIPLET_BUTTERFLY_TYPE_NORMAL    -1
-    #define TRIPLET_BUTTERFLY_TYPE_EXPLODES  0
-    #define TRIPLET_BUTTERFLY_TYPE_SPAWN_1UP 1
 
 /* Water Level Diamond */
     /* oAction */

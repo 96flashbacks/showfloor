@@ -33,5 +33,6 @@ void bhv_collect_star_loop(void) {
 }
 
 void spawn_default_star(f32 homeX, f32 homeY, f32 homeZ) {
-    spawn_object_abs_with_rot(o, 0, MODEL_STAR, bhvStar, homeX, homeY, homeZ, 0, 0, 0);
+    struct Object *star = spawn_object_abs_with_rot(o, 0, MODEL_STAR, bhvStar, homeX, homeY, homeZ, 0, 0, 0);
+    star->oBhvParams = o->oBhvParams;
 }
