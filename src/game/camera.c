@@ -2820,7 +2820,7 @@ void init_camera(struct Camera *c) {
     }
     switch (gCurrLevelArea) {
         case AREA_CCM_SLIDE:
-            vec3f_set(marioOffset, 0.f, 0.f, 475.f);
+            vec3f_set(marioOffset, 0.f, 0.f, 500.f);
             break;
     }
 
