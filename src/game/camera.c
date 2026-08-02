@@ -4846,7 +4846,8 @@ s16 camera_course_processing(struct Camera *c) {
             case AREA_DDD_SUB:
                 if ((c->mode != CAMERA_MODE_BEHIND_MARIO) && (c->mode != CAMERA_MODE_WATER_SURFACE)) {
                     if (sMarioCamState->pos[1] < 800.f) {
-                        transition_to_camera_mode(c, CAMERA_MODE_FREE_ROAM, 60);
+                        // Instant transition into free roam, as seen in Gamesmaster S5E11 and Game Zero
+                        c->mode = CAMERA_MODE_FREE_ROAM;
                     }
                 }
                 //! @bug this does nothing

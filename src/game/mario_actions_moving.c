@@ -358,17 +358,17 @@ void update_walking_speed(struct MarioState *m) {
     f32 maxTargetSpeed = 32.0f;
     f32 targetSpeed;
 
-    // no SURFACE_SLOW check as it's unused even in the final game, so maxTargetSpeed is always 32
+    // No SURFACE_SLOW check as it's unused even in the final game, so maxTargetSpeed is always 32
 
     targetSpeed = m->intendedMag < maxTargetSpeed ? m->intendedMag : maxTargetSpeed;
 
     if (m->forwardVel < targetSpeed) {
         m->forwardVel += 0.5f;
     } else {
-        m->forwardVel = targetSpeed; // this causes Mario to instantly decelerate if his speed is higher than the target
+        m->forwardVel = targetSpeed; // This causes Mario to instantly decelerate if his speed is higher than the target
     }
 
-    // no 48 forwardVel cap as Mario can't go beyond the maxTargetSpeed of 32
+    // No 48 forwardVel cap as Mario can't go beyond the maxTargetSpeed of 32
 
     m->faceAngle[1] =
         m->intendedYaw - approach_s32((s16) (m->intendedYaw - m->faceAngle[1]), 0, 0x800, 0x800);
@@ -578,6 +578,8 @@ void push_or_sidle_wall(struct MarioState *m, Vec3f startPos) {
     //! (Speed Crash) If a wall is after moving 16384 distance, this crashes.
     s32 val04 = (s32)(movedDistance * 2.0f * 0x10000);
 
+    // No speed cap here, Mario is instead slowed down by a change in perform_ground_quarter_step
+
     if (m->wall != NULL) {
         wallAngle = atan2s(m->wall->normal.z, m->wall->normal.x);
         dWallAngle = wallAngle - m->faceAngle[1];
@@ -594,6 +596,7 @@ void push_or_sidle_wall(struct MarioState *m, Vec3f startPos) {
             set_mario_anim_with_accel(m, MARIO_ANIM_SIDESTEP_LEFT, val04);
         }
 
+        // Different requirement for dust, based on forwardVel rather than animFrame count
         if (m->forwardVel < 16.0f) {
             m->particleFlags |= PARTICLE_DUST;
         }
