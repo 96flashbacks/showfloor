@@ -27,28 +27,12 @@
 #include "spawn_object.h"
 #include "spawn_sound.h"
 
-static s8 sBBHStairJiggleOffsets[] = { -8, 8, -4, 4 };
 static s16 sPowersOfTwo[] = { 0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40, 0x80 };
 static s8 sLevelsWithRooms[] = { LEVEL_BBH, LEVEL_CASTLE, LEVEL_HMC, -1 };
 
 static s32 clear_move_flag(u32 *, s32);
 
 #define o gCurrentObject
-
-Gfx *geo_update_projectile_pos_from_parent(s32 callContext, UNUSED struct GraphNode *node, Mat4 mtx) {
-    if (callContext == GEO_CONTEXT_RENDER) {
-        Mat4 sp20;
-        struct Object *obj =
-            (struct Object *) gCurGraphNodeObject; // TODO: change global type to Object pointer
-        if (obj->prevObj) {
-            create_transformation_from_matrices(sp20, mtx, *gCurGraphNodeCamera->matrixPtr);
-            obj_update_pos_from_parent_transformation(sp20, obj->prevObj);
-            obj_set_gfx_pos_from_pos(obj->prevObj);
-        }
-    }
-
-    return NULL;
-}
 
 Gfx *geo_update_layer_transparency(s32 callContext, struct GraphNode *node, UNUSED void *context) {
     Gfx *dlStart, *dlHead;
@@ -2064,41 +2048,6 @@ s16 cur_obj_reflect_move_angle_off_wall(void) {
     return angle;
 }
 
-void cur_obj_spawn_particles(struct SpawnParticlesInfo *info) {
-    struct Object *particle;
-    s32 i;
-    f32 scale;
-    s32 numParticles = info->count;
-
-    // If there are a lot of objects already, limit the number of particles
-    if ((gPrevFrameObjectCount > (OBJECT_POOL_CAPACITY - 90)) && numParticles > 10) {
-        numParticles = 10;
-    }
-
-    // We're close to running out of object slots, so don't spawn particles at
-    // all
-    if (gPrevFrameObjectCount > (OBJECT_POOL_CAPACITY - 30)) {
-        numParticles = 0;
-    }
-
-    for (i = 0; i < numParticles; i++) {
-        scale = random_float() * (info->sizeRange * 0.1f) + info->sizeBase * 0.1f;
-
-        particle = spawn_object(o, info->model, bhvWhitePuffExplosion);
-
-        particle->oBhvParams2ndByte = info->bhvParam;
-        particle->oMoveAngleYaw = random_u16();
-        particle->oGravity = info->gravity;
-        particle->oDragStrength = info->dragStrength;
-
-        particle->oPosY += info->offsetY;
-        particle->oForwardVel = random_float() * info->forwardVelRange + info->forwardVelBase;
-        particle->oVelY = random_float() * info->velYRange + info->velYBase;
-
-        obj_scale_xyz(particle, scale, scale, scale);
-    }
-}
-
 void obj_set_hitbox(struct Object *obj, struct ObjectHitbox *hitbox) {
     if (!(obj->oFlags & OBJ_FLAG_30)) {
         obj->oFlags |= OBJ_FLAG_30;
@@ -2168,15 +2117,6 @@ s32 cur_obj_is_mario_ground_pounding_platform(void) {
     }
 
     return FALSE;
-}
-
-void spawn_mist_particles(void) {
-    spawn_mist_particles_variable(0, 0, 46.0f);
-}
-
-void spawn_mist_particles_with_sound(u32 soundMagic) {
-    spawn_mist_particles_variable(0, 0, 46.0f);
-    create_sound_spawner(soundMagic);
 }
 
 void cur_obj_push_mario_away(f32 radius) {
@@ -2406,7 +2346,6 @@ s32 cur_obj_set_hitbox_and_die_if_attacked(struct ObjectHitbox *hitbox, s32 deat
 
     if (o->oInteractStatus & INT_STATUS_INTERACTED) {
         if (o->oInteractStatus & INT_STATUS_WAS_ATTACKED) {
-            spawn_mist_particles();
             obj_spawn_loot_yellow_coins(o, o->oNumLootCoins, 20.0f);
             obj_mark_for_deletion(o);
             create_sound_spawner(deathSound);
@@ -2417,13 +2356,6 @@ s32 cur_obj_set_hitbox_and_die_if_attacked(struct ObjectHitbox *hitbox, s32 deat
 
     o->oInteractStatus = 0;
     return interacted;
-}
-
-void obj_explode_and_spawn_coins(f32 mistParticleSize) {
-    spawn_mist_particles_variable(0, 0, mistParticleSize);
-    spawn_triangle_break_particles(30, MODEL_DIRT_ANIMATION, 3.0f, 4);
-    obj_mark_for_deletion(o);
-    obj_spawn_loot_yellow_coins(o, o->oNumLootCoins, 20.0f);
 }
 
 void obj_set_collision_data(struct Object *obj, const void *segAddr) {

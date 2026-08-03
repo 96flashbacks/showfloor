@@ -104,9 +104,9 @@
 #define ACTIVE_PARTICLE_SHALLOW_WATER_SPLASH (1 << 12) // 0x00001000
 #define ACTIVE_PARTICLE_LEAF                 (1 << 13) // 0x00002000
 #define ACTIVE_PARTICLE_DIRT                 (1 << 14) // 0x00004000
-#define ACTIVE_PARTICLE_MIST_CIRCLE          (1 << 15) // 0x00008000
+//#define ACTIVE_PARTICLE_MIST_CIRCLE          (1 << 15) // 0x00008000
 #define ACTIVE_PARTICLE_SNOW                 (1 << 16) // 0x00010000
-#define ACTIVE_PARTICLE_BREATH               (1 << 17) // 0x00020000
+//#define ACTIVE_PARTICLE_BREATH               (1 << 17) // 0x00020000
 #define ACTIVE_PARTICLE_V_STAR               (1 << 18) // 0x00040000
 #define ACTIVE_PARTICLE_TRIANGLE             (1 << 19) // 0x00080000
 

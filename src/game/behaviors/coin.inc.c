@@ -31,9 +31,7 @@ void bhv_yellow_coin_init(void) {
     bhv_init_room();
     cur_obj_update_floor_height();
 
-    // if (500.0f < absf(o->oPosY - o->oFloorHeight)) {
-    // cur_obj_set_model(MODEL_YELLOW_COIN_NO_SHADOW);
-    //}
+    // "no shadow" variant of the coin doesn't exist in the demo
 
     if (o->oFloorHeight < FLOOR_LOWER_LIMIT_MISC) {
         obj_mark_for_deletion(o);
@@ -95,140 +93,11 @@ void bhv_spawned_coin_loop(void) {
         }
     }
 
-    if (o->oMoveFlags
-        & OBJ_MOVE_BOUNCE) { /* delete this when i'm no longer using a build as md5sum reference */
-                             // cur_obj_play_sound_2(SOUND_GENERAL_COIN_DROP);
-    }
-
     if (cur_obj_wait_then_blink(400, 20)) {
         obj_mark_for_deletion(o);
     }
 
     bhv_coin_sparkles_init();
-}
-
-void bhv_coin_formation_spawn_loop(void) {
-    if (o->oTimer == 0) {
-        cur_obj_set_behavior(bhvYellowCoin);
-        obj_set_hitbox(o, &sYellowCoinHitbox);
-        bhv_init_room();
-
-        if (o->oCoinOnGround) {
-            o->oPosY += 300.0f;
-            cur_obj_update_floor_height();
-
-            if (o->oPosY < o->oFloorHeight || o->oFloorHeight < FLOOR_LOWER_LIMIT_MISC) {
-                obj_mark_for_deletion(o);
-            } else {
-                o->oPosY = o->oFloorHeight;
-            }
-        } // else {
-          // cur_obj_update_floor_height();
-
-        // if (absf(o->oPosY - o->oFloorHeight) > 250.0f) {
-        // cur_obj_set_model(MODEL_YELLOW_COIN_NO_SHADOW);
-        //}
-        //}
-    } else {
-        if (bhv_coin_sparkles_init()) {
-            o->parentObj->oCoinCollectedFlags |= bit_shift_left(o->oBhvParams2ndByte);
-        }
-        o->oAnimState++;
-    }
-
-    if (o->parentObj->oAction == COIN_FORMATION_ACT_RESPAWN_COINS) {
-        obj_mark_for_deletion(o);
-    }
-}
-
-s16 sCoinArrowPositions[][2] = {
-    { 0, -150 },  { 0, -50 },   { 0, 50 },   { 0, 150 },
-    { -50, 100 }, { -100, 50 }, { 50, 100 }, { 100, 50 },
-};
-
-void spawn_coin_in_formation(s32 coinIndex, s32 coinFormationFlags) {
-    struct Object *coinSpawner;
-    Vec3i pos;
-    s32 setSpawner = TRUE;
-    s32 onGround = TRUE;
-
-    pos[0] = pos[1] = pos[2] = 0;
-
-    switch (coinFormationFlags & COIN_FORMATION_BP_FLAG_MASK) {
-        case COIN_FORMATION_BP_LINE_HORIZONTAL:
-            pos[2] = 160 * (coinIndex - 2);
-            if (coinIndex > 4) {
-                setSpawner = FALSE;
-            }
-            break;
-
-        case COIN_FORMATION_BP_LINE_VERTICAL:
-            onGround = FALSE;
-            pos[1] = 160 * coinIndex * 0.8; // 128 * coinIndex
-            if (coinIndex > 4) {
-                setSpawner = FALSE;
-            }
-            break;
-
-        case COIN_FORMATION_BP_RING_HORIZONTAL:
-            pos[0] = sins(coinIndex << 13) * 300.0f;
-            pos[2] = coss(coinIndex << 13) * 300.0f;
-            break;
-
-        case COIN_FORMATION_BP_RING_VERTICAL:
-            onGround = FALSE;
-            pos[0] = coss(coinIndex << 13) * 200.0f;
-            pos[1] = sins(coinIndex << 13) * 200.0f + 200.0f;
-            break;
-
-        case COIN_FORMATION_BP_ARROW:
-            pos[0] = sCoinArrowPositions[coinIndex][0];
-            pos[2] = sCoinArrowPositions[coinIndex][1];
-            break;
-    }
-
-    if (coinFormationFlags & COIN_FORMATION_BP_FLAG_FLYING) {
-        onGround = FALSE;
-    }
-
-    if (setSpawner) {
-        coinSpawner = spawn_object_relative(coinIndex, pos[0], pos[1], pos[2], o, MODEL_YELLOW_COIN,
-                                            bhvCoinFormationSpawn);
-        coinSpawner->oCoinOnGround = onGround;
-    }
-}
-
-void bhv_coin_formation_init(void) {
-    o->oCoinCollectedFlags = (o->oBhvParams >> 8) & 0xFF;
-}
-
-void bhv_coin_formation_loop(void) {
-    s32 coinIndex;
-
-    switch (o->oAction) {
-        case COIN_FORMATION_ACT_SPAWN_COINS:
-            if (o->oDistanceToMario < 2000.0f) {
-                for (coinIndex = 0; coinIndex <= 7; coinIndex++) {
-                    if (!(o->oCoinCollectedFlags & (1 << coinIndex))) {
-                        spawn_coin_in_formation(coinIndex, o->oBhvParams2ndByte);
-                    }
-                }
-                o->oAction++;
-            }
-            break;
-
-        case COIN_FORMATION_ACT_IDLE:
-            if (o->oDistanceToMario > 2100.0f) {
-                o->oAction++;
-            }
-            break;
-
-        case COIN_FORMATION_ACT_RESPAWN_COINS:
-            o->oAction = COIN_FORMATION_ACT_SPAWN_COINS;
-            break;
-    }
-
-    set_object_respawn_info_bits(o, o->oCoinCollectedFlags & 0xFF);
 }
 
 void coin_inside_boo_act_1(void) {

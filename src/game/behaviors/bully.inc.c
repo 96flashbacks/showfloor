@@ -233,12 +233,6 @@ void bhv_big_bully_with_minions_init(void) {
     o->oAction = BULLY_ACT_INACTIVE;
 }
 
-void big_bully_spawn_star(void) {
-    spawn_mist_particles();
-
-    spawn_default_star(3850.0f, 323.0f, -5600.0f);
-}
-
 void bhv_big_bully_with_minions_loop(void) {
     o->oBullyPrevX = o->oPosX;
     o->oBullyPrevY = o->oPosY;
@@ -275,7 +269,7 @@ void bhv_big_bully_with_minions_loop(void) {
 
         case BULLY_ACT_INACTIVE:
             if (o->oBullyKBTimerAndMinionKOCounter == 3) {
-                big_bully_spawn_star();
+                spawn_default_star(3850.0f, 323.0f, -5600.0f);
                 o->activeFlags = 0;
             }
             break;

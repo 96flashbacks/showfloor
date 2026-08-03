@@ -543,6 +543,7 @@ const BehaviorScript bhvCannonBarrel[] = {
     END_LOOP(),
 };
 
+// e_gas_b (cannon burn smoke)
 const BehaviorScript bhvCannonBaseUnused[] = {
     BEGIN(OBJ_LIST_DEFAULT),
     OR_INT(oFlags, (OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_MOVE_XZ_USING_FVEL | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
@@ -553,6 +554,13 @@ const BehaviorScript bhvCannonBaseUnused[] = {
         ADD_INT(oAnimState, 1),
     END_REPEAT(),
     DEACTIVATE(),
+};
+
+// e_castle_bg01 to e_castle_bg_11
+const BehaviorScript bhvUnused05A8[] = {
+    BEGIN(OBJ_LIST_DEFAULT),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    BREAK(),
 };
 
 const BehaviorScript bhvRotatingPlatform[] = {
@@ -626,15 +634,6 @@ const BehaviorScript bhvWarp[] = {
     END_LOOP(),
 };
 
-const BehaviorScript bhvWhitePuffExplosion[] = {
-    BEGIN(OBJ_LIST_UNIMPORTANT),
-    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
-    BILLBOARD(),
-    BEGIN_LOOP(),
-        CALL_NATIVE(bhv_white_puff_exploding_loop),
-    END_LOOP(),
-};
-
 const BehaviorScript bhvCoinInsideBoo[] = {
     BEGIN(OBJ_LIST_LEVEL),
     SET_HITBOX(/*Radius*/ 100, /*Height*/ 64),
@@ -646,24 +645,6 @@ const BehaviorScript bhvCoinInsideBoo[] = {
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_coin_inside_boo_loop),
         ADD_INT(oAnimState, 1),
-    END_LOOP(),
-};
-
-const BehaviorScript bhvCoinFormationSpawn[] = {
-    BEGIN(OBJ_LIST_LEVEL),
-    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
-    BILLBOARD(),
-    BEGIN_LOOP(),
-        CALL_NATIVE(bhv_coin_formation_spawn_loop),
-    END_LOOP(),
-};
-
-const BehaviorScript bhvCoinFormation[] = {
-    BEGIN(OBJ_LIST_SPAWNER),
-    OR_INT(oFlags, (OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
-    CALL_NATIVE(bhv_coin_formation_init),
-    BEGIN_LOOP(),
-        CALL_NATIVE(bhv_coin_formation_loop),
     END_LOOP(),
 };
 
@@ -833,49 +814,6 @@ const BehaviorScript bhvFlame[] = {
     END_LOOP(),
 };
 
-const BehaviorScript bhvWaterMist[] = {
-    BEGIN(OBJ_LIST_UNIMPORTANT),
-    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
-    BILLBOARD(),
-    SET_INT(oOpacity, 254),
-    SET_FLOAT(oForwardVel, 20),
-    SET_FLOAT(oVelY, -8),
-    ADD_FLOAT(oPosY, 62),
-    BEGIN_LOOP(),
-        CALL_NATIVE(bhv_water_mist_loop),
-    END_LOOP(),
-};
-
-const BehaviorScript bhvBreathParticleSpawner[] = {
-    BEGIN(OBJ_LIST_DEFAULT),
-    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
-    BEGIN_REPEAT(8),
-        CALL_NATIVE(bhv_water_mist_spawn_loop),
-    END_REPEAT(),
-    DEACTIVATE(),
-};
-
-const BehaviorScript bhvBreakBoxTriangle[] = {
-    BEGIN(OBJ_LIST_UNIMPORTANT),
-    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
-    BEGIN_REPEAT(18),
-        CALL_NATIVE(cur_obj_rotate_face_angle_using_vel),
-        CALL_NATIVE(cur_obj_move_using_fvel_and_gravity),
-    END_REPEAT(),
-    DEACTIVATE(),
-};
-
-const BehaviorScript bhvWaterMist2[] = {
-    BEGIN(OBJ_LIST_DEFAULT),
-    OR_INT(oFlags, (OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
-    SET_HOME(),
-    SET_INT(oFaceAnglePitch, 0xC000),
-    SCALE(/*Unused*/ 0, /*Field*/ 2100),
-    BEGIN_LOOP(),
-        CALL_NATIVE(bhv_water_mist_2_loop),
-    END_LOOP(),
-};
-
 const BehaviorScript bhvUnused0DFC[] = {
     BEGIN(OBJ_LIST_DEFAULT),
     OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
@@ -886,14 +824,6 @@ const BehaviorScript bhvUnused0DFC[] = {
     BEGIN_REPEAT(6),
         ADD_INT(oAnimState, 1),
     END_REPEAT(),
-    DEACTIVATE(),
-};
-
-const BehaviorScript bhvMistCircParticleSpawner[] = {
-    BEGIN(OBJ_LIST_DEFAULT),
-    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
-    CALL_NATIVE(bhv_pound_white_puffs_init),
-    DELAY(1),
     DEACTIVATE(),
 };
 
@@ -941,15 +871,6 @@ const BehaviorScript bhvBouncingFireballFlame[] = {
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_bouncing_fireball_flame_loop),
         ADD_INT(oAnimState, 1),
-    END_LOOP(),
-};
-
-const BehaviorScript bhvBowserShockWave[] = {
-    BEGIN(OBJ_LIST_DEFAULT),
-    OR_INT(oFlags, (OBJ_FLAG_ACTIVE_FROM_AFAR | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
-    SET_INT(oOpacity, 255),
-    BEGIN_LOOP(),
-        CALL_NATIVE(bhv_bowser_shock_wave_loop),
     END_LOOP(),
 };
 
@@ -1066,17 +987,6 @@ const BehaviorScript bhvTreeLeaf[] = {
     OR_INT(oFlags, (OBJ_FLAG_MOVE_XZ_USING_FVEL | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_tree_snow_or_leaf_loop),
-    END_LOOP(),
-};
-
-const BehaviorScript bhvAnotherTiltingPlatform[] = {
-    BEGIN(OBJ_LIST_SURFACE),
-    OR_INT(oFlags, (OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
-    SET_HOME(),
-    CALL_NATIVE(bhv_platform_normals_init),
-    BEGIN_LOOP(),
-        CALL_NATIVE(bhv_tilting_inverted_pyramid_loop),
-        CALL_NATIVE(load_object_collision_model),
     END_LOOP(),
 };
 
@@ -1462,11 +1372,13 @@ const BehaviorScript bhvTuxiesMother[] = {
     END_LOOP(),
 };
 
+// e_ping_kodomo_badoya
 const BehaviorScript bhvPenguinBaby[] = {
     BEGIN(OBJ_LIST_GENACTOR),
     BREAK(),
 };
 
+// e_ping_kodomo_return
 const BehaviorScript bhvUnused20E0[] = {
     BEGIN(OBJ_LIST_GENACTOR),
     BREAK(),
@@ -1520,12 +1432,14 @@ const BehaviorScript bhvFish[] = {
     END_LOOP(),
 };
 
+// e_pukumother_many, e_pukumother_little, e_pukumother
 const BehaviorScript bhvChirpChirp[] = {
     BEGIN(OBJ_LIST_DEFAULT),
     SET_INT(oBirdChirpChirpUnkF4, 1),
     GOTO(bhvChirpChirpUnused),
 };
 
+// e_pukumother_common
 const BehaviorScript bhvChirpChirpUnused[] = {
     DISABLE_RENDERING(),
     OR_INT(oFlags, (OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
@@ -1565,7 +1479,6 @@ const BehaviorScript bhvBowsersSub[] = {
     SET_FLOAT(oCollisionDistance, 20000),
     LOAD_COLLISION_DATA(water_land_submarine_collision),
     BEGIN_LOOP(),
-        CALL_NATIVE(bhv_bowsers_sub_loop),
         CALL_NATIVE(load_object_collision_model),
     END_LOOP(),
 };
@@ -1680,14 +1593,6 @@ const BehaviorScript bhvGhostHuntBoo[] = {
 };
 
 const BehaviorScript bhvInsideCannon[] = {
-    BREAK(),
-};
-
-// What is this?
-UNUSED static const BehaviorScript unused_1[] = {
-    BREAK(),
-    BREAK(),
-    BREAK(),
     BREAK(),
 };
 
@@ -2234,14 +2139,6 @@ const BehaviorScript bhvBobombExplosionBubble3600[] = {
     RETURN(),
 };
 
-const BehaviorScript bhvRespawner[] = {
-    BEGIN(OBJ_LIST_DEFAULT),
-    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
-    BEGIN_LOOP(),
-        CALL_NATIVE(bhv_respawner_loop),
-    END_LOOP(),
-};
-
 const BehaviorScript bhvSmallBully[] = {
     BEGIN(OBJ_LIST_GENACTOR),
     OR_INT(oFlags, (OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
@@ -2419,13 +2316,6 @@ const BehaviorScript bhvAmbientSounds[] = {
     BEGIN(OBJ_LIST_DEFAULT),
     CALL_NATIVE(bhv_ambient_sounds_init),
     BEGIN_LOOP(),
-    END_LOOP(),
-};
-
-const BehaviorScript bhvSandSoundLoop[] = {
-    BEGIN(OBJ_LIST_DEFAULT),
-    BEGIN_LOOP(),
-        CALL_NATIVE(bhv_sand_sound_loop),
     END_LOOP(),
 };
 

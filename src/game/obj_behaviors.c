@@ -766,5 +766,4 @@ UNUSED s8 debug_sequence_tracker(s16 debugInputSequence[]) {
 #include "behaviors/sliding_platform.inc.c"
 #include "behaviors/sound_birds.inc.c"
 #include "behaviors/sound_ambient.inc.c"
-#include "behaviors/sound_sand.inc.c"
 #include "behaviors/spawn_star.inc.c"

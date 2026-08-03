@@ -56,58 +56,17 @@ static s16 sBooHitRotations[] = {
 #include "behaviors/cannon.inc.c"
 #include "behaviors/rotating_platform.inc.c"
 #include "behaviors/warp.inc.c"
-#include "behaviors/white_puff_explode.inc.c"
-
-// not in behavior file
-static struct SpawnParticlesInfo sMistParticles = {
-    /* bhvParam:        */ 2,
-    /* count:           */ 20,
-    /* model:           */ MODEL_MIST,
-    /* offsetY:         */ 0,
-    /* forwardVelBase:  */ 40,
-    /* forwardVelRange: */ 5,
-    /* velYBase:        */ 30,
-    /* velYRange:       */ 20,
-    /* gravity:         */ 252,
-    /* dragStrength:    */ 30,
-    /* sizeBase:        */ 330.0f,
-    /* sizeRange:       */ 10.0f,
-};
-
-// generate_wind_puffs/dust (something like that)
-void spawn_mist_particles_variable(s32 count, s32 offsetY, f32 size) {
-    sMistParticles.sizeBase = size;
-    sMistParticles.sizeRange = size / 20.0;
-    sMistParticles.offsetY = offsetY;
-
-    if (count == 0) {
-        sMistParticles.count = 20;
-    } else if (count > 20) {
-        sMistParticles.count = count;
-    } else {
-        sMistParticles.count = 4;
-    }
-
-    cur_obj_spawn_particles(&sMistParticles);
-}
 
 #include "behaviors/coin.inc.c"
 #include "behaviors/door.inc.c"
 #include "behaviors/thwomp.inc.c"
 #include "behaviors/tumbling_bridge.inc.c"
-#include "behaviors/water_mist_particle.inc.c"
-#include "behaviors/break_particles.inc.c"
-#include "behaviors/water_mist.inc.c"
-#include "behaviors/ground_particles.inc.c"
-#include "behaviors/falling_rising_platform.inc.c"
 #include "behaviors/flamethrower.inc.c"
 #include "behaviors/bouncing_fireball.inc.c"
-#include "behaviors/shock_wave.inc.c"
 #include "behaviors/flame_mario.inc.c"
 #include "behaviors/beta_fish_splash_spawner.inc.c"
 #include "behaviors/tower_platform.inc.c"
 #include "behaviors/tree_particles.inc.c"
-#include "behaviors/square_platform_cycle.inc.c"
 #include "behaviors/piranha_bubbles.inc.c"
 
 // not sure what this is doing here. not in a behavior file.
@@ -179,15 +138,11 @@ s32 set_obj_anim_with_accel_and_sound(s16 a0, s16 a1, s32 a2) {
 
 #include "behaviors/tuxie.inc.c"
 #include "behaviors/fish.inc.c"
-#include "behaviors/express_elevator.inc.c"
 #include "behaviors/bub.inc.c"
 #include "behaviors/sound_spawner.inc.c"
-#include "behaviors/ddd_sub.inc.c"
 #include "behaviors/sushi.inc.c"
 #include "behaviors/white_puff.inc.c"
-#include "behaviors/wdw_water_level.inc.c"
 #include "behaviors/boo.inc.c"
-#include "behaviors/bbh_tilting_trap.inc.c"
 #include "behaviors/static_checkered_platform.inc.c"
 #include "behaviors/beta_bowser_anchor.inc.c"
 #include "behaviors/castle_floor_trap.inc.c"
