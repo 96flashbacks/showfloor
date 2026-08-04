@@ -86,7 +86,8 @@ void fade_into_special_warp(u32 arg, u32 color) {
     }
 
     fadeout_level_music(190);
-    play_transition(WARP_TRANSITION_FADE_INTO_COLOR, 0x10, color, color, color);
+    // Same speed as MARIO_SPAWN_SPIN_AIRBORNE (26)
+    play_transition(WARP_TRANSITION_FADE_INTO_COLOR, 0x1A, color, color, color);
     level_set_transition(30, NULL);
 
     warp_special(arg);
@@ -238,19 +239,6 @@ void init_mario_after_warp(void) {
     }
 
     set_background_music(gCurrentArea->musicParam2, 0);
-
-#if BUGFIX_KOOPA_RACE_MUSIC
-    if (gCurrLevelNum == LEVEL_BOB
-        && get_current_background_music() != SEQUENCE_ARGS(4, SEQ_LEVEL_SLIDE) && sTimerRunning) {
-        play_music(SEQ_PLAYER_LEVEL, SEQUENCE_ARGS(4, SEQ_LEVEL_SLIDE), 0);
-    }
-#endif
-
-    if (sWarpDest.levelNum == LEVEL_CASTLE && sWarpDest.areaIdx == 1
-        && sWarpDest.nodeId
-               == 31) { /* delete this when i'm no longer using a build as md5sum reference */
-        // play_sound(SOUND_MENU_MARIO_CASTLE_WARP, gGlobalSoundSource);
-    }
 }
 
 // used for warps inside one level
@@ -313,33 +301,6 @@ s16 music_changed_through_warp(s16 arg) {
     struct ObjectWarpNode *warpNode = area_get_warp_node(arg);
     s16 levelNum = warpNode->node.destLevel & 0x7F;
 
-#if BUGFIX_KOOPA_RACE_MUSIC
-
-    s16 destArea = warpNode->node.destArea;
-    s16 val4 = TRUE;
-    s16 sp2C;
-
-    if (levelNum == LEVEL_BOB && levelNum == gCurrLevelNum && destArea == gCurrAreaIndex) {
-        sp2C = get_current_background_music();
-        if (sp2C == SEQUENCE_ARGS(4, SEQ_EVENT_POWERUP | SEQ_VARIATION)
-            || sp2C == SEQUENCE_ARGS(4, SEQ_EVENT_POWERUP)) {
-            val4 = FALSE;
-        }
-    } else {
-        u16 val8 = gAreas[destArea].musicParam;
-        u16 val6 = gAreas[destArea].musicParam2;
-
-        val4 = levelNum == gCurrLevelNum && val8 == gCurrentArea->musicParam
-               && val6 == gCurrentArea->musicParam2;
-
-        if (get_current_background_music() != val6) {
-            val4 = FALSE;
-        }
-    }
-    return val4;
-
-#else
-
     u16 val8 = gAreas[warpNode->node.destArea].musicParam;
     u16 val6 = gAreas[warpNode->node.destArea].musicParam2;
 
@@ -350,8 +311,6 @@ s16 music_changed_through_warp(s16 arg) {
         val4 = FALSE;
     }
     return val4;
-
-#endif
 }
 
 /**

@@ -104,8 +104,8 @@
 #define PARTICLE_LEAF                 /* 0x00002000 */ (1 << 13)
 #define PARTICLE_SNOW                 /* 0x00004000 */ (1 << 14)
 #define PARTICLE_DIRT                 /* 0x00008000 */ (1 << 15)
-#define PARTICLE_MIST_CIRCLE          /* 0x00010000 */ (1 << 16)
-#define PARTICLE_BREATH               /* 0x00020000 */ (1 << 17)
+//#define PARTICLE_MIST_CIRCLE          /* 0x00010000 */ (1 << 16)
+//#define PARTICLE_BREATH               /* 0x00020000 */ (1 << 17)
 #define PARTICLE_TRIANGLE             /* 0x00040000 */ (1 << 18)
 #define PARTICLE_19                   /* 0x00080000 */ (1 << 19)
 

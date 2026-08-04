@@ -63,7 +63,6 @@ struct SpawnParticlesInfo {
     /*0x10*/ f32 sizeRange;
 };
 
-Gfx *geo_update_projectile_pos_from_parent(s32 callContext, UNUSED struct GraphNode *node, Mat4 mtx);
 Gfx *geo_update_layer_transparency(s32 callContext, struct GraphNode *node, UNUSED void *context);
 #ifdef AVOID_UB
 Gfx *geo_switch_anim_state(s32 callContext, struct GraphNode *node, UNUSED void *context);
@@ -208,7 +207,6 @@ void obj_scale_random(struct Object *obj, f32 rangeLength, f32 minScale);
 void obj_translate_xyz_random(struct Object *obj, f32 rangeLength);
 void obj_translate_xz_random(struct Object *obj, f32 rangeLength);
 void cur_obj_set_pos_via_transform(void);
-void cur_obj_spawn_particles(struct SpawnParticlesInfo *info);
 s16 cur_obj_reflect_move_angle_off_wall(void);
 
 #define WAYPOINT_FLAGS_END -1
@@ -226,8 +224,6 @@ f32 absf(f32 x);
 s32 absi(s32 a0);
 s32 cur_obj_wait_then_blink(s32 timeUntilBlinking, s32 numBlinks);
 s32 cur_obj_is_mario_ground_pounding_platform(void);
-void spawn_mist_particles(void);
-void spawn_mist_particles_with_sound(u32 soundMagic);
 void cur_obj_push_mario_away(f32 radius);
 void cur_obj_push_mario_away_from_cylinder(f32 radius, f32 extentY);
 s32 cur_obj_set_action_table(s8 *actionTable);
@@ -243,7 +239,6 @@ s32 is_mario_moving_fast_or_in_air(s32 speedThreshold);
 s32 is_item_in_array(s8 item, s8 *array);
 void cur_obj_enable_rendering_if_mario_in_room(void);
 s32 cur_obj_set_hitbox_and_die_if_attacked(struct ObjectHitbox *hitbox, s32 deathSound, s32 noLootCoins);
-void obj_explode_and_spawn_coins(f32 mistParticleSize);
 void obj_set_collision_data(struct Object *obj, const void *segAddr);
 void cur_obj_if_hit_wall_bounce_away(void);
 s32 cur_obj_hide_if_mario_far_away_y(f32 distY);

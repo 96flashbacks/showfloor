@@ -130,14 +130,6 @@ static s16 random_linear_offset(s16 base, s16 range) {
 
 static void obj_die_if_health_non_positive(void) {
     if (o->oHealth <= 0) {
-        if (o->oDeathSound == 0) {
-            spawn_mist_particles_with_sound(SOUND_OBJ_DEFAULT_DEATH);
-        } else if (o->oDeathSound > 0) {
-            spawn_mist_particles_with_sound(o->oDeathSound);
-        } else {
-            spawn_mist_particles();
-        }
-
         // This doesn't do anything
         obj_spawn_loot_yellow_coins(o, o->oNumLootCoins, 20.0f);
 
