@@ -181,12 +181,12 @@
     #define BLUE_COIN_SWITCH_ACT_RECEDING 1
     #define BLUE_COIN_SWITCH_ACT_TICKING  2
 
-/* Moving Blue Coin */
+/* Slider Coin */
     /* oAction */
-    #define MOV_BCOIN_ACT_STILL  0
-    #define MOV_BCOIN_ACT_MOVING 1
+    #define SLD_COIN_ACT_STILL  0
+    #define SLD_COIN_ACT_MOVING 1
 
-/* Moving Yellow Coin */
+/* Moving Coin */
     /* oAction */
     #define MOV_YCOIN_ACT_IDLE              0
     #define MOV_YCOIN_ACT_BLINKING          1

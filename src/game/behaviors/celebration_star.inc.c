@@ -59,7 +59,7 @@ void bhv_celebration_star_sparkle_loop(void) {
     }
 }
 
-void bhv_star_dust(void) {
+void bhv_star_dust_loop(void) {
     if (o->oTimer % 2 == 0) {
         o->oAnimState++;
     }

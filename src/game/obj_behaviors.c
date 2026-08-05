@@ -614,7 +614,7 @@ void obj_spawn_yellow_coins(struct Object *obj, s8 nCoins) {
     s8 count;
 
     for (count = 0; count < nCoins; count++) {
-        coin = spawn_object(obj, MODEL_YELLOW_COIN, bhvMovingYellowCoin);
+        coin = spawn_object(obj, MODEL_YELLOW_COIN, bhvMovingCoin);
         coin->oForwardVel = random_float() * 20;
         coin->oVelY = random_float() * 40 + 20;
         coin->oMoveAngleYaw = random_u16();
@@ -756,7 +756,7 @@ UNUSED s8 debug_sequence_tracker(s16 debugInputSequence[]) {
 #include "behaviors/bubble.inc.c"
 #include "behaviors/water_wave.inc.c"
 #include "behaviors/explosion.inc.c"
-#include "behaviors/corkbox.inc.c"
+#include "behaviors/bobomb_bully_explosion.inc.c"
 #include "behaviors/bully.inc.c"
 #include "behaviors/water_ring.inc.c"
 #include "behaviors/bowser_bomb.inc.c"

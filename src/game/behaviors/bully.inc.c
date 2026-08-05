@@ -141,7 +141,7 @@ void bully_step(void) {
 }
 
 void bully_spawn_coin(void) {
-    struct Object *coin = spawn_object(o, MODEL_YELLOW_COIN, bhvMovingYellowCoin);
+    struct Object *coin = spawn_object(o, MODEL_YELLOW_COIN, bhvMovingCoin);
     coin->oForwardVel = 10.0f;
     coin->oVelY = 100.0f;
     coin->oPosY = o->oPosY;

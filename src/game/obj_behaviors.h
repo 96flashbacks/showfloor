@@ -10,15 +10,11 @@
 s32 coin_step(s16 *collisionFlagsPtr);
 void moving_coin_flicker(void);
 void coin_collected(void);
-void bhv_moving_yellow_coin_init(void);
-void bhv_moving_yellow_coin_loop(void);
-void bhv_moving_blue_coin_init(void);
-void bhv_moving_blue_coin_loop(void);
+void bhv_moving_coin_init(void);
+void bhv_moving_coin_loop(void);
+void bhv_slider_coin_init(void);
+void bhv_slider_coin_loop(void);
 void bhv_blue_coin_sliding_jumping_init(void);
-void blue_coin_sliding_away_from_mario(void); /* likely unused */
-void blue_coin_sliding_slow_down(void); /* likely unused */
-void bhv_blue_coin_sliding_loop(void); /* likely unused */
-void bhv_blue_coin_jumping_loop(void); /* likely unused */
 void bhv_seaweed_init(void);
 void bhv_seaweed_bundle_init(void);
 void bhv_bobomb_init(void);

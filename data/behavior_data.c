@@ -308,6 +308,7 @@
     BC_B(0x37), \
     BC_PTR(dropletParams)
 
+// Yajima's objects
 const BehaviorScript bhvMrI[] = {
     BEGIN(OBJ_LIST_GENACTOR),
     OR_INT(oFlags, (OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_MOVE_XZ_USING_FVEL | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
@@ -648,12 +649,14 @@ const BehaviorScript bhvCoinInsideBoo[] = {
     END_LOOP(),
 };
 
+// e_coin_ground
 const BehaviorScript bhvOneCoin[] = {
     BEGIN(OBJ_LIST_LEVEL),
     SET_INT(oBhvParams2ndByte, 1),
     GOTO(bhvYellowCoin + 1),
 };
 
+// e_coin
 const BehaviorScript bhvYellowCoin[] = {
     BEGIN(OBJ_LIST_LEVEL),
     // Yellow coin - common:
@@ -673,24 +676,6 @@ const BehaviorScript bhvTemporaryYellowCoin[] = {
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_temp_coin_loop),
     END_LOOP(),
-};
-
-const BehaviorScript bhvThreeCoinsSpawn[] = {
-    BEGIN(OBJ_LIST_DEFAULT),
-    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
-    BEGIN_REPEAT(3),
-        SPAWN_CHILD(/*Model*/ MODEL_YELLOW_COIN, /*Behavior*/ bhvSingleCoinGetsSpawned),
-    END_REPEAT(),
-    DEACTIVATE(),
-};
-
-const BehaviorScript bhvTenCoinsSpawn[] = {
-    BEGIN(OBJ_LIST_DEFAULT),
-    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
-    BEGIN_REPEAT(10),
-        SPAWN_CHILD(/*Model*/ MODEL_YELLOW_COIN, /*Behavior*/ bhvSingleCoinGetsSpawned),
-    END_REPEAT(),
-    DEACTIVATE(),
 };
 
 const BehaviorScript bhvSingleCoinGetsSpawned[] = {
@@ -1190,6 +1175,12 @@ const BehaviorScript bhvBlueFish[] = {
     END_LOOP(),
 };
 
+// e_motos leftover
+const BehaviorScript bhvStub1D0C[] = {
+    BEGIN(OBJ_LIST_DEFAULT),
+    DEACTIVATE(),
+};
+
 const BehaviorScript bhvLLLRotatingHexagonalPlatform[] = {
     BEGIN(OBJ_LIST_SURFACE),
     OR_INT(oFlags, (OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
@@ -1596,6 +1587,21 @@ const BehaviorScript bhvInsideCannon[] = {
     BREAK(),
 };
 
+// e_star is the original 2D star object, it's part of Yajima's section unlike the final star (e_tripstar)
+const BehaviorScript bhvStar[] = {
+    BEGIN(OBJ_LIST_LEVEL),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    BILLBOARD(),
+    SET_INT(oAnimState, -1),
+    CALL_NATIVE(bhv_init_room),
+    CALL_NATIVE(bhv_collect_star_init),
+    SCALE(/*Unused*/ 0, /*Field*/ 150),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_collect_star_loop),
+        ANIMATE_TEXTURE(oAnimState, 2),
+    END_LOOP(),
+};
+
 const BehaviorScript bhvStaticObject[] = {
     BEGIN(OBJ_LIST_DEFAULT),
     OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
@@ -1843,6 +1849,7 @@ const BehaviorScript bhvYellowBall[] = {
     BREAK(),
 };
 
+// Nishida's objects
 UNUSED static const u64 behavior_data_unused_0 = 0;
 const BehaviorScript bhvMario[] = {
     BEGIN(OBJ_LIST_PLAYER),
@@ -1913,6 +1920,7 @@ const BehaviorScript bhvSwimmingWarp[] = {
     BREAK(),
 };
 
+// Iwamoto's objects
 UNUSED static const u64 behavior_data_unused_1 = 0;
 const BehaviorScript bhvRandomAnimatedTexture[] = {
     BEGIN(OBJ_LIST_LEVEL),
@@ -1925,7 +1933,8 @@ const BehaviorScript bhvRandomAnimatedTexture[] = {
     END_LOOP(),
 };
 
-const BehaviorScript bhvMovingYellowCoin[] = {
+// e_move_coin ('bhvMovingYellowCoin' in the decomp)
+const BehaviorScript bhvMovingCoin[] = {
     BEGIN(OBJ_LIST_LEVEL),
     OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
     BILLBOARD(),
@@ -1933,48 +1942,23 @@ const BehaviorScript bhvMovingYellowCoin[] = {
     SET_INT(oInteractType, INTERACT_COIN),
     SET_INT(oIntangibleTimer, 0),
     SET_INT(oAnimState, -1),
-    CALL_NATIVE(bhv_moving_yellow_coin_init),
+    CALL_NATIVE(bhv_moving_coin_init),
     BEGIN_LOOP(),
-        CALL_NATIVE(bhv_moving_yellow_coin_loop),
+        CALL_NATIVE(bhv_moving_coin_loop),
         ADD_INT(oAnimState, 1),
     END_LOOP(),
 };
 
-const BehaviorScript bhvMovingBlueCoin[] = {
+// e_slider_coin ('bhvMovingBlueCoin' in the decomp)
+const BehaviorScript bhvSliderCoin[] = {
     BEGIN(OBJ_LIST_LEVEL),
     OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
     BILLBOARD(),
     SET_INT(oIntangibleTimer, 0),
     SET_INT(oAnimState, -1),
-    CALL_NATIVE(bhv_moving_blue_coin_init),
+    CALL_NATIVE(bhv_slider_coin_init),
     BEGIN_LOOP(),
-        CALL_NATIVE(bhv_moving_blue_coin_loop),
-        ADD_INT(oAnimState, 1),
-    END_LOOP(),
-};
-
-const BehaviorScript bhvBlueCoinSliding[] = {
-    BEGIN(OBJ_LIST_GENACTOR),
-    OR_INT(oFlags, (OBJ_FLAG_COMPUTE_ANGLE_TO_MARIO | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
-    BILLBOARD(),
-    SET_INT(oIntangibleTimer, 0),
-    SET_INT(oAnimState, -1),
-    CALL_NATIVE(bhv_blue_coin_sliding_jumping_init),
-    BEGIN_LOOP(),
-        CALL_NATIVE(bhv_blue_coin_sliding_loop),
-        ADD_INT(oAnimState, 1),
-    END_LOOP(),
-};
-
-const BehaviorScript bhvBlueCoinJumping[] = {
-    BEGIN(OBJ_LIST_GENACTOR),
-    OR_INT(oFlags, (OBJ_FLAG_COMPUTE_ANGLE_TO_MARIO | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
-    BILLBOARD(),
-    SET_INT(oIntangibleTimer, 0),
-    SET_INT(oAnimState, -1),
-    CALL_NATIVE(bhv_blue_coin_sliding_jumping_init),
-    BEGIN_LOOP(),
-        CALL_NATIVE(bhv_blue_coin_jumping_loop),
+        CALL_NATIVE(bhv_slider_coin_loop),
         ADD_INT(oAnimState, 1),
     END_LOOP(),
 };
@@ -2221,6 +2205,7 @@ const BehaviorScript bhvBowserBombSmoke[] = {
     END_LOOP(),
 };
 
+// e_V_star
 const BehaviorScript bhvCelebrationStar[] = {
     BEGIN(OBJ_LIST_LEVEL),
     OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
@@ -2232,6 +2217,7 @@ const BehaviorScript bhvCelebrationStar[] = {
     END_LOOP(),
 };
 
+// e_V_starspark
 const BehaviorScript bhvCelebrationStarSparkle[] = {
     BEGIN(OBJ_LIST_UNIMPORTANT),
     BILLBOARD(),
@@ -2244,13 +2230,14 @@ const BehaviorScript bhvCelebrationStarSparkle[] = {
     END_LOOP(),
 };
 
+// e_V_stardust
 const BehaviorScript bhvStarDust[] = {
     BEGIN(OBJ_LIST_DEFAULT),
     BILLBOARD(),
     OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
     SET_INT(oAnimState, -1),
     BEGIN_LOOP(),
-        CALL_NATIVE(bhv_star_dust),
+        CALL_NATIVE(bhv_star_dust_loop),
     END_LOOP(),
 };
 
@@ -2319,20 +2306,7 @@ const BehaviorScript bhvAmbientSounds[] = {
     END_LOOP(),
 };
 
-const BehaviorScript bhvStar[] = {
-    BEGIN(OBJ_LIST_LEVEL),
-    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
-    BILLBOARD(),
-    SET_INT(oAnimState, -1),
-    CALL_NATIVE(bhv_init_room),
-    CALL_NATIVE(bhv_collect_star_init),
-    SCALE(/*Unused*/ 0, /*Field*/ 150),
-    BEGIN_LOOP(),
-        CALL_NATIVE(bhv_collect_star_loop),
-        ANIMATE_TEXTURE(oAnimState, 2),
-    END_LOOP(),
-};
-
+// Iwawaki's objects
 const BehaviorScript bhvSmallPiranhaFlame[] = {
     BEGIN(OBJ_LIST_GENACTOR),
     OR_INT(oFlags, (OBJ_FLAG_COMPUTE_ANGLE_TO_MARIO | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),

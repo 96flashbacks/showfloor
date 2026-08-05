@@ -1,5 +1,4 @@
-// corkbox.inc.c
-// TODO: This split seems weird. Investigate further?
+// Strangely titled 'corkbox.inc.c' in the decomp
 
 void bhv_bobomb_bully_death_smoke_init(void) {
     cur_obj_scale(10.0f);
