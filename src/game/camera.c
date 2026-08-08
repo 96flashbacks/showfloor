@@ -2023,7 +2023,7 @@ static UNUSED void unused_mode_0f_camera(struct Camera *c) {
 }
 
 /**
- * Slide/hoot mode.
+ * Slide mode.
  * In this mode, the camera is always at the back of Mario, because Mario generally only moves forward.
  */
 void mode_slide_camera(struct Camera *c) {
@@ -2344,7 +2344,7 @@ void transition_next_state(UNUSED struct Camera *c, s16 frames) {
  * Sets the camera mode to `newMode` and initializes sModeTransition with `numFrames` frames
  *
  * Used to change the camera mode to 'level-oriented' modes
- *      namely: RADIAL/OUTWARD_RADIAL, 8_DIRECTIONS, FREE_ROAM, CLOSE, SPIRAL_STAIRS, and SLIDE_HOOT
+ *      namely: RADIAL/OUTWARD_RADIAL, 8_DIRECTIONS, FREE_ROAM, CLOSE, SPIRAL_STAIRS, and SLIDE
  */
 void transition_to_camera_mode(struct Camera *c, s16 newMode, s16 numFrames) {
     if (c->mode != newMode) {

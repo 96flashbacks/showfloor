@@ -152,7 +152,6 @@ s16 D_8035FEE2;
 s16 D_8035FEE4;
 s16 gTHIWaterDrained;
 s16 gTTCSpeedSetting;
-s16 gMarioShotFromCannon;
 s16 gNumRoomedObjectsInMarioRoom;
 s16 gNumRoomedObjectsNotInMarioRoom;
 s16 gWDWWaterLevelChanging;

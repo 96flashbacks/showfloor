@@ -107,7 +107,6 @@ extern s16 D_8035FEE2;
 extern s16 D_8035FEE4;
 extern s16 gTHIWaterDrained;
 extern s16 gTTCSpeedSetting;
-extern s16 gMarioShotFromCannon;
 extern s16 gCCMEnteredSlide;
 extern s16 gNumRoomedObjectsInMarioRoom;
 extern s16 gNumRoomedObjectsNotInMarioRoom;
