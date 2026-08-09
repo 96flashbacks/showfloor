@@ -6226,7 +6226,7 @@ BAD_RETURN(s32) cutscene_enter_cannon_raise(struct Camera *c) {
     Vec3f cannonFocus;
     Vec3s cannonAngle;
 
-    // Shake the camera when the cannon is fully raised
+    // No camera shake when the cannon is fully raised
     sStatusFlags |= CAM_FLAG_SMOOTH_MOVEMENT;
     camera_approach_s16_symmetric_bool(&sCutsceneVars[1].angle[0], 0, 0x80);
     camera_approach_s16_symmetric_bool(&sCutsceneVars[2].angle[0], 0, 0x80);
@@ -6308,8 +6308,7 @@ BAD_RETURN(s32) cutscene_door_fix_cam(struct Camera *c) {
  */
 BAD_RETURN(s32) cutscene_door_loop(struct Camera *c) {
     //! bitwise AND instead of boolean
-    if ((sMarioCamState->action != ACT_PULLING_DOOR) & (sMarioCamState->action != ACT_PUSHING_DOOR)) {
-        
+    if ((sMarioCamState->action != ACT_PULLING_DOOR) & (sMarioCamState->action != ACT_PUSHING_DOOR)) {        
         gCutsceneTimer = CUTSCENE_STOP;
         c->cutscene = 0;
     }
