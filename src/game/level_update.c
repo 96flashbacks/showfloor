@@ -405,27 +405,18 @@ s16 level_trigger_warp(struct MarioState *m, s32 warpOp) {
         sDelayedWarpOp = warpOp;
 
         switch (warpOp) {
-            case WARP_OP_DEMO_NEXT:
-            case WARP_OP_DEMO_END:
-                sDelayedWarpTimer = 20; // Must be one line to match on -O2
-                sSourceWarpNodeId = WARP_NODE_SUCCESS;
-                gSavedCourseNum = COURSE_NONE;
-                val04 = FALSE;
-                play_transition(WARP_TRANSITION_FADE_INTO_STAR, 0x14, 0x00, 0x00, 0x00);
-                break;
-
             case WARP_OP_STAR_EXIT:
-                sDelayedWarpTimer = 40;
+                sDelayedWarpTimer = 32;
                 sSourceWarpNodeId = WARP_NODE_SUCCESS;
                 gSavedCourseNum = COURSE_NONE;
-                play_transition(WARP_TRANSITION_FADE_INTO_MARIO, 0x28, 0x00, 0x00, 0x00);
+                play_transition(WARP_TRANSITION_FADE_INTO_MARIO, 0x20, 0x00, 0x00, 0x00);
                 break;
 
             case WARP_OP_DEATH:
                 if (m->numLives == 0) {
                     sDelayedWarpOp = WARP_OP_GAME_OVER;
                 }
-                sDelayedWarpTimer = 32;
+                sDelayedWarpTimer = 32; // 16 frames faster than the final game
                 sSourceWarpNodeId = WARP_NODE_DEATH;
                 play_transition(WARP_TRANSITION_FADE_INTO_BOWSER, 0x20, 0x00, 0x00, 0x00);
                 break;
@@ -441,25 +432,6 @@ s16 level_trigger_warp(struct MarioState *m, s32 warpOp) {
                 }
                 sDelayedWarpTimer = 20;
                 play_transition(WARP_TRANSITION_FADE_INTO_CIRCLE, 0x14, 0x00, 0x00, 0x00);
-                break;
-
-            case WARP_OP_UNKNOWN_01: // enter TotWC
-                sDelayedWarpTimer = 30;
-                sSourceWarpNodeId = WARP_NODE_TOTWC;
-                play_transition(WARP_TRANSITION_FADE_INTO_COLOR, 0x1E, 0xFF, 0xFF, 0xFF);
-                break;
-
-            case WARP_OP_UNKNOWN_02: // enter BBH
-                sDelayedWarpTimer = 30;
-                sSourceWarpNodeId = (m->usedObj->oBhvParams & 0x00FF0000) >> 16;
-                play_transition(WARP_TRANSITION_FADE_INTO_COLOR, 0x1E, 0xFF, 0xFF, 0xFF);
-                break;
-
-            case WARP_OP_TELEPORT:
-                sDelayedWarpTimer = 30;
-                sSourceWarpNodeId = (m->usedObj->oBhvParams & 0x00FF0000) >> 16;
-                val04 = !music_changed_through_warp(sSourceWarpNodeId);
-                play_transition(WARP_TRANSITION_FADE_INTO_COLOR, 0x1E, 0xFF, 0xFF, 0xFF);
                 break;
 
             case WARP_OP_WARP_DOOR:
@@ -853,7 +825,6 @@ s32 lvl_init_from_save_file(UNUSED s16 arg0, s32 levelNum) {
     gCurrLevelNum = levelNum;
     gCurrCourseNum = COURSE_NONE;
     gSavedCourseNum = COURSE_NONE;
-    gSpecialTripleJump = FALSE;
 
     init_mario_from_save_file();
 
@@ -861,18 +832,8 @@ s32 lvl_init_from_save_file(UNUSED s16 arg0, s32 levelNum) {
 }
 
 s32 lvl_set_current_level(UNUSED s16 arg0, s32 levelNum) {
-    s32 warpCheckpointActive = sWarpCheckpointActive;
-
-    sWarpCheckpointActive = FALSE;
     gCurrLevelNum = levelNum;
     gCurrCourseNum = gLevelToCourseNumTable[levelNum - 1];
-
-    if (gCurrCourseNum == COURSE_NONE) { /* check back here later */
-        return 0;
-    }
-
-    gCurrCourseStarFlags =
-        save_file_get_star_flags(gCurrSaveFileNum - 1, COURSE_NUM_TO_INDEX(gCurrCourseNum));
 
     if (gSavedCourseNum != gCurrCourseNum) {
         gSavedCourseNum = gCurrCourseNum;
@@ -880,21 +841,5 @@ s32 lvl_set_current_level(UNUSED s16 arg0, s32 levelNum) {
         disable_warp_checkpoint();
     }
 
-    if (gCurrCourseNum > COURSE_STAGES_MAX || warpCheckpointActive) {
-        return 0;
-    }
-
-    if (gDebugLevelSelect && !gShowProfiler) {
-        return 0;
-    }
-
     return 0;
-}
-
-/**
- * Play the "thank you so much for to playing my game" sound.
- */
-s32 lvl_play_the_end_screen_sound(UNUSED s16 arg0, UNUSED s32 arg1) {
-    play_sound(SOUND_MENU_THANK_YOU_PLAYING_MY_GAME, gGlobalSoundSource);
-    return 1;
 }

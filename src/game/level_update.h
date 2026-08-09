@@ -12,27 +12,21 @@
 #define TIMER_CONTROL_HIDE  3
 
 #define WARP_OP_NONE          0x00
-#define WARP_OP_UNKNOWN_01    0x01
-#define WARP_OP_UNKNOWN_02    0x02
-#define WARP_OP_WARP_DOOR     0x03
-#define WARP_OP_WARP_OBJECT   0x04
-#define WARP_OP_TELEPORT      0x05
+
+#define WARP_OP_WARP_DOOR     0x01
+#define WARP_OP_WARP_OBJECT   0x02
+
 #define WARP_OP_STAR_EXIT     0x11
 #define WARP_OP_DEATH         0x12
 #define WARP_OP_WARP_FLOOR    0x13
 #define WARP_OP_GAME_OVER     0x14
-#define WARP_OP_CREDITS_END   0x15
-#define WARP_OP_DEMO_NEXT     0x16
-#define WARP_OP_CREDITS_START 0x17
-#define WARP_OP_CREDITS_NEXT  0x18
-#define WARP_OP_DEMO_END      0x19
 
 #define WARP_OP_TRIGGERS_LEVEL_SELECT 0x10
 
 #define MARIO_SPAWN_DOOR_WARP             0x01
 #define MARIO_SPAWN_UNKNOWN_02            0x02
 #define MARIO_SPAWN_UNKNOWN_03            0x03
-//#define MARIO_SPAWN_TELEPORT              0x04
+
 #define MARIO_SPAWN_INSTANT_ACTIVE        0x10
 #define MARIO_SPAWN_SWIMMING              0x11
 #define MARIO_SPAWN_AIRBORNE              0x12
@@ -41,6 +35,7 @@
 #define MARIO_SPAWN_DEATH                 0x15
 #define MARIO_SPAWN_SPIN_AIRBORNE         0x16
 #define MARIO_SPAWN_FLYING                0x17
+
 #define MARIO_SPAWN_PAINTING_STAR_COLLECT 0x20
 #define MARIO_SPAWN_PAINTING_DEATH        0x21
 #define MARIO_SPAWN_AIRBORNE_STAR_COLLECT 0x22
@@ -112,12 +107,7 @@ enum WarpNodes {
     // Special Warps
     WARP_NODE_SUCCESS = 0xF0,
     WARP_NODE_DEATH = 0xF1,
-    WARP_NODE_TOTWC = 0xF2,
-    WARP_NODE_WARP_FLOOR = 0xF3,
-    WARP_NODE_CREDITS_START = 0xF8,
-    WARP_NODE_CREDITS_MIN = WARP_NODE_CREDITS_START,
-    WARP_NODE_CREDITS_NEXT = 0xF9,
-    WARP_NODE_CREDITS_END = 0xFA
+    WARP_NODE_WARP_FLOOR = 0xF3
 };
 
 
@@ -195,7 +185,6 @@ void level_set_transition(s16 length, void (*updateFunction)(s16 *));
 s32 lvl_init_or_update(s16 initOrUpdate, UNUSED s32 unused);
 s32 lvl_init_from_save_file(UNUSED s16 arg0, s32 levelNum);
 s32 lvl_set_current_level(UNUSED s16 arg0, s32 levelNum);
-s32 lvl_play_the_end_screen_sound(UNUSED s16 arg0, UNUSED s32 arg1);
 void basic_update(UNUSED s16 *arg);
 
 #endif // LEVEL_UPDATE_H

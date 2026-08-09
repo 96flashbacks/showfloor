@@ -169,13 +169,12 @@ void mtxf_identity(Mat4 mtx) {
     // These loops must be one line to match on -O2
 
     // initialize everything except the first and last cells to 0
-    for (dest = (f32 *) mtx + 1, i = 0; i < 14; dest++, i++)
-        *dest = 0;
+    for (dest = (f32 *) mtx + 1, i = 0; i < 14; dest++, i++) *dest = 0;
 
     // initialize the diagonal cells to 1
-    for (dest = (f32 *) mtx, i = 0; i < 4; dest += 5, i++)
-        *dest = 1;
+    for (dest = (f32 *) mtx, i = 0; i < 4; dest += 5, i++) *dest = 1;
 }
+
 
 /**
  * Set dest to a translation matrix of vector b
