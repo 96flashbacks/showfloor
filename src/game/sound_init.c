@@ -216,7 +216,7 @@ void play_bowser_hallway_music(void) {
                 play_secondary_music(SEQ_KOOPA_HALLWAY_SCREAM_RIGHT, 0x4B, 0xFF, 0);
             }
         } else {
-            func_80321080(1200); // Fade out the music if it shouldn't play
+            func_80321080(600); // Fade out the music if it shouldn't play
         }
     }
 }
