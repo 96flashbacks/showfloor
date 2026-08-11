@@ -3,8 +3,8 @@
     "sample_bank": "instruments",
     "envelopes": {
         "envelope0": [
-            [11, 32700],
-            [300, 0],
+            [10, 32700],
+            [600, 0],
             [5, 0],
             "hang"
         ]
