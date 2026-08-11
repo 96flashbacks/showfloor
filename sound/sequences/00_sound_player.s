@@ -6902,7 +6902,7 @@ chan_setlayer 0, .layer_3221
 chan_end
 
 .layer_3221:
-layer_note1 43, 0x352, 116
+layer_note1 44, 0xA48, 116
 layer_jump .layer_3221
 layer_end
 
