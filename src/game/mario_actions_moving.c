@@ -1021,11 +1021,18 @@ void common_slide_action(struct MarioState *m, u32 endAction, u32 airAction, s32
             break;
 
         case GROUND_STEP_HIT_WALL:
-            if (m->wall != NULL) {
-                // verify! may not be the correct handling
+            if (!mario_floor_is_slippery(m)) {
+                // Doesn't 0 out Mario's speed if it's negative, as in Game Zero 7:52
+                if (m->forwardVel > 0) {
+                    mario_set_forward_vel(m, 0.0f);
+                    set_mario_action(m, endAction, 0);
+                }
+            } else if (m->wall != NULL) {
+                // Putting Mario in the Stomach Slide action is strange but matches ゲームカタログ２　1995年12月02日 (7:58)
                 set_mario_action(m, ACT_STOMACH_SLIDE, 0);
-                break;
             }
+            
+            break;
     }
 }
 
@@ -1116,6 +1123,7 @@ s32 stomach_slide_action(struct MarioState *m, u32 stopAction, u32 airAction, s3
 }
 
 s32 act_stomach_slide(struct MarioState *m) {
+    // The stopAction is incorrectly set to ACT_BUTT_SLIDE_STOP instead of ACT_STOMACH_SLIDE_STOP, seen in Game Zero 6:01
     s32 cancel = stomach_slide_action(m, ACT_BUTT_SLIDE_STOP, ACT_FREEFALL, MARIO_ANIM_SLIDE_DIVE);
     return cancel;
 }
