@@ -6788,8 +6788,8 @@ void fov_default(struct MarioState *m) {
         camera_approach_f32_symmetric_bool(&sFOVState.fov, 45.f, (45.f - sFOVState.fov) / 30.f);
     }
 
-    // This keeps the FOV static when sleeping in WF, CCM, and DDD
-    if ((m->area->camera->mode == CAMERA_MODE_RADIAL) && (gCurrLevelNum != LEVEL_LLL)) {
+    // Strangely, the FOV only changes when sleeping in Fire Bubble
+    if (gCurrLevelNum != LEVEL_LLL) {
         sFOVState.fov = 45.f;
     }
 }
