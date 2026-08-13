@@ -15,7 +15,7 @@ struct TumblingBridgeData sTumblingBridgeData[] = {
     /* TUMBLING_BRIDGE_BP_WF    */ { 9, -512, 128, MODEL_WF_TUMBLING_BRIDGE_PART,
                                      wf_seg7_collision_tumbling_bridge },
     /* TUMBLING_BRIDGE_BP_LLL   */
-    { 9, -512, 128, MODEL_LLL_FALLING_PLATFORM, lll_seg7_collision_0701D21C },
+    { 16, -512, 64, MODEL_LLL_FALLING_PLATFORM, lll_seg7_collision_0701D21C },
 };
 
 void bhv_tumbling_bridge_platform_loop(void) {
