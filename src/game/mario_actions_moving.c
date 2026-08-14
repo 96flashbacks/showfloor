@@ -1028,10 +1028,16 @@ void common_slide_action(struct MarioState *m, u32 endAction, u32 airAction, s32
                     set_mario_action(m, endAction, 0);
                 }
             } else if (m->wall != NULL) {
-                // Putting Mario in the Stomach Slide action is strange but matches ゲームカタログ２　1995年12月02日 (7:58)
-                set_mario_action(m, ACT_STOMACH_SLIDE, 0);
+                // Basically the same check as in 'set_mario_action_moving', it can make Mario switch 
+                // from butt sliding to stomach sliding like in ゲームカタログ２　1995年12月02日 (7:28)
+                if (mario_facing_downhill(m, FALSE)) {
+                    set_mario_action(m, ACT_BUTT_SLIDE, 0);
+                } else {
+                    set_mario_action(m, ACT_STOMACH_SLIDE, 0);
+                }
             }
-            
+        
+            // Missing 'align_with_floor(m)' based on Mario's angle resetting in ゲームカタログ２　1995年12月02日 (7:28)
             break;
     }
 }
