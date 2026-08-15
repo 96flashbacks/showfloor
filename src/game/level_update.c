@@ -498,14 +498,12 @@ void initiate_delayed_warp(void) {
 void update_hud_values(void) {
     s16 numHealthWedges = gMarioState->health > 0 ? gMarioState->health >> 8 : 0;
 
-    if (gHudDisplay.coins < gMarioState->numCoins) {
-        // Leave this commented out !! Ensures coins count up accurately to footage
-        // if (gGlobalTimer & 1) {
-        u32 coinSound;
-        coinSound = SOUND_GENERAL_COIN;
+    // Coin count is always displayed regardless of stage
 
+    if (gHudDisplay.coins < gMarioState->numCoins) {
+        // Missing 'gGlobalTimer & 1' check, the coin counter updates every frame in the demo
         gHudDisplay.coins++;
-        play_sound(coinSound, gMarioState->marioObj->header.gfx.cameraToObject);
+        play_sound(SOUND_GENERAL_COIN, gMarioState->marioObj->header.gfx.cameraToObject);
     }
 
     if (gMarioState->numLives > 100) {
