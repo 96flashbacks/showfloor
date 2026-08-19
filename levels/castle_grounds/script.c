@@ -15,7 +15,6 @@
 #include "make_const_nonconst.h"
 #include "levels/castle_grounds/header.h"
 
-// This has so many unused warps it's kind of disgusting
 static const LevelScript script_func_local_1[] = {
     WARP_NODE(/*id*/ WARP_NODE_00, /*destLevel*/ LEVEL_CASTLE,         /*destArea*/ 1, /*destNode*/ WARP_NODE_00, /*flags*/ WARP_NO_CHECKPOINT),
     WARP_NODE(/*id*/ WARP_NODE_01, /*destLevel*/ LEVEL_CASTLE,         /*destArea*/ 1, /*destNode*/ WARP_NODE_01, /*flags*/ WARP_NO_CHECKPOINT),
@@ -75,7 +74,7 @@ const LevelScript level_castle_grounds_entry[] = {
     END_AREA(),
 
     FREE_LEVEL_POOL(),
-    MARIO_POS(/*area*/ 1, /*yaw*/ 180, /*pos*/ -1515, 260, 4962),
+    MARIO_POS(/*area*/ 1, /*yaw*/ 180, /*pos*/ -1507, 260, 4956),
     CALL(/*arg*/ 0, /*func*/ lvl_init_or_update),
     CALL_LOOP(/*arg*/ 1, /*func*/ lvl_init_or_update),
     CLEAR_LEVEL(),
