@@ -16,27 +16,7 @@ struct ChainSegment {
     s16 roll;
 };
 
-#define WATER_DROPLET_FLAG_RAND_ANGLE                0x02
-#define WATER_DROPLET_FLAG_RAND_OFFSET_XZ            0x04 // Unused
-#define WATER_DROPLET_FLAG_RAND_OFFSET_XYZ           0x08 // Unused
-#define WATER_DROPLET_FLAG_SET_Y_TO_WATER_LEVEL      0x20
-#define WATER_DROPLET_FLAG_RAND_ANGLE_INCR_PLUS_8000 0x40
-#define WATER_DROPLET_FLAG_RAND_ANGLE_INCR           0x80 // Unused
-
-// Call spawn_water_droplet with this struct to spawn an object.
-struct WaterDropletParams {
-    s16 flags; // Droplet spawn flags, see defines above
-    s16 model;
-    const BehaviorScript *behavior;
-    s16 moveAngleRange; // Only used for RAND_ANGLE_INCR flags
-    s16 moveRange;      // Only used for RAND_OFFSET flags
-    f32 randForwardVelOffset;
-    f32 randForwardVelScale;
-    f32 randYVelOffset;
-    f32 randYVelScale;
-    f32 randSizeOffset;
-    f32 randSizeScale;
-};
+// No WaterDropletParams according to pathwater.p
 
 struct struct802A1230 {
     /*0x00*/ s16 unk00;
@@ -93,7 +73,6 @@ struct Object *spawn_object_abs_with_rot(struct Object *parent, s16 uselessArg, 
 struct Object *spawn_object_rel_with_rot(struct Object *parent, u32 model, const BehaviorScript *behavior,
                                          s16 xOff, s16 yOff, s16 zOff, s16 pitch, s16 yaw, UNUSED s16 roll);
 struct Object *spawn_obj_with_transform_flags(struct Object *sp20, s32 model, const BehaviorScript *sp28);
-struct Object *spawn_water_droplet(struct Object *parent, struct WaterDropletParams *params);
 struct Object *spawn_object_at_origin(struct Object *, s32, u32, const BehaviorScript *);
 struct Object *spawn_object_at_origin(struct Object *parent, UNUSED s32 unusedArg, u32 model, const BehaviorScript *behavior);
 struct Object *spawn_object(struct Object *parent, s32 model, const BehaviorScript *behavior);

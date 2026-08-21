@@ -812,17 +812,6 @@ static s32 bhv_cmd_parent_bit_clear(void) {
     return BHV_PROC_CONTINUE;
 }
 
-// Command 0x37: Spawns a water droplet with the given parameters.
-// Usage: SPAWN_WATER_DROPLET(dropletParams)
-static s32 bhv_cmd_spawn_water_droplet(void) {
-    struct WaterDropletParams *dropletParams = BHV_CMD_GET_VPTR(1);
-
-    spawn_water_droplet(gCurrentObject, dropletParams);
-
-    gCurBhvCommand += 2;
-    return BHV_PROC_CONTINUE;
-}
-
 // Command 0x34: Animates an object using texture animation. <field> is always set to oAnimState.
 // Usage: ANIMATE_TEXTURE(field, rate)
 static s32 bhv_cmd_animate_texture(void) {
@@ -898,7 +887,6 @@ static BhvCommandProc BehaviorCmdTable[] = {
     bhv_cmd_animate_texture,
     bhv_cmd_disable_rendering,
     bhv_cmd_set_int_unused,
-    bhv_cmd_spawn_water_droplet,
 };
 
 // Execute the behavior script of the current object, process the object flags, and other miscellaneous

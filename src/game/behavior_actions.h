@@ -84,7 +84,6 @@ void bhv_flame_mario_loop(void);
 void bhv_black_smoke_mario_loop(void);
 void bhv_black_smoke_bowser_loop(void);
 void bhv_black_smoke_upward_loop(void);
-void bhv_beta_fish_splash_spawner_loop(void);
 void bhv_tower_platform_group_loop(void);
 void bhv_wf_sliding_tower_platform_loop(void);
 void bhv_wf_elevator_tower_platform_loop(void);
@@ -178,12 +177,14 @@ void bhv_castle_floor_trap_loop(void);
 void bhv_floor_trap_in_castle_loop(void);
 void bhv_sparkle_spawn_loop(void);
 void bhv_whomp_loop(void);
-void bhv_water_splash_spawn_droplets(void);
-void bhv_water_droplet_loop(void);
+void bhv_beta_fish_splash_spawner_loop(void);
+void bhv_shallow_water_splash_init(void);
+void bhv_shallow_water_wave_init(void);
 void bhv_water_droplet_splash_init(void);
+void bhv_water_droplet_loop(void);
+void bhv_water_splash_spawn_droplets(void);
 void bhv_bubble_splash_init(void);
 void bhv_idle_water_wave_loop(void);
-void bhv_shallow_water_splash_init(void);
 void bhv_wave_trail_shrink(void);
 void bhv_strong_wind_particle_loop(void);
 void bhv_sl_snowman_wind_loop(void);
@@ -345,9 +346,5 @@ Gfx *geo_switch_bowser_eyes(s32 run, struct GraphNode *node, UNUSED Mat4 *mtx);
 
 // Tuxie
 Gfx *geo_switch_tuxie_mother_eyes(s32 run, struct GraphNode *node, UNUSED Mat4 *mtx);
-
-// Water splash
-extern struct WaterDropletParams gShallowWaterSplashDropletParams;
-extern struct WaterDropletParams gShallowWaterWaveDropletParams;
 
 #endif // BEHAVIOR_ACTIONS_H

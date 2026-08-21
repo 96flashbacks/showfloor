@@ -64,7 +64,6 @@ static s16 sBooHitRotations[] = {
 #include "behaviors/flamethrower.inc.c"
 #include "behaviors/bouncing_fireball.inc.c"
 #include "behaviors/flame_mario.inc.c"
-#include "behaviors/beta_fish_splash_spawner.inc.c"
 #include "behaviors/tower_platform.inc.c"
 #include "behaviors/tree_particles.inc.c"
 #include "behaviors/piranha_bubbles.inc.c"
