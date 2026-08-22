@@ -6172,7 +6172,7 @@ chan_setlayer 1, .layer_2BBD
 chan_end
 
 .layer_2BB0:
-layer_portamento 0x1, 35, 0xa
+layer_portamento 0x1, 35, 0x15
 layer_note1 41, 0xa, 80
 layer_setpan 0
 layer_note1 41, 0xa, 80
