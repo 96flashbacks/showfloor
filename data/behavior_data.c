@@ -303,11 +303,6 @@
     BC_BB(0x36, field), \
     BC_HH(0, value)
 
-// Spawns a water droplet with the given parameters.
-#define SPAWN_WATER_DROPLET(dropletParams) \
-    BC_B(0x37), \
-    BC_PTR(dropletParams)
-
 // Yajima's objects
 const BehaviorScript bhvMrI[] = {
     BEGIN(OBJ_LIST_GENACTOR),
@@ -907,15 +902,6 @@ const BehaviorScript bhvBlackSmokeUpward[] = {
         CALL_NATIVE(bhv_black_smoke_upward_loop),
     END_REPEAT(),
     DEACTIVATE(),
-};
-
-const BehaviorScript bhvBetaFishSplashSpawner[] = {
-    BEGIN(OBJ_LIST_DEFAULT),
-    OR_INT(oFlags, (OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
-    DISABLE_RENDERING(),
-    BEGIN_LOOP(),
-        CALL_NATIVE(bhv_beta_fish_splash_spawner_loop),
-    END_LOOP(),
 };
 
 const BehaviorScript bhvTowerPlatformGroup[] = {
@@ -1695,8 +1681,61 @@ const BehaviorScript bhvSmallWhomp[] = {
     END_LOOP(),
 };
 
+// pathwater.p bhv data
+
+// Waves that are generated when running in shallow water.
+const BehaviorScript bhvShallowWaterWave[] = { // e_smallsplash
+    BEGIN(OBJ_LIST_DEFAULT),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    HIDE(),
+    CALL_NATIVE(bhv_shallow_water_wave_init),
+    DELAY(1),
+    DEACTIVATE(),
+};
+
+// A small water splash that occurs when jumping in and out of shallow water.
+const BehaviorScript bhvShallowWaterSplash[] = { // e_jumpsplash
+    BEGIN(OBJ_LIST_DEFAULT),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    HIDE(),
+    CALL_NATIVE(bhv_shallow_water_splash_init),
+    DELAY(1),
+    DEACTIVATE(),
+};
+
+// Droplets of water that spawn as a result of various water splashes.
+const BehaviorScript bhvWaterDroplet[] = { // e_smallwaterdrop
+    BEGIN(OBJ_LIST_DEFAULT),
+    OR_INT(oFlags, (OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_MOVE_XZ_USING_FVEL | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_water_droplet_loop),
+    END_LOOP(),
+};
+
+// Small splashes that are seen when a water droplet lands back into the water.
+const BehaviorScript bhvWaterDropletSplash[] = { // e_smalldropripple
+    BEGIN(OBJ_LIST_DEFAULT),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    SET_INT(oAnimState, -1),
+    CALL_NATIVE(bhv_water_droplet_splash_init),
+    BEGIN_REPEAT(6),
+        ADD_INT(oAnimState, 1),
+    END_REPEAT(),
+    DEACTIVATE(),
+};
+
+const BehaviorScript bhvBetaFishSplashSpawner[] = { // e_funsui
+    BEGIN(OBJ_LIST_DEFAULT),
+    OR_INT(oFlags, (OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    HIDE(),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_beta_fish_splash_spawner_loop),
+    END_LOOP(),
+};
+
+
 // The large splash Mario makes when he jumps into a pool of water.
-const BehaviorScript bhvWaterSplash[] = {
+const BehaviorScript bhvWaterSplash[] = { // e_waterdive
     BEGIN(OBJ_LIST_DEFAULT),
     OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
     BILLBOARD(),
@@ -1715,31 +1754,10 @@ const BehaviorScript bhvWaterSplash[] = {
     DEACTIVATE(),
 };
 
-// Droplets of water that spawn as a result of various water splashes.
-const BehaviorScript bhvWaterDroplet[] = {
-    BEGIN(OBJ_LIST_UNIMPORTANT),
-    OR_INT(oFlags, (OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_MOVE_XZ_USING_FVEL | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
-    BILLBOARD(),
-    BEGIN_LOOP(),
-        CALL_NATIVE(bhv_water_droplet_loop),
-    END_LOOP(),
-};
-
-// Small splashes that are seen when a water droplet lands back into the water.
-const BehaviorScript bhvWaterDropletSplash[] = {
-    BEGIN(OBJ_LIST_DEFAULT),
-    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
-    CALL_NATIVE(bhv_water_droplet_splash_init),
-    ADD_FLOAT(oPosY, 5),
-    SET_INT(oAnimState, -1),
-    BEGIN_REPEAT(6),
-        ADD_INT(oAnimState, 1),
-    END_REPEAT(),
-    DEACTIVATE(),
-};
+// vanilla water bhv data
 
 // The splash created when an air bubble hits the surface of the water.
-const BehaviorScript bhvBubbleSplash[] = {
+const BehaviorScript bhvBubbleSplash[] = { // e_dropripple
     BEGIN(OBJ_LIST_DEFAULT),
     OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
     SET_FLOAT(oFaceAnglePitch, 0),
@@ -1754,7 +1772,7 @@ const BehaviorScript bhvBubbleSplash[] = {
 };
 
 // The water wave surrounding Mario when he is idle in a pool of water.
-const BehaviorScript bhvIdleWaterWave[] = {
+const BehaviorScript bhvIdleWaterWave[] = { // e_waterrippleB
     BEGIN(OBJ_LIST_DEFAULT),
     OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
     SET_FLOAT(oFaceAnglePitch, 0),
@@ -1774,7 +1792,7 @@ const BehaviorScript bhvIdleWaterWave[] = {
 
 // Water splashes similar to the splashes created by water droplets, but are created by other objects.
 // Unlike water droplet splashes, they are unimportant objects.
-const BehaviorScript bhvObjectWaterSplash[] = {
+const BehaviorScript bhvObjectWaterSplash[] = { // e_rippleA
     BEGIN(OBJ_LIST_UNIMPORTANT),
     OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
     SET_FLOAT(oFaceAnglePitch, 0),
@@ -1787,48 +1805,20 @@ const BehaviorScript bhvObjectWaterSplash[] = {
     DEACTIVATE(),
 };
 
-// Waves that are generated when running in shallow water.
-const BehaviorScript bhvShallowWaterWave[] = {
-    BEGIN(OBJ_LIST_DEFAULT),
-    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
-    DISABLE_RENDERING(),
-    BEGIN_REPEAT(5),
-        SPAWN_WATER_DROPLET(&gShallowWaterWaveDropletParams),
-    END_REPEAT_CONTINUE(),
-    DELAY(1),
-    PARENT_BIT_CLEAR(oActiveParticleFlags, ACTIVE_PARTICLE_SHALLOW_WATER_WAVE),
-    DEACTIVATE(),
-};
-
-// A small water splash that occurs when jumping in and out of shallow water.
-// Unlike the larger water splash it has no visible model of its own.
-// It has a 1 in 256 chance of spawning the fish particle easter egg.
-const BehaviorScript bhvShallowWaterSplash[] = {
-    BEGIN(OBJ_LIST_DEFAULT),
-    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
-    DISABLE_RENDERING(),
-    BEGIN_REPEAT(18),
-        SPAWN_WATER_DROPLET(&gShallowWaterSplashDropletParams),
-    END_REPEAT_CONTINUE(),
-    DELAY(1),
-    PARENT_BIT_CLEAR(oActiveParticleFlags, ACTIVE_PARTICLE_SHALLOW_WATER_SPLASH),
-    DEACTIVATE(),
-};
-
 // Waves created by other objects along the water's surface, specifically the koopa shell and Sushi.
 // Unlike Mario's waves, they are unimportant objects.
-const BehaviorScript bhvObjectWaveTrail[] = {
+const BehaviorScript bhvObjectWaveTrail[] = { // e_enemywave
     BEGIN(OBJ_LIST_UNIMPORTANT),
     OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
     GOTO(bhvWaveTrail + 1 + 1 + 2), // Wave trail - common
 };
 
 // The waves created by Mario while he is swimming.
-const BehaviorScript bhvWaveTrail[] = {
+const BehaviorScript bhvWaveTrail[] = { // e_playerwave
     BEGIN(OBJ_LIST_DEFAULT),
     OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
     PARENT_BIT_CLEAR(oActiveParticleFlags, ACTIVE_PARTICLE_WAVE_TRAIL),
-    // Wave trail - common:
+    // Wave trail - common: (wave_common)
     SET_FLOAT(oFaceAnglePitch, 0),
     SET_FLOAT(oFaceAngleYaw, 0),
     SET_FLOAT(oFaceAngleRoll, 0),

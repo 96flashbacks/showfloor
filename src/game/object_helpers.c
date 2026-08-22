@@ -466,45 +466,6 @@ struct Object *spawn_obj_with_transform_flags(struct Object *sp20, s32 model,
     return sp1C;
 }
 
-struct Object *spawn_water_droplet(struct Object *parent, struct WaterDropletParams *params) {
-    f32 randomScale;
-    struct Object *newObj = spawn_object(parent, params->model, params->behavior);
-
-    if (params->flags & WATER_DROPLET_FLAG_RAND_ANGLE) {
-        newObj->oMoveAngleYaw = random_u16();
-    }
-
-    if (params->flags & WATER_DROPLET_FLAG_RAND_ANGLE_INCR_PLUS_8000) {
-        newObj->oMoveAngleYaw = (s16) (newObj->oMoveAngleYaw + 0x8000)
-                                + (s16) random_f32_around_zero(params->moveAngleRange);
-    }
-
-    if (params->flags & WATER_DROPLET_FLAG_RAND_ANGLE_INCR) {
-        newObj->oMoveAngleYaw =
-            (s16) newObj->oMoveAngleYaw + (s16) random_f32_around_zero(params->moveAngleRange);
-    }
-
-    if (params->flags & WATER_DROPLET_FLAG_SET_Y_TO_WATER_LEVEL) {
-        newObj->oPosY = find_water_level(newObj->oPosX, newObj->oPosZ);
-    }
-
-    if (params->flags & WATER_DROPLET_FLAG_RAND_OFFSET_XZ) {
-        obj_translate_xz_random(newObj, params->moveRange);
-    }
-
-    if (params->flags & WATER_DROPLET_FLAG_RAND_OFFSET_XYZ) {
-        obj_translate_xyz_random(newObj, params->moveRange);
-    }
-
-    newObj->oForwardVel = random_float() * params->randForwardVelScale + params->randForwardVelOffset;
-    newObj->oVelY = random_float() * params->randYVelScale + params->randYVelOffset;
-
-    randomScale = random_float() * params->randSizeScale + params->randSizeOffset;
-    obj_scale(newObj, randomScale);
-
-    return newObj;
-}
-
 struct Object *spawn_object_at_origin(struct Object *parent, UNUSED s32 unusedArg, u32 model,
                                       const BehaviorScript *behavior) {
     struct Object *obj;

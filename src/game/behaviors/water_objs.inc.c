@@ -79,7 +79,8 @@ void bhv_small_water_wave_loop(void) {
         }
     }
 
-    if (o->oInteractStatus & INT_STATUS_INTERACTED) {
+    // This alternative collision check is commented out in pathbubble.p
+    if (obj_check_if_collided_with_object(o, gMarioObject)) {
         obj_mark_for_deletion(o);
     }
 }
