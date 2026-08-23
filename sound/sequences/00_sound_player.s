@@ -6264,7 +6264,7 @@ chan_end
 
 .layer_2C4E:
 layer_portamento 0x1, 32, 0x7f
-layer_note1 53, 0x1e, 78
+layer_note1 53, 0x30, 78
 layer_end
 
 .sound_menu_camera_zoom_out:

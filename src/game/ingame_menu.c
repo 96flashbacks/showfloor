@@ -819,7 +819,6 @@ void render_dialog_entries(void) {
                     gMenuState = MENU_STATE_DIALOG_CLOSING;
                 } else {
                     gMenuState = MENU_STATE_DIALOG_SCROLLING;
-                    play_sound(SOUND_MENU_MESSAGE_NEXT_PAGE, gGlobalSoundSource);
                 }
             }
             break;
