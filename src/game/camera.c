@@ -5994,7 +5994,7 @@ BAD_RETURN(s32) cutscene_intro_init(struct Camera *c) {
     f32 dist;
     s16 pitch, yaw;
 
-    set_focus_rel_mario(c, 0.f, 125.f, 0.f, 0);
+    set_focus_rel_mario(c, 0.f, 126.f, 0.f, 0);
     vec3f_get_dist_and_angle(sMarioCamState->pos, c->pos, &dist, &pitch, &yaw);
 
     // Fix dist (xzdist = ~300)
@@ -6002,7 +6002,7 @@ BAD_RETURN(s32) cutscene_intro_init(struct Camera *c) {
     yaw = sMarioCamState->faceAngle[1] - 5080;
     vec3f_set_dist_and_angle(sMarioCamState->pos, c->pos, dist, pitch, yaw);
 
-    c->pos[1] = 360.f;
+    c->pos[1] = 361.f;
 }
 
 BAD_RETURN(s32) cutscene_intro_rotate_camera(struct Camera *c) {
@@ -6015,9 +6015,15 @@ BAD_RETURN(s32) cutscene_intro_rotate_camera(struct Camera *c) {
     s16 pitch, yaw;
 
     vec3f_get_dist_and_angle(sMarioCamState->pos, c->pos, &dist, &pitch, &yaw);
-    yaw -= 468.f;
+
+    if (gCutsceneTimer == 60) {
+        // in the demo the camera doesn't face completely straight gg
+        yaw = sMarioCamState->faceAngle[1] + 40 - 0x8000;
+    } else {
+        yaw -= 467.f;
+    }
+
     vec3f_set_dist_and_angle(sMarioCamState->pos, c->pos, dist, pitch, yaw);
-    
 }
 
 BAD_RETURN(s32) cutscene_intro_zoom(struct Camera *c) {
@@ -6025,12 +6031,12 @@ BAD_RETURN(s32) cutscene_intro_zoom(struct Camera *c) {
      *  Ease into final angle during textbox
      *  Look at the skybox in Gamesmaster - it snaps instantly all the
      *  way down before the cutscene is done moving? Should be looked at
-     *  
-     *  Terrible final angle and needs to be redone
      */
-    approach_f32_asymptotic_bool(&c->pos[0], c->focus[0], 0.1f) ;
-    approach_f32_asymptotic_bool(&c->pos[1], c->focus[1] - 15.f, 0.1f) ;
-    approach_f32_asymptotic_bool(&c->pos[2], c->focus[2] + 282.0f, 0.1f) ;
+
+    set_focus_rel_mario(c, 0.f, 125.f, 0.f, 0);
+    approach_f32_asymptotic_bool(&c->pos[0], c->focus[0], 0.1f) ; // side/side
+    approach_f32_asymptotic_bool(&c->pos[1], c->focus[1] - 13.f, 0.1f) ; // up/down
+    approach_f32_asymptotic_bool(&c->pos[2], c->focus[2] + 277.0f, 0.1f) ; // forward/backward
 
 }
 
