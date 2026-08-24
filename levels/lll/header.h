@@ -101,6 +101,7 @@ extern const Gfx lll_seg7_dl_0701A878[];
 extern const Gfx lll_seg7_dl_0701AD70[];
 extern const Collision fire_bubble_collision[];
 extern const MacroObject fire_bubble_macro[];
+extern const Collision lll_seg7_collision_octagonal_moving_platform[];
 extern const Collision lll_seg7_collision_drawbridge[];
 extern const Collision lll_seg7_collision_rotating_fire_bars[];
 extern const Collision lll_seg7_collision_wood_piece[];

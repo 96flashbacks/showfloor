@@ -1,17 +1,5 @@
 // triplet_butterfly.inc.c
 
-static struct ObjectHitbox sTripletButterflyExplodeHitbox = {
-    /* interactType:      */ 0,
-    /* downOffset:        */ 50,
-    /* damageOrCoinValue: */ 2,
-    /* health:            */ 1,
-    /* numLootCoins:      */ 0,
-    /* radius:            */ 100,
-    /* height:            */ 50,
-    /* hurtboxRadius:     */ 100,
-    /* hurtboxHeight:     */ 50,
-};
-
 static void triplet_butterfly_act_init(void) {
     s32 butterflySpawnType = o->oBhvParams2ndByte & TRIPLET_BUTTERFLY_BP_SPAWN_TYPE_MASK;
     s32 i;

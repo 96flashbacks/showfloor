@@ -1220,6 +1220,17 @@ const BehaviorScript bhvLLLRotatingHexagonalPlatform[] = {
     END_LOOP(),
 };
 
+const BehaviorScript bhvLLLMovingOctagonalMeshPlatform[] = {
+    BEGIN(OBJ_LIST_SURFACE),
+    OR_INT(oFlags, (OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    ADD_FLOAT(oPosY, -50),
+    LOAD_COLLISION_DATA(lll_seg7_collision_octagonal_moving_platform),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_lll_moving_octagonal_mesh_platform_loop),
+        CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+};
+
 const BehaviorScript bhvLLLRotatingBlockWithFireBars[] = {
     BEGIN(OBJ_LIST_SURFACE),
     OR_INT(oFlags, (OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),

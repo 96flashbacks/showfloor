@@ -20,7 +20,7 @@ void bhv_lll_floating_wood_bridge_loop(void) {
     switch (o->oAction) {
         case 0:
             if (o->oDistanceToMario < 2500.0f) {
-                for (i = 1; i < 4; i++) {
+                for (i = 0; i < 5; i++) { // Spawns 5 wood pieces instead of 3, which lines up with the unused LOD model
                     sp3C = spawn_object_relative(0, (i - 2) * 300, 0, 0, o, MODEL_LLL_WOOD_BRIDGE,
                                                  bhvLLLWoodPiece);
                     sp3C->oLLLWoodPieceOscillationTimer = i * 0x1000;

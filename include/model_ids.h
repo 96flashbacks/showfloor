@@ -242,9 +242,9 @@
 #define MODEL_LLL_SINKING_ROCK_BLOCK              0x37        // lll_geo_000DD0
 #define MODEL_LLL_ROLLING_LOG                     0x39        // lll_geo_000DE8
 #define MODEL_LLL_WOOD_BRIDGE                     0x35        // lll_geo_000B50
-//#define MODEL_LLL_LARGE_WOOD_BRIDGE               0x3B        // lll_geo_000B68
+#define MODEL_LLL_LARGE_WOOD_BRIDGE               0x3B        // lll_geo_000B68
 #define MODEL_LLL_FALLING_PLATFORM                0x3C        // lll_geo_000B80
-//#define MODEL_LLL_LARGE_FALLING_PLATFORM          0x3D        // lll_geo_000B98
+#define MODEL_LLL_LARGE_FALLING_PLATFORM          0x3D        // lll_geo_000B98
 //#define MODEL_LLL_VOLCANO_FALLING_TRAP            0x53        // lll_geo_000EA8
 
 // ddd

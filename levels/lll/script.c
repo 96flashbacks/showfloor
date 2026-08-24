@@ -56,6 +56,7 @@ static const LevelScript script_func_local_2[] = {
 };
 
 static const LevelScript script_func_local_3[] = {
+    OBJECT(/*model*/ MODEL_LLL_MOVING_OCTAGONAL_MESH_PLATFORM, /*pos*/  1124,    0, -4607, /*angle*/ 0,  0, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvLLLMovingOctagonalMeshPlatform),
     OBJECT(/*model*/ MODEL_LLL_ROTATING_HEXAGONAL_PLATFORM,    /*pos*/ -5119,    0, -4095, /*angle*/ 0,  0, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvLLLRotatingHexagonalPlatform),
     OBJECT(/*model*/ MODEL_NONE,                               /*pos*/ -3583,    0, -4095, /*angle*/ 0,  0, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvLLLFloatingWoodBridge),
     OBJECT(/*model*/ MODEL_NONE,                               /*pos*/  0,     154, -5631, /*angle*/ 0,  0, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvLLLTumblingBridge),
@@ -135,9 +136,12 @@ const LevelScript level_lll_entry[] = {
     LOAD_MODEL_FROM_GEO(MODEL_LLL_BOWSER_PIECE_12,                lll_geo_000D70),
     LOAD_MODEL_FROM_GEO(MODEL_LLL_BOWSER_PIECE_13,                lll_geo_000D90),
     LOAD_MODEL_FROM_GEO(MODEL_LLL_BOWSER_PIECE_14,                lll_geo_000DB0),
+    LOAD_MODEL_FROM_GEO(MODEL_LLL_MOVING_OCTAGONAL_MESH_PLATFORM, lll_geo_000B08),
     LOAD_MODEL_FROM_GEO(MODEL_LLL_ROTATING_HEXAGONAL_PLATFORM,    lll_geo_000A78),
     LOAD_MODEL_FROM_GEO(MODEL_LLL_WOOD_BRIDGE,                    lll_geo_000B50),
+    LOAD_MODEL_FROM_GEO(MODEL_LLL_LARGE_WOOD_BRIDGE,              lll_geo_000B68),
     LOAD_MODEL_FROM_GEO(MODEL_LLL_FALLING_PLATFORM,               lll_geo_000B80),
+    LOAD_MODEL_FROM_GEO(MODEL_LLL_LARGE_FALLING_PLATFORM,         lll_geo_000B98),
 
     AREA(/*index*/ 1, fire_bubble_geo),
         OBJECT(/*model*/ MODEL_NONE, /*pos*/ 1285, 1154, 6273, /*angle*/ 0,   -90, 0, /*bhvParam*/ BPARAM2(WARP_NODE_0A), /*bhv*/ bhvSpinAirborneWarp),

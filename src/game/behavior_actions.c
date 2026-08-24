@@ -114,6 +114,7 @@ void vec3f_copy_2(Vec3f dest, Vec3f src) {
     dest[2] = src[2];
 }
 
+#include "behaviors/lll_octagonal_moving_mesh.inc.c"
 #include "behaviors/lll_rotating_hex_flame.inc.c"
 #include "behaviors/lll_floating_wood_piece.inc.c"
 #include "behaviors/lll_volcano_flames.inc.c"
