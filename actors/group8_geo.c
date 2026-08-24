@@ -3,10 +3,8 @@
 #include "geo_commands.h"
 
 #include "make_const_nonconst.h"
-#include "headers.h"
 
 #include "common1.h"
-#include "group9.h"
+#include "group8.h"
 
-#include "boo/geo.inc.c"
-#include "small_key/geo.inc.c"
+#include "springboard/geo.inc.c"

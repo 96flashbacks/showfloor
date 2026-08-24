@@ -20,6 +20,7 @@ ACTOR_GROUPS := \
     group2  \
     group4  \
     group7  \
+    group8  \
     group9  \
     group10 \
     group12 \
@@ -58,7 +59,7 @@ BULLY_DIRS       := bully blargg
 SPINDRIFT_DIRS   := spindrift penguin snowman
 BOO_DIRS         := bookend book chair small_key mad_piano boo haunted_cage
 MR_I_DIRS        := mr_i_eyeball mr_i_iris swoop snufit dorrie scuttlebug
-HOOT_DIRS        := yellow_sphere_small hoot yoshi_egg thwomp bullet_bill heave_ho
+HOOT_DIRS        := yellow_sphere_small hoot hoot_egg thwomp bullet_bill heave_ho
 COINS_DIRS       := mist explosion butterfly coin warp_pipe door bowser_key flame blue_fish bub pebble leaves warp_collision mario_cap power_meter mushroom_1up star sand dirt transparent_star white_particle wooden_signpost tree
 SKEETER_DIRS     := skeeter seaweed water_mine cyan_fish water_ring treasure_chest
 KLEPTO_DIRS      := klepto eyerok pokey tornado
@@ -97,6 +98,7 @@ $(BUILD_DIR)/actors/group1.o:  $(HOOT_THWOMP_TEXTURES:%.png=$(BUILD_DIR)/%.inc.c
 $(BUILD_DIR)/actors/group2.o:  $(BULLY_BLARGG_TEXTURES:%.png=$(BUILD_DIR)/%.inc.c)
 $(BUILD_DIR)/actors/group4.o:  $(SEA_CREATURES_TEXTURES:%.png=$(BUILD_DIR)/%.inc.c)
 $(BUILD_DIR)/actors/group7.o:  $(SPINDRIFT_PENGUIN_TEXTURES:%.png=$(BUILD_DIR)/%.inc.c)
+$(BUILD_DIR)/actors/group8.o:  $(CAPSWITCH_SPRINGBOARD_TEXTURES:%.png=$(BUILD_DIR)/%.inc.c)
 $(BUILD_DIR)/actors/group9.o:  $(BOO_BOOKEND_TEXTURES:%.png=$(BUILD_DIR)/%.inc.c)
 $(BUILD_DIR)/actors/group10.o: $(PEACH_TOADSTOOL_TEXTURES:%.png=$(BUILD_DIR)/%.inc.c)
 $(BUILD_DIR)/actors/group12.o: $(BOWSER_FLAMES_TEXTURES:%.png=$(BUILD_DIR)/%.inc.c)
@@ -112,6 +114,7 @@ $(BUILD_DIR)/actors/group1.elf:  SEGMENT_ADDRESS := 0x05000000
 $(BUILD_DIR)/actors/group2.elf:  SEGMENT_ADDRESS := 0x05000000
 $(BUILD_DIR)/actors/group4.elf:  SEGMENT_ADDRESS := 0x05000000
 $(BUILD_DIR)/actors/group7.elf:  SEGMENT_ADDRESS := 0x05000000
+$(BUILD_DIR)/actors/group8.elf:  SEGMENT_ADDRESS := 0x05000000
 $(BUILD_DIR)/actors/group9.elf:  SEGMENT_ADDRESS := 0x05000000
 $(BUILD_DIR)/actors/group10.elf: SEGMENT_ADDRESS := 0x05000000
 $(BUILD_DIR)/actors/group12.elf: SEGMENT_ADDRESS := 0x06000000

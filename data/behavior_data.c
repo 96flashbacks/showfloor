@@ -18,6 +18,7 @@
 #include "actors/group2.h"
 #include "actors/group4.h"
 #include "actors/group7.h"
+#include "actors/group8.h"
 #include "actors/group9.h"
 #include "actors/group10.h"
 #include "actors/group12.h"
@@ -873,7 +874,7 @@ const BehaviorScript bhvBlackSmokeMario[] = {
     SET_INT(oAnimState, -1),
     SET_FLOAT(oGraphYOffset, 50),
     BEGIN_REPEAT(8),
-		ADD_INT(oAnimState, 1),
+        ADD_INT(oAnimState, 1),
         CALL_NATIVE(bhv_black_smoke_mario_loop),
         DELAY(1),
         CALL_NATIVE(bhv_black_smoke_mario_loop),
@@ -978,6 +979,46 @@ const BehaviorScript bhvPiranhaPlantWakingBubbles[] = {
         CALL_NATIVE(bhv_piranha_plant_waking_bubbles_loop),
     END_REPEAT(),
     DEACTIVATE(),
+};
+
+const BehaviorScript bhvBetaTrampolineTop[] = { // e_jumpbg
+    BEGIN(OBJ_LIST_SURFACE),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    LOAD_COLLISION_DATA(springboard_collision_05001A28),
+    SET_HOME(),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_beta_trampoline_top_loop),
+        CALL_NATIVE(load_object_collision_model),
+    END_LOOP(),
+};
+
+const BehaviorScript bhvBetaTrampolineSpring[] = { // e_bane_naka
+    BEGIN(OBJ_LIST_DEFAULT),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    SET_HOME(),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_beta_trampoline_spring_loop),
+    END_LOOP(),
+};
+
+const BehaviorScript bhvKeyInsideBoo[] = { // e_teresa_key
+    BEGIN(OBJ_LIST_LEVEL),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    SET_HITBOX(/*Radius*/ 32, /*Height*/ 64),
+    SET_OBJ_PHYSICS(/*Wall hitbox radius*/ 30, /*Gravity*/ -400, /*Bounciness*/ -70, /*Drag strength*/ 1000, /*Friction*/ 1000, /*Buoyancy*/ 200, /*Unused*/ 0, 0),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_key_inside_boo_loop),
+    END_LOOP(),
+};
+
+const BehaviorScript bhvSmallKey[] = { // e_key
+    BEGIN(OBJ_LIST_LEVEL),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    SET_HITBOX(/*Radius*/ 32, /*Height*/ 64),
+    SET_INT(oIntangibleTimer, 0),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_small_key_loop),
+    END_LOOP(),
 };
 
 const BehaviorScript bhvBulletBill[] = {
@@ -1663,6 +1704,17 @@ const BehaviorScript bhvSparkleParticleSpawner[] = {
         ADD_INT(oAnimState, 1),
     END_REPEAT(),
     DEACTIVATE(),
+};
+
+const BehaviorScript bhvBlargg[] = { // e_unbaba
+    BEGIN(OBJ_LIST_DEFAULT),
+    OR_INT(oFlags, (OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_MOVE_XZ_USING_FVEL | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_COMPUTE_ANGLE_TO_MARIO)),
+    LOAD_ANIMATIONS(oAnimations, blargg_seg5_anims_0500616C),
+    SET_HOME(),
+    ANIMATE(0),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_blargg_loop),
+    END_LOOP(),
 };
 
 const BehaviorScript bhvSmallWhomp[] = {

@@ -38,23 +38,6 @@ extern const struct Animation *const butterfly_seg3_anims_030056B0[];
 // coin
 extern Hierarchy RCP_HmsItemCoin[];
 
-// dirt
-extern const GeoLayout dirt_animation_geo[];
-extern const GeoLayout cartoon_star_geo[];
-extern const Gfx dirt_seg3_dl_0302BFF8[];
-extern const Gfx dirt_seg3_dl_0302C028[];
-extern const Gfx dirt_seg3_dl_0302C238[];
-extern const Gfx dirt_seg3_dl_0302C298[];
-extern const Gfx dirt_seg3_dl_0302C2B8[];
-extern const Gfx dirt_seg3_dl_0302C2D8[];
-extern const Gfx dirt_seg3_dl_0302C2F8[];
-extern const Gfx dirt_seg3_dl_0302C318[];
-extern const Gfx dirt_seg3_dl_0302C378[];
-extern const Gfx dirt_seg3_dl_0302C3B0[];
-extern const Gfx dirt_seg3_dl_0302C3E8[];
-extern const Gfx dirt_seg3_dl_0302C420[];
-extern const Gfx dirt_seg3_dl_0302C458[];
-
 // door
 extern Hierarchy RCP_HmsMainDoor[];
 extern Hierarchy RCP_HmsMainroomDoorA[];
@@ -113,9 +96,6 @@ extern const u8 *const MeterDataPtr[];
 extern const Gfx RCP_damegemeter_on[];
 extern const Gfx RCP_damegemeter_txt[];
 extern const Gfx RCP_damegemeter_off[];
-
-// sand
-extern const Gfx sand_seg3_dl_0302BCD0[];
 
 // star
 extern Hierarchy RCP_HmsItemStar[];

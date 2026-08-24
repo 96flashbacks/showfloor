@@ -10,5 +10,6 @@
 
 #include "yellow_sphere_small/geo.inc.c"
 #include "hoot/geo.inc.c"
+#include "hoot_egg/geo.inc.c"
 #include "thwomp/dosun.hms"
 #include "bullet_bill/geo.inc.c"

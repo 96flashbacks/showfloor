@@ -15,6 +15,7 @@
 #include "actors/group2.h"
 #include "actors/group4.h"
 #include "actors/group7.h"
+#include "actors/group8.h"
 #include "actors/group9.h"
 #include "actors/group10.h"
 #include "actors/group12.h"
@@ -78,7 +79,6 @@ const LevelScript level_main_scripts_entry[] = {
     LOAD_MODEL_FROM_GEO(MODEL_FISH_SHADOW,             fish_shadow_geo),
     LOAD_MODEL_FROM_GEO(MODEL_BUB,                     bub_geo),
     LOAD_MODEL_FROM_GEO(MODEL_SPARKLES_ANIMATION,      sparkles_animation_geo),
-    LOAD_MODEL_FROM_DL (MODEL_SAND_DUST,               sand_seg3_dl_0302BCD0,   LAYER_ALPHA),
     LOAD_MODEL_FROM_GEO(MODEL_BUTTERFLY,               butterfly_geo),
     LOAD_MODEL_FROM_GEO(MODEL_BURN_SMOKE_UNUSED,       burn_smoke_geo),
     LOAD_MODEL_FROM_GEO(MODEL_MIST,                    mist_geo),
@@ -88,8 +88,6 @@ const LevelScript level_main_scripts_entry[] = {
     LOAD_MODEL_FROM_GEO(MODEL_RED_FLAME_SHADOW,        red_flame_shadow_geo),
     LOAD_MODEL_FROM_GEO(MODEL_NUMBER,                  number_geo),
     LOAD_MODEL_FROM_GEO(MODEL_EXPLOSION,               RCP_HmsItembombfire),
-    LOAD_MODEL_FROM_GEO(MODEL_DIRT_ANIMATION,          dirt_animation_geo),
-    LOAD_MODEL_FROM_GEO(MODEL_CARTOON_STAR,            cartoon_star_geo),
     FREE_LEVEL_POOL(),
     CALL(/*arg*/ 0, /*func*/ lvl_init_from_save_file),
     LOOP_BEGIN(),
@@ -153,6 +151,7 @@ const LevelScript script_func_global_2[] = {
     LOAD_MODEL_FROM_GEO(MODEL_BULLET_BILL,             bullet_bill_geo),
     LOAD_MODEL_FROM_GEO(MODEL_YELLOW_SPHERE,           yellow_sphere_geo),
     LOAD_MODEL_FROM_GEO(MODEL_HOOT,                    hoot_geo),
+    LOAD_MODEL_FROM_GEO(MODEL_HOOT_EGG,                hoot_egg_geo),
     LOAD_MODEL_FROM_GEO(MODEL_THWOMP,                  RCP_HmsDosun),
     RETURN(),
 };
@@ -174,8 +173,16 @@ const LevelScript script_func_global_8[] = {
     RETURN(),
 };
 
+const LevelScript script_func_global_9[] = {
+    LOAD_MODEL_FROM_GEO(MODEL_TRAMPOLINE,              springboard_top_geo),
+    LOAD_MODEL_FROM_GEO(MODEL_TRAMPOLINE_CENTER,       springboard_spring_geo),
+    LOAD_MODEL_FROM_GEO(MODEL_TRAMPOLINE_BASE,         springboard_bottom_geo),
+    RETURN(),
+};
+
 const LevelScript script_func_global_10[] = {
     LOAD_MODEL_FROM_GEO(MODEL_BOO,                     boo_geo),
+    LOAD_MODEL_FROM_GEO(MODEL_SMALL_KEY,               small_key_geo),
     RETURN(),
 };
 

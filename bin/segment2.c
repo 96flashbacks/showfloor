@@ -1231,6 +1231,7 @@ const Gfx dl_billboard_num_9[] = {
     gsSPEndDisplayList(),
 };
 
+// Simpler shadow circle texture from the tanidata.h Dec 6, 1995 backup
 ALIGNED8 static const Texture texture_shadow_quarter_circle[] = {
 #include "textures/segment2/shadow_quarter_circle.ia8.inc.c"
 };
@@ -1243,10 +1244,16 @@ const Texture texture_transition_circle_half[] = {
 #include "textures/segment2/segment2.0FC58.ia8.inc.c"
 };
 
+// Skull transition texture from the tanidata.h Dec 6, 1995 backup
+const Texture texture_transition_skull_half[] = {
+#include "textures/segment2/wipe_docro_txt.ia8.inc.c"
+};
+
 const Texture texture_transition_mario[] = {
 #include "textures/segment2/segment2.10458.ia8.inc.c"
 };
 
+// Early Bowser transition texture from the tanidata.h Dec 6, 1995 backup
 const Texture texture_transition_bowser_half[] = {
 #include "textures/segment2/segment2.11458.ia8.inc.c" 
 };

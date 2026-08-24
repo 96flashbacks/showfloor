@@ -18,7 +18,6 @@
 #include "leaves/geo.inc.c"
 #include "number/geo.inc.c"
 #include "star/star.hms"
-#include "dirt/geo.inc.c"
 #include "transparent_star/dotstar.hms"
 #include "white_particle/geo.inc.c"
 #include "tree/tree.hms"

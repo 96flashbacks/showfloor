@@ -338,13 +338,13 @@ void play_transition(s16 transType, s16 time, u8 red, u8 green, u8 blue) {
 
         if (transType & 1) { // Is the image fading in?
             gWarpTransition.data.startTexRadius = GFX_DIMENSIONS_FULL_RADIUS;
-            if (transType >= 0x0F) {
+            if (transType >= WARP_TRANSITION_FADE_INTO_SKULL) {
                 gWarpTransition.data.endTexRadius = 16;
             } else {
                 gWarpTransition.data.endTexRadius = 0;
             }
         } else { // The image is fading out. (Reverses start & end circles)
-            if (transType >= 0x0E) {
+            if (transType >= WARP_TRANSITION_FADE_FROM_SKULL) {
                 gWarpTransition.data.startTexRadius = 16;
             } else {
                 gWarpTransition.data.startTexRadius = 0;

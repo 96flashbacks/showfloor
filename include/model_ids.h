@@ -306,7 +306,7 @@
 #define MODEL_BULLET_BILL                 0x54        // bullet_bill_geo
 #define MODEL_YELLOW_SPHERE               0x55        // yellow_sphere_geo
 #define MODEL_HOOT                        0x56        // hoot_geo
-//#define MODEL_YOSHI_EGG                   0x57        // yoshi_egg_geo
+#define MODEL_HOOT_EGG                    0x57        // hoot_egg_geo
 #define MODEL_THWOMP                      0x58        // thwomp_geo
 //#define MODEL_HEAVE_HO                    0x59        // heave_ho_geo
 
@@ -354,7 +354,7 @@
 
 // group 9
 #define MODEL_BOO                         0x54        // boo_geo
-//#define MODEL_BETA_BOO_KEY                0x55        // small_key_geo
+#define MODEL_SMALL_KEY                   0x55        // small_key_geo
 //#define MODEL_HAUNTED_CHAIR               0x56        // haunted_chair_geo
 //#define MODEL_MAD_PIANO                   0x57        // mad_piano_geo
 //#define MODEL_BOOKEND_PART                0x58        // bookend_part_geo
@@ -442,8 +442,8 @@
 //#define MODEL_MARIOS_WING_CAP             0x87        // marios_wing_cap_geo
 //#define MODEL_MARIOS_CAP                  0x88        // marios_cap_geo
 //#define MODEL_EXCLAMATION_BOX             0x89        // exclamation_box_geo
-#define MODEL_DIRT_ANIMATION              0x8A        // dirt_animation_geo
-#define MODEL_CARTOON_STAR                0x8B        // cartoon_star_geo
+//#define MODEL_DIRT_ANIMATION              0x8A        // dirt_animation_geo
+//#define MODEL_CARTOON_STAR                0x8B        // cartoon_star_geo
 //#define MODEL_BLUE_COIN_SWITCH            0x8C        // blue_coin_switch_geo
 // find me
 #define MODEL_MIST                        0x8E        // mist_geo
@@ -463,7 +463,7 @@
 #define MODEL_BURN_SMOKE_UNUSED           0x9C        // burn_smoke_geo - unused & duplicated
 // find me
 #define MODEL_WHITE_PARTICLE_DL           0x9E        // white_particle_dl
-#define MODEL_SAND_DUST                   0x9F        // sand_seg3_dl_0302BCD0
+//#define MODEL_SAND_DUST                   0x9F        // sand_seg3_dl_0302BCD0
 #define MODEL_WHITE_PARTICLE              0xA0        // white_particle_dl
 #define MODEL_LEAVES                      0xA2        // leaves_geo
 #define MODEL_WAVE_TRAIL                  0xA3        // wave_trail_geo
@@ -485,9 +485,9 @@
 #define MODEL_BOWSER_BOMB                 0xB3        // bowser_bomb_geo
 #define MODEL_WATER_MINE                  0xB3        // water_mine_geo
 #define MODEL_BOWLING_BALL                0xB4        // bowling_ball_geo
-//#define MODEL_TRAMPOLINE                  0xB5        // springboard_top_geo (unused)
-//#define MODEL_TRAMPOLINE_CENTER           0xB6        // springboard_spring_geo (unused)
-//#define MODEL_TRAMPOLINE_BASE             0xB7        // springboard_bottom_geo (unused)
+#define MODEL_TRAMPOLINE                  0xB5        // springboard_top_geo (unused)
+#define MODEL_TRAMPOLINE_CENTER           0xB6        // springboard_spring_geo (unused)
+#define MODEL_TRAMPOLINE_BASE             0xB7        // springboard_bottom_geo (unused)
 #define MODEL_UNKNOWN_B8                  0xB8        // referenced in special presets as a static object. Unknown usage
 #define MODEL_FISH                        0xB9        // fish_geo - fish without shadow, used
 #define MODEL_FISH_SHADOW                 0xBA        // fish_shadow_geo - fish with shadow, unused

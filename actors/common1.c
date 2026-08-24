@@ -52,12 +52,6 @@ UNUSED static const u64 binid_14 = 14;
 #include "star/star.sou"
 UNUSED static const u64 binid_16 = 16;
 
-#include "sand/model.inc.c"
-UNUSED static const u64 binid_17 = 17;
-
-#include "dirt/model.inc.c"
-UNUSED static const u64 binid_18 = 18;
-
 #include "transparent_star/dotstar.sou"
 UNUSED static const u64 binid_19 = 19;
 

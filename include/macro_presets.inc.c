@@ -22,7 +22,7 @@ static struct MacroPreset sMacroObjectPresets[] = {
     /* macro_unknown_28                  */ { bhvBetaFishSplashSpawner, MODEL_NONE, 0 }, // unused
     /* macro_cannon_open                 */ { bhvCannon, MODEL_CANNON_BASE, 0 },
     /* macro_unknown_40                  */ { bhvCarrySomething1, MODEL_UNKNOWN_7D, 0 }, // unused
-    ///* macro_unknown_41                  */ { bhvBetaTrampolineTop, MODEL_TRAMPOLINE, 0 }, // unused
+    /* macro_unknown_41                  */ { bhvBetaTrampolineTop, MODEL_TRAMPOLINE, 0 }, // unused
     /* macro_empty_52                    */ { bhvYellowCoin, MODEL_YELLOW_COIN, 0 },
     /* macro_empty_80                    */ { bhvYellowCoin, MODEL_YELLOW_COIN, 0 },
     /* macro_bullet_bill_cannon          */ { bhvBulletBill, MODEL_BULLET_BILL, 0 }, // unused
@@ -97,7 +97,7 @@ static struct MacroPreset sMacroObjectPresets[] = {
     /* macro_boo_1                       */ { bhvGhostHuntBoo, MODEL_BOO, BOO_BP_GHOST_HUNT }, // unused
     /* macro_boo_2                       */ { bhvGhostHuntBoo, MODEL_BOO, BOO_BP_GHOST_HUNT }, // unused
     /* macro_boo_group                   */ { bhvCourtyardBooTriplet, MODEL_BOO, 0 }, // unused
-    ///* macro_beta_key                    */ { bhvAlphaBooKey, MODEL_BETA_BOO_KEY, 0 }, // unused
+    /* macro_beta_key                    */ { bhvSmallKey, MODEL_SMALL_KEY, 0 }, // unused
     /* macro_empty_197                   */ { bhvYellowCoin, MODEL_YELLOW_COIN, 0 },
     /* macro_empty_198                   */ { bhvYellowCoin, MODEL_YELLOW_COIN, 0 },
     /* macro_empty_199                   */ { bhvYellowCoin, MODEL_YELLOW_COIN, 0 },

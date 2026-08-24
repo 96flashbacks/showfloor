@@ -83,6 +83,8 @@ Gfx *geo_move_mario_part_from_parent(s32 run, UNUSED struct GraphNode *node, Mat
     return NULL;
 }
 
+#include "behaviors/beta_trampoline.inc.c"
+
 // not in behavior file
 // n is the number of objects to spawn, r if the rate of change of phase (frequency?)
 void spawn_sparkle_particles(s32 n, s32 a1, s32 a2, s32 r) {
@@ -98,6 +100,7 @@ void spawn_sparkle_particles(s32 n, s32 a1, s32 a2, s32 r) {
     D_8035FF10 += r * 0x100;
 }
 
+#include "behaviors/beta_boo_key.inc.c"
 #include "behaviors/bullet_bill.inc.c"
 #include "behaviors/bowser.inc.c"
 #include "behaviors/bowser_flame.inc.c"
@@ -147,5 +150,6 @@ s32 set_obj_anim_with_accel_and_sound(s16 a0, s16 a1, s32 a2) {
 #include "behaviors/castle_floor_trap.inc.c"
 #include "behaviors/pole_base.inc.c"
 #include "behaviors/sparkle_spawn.inc.c"
+#include "behaviors/blargg.inc.c"
 #include "behaviors/whomp.inc.c"
 #include "behaviors/water_splashes_and_waves.inc.c"

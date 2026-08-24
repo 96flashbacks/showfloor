@@ -15,9 +15,12 @@ UNUSED static const u64 binid_0 = 0;
 #include "hoot/anims/table.inc.c"
 UNUSED static const u64 binid_1 = 1;
 
-#include "thwomp/dosun.sou"
-#include "thwomp/dosun.flk"
+#include "hoot_egg/model.inc.c"
 UNUSED static const u64 binid_2 = 2;
 
-#include "bullet_bill/model.inc.c"
+#include "thwomp/dosun.sou"
+#include "thwomp/dosun.flk"
 UNUSED static const u64 binid_3 = 3;
+
+#include "bullet_bill/model.inc.c"
+UNUSED static const u64 binid_4 = 4;
