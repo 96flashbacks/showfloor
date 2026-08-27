@@ -155,7 +155,6 @@ s16 gTTCSpeedSetting;
 s16 gNumRoomedObjectsInMarioRoom;
 s16 gNumRoomedObjectsNotInMarioRoom;
 s16 gWDWWaterLevelChanging;
-s16 gMarioOnMerryGoRound;
 
 /**
  * Nodes used to represent the doubly linked object lists.
@@ -450,7 +449,6 @@ void spawn_objects_from_info(UNUSED s32 unused, struct SpawnInfo *spawnInfo) {
     gTimeStopState = 0;
 
     gWDWWaterLevelChanging = FALSE;
-    gMarioOnMerryGoRound = FALSE;
 
     while (spawnInfo != NULL) {
         struct Object *object;

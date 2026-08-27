@@ -631,20 +631,6 @@ const BehaviorScript bhvWarp[] = {
     END_LOOP(),
 };
 
-const BehaviorScript bhvCoinInsideBoo[] = {
-    BEGIN(OBJ_LIST_LEVEL),
-    SET_HITBOX(/*Radius*/ 100, /*Height*/ 64),
-    SET_INT(oInteractType, INTERACT_COIN),
-    OR_INT(oFlags, (OBJ_FLAG_ACTIVE_FROM_AFAR | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
-    SET_OBJ_PHYSICS(/*Wall hitbox radius*/ 30, /*Gravity*/ -400, /*Bounciness*/ -70, /*Drag strength*/ 1000, /*Friction*/ 1000, /*Buoyancy*/ 200, /*Unused*/ 0, 0),
-    BILLBOARD(),
-    CALL_NATIVE(bhv_init_room),
-    BEGIN_LOOP(),
-        CALL_NATIVE(bhv_coin_inside_boo_loop),
-        ADD_INT(oAnimState, 1),
-    END_LOOP(),
-};
-
 // e_coin_ground
 const BehaviorScript bhvOneCoin[] = {
     BEGIN(OBJ_LIST_LEVEL),
@@ -686,6 +672,7 @@ const BehaviorScript bhvSingleCoinGetsSpawned[] = {
     END_LOOP(),
 };
 
+// e_coinspark ('bhvGoldenCoinSparkles' in the decomp)
 const BehaviorScript bhvCoinSparkles[] = {
     BEGIN(OBJ_LIST_DEFAULT),
     OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
@@ -1334,6 +1321,46 @@ const BehaviorScript bhvLLLTiltingInvertedPyramid[] = {
     END_LOOP(),
 };
 
+const BehaviorScript bhvCourtyardBooTriplet[] = { // e_obake_fly
+    BEGIN(OBJ_LIST_DEFAULT),
+    DISABLE_RENDERING(),
+    CALL_NATIVE(bhv_courtyard_boo_triplet_init),
+    DEACTIVATE(),
+};
+
+// e_teresa_typeA, e_teresa & e_cointeresa
+const BehaviorScript bhvGhostHuntBoo[] = {
+    BEGIN(OBJ_LIST_GENACTOR),
+    OR_INT(oFlags, (OBJ_FLAG_COMPUTE_ANGLE_TO_MARIO | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    SET_INT(oIntangibleTimer, 0),
+    SET_HOME(),
+    SET_INT(oDamageOrCoinValue, 2),
+    SET_HITBOX(/*Radius*/ 140, /*Height*/ 80),
+    SET_HURTBOX(/*Radius*/ 40, /*Height*/ 60),
+    SET_FLOAT(oGraphYOffset,60/2),
+    CALL_NATIVE(bhv_init_room),
+    SPAWN_CHILD(/*Model*/ MODEL_YELLOW_COIN, /*Behavior*/ bhvCoinInsideBoo),
+    SET_OBJ_PHYSICS(/*Wall hitbox radius*/ 30, /*Gravity*/ 0, /*Bounciness*/ -50, /*Drag strength*/ 1000, /*Friction*/ 1000, /*Buoyancy*/ 200, /*Unused*/ 0, 0),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_boo_loop),
+    END_LOOP(),
+};
+
+// pathobakecoin.p bhv data
+
+const BehaviorScript bhvCoinInsideBoo[] = { // e_obake_coin
+    BEGIN(OBJ_LIST_LEVEL),
+    SET_HITBOX(/*Radius*/ 32, /*Height*/ 64),
+    SET_INT(oInteractType, INTERACT_COIN),
+    OR_INT(oFlags, (OBJ_FLAG_ACTIVE_FROM_AFAR | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    SET_OBJ_PHYSICS(/*Wall hitbox radius*/ 30, /*Gravity*/ -400, /*Bounciness*/ -70, /*Drag strength*/ 1000, /*Friction*/ 1000, /*Buoyancy*/ 200, /*Unused*/ 0, 0),
+    BILLBOARD(),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_coin_inside_boo_loop),
+        ADD_INT(oAnimState, 1),
+    END_LOOP(),
+};
+
 const BehaviorScript bhvPiranhaPlant[] = {
     BEGIN(OBJ_LIST_GENACTOR),
     OR_INT(oFlags, (OBJ_FLAG_COMPUTE_ANGLE_TO_MARIO | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
@@ -1576,49 +1603,6 @@ const BehaviorScript bhvWhitePuffSmoke2[] = {
         ADD_INT(oAnimState, 1),
     END_REPEAT(),
     DEACTIVATE(),
-};
-
-const BehaviorScript bhvAnimatedTexture[] = {
-    BEGIN(OBJ_LIST_GENACTOR),
-    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
-    SET_OBJ_PHYSICS(/*Wall hitbox radius*/ 30, /*Gravity*/ -400, /*Bounciness*/ -70, /*Drag strength*/ 1000, /*Friction*/ 1000, /*Buoyancy*/ 200, /*Unused*/ 0, 0),
-    BILLBOARD(),
-    BEGIN_LOOP(),
-        CALL_NATIVE(bhv_animated_texture_loop),
-        ADD_INT(oAnimState, 1),
-        ANIMATE_TEXTURE(oAnimState, 2),
-    END_LOOP(),
-};
-
-const BehaviorScript bhvCourtyardBooTriplet[] = {
-    BEGIN(OBJ_LIST_DEFAULT),
-    DISABLE_RENDERING(),
-    CALL_NATIVE(bhv_courtyard_boo_triplet_init),
-    DEACTIVATE(),
-};
-
-const BehaviorScript bhvBoo[] = {
-    BEGIN(OBJ_LIST_GENACTOR),
-    SET_INT(oBhvParams2ndByte, BOO_BP_GENERIC),
-    GOTO(bhvGhostHuntBoo + 1),
-};
-
-const BehaviorScript bhvGhostHuntBoo[] = {
-    BEGIN(OBJ_LIST_GENACTOR),
-    // Boo - common:
-    OR_INT(oFlags, (OBJ_FLAG_COMPUTE_ANGLE_TO_MARIO | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
-    SET_INT(oIntangibleTimer, 0),
-    SET_HOME(),
-    SET_INT(oDamageOrCoinValue, 2),
-    SET_HITBOX(/*Radius*/ 140, /*Height*/ 80),
-    SET_HURTBOX(/*Radius*/ 40, /*Height*/ 60),
-    SET_FLOAT(oGraphYOffset, 30),
-    CALL_NATIVE(bhv_init_room),
-    SPAWN_CHILD(/*Model*/ MODEL_YELLOW_COIN, /*Behavior*/ bhvCoinInsideBoo),
-    SET_OBJ_PHYSICS(/*Wall hitbox radius*/ 30, /*Gravity*/ 0, /*Bounciness*/ -50, /*Drag strength*/ 1000, /*Friction*/ 1000, /*Buoyancy*/ 200, /*Unused*/ 0, 0),
-    BEGIN_LOOP(),
-        CALL_NATIVE(bhv_boo_loop),
-    END_LOOP(),
 };
 
 const BehaviorScript bhvInsideCannon[] = {

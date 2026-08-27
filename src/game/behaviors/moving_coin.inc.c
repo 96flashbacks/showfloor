@@ -1,21 +1,9 @@
 // moving_coin.inc.c
 
-static struct ObjectHitbox sMovingYellowCoinHitbox = {
+static struct ObjectHitbox sMovingYellowCoinHitbox = { // coin_hit
     /* interactType:      */ INTERACT_COIN,
     /* downOffset:        */ 0,
-    /* damageOrCoinValue: */ 1,
-    /* health:            */ 0,
-    /* numLootCoins:      */ 0,
-    /* radius:            */ 32,
-    /* height:            */ 64,
-    /* hurtboxRadius:     */ 0,
-    /* hurtboxHeight:     */ 0,
-};
-
-static struct ObjectHitbox sMovingBlueCoinHitbox = {
-    /* interactType:      */ INTERACT_COIN,
-    /* downOffset:        */ 0,
-    /* damageOrCoinValue: */ 1,
+    /* damageOrCoinValue: */ 0, // likely 0 instead of 1 based on 'obakecoin_hit'
     /* health:            */ 0,
     /* numLootCoins:      */ 0,
     /* radius:            */ 32,
@@ -94,12 +82,24 @@ void bhv_moving_coin_loop(void) {
     }
 }
 
+static struct ObjectHitbox sMovingSliderCoinHitbox = { // escapecoin_hit
+    /* interactType:      */ INTERACT_COIN,
+    /* downOffset:        */ 0,
+    /* damageOrCoinValue: */ 0, // likely 0 instead of 1 based on 'obakecoin_hit'
+    /* health:            */ 0,
+    /* numLootCoins:      */ 0,
+    /* radius:            */ 32,
+    /* height:            */ 64,
+    /* hurtboxRadius:     */ 0,
+    /* hurtboxHeight:     */ 0,
+};
+
 void bhv_slider_coin_init(void) {
     o->oGravity = 5.0f;
     o->oFriction = 1.0f;
     o->oBuoyancy = 1.5f;
 
-    obj_set_hitbox(o, &sMovingBlueCoinHitbox);
+    obj_set_hitbox(o, &sMovingSliderCoinHitbox);
 }
 
 void bhv_slider_coin_loop(void) {

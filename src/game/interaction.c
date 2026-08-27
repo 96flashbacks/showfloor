@@ -605,6 +605,7 @@ void reset_mario_pitch(struct MarioState *m) {
 }
 
 u32 interact_coin(struct MarioState *m, UNUSED u32 interactType, struct Object *o) {
+    // No oDamageOrCoinValue multiplier, since there are only regular coins
     m->numCoins++;
     m->healCounter += 4;
 

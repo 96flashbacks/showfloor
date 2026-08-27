@@ -16,14 +16,14 @@
  * The code in this function is similar to
  * that found in the bhvKeyInsideBoo code.
  */
-void bhv_small_key_loop(void) {
+void bhv_small_key_loop(void) { // s_key
     // Rotate the key
     o->oFaceAngleRoll += 0x200;
     o->oFaceAngleYaw += 0x200;
 
     if (obj_check_if_collided_with_object(o, gMarioObject)) {
         // This line was used to activate the haunted bookshelf in BBH.
-        // The bookshelf has a commented-out line to spawn this key object,
+        // The bookshelf has a commented out line to spawn this key object,
         // and right after checks if oHauntedBookshelfShouldOpen isn't FALSE.
         // Collecting the key spawned by the bookshelf causes it to recede.
         o->parentObj->oHauntedBookshelfShouldOpen = TRUE;
@@ -40,7 +40,7 @@ void bhv_small_key_loop(void) {
 /**
  * Continue to make the key fall, and handle collection.
  */
-static void key_inside_boo_dropped_loop(void) {
+static void key_inside_boo_dropped_loop(void) { // keycoin_bound
     // Apply standard physics to the key
     cur_obj_update_floor_and_walls();
     cur_obj_move_standard(78);
@@ -95,7 +95,7 @@ static void key_inside_boo_dropped_loop(void) {
  * Drop the key. This function is run once, the frame after the boo dies;
  * It immediately sets the action to BETA_BOO_KEY_ACT_DROPPED.
  */
-static void key_inside_boo_drop(void) {
+static void key_inside_boo_drop(void) { // keycoin_boundwait
     s16 velocityDirection;
     f32 velocityMagnitude;
 
@@ -132,7 +132,7 @@ static void key_inside_boo_drop(void) {
 /**
  * Update the key to be inside its parent boo, and handle the boo dying.
  */
-static void key_inside_boo_inside_boo_loop(void) {
+static void key_inside_boo_inside_boo_loop(void) { // keycoin_take (modified)
     // Update the key to be inside the boo at all times
     struct Object *parent = o->parentObj;
     obj_copy_pos(o, parent);
@@ -142,7 +142,7 @@ static void key_inside_boo_inside_boo_loop(void) {
     o->oPosY += 40.0f;
 
     // If the boo is dying/dead, set the action to BETA_BOO_KEY_ACT_DROPPING.
-    if (parent->oBooDeathStatus != BOO_DEATH_STATUS_ALIVE) {
+    if (parent->obake_flag != 0) { // 'obake_flag' check like 'pathobakecoin.p'
         o->oAction = BETA_BOO_KEY_ACT_DROPPING;
     }
 
@@ -151,7 +151,7 @@ static void key_inside_boo_inside_boo_loop(void) {
     o->oFaceAngleYaw += 0x200;
 }
 
-static void (*sBetaBooKeyActions[])(void) = {
+static void (*sBetaBooKeyActions[])(void) = { // keycoin_modejmp
     key_inside_boo_inside_boo_loop,
     key_inside_boo_drop,
     key_inside_boo_dropped_loop,
@@ -160,6 +160,6 @@ static void (*sBetaBooKeyActions[])(void) = {
 /**
  * Update function for bhvKeyInsideBoo.
  */
-void bhv_key_inside_boo_loop(void) {
+void bhv_key_inside_boo_loop(void) { // s_teresa_key
     cur_obj_call_action_function(sBetaBooKeyActions);
 }

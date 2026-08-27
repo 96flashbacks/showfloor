@@ -111,7 +111,6 @@ extern s16 gCCMEnteredSlide;
 extern s16 gNumRoomedObjectsInMarioRoom;
 extern s16 gNumRoomedObjectsNotInMarioRoom;
 extern s16 gWDWWaterLevelChanging;
-extern s16 gMarioOnMerryGoRound;
 
 
 void bhv_mario_update(void);

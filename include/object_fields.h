@@ -239,13 +239,13 @@
 #define /*0x0FC*/ oBooOscillationTimer      OBJECT_FIELD_S32(0x1D)
 #define /*0x100*/ oBooMoveYawDuringHit      OBJECT_FIELD_S32(0x1E)
 #define /*0x104*/ oBooMoveYawBeforeHit      OBJECT_FIELD_F32(0x1F)
-#define /*0x108*/ oBooParentBigBoo          OBJECT_FIELD_OBJ(0x20)
-#define /*0x10C*/ oBooNegatedAggressiveness OBJECT_FIELD_F32(0x21)
-#define /*0x110*/ oBooInitialMoveYaw        OBJECT_FIELD_S32(0x22)
-#define /*0x1B0*/ oBooTurningSpeed          OBJECT_FIELD_S16(0x4A, 0)
+// Removed 'oBooParentBigBoo' since it likely didn't exist at this point
+// 'oBooNegatedAggressiveness', 'oBooInitialMoveYaw' and 'oBooTurningSpeed' are missing on pathminiteresa.p
 
-/* Big Boo */
-#define /*0x1AC*/ oBigBooNumMinionBoosKilled OBJECT_FIELD_S32(0x49)
+// 'obake_flag' define from 'pathcoin.p'
+#define obake_flag  OBJECT_FIELD_S32(0x22)
+
+// Removed 'oBigBooNumMinionBoosKilled' since it likely didn't exist at this point
 
 /* Bookend */
 #define /*0x0F4*/ oBookendUnkF4 OBJECT_FIELD_S32(0x1B)

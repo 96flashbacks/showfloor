@@ -55,8 +55,7 @@ void bhv_flamethrower_loop(void) {
     UNUSED u8 filler[8];
 
     if (o->oAction == 0) {
-        if ((gCurrLevelNum != LEVEL_BBH || gMarioOnMerryGoRound == TRUE)
-            && o->oDistanceToMario < 2000.0f) {
+        if (o->oDistanceToMario < 2000.0f) {
             o->oAction++;
         }
     } else if (o->oAction == 1) {

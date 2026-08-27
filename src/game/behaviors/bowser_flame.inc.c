@@ -26,10 +26,7 @@ struct ObjectHitbox sBowserFlameHitbox = {
 
 void bowser_flame_despawn(void) {
     obj_mark_for_deletion(o);
-    spawn_object_with_scale(o, MODEL_NONE, bhvBlackSmokeUpward, 1.0f);
-    if (random_float() < 0.1) {
-        spawn_object(o, MODEL_YELLOW_COIN, bhvTemporaryYellowCoin);
-    }
+    // It seems the flames didn't spawn anything when despawning based on the footage
 }
 
 s32 bowser_flame_should_despawn(s32 maxTime) {

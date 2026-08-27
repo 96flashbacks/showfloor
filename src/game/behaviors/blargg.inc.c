@@ -30,7 +30,7 @@ static void blargg_attack(void) {
         o->oAction = 1; // mode_unbaba_swim
 }
 
-static void (*sBlarggActions[])(void) = {  
+static void (*sBlarggActions[])(void) = { // unbaba_modejmp 
    blargg_init,
    blargg_swim,
    blargg_attack,  

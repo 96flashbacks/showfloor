@@ -1,9 +1,9 @@
 // coin.inc.c
 
-struct ObjectHitbox sYellowCoinHitbox = {
+struct ObjectHitbox sYellowCoinHitbox = { // coin_hit
     /* interactType:      */ INTERACT_COIN,
     /* downOffset:        */ 0,
-    /* damageOrCoinValue: */ 1,
+    /* damageOrCoinValue: */ 0, // likely 0 instead of 1 based on 'obakecoin_hit'
     /* health:            */ 0,
     /* numLootCoins:      */ 0,
     /* radius:            */ 32,
@@ -46,9 +46,7 @@ void bhv_yellow_coin_loop(void) {
 void bhv_temp_coin_loop(void) {
     o->oAnimState++;
 
-    if (cur_obj_wait_then_blink(200, 20)) {
-        obj_mark_for_deletion(o);
-    }
+    // Removed 'cur_obj_wait_then_blink()' based on 'pathobake.p'
 
     bhv_coin_sparkles_init();
 }
@@ -93,55 +91,9 @@ void bhv_spawned_coin_loop(void) {
         }
     }
 
-    if (cur_obj_wait_then_blink(400, 20)) {
-        obj_mark_for_deletion(o);
-    }
+    // Removed 'cur_obj_wait_then_blink()' based on 'pathobake.p' 
 
     bhv_coin_sparkles_init();
 }
 
-void coin_inside_boo_act_1(void) {
-    cur_obj_update_floor_and_walls();
-    cur_obj_if_hit_wall_bounce_away();
-
-    if (o->oTimer > 90 || (o->oMoveFlags & OBJ_MOVE_LANDED)) {
-        obj_set_hitbox(o, &sYellowCoinHitbox);
-        cur_obj_become_tangible();
-        cur_obj_set_behavior(bhvYellowCoin);
-    }
-
-    cur_obj_move_standard(-30);
-    bhv_coin_sparkles_init();
-
-    if (cur_obj_wait_then_blink(400, 20)) {
-        obj_mark_for_deletion(o);
-    }
-}
-
-void coin_inside_boo_act_0(void) {
-    s16 sp26;
-    f32 sp20;
-    struct Object *parent = o->parentObj;
-
-    cur_obj_become_intangible();
-
-    obj_copy_pos(o, parent);
-
-    if (parent->oBooDeathStatus == BOO_DEATH_STATUS_DYING) {
-        o->oAction = 1;
-        sp26 = gMarioObject->oMoveAngleYaw;
-        sp20 = 3.0f;
-        o->oVelX = sins(sp26) * sp20;
-        o->oVelZ = coss(sp26) * sp20;
-        o->oVelY = 35.0f;
-    }
-}
-
-void (*sCoinInsideBooActions[])(void) = {
-    coin_inside_boo_act_0,
-    coin_inside_boo_act_1,
-};
-
-void bhv_coin_inside_boo_loop(void) {
-    cur_obj_call_action_function(sCoinInsideBooActions);
-}
+// The coin inside Boos seemingly had its own separate file based on 'pathobake.p'
