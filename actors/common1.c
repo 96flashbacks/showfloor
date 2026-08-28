@@ -24,7 +24,8 @@ UNUSED static const u64 binid_3 = 3;
 #include "door/door.sou"
 UNUSED static const u64 binid_5 = 5;
 
-#include "flame/model.inc.c"
+#include "flame/fireC.sou"
+#include "flame/fireD.sou"
 UNUSED static const u64 binid_7 = 7;
 
 #include "blue_fish/model.inc.c"

@@ -1,0 +1,460 @@
+/********************************************************************************
+	RCP_HmsFireCYellow. RCP_HmsFireCBlue.
+														[ Sept 22, 1995 ]
+*********************************************************************************/
+
+#define	G_CC_TANI_MODULATE_IA_ENV	TEXEL0,0,ENVIRONMENT,0,  TEXEL0,0,ENVIRONMENT,0
+
+/********************************************************************************/
+/*	Vertex data.																*/
+/********************************************************************************/
+static Vtx vtx_fireC[] = {
+	{  -25,  0, 0,  0,		   0, (31<<5),	0, 0, 0, 0 },
+	{   25,	 0, 0,  0,	 (31<<5), (31<<5),	0, 0, 0, 0 },
+	{   25, 50, 0,  0,	 (31<<5),		0,	0, 0, 0, 0 },
+	{  -25, 50, 0,  0,		   0,		0,	0, 0, 0, 0 },
+};
+
+/********************************************************************************/
+/*	Texture data.																*/
+/********************************************************************************/
+ALIGNED8 static const Texture fire_C_01_txt[] = {
+#include "actors/flame/fire_C_01_txt.ia16.inc.c"
+};
+
+ALIGNED8 static const Texture fire_C_02_txt[] = {
+#include "actors/flame/fire_C_02_txt.ia16.inc.c"
+};
+
+ALIGNED8 static const Texture fire_C_03_txt[] = {
+#include "actors/flame/fire_C_03_txt.ia16.inc.c"
+};
+
+ALIGNED8 static const Texture fire_C_04_txt[] = {
+#include "actors/flame/fire_C_04_txt.ia16.inc.c"
+};
+
+ALIGNED8 static const Texture fire_C_05_txt[] = {
+#include "actors/flame/fire_C_05_txt.ia16.inc.c"
+};
+
+ALIGNED8 static const Texture fire_C_06_txt[] = {
+#include "actors/flame/fire_C_06_txt.ia16.inc.c"
+};
+
+ALIGNED8 static const Texture fire_C_07_txt[] = {
+#include "actors/flame/fire_C_07_txt.ia16.inc.c"
+};
+
+ALIGNED8 static const Texture fire_C_08_txt[] = {
+#include "actors/flame/fire_C_08_txt.ia16.inc.c"
+};
+
+ALIGNED8 static const Texture fire_C_09_txt[] = {
+#include "actors/flame/fire_C_09_txt.ia16.inc.c"
+};
+
+ALIGNED8 static const Texture fire_C_10_txt[] = {
+#include "actors/flame/fire_C_10_txt.ia16.inc.c"
+};
+
+ALIGNED8 static const Texture fire_C_11_txt[] = {
+#include "actors/flame/fire_C_11_txt.ia16.inc.c"
+};
+
+ALIGNED8 static const Texture fire_C_12_txt[] = {
+#include "actors/flame/fire_C_12_txt.ia16.inc.c"
+};
+
+ALIGNED8 static const Texture fire_C_13_txt[] = {
+#include "actors/flame/fire_C_13_txt.ia16.inc.c"
+};
+
+ALIGNED8 static const Texture fire_C_14_txt[] = {
+#include "actors/flame/fire_C_14_txt.ia16.inc.c"
+};
+
+ALIGNED8 static const Texture fire_C_15_txt[] = {
+#include "actors/flame/fire_C_15_txt.ia16.inc.c"
+};
+
+/********************************************************************************/
+/*	Graphic display list of FireC_Yellow. Common.								*/
+/********************************************************************************/
+static Gfx gfx_fireC_yellow[] = {
+	gsSPClearGeometryMode(G_LIGHTING | G_SHADING_SMOOTH),
+	gsDPSetEnvColor(255, 220, 0, 150),
+	gsDPSetCombineMode(G_CC_TANI_MODULATE_IA_ENV, G_CC_TANI_MODULATE_IA_ENV),
+    gsxDPLoadTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 32, 32, 0,
+			 				G_TX_CLAMP|G_TX_NOMIRROR, G_TX_CLAMP|G_TX_NOMIRROR,
+			 				5, 5, G_TX_NOLOD, G_TX_NOLOD),
+
+    gsSPTexture(0xffff, 0xffff, 0, G_TX_RENDERTILE, G_ON),
+
+		gsSPVertex(&vtx_fireC[0], 4, 0),
+		gsSP1Triangle(0, 1, 2, 0),
+		gsSP1Triangle(0, 2, 3, 0),
+
+    gsSPTexture(0xffff, 0xffff, 0, G_TX_RENDERTILE, G_OFF),
+
+	gsDPPipeSync(),
+	gsSPSetGeometryMode(G_LIGHTING | G_SHADING_SMOOTH),
+	gsDPSetEnvColor(255, 255, 255, 255),
+    gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
+	gsSPEndDisplayList()
+};
+
+/********************************************************************************/
+/*	Graphic display list of FireC_Yellow. Each.									*/
+/********************************************************************************/
+Gfx RCP_FireC_Yellow01[] = {
+	gsDPPipeSync(),
+	gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, fire_C_01_txt),
+	gsSPBranchList(gfx_fireC_yellow)
+};
+
+Gfx RCP_FireC_Yellow02[] = {
+	gsDPPipeSync(),
+	gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, fire_C_02_txt),
+	gsSPBranchList(gfx_fireC_yellow)
+};
+
+Gfx RCP_FireC_Yellow03[] = {
+	gsDPPipeSync(),
+	gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, fire_C_03_txt),
+	gsSPBranchList(gfx_fireC_yellow)
+};
+
+Gfx RCP_FireC_Yellow04[] = {
+	gsDPPipeSync(),
+	gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, fire_C_04_txt),
+	gsSPBranchList(gfx_fireC_yellow)
+};
+
+Gfx RCP_FireC_Yellow05[] = {
+	gsDPPipeSync(),
+	gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, fire_C_05_txt),
+	gsSPBranchList(gfx_fireC_yellow)
+};
+
+Gfx RCP_FireC_Yellow06[] = {
+	gsDPPipeSync(),
+	gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, fire_C_06_txt),
+	gsSPBranchList(gfx_fireC_yellow)
+};
+
+Gfx RCP_FireC_Yellow07[] = {
+	gsDPPipeSync(),
+	gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, fire_C_07_txt),
+	gsSPBranchList(gfx_fireC_yellow)
+};
+
+Gfx RCP_FireC_Yellow08[] = {
+	gsDPPipeSync(),
+	gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, fire_C_08_txt),
+	gsSPBranchList(gfx_fireC_yellow)
+};
+
+Gfx RCP_FireC_Yellow09[] = {
+	gsDPPipeSync(),
+	gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, fire_C_09_txt),
+	gsSPBranchList(gfx_fireC_yellow)
+};
+
+Gfx RCP_FireC_Yellow10[] = {
+	gsDPPipeSync(),
+	gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, fire_C_10_txt),
+	gsSPBranchList(gfx_fireC_yellow)
+};
+
+Gfx RCP_FireC_Yellow11[] = {
+	gsDPPipeSync(),
+	gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, fire_C_11_txt),
+	gsSPBranchList(gfx_fireC_yellow)
+};
+
+Gfx RCP_FireC_Yellow12[] = {
+	gsDPPipeSync(),
+	gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, fire_C_12_txt),
+	gsSPBranchList(gfx_fireC_yellow)
+};
+
+Gfx RCP_FireC_Yellow13[] = {
+	gsDPPipeSync(),
+	gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, fire_C_13_txt),
+	gsSPBranchList(gfx_fireC_yellow)
+};
+
+Gfx RCP_FireC_Yellow14[] = {
+	gsDPPipeSync(),
+	gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, fire_C_14_txt),
+	gsSPBranchList(gfx_fireC_yellow)
+};
+
+Gfx RCP_FireC_Yellow15[] = {
+	gsDPPipeSync(),
+	gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, fire_C_15_txt),
+	gsSPBranchList(gfx_fireC_yellow)
+};
+
+
+/* ----------------------------------------------------------------------------------------	*/
+/* ----------------------------------------------------------------------------------------	*/
+
+
+/********************************************************************************/
+/*	Vertex data.																*/
+/********************************************************************************/
+static Vtx vtx_fireC_2[] = {
+	{    0,-25, 0,  0,	 (31<<5), (31<<5),	0, 0, 0, 0 },
+	{   50,-25, 0,  0,	 (31<<5),       0,	0, 0, 0, 0 },
+	{   50, 25, 0,  0,	       0, 		0,	0, 0, 0, 0 },
+	{    0, 25, 0,  0,		   0, (31<<5),	0, 0, 0, 0 },
+};
+
+
+/********************************************************************************/
+/*	Graphic display list of FireC_2_Yellow. Common.								*/
+/********************************************************************************/
+static Gfx gfx_fireC_2_yellow[] = {
+	gsSPClearGeometryMode(G_LIGHTING | G_SHADING_SMOOTH),
+	gsDPSetEnvColor(255, 220, 0, 150),
+	gsDPSetCombineMode(G_CC_TANI_MODULATE_IA_ENV, G_CC_TANI_MODULATE_IA_ENV),
+    gsxDPLoadTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 32, 32, 0,
+			 				G_TX_CLAMP|G_TX_NOMIRROR, G_TX_CLAMP|G_TX_NOMIRROR,
+			 				5, 5, G_TX_NOLOD, G_TX_NOLOD),
+
+    gsSPTexture(0xffff, 0xffff, 0, G_TX_RENDERTILE, G_ON),
+
+		gsSPVertex(&vtx_fireC_2[0], 4, 0),
+		gsSP1Triangle(0, 1, 2, 0),
+		gsSP1Triangle(0, 2, 3, 0),
+
+    gsSPTexture(0xffff, 0xffff, 0, G_TX_RENDERTILE, G_OFF),
+
+	gsDPPipeSync(),
+	gsSPSetGeometryMode(G_LIGHTING | G_SHADING_SMOOTH),
+	gsDPSetEnvColor(255, 255, 255, 255),
+    gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
+	gsSPEndDisplayList()
+};
+
+/********************************************************************************/
+/*	Graphic display list of FireC_2_Yellow. Each.								*/
+/********************************************************************************/
+Gfx RCP_FireC_2_Yellow01[] = {
+	gsDPPipeSync(),
+	gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, fire_C_01_txt),
+	gsSPBranchList(gfx_fireC_2_yellow)
+};
+
+Gfx RCP_FireC_2_Yellow02[] = {
+	gsDPPipeSync(),
+	gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, fire_C_02_txt),
+	gsSPBranchList(gfx_fireC_2_yellow)
+};
+
+Gfx RCP_FireC_2_Yellow03[] = {
+	gsDPPipeSync(),
+	gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, fire_C_03_txt),
+	gsSPBranchList(gfx_fireC_2_yellow)
+};
+
+Gfx RCP_FireC_2_Yellow04[] = {
+	gsDPPipeSync(),
+	gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, fire_C_04_txt),
+	gsSPBranchList(gfx_fireC_2_yellow)
+};
+
+Gfx RCP_FireC_2_Yellow05[] = {
+	gsDPPipeSync(),
+	gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, fire_C_05_txt),
+	gsSPBranchList(gfx_fireC_2_yellow)
+};
+
+Gfx RCP_FireC_2_Yellow06[] = {
+	gsDPPipeSync(),
+	gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, fire_C_06_txt),
+	gsSPBranchList(gfx_fireC_2_yellow)
+};
+
+Gfx RCP_FireC_2_Yellow07[] = {
+	gsDPPipeSync(),
+	gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, fire_C_07_txt),
+	gsSPBranchList(gfx_fireC_2_yellow)
+};
+
+Gfx RCP_FireC_2_Yellow08[] = {
+	gsDPPipeSync(),
+	gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, fire_C_08_txt),
+	gsSPBranchList(gfx_fireC_2_yellow)
+};
+
+Gfx RCP_FireC_2_Yellow09[] = {
+	gsDPPipeSync(),
+	gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, fire_C_09_txt),
+	gsSPBranchList(gfx_fireC_2_yellow)
+};
+
+Gfx RCP_FireC_2_Yellow10[] = {
+	gsDPPipeSync(),
+	gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, fire_C_10_txt),
+	gsSPBranchList(gfx_fireC_2_yellow)
+};
+
+Gfx RCP_FireC_2_Yellow11[] = {
+	gsDPPipeSync(),
+	gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, fire_C_11_txt),
+	gsSPBranchList(gfx_fireC_2_yellow)
+};
+
+Gfx RCP_FireC_2_Yellow12[] = {
+	gsDPPipeSync(),
+	gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, fire_C_12_txt),
+	gsSPBranchList(gfx_fireC_2_yellow)
+};
+
+Gfx RCP_FireC_2_Yellow13[] = {
+	gsDPPipeSync(),
+	gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, fire_C_13_txt),
+	gsSPBranchList(gfx_fireC_2_yellow)
+};
+
+Gfx RCP_FireC_2_Yellow14[] = {
+	gsDPPipeSync(),
+	gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, fire_C_14_txt),
+	gsSPBranchList(gfx_fireC_2_yellow)
+};
+
+Gfx RCP_FireC_2_Yellow15[] = {
+	gsDPPipeSync(),
+	gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, fire_C_15_txt),
+	gsSPBranchList(gfx_fireC_2_yellow)
+};
+
+
+/* ----------------------------------------------------------------------------------------	*/
+/* ----------------------------------------------------------------------------------------	*/
+/* ----------------------------------------------------------------------------------------	*/
+/* ----------------------------------------------------------------------------------------	*/
+
+
+
+/********************************************************************************/
+/*	Graphic display list of FireC_Blue. Common.									*/
+/********************************************************************************/
+static Gfx gfx_fireC_blue[] = {
+	gsSPClearGeometryMode(G_LIGHTING | G_SHADING_SMOOTH),
+	gsDPSetEnvColor(100, 100, 255, 150),
+	gsDPSetCombineMode(G_CC_TANI_MODULATE_IA_ENV, G_CC_TANI_MODULATE_IA_ENV),
+    gsxDPLoadTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 32, 32, 0,
+			 				G_TX_CLAMP|G_TX_NOMIRROR, G_TX_CLAMP|G_TX_NOMIRROR,
+			 				5, 5, G_TX_NOLOD, G_TX_NOLOD),
+
+    gsSPTexture(0xffff, 0xffff, 0, G_TX_RENDERTILE, G_ON),
+
+		gsSPVertex(&vtx_fireC[0], 4, 0),
+		gsSP1Triangle(0, 1, 2, 0),
+		gsSP1Triangle(0, 2, 3, 0),
+
+    gsSPTexture(0xffff, 0xffff, 0, G_TX_RENDERTILE, G_OFF),
+
+	gsDPPipeSync(),
+	gsSPSetGeometryMode(G_LIGHTING | G_SHADING_SMOOTH),
+	gsDPSetEnvColor(255, 255, 255, 255),
+    gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
+	gsSPEndDisplayList()
+};
+
+/********************************************************************************/
+/*	Graphic display list of FireC_Blue. Each.									*/
+/********************************************************************************/
+Gfx RCP_FireC_Blue01[] = {
+	gsDPPipeSync(),
+	gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, fire_C_01_txt),
+	gsSPBranchList(gfx_fireC_blue)
+};
+
+Gfx RCP_FireC_Blue02[] = {
+	gsDPPipeSync(),
+	gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, fire_C_02_txt),
+	gsSPBranchList(gfx_fireC_blue)
+};
+
+Gfx RCP_FireC_Blue03[] = {
+	gsDPPipeSync(),
+	gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, fire_C_03_txt),
+	gsSPBranchList(gfx_fireC_blue)
+};
+
+Gfx RCP_FireC_Blue04[] = {
+	gsDPPipeSync(),
+	gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, fire_C_04_txt),
+	gsSPBranchList(gfx_fireC_blue)
+};
+
+Gfx RCP_FireC_Blue05[] = {
+	gsDPPipeSync(),
+	gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, fire_C_05_txt),
+	gsSPBranchList(gfx_fireC_blue)
+};
+
+Gfx RCP_FireC_Blue06[] = {
+	gsDPPipeSync(),
+	gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, fire_C_06_txt),
+	gsSPBranchList(gfx_fireC_blue)
+};
+
+Gfx RCP_FireC_Blue07[] = {
+	gsDPPipeSync(),
+	gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, fire_C_07_txt),
+	gsSPBranchList(gfx_fireC_blue)
+};
+
+Gfx RCP_FireC_Blue08[] = {
+	gsDPPipeSync(),
+	gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, fire_C_08_txt),
+	gsSPBranchList(gfx_fireC_blue)
+};
+
+Gfx RCP_FireC_Blue09[] = {
+	gsDPPipeSync(),
+	gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, fire_C_09_txt),
+	gsSPBranchList(gfx_fireC_blue)
+};
+
+Gfx RCP_FireC_Blue10[] = {
+	gsDPPipeSync(),
+	gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, fire_C_10_txt),
+	gsSPBranchList(gfx_fireC_blue)
+};
+
+Gfx RCP_FireC_Blue11[] = {
+	gsDPPipeSync(),
+	gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, fire_C_11_txt),
+	gsSPBranchList(gfx_fireC_blue)
+};
+
+Gfx RCP_FireC_Blue12[] = {
+	gsDPPipeSync(),
+	gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, fire_C_12_txt),
+	gsSPBranchList(gfx_fireC_blue)
+};
+
+Gfx RCP_FireC_Blue13[] = {
+	gsDPPipeSync(),
+	gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, fire_C_13_txt),
+	gsSPBranchList(gfx_fireC_blue)
+};
+
+Gfx RCP_FireC_Blue14[] = {
+	gsDPPipeSync(),
+	gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, fire_C_14_txt),
+	gsSPBranchList(gfx_fireC_blue)
+};
+
+Gfx RCP_FireC_Blue15[] = {
+	gsDPPipeSync(),
+	gsDPSetTextureImage(G_IM_FMT_IA, G_IM_SIZ_16b, 1, fire_C_15_txt),
+	gsSPBranchList(gfx_fireC_blue)
+};

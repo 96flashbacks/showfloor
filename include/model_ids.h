@@ -448,10 +448,10 @@
 // find me
 #define MODEL_MIST                        0x8E        // mist_geo
 #define MODEL_SPARKLES_ANIMATION          0x8F        // sparkles_animation_geo
-#define MODEL_RED_FLAME                   0x90        // red_flame_geo
-#define MODEL_YELLOW_FLAME                  0x91        // yellow_flame_geo
-// find me
-// find me
+#define MODEL_RED_FLAME                   0x90        // RCP_HmsFireD_Yellow
+#define MODEL_BLUE_FLAME                  0x91        // RCP_HmsFireD_Blue
+#define MODEL_FIRE_1                      0x92        // RCP_HmsFireC_Yellow (S_fire_xxx1)
+#define MODEL_FIRE_2                      0x93        // RCP_HmsFireC_Blue (S_fire_xxx2)
 #define MODEL_BURN_SMOKE                  0x94        // burn_smoke_geo
 #define MODEL_SPARKLES                    0x95        // sparkles_geo
 #define MODEL_SMOKE                       0x96        // smoke_geo
@@ -507,7 +507,7 @@
 //#define MODEL_BOWSER_KEY_CUTSCENE         0xC8        // bowser_key_cutscene_geo
 //#define MODEL_DL_CANNON_LID               0xC9        // cannon_closed_seg8_dl_080048E0
 //#define MODEL_CHECKERBOARD_PLATFORM       0xCA        // checkerboard_platform_geo
-#define MODEL_RED_FLAME_SHADOW            0xCB        // red_flame_shadow_geo
+//#define MODEL_RED_FLAME_SHADOW            0xCB        // red_flame_shadow_geo
 //#define MODEL_BOWSER_KEY                  0xCC        // bowser_key_geo
 #define MODEL_EXPLOSION                   0xCD        // explosion_geo
 #define MODEL_SNUFIT                      0xCE        // snufit_geo

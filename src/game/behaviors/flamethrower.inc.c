@@ -63,7 +63,7 @@ void bhv_flamethrower_loop(void) {
         flameVel = 95.0f;
 
         if (o->oBhvParams2ndByte == 1) {
-            model = MODEL_YELLOW_FLAME;
+            model = MODEL_BLUE_FLAME;
         }
 
         if (o->oBhvParams2ndByte == 2) {

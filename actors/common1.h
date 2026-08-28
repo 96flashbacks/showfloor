@@ -50,33 +50,11 @@ extern AnimePtr door_anime[];
 extern Hierarchy RCP_HmsItembombfire[];
 
 // flame
-extern const GeoLayout red_flame_shadow_geo[];
-extern const GeoLayout red_flame_geo[];
-extern const GeoLayout yellow_flame_geo[];
-extern const Gfx flame_seg3_dl_0301B320[];
-extern const Gfx flame_seg3_dl_0301B3B0[];
-extern const Gfx flame_seg3_dl_0301B3C8[];
-extern const Gfx flame_seg3_dl_0301B3E0[];
-extern const Gfx flame_seg3_dl_0301B3F8[];
-extern const Gfx flame_seg3_dl_0301B410[];
-extern const Gfx flame_seg3_dl_0301B428[];
-extern const Gfx flame_seg3_dl_0301B440[];
-extern const Gfx flame_seg3_dl_0301B458[];
-extern const Gfx RCP_FireC_Yellow01[];
-extern const Gfx RCP_FireC_Yellow02[];
-extern const Gfx RCP_FireC_Yellow03[];
-extern const Gfx RCP_FireC_Yellow04[];
-extern const Gfx RCP_FireC_Yellow05[];
-extern const Gfx RCP_FireC_Yellow06[];
-extern const Gfx RCP_FireC_Yellow07[];
-extern const Gfx RCP_FireC_Yellow08[];
-extern const Gfx RCP_FireC_Yellow09[];
-extern const Gfx RCP_FireC_Yellow10[];
-extern const Gfx RCP_FireC_Yellow11[];
-extern const Gfx RCP_FireC_Yellow12[];
-extern const Gfx RCP_FireC_Yellow13[];
-extern const Gfx RCP_FireC_Yellow14[];
-extern const Gfx RCP_FireC_Yellow15[];
+extern Hierarchy RCP_HmsFireC_Yellow[];
+extern Hierarchy RCP_HmsFireC_2_Yellow[];
+extern Hierarchy RCP_HmsFireC_Blue[];
+extern Hierarchy RCP_HmsFireD_Yellow[];
+extern Hierarchy RCP_HmsFireD_Blue[];
 
 // leaves
 extern const GeoLayout leaves_geo[];

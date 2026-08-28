@@ -1,0 +1,93 @@
+/********************************************************************************
+	RCP_HmsFireDYellow. RCP_HmsFireDBlue.
+														[ Sept 22, 1995 ]
+*********************************************************************************/
+
+extern Gfx  RCP_FireD_Yellow01[];
+extern Gfx  RCP_FireD_Yellow02[];
+extern Gfx  RCP_FireD_Yellow03[];
+extern Gfx  RCP_FireD_Yellow04[];
+extern Gfx  RCP_FireD_Yellow05[];
+extern Gfx  RCP_FireD_Yellow06[];
+extern Gfx  RCP_FireD_Yellow07[];
+extern Gfx  RCP_FireD_Yellow08[];
+extern Gfx  RCP_FireD_Yellow09[];
+extern Gfx  RCP_FireD_Yellow10[];
+extern Gfx  RCP_FireD_Yellow11[];
+extern Gfx  RCP_FireD_Yellow12[];
+extern Gfx  RCP_FireD_Yellow13[];
+extern Gfx  RCP_FireD_Yellow14[];
+extern Gfx  RCP_FireD_Yellow15[];
+
+extern Gfx  RCP_FireD_Blue01[];
+extern Gfx  RCP_FireD_Blue02[];
+extern Gfx  RCP_FireD_Blue03[];
+extern Gfx  RCP_FireD_Blue04[];
+extern Gfx  RCP_FireD_Blue05[];
+extern Gfx  RCP_FireD_Blue06[];
+extern Gfx  RCP_FireD_Blue07[];
+extern Gfx  RCP_FireD_Blue08[];
+extern Gfx  RCP_FireD_Blue09[];
+extern Gfx  RCP_FireD_Blue10[];
+extern Gfx  RCP_FireD_Blue11[];
+extern Gfx  RCP_FireD_Blue12[];
+extern Gfx  RCP_FireD_Blue13[];
+extern Gfx  RCP_FireD_Blue14[];
+extern Gfx  RCP_FireD_Blue15[];
+
+
+/********************************************************************************/
+/*	Hierarchy map data of FireD_Yellow.											*/
+/********************************************************************************/
+Hierarchy RCP_HmsFireD_Yellow[] = {
+	hmsGroup()
+	hmsBegin()
+		hmsSelect(15, ControlShapeAnime)
+		hmsBegin()
+			hmsGfx(RM_XSURF, RCP_FireD_Yellow01)
+			hmsGfx(RM_XSURF, RCP_FireD_Yellow02)
+			hmsGfx(RM_XSURF, RCP_FireD_Yellow03)
+			hmsGfx(RM_XSURF, RCP_FireD_Yellow04)
+			hmsGfx(RM_XSURF, RCP_FireD_Yellow05)
+			hmsGfx(RM_XSURF, RCP_FireD_Yellow06)
+			hmsGfx(RM_XSURF, RCP_FireD_Yellow07)
+			hmsGfx(RM_XSURF, RCP_FireD_Yellow08)
+			hmsGfx(RM_XSURF, RCP_FireD_Yellow09)
+			hmsGfx(RM_XSURF, RCP_FireD_Yellow10)
+			hmsGfx(RM_XSURF, RCP_FireD_Yellow11)
+			hmsGfx(RM_XSURF, RCP_FireD_Yellow12)
+			hmsGfx(RM_XSURF, RCP_FireD_Yellow13)
+			hmsGfx(RM_XSURF, RCP_FireD_Yellow14)
+			hmsGfx(RM_XSURF, RCP_FireD_Yellow15)
+		hmsEnd()
+	hmsEnd()
+  	hmsExit()
+};
+
+/********************************************************************************/
+/*	Hierarchy map data of FireD_Blue.											*/
+/********************************************************************************/
+Hierarchy RCP_HmsFireD_Blue[] = {
+	hmsGroup()
+	hmsBegin()
+		hmsSelect(15, ControlShapeAnime)
+		hmsBegin()
+			hmsGfx(RM_XSURF, RCP_FireD_Blue01)
+			hmsGfx(RM_XSURF, RCP_FireD_Blue02)
+			hmsGfx(RM_XSURF, RCP_FireD_Blue03)
+			hmsGfx(RM_XSURF, RCP_FireD_Blue04)
+			hmsGfx(RM_XSURF, RCP_FireD_Blue05)
+			hmsGfx(RM_XSURF, RCP_FireD_Blue06)
+			hmsGfx(RM_XSURF, RCP_FireD_Blue07)
+			hmsGfx(RM_XSURF, RCP_FireD_Blue08)
+			hmsGfx(RM_XSURF, RCP_FireD_Blue09)
+			hmsGfx(RM_XSURF, RCP_FireD_Blue10)
+			hmsGfx(RM_XSURF, RCP_FireD_Blue11)
+			hmsGfx(RM_XSURF, RCP_FireD_Blue12)
+			hmsGfx(RM_XSURF, RCP_FireD_Blue13)
+			hmsGfx(RM_XSURF, RCP_FireD_Blue14)
+			hmsGfx(RM_XSURF, RCP_FireD_Blue15)
+		hmsEnd()
+	hmsEnd()
+  	hmsExit()
+};

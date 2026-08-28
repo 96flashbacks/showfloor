@@ -103,7 +103,7 @@ void bhv_flame_bowser_loop(void) {
     }
 
     cur_obj_scale(o->oFlameScale);
-    o->oGraphYOffset = o->header.gfx.scale[1] * 14.0f;
+    // No oGraphYOffset, FireC is offset higher
     obj_set_hitbox(o, &sBowserFlameHitbox);
 }
 
@@ -135,7 +135,7 @@ void bhv_flame_moving_forward_growing_loop(void) {
 
     if (o->oPosY < o->oFloorHeight) {
         o->oPosY = o->oFloorHeight;
-        flame = spawn_object(o, MODEL_YELLOW_FLAME, bhvFlameBowser);
+        flame = spawn_object(o, MODEL_FIRE_1, bhvFlameBowser);
         obj_mark_for_deletion(o);
     }
 }
@@ -175,7 +175,7 @@ void bhv_flame_floating_landing_loop(void) {
             spawn_object(o, MODEL_RED_FLAME, bhvFlameLargeBurningOut);
         } else {
             spawn_object(o, MODEL_NONE,
-                         bhvBlueFlamesGroup); //? wonder if they meant MODEL_YELLOW_FLAME?
+                         bhvBlueFlamesGroup); //? wonder if they meant MODEL_BLUE_FLAME?
         }
         obj_mark_for_deletion(o);
     }
@@ -214,9 +214,9 @@ void bhv_blue_bowser_flame_loop(void) {
                                                  bhvFlameFloatingLanding);
             }
         } else {
-            spawn_object_relative_with_scale(1, 0, 0, 0, 8.0f, o, MODEL_YELLOW_FLAME,
+            spawn_object_relative_with_scale(1, 0, 0, 0, 8.0f, o, MODEL_BLUE_FLAME,
                                              bhvFlameFloatingLanding);
-            spawn_object_relative_with_scale(2, 0, 0, 0, 8.0f, o, MODEL_YELLOW_FLAME,
+            spawn_object_relative_with_scale(2, 0, 0, 0, 8.0f, o, MODEL_BLUE_FLAME,
                                              bhvFlameFloatingLanding);
         }
         obj_mark_for_deletion(o);
@@ -271,7 +271,7 @@ void bhv_blue_flames_group_loop(void) {
     if (o->oTimer < 16) {
         if (!(o->oTimer & 1)) {
             for (i = 0; i < 3; i++) {
-                flame = spawn_object(o, MODEL_YELLOW_FLAME, bhvFlameBouncing);
+                flame = spawn_object(o, MODEL_BLUE_FLAME, bhvFlameBouncing);
                 flame->oMoveAngleYaw += i * 0x5555;
                 flame->header.gfx.scale[0] = o->oBlueFlameNextScale;
             }
