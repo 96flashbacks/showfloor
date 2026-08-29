@@ -2298,22 +2298,18 @@ s32 update_in_cannon(UNUSED struct Camera *c, Vec3f focus, Vec3f pos) {
     return sMarioCamState->faceAngle[1];
 }
 
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wuninitialized"
+
 /**
- * Updates the camera when mario is in a cannon.
- * sCannonYOffset is used to make the camera rotate down when mario has just entered the cannon
+ * Updates the camera when Mario is in a cannon.
+ * sCannonYOffset is used to make the camera rotate down when Mario has just entered the cannon
  */
 void mode_cannon_camera(struct Camera *c) {
-    UNUSED u8 unused[24];
-    s8 timer;
-    timer++;
+    UNUSED u8 filler[24];
 
-    if (timer == 1) {
-        sLakituPitch = 0;
-        gCameraMovementFlags &= ~CAM_MOVING_INTO_MODE;
+    sLakituPitch = 0;
+    gCameraMovementFlags &= ~CAM_MOVING_INTO_MODE;
+    if (sCannonYOffset < 800.f) // Strange but makes the camera update a frame too late like footage
         c->nextYaw = update_in_cannon(c, c->focus, c->pos);
-    }
     if (gPlayer1Controller->buttonPressed & A_BUTTON) {
         set_camera_mode(c, CAMERA_MODE_BEHIND_MARIO, 1);
         sCannonYOffset = 0.f;
@@ -2322,7 +2318,7 @@ void mode_cannon_camera(struct Camera *c) {
         sCannonYOffset = approach_f32(sCannonYOffset, 0.f, 100.f, 100.f);
     }
 }
-#pragma GCC diagnostic pop
+
 
 /**
  * Cause Lakitu to fly to the next Camera position and focus over a number of frames.
