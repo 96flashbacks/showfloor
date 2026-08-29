@@ -633,8 +633,6 @@ void geo_set_animation_globals(struct AnimInfo *node, s32 hasAnimation) {
     }
 }
 
-// TO-DO: clean this up and fix warnings
-
 /**
  * Process a shadow node. Renders a shadow under an object offset by the
  * translation of the first animated component and rotated according to
@@ -648,17 +646,20 @@ static void geo_process_shadow(struct GraphNodeShadow *node) {
     Mtx *mtx;
 
     if (gCurGraphNodeCamera != NULL && gCurGraphNodeObject != NULL) {
-        //! There was a bug here in the B-Roll builds where the shadow of the held objects wouldn't be
-        //! put into their appropriate positions, SW just fixed this by making them dissappear
-        //! altogether.
+        //! The 1995 B-Roll builds had a bug with held objects where they would render below
+        //! Mario's position instead of the held object's, which looked odd, especially with Bowser.
+        //! The Shoshinkai demo temporarily "fixed" this by not rendering the held object shadows.
         if (gCurGraphNodeHeldObject != NULL) {
             vec3f_copy(shadowPos, gCurGraphNodeObject->pos);
-            shadowScale = 0.0f;
+            shadowScale = 0.0f; // Scale held object shadows to 0 to not appear below Mario
         } else {
             vec3f_copy(shadowPos, gCurGraphNodeObject->pos);
             shadowScale = node->shadowScale * gCurGraphNodeObject->scale[0];
         }
 
+        // No handling for animations with translation. So shadows don't follow the object
+        // properly in animations that noticeably move it, such as Mario's star dance.
+ 
         shadowList = create_shadow_below_xyz(shadowPos[0], shadowPos[1], shadowPos[2], shadowScale,
                                              node->shadowSolidity, node->shadowType);
         if (shadowList != NULL) {
