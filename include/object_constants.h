@@ -90,8 +90,8 @@
 
 /* oActiveParticleFlags */
 #define ACTIVE_PARTICLE_DUST                 (1 <<  0) // 0x00000001
-#define ACTIVE_PARTICLE_UNUSED_1             (1 <<  1) // 0x00000002
-#define ACTIVE_PARTICLE_UNUSED_2             (1 <<  2) // 0x00000004
+#define ACTIVE_PARTICLE_UNUSED_1             (1 <<  1) // 0x00000002 (stf_splash)
+#define ACTIVE_PARTICLE_UNUSED_2             (1 <<  2) // 0x00000004 (stf_sleep)
 #define ACTIVE_PARTICLE_SPARKLES             (1 <<  3) // 0x00000008
 #define ACTIVE_PARTICLE_H_STAR               (1 <<  4) // 0x00000010
 #define ACTIVE_PARTICLE_BUBBLE               (1 <<  5) // 0x00000020
@@ -103,12 +103,12 @@
 #define ACTIVE_PARTICLE_FIRE                 (1 << 11) // 0x00000800
 #define ACTIVE_PARTICLE_SHALLOW_WATER_SPLASH (1 << 12) // 0x00001000
 #define ACTIVE_PARTICLE_LEAF                 (1 << 13) // 0x00002000
-#define ACTIVE_PARTICLE_DIRT                 (1 << 14) // 0x00004000
+//#define ACTIVE_PARTICLE_DIRT                 (1 << 14) // 0x00004000
 //#define ACTIVE_PARTICLE_MIST_CIRCLE          (1 << 15) // 0x00008000
-#define ACTIVE_PARTICLE_SNOW                 (1 << 16) // 0x00010000
+//#define ACTIVE_PARTICLE_SNOW                 (1 << 16) // 0x00010000
 //#define ACTIVE_PARTICLE_BREATH               (1 << 17) // 0x00020000
-#define ACTIVE_PARTICLE_V_STAR               (1 << 18) // 0x00040000
-#define ACTIVE_PARTICLE_TRIANGLE             (1 << 19) // 0x00080000
+//#define ACTIVE_PARTICLE_V_STAR               (1 << 18) // 0x00040000
+//#define ACTIVE_PARTICLE_TRIANGLE             (1 << 19) // 0x00080000
 
 /* oAction */
 #define OBJ_ACT_LAVA_DEATH        100

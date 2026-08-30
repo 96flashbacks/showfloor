@@ -60,15 +60,6 @@ extern Hierarchy RCP_HmsFireD_Blue[];
 extern const GeoLayout leaves_geo[];
 extern const Gfx leaves_seg3_dl_0301CDE0[];
 
-// mist
-extern const GeoLayout mist_geo[];
-extern const GeoLayout white_puff_geo[];
-extern const Gfx mist_seg3_dl_03000880[];
-extern const Gfx mist_seg3_dl_03000920[];
-
-// number
-extern const GeoLayout number_geo[];
-
 // power_meter
 extern const u8 *const MeterDataPtr[];
 extern const Gfx RCP_damegemeter_on[];

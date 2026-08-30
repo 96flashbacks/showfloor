@@ -8,6 +8,7 @@
 #include "common1.h"
 #include "common0.h"
 
-// Hmm, this is included earlier.
+#include "test_platform/geo.inc.c"
 #include "cannon_base/cannon_base.hms"
 #include "cannon_barrel/cannon_body.hms"
+#include "koopa_shell/nokonoko.hms"

@@ -1,18 +1,18 @@
 
 /**
- * Behavior for bhvBetaBowserAnchor.
- * This seems to be a beta bowser anchor object. It continuously updates to be
- * about the same distance away from Mario as Bowser is, and it is destructive.
+ * Behavior for bhvTestPlayerFire.
+ * Internally called "plfire", it appears to be a
+ * simple test object due to its location in 'pathtest.p'.
  */
 
 /**
- * Update function for bhvBetaBowserAnchor.
+ * Update function for bhvTestPlayerFire.
  * It continuously updates to be in front of Mario,
  * and attacks all non-Mario objects it touches.
  * It continuously sets its hitbox radius/height
  * based on gDebugInfo[DEBUG_PAGE_EFFECTINFO].
  */
-void bhv_beta_bowser_anchor_loop(void) {
+void bhv_test_player_fire_loop(void) { // s_plfire
     // Set the object's position to be 30 units above Mario's feet,
     // and 300 units in front of him.
     cur_obj_set_pos_relative(gMarioObject, 0, 30.0f, 300.0f);

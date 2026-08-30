@@ -191,7 +191,7 @@ struct ParticleProperties {
  * A table mapping particle flags to various properties use when spawning a particle.
  */
 struct ParticleProperties sParticleTypes[] = {
-    { PARTICLE_DUST, ACTIVE_PARTICLE_DUST, MODEL_MIST, bhvMistParticleSpawner },
+    { PARTICLE_DUST, ACTIVE_PARTICLE_DUST, MODEL_SMOKE, bhvMistParticleSpawner },
     { PARTICLE_SPARKLES, ACTIVE_PARTICLE_SPARKLES, MODEL_SPARKLES, bhvSparkleParticleSpawner },
     { PARTICLE_BUBBLE, ACTIVE_PARTICLE_BUBBLE, MODEL_BUBBLE, bhvBubbleParticleSpawner },
     { PARTICLE_WATER_SPLASH, ACTIVE_PARTICLE_WATER_SPLASH, MODEL_WATER_SPLASH, bhvWaterSplash },
@@ -206,8 +206,6 @@ struct ParticleProperties sParticleTypes[] = {
     { PARTICLE_SHALLOW_WATER_SPLASH, ACTIVE_PARTICLE_SHALLOW_WATER_SPLASH, MODEL_NONE,
       bhvShallowWaterSplash },
     { PARTICLE_LEAF, ACTIVE_PARTICLE_LEAF, MODEL_NONE, bhvLeafParticleSpawner },
-    //{ PARTICLE_BREATH, ACTIVE_PARTICLE_BREATH, MODEL_NONE, bhvBreathParticleSpawner },
-    //{ PARTICLE_MIST_CIRCLE, ACTIVE_PARTICLE_MIST_CIRCLE, MODEL_NONE, bhvMistCircParticleSpawner },
     { 0, 0, MODEL_NONE, NULL },
 };
 

@@ -6,8 +6,6 @@
 #include "headers.h"
 
 #include "common1.h"
-
-#include "mist/geo.inc.c"
 #include "explosion/bombfire.hms"
 #include "butterfly/geo.inc.c"
 #include "coin/coin.hms"
@@ -17,7 +15,6 @@
 #include "bub/geo.inc.c"
 #include "blue_fish/geo.inc.c"
 #include "leaves/geo.inc.c"
-#include "number/geo.inc.c"
 #include "star/star.hms"
 #include "transparent_star/dotstar.hms"
 #include "white_particle/geo.inc.c"

@@ -1,0 +1,33 @@
+/********************************************************************************
+	RCP_GfxGreenNoko
+														[ June 16, 1995 ]
+ ********************************************************************************/
+
+extern Gfx RCP_GfxRedNoko[];
+extern Gfx RCP_GfxGreenNoko[];
+
+
+/********************************************************************************/
+/*      Hierarchy map data.                                                     */
+/********************************************************************************/
+Hierarchy RCP_HmsRedNoko[] = { 
+        hmsShadow(70, 200, 1)
+        hmsBegin()
+			hmsScale(0.25f)
+			hmsBegin()
+				hmsGfx(RM_SURF, RCP_GfxRedNoko)
+			hmsEnd()
+        hmsEnd()
+        hmsExit()
+};
+
+Hierarchy RCP_HmsGreenNoko[] = { 
+        hmsShadow(70, 200, 1)
+        hmsBegin()
+			hmsScale(0.25f)
+			hmsBegin()
+				hmsGfx(RM_SURF, RCP_GfxGreenNoko)
+			hmsEnd()
+        hmsEnd()
+        hmsExit()
+};

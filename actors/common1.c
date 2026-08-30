@@ -7,9 +7,6 @@
 #include "make_const_nonconst.h"
 #include "headers.h"
 
-#include "mist/model.inc.c"
-UNUSED static const u64 binid_0 = 0;
-
 #include "explosion/bombfire.sou"
 UNUSED static const u64 binid_1 = 1;
 

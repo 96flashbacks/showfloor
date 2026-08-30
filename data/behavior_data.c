@@ -517,7 +517,7 @@ const BehaviorScript bhvFishGroup[] = {
     END_LOOP(),
 };
 
-const BehaviorScript bhvCannon[] = {
+const BehaviorScript bhvCannon[] = { // e_cannon & e_cannon_base
     BEGIN(OBJ_LIST_LEVEL),
     OR_INT(oFlags, (OBJ_FLAG_ACTIVE_FROM_AFAR | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
     SPAWN_CHILD(/*Model*/ MODEL_CANNON_BARREL, /*Behavior*/ bhvCannonBarrel),
@@ -531,7 +531,7 @@ const BehaviorScript bhvCannon[] = {
     END_LOOP(),
 };
 
-const BehaviorScript bhvCannonBarrel[] = {
+const BehaviorScript bhvCannonBarrel[] = { // e_cannon_body
     BEGIN(OBJ_LIST_DEFAULT),
     OR_INT(oFlags, (OBJ_FLAG_ACTIVE_FROM_AFAR | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
     DROP_TO_FLOOR(),
@@ -540,21 +540,19 @@ const BehaviorScript bhvCannonBarrel[] = {
     END_LOOP(),
 };
 
-// e_gas_b (cannon burn smoke)
-const BehaviorScript bhvCannonBaseUnused[] = {
+const BehaviorScript bhvCannonBurnSmoke[] = { // e_gas_b (called 'bhvCannonBaseUnused' in the decomp)
     BEGIN(OBJ_LIST_DEFAULT),
     OR_INT(oFlags, (OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_MOVE_XZ_USING_FVEL | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
     BILLBOARD(),
     SET_INT(oAnimState, -1),
     BEGIN_REPEAT(8),
-        CALL_NATIVE(bhv_cannon_base_unused_loop),
+        CALL_NATIVE(bhv_cannon_burn_smoke_loop),
         ADD_INT(oAnimState, 1),
     END_REPEAT(),
     DEACTIVATE(),
 };
 
-// e_castle_bg01 to e_castle_bg_11
-const BehaviorScript bhvUnused05A8[] = {
+const BehaviorScript bhvUnused05A8[] = { // e_castle_bg01 to e_castle_bg_11
     BEGIN(OBJ_LIST_DEFAULT),
     OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
     BREAK(),
@@ -631,17 +629,15 @@ const BehaviorScript bhvWarp[] = {
     END_LOOP(),
 };
 
-// e_coin_ground
-const BehaviorScript bhvOneCoin[] = {
+const BehaviorScript bhvOneCoin[] = { // e_coin_ground
     BEGIN(OBJ_LIST_LEVEL),
     SET_INT(oBhvParams2ndByte, 1),
     GOTO(bhvYellowCoin + 1),
 };
 
-// e_coin
-const BehaviorScript bhvYellowCoin[] = {
+const BehaviorScript bhvYellowCoin[] = { // e_coin
     BEGIN(OBJ_LIST_LEVEL),
-    // Yellow coin - common:
+    // Yellow coin - common: (el_coin_common)
     BILLBOARD(),
     OR_INT(oFlags, (OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
     CALL_NATIVE(bhv_yellow_coin_init),
@@ -672,8 +668,7 @@ const BehaviorScript bhvSingleCoinGetsSpawned[] = {
     END_LOOP(),
 };
 
-// e_coinspark ('bhvGoldenCoinSparkles' in the decomp)
-const BehaviorScript bhvCoinSparkles[] = {
+const BehaviorScript bhvCoinSparkles[] = { // e_coinspark ('bhvGoldenCoinSparkles' in the decomp)
     BEGIN(OBJ_LIST_DEFAULT),
     OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
     BILLBOARD(),
@@ -782,17 +777,26 @@ const BehaviorScript bhvFlame[] = {
     END_LOOP(),
 };
 
-const BehaviorScript bhvUnused0DFC[] = {
-    BEGIN(OBJ_LIST_DEFAULT),
+// pathfire.p bhv data
+
+const BehaviorScript bhvBetaMovingFlamesSpawn[] = { // e_sidefire
+    BEGIN(OBJ_LIST_GENACTOR),
+    DISABLE_RENDERING(),
     OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
-    SET_INT(oAnimState, -1),
-    SET_FLOAT(oFaceAnglePitch, 0),
-    SET_FLOAT(oFaceAngleYaw, 0),
-    SET_FLOAT(oFaceAngleRoll, 0),
-    BEGIN_REPEAT(6),
+    BREAK(), // Strange break in the middle
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_beta_moving_flames_spawn_loop),
+    END_LOOP(),
+};
+
+const BehaviorScript bhvBetaMovingFlames[] = { // e_sidefireball
+    BEGIN(OBJ_LIST_LEVEL),
+    OR_INT(oFlags, (OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_MOVE_XZ_USING_FVEL | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    BILLBOARD(),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_beta_moving_flames_loop),
         ADD_INT(oAnimState, 1),
-    END_REPEAT(),
-    DEACTIVATE(),
+    END_LOOP(),
 };
 
 const BehaviorScript bhvFlamethrower[] = {
@@ -1321,6 +1325,8 @@ const BehaviorScript bhvLLLTiltingInvertedPyramid[] = {
     END_LOOP(),
 };
 
+// Boo bhv data is placed here based on 'pathobake.p'
+
 const BehaviorScript bhvCourtyardBooTriplet[] = { // e_obake_fly
     BEGIN(OBJ_LIST_DEFAULT),
     DISABLE_RENDERING(),
@@ -1361,7 +1367,7 @@ const BehaviorScript bhvCoinInsideBoo[] = { // e_obake_coin
     END_LOOP(),
 };
 
-const BehaviorScript bhvPiranhaPlant[] = {
+const BehaviorScript bhvPiranhaPlant[] = { // e_pakun
     BEGIN(OBJ_LIST_GENACTOR),
     OR_INT(oFlags, (OBJ_FLAG_COMPUTE_ANGLE_TO_MARIO | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
     LOAD_ANIMATIONS(oAnimations, pakun_anime),
@@ -1412,41 +1418,39 @@ const BehaviorScript bhvLLLBowserPuzzle[] = {
     END_LOOP(),
 };
 
-const BehaviorScript bhvTuxiesMother[] = {
+const BehaviorScript bhvTuxiesMother[] = { // e_pingboss & e_ping_oya (modified)
     BEGIN(OBJ_LIST_SURFACE),
     OR_INT(oFlags, (OBJ_FLAG_COMPUTE_ANGLE_TO_MARIO | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
-    LOAD_COLLISION_DATA(penguin_seg5_collision_05008B88),
+    LOAD_COLLISION_DATA(penguin_seg5_collision_05008B88), // This line to load the collision data is commented out in 'pathping.p'
     LOAD_ANIMATIONS(oAnimations, ping_anime),
     ANIMATE(3),
     SET_OBJ_PHYSICS(/*Wall hitbox radius*/ 0, /*Gravity*/ -400, /*Bounciness*/ -50, /*Drag strength*/ 0, /*Friction*/ 0, /*Buoyancy*/ 0, /*Unused*/ 0, 0),
     SET_HOME(),
-    SET_FLOAT(oDrawingDistance, 20000),
+    SET_FLOAT(oDrawingDistance, 20000), // Draw distance is set high to match Game Zero (8:01)
     SET_INT(oIntangibleTimer, 0),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_tuxies_mother_loop),
-        CALL_NATIVE(load_object_collision_model),
+        CALL_NATIVE(load_object_collision_model), // This line is commented out in 'pathping.p' also
     END_LOOP(),
 };
 
-// e_ping_kodomo_badoya
-const BehaviorScript bhvPenguinBaby[] = {
+const BehaviorScript bhvPenguinBaby[] = { // e_ping_kodomo_badoya
     BEGIN(OBJ_LIST_GENACTOR),
     BREAK(),
 };
 
-// e_ping_kodomo_return
-const BehaviorScript bhvUnused20E0[] = {
+const BehaviorScript bhvUnused20E0[] = { // e_ping_kodomo_return
     BEGIN(OBJ_LIST_GENACTOR),
     BREAK(),
 };
 
-const BehaviorScript bhvSmallPenguin[] = {
+const BehaviorScript bhvSmallPenguin[] = { // e_ping & e_ping_kodomo (modified)
     BEGIN(OBJ_LIST_GENACTOR),
     OR_INT(oFlags, (OBJ_FLAG_COMPUTE_ANGLE_TO_MARIO | OBJ_FLAG_HOLDABLE | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
     DROP_TO_FLOOR(),
     LOAD_ANIMATIONS(oAnimations, ping_anime),
     ANIMATE(0),
-    SET_OBJ_PHYSICS(/*Wall hitbox radius*/ 90, /*Gravity*/ -400, /*Bounciness*/ -50, /*Drag strength*/ 0, /*Friction*/ 0, /*Buoyancy*/ 200, /*Unused*/ 0, 0),
+    SET_OBJ_PHYSICS(/*Wall hitbox radius*/ 90, /*Gravity*/ -400, /*Bounciness*/ -50, /*Drag strength*/ 0, /*Friction*/ 0, /*Buoyancy*/ 200, /*Unused*/ 0, 0), // Larger hitbox radius
     SET_INT(oInteractType, INTERACT_GRABBABLE),
     SET_INT(oInteractionSubtype, INT_SUBTYPE_HOLDABLE_NPC),
     SET_INT(oIntangibleTimer, 0),
@@ -1605,10 +1609,6 @@ const BehaviorScript bhvWhitePuffSmoke2[] = {
     DEACTIVATE(),
 };
 
-const BehaviorScript bhvInsideCannon[] = {
-    BREAK(),
-};
-
 // e_star is the original 2D star object, it's part of Yajima's section unlike the final star (e_tripstar)
 const BehaviorScript bhvStar[] = {
     BEGIN(OBJ_LIST_LEVEL),
@@ -1624,13 +1624,26 @@ const BehaviorScript bhvStar[] = {
     END_LOOP(),
 };
 
-const BehaviorScript bhvStaticObject[] = {
+const BehaviorScript bhvTestPlayerFire[] = { // e_plfire
+    BEGIN(OBJ_LIST_DESTRUCTIVE),
+    OR_INT(oFlags, (OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
+    BILLBOARD(),
+    SET_HOME(),
+    SET_HITBOX(/*Radius*/ 100, /*Height*/ 300),
+    SET_INT(oIntangibleTimer, 0),
+    BEGIN_LOOP(),
+        ADD_INT(oAnimState, 1),
+        CALL_NATIVE(bhv_test_player_fire_loop),
+    END_LOOP(),
+};
+
+const BehaviorScript bhvStaticObject[] = { // e_stop
     BEGIN(OBJ_LIST_DEFAULT),
     OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
     BREAK(),
 };
 
-const BehaviorScript bhvCastleFloorTrap[] = {
+const BehaviorScript bhvCastleFloorTrap[] = { // e_mainroom_trap
     BEGIN(OBJ_LIST_DEFAULT),
     DISABLE_RENDERING(),
     CALL_NATIVE(bhv_castle_floor_trap_init),
@@ -1639,7 +1652,7 @@ const BehaviorScript bhvCastleFloorTrap[] = {
     END_LOOP(),
 };
 
-const BehaviorScript bhvFloorTrapInCastle[] = {
+const BehaviorScript bhvFloorTrapInCastle[] = { // e_mainroom_trap_parts
     BEGIN(OBJ_LIST_SURFACE),
     OR_INT(oFlags, (OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
     LOAD_COLLISION_DATA(inside_castle_seg7_collision_floor_trap),
@@ -1957,19 +1970,9 @@ const BehaviorScript bhvSwimmingWarp[] = {
     BREAK(),
 };
 
-// Iwamoto's objects
 UNUSED static const u64 behavior_data_unused_1 = 0;
-const BehaviorScript bhvRandomAnimatedTexture[] = {
-    BEGIN(OBJ_LIST_LEVEL),
-    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
-    SET_FLOAT(oGraphYOffset, -16),
-    BILLBOARD(),
-    SET_INT(oAnimState, -1),
-    BEGIN_LOOP(),
-        ADD_INT(oAnimState, 1),
-    END_LOOP(),
-};
 
+// Iwamoto's objects
 // e_move_coin ('bhvMovingYellowCoin' in the decomp)
 const BehaviorScript bhvMovingCoin[] = {
     BEGIN(OBJ_LIST_LEVEL),
@@ -2020,7 +2023,7 @@ const BehaviorScript bhvHoot[] = {
     END_LOOP(),
 };
 
-const BehaviorScript bhvBetaHoldableObject[] = {
+const BehaviorScript bhvBetaHoldableObject[] = { // e_new_kame
     BEGIN(OBJ_LIST_GENACTOR),
     OR_INT(oFlags, (OBJ_FLAG_HOLDABLE | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
     SET_INT(oInteractType, INTERACT_GRABBABLE),
@@ -2033,32 +2036,32 @@ const BehaviorScript bhvBetaHoldableObject[] = {
     END_LOOP(),
 };
 
-const BehaviorScript bhvCarrySomething1[] = {
+const BehaviorScript bhvCarrySomething1[] = { // e_kame2
     BEGIN(OBJ_LIST_DEFAULT),
     BREAK(),
 };
 
-const BehaviorScript bhvCarrySomething2[] = {
+const BehaviorScript bhvCarrySomething2[] = { // emode_kame_wait
     BEGIN(OBJ_LIST_DEFAULT),
     BREAK(),
 };
 
-const BehaviorScript bhvCarrySomething3[] = {
+const BehaviorScript bhvCarrySomething3[] = { // emode_kame_catch
     BEGIN(OBJ_LIST_DEFAULT),
     BREAK(),
 };
 
-const BehaviorScript bhvCarrySomething4[] = {
+const BehaviorScript bhvCarrySomething4[] = { // emode_kame_drop
     BEGIN(OBJ_LIST_DEFAULT),
     BREAK(),
 };
 
-const BehaviorScript bhvCarrySomething5[] = {
+const BehaviorScript bhvCarrySomething5[] = { // emode_kame_throw
     BEGIN(OBJ_LIST_DEFAULT),
     BREAK(),
 };
 
-const BehaviorScript bhvCarrySomething6[] = {
+const BehaviorScript bhvCarrySomething6[] = { // emode_kame_next
     BEGIN(OBJ_LIST_DEFAULT),
     BREAK(),
 };

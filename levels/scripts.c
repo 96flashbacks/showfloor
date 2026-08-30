@@ -82,12 +82,7 @@ const LevelScript level_main_scripts_entry[] = {
     LOAD_MODEL_FROM_GEO(MODEL_BUB,                     bub_geo),
     LOAD_MODEL_FROM_GEO(MODEL_SPARKLES_ANIMATION,      sparkles_animation_geo),
     LOAD_MODEL_FROM_GEO(MODEL_BUTTERFLY,               butterfly_geo),
-    LOAD_MODEL_FROM_GEO(MODEL_BURN_SMOKE_UNUSED,       burn_smoke_geo),
-    LOAD_MODEL_FROM_GEO(MODEL_MIST,                    mist_geo),
-    LOAD_MODEL_FROM_GEO(MODEL_WHITE_PUFF,              white_puff_geo),
-    LOAD_MODEL_FROM_DL (MODEL_WHITE_PARTICLE_DL,       white_particle_dl,       LAYER_ALPHA),
-    LOAD_MODEL_FROM_GEO(MODEL_WHITE_PARTICLE,          white_particle_geo),
-    LOAD_MODEL_FROM_GEO(MODEL_NUMBER,                  number_geo),
+    LOAD_MODEL_FROM_GEO(MODEL_CANNON_BURN_SMOKE,       burn_smoke_geo),
     LOAD_MODEL_FROM_GEO(MODEL_EXPLOSION,               RCP_HmsItembombfire),
     FREE_LEVEL_POOL(),
     CALL(/*arg*/ 0, /*func*/ lvl_init_from_save_file),
@@ -143,6 +138,8 @@ static const LevelScript script_exec_ ## folder [] = { \
 #undef DEFINE_LEVEL
 
 const LevelScript script_func_global_1[] = {
+    LOAD_MODEL_FROM_GEO(MODEL_GREEN_KOOPA_SHELL,       RCP_HmsGreenNoko),
+    LOAD_MODEL_FROM_GEO(MODEL_RED_KOOPA_SHELL,         RCP_HmsRedNoko),
     LOAD_MODEL_FROM_GEO(MODEL_CANNON_BARREL,           RCP_HmsCannonBody),
     LOAD_MODEL_FROM_GEO(MODEL_CANNON_BASE,             RCP_HmsCannonBase),
     RETURN(),

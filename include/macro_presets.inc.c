@@ -21,7 +21,7 @@ static struct MacroPreset sMacroObjectPresets[] = {
     /* macro_fish_spawner_few_blue       */ { bhvFishSpawner, MODEL_NONE, FISH_SPAWNER_BP_FEW_BLUE },
     /* macro_unknown_28                  */ { bhvBetaFishSplashSpawner, MODEL_NONE, 0 }, // unused
     /* macro_cannon_open                 */ { bhvCannon, MODEL_CANNON_BASE, 0 },
-    /* macro_unknown_40                  */ { bhvCarrySomething1, MODEL_UNKNOWN_7D, 0 }, // unused
+    /* macro_unknown_40                  */ { bhvCarrySomething1, MODEL_GREEN_KOOPA_SHELL, 0 }, // unused
     /* macro_unknown_41                  */ { bhvBetaTrampolineTop, MODEL_TRAMPOLINE, 0 }, // unused
     /* macro_empty_52                    */ { bhvYellowCoin, MODEL_YELLOW_COIN, 0 },
     /* macro_empty_80                    */ { bhvYellowCoin, MODEL_YELLOW_COIN, 0 },
