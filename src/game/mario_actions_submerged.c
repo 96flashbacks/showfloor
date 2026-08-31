@@ -208,7 +208,7 @@ static void update_swimming_yaw(struct MarioState *m, s32 arg) {
 
     m->faceAngle[1] += m->angleVel[1];
 
-    // If we're not floating on the water then let Mario change on his roll axis.
+    // Only update Mario's roll axis if he's in not in 'act_water_idle' or 'act_water_action_end'
     if (arg == 0) {
         m->faceAngle[2] = -m->angleVel[1] * 8;
     } else {
@@ -216,12 +216,13 @@ static void update_swimming_yaw(struct MarioState *m, s32 arg) {
     }
 }
 
-static void update_swimming_pitch(struct MarioState *m) {
-    s16 targetPitch = -(s16) (252.0f * m->controller->stickY);
+static void update_swimming_pitch(struct MarioState *m, s32 arg) {
+    // Targets pitch 0 if Mario is going into idle
+    s16 targetPitch = arg == 0 ? -(s16) (252.0f * m->controller->stickY) : 0;
 
     s16 pitchVel;
-    if (m->faceAngle[0] < 0) {
-        pitchVel = 0x100;
+    if (m->faceAngle[0] < 0 && arg == 0) {
+        pitchVel = 0x100; // Slower velocity only happens if Mario is swimming downwards and isn't going into idle
     } else {
         pitchVel = 0x200;
     }
@@ -238,35 +239,29 @@ static void update_swimming_pitch(struct MarioState *m) {
 }
 
 static void common_idle_step(struct MarioState *m, s32 animation, s32 arg) {
-    s16 targetPitch = -(s16) (252.0f);
     s16 targetSpeed = (s16) (32.0f * m->controller->stickY);
 
     update_swimming_yaw(m, arg);
+    update_swimming_pitch(m, arg);
     update_swimming_speed(m, MIN_SWIM_SPEED);
     perform_water_step(m);
 
-    if (targetSpeed > 0.0f) {
-        m->forwardVel += 2.5f;
-    }
-
-    if (m->forwardVel > 12.0f) {
-        m->forwardVel = 12.0f;
-    }
-
-    if (m->forwardVel > 2.0f) {
-        set_swimming_at_surface_particles(m, PARTICLE_WAVE_TRAIL);
-    }
-
-    if (m->faceAngle[0] < targetPitch) {
-        if ((m->faceAngle[0] += 0x200) > targetPitch) {
-            m->faceAngle[0] = targetPitch;
+    // If Mario is in 'act_water_idle' or 'act_water_action_end', update his analog swimming
+    if (arg == 1) {
+        if (targetSpeed > 0.0f) {
+            m->forwardVel += 2.5f;
         }
-    } else if (m->faceAngle[0] > targetPitch) {
-        if ((m->faceAngle[0] -= 0x200) < targetPitch) {
-            m->faceAngle[0] = targetPitch;
+
+        if (m->forwardVel > 12.0f) {
+            m->forwardVel = 12.0f;
+        }
+
+        if (m->forwardVel > 2.0f) {
+            set_swimming_at_surface_particles(m, PARTICLE_WAVE_TRAIL);
         }
     }
 
+    // Play a strange looping idle sound(?), heard in Ultra 64 Super Mario 64 Beta Preview (RE-UPLOAD) (1:09)
     if (m->pos[1] <= m->waterLevel - 130) {
         if (m->actionTimer++ > 15) {
             m->actionTimer = 0;
@@ -276,16 +271,15 @@ static void common_idle_step(struct MarioState *m, s32 animation, s32 arg) {
         }
     }
 
-    if (targetSpeed <= 0.0f && m->angleVel[1] == 0.0f) {
-        set_mario_animation(m, animation);
-    } else if (animation == MARIO_ANIM_WATER_ACTION_END) {
-        set_mario_animation(m, animation);
-    } else if (arg == 1 && (targetSpeed > 0.0f || m->angleVel[1] != 0.0f)) {
-        set_mario_animation(m, MARIO_ANIM_WATER_ANALOG_SWIMMING);
-    } else {
-        m->forwardVel = 0;
-        set_mario_animation(m, animation);
+    // Put Mario in the analog swimming animation if he's in the "water_idle" animation
+    if (animation == MARIO_ANIM_WATER_IDLE) {
+        if (targetSpeed > 0.0f || m->angleVel[1] != 0.0f) {
+            animation = MARIO_ANIM_WATER_ANALOG_SWIMMING;
+        } else {
+            animation = MARIO_ANIM_WATER_IDLE;
+        }
     }
+    set_mario_animation(m, animation);
 
     set_swimming_at_surface_particles(m, PARTICLE_IDLE_WATER_WAVE);
 }
@@ -301,7 +295,7 @@ static s32 check_water_grab(struct MarioState *m) {
         f32 dz = object->oPosZ - m->pos[2];
         s16 dAngleToObject = atan2s(dz, dx) - m->faceAngle[1];
 
-        if (dAngleToObject >= -0x2AAA && dAngleToObject <= 0x2AAA) {
+        if (dAngleToObject >= -0x6AAA && dAngleToObject <= 0x6AAA) { // larger range like in 'mario_check_object_grab'
             m->usedObj = object;
             mario_grab_used_object(m);
             m->marioBodyState->grabPos = GRAB_POS_LIGHT_OBJ;
@@ -340,7 +334,7 @@ static s32 act_hold_water_idle(struct MarioState *m) {
         return set_mario_action(m, ACT_HOLD_FLUTTER_KICK, 0); // No hold breaststroke
     }
 
-    common_idle_step(m, MARIO_ANIM_WATER_IDLE_WITH_OBJ, 2);
+    common_idle_step(m, MARIO_ANIM_WATER_IDLE_WITH_OBJ, 0);
     return FALSE;
 }
 
@@ -387,7 +381,7 @@ static void common_swimming_step(struct MarioState *m, s16 swimStrength) {
     UNUSED struct Object *marioObj = m->marioObj;
 
     update_swimming_yaw(m, 0);
-    update_swimming_pitch(m);
+    update_swimming_pitch(m, 0);
     update_swimming_speed(m, swimStrength / 10.0f);
 
     switch (perform_water_step(m)) {
@@ -437,7 +431,8 @@ static s32 check_water_jump(struct MarioState *m) {
     s32 probe = (s32) (m->pos[1] + 1.5f);
 
     if (m->input & INPUT_A_PRESSED) {
-        if (probe >= m->waterLevel - 100 && m->faceAngle[0] >= 0 && m->controller->stickY < -63.0f) {
+        // Slightly tighter stickY requirement based on Gamesmaster S5E15 (around 21:00)
+        if (probe >= m->waterLevel - 100 && m->faceAngle[0] >= 0 && m->controller->stickY < -62.0f) {
             vec3s_set(m->angleVel, 0, 0, 0);
 
             m->vel[1] = 62.0f;
@@ -618,7 +613,7 @@ static s32 act_hold_flutter_kick(struct MarioState *m) {
 
 static s32 act_water_throw(struct MarioState *m) {
     update_swimming_yaw(m, 0);
-    update_swimming_pitch(m);
+    update_swimming_pitch(m, 1);
     update_swimming_speed(m, MIN_SWIM_SPEED);
     perform_water_step(m);
 
@@ -638,9 +633,11 @@ static s32 act_water_throw(struct MarioState *m) {
     return FALSE;
 }
 
+// There was no "water punch" at this point based on the animation dates, 
+// Mario seemingly just picked up objects directly by pressing B in front of them.
 static s32 act_water_pick_up(struct MarioState *m) {
     update_swimming_yaw(m, 0);
-    update_swimming_pitch(m);
+    update_swimming_pitch(m, 0);
     update_swimming_speed(m, MIN_SWIM_SPEED);
     perform_water_step(m);
     
@@ -656,12 +653,13 @@ static s32 act_water_pick_up(struct MarioState *m) {
 }
 
 static void common_water_knockback_step(struct MarioState *m, s32 animation, u32 endAction) {
+    stationary_slow_down(m);
+    // Missing 'perform_water_step(m)' so Mario doesn't get knocked backwards, seen in ゲームカタログ２　1995年12月02日 (7:55)
     set_mario_animation(m, animation);
 
     m->marioBodyState->headAngle[0] = 0;
 
     if (is_anim_at_end(m)) {
-
         set_mario_action(m, m->health >= 0x100 ? endAction : ACT_WATER_DEATH, 0);
     }
 }
@@ -745,6 +743,7 @@ static s32 act_water_plunge(struct MarioState *m) {
 
     if (stepResult == WATER_STEP_HIT_FLOOR || m->vel[1] >= endVSpeed || m->actionTimer > 20) {
         switch (stateFlags) {
+            // In cases 0 and 1 Mario goes instantly into the "idle" action instead of "action_end", seen in Game Zero (12:27)
             case 0:
                 set_mario_action(m, ACT_WATER_IDLE, 0);
                 break;
@@ -761,6 +760,7 @@ static s32 act_water_plunge(struct MarioState *m) {
     }
 
     switch (stateFlags) {
+        // Same thing with the case 0 and 1 animations, "idle" instead of "action_end"
         case 0:
             set_mario_animation(m, MARIO_ANIM_WATER_IDLE);
             break;
