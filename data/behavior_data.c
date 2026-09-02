@@ -713,7 +713,7 @@ const BehaviorScript bhvThwomp[] = {
     SET_HOME(),
     SCALE(/*Unused*/ 0, /*Field*/ 140),
     BEGIN_LOOP(),
-        CALL_NATIVE(bhv_grindel_thwomp_loop),
+        CALL_NATIVE(bhv_thwomp_loop),
         CALL_NATIVE(load_object_collision_model),
     END_LOOP(),
 };
@@ -727,7 +727,7 @@ const BehaviorScript bhvThwomp2[] = {
     SCALE(/*Unused*/ 0, /*Field*/ 140),
     SET_HOME(),
     BEGIN_LOOP(),
-        CALL_NATIVE(bhv_grindel_thwomp_loop),
+        CALL_NATIVE(bhv_thwomp_loop),
         CALL_NATIVE(load_object_collision_model),
     END_LOOP(),
 };

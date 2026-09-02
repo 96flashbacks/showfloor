@@ -1,25 +1,25 @@
 // thwomp.inc.c
 
-void grindel_thwomp_act_idle_at_bottom(void) {
+void thwomp_act_idle_at_bottom(void) { // dosun_wait
     if (o->oTimer == 0) {
-        o->oGrindelThwompRandomTimer = random_float() * 10.0f + 20.0f; // [20, 29]
+        o->oThwompRandomTimer = random_float() * 10.0f + 20.0f; // [20, 29]
     }
-    if (o->oTimer > o->oGrindelThwompRandomTimer) {
-        o->oAction = GRINDEL_THWOMP_ACT_RAISE;
+    if (o->oTimer > o->oThwompRandomTimer) {
+        o->oAction = THWOMP_ACT_RAISE;
     }
 }
 
-void grindel_thwomp_act_lower(void) {
+void thwomp_act_lower(void) { // dosun_down
     o->oVelY += -4.0f;
     o->oPosY += o->oVelY;
     if (o->oPosY < o->oHomeY) {
         o->oPosY = o->oHomeY;
         o->oVelY = 0.0f;
-        o->oAction = GRINDEL_THWOMP_ACT_LAND;
+        o->oAction = THWOMP_ACT_LAND;
     }
 }
 
-void grindel_thwomp_act_land(void) {
+void thwomp_act_land(void) { // dosun_downend (modified)
     if (o->oTimer == 0) {
         if (o->oDistanceToMario < 1500.0f) {
             cur_obj_shake_screen(SHAKE_POS_SMALL);
@@ -29,40 +29,40 @@ void grindel_thwomp_act_land(void) {
 
     if (o->oTimer <= 10) { 
         if (o->oTimer % 2)
-            o->oPosY = o->oHomeY + 6.0f; // makes the thwomp shake on the first 10 landing frames
+            o->oPosY = o->oHomeY + 6.0f; // Makes the Thwomp shake on the first 10 landing frames
         else
             o->oPosY = o->oHomeY; 
     } else {
-        o->oAction = GRINDEL_THWOMP_ACT_IDLE_AT_BOTTOM;
+        o->oAction = THWOMP_ACT_IDLE_AT_BOTTOM;
     }
 }
 
-void grindel_thwomp_act_idle_at_top(void) {
+void thwomp_act_idle_at_top(void) { // dosun_stop
     if (o->oTimer == 0) {
-        o->oGrindelThwompRandomTimer = random_float() * 30.0f + 10.0f; // [10, 39]
+        o->oThwompRandomTimer = random_float() * 30.0f + 10.0f; // [10, 39]
     }
-    if (o->oTimer > o->oGrindelThwompRandomTimer) {
-        o->oAction = GRINDEL_THWOMP_ACT_LOWER;
+    if (o->oTimer > o->oThwompRandomTimer) {
+        o->oAction = THWOMP_ACT_LOWER;
     }
 }
 
-void grindel_thwomp_act_raise(void) {
+void thwomp_act_raise(void) { // dosun_up
     if (o->oTimer > o->oBhvParams2ndByte + 40) {
-        o->oAction = GRINDEL_THWOMP_ACT_IDLE_AT_TOP;
+        o->oAction = THWOMP_ACT_IDLE_AT_TOP;
         o->oPosY += 5.0f;
     } else {
         o->oPosY += 10.0f;
     }
 }
 
-void (*sGrindelThwompActions[])(void) = {
-    grindel_thwomp_act_raise,
-    grindel_thwomp_act_idle_at_top,
-    grindel_thwomp_act_lower,
-    grindel_thwomp_act_land,
-    grindel_thwomp_act_idle_at_bottom,
+void (*sThwompActions[])(void) = { // dosun_modejmp
+    thwomp_act_raise,
+    thwomp_act_idle_at_top,
+    thwomp_act_lower,
+    thwomp_act_land,
+    thwomp_act_idle_at_bottom,
 };
 
-void bhv_grindel_thwomp_loop(void) {
-    cur_obj_call_action_function(sGrindelThwompActions);
+void bhv_thwomp_loop(void) { // s_dosun
+    cur_obj_call_action_function(sThwompActions);
 }

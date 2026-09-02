@@ -1,10 +1,10 @@
 // flame_mario.inc.c
 
-void bhv_black_smoke_upward_loop(void) {
+void bhv_black_smoke_upward_loop(void) { // s_make_smoke
     spawn_object_with_scale(o, MODEL_BURN_SMOKE, bhvBlackSmokeBowser, o->header.gfx.scale[0]);
 }
 
-void bhv_black_smoke_bowser_loop(void) {
+void bhv_black_smoke_bowser_loop(void) { // s_enemy_firesmoke_parts
     if (o->oTimer == 0) {
         o->oForwardVel = random_float() * 2 + 0.5;
         o->oMoveAngleYaw = random_u16();
@@ -17,7 +17,7 @@ void bhv_black_smoke_bowser_loop(void) {
     o->oPosY += o->oVelY;
 }
 
-void bhv_black_smoke_mario_loop(void) {
+void bhv_black_smoke_mario_loop(void) { // s_firesmoke_smoke
     if (o->oTimer == 0) {
         cur_obj_set_pos_relative(gMarioObject, 0, 0, -30.0f);
 
@@ -30,7 +30,7 @@ void bhv_black_smoke_mario_loop(void) {
     o->oPosY += o->oVelY;
 }
 
-void bhv_flame_mario_loop(void) {
+void bhv_flame_mario_loop(void) { // s_firesmoke (modified)
     cur_obj_scale(2.0f);
 
     if (o->oTimer != 0) {
@@ -40,7 +40,13 @@ void bhv_flame_mario_loop(void) {
     }
 
     gMarioObject->prevObj = o; // weird?
-    obj_set_parent_relative_pos(o, 40, -120, 0);
+    //obj_set_parent_relative_pos(o, 40, -120, 0);
+
+    // Commented out code from 'pathfiresmoke.p' that manually sets the flame's relative position,
+    // functionally identical to using 'obj_set_parent_relative_pos'.
+    o->oParentRelativePosX = 40;
+    o->oParentRelativePosY = -120;
+    o->oParentRelativePosZ = 0;
 
     if (!(gMarioObject->oMarioParticleFlags & ACTIVE_PARTICLE_FIRE)) {
         o->parentObj->oActiveParticleFlags &= ~ACTIVE_PARTICLE_FIRE;

@@ -209,7 +209,6 @@ void print_surfaceinfo(void) {
 
 void print_stageinfo(void) {
     print_debug_top_down_normal("stageinfo", 0);
-    print_debug_top_down_normal("stage param %d", gTTCSpeedSetting);
 }
 
 /*

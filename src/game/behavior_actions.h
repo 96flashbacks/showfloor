@@ -6,7 +6,7 @@ void bhv_spawn_star_no_level_exit(u32);
 void vec3f_copy_2(Vec3f dest, Vec3f src);
 void play_penguin_walking_sound(s32 walk);
 
-void bhv_grindel_thwomp_loop(void);
+void bhv_thwomp_loop(void);
 void bhv_door_init(void);
 void bhv_door_loop(void);
 void bhv_mr_i_loop(void);

@@ -2120,29 +2120,6 @@ void bhv_dust_smoke_loop(void) {
 UNUSED static void stub_obj_helpers_2(void) {
 }
 
-s32 cur_obj_set_action_table(s8 *actionTable) {
-    o->oToxBoxActionTable = actionTable;
-    o->oToxBoxActionStep = 0;
-
-    return *(s8 *) o->oToxBoxActionTable;
-}
-
-s32 cur_obj_progress_action_table(void) {
-    s8 nextAction;
-    s8 *actionTable = o->oToxBoxActionTable;
-    s32 nextActionIndex = o->oToxBoxActionStep + 1;
-
-    if (actionTable[nextActionIndex] != TOX_BOX_ACT_TABLE_END) {
-        nextAction = actionTable[nextActionIndex];
-        o->oToxBoxActionStep++;
-    } else {
-        nextAction = actionTable[0];
-        o->oToxBoxActionStep = 0;
-    }
-
-    return nextAction;
-}
-
 void stub_obj_helpers_3(UNUSED s32 arg0, UNUSED s32 arg1) {
 }
 
@@ -2339,35 +2316,6 @@ s32 cur_obj_hide_if_mario_far_away_y(f32 distY) {
     }
 }
 
-Gfx *geo_offset_klepto_held_object(s32 callContext, struct GraphNode *node, UNUSED Mat4 mtx) {
-    if (callContext == GEO_CONTEXT_RENDER) {
-        ((struct GraphNodeTranslationRotation *) node->next)->translation[0] = 300;
-        ((struct GraphNodeTranslationRotation *) node->next)->translation[1] = 300;
-        ((struct GraphNodeTranslationRotation *) node->next)->translation[2] = 0;
-    }
-
-    return NULL;
-}
-
-Gfx *geo_offset_klepto_debug(s32 callContext, struct GraphNode *node, UNUSED Mat4 mtx) {
-    if (callContext == GEO_CONTEXT_RENDER) {
-        ((struct GraphNodeTranslationRotation *) node->next)->translation[0] =
-            gDebugInfo[DEBUG_PAGE_EFFECTINFO][0];
-        ((struct GraphNodeTranslationRotation *) node->next)->translation[1] =
-            gDebugInfo[DEBUG_PAGE_EFFECTINFO][1];
-        ((struct GraphNodeTranslationRotation *) node->next)->translation[2] =
-            gDebugInfo[DEBUG_PAGE_EFFECTINFO][2];
-        ((struct GraphNodeTranslationRotation *) node->next)->rotation[0] =
-            gDebugInfo[DEBUG_PAGE_EFFECTINFO][3];
-        ((struct GraphNodeTranslationRotation *) node->next)->rotation[1] =
-            gDebugInfo[DEBUG_PAGE_EFFECTINFO][4];
-        ((struct GraphNodeTranslationRotation *) node->next)->rotation[2] =
-            gDebugInfo[DEBUG_PAGE_EFFECTINFO][5];
-    }
-
-    return NULL;
-}
-
 s32 obj_is_hidden(struct Object *obj) {
     if (obj->header.gfx.node.flags & GRAPH_RENDER_INVISIBLE) {
         return TRUE;
@@ -2489,16 +2437,6 @@ s32 cur_obj_init_animation_and_check_if_near_end(s32 animIndex) {
 void cur_obj_init_animation_and_extend_if_at_end(s32 animIndex) {
     cur_obj_init_animation_with_sound(animIndex);
     cur_obj_extend_animation_if_at_end();
-}
-
-s32 cur_obj_check_grabbed_mario(void) {
-    if (o->oInteractStatus & INT_STATUS_GRABBED_MARIO) {
-        o->oKingBobombUnk88 = 1;
-        cur_obj_become_intangible();
-        return TRUE;
-    }
-
-    return FALSE;
 }
 
 s32 player_performed_grab_escape_action(void) {

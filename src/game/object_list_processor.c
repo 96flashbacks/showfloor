@@ -148,13 +148,10 @@ TerrainData *gEnvironmentRegions;
 s32 gEnvironmentLevels[20];
 RoomData gDoorAdjacentRooms[60][2];
 s16 gMarioCurrentRoom;
-s16 D_8035FEE2;
-s16 D_8035FEE4;
-s16 gTHIWaterDrained;
-s16 gTTCSpeedSetting;
+s16 D_8035FEE2; // area_coin
+s16 D_8035FEE4; // area_door
 s16 gNumRoomedObjectsInMarioRoom;
 s16 gNumRoomedObjectsNotInMarioRoom;
-s16 gWDWWaterLevelChanging;
 
 /**
  * Nodes used to represent the doubly linked object lists.
@@ -446,8 +443,6 @@ void spawn_objects_from_info(UNUSED s32 unused, struct SpawnInfo *spawnInfo) {
     gObjectLists = gObjectListArray;
     gTimeStopState = 0;
 
-    gWDWWaterLevelChanging = FALSE;
-
     while (spawnInfo != NULL) {
         struct Object *object;
         UNUSED u8 filler[4];
@@ -508,7 +503,6 @@ void stub_obj_list_processor_1(void) {
 void clear_objects(void) {
     s32 i;
 
-    gTHIWaterDrained = 0;
     gTimeStopState = 0;
     gMarioObject = NULL;
     gMarioCurrentRoom = 0;
