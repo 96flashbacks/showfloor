@@ -158,6 +158,7 @@ const LevelScript script_func_global_3[] = {
     LOAD_MODEL_FROM_GEO(MODEL_BLARGG,                  blargg_geo),
     LOAD_MODEL_FROM_GEO(MODEL_BULLY,                   RCP_HmsEnemyotos_basedata),
     LOAD_MODEL_FROM_GEO(MODEL_BULLY_BOSS,              RCP_HmsEnemyBigotos_basedata),
+    LOAD_MODEL_FROM_GEO(MODEL_MOTOS,                   RCP_HmsEnemymotos_basedata_A),
     RETURN(),
 };
 

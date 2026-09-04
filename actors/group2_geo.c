@@ -9,3 +9,4 @@
 #include "group2.h"
 
 #include "blargg/geo.inc.c"
+#include "motos/motos.hms"

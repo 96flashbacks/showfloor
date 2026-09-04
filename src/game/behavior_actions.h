@@ -39,8 +39,7 @@ void bhv_spawned_coin_loop(void);
 void bhv_temp_coin_loop(void);
 void bhv_tumbling_bridge_platform_loop(void);
 void bhv_tumbling_bridge_loop(void);
-void bhv_platform_normals_init(void);
-void bhv_tilting_inverted_pyramid_loop(void);
+void bhv_motos_projectile_spawn_loop(void);
 void bhv_beta_moving_flames_spawn_loop(void);
 void bhv_beta_moving_flames_loop(void);
 void bhv_flamethrower_loop(void);
@@ -88,7 +87,8 @@ void bhv_flame_bowser_init(void);
 void bhv_flame_bowser_loop(void);
 void bhv_flame_large_burning_out_init(void);
 void bhv_blue_fish_movement_loop(void);
-void bhv_tank_fish_group_loop(void);
+void bhv_motos_loop(void);
+void bhv_motos_hand_loop(void);
 void bhv_lll_moving_octagonal_mesh_platform_loop(void);
 void bhv_lll_rotating_block_fire_bars_loop(void);
 void bhv_lll_rotating_hex_flame_loop(void);
@@ -98,10 +98,12 @@ void bhv_volcano_flames_loop(void);
 void bhv_lll_rotating_hexagonal_ring_loop(void);
 void bhv_lll_sinking_rectangular_platform_loop(void);
 void bhv_lll_sinking_square_platforms_loop(void);
-s32 mario_moving_fast_enough_to_make_piranha_plant_bite(void);
+void bhv_platform_normals_init(void);
+void bhv_tilting_inverted_pyramid_loop(void);
 void bhv_courtyard_boo_triplet_init(void);
 void bhv_boo_loop(void);
 void bhv_coin_inside_boo_loop(void);
+s32 mario_moving_fast_enough_to_make_piranha_plant_bite(void);
 void bhv_piranha_plant_loop(void);
 void bhv_lll_bowser_puzzle_piece_loop(void);
 void bhv_lll_bowser_puzzle_loop(void);
@@ -187,6 +189,9 @@ Gfx *geo_move_mario_part_from_parent(s32 run, UNUSED struct GraphNode *node, Mat
 // Bowser
 Gfx *geo_update_body_rot_from_parent(s32 run, UNUSED struct GraphNode *node, Mat4 mtx);
 Gfx *geo_switch_bowser_eyes(s32 run, struct GraphNode *node, UNUSED Mat4 *mtx);
+
+// Motos
+Gfx *MotosProc1(s32 callContext, UNUSED struct GraphNode *node, Mat4 mtx);
 
 // Tuxie
 Gfx *geo_switch_tuxie_mother_eyes(s32 run, struct GraphNode *node, UNUSED Mat4 *mtx);

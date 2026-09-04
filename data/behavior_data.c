@@ -761,19 +761,15 @@ const BehaviorScript bhvLLLTumblingBridge[] = {
     END_LOOP(),
 };
 
-const BehaviorScript bhvFlame[] = {
-    BEGIN(OBJ_LIST_LEVEL),
+// pathenemyfire.p bhv data
+const BehaviorScript bhvMotosProjectile[] = { // e_enemyfire ('bhvUnusedParticleSpawn' in the decomp)
+    BEGIN(OBJ_LIST_GENACTOR),
     OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
-    BILLBOARD(),
-    SET_HOME(),
-    SCALE(/*Unused*/ 0, /*Field*/ 700),
-    SET_INTERACT_TYPE(INTERACT_FLAME),
-    SET_HITBOX_WITH_OFFSET(/*Radius*/ 50, /*Height*/ 25, /*Downwards offset*/ 25),
+    SET_OBJ_PHYSICS(/*Wall hitbox radius*/ 30, /*Gravity*/ -400, /*Bounciness*/ -50, /*Drag strength*/ 1000, /*Friction*/ 1000, /*Buoyancy*/ 200, /*Unused*/ 0, 0),
     SET_INT(oIntangibleTimer, 0),
-    CALL_NATIVE(bhv_init_room),
+    SET_HITBOX(/*Radius*/ 40, /*Height*/ 40),
     BEGIN_LOOP(),
-        SET_INT(oInteractStatus, 0),
-        ANIMATE_TEXTURE(oAnimState, 2),
+        CALL_NATIVE(bhv_motos_projectile_spawn_loop),
     END_LOOP(),
 };
 
@@ -1193,10 +1189,29 @@ const BehaviorScript bhvBlueFish[] = {
     END_LOOP(),
 };
 
-// e_motos leftover
-const BehaviorScript bhvStub1D0C[] = {
-    BEGIN(OBJ_LIST_DEFAULT),
-    DEACTIVATE(),
+// pathmotos.p bhv data
+
+const BehaviorScript bhvMotos[] = { // e_motos
+    BEGIN(OBJ_LIST_GENACTOR),
+    OR_INT(oFlags, (OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_HOLDABLE | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_COMPUTE_ANGLE_TO_MARIO)),
+    LOAD_ANIMATIONS(oAnimations, motos_anime),
+    SET_INT(oInteractType, INTERACT_GRABBABLE),
+    SET_HITBOX(/*Radius*/ 100, /*Height*/ 100),
+    SET_OBJ_PHYSICS(/*Wall hitbox radius*/ 30, /*Gravity*/ -400, /*Bounciness*/ -50, /*Drag strength*/ 1000, /*Friction*/ 1000, /*Buoyancy*/ 200, /*Unused*/ 0, 0),
+    SPAWN_OBJ(/*Model*/ MODEL_NONE, /*Behavior*/ bhvMotosHand),
+    SET_INT(oIntangibleTimer, 0),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_motos_loop),
+    END_LOOP(),
+};
+
+const BehaviorScript bhvMotosHand[] = { // e_motos_hand
+    BEGIN(OBJ_LIST_GENACTOR),
+    OR_INT(oFlags, (OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW)),
+    BILLBOARD(),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_motos_hand_loop),
+    END_LOOP(),
 };
 
 const BehaviorScript bhvLLLRotatingHexagonalPlatform[] = {

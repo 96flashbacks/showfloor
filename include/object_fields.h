@@ -333,6 +333,9 @@
 #define /*0x10C*/ oMrIScale  OBJECT_FIELD_F32(0x21)
 #define /*0x110*/ oMrIUnk110 OBJECT_FIELD_S32(0x22)
 
+/* Motos */
+#define oMotosHoldStatus OBJECT_FIELD_S32(0x00)
+
 /* Small Penguin */
 #define /*0x088*/ oSmallPenguinUnk88  OBJECT_FIELD_S32(0x00)
 #define /*0x100*/ oSmallPenguinUnk100 OBJECT_FIELD_S32(0x1E) // angle?

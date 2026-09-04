@@ -16,4 +16,8 @@ extern Hierarchy RCP_HmsEnemyotos_basedata[];
 extern Hierarchy RCP_HmsEnemyBigotos_basedata[];
 extern AnimePtr otos_anime[];
 
+// motos
+extern Hierarchy RCP_HmsEnemymotos_basedata_A[];
+extern AnimePtr motos_anime[];
+
 #endif

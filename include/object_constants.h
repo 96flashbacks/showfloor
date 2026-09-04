@@ -400,4 +400,15 @@
     #define THWOMP_ACT_LAND           3
     #define THWOMP_ACT_IDLE_AT_BOTTOM 4
 
+/* Motos */
+    /* oAction */
+    #define mode_motos_wait                 0
+    #define mode_motos_player_search        1
+    #define mode_motos_player_carry         2
+    #define mode_motos_player_pitch         3
+    #define mode_motos_carry_start          4
+    #define mode_motos_carry_run            5
+    #define mode_motos_pitch                6
+    #define mode_motos_fly                  7
+
 #endif // OBJECT_CONSTANTS_H

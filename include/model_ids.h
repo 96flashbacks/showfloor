@@ -314,6 +314,7 @@
 #define MODEL_BLARGG                      0x54        // blargg_geo
 #define MODEL_BULLY                       0x56        // RCP_HmsEnemyotos_basedata
 #define MODEL_BULLY_BOSS                  0x57        // RCP_HmsEnemyBigotos_basedata
+#define MODEL_MOTOS                       0x58        // RCP_HmsEnemymotos_basedata_A (S_motos leftover)
 
 // group 3
 //#define MODEL_WATER_BOMB                  0x54        // water_bomb_geo
@@ -375,7 +376,6 @@
 
 // referenced in macro presets. Unknown usage.
 //#define MODEL_UNKNOWN_54                  0x54
-#define MODEL_UNKNOWN_58                  0x58 // (S_motos leftover)
 
 // second set of actor bins, (0x64-0x73)
 // group 12

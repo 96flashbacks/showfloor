@@ -61,6 +61,7 @@ static s16 sBooHitRotations[] = {
 #include "behaviors/door.inc.c"
 #include "behaviors/thwomp.inc.c"
 #include "behaviors/tumbling_bridge.inc.c"
+#include "behaviors/motos_projectile.inc.c"
 #include "behaviors/beta_moving_flames.inc.c"
 #include "behaviors/flamethrower.inc.c"
 #include "behaviors/bouncing_fireball.inc.c"
@@ -106,15 +107,7 @@ void spawn_sparkle_particles(s32 n, s32 a1, s32 a2, s32 r) {
 #include "behaviors/bowser.inc.c"
 #include "behaviors/bowser_flame.inc.c"
 #include "behaviors/blue_fish.inc.c"
-
-// Not in behavior file, duplicate of vec3f_copy except without bad return.
-// Used in a few behavior files.
-void vec3f_copy_2(Vec3f dest, Vec3f src) {
-    dest[0] = src[0];
-    dest[1] = src[1];
-    dest[2] = src[2];
-}
-
+#include "behaviors/motos.inc.c"
 #include "behaviors/lll_octagonal_moving_mesh.inc.c"
 #include "behaviors/lll_rotating_hex_flame.inc.c"
 #include "behaviors/lll_floating_wood_piece.inc.c"
