@@ -7,7 +7,9 @@
 #include "headers.h"
 
 // Note: This bin does not use bin IDs, unlike the other segmented bins.
-#include "mario/gfx_mario.sou"
+#include "player/gfx_mario.sou"
+
+#include "player/gfx_luigi.c"
 
 #include "bubble/model.inc.c"
 

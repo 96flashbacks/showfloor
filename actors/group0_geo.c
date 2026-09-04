@@ -16,4 +16,5 @@
 #include "sparkle/geo.inc.c"
 #include "water_splash/geo.inc.c"
 #include "sparkle_animation/geo.inc.c"
-#include "mario/hms_mario.sou"
+#include "player/hms_mario.sou"
+#include "player/hms_luigi.c"

@@ -19,7 +19,7 @@
 /* Global models that are loaded for every level */
 
 #define MODEL_MARIO                       0x01        // RCP_MarioHierarchy
-#define MODEL_LUIGI                       0x02        // unused
+#define MODEL_LUIGI                       0x02        // RCP_LuigiHierarchy
 
 /* Various static level geometry, the geo layout differs but terrain object presets treat them the same.*/
 
