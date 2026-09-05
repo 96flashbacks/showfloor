@@ -9,7 +9,7 @@ static Movtex castle_courtyard_movtex_star_statue_water_data[] = {
     MOV_TEX_4_BOX_TRIS( 674, -1963),
     MOV_TEX_ROT(     ROTATE_COUNTER_CLOCKWISE),
     MOV_TEX_ALPHA(    0x96),
-    MOV_TEX_DEFINE(  TEXTURE_JRB_WATER),
+    MOV_TEX_DEFINE(  TEXTURE_CYAN_WATER),
     MOV_TEX_END(),
 };
 

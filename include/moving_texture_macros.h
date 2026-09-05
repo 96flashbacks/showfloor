@@ -5,13 +5,7 @@
 
 // From gMovingTextureIdList
 #define TEXTURE_WATER            0
-#define TEXTURE_MIST             1
-#define TEXTURE_JRB_WATER        2
-#define TEXTURE_UNK_WATER        3
-#define TEXTURE_LAVA             4
-#define TEX_QUICKSAND_SSL        5
-#define TEX_PYRAMID_SAND_SSL     6
-#define TEX_YELLOW_TRI_TTC       7
+#define TEXTURE_CYAN_WATER        1
 
 // Moving Texture rotations
 #define ROTATE_CLOCKWISE         0

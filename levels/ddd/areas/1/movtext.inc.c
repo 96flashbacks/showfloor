@@ -9,7 +9,7 @@ static Movtex ddd_movtex_area1_water_data[] = {
     MOV_TEX_4_BOX_TRIS( 1024, -4095),
     MOV_TEX_ROT(     ROTATE_CLOCKWISE),
     MOV_TEX_ALPHA(    0xA0),
-    MOV_TEX_DEFINE(  TEXTURE_JRB_WATER),
+    MOV_TEX_DEFINE(  TEXTURE_CYAN_WATER),
     MOV_TEX_END(),
     MOV_TEX_ROT_SPEED(    0), // entrance to area 2 water
     MOV_TEX_ROT_SCALE(    5),
@@ -19,7 +19,7 @@ static Movtex ddd_movtex_area1_water_data[] = {
     MOV_TEX_4_BOX_TRIS( 5559,  -768),
     MOV_TEX_ROT(     ROTATE_CLOCKWISE),
     MOV_TEX_ALPHA(    0xA0),
-    MOV_TEX_DEFINE(  TEXTURE_JRB_WATER),
+    MOV_TEX_DEFINE(  TEXTURE_CYAN_WATER),
     MOV_TEX_END(),
 };
 

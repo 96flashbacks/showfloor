@@ -124,8 +124,7 @@ s32 gWDWWaterLevelSet = FALSE;
  * An array for converting a movtex texture id to a pointer that can
  * be passed to gDPSetTextureImage.
  */
-u8 *gMovtexIdToTexture[] = { texture_waterbox_water, texture_waterbox_mist, texture_waterbox_jrb_water,
-                             texture_waterbox_unknown_water, texture_waterbox_lava };
+u8 *gMovtexIdToTexture[] = { texture_waterbox_water, texture_waterbox_cyan_water};
 
 extern Gfx castle_grounds_dl_waterfall[];
 extern s16 castle_grounds_movtex_tris_waterfall[];
@@ -290,14 +289,8 @@ Gfx *movtex_gen_from_quad(s16 y, struct MovtexQuad *quad) {
 
     // Only add commands to change the texture when necessary
     if (textureId != gMovetexLastTextureId) {
-        switch (textureId) {
-            case TEXTURE_MIST: // an ia16 texture
-                gLoadBlockTexture(gfx++, 32, 32, G_IM_FMT_IA, gMovtexIdToTexture[textureId]);
-                break;
-            default: // any rgba16 texture
-                gLoadBlockTexture(gfx++, 32, 32, G_IM_FMT_RGBA, gMovtexIdToTexture[textureId]);
-                break;
-        }
+        // No IA16 texture handling
+        gLoadBlockTexture(gfx++, 32, 32, G_IM_FMT_RGBA, gMovtexIdToTexture[textureId]);
         gMovetexLastTextureId = textureId;
     }
     gSPVertex(gfx++, VIRTUAL_TO_PHYSICAL2(verts), 4, 0);

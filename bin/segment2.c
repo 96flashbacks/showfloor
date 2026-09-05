@@ -1231,62 +1231,67 @@ const Gfx dl_billboard_num_9[] = {
     gsSPEndDisplayList(),
 };
 
-// Simpler shadow circle texture from the tanidata.h Dec 6, 1995 backup
-ALIGNED8 static const Texture texture_shadow_quarter_circle[] = {
+/**************************************************************
+    'tanidata.h' textures (based on the Dec 6, 1995 backup)
+**************************************************************/
+
+// Unused "dummy" variable in the 'tanidata.h' December backup
+static long long int    tanidata_dummy = 0 ;
+
+// Shadow circle texture with no AA from the December backup
+ALIGNED8 static const Texture texture_shadow_quarter_circle[] = { // shade_txtdat
 #include "textures/segment2/shadow_quarter_circle.ia8.inc.c"
 };
 
-const Texture texture_transition_star_half[] = {
+// No quarter circle texture (shade_rect_txtdat)
+
+const Texture texture_transition_star_half[] = { // wipe_star_txt
 #include "textures/segment2/segment2.0F458.ia8.inc.c"
 };
 
-const Texture texture_transition_circle_half[] = {
+const Texture texture_transition_circle_half[] = { // wipe_circle_txt
 #include "textures/segment2/segment2.0FC58.ia8.inc.c"
 };
 
-// Skull transition texture from the tanidata.h Dec 6, 1995 backup
-const Texture texture_transition_skull_half[] = {
+// Skull transition texture from the December backup, removed in the final version
+const Texture texture_transition_skull_half[] = { // wipe_docro_txt
 #include "textures/segment2/wipe_docro_txt.ia8.inc.c"
 };
 
-const Texture texture_transition_mario[] = {
+const Texture texture_transition_mario[] = { // wipe_mario_txt
 #include "textures/segment2/segment2.10458.ia8.inc.c"
 };
 
-// Early Bowser transition texture from the tanidata.h Dec 6, 1995 backup
-const Texture texture_transition_bowser_half[] = {
+// Early Bowser transition texture from the December backup
+const Texture texture_transition_bowser_half[] = { // wipe_kopa_txt
 #include "textures/segment2/segment2.11458.ia8.inc.c" 
 };
 
-const Texture texture_waterbox_water[] = {
+// Weirdly, only this water texture is included in the backup, even though the
+// Shoshinkai demo has 2 different water textures (this one and a more cyan water texture)
+const Texture texture_waterbox_water[] = { // water_txt (named 'water_rotate_txt' in the final 'tanidata.h')
 #include "textures/segment2/segment2.11C58.rgba16.inc.c"
 };
 
-const Texture texture_waterbox_jrb_water[] = {
+// Water Land and the Castle Courtyard cyan water, used in the Shoshinkai demo
+const Texture texture_waterbox_cyan_water[] = {
 #include "textures/segment2/segment2.12458.rgba16.inc.c"
 };
 
-const Texture texture_waterbox_unknown_water[] = {
-#include "textures/segment2/segment2.12C58.rgba16.inc.c"
-};
+// Removed the unknown water, mist and lava textures
 
-const Texture texture_waterbox_mist[] = {
-#include "textures/segment2/segment2.13458.ia16.inc.c"
-};
+/****************************************************************
+    'tanidata.c' model data (based on the Dec 6, 1995 backup)
+****************************************************************/
 
-const Texture texture_waterbox_lava[] = {
-#include "textures/segment2/segment2.13C58.rgba16.inc.c"
-};
-
-// Unreferenced light group
-UNUSED static const Lights1 segment2_lights_unused = gdSPDefLights1(
+// Unreferenced light group in the final game, used for paintings in the December backup
+static const Lights1 Tani_light = gdSPDefLights1(
     0x40, 0x40, 0x40,
     0xff, 0xff, 0xff, 0x28, 0x28, 0x28
 );
 
-// 0x02014470 - 0x020144B0
+// Tani_I_matrix
 static const Mtx matrix_identity = {
-#ifndef GBI_FLOATS
     {{0x00010000, 0x00000000,
       0x00000001, 0x00000000},
      {0x00000000, 0x00010000,
@@ -1295,18 +1300,10 @@ static const Mtx matrix_identity = {
       0x00000000, 0x00000000},
      {0x00000000, 0x00000000,
       0x00000000, 0x00000000}}
-#else
-    {{1.0f, 0.0f, 0.0f, 0.0f},
-    {0.0f, 1.0f, 0.0f, 0.0f},
-    {0.0f, 0.0f, 1.0f, 0.0f},
-    {0.0f, 0.0f, 0.0f, 1.0f}}
-#endif
 };
 
-
-// 0x020144B0 - 0x020144F0
+// Tani_O_matrix
 static const Mtx matrix_fullscreen = {
-#ifndef GBI_FLOATS
     {{0x00000000, 0x00000000,
       0x00000000, 0x00000000},
      {0x00000000, 0xffff0000,
@@ -1315,42 +1312,33 @@ static const Mtx matrix_fullscreen = {
       (0 << 16) | (65536 * 2 / SCREEN_HEIGHT), 0x00000000},
      {0x00000000, 0x00000000,
       0x00000000, 0x00000000}}
-#else
-    {{2.0f / SCREEN_WIDTH, 0.0f, 0.0f, 0.0f},
-    {0.0f, 2.0f / SCREEN_HEIGHT, 0.0f, 0.0f},
-    {0.0f, 0.0f, -1.0f, 0.0f},
-    {-1.0f, -1.0f, -1.0f, 1.0f}}
-#endif
 };
 
-
-// 0x020144F0 - 0x02014508
+// Tani_draw_1squr
 const Gfx dl_draw_quad_verts_0123[] = {
     gsSP2Triangles( 0,  1,  2, 0x0,  0,  2,  3, 0x0),
     gsSPEndDisplayList(),
 };
 
-// 0x02014508 - 0x02014520
+// Tani_draw_2squr
 const Gfx dl_draw_quad_verts_4567[] = {
     gsSP2Triangles( 4,  5,  6, 0x0,  4,  6,  7, 0x0),
     gsSPEndDisplayList(),
 };
 
-const Gfx dl_shadow_begin[] = {
+// Used in 'shadow.c'
+
+// The December backup only has one shadow DL, since there are only circle shadows
+const Gfx dl_shadow_circle[] = { // shade_gfx_init
     gsDPPipeSync(),
     gsSPClearGeometryMode(G_LIGHTING | G_CULL_BACK),
     gsDPSetCombineMode(G_CC_MODULATEIA, G_CC_MODULATEIA),
+    gsDPLoadTextureBlock(texture_shadow_quarter_circle, G_IM_FMT_IA, G_IM_SIZ_8b, 16, 16, 0, G_TX_WRAP | G_TX_MIRROR, G_TX_WRAP | G_TX_MIRROR, 4, 4, G_TX_NOLOD, G_TX_NOLOD),
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
     gsSPEndDisplayList(),
 };
 
-const Gfx dl_shadow_circle[] = {
-    gsSPDisplayList(dl_shadow_begin),
-    gsDPLoadTextureBlock(texture_shadow_quarter_circle, G_IM_FMT_IA, G_IM_SIZ_8b, 16, 16, 0, G_TX_WRAP | G_TX_MIRROR, G_TX_WRAP | G_TX_MIRROR, 4, 4, G_TX_NOLOD, G_TX_NOLOD),
-    gsSPEndDisplayList(),
-};
-
-// 0x020145D8 - 0x02014620
+// shade_gfx_Poly9
 const Gfx dl_shadow_9_verts[] = {
     gsSP2Triangles( 0,  3,  4, 0x0,  0,  4,  1, 0x0),
     gsSP2Triangles( 1,  4,  2, 0x0,  2,  4,  5, 0x0),
@@ -1359,13 +1347,13 @@ const Gfx dl_shadow_9_verts[] = {
     gsSPEndDisplayList(),
 };
 
-// 0x02014620 - 0x02014638
+// shade_gfx_Poly4
 const Gfx dl_shadow_4_verts[] = {
     gsSP2Triangles( 0,  2,  1, 0x0,  1,  2,  3, 0x0),
     gsSPEndDisplayList(),
 };
 
-// 0x02014638 - 0x02014660
+// shade_gfx_clear
 const Gfx dl_shadow_end[] = {
     gsDPPipeSync(),
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_OFF),
@@ -1374,7 +1362,9 @@ const Gfx dl_shadow_end[] = {
     gsSPEndDisplayList(),
 };
 
-// 0x02014660 - 0x02014698
+// Used in 'screen_transition.c'
+
+// wipe_gfx_init
 const Gfx dl_proj_mtx_fullscreen[] = {
     gsDPPipeSync(),
     gsSPClearGeometryMode(G_LIGHTING),
@@ -1385,7 +1375,7 @@ const Gfx dl_proj_mtx_fullscreen[] = {
     gsSPEndDisplayList(),
 };
 
-// 0x02014698 - 0x020146C0
+// wipe_gfx_clear
 const Gfx dl_screen_transition_end[] = {
     gsDPPipeSync(),
     gsSPSetGeometryMode(G_LIGHTING),
@@ -1394,7 +1384,7 @@ const Gfx dl_screen_transition_end[] = {
     gsSPEndDisplayList(),
 };
 
-// 0x020146C0 - 0x02014708
+// wipe_gfx_8tri
 const Gfx dl_transition_draw_filled_region[] = {
     gsSP2Triangles( 0,  4,  1, 0x0,  1,  4,  5, 0x0),
     gsSP2Triangles( 1,  5,  2, 0x0,  2,  5,  6, 0x0),
@@ -1403,17 +1393,19 @@ const Gfx dl_transition_draw_filled_region[] = {
     gsSPEndDisplayList(),
 };
 
-// 0x02014708 - 0x02014738
+// Used in 'skybox.c'
+
+// BG_init_project
 const Gfx dl_skybox_begin[] = {
     gsDPPipeSync(),
     gsSPClearGeometryMode(G_LIGHTING),
-    gsDPSetCombineMode(G_CC_MODULATERGB, G_CC_MODULATERGB),
+    gsDPSetCombineMode(G_CC_DECALRGB, G_CC_DECALRGB), // Different combine mode (G_CC_DECALRGB instead of G_CC_MODULATERGB)
     gsSPPerspNormalize(0xFFFF),
     gsSPMatrix(&matrix_identity, G_MTX_PROJECTION | G_MTX_LOAD | G_MTX_NOPUSH),
     gsSPEndDisplayList(),
 };
 
-// 0x02014738 - 0x02014768
+// BG_init_graphic
 const Gfx dl_skybox_tile_tex_settings[] = {
     gsSPMatrix(&matrix_identity, G_MTX_MODELVIEW | G_MTX_LOAD | G_MTX_NOPUSH),
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
@@ -1423,7 +1415,7 @@ const Gfx dl_skybox_tile_tex_settings[] = {
     gsSPEndDisplayList(),
 };
 
-// 0x02014768 - 0x02014790
+// BG_mode_restore
 const Gfx dl_skybox_end[] = {
     gsDPPipeSync(),
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_OFF),
@@ -1432,10 +1424,12 @@ const Gfx dl_skybox_end[] = {
     gsSPEndDisplayList(),
 };
 
-// 0x02014790 - 0x020147D0
+// Used in 'moving_texture.c'
+
+// water_init
 const Gfx dl_waterbox_rgba16_begin[] = {
     gsDPPipeSync(),
-    gsDPSetCombineMode(G_CC_MODULATERGBA, G_CC_MODULATERGBA),
+    gsDPSetCombineMode(G_CC_DECALRGB, G_CC_DECALRGB), // Different combine mode (G_CC_DECALRGB instead of G_CC_MODULATERGB)
     gsSPClearGeometryMode(G_LIGHTING | G_CULL_BACK),
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
     gsDPTileSync(),
@@ -1444,19 +1438,9 @@ const Gfx dl_waterbox_rgba16_begin[] = {
     gsSPEndDisplayList(),
 };
 
-// 0x020147D0 - 0x02014810
-const Gfx dl_waterbox_ia16_begin[] = {
-    gsDPPipeSync(),
-    gsDPSetCombineMode(G_CC_MODULATEIA, G_CC_MODULATEIA),
-    gsSPClearGeometryMode(G_LIGHTING | G_CULL_BACK),
-    gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
-    gsDPTileSync(),
-    gsDPSetTile(G_IM_FMT_IA, G_IM_SIZ_16b, 8, 0, G_TX_RENDERTILE, 0, G_TX_WRAP | G_TX_NOMIRROR, 5, G_TX_NOLOD, G_TX_WRAP | G_TX_NOMIRROR, 5, G_TX_NOLOD),
-    gsDPSetTileSize(0, 0, 0, (32 - 1) << G_TEXTURE_IMAGE_FRAC, (32 - 1) << G_TEXTURE_IMAGE_FRAC),
-    gsSPEndDisplayList(),
-};
+// No IA version of the waterbox (water_init_IA)
 
-// 0x02014810 - 0x02014838
+// water_reset
 const Gfx dl_waterbox_end[] = {
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_OFF),
     gsDPPipeSync(),
@@ -1465,13 +1449,15 @@ const Gfx dl_waterbox_end[] = {
     gsSPEndDisplayList(),
 };
 
-// 0x02014838 - 0x02014878
-ALIGNED8 static const Texture texture_ia8_up_arrow[] = { // areamap_arrow_txt
+// Used in 'areamap.c'
+
+// areamap_arrow_txt
+ALIGNED8 static const Texture texture_ia8_up_arrow[] = {
 #include "textures/segment2/segment2.14838.ia8.inc.c"
 };
 
-// 0x02014878 - 0x020148B0
-const Gfx dl_ia8_up_arrow_begin[] = { // called areamap_init_project in the iQue source code
+// areamap_init_project
+const Gfx dl_ia8_up_arrow_begin[] = {
     gsDPPipeSync(),
     gsSPClearGeometryMode(G_LIGHTING),
     gsDPSetCombineMode(G_CC_MODULATEIA, G_CC_MODULATEIA),
@@ -1481,8 +1467,7 @@ const Gfx dl_ia8_up_arrow_begin[] = { // called areamap_init_project in the iQue
     gsSPEndDisplayList(),
 };
 
-// 0x020148B0 - 0x020148E0
-// DL for the areamap base, called areamap_init_graphic1 in the iQue source code
+// DL for the areamap base, called 'areamap_init_graphic1' in the iQue source code
 const Gfx dl_rgba16_unused[] = {
     gsSPMatrix(&matrix_identity, G_MTX_MODELVIEW | G_MTX_LOAD | G_MTX_NOPUSH),
     gsDPTileSync(),
@@ -1492,8 +1477,8 @@ const Gfx dl_rgba16_unused[] = {
     gsSPEndDisplayList(),
 };
 
-// 0x020148E0 - 0x02014938
-const Gfx dl_ia8_up_arrow_load_texture_block[] = { // called areamap_init_graphic2 in the iQue source code
+// areamap_init_graphic2
+const Gfx dl_ia8_up_arrow_load_texture_block[] = {
     gsDPPipeSync(),
     gsDPSetCombineMode(G_CC_MODULATEIA, G_CC_MODULATEIA),
     gsDPTileSync(),
@@ -1507,32 +1492,30 @@ const Gfx dl_ia8_up_arrow_load_texture_block[] = { // called areamap_init_graphi
     gsSPEndDisplayList(),
 };
 
-// 0x02014938 - 0x02014958
-const Gfx dl_ia8_up_arrow_end[] = { // called areamap_mode_restore in the iQue source code
+// areamap_mode_restore
+const Gfx dl_ia8_up_arrow_end[] = {
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_OFF),
     gsDPPipeSync(),
     gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
     gsSPEndDisplayList(),
 };
 
-// 0x02014958 - 0x02014960
-static const Lights1 seg2_lights_02014958 = gdSPDefLights1(
-    0x50, 0x50, 0x50,
-    0xff, 0xff, 0xff, 0x28, 0x28, 0x28
-);
+// 'paintings.c' model data
 
-// 0x02014970 - 0x020149A8
+// No painting lights (Tani_light_wave)
+
+// wave_move_init
 const Gfx dl_paintings_rippling_begin[] = {
     gsDPPipeSync(),
     gsSPSetGeometryMode(G_LIGHTING | G_SHADING_SMOOTH),
     gsDPSetCombineMode(G_CC_MODULATERGBA, G_CC_MODULATERGBA),
-    gsSPLight(&seg2_lights_02014958.l, 1),
-    gsSPLight(&seg2_lights_02014958.a, 2),
+    gsSPLight(&Tani_light.l, 1), // Generic 'Tani_light' instead of 'Tani_light_wave'
+    gsSPLight(&Tani_light.a, 2),
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
     gsSPEndDisplayList(),
 };
 
-// 0x020149A8 - 0x020149C8
+// wave_move_reset
 const Gfx dl_paintings_rippling_end[] = {
     gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_OFF),
     gsDPPipeSync(),
@@ -1540,28 +1523,28 @@ const Gfx dl_paintings_rippling_end[] = {
     gsSPEndDisplayList(),
 };
 
-// 0x020149C8 - 0x02014A00
+// wave_move_init_env
 const Gfx dl_paintings_env_mapped_begin[] = {
     gsDPPipeSync(),
-    gsSPSetGeometryMode(G_LIGHTING | G_TEXTURE_GEN),
-    gsDPSetCombineMode(G_CC_DECALRGB, G_CC_DECALRGB),
-    gsSPLight(&seg2_lights_02014958.l, 1),
-    gsSPLight(&seg2_lights_02014958.a, 2),
-    gsSPTexture(0x4000, 0x4000, 0, G_TX_RENDERTILE, G_ON),
+    gsSPSetGeometryMode(G_SHADING_SMOOTH | G_LIGHTING | G_TEXTURE_GEN), // G_SHADING_SMOOTH was removed in the final game
+    gsDPSetCombineMode(G_CC_MODULATERGBA, G_CC_MODULATERGBA), // Different combine mode (G_CC_MODULATERGB instead of G_CC_DECALRGB)
+    gsSPLight(&Tani_light.l, 1), // Generic 'Tani_light' instead of 'Tani_light_wave'
+    gsSPLight(&Tani_light.a, 2),
+    gsSPTexture(0x0C00, 0x0C00, 0, G_TX_RENDERTILE, G_ON), // 0x0C00 instead of 0x4000
     gsSPEndDisplayList(),
 };
 
-// 0x02014A00 - 0x02014A30
+// wave_move_reset_env
 const Gfx dl_paintings_env_mapped_end[] = {
-    gsSPTexture(0x4000, 0x4000, 0, G_TX_RENDERTILE, G_OFF),
+    gsSPTexture(0x0C00, 0x0C00, 0, G_TX_RENDERTILE, G_OFF), // 0x0C00 instead of 0x4000
     gsDPPipeSync(),
-    gsSPSetGeometryMode(G_TEXTURE_GEN),
-    gsSPClearGeometryMode(G_LIGHTING),
+    // Missing gsSPSetGeometryMode(G_LIGHTING),
+    gsSPClearGeometryMode(G_TEXTURE_GEN),
     gsDPSetCombineMode(G_CC_SHADE, G_CC_SHADE),
     gsSPEndDisplayList(),
 };
 
-// 0x02014A30 - 0x02014A60
+// wave_5tris
 const Gfx dl_paintings_draw_ripples[] = {
     gsSP2Triangles( 0,  1,  2, 0x0,  3,  4,  5, 0x0),
     gsSP2Triangles( 6,  7,  8, 0x0,  9, 10, 11, 0x0),
@@ -1569,8 +1552,10 @@ const Gfx dl_paintings_draw_ripples[] = {
     gsSPEndDisplayList(),
 };
 
+// The December backup is missing the painting mesh data, maybe it was in 'wave.c' ('painting.c' in the decomp) instead?
+
 // 14A60: triangle mesh
-// 0x02014A60
+// wave_vp_all
 const s16 seg2_painting_triangle_mesh[] = {
     157, // numVtx
     // format:
@@ -2008,7 +1993,7 @@ const s16 seg2_painting_triangle_mesh[] = {
  *      num neighbors, neighbor0, neighbor1, ...
  * The nth entry corresponds to the nth vertex in seg2_painting_triangle_mesh
  */
-const s16 seg2_painting_mesh_neighbor_tris[] = {
+const s16 seg2_painting_mesh_neighbor_tris[] = { // wave_pp_all
       3,   1,   2,   3,
       1,   1,
       4,   1,   2,   4,   5,

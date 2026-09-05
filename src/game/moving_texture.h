@@ -12,13 +12,7 @@
 /// Ids for textures used for moving textures
 enum MovtexRectTextureId {
     TEXTURE_WATER,
-    TEXTURE_MIST,
-    TEXTURE_JRB_WATER,
-    TEXTURE_UNK_WATER,
-    TEXTURE_LAVA,
-    TEX_QUICKSAND_SSL,
-    TEX_PYRAMID_SAND_SSL,
-    TEX_YELLOW_TRI_TTC
+    TEXTURE_CYAN_WATER
 };
 
 /**
