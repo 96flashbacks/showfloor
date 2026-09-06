@@ -17,7 +17,6 @@ const GeoLayout water_land_area_2_geo[] = {
                GEO_DISPLAY_LIST(LAYER_OPAQUE, water_land_3_dl_mesh),
                GEO_DISPLAY_LIST(LAYER_TRANSPARENT, water_land_4_dl_mesh),
                GEO_DISPLAY_LIST(LAYER_ALPHA, water_land_5_dl_mesh),
-               GEO_ASM(   0, geo_movtex_pause_control),
                GEO_ASM(0x2302, geo_movtex_draw_water_regions),
                GEO_RENDER_OBJ(),
                GEO_ASM(  2, geo_envfx_main),

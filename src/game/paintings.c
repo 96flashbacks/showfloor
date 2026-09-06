@@ -333,7 +333,6 @@ void painting_state(s8 state, struct Painting *painting, s8 xSource, s8 ySource,
     painting->state = state;
     painting->rippleX = painting_ripple_x(painting, xSource);
     painting->rippleY = painting_ripple_y(painting, ySource);
-    gPaintingMarioYEntry = gPaintingMarioYPos;
 
     // Because true or false would be too simple...
     if (resetTimer == RESET_TIMER) {

@@ -114,12 +114,6 @@ s16 gMovtexCounterPrev = 0;
 
 s8 gMovtexVtxColor = MOVTEX_VTX_COLOR_DEFAULT;
 
-/// The height at which Mario entered the last painting. Used for Wet-Dry World only.
-float gPaintingMarioYEntry = 0.0f;
-
-/// Variable to ensure the initial Wet-Dry World water level is set only once
-s32 gWDWWaterLevelSet = FALSE;
-
 /**
  * An array for converting a movtex texture id to a pointer that can
  * be passed to gDPSetTextureImage.
@@ -143,49 +137,10 @@ struct MovtexObject gMovtexNonColored[] = {
     { 0x00000000, 0x00000000, 0, NULL, NULL, NULL, NULL, 0x00, 0x00, 0x00, 0x00, 0x00000000 },
 };
 
-/**
- * Sets the initial water level in Wet-Dry World based on how high Mario
- * jumped into the painting.
- */
-Gfx *geo_wdw_set_initial_water_level(s32 callContext, UNUSED struct GraphNode *node, UNUSED Mat4 mtx) {
-    s32 i;
-    UNUSED u8 unused[] = { 1, 0, 4, 0, 7, 0, 10, 0 };
-    s16 wdwWaterHeight;
+// No 'WaterPoolHeight' (geo_wdw_set_initial_water_level), it's only used for WDW
 
-    // Why was this global variable needed when they could just check for GEO_CONTEXT_AREA_LOAD?
-    if (callContext != GEO_CONTEXT_RENDER) {
-        gWDWWaterLevelSet = FALSE;
-    } else if (callContext == GEO_CONTEXT_RENDER && gEnvironmentRegions != NULL && !gWDWWaterLevelSet) {
-        if (gPaintingMarioYEntry <= 1382.4) {
-            wdwWaterHeight = 31;
-        } else if (gPaintingMarioYEntry >= 1600.0) {
-            wdwWaterHeight = 2816;
-        } else {
-            wdwWaterHeight = 1024;
-        }
-        for (i = 0; i < *gEnvironmentRegions; i++) {
-            gEnvironmentRegions[i * 6 + 6] = wdwWaterHeight;
-        }
-        gWDWWaterLevelSet = TRUE;
-    }
-    return NULL;
-}
-
-/**
- * Update moving texture counters that determine when to update the coordinates.
- * Textures update when gMovtexCounterPrev != gMovtexCounter.
- * This ensures water / sand flow stops when the game pauses.
- */
-Gfx *geo_movtex_pause_control(s32 callContext, UNUSED struct GraphNode *node, UNUSED Mat4 mtx) {
-    /*if (callContext != GEO_CONTEXT_RENDER) {
-        gMovtexCounterPrev = gAreaUpdateCounter - 1;
-        gMovtexCounter = gAreaUpdateCounter;
-    } else {
-        gMovtexCounterPrev = gMovtexCounter;
-        gMovtexCounter = gAreaUpdateCounter;
-    }*/
-    return NULL;
-}
+// No 'WaterInit' (geo_movtex_pause_control), so water didn't stop moving 
+// when the game was paused, as seen in Gamesmaster S5E15 (around 20:55)
 
 /**
  * Make a vertex that's part of a quad with rotating texture.
@@ -197,7 +152,7 @@ Gfx *geo_movtex_pause_control(s32 callContext, UNUSED struct GraphNode *node, UN
  * scale: how often the texture repeats, 1 = no repeat
  */
 void movtex_make_quad_vertex(Vtx *verts, s32 index, s16 x, s16 y, s16 z, s16 rot, s16 rotOffset,
-                             f32 scale, u8 alpha) {
+                             f32 scale, u8 alpha) { // WaterSetVtx
     s16 s = 32.0 * (32.0 * scale - 1.0) * sins(rot + rotOffset);
     s16 t = 32.0 * (32.0 * scale - 1.0) * coss(rot + rotOffset);
 
@@ -242,7 +197,7 @@ s16 gMovetexLastTextureId;
 /**
  * Generates and returns a display list for a single MovtexQuad at height y.
  */
-Gfx *movtex_gen_from_quad(s16 y, struct MovtexQuad *quad) {
+Gfx *movtex_gen_from_quad(s16 y, struct MovtexQuad *quad) { // WaterOneRectangle
     s16 rot;
     s16 rotspeed = quad->rotspeed;
     s16 scale = quad->scale;
@@ -305,7 +260,7 @@ Gfx *movtex_gen_from_quad(s16 y, struct MovtexQuad *quad) {
  * quadArrSegmented: a segmented address to an array of s16. The first number
  * is the number of entries, followed by that number of MovtexQuad structs.
  */
-Gfx *movtex_gen_from_quad_array(s16 y, void *quadArrSegmented) {
+Gfx *movtex_gen_from_quad_array(s16 y, void *quadArrSegmented) { // WaterOneSurface
     s16 *quadArr = segmented_to_virtual(quadArrSegmented);
     s16 numLists = quadArr[0];
     Gfx *gfxHead = alloc_display_list((numLists + 1) * sizeof(*gfxHead));
@@ -336,7 +291,7 @@ Gfx *movtex_gen_from_quad_array(s16 y, void *quadArrSegmented) {
  * movetexQuadsSegmented: segmented address to the MovtexQuadCollection array
  * that will be searched.
  */
-Gfx *movtex_gen_quads_id(s16 id, s16 y, void *movetexQuadsSegmented) {
+Gfx *movtex_gen_quads_id(s16 id, s16 y, void *movetexQuadsSegmented) { // WaterSurface
     struct MovtexQuadCollection *collection = segmented_to_virtual(movetexQuadsSegmented);
     s32 i = 0;
 
@@ -358,7 +313,7 @@ extern u8 castle_courtyard_movtex_star_statue_water[];
 /**
  * Find the quadCollection for a given quad collection id.
  */
-void *get_quad_collection_from_id(u32 id) {
+void *get_quad_collection_from_id(u32 id) { // WaterGetDataPtr
     switch (id) {
         case CASTLE_GROUNDS_MOVTEX_WATER:
             return castle_grounds_movtex_water;
@@ -375,12 +330,15 @@ void *get_quad_collection_from_id(u32 id) {
     }
 }
 
+// No WaterInitGfx ('movtex_change_texture_format'), there were no IA16 
+// moving texture surfaces at this point, based on the Dec 6, 1995 'tanidata.c' backup
+
 /**
  * Geo script responsible for drawing quads with a moving texture at the height
  * of the corresponding water region. The node's parameter determines which quad
  * collection is drawn, see moving_texture.h.
  */
-Gfx *geo_movtex_draw_water_regions(s32 callContext, struct GraphNode *node, UNUSED Mat4 mtx) {
+Gfx *geo_movtex_draw_water_regions(s32 callContext, struct GraphNode *node, UNUSED Mat4 mtx) { // WaterDraw
     Gfx *gfxHead = NULL;
     Gfx *gfx = NULL;
     Gfx *subList;
@@ -404,15 +362,7 @@ Gfx *geo_movtex_draw_water_regions(s32 callContext, struct GraphNode *node, UNUS
             gfx = gfxHead;
         }
         asGenerated = (struct GraphNodeGenerated *) node;
-        if (asGenerated->parameter == JRB_MOVTEX_INITIAL_MIST) {
-            if (gLakituState.goalPos[1] < 1024.0) { // if camera under water
-                return NULL;
-            }
-            if (save_file_get_star_flags(gCurrSaveFileNum - 1, COURSE_NUM_TO_INDEX(COURSE_JRB))
-                & (1 << 0)) { // the "Plunder in the Sunken Ship" star in JRB is collected
-                return NULL;
-            }
-        }
+        // No JRB mist handling
         quadCollection = get_quad_collection_from_id(asGenerated->parameter);
         if (quadCollection == NULL) {
             return NULL;
@@ -421,7 +371,7 @@ Gfx *geo_movtex_draw_water_regions(s32 callContext, struct GraphNode *node, UNUS
         asGenerated->fnNode.node.flags =
             (asGenerated->fnNode.node.flags & 0xFF) | (LAYER_TRANSPARENT_INTER << 8);
 
-        gSPDisplayList(gfx++, dl_waterbox_rgba16_begin);
+        gSPDisplayList(gfx++, dl_waterbox_rgba16_begin); // Directly set here since there are no IA16 moving textures
         gMovetexLastTextureId = -1;
         for (i = 0; i < numWaterBoxes; i++) {
             waterId = gEnvironmentRegions[i * 6 + 1];
@@ -443,7 +393,7 @@ Gfx *geo_movtex_draw_water_regions(s32 callContext, struct GraphNode *node, UNUS
  * movtexVerts: vertices to update
  * attr: which attribute to change
  */
-void update_moving_texture_offset(s16 *movtexVerts, s32 attr) {
+void update_moving_texture_offset(s16 *movtexVerts, s32 attr) { // TexAnimSetSpeed
     s16 movSpeed = movtexVerts[MOVTEX_ATTR_SPEED];
     s16 *curOffset = movtexVerts + attr;
 
@@ -465,7 +415,7 @@ void update_moving_texture_offset(s16 *movtexVerts, s32 attr) {
  * vertex's coordinates as base on which to apply offset.
  * The first vertex has offset 0 by definition, simplifying the calculations a bit.
  */
-void movtex_write_vertex_first(Vtx *vtx, s16 *movtexVerts, struct MovtexObject *c, s8 attrLayout) {
+void movtex_write_vertex_first(Vtx *vtx, s16 *movtexVerts, struct MovtexObject *c, s8 attrLayout) { // TexAnimSetPointO
     s16 x = movtexVerts[MOVTEX_ATTR_X];
     s16 y = movtexVerts[MOVTEX_ATTR_Y];
     s16 z = movtexVerts[MOVTEX_ATTR_Z];
@@ -505,7 +455,7 @@ void movtex_write_vertex_first(Vtx *vtx, s16 *movtexVerts, struct MovtexObject *
  * for their texture coordinates.
  */
 void movtex_write_vertex_index(Vtx *verts, s32 index, s16 *movtexVerts, struct MovtexObject *d,
-                               s8 attrLayout) {
+                               s8 attrLayout) { // TexAnimSetPointX
     u8 alpha = d->a;
     s16 x;
     s16 y;
@@ -561,7 +511,7 @@ void movtex_write_vertex_index(Vtx *verts, s32 index, s16 *movtexVerts, struct M
  * Generate a displaylist for a MovtexObject.
  * 'attrLayout' is one of MOVTEX_LAYOUT_NOCOLOR and MOVTEX_LAYOUT_COLORED.
  */
-Gfx *movtex_gen_list(s16 *movtexVerts, struct MovtexObject *movtexList, s8 attrLayout) {
+Gfx *movtex_gen_list(s16 *movtexVerts, struct MovtexObject *movtexList, s8 attrLayout) { // TexAnimMake
     Vtx *verts = alloc_display_list(movtexList->vtx_count * sizeof(*verts));
     Gfx *gfxHead = alloc_display_list(11 * sizeof(*gfxHead));
     Gfx *gfx = gfxHead;
@@ -588,7 +538,7 @@ Gfx *movtex_gen_list(s16 *movtexVerts, struct MovtexObject *movtexList, s8 attrL
 /**
  * Function for a geo node that draws a MovtexObject in the gMovtexNonColored list.
  */
-Gfx *geo_movtex_draw_nocolor(s32 callContext, struct GraphNode *node, UNUSED Mat4 mtx) {
+Gfx *geo_movtex_draw_nocolor(s32 callContext, struct GraphNode *node, UNUSED Mat4 mtx) { // WaterFall
     s32 i;
     s16 *movtexVerts;
     struct GraphNodeGenerated *asGenerated;
@@ -612,3 +562,7 @@ Gfx *geo_movtex_draw_nocolor(s32 callContext, struct GraphNode *node, UNUSED Mat
     }
     return gfx;
 }
+
+// No 'WaterFall_L' (geo_movtex_draw_colored), 'BeltConv_L' (geo_movtex_draw_colored_no_update),
+// 'SandCone' (geo_movtex_draw_colored_2_no_update) and 'SandConeInit' (geo_movtex_update_horizontal).
+// These functions are only used in levels that are not in the demo

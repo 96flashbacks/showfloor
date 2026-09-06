@@ -17,7 +17,6 @@ const GeoLayout courtyard_geo[] = {
                GEO_DISPLAY_LIST(LAYER_OPAQUE, courtyard_1_dl_mesh),
                GEO_DISPLAY_LIST(LAYER_TRANSPARENT, courtyard_2_dl_mesh),
                GEO_DISPLAY_LIST(LAYER_ALPHA, courtyard_3_dl_mesh),
-               GEO_ASM(   0, geo_movtex_pause_control),
                GEO_ASM(0x2601, geo_movtex_draw_water_regions),
                GEO_RENDER_OBJ(),
                GEO_ASM(0, geo_envfx_main),

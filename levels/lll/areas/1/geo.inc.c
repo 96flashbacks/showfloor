@@ -19,8 +19,6 @@ const GeoLayout fire_bubble_geo[] = {
                GEO_DISPLAY_LIST(LAYER_ALPHA, lll_seg7_dl_070138F8),
                GEO_DISPLAY_LIST(LAYER_ALPHA, lll_seg7_dl_070137C0),
                GEO_DISPLAY_LIST(LAYER_TRANSPARENT, fire_bubble_lava_plane_mesh),
-               GEO_ASM(   0, geo_movtex_pause_control),
-               GEO_ASM(MOVTEX_LLL_LAVA_FLOOR, geo_movtex_draw_nocolor),
                GEO_RENDER_OBJ(),
                GEO_ASM(  12, geo_envfx_main),
             GEO_CLOSE_NODE(),
