@@ -11,12 +11,8 @@
 enum ShadowType {
     SHADOW_CIRCLE_9_VERTS = 0,
     SHADOW_CIRCLE_4_VERTS = 1,
-    SHADOW_CIRCLE_4_VERTS_FLAT_UNUSED = 2,
-    /**
-     * This defines an offset after which rectangular shadows with custom
-     * widths and heights can be defined.
-     */
-    SHADOW_CIRCLE_LUIGI = 98,
+    SHADOW_CIRCLE_4_VERTS_FLAT = 2,
+    SHADOW_CIRCLE_LUIGI = 98, // The 'shade.c' backup shows ID 98 was for Luigi
     SHADOW_CIRCLE_MARIO = 99
 };
 

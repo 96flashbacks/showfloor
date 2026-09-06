@@ -1329,7 +1329,7 @@ const Gfx dl_draw_quad_verts_4567[] = {
 // Used in 'shadow.c'
 
 // The December backup only has one shadow DL, since there are only circle shadows
-const Gfx dl_shadow_circle[] = { // shade_gfx_init
+const Gfx dl_shadow_begin[] = { // shade_gfx_init
     gsDPPipeSync(),
     gsSPClearGeometryMode(G_LIGHTING | G_CULL_BACK),
     gsDPSetCombineMode(G_CC_MODULATEIA, G_CC_MODULATEIA),
