@@ -646,7 +646,7 @@ u32 interact_star(struct MarioState *m, UNUSED u32 interactType, struct Object *
         }
 
         spawn_object(o, MODEL_SPARKLES, bhvCoinSparkles);
-        spawn_object_relative(0, 0, 100, 0, o, MODEL_STAR_DUST, bhvStarDust);
+        spawn_object(o, MODEL_STAR_DUST, bhvStarDust);
 
         o->oInteractStatus = INT_STATUS_INTERACTED;
         m->interactObj = o;

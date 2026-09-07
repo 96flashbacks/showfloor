@@ -1614,7 +1614,9 @@ void init_mario_from_save_file(void) {
     gMarioState->unkB0 = 0xBD;
 
     gHudDisplay.coins = 0;
-    // gHudDisplay.wedges isn't set to 8 so it plays the healing sound after the title screen
+    // 'gHudDisplay.wedges' is set to 0 instead of 8 so it plays the healing sound 
+    // after the title screen or entering a stage through debug level select
+    gHudDisplay.wedges = 0;
 
     gMessageHasBeenRead = 0;
 }

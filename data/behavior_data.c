@@ -304,7 +304,9 @@
     BC_BB(0x36, field), \
     BC_HH(0, value)
 
-// Yajima's objects
+/****************************************************************
+                        Yajima's objects
+****************************************************************/
 const BehaviorScript bhvMrI[] = {
     BEGIN(OBJ_LIST_GENACTOR),
     OR_INT(oFlags, (OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_MOVE_XZ_USING_FVEL | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
@@ -629,6 +631,8 @@ const BehaviorScript bhvWarp[] = {
     END_LOOP(),
 };
 
+// pathcoin.p bhv data
+
 const BehaviorScript bhvOneCoin[] = { // e_coin_ground
     BEGIN(OBJ_LIST_LEVEL),
     SET_INT(oBhvParams2ndByte, 1),
@@ -646,17 +650,13 @@ const BehaviorScript bhvYellowCoin[] = { // e_coin
     END_LOOP(),
 };
 
-const BehaviorScript bhvTemporaryYellowCoin[] = {
-    BEGIN(OBJ_LIST_LEVEL),
-    BILLBOARD(),
-    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
-    CALL_NATIVE(bhv_yellow_coin_init),
-    BEGIN_LOOP(),
-        CALL_NATIVE(bhv_temp_coin_loop),
-    END_LOOP(),
-};
+// Likely no 'e_coin_timeend' (bhvTemporaryYellowCoin) in the demo, since it's only spawned by 
+// Bowser's flames fizzling out, and those flames don't spawn this temporary coin in the demo
 
-const BehaviorScript bhvSingleCoinGetsSpawned[] = {
+// 'e_player_coin_3' (bhvThreeCoinsSpawn) and 'e_player_coin_10' (bhvTenCoinsSpawn) were also
+// removed due to only being used for ! boxes, which are not in the demo
+
+const BehaviorScript bhvSingleCoinGetsSpawned[] = { // e_player_coin
     BEGIN(OBJ_LIST_LEVEL),
     OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
     BILLBOARD(),
@@ -668,6 +668,8 @@ const BehaviorScript bhvSingleCoinGetsSpawned[] = {
     END_LOOP(),
 };
 
+// Maybe the coin sparkle bhv data was just inside 'pathcoin.p'? It has no functions of its own in the demo.
+// Wouldn't change much though, 'pathcoinspark.p' is located right after 'pathcoin.p'
 const BehaviorScript bhvCoinSparkles[] = { // e_coinspark ('bhvGoldenCoinSparkles' in the decomp)
     BEGIN(OBJ_LIST_DEFAULT),
     OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
@@ -1914,7 +1916,9 @@ const BehaviorScript bhvYellowBall[] = {
     BREAK(),
 };
 
-// Nishida's objects
+/****************************************************************
+                        Nishida's objects
+****************************************************************/
 UNUSED static const u64 behavior_data_unused_0 = 0;
 const BehaviorScript bhvMario[] = {
     BEGIN(OBJ_LIST_PLAYER),
@@ -1987,7 +1991,9 @@ const BehaviorScript bhvSwimmingWarp[] = {
 
 UNUSED static const u64 behavior_data_unused_1 = 0;
 
-// Iwamoto's objects
+/****************************************************************
+                        Iwamoto's objects
+****************************************************************/
 // e_move_coin ('bhvMovingYellowCoin' in the decomp)
 const BehaviorScript bhvMovingCoin[] = {
     BEGIN(OBJ_LIST_LEVEL),
@@ -2226,6 +2232,7 @@ const BehaviorScript bhvJetStreamWaterRing[] = {
     END_LOOP(),
 };
 
+// e_kirai
 const BehaviorScript bhvBowserBomb[] = {
     BEGIN(OBJ_LIST_GENACTOR),
     OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
@@ -2238,6 +2245,7 @@ const BehaviorScript bhvBowserBomb[] = {
     END_LOOP(),
 };
 
+// e_kopakirai_fire
 const BehaviorScript bhvBowserBombExplosion[] = {
     BEGIN(OBJ_LIST_DEFAULT),
     OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
@@ -2249,6 +2257,7 @@ const BehaviorScript bhvBowserBombExplosion[] = {
     END_LOOP(),
 };
 
+// e_kopakirai_smoke
 const BehaviorScript bhvBowserBombSmoke[] = {
     BEGIN(OBJ_LIST_DEFAULT),
     OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
@@ -2260,7 +2269,7 @@ const BehaviorScript bhvBowserBombSmoke[] = {
     END_LOOP(),
 };
 
-// e_V_star
+// e_V_star (modified to account for the 2D star)
 const BehaviorScript bhvCelebrationStar[] = {
     BEGIN(OBJ_LIST_LEVEL),
     OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
@@ -2285,11 +2294,12 @@ const BehaviorScript bhvCelebrationStarSparkle[] = {
     END_LOOP(),
 };
 
-// e_V_stardust
+// e_V_stardust (modified to account for the early stardust)
 const BehaviorScript bhvStarDust[] = {
     BEGIN(OBJ_LIST_DEFAULT),
     BILLBOARD(),
     OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    SET_FLOAT(oGraphYOffset, 100), // Offset 100 units up to match the footage
     SET_INT(oAnimState, -1),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_star_dust_loop),
@@ -2361,7 +2371,9 @@ const BehaviorScript bhvAmbientSounds[] = {
     END_LOOP(),
 };
 
-// Iwawaki's objects
+/****************************************************************
+                        Iwawaki's objects
+****************************************************************/
 const BehaviorScript bhvSmallPiranhaFlame[] = {
     BEGIN(OBJ_LIST_GENACTOR),
     OR_INT(oFlags, (OBJ_FLAG_COMPUTE_ANGLE_TO_MARIO | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),

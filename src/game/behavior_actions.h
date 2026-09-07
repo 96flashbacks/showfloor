@@ -36,7 +36,6 @@ void bhv_wf_rotating_wooden_platform_loop(void);
 void bhv_warp_loop(void);
 void bhv_spawned_coin_init(void);
 void bhv_spawned_coin_loop(void);
-void bhv_temp_coin_loop(void);
 void bhv_tumbling_bridge_platform_loop(void);
 void bhv_tumbling_bridge_loop(void);
 void bhv_motos_projectile_spawn_loop(void);

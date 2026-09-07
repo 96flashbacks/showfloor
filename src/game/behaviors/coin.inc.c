@@ -12,7 +12,7 @@ struct ObjectHitbox sYellowCoinHitbox = { // coin_hit
     /* hurtboxHeight:     */ 0,
 };
 
-s32 bhv_coin_sparkles_init(void) {
+static s32 bhv_coin_sparkles_init(void) { // coin_hitcheck
     if (o->oInteractStatus & INT_STATUS_INTERACTED
         && !(o->oInteractStatus & INT_STATUS_TOUCHED_BOB_OMB)) {
         spawn_object(o, MODEL_SPARKLES, bhvCoinSparkles);
@@ -25,7 +25,7 @@ s32 bhv_coin_sparkles_init(void) {
     return FALSE;
 }
 
-void bhv_yellow_coin_init(void) {
+void bhv_yellow_coin_init(void) { // s_coin_init
     cur_obj_set_behavior(bhvYellowCoin);
     obj_set_hitbox(o, &sYellowCoinHitbox);
     bhv_init_room();
@@ -38,20 +38,12 @@ void bhv_yellow_coin_init(void) {
     }
 }
 
-void bhv_yellow_coin_loop(void) {
+void bhv_yellow_coin_loop(void) { // s_coin
     bhv_coin_sparkles_init();
     o->oAnimState++;
 }
 
-void bhv_temp_coin_loop(void) {
-    o->oAnimState++;
-
-    // Removed 'cur_obj_wait_then_blink()' based on 'pathobake.p'
-
-    bhv_coin_sparkles_init();
-}
-
-void bhv_spawned_coin_init(void) {
+void bhv_spawned_coin_init(void) { // s_player_coin_init
     o->oVelY = random_float() * 10.0f + 30.0f + o->oCoinBaseVelY;
     o->oForwardVel = random_float() * 10.0f;
     o->oMoveAngleYaw = random_u16();
@@ -61,7 +53,7 @@ void bhv_spawned_coin_init(void) {
     cur_obj_become_intangible();
 }
 
-void bhv_spawned_coin_loop(void) {
+void bhv_spawned_coin_loop(void) { // s_player_coin
     struct Surface *floor;
 
     cur_obj_update_floor_and_walls();
@@ -91,9 +83,12 @@ void bhv_spawned_coin_loop(void) {
         }
     }
 
-    // Removed 'cur_obj_wait_then_blink()' based on 'pathobake.p' 
+    // Removed 'cur_obj_wait_then_blink()' based on 'pathobakecoin.p' 
 
     bhv_coin_sparkles_init();
 }
 
-// The coin inside Boos seemingly had its own separate file based on 'pathobake.p'
+// The coin inside Boos seemingly had its own separate file based on 'pathobakecoin.p'
+
+// The coin sparkles didn't have their 2 functions (s_coinspark, s_coinspark_make) in the demo.
+// They only spawned once and had no random 30 unit position offset

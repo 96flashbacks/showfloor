@@ -39,7 +39,6 @@ extern const BehaviorScript bhvExitPodiumWarp[];
 extern const BehaviorScript bhvWarp[];
 extern const BehaviorScript bhvOneCoin[];
 extern const BehaviorScript bhvYellowCoin[];
-extern const BehaviorScript bhvTemporaryYellowCoin[];
 extern const BehaviorScript bhvSingleCoinGetsSpawned[];
 extern const BehaviorScript bhvCoinSparkles[];
 extern const BehaviorScript bhvDoorWarp[];

@@ -1,8 +1,8 @@
 // coin_inside_boo.inc.c
 
-// The coin inside Boos seemingly had its own separate file based on 'pathobake.p'
+// The coin inside Boos seemingly had its own separate file based on 'pathobakecoin.p'
 
-void coin_inside_boo_bound(void) {
+static void coin_inside_boo_bound(void) {
     cur_obj_update_floor_and_walls();
     cur_obj_if_hit_wall_bounce_away();
 
@@ -24,7 +24,7 @@ void coin_inside_boo_bound(void) {
     // No blue coin handling or 'cur_obj_wait_then_blink', the coin doesn't despawn from being idle too long
 }
 
-void coin_inside_boo_take(void) {
+static void coin_inside_boo_take(void) {
     s16 playerY;
     f32	playerspeed;
     struct Object *parent = o->parentObj;	/* coin */
@@ -49,7 +49,7 @@ void coin_inside_boo_take(void) {
 }
 
 // Has it's own hitbox rather than reusing the regular coin hitbox (sYellowCoinHitbox)
-struct ObjectHitbox sCoinInsideBooHitbox = { // obakecoin_hit
+static struct ObjectHitbox sCoinInsideBooHitbox = { // obakecoin_hit
     /* interactType:      */ INTERACT_COIN,
     /* downOffset:        */ 0,
     /* damageOrCoinValue: */ 0, // 0 instead of 1 here indicates the damageOrCoinValue multiplier in 'interact_coin' didn't exist
@@ -61,7 +61,7 @@ struct ObjectHitbox sCoinInsideBooHitbox = { // obakecoin_hit
     /* hurtboxHeight:     */ 0,
 };
 
-void (*sCoinInsideBooActions[])(void) = { // obakecoin_modejmp
+static void (*sCoinInsideBooActions[])(void) = { // obakecoin_modejmp
     coin_inside_boo_take,
     coin_inside_boo_bound,
 };
