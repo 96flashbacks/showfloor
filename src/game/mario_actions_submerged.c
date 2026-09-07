@@ -217,10 +217,18 @@ static void update_swimming_yaw(struct MarioState *m, s32 arg) {
 }
 
 static void update_swimming_pitch(struct MarioState *m, s32 arg) {
+    // arg on previous frame (there is probably a better implementation)
+    static s32 prevArg = 0;
+    
     // Targets pitch 0 if Mario is going into idle
     s16 targetPitch = arg == 0 ? -(s16) (252.0f * m->controller->stickY) : 0;
-
     s16 pitchVel;
+
+    // Seen in bad influence s4e14 9:40 - mario snaps to max pitch if swimstop activates beyond 3/4 rotation
+    if (arg == 1 && prevArg == 0) {
+        if (m->faceAngle[0] > 0x3000) m->faceAngle[0] = 0x4000;
+    }
+
     if (m->faceAngle[0] < 0 && arg == 0) {
         pitchVel = 0x100; // Slower velocity only happens if Mario is swimming downwards and isn't going into idle
     } else {
@@ -236,6 +244,8 @@ static void update_swimming_pitch(struct MarioState *m, s32 arg) {
             m->faceAngle[0] = targetPitch;
         }
     }
+
+    prevArg = arg;
 }
 
 static void common_idle_step(struct MarioState *m, s32 animation, s32 arg) {
