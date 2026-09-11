@@ -1,43 +1,44 @@
 // moving_coin.inc.c
 
-static struct ObjectHitbox sMovingYellowCoinHitbox = { // coin_hit
+static struct ObjectHitbox sMovingYellowCoinHitbox = { // coin_hit (modified)
     /* interactType:      */ INTERACT_COIN,
     /* downOffset:        */ 0,
-    /* damageOrCoinValue: */ 0, // likely 0 instead of 1 based on 'obakecoin_hit'
+    /* damageOrCoinValue: */ 0, // Likely 0 instead of 1 based on 'obakecoin_hit'
     /* health:            */ 0,
     /* numLootCoins:      */ 0,
-    /* radius:            */ 32,
+    /* radius:            */ 32, // Smaller radius (100 in the final game)
     /* height:            */ 64,
     /* hurtboxRadius:     */ 0,
     /* hurtboxHeight:     */ 0,
 };
 
-s32 coin_step(s16 *collisionFlagsPtr) {
+static s32 coin_step(s16 *collisionFlagsPtr) { // CoinBound (modified)
     *collisionFlagsPtr = object_step();
 
     obj_check_floor_death(*collisionFlagsPtr, sObjFloor);
 
     if ((*collisionFlagsPtr & OBJ_COL_FLAG_GROUNDED)
         && !(*collisionFlagsPtr & OBJ_COL_FLAG_NO_Y_VEL)) {
+        // No sound when bouncing
         return TRUE;
     }
 
     return FALSE;
 }
 
-void moving_coin_flicker(void) {
+static void moving_coin_flicker(void) { // RemoveCoin
     s16 collisionFlags;
 
     coin_step(&collisionFlags);
     obj_flicker_and_disappear(o, 0);
 }
 
-void coin_collected(void) {
+static void coin_collected(void) { // RemoveCoinCatch
     spawn_object(o, MODEL_SPARKLES, bhvCoinSparkles);
     o->activeFlags = ACTIVE_FLAG_DEACTIVATED;
 }
 
-void bhv_moving_coin_init(void) {
+void bhv_moving_coin_init(void) { // s_move_coin_init
     o->oGravity = 3.0f;
     o->oFriction = 1.0f;
     o->oBuoyancy = 1.5f;
@@ -45,7 +46,7 @@ void bhv_moving_coin_init(void) {
     obj_set_hitbox(o, &sMovingYellowCoinHitbox);
 }
 
-void bhv_moving_coin_loop(void) {
+void bhv_moving_coin_loop(void) { // s_move_coin_event
     s16 collisionFlags;
 
     switch (o->oAction) {
@@ -82,19 +83,19 @@ void bhv_moving_coin_loop(void) {
     }
 }
 
-static struct ObjectHitbox sMovingSliderCoinHitbox = { // escapecoin_hit
+static struct ObjectHitbox sMovingSliderCoinHitbox = { // escapecoin_hit    
     /* interactType:      */ INTERACT_COIN,
     /* downOffset:        */ 0,
-    /* damageOrCoinValue: */ 0, // likely 0 instead of 1 based on 'obakecoin_hit'
+    /* damageOrCoinValue: */ 0, // Likely 0 instead of 1 based on 'obakecoin_hit'
     /* health:            */ 0,
     /* numLootCoins:      */ 0,
-    /* radius:            */ 32,
+    /* radius:            */ 32, // Smaller radius (100 in the final game)
     /* height:            */ 64,
     /* hurtboxRadius:     */ 0,
     /* hurtboxHeight:     */ 0,
 };
 
-void bhv_slider_coin_init(void) {
+void bhv_slider_coin_init(void) { // s_slider_coin_init
     o->oGravity = 5.0f;
     o->oFriction = 1.0f;
     o->oBuoyancy = 1.5f;
@@ -102,11 +103,12 @@ void bhv_slider_coin_init(void) {
     obj_set_hitbox(o, &sMovingSliderCoinHitbox);
 }
 
-void bhv_slider_coin_loop(void) {
+void bhv_slider_coin_loop(void) { // s_slider_coin_event (modified)
     s16 collisionFlags;
 
     switch (o->oAction) {
         case SLD_COIN_ACT_STILL:
+            // Slider coins start moving much sooner than the final game
             if (is_point_within_radius_of_mario(o->oPosX, o->oPosY, o->oPosZ, 4000)) {
                 o->oAction = SLD_COIN_ACT_MOVING;
             }
@@ -117,6 +119,7 @@ void bhv_slider_coin_loop(void) {
 
             if (collisionFlags & OBJ_COL_FLAG_GROUNDED) {
                 o->oForwardVel += 25.0f;
+                // No sound when bouncing
             } else {
                 o->oForwardVel *= 0.98;
             }

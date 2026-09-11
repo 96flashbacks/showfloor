@@ -377,6 +377,17 @@
     #define BOWSER_PUZZLE_ACT_WAIT_FOR_COMPLETE 1
     #define BOWSER_PUZZLE_ACT_DONE              2
 
+/* Whomp */
+    /* oAction */
+    #define WHOMP_ACT_INIT              0
+    #define WHOMP_ACT_PATROL            1
+    #define WHOMP_ACT_PREPARE_JUMP      2
+    #define WHOMP_ACT_JUMP              3
+    #define WHOMP_ACT_LAND              4
+    #define WHOMP_ACT_ON_GROUND_GENERAL 5
+    #define WHOMP_ACT_TURN              6
+    #define WHOMP_ACT_DIE               7
+
 /* WF Rotating Wooden Platform */
     /* oAction */
     #define WF_ROTATING_WOODEN_PLATFORM_ACT_IDLE     0

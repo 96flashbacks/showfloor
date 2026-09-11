@@ -34,6 +34,8 @@
 #include "seq_ids.h"
 #include "spawn_sound.h"
 
+// This file contains all the objects programmed by Toshio Iwawaki
+
 #define POS_OP_SAVE_POSITION 0
 #define POS_OP_COMPUTE_VELOCITY 1
 #define POS_OP_RESTORE_POSITION 2
@@ -41,17 +43,9 @@
 #define o gCurrentObject
 
 /* BSS (declared to force order) */
-extern s32 sNumActiveFirePiranhaPlants;
-extern s32 sNumKilledFirePiranhaPlants;
 extern f32 sObjSavedPosX;
 extern f32 sObjSavedPosY;
 extern f32 sObjSavedPosZ;
-extern struct Object *sMasterTreadmill;
-
-/**
- * The treadmill that plays sounds and controls the others on random setting.
- */
-struct Object *sMasterTreadmill;
 
 f32 sObjSavedPosX;
 f32 sObjSavedPosY;
@@ -60,18 +54,6 @@ f32 sObjSavedPosZ;
 static void obj_compute_vel_from_move_pitch(f32 speed) {
     o->oForwardVel = speed * coss(o->oMoveAnglePitch);
     o->oVelY = speed * -sins(o->oMoveAnglePitch);
-}
-
-static s32 clamp_s16(s16 *value, s16 minimum, s16 maximum) {
-    if (*value <= minimum) {
-        *value = minimum;
-    } else if (*value >= maximum) {
-        *value = maximum;
-    } else {
-        return FALSE;
-    }
-
-    return TRUE;
 }
 
 static s32 approach_f32_ptr(f32 *px, f32 target, f32 delta) {
@@ -86,16 +68,6 @@ static s32 approach_f32_ptr(f32 *px, f32 target, f32 delta) {
         return TRUE;
     }
     return FALSE;
-}
-
-static s16 obj_turn_pitch_toward_mario(f32 targetOffsetY, s16 turnAmount) {
-    s16 targetPitch;
-
-    o->oPosY -= targetOffsetY;
-    targetPitch = obj_turn_toward_object(o, gMarioObject, O_MOVE_ANGLE_PITCH_INDEX, turnAmount);
-    o->oPosY += targetOffsetY;
-
-    return targetPitch;
 }
 
 static s32 obj_move_pitch_approach(s16 target, s16 delta) {
@@ -116,12 +88,6 @@ static s32 obj_face_roll_approach(s16 targetRoll, s16 deltaRoll) {
     }
 
     return FALSE;
-}
-
-static void obj_roll_to_match_yaw_turn(s16 targetYaw, s16 maxRoll, s16 rollSpeed) {
-    s16 targetRoll = o->oMoveAngleYaw - targetYaw;
-    clamp_s16(&targetRoll, -maxRoll, maxRoll);
-    obj_face_roll_approach(targetRoll, rollSpeed);
 }
 
 static s16 random_linear_offset(s16 base, s16 range) {
@@ -194,38 +160,4 @@ static s32 obj_check_attacks(struct ObjectHitbox *hitbox, s32 attackedMarioActio
     return 0;
 }
 
-/**
- * Used by bowser, fly guy, piranha plant, and fire spitters.
- */
-void obj_spit_fire(s16 relativePosX, s16 relativePosY, s16 relativePosZ, f32 scale, s32 model,
-                   f32 startSpeed, f32 endSpeed, s16 movePitch) {
-    struct Object *obj = spawn_object_relative_with_scale(1, relativePosX, relativePosY, relativePosZ,
-                                                          scale, o, model, bhvSmallPiranhaFlame);
-
-    if (obj != NULL) {
-        obj->oSmallPiranhaFlameStartSpeed = startSpeed;
-        obj->oSmallPiranhaFlameEndSpeed = endSpeed;
-        obj->oSmallPiranhaFlameModel = model;
-        obj->oMoveAnglePitch = movePitch;
-    }
-}
-
-struct ObjectHitbox sPiranhaPlantFireHitbox = {
-    /* interactType:      */ INTERACT_FLAME,
-    /* downOffset:        */ 10,
-    /* damageOrCoinValue: */ 0,
-    /* health:            */ 0,
-    /* numLootCoins:      */ 0,
-    /* radius:            */ 10,
-    /* height:            */ 20,
-    /* hurtboxRadius:     */ 10,
-    /* hurtboxHeight:     */ 20,
-};
-
-#include "behaviors/flame.inc.c"
-
-void obj_set_speed_to_zero(void) {
-    o->oForwardVel = o->oVelY = 0.0f;
-}
-
-#include "behaviors/triplet_butterfly.inc.c"
+#include "behaviors/triplet_butterfly.inc.c" // pathfly.c

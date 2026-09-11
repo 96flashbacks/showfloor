@@ -269,7 +269,7 @@ void bhv_big_bully_with_minions_loop(void) {
 
         case BULLY_ACT_INACTIVE:
             if (o->oBullyKBTimerAndMinionKOCounter == 3) {
-                spawn_default_star(3850.0f, 323.0f, -5600.0f);
+                spawn_object_abs_with_rot(o, 0, MODEL_STAR, bhvStar, 3850, 323, -5600, 0, 0, 0);
                 o->activeFlags = 0;
             }
             break;

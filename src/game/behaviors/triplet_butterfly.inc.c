@@ -47,7 +47,7 @@ static void triplet_butterfly_act_wander(void) {
     }
 }
 
-void bhv_triplet_butterfly_update(void) {
+void bhv_triplet_butterfly_update(void) { // s_fly
     cur_obj_update_floor_and_walls();
 
     switch (o->oAction) {

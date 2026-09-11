@@ -1,6 +1,6 @@
 // thwomp.inc.c
 
-void thwomp_act_idle_at_bottom(void) { // dosun_wait
+static void thwomp_act_idle_at_bottom(void) { // dosun_wait
     if (o->oTimer == 0) {
         o->oThwompRandomTimer = random_float() * 10.0f + 20.0f; // [20, 29]
     }
@@ -9,7 +9,7 @@ void thwomp_act_idle_at_bottom(void) { // dosun_wait
     }
 }
 
-void thwomp_act_lower(void) { // dosun_down
+static void thwomp_act_lower(void) { // dosun_down
     o->oVelY += -4.0f;
     o->oPosY += o->oVelY;
     if (o->oPosY < o->oHomeY) {
@@ -19,7 +19,7 @@ void thwomp_act_lower(void) { // dosun_down
     }
 }
 
-void thwomp_act_land(void) { // dosun_downend (modified)
+static void thwomp_act_land(void) { // dosun_downend (modified)
     if (o->oTimer == 0) {
         if (o->oDistanceToMario < 1500.0f) {
             cur_obj_shake_screen(SHAKE_POS_SMALL);
@@ -37,7 +37,7 @@ void thwomp_act_land(void) { // dosun_downend (modified)
     }
 }
 
-void thwomp_act_idle_at_top(void) { // dosun_stop
+static void thwomp_act_idle_at_top(void) { // dosun_stop
     if (o->oTimer == 0) {
         o->oThwompRandomTimer = random_float() * 30.0f + 10.0f; // [10, 39]
     }
@@ -46,7 +46,7 @@ void thwomp_act_idle_at_top(void) { // dosun_stop
     }
 }
 
-void thwomp_act_raise(void) { // dosun_up
+static void thwomp_act_raise(void) { // dosun_up
     if (o->oTimer > o->oBhvParams2ndByte + 40) {
         o->oAction = THWOMP_ACT_IDLE_AT_TOP;
         o->oPosY += 5.0f;
@@ -55,7 +55,7 @@ void thwomp_act_raise(void) { // dosun_up
     }
 }
 
-void (*sThwompActions[])(void) = { // dosun_modejmp
+static void (*sThwompActions[])(void) = { // dosun_modejmp
     thwomp_act_raise,
     thwomp_act_idle_at_top,
     thwomp_act_lower,

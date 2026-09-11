@@ -2,7 +2,7 @@
 
 // this is actually the MrI particle loop function. piranha
 // plant code later on reuses this function.
-void bhv_piranha_particle_loop(void) {
+void bhv_piranha_particle_loop(void) { // s_balloon_gomi
     if (o->oTimer == 0) {
         o->oVelY = 20.0f + 20.0f * random_float();
         o->oForwardVel = 20.0f + 20.0f * random_float();
@@ -11,7 +11,7 @@ void bhv_piranha_particle_loop(void) {
     cur_obj_move_using_fvel_and_gravity();
 }
 
-void mr_i_piranha_particle_act_0(void) {
+static void mr_i_piranha_particle_act_0(void) { // balloonfire_1
     cur_obj_scale(3.0f);
     o->oForwardVel = 20.0f;
     cur_obj_update_floor_and_walls();
@@ -24,7 +24,7 @@ void mr_i_piranha_particle_act_0(void) {
     }
 }
 
-void mr_i_piranha_particle_act_1(void) {
+static void mr_i_piranha_particle_act_1(void) { // balloonfire_2
     s32 i;
     obj_mark_for_deletion(o);
     for (i = 0; i < 10; i++) {
@@ -32,16 +32,16 @@ void mr_i_piranha_particle_act_1(void) {
     }
 }
 
-void (*sMrIParticleActions[])(void) = {
+static void (*sMrIParticleActions[])(void) = { // balloonfire_modejmp
     mr_i_piranha_particle_act_0,
     mr_i_piranha_particle_act_1,
 };
 
-void bhv_mr_i_particle_loop(void) {
+void bhv_mr_i_particle_loop(void) { // s_balloon_fire
     cur_obj_call_action_function(sMrIParticleActions);
 }
 
-void spawn_mr_i_particle(void) {
+static void spawn_mr_i_particle(void) { // balloon_makefire
     struct Object *particle;
     f32 sp18 = o->header.gfx.scale[1];
 
@@ -53,7 +53,7 @@ void spawn_mr_i_particle(void) {
     cur_obj_play_sound_2(SOUND_OBJ_MRI_SHOOT);
 }
 
-void bhv_mr_i_body_loop(void) {
+void bhv_mr_i_body_loop(void) { // s_balloon_eye
     obj_copy_pos_and_angle(o, o->parentObj);
 
     if (!(o->activeFlags & ACTIVE_FLAG_IN_DIFFERENT_ROOM)) {
@@ -79,7 +79,7 @@ void bhv_mr_i_body_loop(void) {
     }
 }
 
-void mr_i_act_3(void) {
+static void mr_i_act_3(void) { // balloon_eyedamage (modified)
     s16 sp36;
     s16 sp34;
     f32 sp30;
@@ -88,11 +88,8 @@ void mr_i_act_3(void) {
     f32 sp20;
     f32 sp1C;
 
-    if (o->oBhvParams2ndByte != 0) {
-        sp1C = 2.0f;
-    } else {
-        sp1C = 1.0f;
-    }
+    // Removed Big Mr. I handling
+    sp1C = 1.0f;
 
     if (o->oMrIUnk100 < 0) {
         sp34 = 0x1000;
@@ -126,13 +123,8 @@ void mr_i_act_3(void) {
         if (o->oTimer == 104) {
             cur_obj_become_intangible();
             o->oMrIScale = sp1C * 0.6;
-            if (o->oBhvParams2ndByte != 0) {
-                o->oPosY += 100.0f;
-                spawn_default_star(1370, 2000.0f, -320.0f);
-                obj_mark_for_deletion(o);
-            } else {
-                obj_spawn_loot_yellow_coins(o, 1, 20.0f);
-            }
+            // Removed Big Mr. I handling
+            obj_spawn_loot_yellow_coins(o, 1, 20.0f);
         }
 
         o->oMrIScale -= 0.2 * sp1C;
@@ -146,6 +138,8 @@ void mr_i_act_3(void) {
         obj_mark_for_deletion(o);
     }
 
+    // Commented out code from 'pathbaloon.p' that makes the Mr. I
+    // reset if Mario gets over 2000 units away from him while he's dying
     if (o->oDistanceToMario > 2000.0f) {
         o->oAction = 1;
         o->oMoveAngleYaw = 0;
@@ -154,16 +148,12 @@ void mr_i_act_3(void) {
     }
 }
 
-void mr_i_act_2(void) {
+static void mr_i_act_2(void) { // balloon_playereye
     s16 sp1E = o->oMoveAngleYaw;
     s16 sp1C;
 
     if (o->oTimer == 0) {
-        if (o->oBhvParams2ndByte != 0) {
-            o->oMrIUnkF4 = 200;
-        } else {
-            o->oMrIUnkF4 = 120;
-        }
+        o->oMrIUnkF4 = 120;
         o->oMrIUnkFC = 0;
         o->oMrIUnk100 = 0;
         o->oMrIUnk104 = 0;
@@ -228,7 +218,7 @@ void mr_i_act_2(void) {
     }
 }
 
-void mr_i_act_1(void) {
+static void mr_i_act_1(void) { // balloon_roll
     s16 sp1E = obj_angle_to_object(o, gMarioObject);
     s16 sp1C = abs_angle_diff(o->oMoveAngleYaw, sp1E);
     s16 sp1A = abs_angle_diff(o->oMoveAngleYaw, gMarioObject->oFaceAngleYaw);
@@ -267,7 +257,7 @@ void mr_i_act_1(void) {
     }
 }
 
-void mr_i_act_0(void) {
+static void mr_i_act_0(void) { // balloon_init
     o->oMoveAnglePitch = 0;
     o->oMoveAngleYaw = 0;
     o->oMoveAngleRoll = 0;
@@ -282,14 +272,14 @@ void mr_i_act_0(void) {
     }
 }
 
-void (*sMrIActions[])(void) = {
+static void (*sMrIActions[])(void) = { // balloon_modejmp
     mr_i_act_0,
     mr_i_act_1,
     mr_i_act_2,
     mr_i_act_3,
 };
 
-struct ObjectHitbox sMrIHitbox = {
+static struct ObjectHitbox sMrIHitbox = { // balloon_hit
     /* interactType:      */ INTERACT_DAMAGE,
     /* downOffset:        */ 0,
     /* damageOrCoinValue: */ 2,
@@ -301,7 +291,7 @@ struct ObjectHitbox sMrIHitbox = {
     /* hurtboxHeight:     */ 0,
 };
 
-void bhv_mr_i_loop(void) {
+void bhv_mr_i_loop(void) { // s_balloon 
     obj_set_hitbox(o, &sMrIHitbox);
     cur_obj_call_action_function(sMrIActions);
 

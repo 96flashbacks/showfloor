@@ -2,7 +2,7 @@
 
 // The coin inside Boos seemingly had its own separate file based on 'pathobakecoin.p'
 
-static void coin_inside_boo_bound(void) {
+static void coin_inside_boo_bound(void) { // (modified)
     cur_obj_update_floor_and_walls();
     cur_obj_if_hit_wall_bounce_away();
 

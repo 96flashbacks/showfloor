@@ -65,7 +65,7 @@ static void boo_approach_target_opacity_and_update_scale(void) { // oba_effect
 }
 
 // Missing 'attackStatus' ('ignoreOpacity' in the decomp)
-static void boo_oscillate(void) { // oba_animation_scale
+static void boo_oscillate(void) { // oba_animation_scale (modified)
     o->oFaceAnglePitch = sins(o->oBooOscillationTimer) * 0x400;
 
     if (o->oOpacity == 255) {

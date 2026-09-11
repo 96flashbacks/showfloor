@@ -371,7 +371,6 @@ s32 act_spawn_spin_airborne(struct MarioState *m) {
         set_mario_animation(m, MARIO_ANIM_GENERAL_FALL);
     }
 
-    spawn_sparkle_particles(4, 16, 1, 2);
     spawn_object(m->marioObj, MODEL_SPARKLES, bhvSparkleSpawn);
     m->particleFlags |= PARTICLE_SPARKLES;
     return FALSE;

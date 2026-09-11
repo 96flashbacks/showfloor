@@ -1,6 +1,6 @@
 // water_ring.inc.c
 
-f32 water_ring_calc_mario_dist(void) {
+static f32 water_ring_calc_mario_dist(void) { // ring_inter
     f32 marioDistX = o->oPosX - gMarioObject->header.gfx.pos[0];
     f32 marioDistY = o->oPosY - (gMarioObject->header.gfx.pos[1] + 80.0f);
     f32 marioDistZ = o->oPosZ - gMarioObject->header.gfx.pos[2];
@@ -10,11 +10,11 @@ f32 water_ring_calc_mario_dist(void) {
     return marioDistInFront;
 }
 
-void water_ring_init(void) {
+static void water_ring_init(void) { // ring_main_init
     cur_obj_init_animation(0);
-    o->oWaterRingScalePhaseX = (s32) (random_float() * 4096.0f) + 0x1000;
-    o->oWaterRingScalePhaseY = (s32) (random_float() * 4096.0f) + 0x1000;
-    o->oWaterRingScalePhaseZ = (s32) (random_float() * 4096.0f) + 0x1000;
+    o->oWaterRingScalePhaseX = (s32)(random_float() * 4096.0f) + 0x1000;
+    o->oWaterRingScalePhaseY = (s32)(random_float() * 4096.0f) + 0x1000;
+    o->oWaterRingScalePhaseZ = (s32)(random_float() * 4096.0f) + 0x1000;
 
     //! This normal calculation assumes a facing yaw of 0, which is not the case
     //  for the manta ray rings. It also errs by multiplying the normal X by -1.
@@ -34,14 +34,14 @@ void water_ring_init(void) {
     // o->oFaceAngleRoll *= -1;
 }
 
-void bhv_jet_stream_water_ring_init(void) {
+void bhv_jet_stream_water_ring_init(void) { // s_ring_init
     water_ring_init();
     o->oOpacity = 70;
     cur_obj_init_animation(0);
     o->oFaceAnglePitch = 0x8000;
 }
 
-void water_ring_check_collection(f32 avgScale, struct Object *ringManager) {
+static void water_ring_check_collection(f32 avgScale, struct Object *ringManager) { // RingPlayerCheck (modified)
     f32 marioDistInFront = water_ring_calc_mario_dist();
 
     if (!is_point_close_to_object(o, gMarioObject->header.gfx.pos[0],
@@ -58,6 +58,7 @@ void water_ring_check_collection(f32 avgScale, struct Object *ringManager) {
             if ((o->oWaterRingIndex == ringManager->oWaterRingMgrLastRingCollected + 1)
                 || (ringSpawner->oWaterRingSpawnerRingsCollected == 0)) {
                 ringSpawner->oWaterRingSpawnerRingsCollected++;
+                // No numbers spawning or sound effects
                 ringManager->oWaterRingMgrLastRingCollected = o->oWaterRingIndex;
             } else {
                 ringSpawner->oWaterRingSpawnerRingsCollected = 0;
@@ -70,7 +71,7 @@ void water_ring_check_collection(f32 avgScale, struct Object *ringManager) {
     o->oWaterRingMarioDistInFront = marioDistInFront;
 }
 
-void water_ring_set_scale(f32 avgScale) {
+static void water_ring_set_scale(f32 avgScale) { // RingScaling
     o->header.gfx.scale[0] = sins(o->oWaterRingScalePhaseX) * 0.1 + avgScale;
     o->header.gfx.scale[1] = sins(o->oWaterRingScalePhaseY) * 0.5 + avgScale;
     o->header.gfx.scale[2] = sins(o->oWaterRingScalePhaseZ) * 0.1 + avgScale;
@@ -79,7 +80,7 @@ void water_ring_set_scale(f32 avgScale) {
     o->oWaterRingScalePhaseZ += 0x1700;
 }
 
-void water_ring_act_collected(void) {
+static void water_ring_act_collected(void) { // RingRemove
     f32 avgScale = (f32) o->oTimer * 0.2 + o->oWaterRingAvgScale;
 
     if (o->oTimer > 20) {
@@ -94,7 +95,7 @@ void water_ring_act_collected(void) {
     water_ring_set_scale(avgScale);
 }
 
-void water_ring_act_not_collected(void) {
+void water_ring_act_not_collected(void) { // RingEvent
     f32 avgScale = (f32) o->oTimer / 225.0 * 3.0 + 0.5;
 
     //! In this case ringSpawner and ringManager are the same object,
@@ -124,7 +125,7 @@ void water_ring_act_not_collected(void) {
     o->oWaterRingAvgScale = avgScale;
 }
 
-void bhv_jet_stream_water_ring_loop(void) {
+void bhv_jet_stream_water_ring_loop(void) { // s_ring_event
     switch (o->oAction) {
         case WATER_RING_ACT_NOT_COLLECTED:
             water_ring_act_not_collected();
@@ -136,7 +137,7 @@ void bhv_jet_stream_water_ring_loop(void) {
     }
 }
 
-void water_ring_spawner_act_inactive(void) {
+void water_ring_spawner_act_inactive(void) { // oya_ring_make
     //! The Jet Stream Ring Spawner is its own parent object. The code may have been copied
     //  from the Manta Ray, which spawns rings but also has a Ring Manager object as its
     //  parent. The Jet Stream Ring Spawner functions as both a spawner and a Ring Manager.
@@ -160,13 +161,14 @@ void water_ring_spawner_act_inactive(void) {
     }
 }
 
-void bhv_jet_stream_ring_spawner_loop(void) {
+void bhv_jet_stream_ring_spawner_loop(void) { // s_ring_main (modified)
     switch (o->oAction) {
         case JS_RING_SPAWNER_ACT_ACTIVE:
             water_ring_spawner_act_inactive();
 
             if (o->oWaterRingSpawnerRingsCollected == 5) {
-                spawn_default_star(3400.0f, -3200.0f, -500.0f);
+                // No mist particles and spawns the star directly
+                spawn_object_abs_with_rot(o, 0, MODEL_STAR, bhvStar, 3400, -3200, -500, 0, 0, 0);
                 o->oAction = JS_RING_SPAWNER_ACT_INACTIVE;
             }
             break;
@@ -175,3 +177,5 @@ void bhv_jet_stream_ring_spawner_loop(void) {
             break;
     }
 }
+
+// No manta ray water rings

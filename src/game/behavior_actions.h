@@ -1,78 +1,102 @@
 #ifndef BEHAVIOR_ACTIONS_H
 #define BEHAVIOR_ACTIONS_H
 
-void bhv_spawn_star_no_level_exit(u32);
+// Yajima iQue source equivalents in the comments above the functions
 
-void vec3f_copy_2(Vec3f dest, Vec3f src);
-void play_penguin_walking_sound(s32 walk);
-
-void bhv_thwomp_loop(void);
-void bhv_door_init(void);
-void bhv_door_loop(void);
+// pathballoon.p
 void bhv_mr_i_loop(void);
 void bhv_mr_i_body_loop(void);
 void bhv_mr_i_particle_loop(void);
 void bhv_piranha_particle_loop(void);
+// pathbar.p
 void bhv_giant_pole_loop(void);
 void bhv_pole_init(void);
-void bhv_pole_base_loop(void);
+// pathbox.p
 void bhv_beta_chest_bottom_init(void);
 void bhv_beta_chest_bottom_loop(void);
 void bhv_beta_chest_lid_loop(void);
+// pathbubble.p
 void bhv_bubble_wave_init(void);
 void bhv_bubble_maybe_loop(void);
+void bhv_small_water_wave_loop(void);
 void bhv_water_air_bubble_init(void);
 void bhv_water_air_bubble_loop(void);
+// pathbubblejet.p
 void bhv_particle_init(void);
 void bhv_particle_loop(void);
 void bhv_water_waves_init(void);
 void bhv_small_bubbles_loop(void);
 void bhv_fish_group_loop(void);
+// pathcannon.p
 void bhv_cannon_base_loop(void);
 void bhv_cannon_barrel_loop(void);
 void bhv_cannon_burn_smoke_loop(void);
+// pathcastleobj.p
 void bhv_rotating_platform_loop(void);
 void bhv_wf_rotating_wooden_platform_loop(void);
+// pathchimney.p
 void bhv_warp_loop(void);
+// Exact placement of 2D star is unknown, the placement here is based on 'pathclearstar.p'
+void bhv_star_init(void);
+void bhv_star_loop(void);
+// pathcoin.p
+void bhv_yellow_coin_init(void);
+void bhv_yellow_coin_loop(void);
 void bhv_spawned_coin_init(void);
 void bhv_spawned_coin_loop(void);
+// pathdoor.p
+void bhv_door_init(void);
+void bhv_door_loop(void);
+// pathdosun.p
+void bhv_thwomp_loop(void);
+// pathdownbar.p
 void bhv_tumbling_bridge_platform_loop(void);
 void bhv_tumbling_bridge_loop(void);
+// pathenemyfire.p
 void bhv_motos_projectile_spawn_loop(void);
+// pathfire.p
 void bhv_beta_moving_flames_spawn_loop(void);
 void bhv_beta_moving_flames_loop(void);
+// pathfirebar.p
 void bhv_flamethrower_loop(void);
 void bhv_flamethrower_flame_loop(void);
 void bhv_bouncing_fireball_loop(void);
 void bhv_bouncing_fireball_flame_loop(void);
+// pathfiresmoke.p
 void bhv_flame_mario_loop(void);
 void bhv_black_smoke_mario_loop(void);
-void bhv_black_smoke_bowser_loop(void);
-void bhv_black_smoke_upward_loop(void);
+// pathgoalbar.p
 void bhv_tower_platform_group_loop(void);
 void bhv_wf_sliding_tower_platform_loop(void);
 void bhv_wf_elevator_tower_platform_loop(void);
 void bhv_wf_solid_tower_platform_loop(void);
+// pathgrass.p
 void bhv_snow_leaf_particle_spawn_init(void);
 void bhv_tree_snow_or_leaf_loop(void);
+// pathhanapoo.p
 void bhv_piranha_plant_bubble_loop(void);
 void bhv_piranha_plant_waking_bubbles_loop(void);
-void bhv_init_room(void);
-void bhv_small_water_wave_loop(void);
+// 'pathhitmario.p'
+Gfx *geo_move_mario_part_from_parent(s32 run, UNUSED struct GraphNode *node, Mat4 mtx);
+// pathjumpbg.p
 void bhv_beta_trampoline_top_loop(void);
 void bhv_beta_trampoline_spring_loop(void);
-void bhv_yellow_coin_init(void);
-void bhv_yellow_coin_loop(void);
+// pathkey.p
 void bhv_key_inside_boo_loop(void);
 void bhv_small_key_loop(void);
+// pathkiller.p
 void bhv_bullet_bill_init(void);
 void bhv_bullet_bill_loop(void);
 void bhv_white_puff_smoke_init(void);
+// pathkopa.p
 void bhv_bowser_tail_anchor_loop(void);
 void bhv_bowser_init(void);
 void bhv_bowser_loop(void);
 void bhv_bowser_body_anchor_loop(void);
 void bhv_bowser_flame_spawn_loop(void);
+Gfx *geo_update_body_rot_from_parent(s32 run, UNUSED struct GraphNode *node, Mat4 mtx);
+Gfx *geo_switch_bowser_eyes(s32 run, struct GraphNode *node, UNUSED Mat4 *mtx);
+// pathkopafire.p
 void bhv_blue_bowser_flame_init(void);
 void bhv_blue_bowser_flame_loop(void);
 void bhv_flame_floating_landing_init(void);
@@ -85,9 +109,13 @@ void bhv_flame_moving_forward_growing_loop(void);
 void bhv_flame_bowser_init(void);
 void bhv_flame_bowser_loop(void);
 void bhv_flame_large_burning_out_init(void);
+// pathloopfish.p
 void bhv_blue_fish_movement_loop(void);
+// pathmotos.p
+Gfx *MotosProc1(s32 callContext, UNUSED struct GraphNode *node, Mat4 mtx);
 void bhv_motos_loop(void);
 void bhv_motos_hand_loop(void);
+// pathmotosobj.p
 void bhv_lll_moving_octagonal_mesh_platform_loop(void);
 void bhv_lll_rotating_block_fire_bars_loop(void);
 void bhv_lll_rotating_hex_flame_loop(void);
@@ -99,100 +127,64 @@ void bhv_lll_sinking_rectangular_platform_loop(void);
 void bhv_lll_sinking_square_platforms_loop(void);
 void bhv_platform_normals_init(void);
 void bhv_tilting_inverted_pyramid_loop(void);
+// pathobake.p
 void bhv_courtyard_boo_triplet_init(void);
 void bhv_boo_loop(void);
+// pathobakecoin.p
 void bhv_coin_inside_boo_loop(void);
+// pathpakun.p
 s32 mario_moving_fast_enough_to_make_piranha_plant_bite(void);
 void bhv_piranha_plant_loop(void);
+// pathpazzule.p
 void bhv_lll_bowser_puzzle_piece_loop(void);
 void bhv_lll_bowser_puzzle_loop(void);
+// pathping.p
+void play_penguin_walking_sound(s32 walk);
 void bhv_tuxies_mother_loop(void);
 void bhv_small_penguin_loop(void);
+Gfx *geo_switch_tuxie_mother_eyes(s32 run, struct GraphNode *node, UNUSED Mat4 *mtx);
+// pathpirania.p
 void bhv_fish_spawner_loop(void);
 void bhv_fish_loop(void);
+// pathpuku.p
 void bhv_bub_spawner_loop(void);
 void bhv_bub_loop(void);
+// pathremovesound.p
 void bhv_sound_spawner_init(void);
+// pathshark.p
 void bhv_sushi_shark_loop(void);
 void bhv_sushi_shark_collision_loop(void);
+// pathsmoke.p
 void bhv_white_puff_1_loop(void);
+// pathtest.p
 void bhv_test_player_fire_loop(void);
-void bhv_static_checkered_platform_loop(void);
+// pathtrap.p
 void bhv_castle_floor_trap_init(void);
 void bhv_castle_floor_trap_loop(void);
 void bhv_floor_trap_in_castle_loop(void);
+// pathtree.p
+void bhv_pole_base_loop(void);
+// pathtwinkle.p
 void bhv_sparkle_spawn_loop(void);
+// pathunbaba.p (not in the final game)
 void bhv_blargg_loop(void);
+// pathwallman.p
 void bhv_whomp_loop(void);
-void bhv_beta_fish_splash_spawner_loop(void);
-void bhv_shallow_water_splash_init(void);
+// pathwater.p
 void bhv_shallow_water_wave_init(void);
-void bhv_water_droplet_splash_init(void);
+void bhv_shallow_water_splash_init(void);
 void bhv_water_droplet_loop(void);
+void bhv_water_droplet_splash_init(void);
+void bhv_beta_fish_splash_spawner_loop(void);
+// pathwaterdive.p
 void bhv_water_splash_spawn_droplets(void);
+// pathwaterripple.p
 void bhv_bubble_splash_init(void);
 void bhv_idle_water_wave_loop(void);
+// pathwaterwave.p
 void bhv_wave_trail_shrink(void);
-void bhv_moving_coin_init(void);
-void bhv_moving_coin_loop(void);
-void bhv_slider_coin_init(void);
-void bhv_slider_coin_loop(void);
-void bhv_jet_stream_loop(void);
-void bhv_hoot_init(void);
-void bhv_hoot_loop(void);
-void bhv_beta_holdable_object_init(void);
-void bhv_beta_holdable_object_loop(void);
-void bhv_object_bubble_init(void);
-void bhv_object_bubble_loop(void);
-void bhv_object_water_wave_init(void);
-void bhv_object_water_wave_loop(void);
-void bhv_explosion_init(void);
-void bhv_explosion_loop(void);
-void bhv_bobomb_bully_death_smoke_init(void);
-void bhv_bobomb_explosion_bubble_init(void);
-void bhv_bobomb_explosion_bubble_loop(void);
-void bhv_small_bully_init(void);
-void bhv_bully_loop(void);
-void bhv_big_bully_init(void);
-void bhv_big_bully_with_minions_init(void);
-void bhv_big_bully_with_minions_loop(void);
-void bhv_jet_stream_ring_spawner_loop(void);
-void bhv_jet_stream_water_ring_init(void);
-void bhv_jet_stream_water_ring_loop(void);
-void bhv_bowser_bomb_loop(void);
-void bhv_bowser_bomb_explosion_loop(void);
-void bhv_bowser_bomb_smoke_loop(void);
-void bhv_celebration_star_init(void);
-void bhv_celebration_star_loop(void);
-void bhv_celebration_star_sparkle_loop(void);
-void bhv_star_dust_loop(void);
-void bhv_lll_drawbridge_spawner_loop(void);
-void bhv_lll_drawbridge_loop(void);
-void bhv_small_bomp_init(void);
-void bhv_small_bomp_loop(void);
-void bhv_large_bomp_init(void);
-void bhv_large_bomp_loop(void);
-void bhv_wf_sliding_platform_init(void);
-void bhv_wf_sliding_platform_loop(void);
-void bhv_birds_sound_loop(void);
-void bhv_ambient_sounds_init(void);
-void bhv_collect_star_init(void);
-void bhv_collect_star_loop(void);
-void bhv_small_piranha_flame_loop(void);
-void bhv_fly_guy_flame_loop(void);
+
+// Butterfly triplet is by Iwawaki, not Yajima, but since it's his only object it'll be left here
 void bhv_triplet_butterfly_update(void);
-void bhv_dust_smoke_loop(void);
-
-Gfx *geo_move_mario_part_from_parent(s32 run, UNUSED struct GraphNode *node, Mat4 mtx);
-
-// Bowser
-Gfx *geo_update_body_rot_from_parent(s32 run, UNUSED struct GraphNode *node, Mat4 mtx);
-Gfx *geo_switch_bowser_eyes(s32 run, struct GraphNode *node, UNUSED Mat4 *mtx);
-
-// Motos
-Gfx *MotosProc1(s32 callContext, UNUSED struct GraphNode *node, Mat4 mtx);
-
-// Tuxie
-Gfx *geo_switch_tuxie_mother_eyes(s32 run, struct GraphNode *node, UNUSED Mat4 *mtx);
 
 #endif // BEHAVIOR_ACTIONS_H

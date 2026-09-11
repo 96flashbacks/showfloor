@@ -1,12 +1,12 @@
 // coin.inc.c
 
-struct ObjectHitbox sYellowCoinHitbox = { // coin_hit
+struct ObjectHitbox sYellowCoinHitbox = { // coin_hit (modified)
     /* interactType:      */ INTERACT_COIN,
     /* downOffset:        */ 0,
-    /* damageOrCoinValue: */ 0, // likely 0 instead of 1 based on 'obakecoin_hit'
+    /* damageOrCoinValue: */ 0, // Likely 0 instead of 1 based on 'obakecoin_hit'
     /* health:            */ 0,
     /* numLootCoins:      */ 0,
-    /* radius:            */ 32,
+    /* radius:            */ 32, // Smaller radius (100 in the final game)
     /* height:            */ 64,
     /* hurtboxRadius:     */ 0,
     /* hurtboxHeight:     */ 0,

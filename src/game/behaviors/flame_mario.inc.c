@@ -1,21 +1,7 @@
 // flame_mario.inc.c
 
-void bhv_black_smoke_upward_loop(void) { // s_make_smoke
-    spawn_object_with_scale(o, MODEL_BURN_SMOKE, bhvBlackSmokeBowser, o->header.gfx.scale[0]);
-}
-
-void bhv_black_smoke_bowser_loop(void) { // s_enemy_firesmoke_parts
-    if (o->oTimer == 0) {
-        o->oForwardVel = random_float() * 2 + 0.5;
-        o->oMoveAngleYaw = random_u16();
-        o->oVelY = 8.0f;
-
-        o->oBlackSmokeBowserUnkF4 = o->header.gfx.scale[0];
-    }
-
-    o->oMoveAngleYaw += o->oAngleVelYaw;
-    o->oPosY += o->oVelY;
-}
+// No 's_make_smoke' (bhv_black_smoke_upward_loop) or 's_enemy_firesmoke_parts' (bhv_black_smoke_bowser_loop), 
+// they are only used after Bowser's flames fizzle out in the final game, but those flames spawn nothing in the demo
 
 void bhv_black_smoke_mario_loop(void) { // s_firesmoke_smoke
     if (o->oTimer == 0) {

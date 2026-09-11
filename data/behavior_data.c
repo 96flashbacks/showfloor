@@ -6,6 +6,7 @@
 #include "game/object_list_processor.h"
 #include "game/interaction.h"
 #include "game/behavior_actions.h"
+#include "game/obj_behaviors.h"
 #include "game/mario_actions_cutscene.h"
 #include "game/mario_misc.h"
 #include "game/object_helpers.h"
@@ -631,6 +632,24 @@ const BehaviorScript bhvWarp[] = {
     END_LOOP(),
 };
 
+// e_star is the original 2D star object, it's one of Yajima's objects unlike the final 3D star (e_tripstar),
+// which was programmed by Iwamoto. The exact placement or file 'e_star' was contained is unknown, its only
+// location in the iQue source is in 'pathtest.p' alongside other scrapped objects like Blargg (e_unbaba). 
+// The most similar file is 'pathclearstar.p' which is what this placement is based on
+const BehaviorScript bhvStar[] = {
+    BEGIN(OBJ_LIST_LEVEL),
+    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
+    BILLBOARD(),
+    SET_INT(oAnimState, -1),
+    CALL_NATIVE(bhv_init_room),
+    CALL_NATIVE(bhv_star_init),
+    SCALE(/*Unused*/ 0, /*Field*/ 150),
+    BEGIN_LOOP(),
+        CALL_NATIVE(bhv_star_loop),
+        ANIMATE_TEXTURE(oAnimState, 2),
+    END_LOOP(),
+};
+
 // pathcoin.p bhv data
 
 const BehaviorScript bhvOneCoin[] = { // e_coin_ground
@@ -873,26 +892,7 @@ const BehaviorScript bhvBlackSmokeMario[] = {
     DEACTIVATE(),
 };
 
-const BehaviorScript bhvBlackSmokeBowser[] = {
-    BEGIN(OBJ_LIST_UNIMPORTANT),
-    OR_INT(oFlags, (OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_MOVE_XZ_USING_FVEL | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
-    BILLBOARD(),
-    SET_FLOAT(oGraphYOffset, 0),
-    BEGIN_REPEAT(8),
-        CALL_NATIVE(bhv_black_smoke_bowser_loop),
-        ANIMATE_TEXTURE(oAnimState, 4),
-    END_REPEAT(),
-    DEACTIVATE(),
-};
-
-const BehaviorScript bhvBlackSmokeUpward[] = {
-    BEGIN(OBJ_LIST_DEFAULT),
-    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
-    BEGIN_REPEAT(4),
-        CALL_NATIVE(bhv_black_smoke_upward_loop),
-    END_REPEAT(),
-    DEACTIVATE(),
-};
+// The black smoke when Bowser's flames fizzle out didn't exist in the demo
 
 const BehaviorScript bhvTowerPlatformGroup[] = {
     BEGIN(OBJ_LIST_SURFACE),
@@ -1010,7 +1010,7 @@ const BehaviorScript bhvSmallKey[] = { // e_key
     END_LOOP(),
 };
 
-const BehaviorScript bhvBulletBill[] = {
+const BehaviorScript bhvBulletBill[] = { // e_killer
     BEGIN(OBJ_LIST_GENACTOR),
     OR_INT(oFlags, (OBJ_FLAG_COMPUTE_ANGLE_TO_MARIO | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_MOVE_XZ_USING_FVEL | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
     SET_HOME(),
@@ -1026,7 +1026,7 @@ const BehaviorScript bhvBulletBill[] = {
     END_LOOP(),
 };
 
-const BehaviorScript bhvWhitePuffSmoke[] = {
+const BehaviorScript bhvWhitePuffSmoke[] = { // e_killer_smorke
     BEGIN(OBJ_LIST_DEFAULT),
     OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
     BILLBOARD(),
@@ -1626,21 +1626,6 @@ const BehaviorScript bhvWhitePuffSmoke2[] = {
     DEACTIVATE(),
 };
 
-// e_star is the original 2D star object, it's part of Yajima's section unlike the final star (e_tripstar)
-const BehaviorScript bhvStar[] = {
-    BEGIN(OBJ_LIST_LEVEL),
-    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
-    BILLBOARD(),
-    SET_INT(oAnimState, -1),
-    CALL_NATIVE(bhv_init_room),
-    CALL_NATIVE(bhv_collect_star_init),
-    SCALE(/*Unused*/ 0, /*Field*/ 150),
-    BEGIN_LOOP(),
-        CALL_NATIVE(bhv_collect_star_loop),
-        ANIMATE_TEXTURE(oAnimState, 2),
-    END_LOOP(),
-};
-
 const BehaviorScript bhvTestPlayerFire[] = { // e_plfire
     BEGIN(OBJ_LIST_DESTRUCTIVE),
     OR_INT(oFlags, (OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
@@ -1742,17 +1727,16 @@ const BehaviorScript bhvBlargg[] = { // e_unbaba
     END_LOOP(),
 };
 
-const BehaviorScript bhvSmallWhomp[] = {
+const BehaviorScript bhvSmallWhomp[] = { // e_wallman (modified)
     BEGIN(OBJ_LIST_SURFACE),
     SET_INT(oNumLootCoins, 5),
-    // Whomp - common:
     OR_INT(oFlags, (OBJ_FLAG_COMPUTE_ANGLE_TO_MARIO | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
     LOAD_ANIMATIONS(oAnimations, wallman_anime),
     LOAD_COLLISION_DATA(wallman_info),
     ANIMATE(0),
     SET_OBJ_PHYSICS(/*Wall hitbox radius*/ 0, /*Gravity*/ -400, /*Bounciness*/ -50, /*Drag strength*/ 0, /*Friction*/ 0, /*Buoyancy*/ 200, /*Unused*/ 0, 0),
     SET_HOME(),
-    SET_FLOAT(oDrawingDistance, 3500),
+    SET_FLOAT(oDrawingDistance, 4000), // Higher draw distance based on Game Zero (03:55)
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_whomp_loop),
     END_LOOP(),
@@ -1801,6 +1785,7 @@ const BehaviorScript bhvWaterDropletSplash[] = { // e_smalldropripple
     DEACTIVATE(),
 };
 
+// The wf fish splash spawner didn't have its own separate file based on 'pathwater.p'
 const BehaviorScript bhvBetaFishSplashSpawner[] = { // e_funsui
     BEGIN(OBJ_LIST_DEFAULT),
     OR_INT(oFlags, (OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
@@ -1810,6 +1795,7 @@ const BehaviorScript bhvBetaFishSplashSpawner[] = { // e_funsui
     END_LOOP(),
 };
 
+// vanilla water bhv data
 
 // The large splash Mario makes when he jumps into a pool of water.
 const BehaviorScript bhvWaterSplash[] = { // e_waterdive
@@ -1830,8 +1816,6 @@ const BehaviorScript bhvWaterSplash[] = { // e_waterdive
     PARENT_BIT_CLEAR(oActiveParticleFlags, ACTIVE_PARTICLE_WATER_SPLASH),
     DEACTIVATE(),
 };
-
-// vanilla water bhv data
 
 // The splash created when an air bubble hits the surface of the water.
 const BehaviorScript bhvBubbleSplash[] = { // e_dropripple
@@ -2209,7 +2193,7 @@ const BehaviorScript bhvBigBullyWithMinions[] = {
     END_LOOP(),
 };
 
-const BehaviorScript bhvJetStreamRingSpawner[] = {
+const BehaviorScript bhvJetStreamRingSpawner[] = { // e_ring
     BEGIN(OBJ_LIST_DEFAULT),
     HIDE(),
     BEGIN_LOOP(),
@@ -2217,7 +2201,8 @@ const BehaviorScript bhvJetStreamRingSpawner[] = {
     END_LOOP(),
 };
 
-const BehaviorScript bhvJetStreamWaterRing[] = {
+
+const BehaviorScript bhvJetStreamWaterRing[] = { // e_ring_parts
     BEGIN(OBJ_LIST_LEVEL),
     OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
     LOAD_ANIMATIONS(oAnimations, water_ring_seg6_anims_06013F7C),
@@ -2374,29 +2359,7 @@ const BehaviorScript bhvAmbientSounds[] = {
 /****************************************************************
                         Iwawaki's objects
 ****************************************************************/
-const BehaviorScript bhvSmallPiranhaFlame[] = {
-    BEGIN(OBJ_LIST_GENACTOR),
-    OR_INT(oFlags, (OBJ_FLAG_COMPUTE_ANGLE_TO_MARIO | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
-    BILLBOARD(),
-    SET_OBJ_PHYSICS(/*Wall hitbox radius*/ 30, /*Gravity*/ 0, /*Bounciness*/ -50, /*Drag strength*/ 1000, /*Friction*/ 1000, /*Buoyancy*/ 200, /*Unused*/ 0, 0),
-    BEGIN_LOOP(),
-        CALL_NATIVE(bhv_small_piranha_flame_loop),
-        ADD_INT(oAnimState, 1),
-    END_LOOP(),
-};
-
-const BehaviorScript bhvFlyguyFlame[] = {
-    BEGIN(OBJ_LIST_UNIMPORTANT),
-    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
-    BILLBOARD(),
-    SET_OBJ_PHYSICS(/*Wall hitbox radius*/ 0, /*Gravity*/ 200, /*Bounciness*/ 0, /*Drag strength*/ 1000, /*Friction*/ 1000, /*Buoyancy*/ 200, /*Unused*/ 0, 0),
-    BEGIN_LOOP(),
-        CALL_NATIVE(bhv_fly_guy_flame_loop),
-        ADD_INT(oAnimState, 1),
-    END_LOOP(),
-};
-
-const BehaviorScript bhvTripletButterfly[] = {
+const BehaviorScript bhvTripletButterfly[] = { // e_fly
     BEGIN(OBJ_LIST_GENACTOR),
     OR_INT(oFlags, (OBJ_FLAG_COMPUTE_ANGLE_TO_MARIO | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
     LOAD_ANIMATIONS(oAnimations, butterfly_seg3_anims_030056B0),
