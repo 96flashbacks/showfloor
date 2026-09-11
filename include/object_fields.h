@@ -233,12 +233,12 @@
 #define /*0x0F8*/ oBulletBillInitialMoveYaw OBJECT_FIELD_S32(0x1C)
 
 /* Bully (all variants) */
-#define /*0x0F4*/ oBullySubtype                   OBJECT_FIELD_S32(0x1B)
-#define /*0x0F8*/ oBullyPrevX                     OBJECT_FIELD_F32(0x1C)
-#define /*0x0FC*/ oBullyPrevY                     OBJECT_FIELD_F32(0x1D)
-#define /*0x100*/ oBullyPrevZ                     OBJECT_FIELD_F32(0x1E)
-#define /*0x104*/ oBullyKBTimerAndMinionKOCounter OBJECT_FIELD_S32(0x1F)
-#define /*0x108*/ oBullyMarioCollisionAngle       OBJECT_FIELD_S32(0x20)
+// No oBullySubtype
+#define /*0x0F8*/ oBullyPrevX               OBJECT_FIELD_F32(0x1C)
+#define /*0x0FC*/ oBullyPrevY               OBJECT_FIELD_F32(0x1D)
+#define /*0x100*/ oBullyPrevZ               OBJECT_FIELD_F32(0x1E)
+#define /*0x104*/ oBullyKBTimer             OBJECT_FIELD_S32(0x1F)
+#define /*0x108*/ oBullyMarioCollisionAngle OBJECT_FIELD_S32(0x20)
 
 /* Triplet Butterfly */
 #define /*0x0F4*/ oTripletButterflyScale             OBJECT_FIELD_F32(0x1B)

@@ -179,7 +179,7 @@ extern const BehaviorScript bhvSmoke[];
 extern const BehaviorScript bhvBobombExplosionBubble[];
 extern const BehaviorScript bhvBobombExplosionBubble3600[];
 extern const BehaviorScript bhvSmallBully[];
-extern const BehaviorScript bhvBigBullyWithMinions[];
+extern const BehaviorScript bhvBigBully[];
 extern const BehaviorScript bhvJetStreamRingSpawner[];
 extern const BehaviorScript bhvJetStreamWaterRing[];
 extern const BehaviorScript bhvBowserBomb[];

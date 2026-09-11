@@ -36,8 +36,6 @@ void bhv_bobomb_explosion_bubble_loop(void);
 void bhv_small_bully_init(void);
 void bhv_bully_loop(void);
 void bhv_big_bully_init(void);
-void bhv_big_bully_with_minions_init(void);
-void bhv_big_bully_with_minions_loop(void);
 // ring.s
 void bhv_jet_stream_ring_spawner_loop(void);
 void bhv_jet_stream_water_ring_init(void);

@@ -2168,7 +2168,7 @@ const BehaviorScript bhvBobombExplosionBubble3600[] = {
     RETURN(),
 };
 
-const BehaviorScript bhvSmallBully[] = {
+const BehaviorScript bhvSmallBully[] = { // e_otos
     BEGIN(OBJ_LIST_GENACTOR),
     OR_INT(oFlags, (OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
     LOAD_ANIMATIONS(oAnimations, otos_anime),
@@ -2181,17 +2181,20 @@ const BehaviorScript bhvSmallBully[] = {
     END_LOOP(),
 };
 
-const BehaviorScript bhvBigBullyWithMinions[] = {
+const BehaviorScript bhvBigBully[] = { // e_big_otos
     BEGIN(OBJ_LIST_GENACTOR),
     OR_INT(oFlags, (OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
     LOAD_ANIMATIONS(oAnimations, otos_anime),
+    DROP_TO_FLOOR(),
     SET_HOME(),
     CALL_NATIVE(bhv_big_bully_init),
-    CALL_NATIVE(bhv_big_bully_with_minions_init),
     BEGIN_LOOP(),
-        CALL_NATIVE(bhv_big_bully_with_minions_loop),
+        SET_INT(oIntangibleTimer, 0),
+        CALL_NATIVE(bhv_bully_loop),
     END_LOOP(),
 };
+
+// Likely no 'bhvBigBullyWithMinions' (e_big_otos2) in the demo 
 
 const BehaviorScript bhvJetStreamRingSpawner[] = { // e_ring
     BEGIN(OBJ_LIST_DEFAULT),

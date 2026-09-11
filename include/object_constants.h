@@ -252,10 +252,7 @@
     #define BULLY_ACT_LAVA_DEATH        100
     #define BULLY_ACT_DEATH_PLANE_DEATH 101
 
-    /* oBullySubtype */
-    #define BULLY_STYPE_GENERIC 0
-    #define BULLY_STYPE_MINION  1
-    #define BULLY_STYPE_CHILL   16
+    // No oBullySubtype
 
 /* Water Ring (All variants) */
     /* oAction */
