@@ -103,7 +103,7 @@ const LevelScript level_castle_inside_entry[] = {
     AREA(/*index*/ 1, castle_geo),
         OBJECT(/*model*/ MODEL_NONE,              /*pos*/    0, 614, -6364, /*angle*/ 0,   0, 0, /*bhvParam*/ 0x00140000, /*bhv*/ bhvCastleFloorTrap),
         OBJECT(/*model*/ MODEL_CASTLE_DOOR_A,     /*pos*/-1690, 205, -2320, /*angle*/ 0,  90, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvDoor),
-        OBJECT(/*model*/ MODEL_CASTLE_DOOR_B,     /*pos*/ -946  ,   0, -3060, /*angle*/ 0,   0, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvDoor),
+        OBJECT(/*model*/ MODEL_CASTLE_DOOR_B,     /*pos*/ -946,   0, -3060, /*angle*/ 0,   0, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvDoor),
         OBJECT(/*model*/ MODEL_CASTLE_DOOR_C,     /*pos*/  946,   0, -3060, /*angle*/ 0,   0, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvDoor),
         OBJECT(/*model*/ MODEL_CASTLE_DOOR_D,     /*pos*/ 1690, 205, -2320, /*angle*/ 0, -90, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvDoor),
         OBJECT(/*model*/ MODEL_CASTLE_DOOR,       /*pos*/ -332,   0, -2856, /*angle*/ 0, -45, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvDoor),

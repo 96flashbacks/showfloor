@@ -42,7 +42,7 @@ STUB_LEVEL(  "",               LEVEL_COTMC,            COURSE_COTMC,            
 STUB_LEVEL(  "",               LEVEL_TOTWC,            COURSE_TOTWC,                                20000,    0x00, 0x00, 0x00, _,         _)
 DEFINE_LEVEL("KUPPA",          LEVEL_BOWSER_1,         COURSE_BITDW,    bowser_1,         generic,  VAL_DIFF, 0x00, 0x00, 0x00, _,         _)
 STUB_LEVEL(  "",               LEVEL_WMOTR,            COURSE_WMOTR,                                20000,    0x00, 0x00, 0x00, _,         _)
-STUB_LEVEL(  "YAJIMA TEST",    LEVEL_UNKNOWN_32,       COURSE_NONE,                                 20000,    0x70, 0x00, 0x00, _,         _)
+STUB_LEVEL(  "YAJIMA TEST",    LEVEL_UNKNOWN_32,       COURSE_NONE,                                 20000,    0x00, 0x00, 0x00, _,         _)
 STUB_LEVEL(  "",               LEVEL_BOWSER_2,         COURSE_BITFS,                                VAL_DIFF, 0x00, 0x00, 0x00, _,         _)
 STUB_LEVEL(  "",               LEVEL_BOWSER_3,         COURSE_BITS,                                 VAL_DIFF, 0x00, 0x00, 0x00, _,         _)
 STUB_LEVEL(  "DUMMY",          LEVEL_UNKNOWN_35,       COURSE_NONE,                                 20000,    0x00, 0x00, 0x00, _,         _)

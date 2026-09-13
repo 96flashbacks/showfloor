@@ -4719,32 +4719,41 @@ u32 set_mode_if_not_set_by_surface(struct Camera *c, u8 mode) {
 
 /**
  * The Castle triggers are used to set the camera to fixed mode when entering the lobby, and to set it
- * to close mode when leaving it. They also set the mode to spiral staircase.
- *
- * There are two triggers for looking up and down straight staircases when Mario is at the start,
- * and one trigger that starts the enter pool cutscene when Mario enters HMC.
+ * to close mode when leaving it.
  */
 struct CameraTrigger sCamCastle[] = {
-    // Door Entrance
-    { 1, cam_castle_enter_lobby, 0, 0, -1329, 300, 150, 300, 0 },
-    // Snow Slider Room Exit
-    { 1, cam_castle_enter_lobby, -1550, 208, -2345, 140, 150, 140, 0x4000 },
-    // Water Land Room Exit
-    { 1, cam_castle_enter_lobby, 1550, 208, -2345, 140, 150, 140, -0x4000 },
-    // Mountain Room Exit
-    { 1, cam_castle_enter_lobby, -934, 0, -2909, 140, 150, 140, 0 },
-    // Fire Bubble Room Exit
-    { 1, cam_castle_enter_lobby, 934, 0, -2909, 140, 150, 140, 0 },
-    // Bowser Hallway Exit
-    { 1, cam_castle_enter_lobby, 0, 426, -2960, 140, 150, 140, 0 },
-    // Hallway Exit 1
-    { 1, cam_castle_enter_lobby, 399, 0, -2689, 140, 150, 140, -0x2000 },
-    // Hallway Exit 2
-    { 1, cam_castle_enter_lobby, -399, 0, -2689, 140, 150, 140, 0x2000 },
-    // Bowser Hallway Warp Enter
-    { 1, cam_castle_close_mode, 0, 634, -5274, 140, 150, 140, 0 },
-    // Hallway Warp Enter
-    { 1, cam_castle_close_mode, 0, 0, -5184, 140, 150, 140, 0 },
+    // Mountain room entry
+    { 1, cam_castle_close_mode, -946, 145, -3165, 140, 150, 140, 0 },
+    // Mountain room exit
+    { 1, cam_castle_enter_lobby, -946, 145, -2955, 140, 150, 140, 0 },
+    // Fire Bubble room entry
+    { 1, cam_castle_close_mode, 946, 145, -3165, 140, 150, 140, 0 },
+    // Fire Bubble room exit
+    { 1, cam_castle_enter_lobby, 946, 145, -2955, 140, 150, 140, 0 },
+    // Courtyard Hallway warp door entrance
+    { 1, cam_castle_close_mode, 0, 145, -5116, 140, 150, 140, 0 },
+    // Courtyard Hallway right door entry
+    { 1, cam_castle_close_mode, 227, 145, -2961, 140, 150, 140, 0 },
+    // Courtyard Hallway right door exit
+    { 1, cam_castle_enter_lobby, 437, 145, -2751, 140, 150, 140, 0 },
+    // Courtyard Hallway left door entry
+    { 1, cam_castle_close_mode, -227, 145, -2961, 140, 150, 140, 0 },
+    // Courtyard Hallway left door exit
+    { 1, cam_castle_enter_lobby, -437, 145, -2751, 140, 150, 140, 0 },
+    // Bowser Hallway entry
+    { 1, cam_castle_close_mode, 0, 555, -3325, 300, 150, 300, 0 },
+    // Bowser Hallway exit
+    { 1, cam_castle_enter_lobby, 0, 555, -2795, 300, 150, 300, 0 },
+    // Snow Slider room entry
+    { 1, cam_castle_close_mode, -1795, 350, -2320, 140, 150, 140, 0x4000 },
+    // Snow Slider room exit
+    { 1, cam_castle_enter_lobby, -1585, 350, -2320, 140, 150, 140, 0x4000 },
+    // Water Land room entry
+    { 1, cam_castle_close_mode, 1795, 350, -2320, 140, 150, 140, -0x4000 },
+    // Water Land room exit
+    { 1, cam_castle_enter_lobby, 1585, 350, -2320, 140, 150, 140, -0x4000 },
+    // Lobby main entrance
+    { 1, cam_castle_enter_lobby, 0, 145, -1488, 300, 150, 300, 0 },
     NULL_TRIGGER
 };
 
