@@ -11,9 +11,9 @@
 // Argument 10: Specify dynamic music tables for levels, if specified. _ for none.
 // Argument 11: Specify level camera table, if specified. _ for none.
 
-STUB_LEVEL(  "CASTLE",         LEVEL_UNKNOWN_1,        COURSE_NONE,                                 20000,    0x00, 0x00, 0x00, _,         _)
-STUB_LEVEL(  "ATHLETIC",       LEVEL_UNKNOWN_2,        COURSE_NONE,                                 20000,    0x00, 0x00, 0x00, _,         _)
-STUB_LEVEL(  "DONJON",         LEVEL_UNKNOWN_3,        COURSE_NONE,                                 20000,    0x00, 0x00, 0x00, _,         _)
+DEFINE_LEVEL("CASTLE",         LEVEL_UNKNOWN_1,        COURSE_NONE,     castle,           generic,  20000,    0x00, 0x00, 0x00, _,         _)
+DEFINE_LEVEL("ATHLETIC",       LEVEL_UNKNOWN_2,        COURSE_NONE,     athletic,         generic,  20000,    0x00, 0x00, 0x00, _,         _)
+DEFINE_LEVEL("DONJON",         LEVEL_UNKNOWN_3,        COURSE_NONE,     donjon,           generic,  20000,    0x00, 0x00, 0x00, _,         _)
 STUB_LEVEL(  "TERESA OBAKE",   LEVEL_BBH,              COURSE_BBH,                                  28000,    0x00, 0x00, 0x00, _,         _)
 DEFINE_LEVEL("YYAMA % YSLD",   LEVEL_CCM,              COURSE_CCM,      ccm,              slide,    17000,    0x00, 0x00, 0x00, _,         _)
 DEFINE_LEVEL("SELECT ROOM",    LEVEL_CASTLE,           COURSE_NONE,     castle_inside,    inside,   20000,    0x00, 0x00, 0x00, _,         sCamCastle)
@@ -45,7 +45,7 @@ STUB_LEVEL(  "",               LEVEL_WMOTR,            COURSE_WMOTR,            
 STUB_LEVEL(  "YAJIMA TEST",    LEVEL_UNKNOWN_32,       COURSE_NONE,                                 20000,    0x00, 0x00, 0x00, _,         _)
 STUB_LEVEL(  "",               LEVEL_BOWSER_2,         COURSE_BITFS,                                VAL_DIFF, 0x00, 0x00, 0x00, _,         _)
 STUB_LEVEL(  "",               LEVEL_BOWSER_3,         COURSE_BITS,                                 VAL_DIFF, 0x00, 0x00, 0x00, _,         _)
-STUB_LEVEL(  "DUMMY",          LEVEL_UNKNOWN_35,       COURSE_NONE,                                 20000,    0x00, 0x00, 0x00, _,         _)
+DEFINE_LEVEL("DUMMY",          LEVEL_UNKNOWN_35,       COURSE_NONE,     dummy,            generic,  20000,    0x00, 0x00, 0x00, _,         _)
 STUB_LEVEL(  "DONKEY",         LEVEL_TTM,              COURSE_TTM,                                  15000,    0x00, 0x00, 0x00, _,         _)
 STUB_LEVEL(  "IWTEST",         LEVEL_UNKNOWN_37,       COURSE_NONE,                                 20000,    0x00, 0x00, 0x00, _,         _)
 STUB_LEVEL(  "CAVE DUNGEON",   LEVEL_UNKNOWN_38,       COURSE_NONE,                                 20000,    0x00, 0x00, 0x00, _,         _)
