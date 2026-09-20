@@ -1886,7 +1886,7 @@ const BehaviorScript bhvWaveTrail[] = { // e_playerwave
     BEGIN_REPEAT(8),
         ADD_INT(oAnimState, 1),
         CALL_NATIVE(bhv_wave_trail_shrink),
-        DELAY(1),
+        DELAY(2),
         CALL_NATIVE(bhv_wave_trail_shrink),
     END_REPEAT(),
     DEACTIVATE(),

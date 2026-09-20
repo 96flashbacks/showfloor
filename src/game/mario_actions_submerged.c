@@ -262,8 +262,8 @@ static void common_idle_step(struct MarioState *m, s32 animation, s32 arg) {
             m->forwardVel += 2.5f;
         }
 
-        if (m->forwardVel > 12.0f) {
-            m->forwardVel = 12.0f;
+        if (m->forwardVel > 10.0f) {
+            m->forwardVel = 10.0f;
         }
 
         if (m->forwardVel > 2.0f) {
