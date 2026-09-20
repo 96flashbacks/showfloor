@@ -913,6 +913,9 @@ void radial_camera_move(struct Camera *c) {
                         rotateSpeed = 125;
                         if (gCameraMovementFlags & CAM_FLAG_SPAWN) rotateSpeed = 0x60;
                         break;
+                    default:
+                        rotateSpeed = 150;
+                        break;
                 }
 
                 if ((trueSpeed > 1.f)) {
@@ -6569,44 +6572,6 @@ struct Cutscene sCutsceneDialog[] = { { cutscene_dialog, CUTSCENE_LOOP },
 struct Cutscene sCutsceneReadMessage[] = { { cutscene_read_message, CUTSCENE_LOOP },
                                            { cutscene_read_message_set_flag, 15 },
                                            { cutscene_read_message_end, 0 } };
-
-/* TODO:
- * The next two arrays are both related to levels, and they look generated.
- * These should be split into their own file.
- */
-
-/**
- * Converts the u32 given in DEFINE_COURSE to a u8 with the odd and even digits rotated into the right
- * order for sDanceCutsceneIndexTable
- */
-#define DROT(value, index)                                                                             \
-    ((value >> (32 - (index + 1) * 8)) & 0xF0) >> 4 | ((value >> (32 - (index + 1) * 8)) & 0x0F) << 4
-
-#define DANCE_ENTRY(c) { DROT(c, 0), DROT(c, 1), DROT(c, 2), DROT(c, 3) },
-
-#define DEFINE_COURSE(_0, cutscenes) DANCE_ENTRY(cutscenes)
-#define DEFINE_COURSES_END()
-#define DEFINE_BONUS_COURSE(_0, cutscenes) DANCE_ENTRY(cutscenes)
-
-/**
- * Each hex digit is an index into sDanceCutsceneTable.
- *
- * 0: Lakitu flies away after the dance
- * 1: Only rotates the camera, doesn't zoom out
- * 2: The camera goes to a close up of Mario
- * 3: Bowser keys and the grand star
- * 4: Default, used for 100 coin stars, 8 red coin stars in bowser levels, and secret stars
- */
-u8 sDanceCutsceneIndexTable[][4] = {
-#include "levels/course_defines.h"
-    { 0x44, 0x44, 0x44, 0x04 }, // (26) Why go to all this trouble to save bytes and do this?!
-};
-#undef DEFINE_COURSE
-#undef DEFINE_COURSES_END
-#undef DEFINE_BONUS_COURSE
-
-#undef DANCE_ENTRY
-#undef DROT
 
 /**
  * Play the current cutscene until either gCutsceneTimer reaches the max time, or c->cutscene is set to

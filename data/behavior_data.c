@@ -520,6 +520,8 @@ const BehaviorScript bhvFishGroup[] = {
     END_LOOP(),
 };
 
+// pathcannon.p bhv data
+
 const BehaviorScript bhvCannon[] = { // e_cannon & e_cannon_base
     BEGIN(OBJ_LIST_LEVEL),
     OR_INT(oFlags, (OBJ_FLAG_ACTIVE_FROM_AFAR | OBJ_FLAG_COMPUTE_DIST_TO_MARIO | OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
@@ -555,23 +557,17 @@ const BehaviorScript bhvCannonBurnSmoke[] = { // e_gas_b (called 'bhvCannonBaseU
     DEACTIVATE(),
 };
 
+// pathcastlebg.p bhv data
+
 const BehaviorScript bhvUnused05A8[] = { // e_castle_bg01 to e_castle_bg_11
     BEGIN(OBJ_LIST_DEFAULT),
     OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
     BREAK(),
 };
 
-const BehaviorScript bhvRotatingPlatform[] = {
-    BEGIN(OBJ_LIST_SURFACE),
-    OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
-    SET_HOME(),
-    BEGIN_LOOP(),
-        CALL_NATIVE(bhv_rotating_platform_loop),
-        CALL_NATIVE(load_object_collision_model),
-    END_LOOP(),
-};
+// pathcastleobj.p bhv data
 
-const BehaviorScript bhvTower[] = {
+const BehaviorScript bhvTower[] = { // e_stage24_tower_check
     BEGIN(OBJ_LIST_SURFACE),
     OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
     LOAD_COLLISION_DATA(mountain_10_collision),
@@ -582,7 +578,7 @@ const BehaviorScript bhvTower[] = {
     END_LOOP(),
 };
 
-const BehaviorScript bhvBulletBillCannon[] = {
+const BehaviorScript bhvBulletBillCannon[] = { // e_stage24_killer_check
     BEGIN(OBJ_LIST_SURFACE),
     OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
     LOAD_COLLISION_DATA(wf_seg7_collision_bullet_bill_cannon),
@@ -592,12 +588,13 @@ const BehaviorScript bhvBulletBillCannon[] = {
     END_LOOP(),
 };
 
+// Stubbed out bhv data that's called "e_castle_sidebar" in the iQue source
 const BehaviorScript bhvRotatingCounterClockwise[] = {
     BEGIN(OBJ_LIST_DEFAULT),
     BREAK(),
 };
 
-const BehaviorScript bhvWFRotatingWoodenPlatform[] = {
+const BehaviorScript bhvWFRotatingWoodenPlatform[] = { // e_castle_rotbar
     BEGIN(OBJ_LIST_SURFACE),
     OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
     LOAD_COLLISION_DATA(wf_seg7_collision_clocklike_rotation),
@@ -607,7 +604,9 @@ const BehaviorScript bhvWFRotatingWoodenPlatform[] = {
     END_LOOP(),
 };
 
-const BehaviorScript bhvExitPodiumWarp[] = {
+// pathchimney.p bhv data
+
+const BehaviorScript bhvExitPodiumWarp[] = { // e_tripchimney
     BEGIN(OBJ_LIST_SURFACE),
     OR_INT(oFlags, (OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
     SET_INT(oInteractType, INTERACT_WARP),
@@ -622,7 +621,7 @@ const BehaviorScript bhvExitPodiumWarp[] = {
     END_LOOP(),
 };
 
-const BehaviorScript bhvWarp[] = {
+const BehaviorScript bhvWarp[] = { // e_tripchimney2
     BEGIN(OBJ_LIST_LEVEL),
     OR_INT(oFlags, (OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
     SET_INT(oInteractType, INTERACT_WARP),
@@ -894,7 +893,7 @@ const BehaviorScript bhvBlackSmokeMario[] = {
 
 // The black smoke when Bowser's flames fizzle out didn't exist in the demo
 
-const BehaviorScript bhvTowerPlatformGroup[] = {
+const BehaviorScript bhvTowerPlatformGroup[] = { // e_castle_goalbar & e_goalbar_main
     BEGIN(OBJ_LIST_SURFACE),
     OR_INT(oFlags, OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE),
     DISABLE_RENDERING(),
@@ -905,7 +904,7 @@ const BehaviorScript bhvTowerPlatformGroup[] = {
     END_LOOP(),
 };
 
-const BehaviorScript bhvWFSlidingTowerPlatform[] = {
+const BehaviorScript bhvWFSlidingTowerPlatform[] = { // e_goalbar_move
     BEGIN(OBJ_LIST_SURFACE),
     OR_INT(oFlags, (OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
     LOAD_COLLISION_DATA(wf_seg7_collision_platform),
@@ -915,7 +914,7 @@ const BehaviorScript bhvWFSlidingTowerPlatform[] = {
     END_LOOP(),
 };
 
-const BehaviorScript bhvWFElevatorTowerPlatform[] = {
+const BehaviorScript bhvWFElevatorTowerPlatform[] = { // e_goalbar_updown
     BEGIN(OBJ_LIST_SURFACE),
     OR_INT(oFlags, (OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
     LOAD_COLLISION_DATA(wf_seg7_collision_platform),
@@ -925,10 +924,10 @@ const BehaviorScript bhvWFElevatorTowerPlatform[] = {
     END_LOOP(),
 };
 
-const BehaviorScript bhvWFSolidTowerPlatform[] = {
+const BehaviorScript bhvWFSolidTowerPlatform[] = { // e_goalbar_stop
     BEGIN(OBJ_LIST_SURFACE),
     OR_INT(oFlags, (OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
-    LOAD_COLLISION_DATA(wf_seg7_collision_trapezoid),
+    LOAD_COLLISION_DATA(wf_seg7_collision_trapezoid), // Different collision model since the solid platforms are trapezoids
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_wf_solid_tower_platform_loop),
         CALL_NATIVE(load_object_collision_model),
@@ -1978,6 +1977,8 @@ UNUSED static const u64 behavior_data_unused_1 = 0;
 /****************************************************************
                         Iwamoto's objects
 ****************************************************************/
+// iwacoin.s bhv data
+
 // e_move_coin ('bhvMovingYellowCoin' in the decomp)
 const BehaviorScript bhvMovingCoin[] = {
     BEGIN(OBJ_LIST_LEVEL),
@@ -2168,6 +2169,8 @@ const BehaviorScript bhvBobombExplosionBubble3600[] = {
     RETURN(),
 };
 
+// otos.s bhv data
+
 const BehaviorScript bhvSmallBully[] = { // e_otos
     BEGIN(OBJ_LIST_GENACTOR),
     OR_INT(oFlags, (OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
@@ -2196,6 +2199,8 @@ const BehaviorScript bhvBigBully[] = { // e_big_otos
 
 // Likely no 'bhvBigBullyWithMinions' (e_big_otos2) in the demo 
 
+// ring.s bhv data
+
 const BehaviorScript bhvJetStreamRingSpawner[] = { // e_ring
     BEGIN(OBJ_LIST_DEFAULT),
     HIDE(),
@@ -2203,7 +2208,6 @@ const BehaviorScript bhvJetStreamRingSpawner[] = { // e_ring
         CALL_NATIVE(bhv_jet_stream_ring_spawner_loop),
     END_LOOP(),
 };
-
 
 const BehaviorScript bhvJetStreamWaterRing[] = { // e_ring_parts
     BEGIN(OBJ_LIST_LEVEL),
@@ -2219,6 +2223,8 @@ const BehaviorScript bhvJetStreamWaterRing[] = { // e_ring_parts
         CALL_NATIVE(bhv_jet_stream_water_ring_loop),
     END_LOOP(),
 };
+
+// kirai.s bhv data
 
 // e_kirai
 const BehaviorScript bhvBowserBomb[] = {
@@ -2257,6 +2263,8 @@ const BehaviorScript bhvBowserBombSmoke[] = {
     END_LOOP(),
 };
 
+// V_star.s bhv data
+
 // e_V_star (modified to account for the 2D star)
 const BehaviorScript bhvCelebrationStar[] = {
     BEGIN(OBJ_LIST_LEVEL),
@@ -2294,7 +2302,9 @@ const BehaviorScript bhvStarDust[] = {
     END_LOOP(),
 };
 
-const BehaviorScript bhvLLLDrawbridgeSpawner[] = {
+// movebg.s bhv data
+
+const BehaviorScript bhvLLLDrawbridgeSpawner[] = { // e_motos_bridge1
     BEGIN(OBJ_LIST_DEFAULT),
     HIDE(),
     BEGIN_LOOP(),
@@ -2302,7 +2312,7 @@ const BehaviorScript bhvLLLDrawbridgeSpawner[] = {
     END_LOOP(),
 };
 
-const BehaviorScript bhvLLLDrawbridge[] = {
+const BehaviorScript bhvLLLDrawbridge[] = { // e_motos_bridge_parts
     BEGIN(OBJ_LIST_SURFACE),
     OR_INT(oFlags, (OBJ_FLAG_SET_FACE_YAW_TO_MOVE_YAW | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
     LOAD_COLLISION_DATA(lll_seg7_collision_drawbridge),
@@ -2312,7 +2322,7 @@ const BehaviorScript bhvLLLDrawbridge[] = {
     END_LOOP(),
 };
 
-const BehaviorScript bhvSmallBomp[] = {
+const BehaviorScript bhvSmallBomp[] = { // e_dossun_bar
     BEGIN(OBJ_LIST_SURFACE),
     OR_INT(oFlags, (OBJ_FLAG_MOVE_XZ_USING_FVEL | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
     LOAD_COLLISION_DATA(wf_seg7_collision_small_bomp),
@@ -2323,7 +2333,7 @@ const BehaviorScript bhvSmallBomp[] = {
     END_LOOP(),
 };
 
-const BehaviorScript bhvLargeBomp[] = {
+const BehaviorScript bhvLargeBomp[] = { // e_dossun_bar2
     BEGIN(OBJ_LIST_SURFACE),
     OR_INT(oFlags, (OBJ_FLAG_MOVE_XZ_USING_FVEL | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
     LOAD_COLLISION_DATA(wf_seg7_collision_large_bomp),
@@ -2334,7 +2344,7 @@ const BehaviorScript bhvLargeBomp[] = {
     END_LOOP(),
 };
 
-const BehaviorScript bhvWFSlidingPlatform[] = {
+const BehaviorScript bhvWFSlidingPlatform[] = { // e_trans_bar
     BEGIN(OBJ_LIST_SURFACE),
     OR_INT(oFlags, (OBJ_FLAG_MOVE_XZ_USING_FVEL | OBJ_FLAG_UPDATE_GFX_POS_AND_ANGLE)),
     LOAD_COLLISION_DATA(wf_seg7_collision_sliding_brick_platform),

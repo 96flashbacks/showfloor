@@ -10,12 +10,17 @@
 #include "game/areamap.h"
 
 #include "make_const_nonconst.h"
+
 #include "levels/lll/texture.inc.c"
 #include "levels/lll/material.inc.c"
-#include "levels/lll/areas/1/light.inc.c" // What the hell? Every level up until LLL hasn't needed this. Some models share lights, so we'll assume its a shared area file for level optimization.
+
+// Unlike other levels LLL has a specific file with lights inside
+#include "levels/lll/areas/1/light.inc.c"
+// Static level geometry model data
 #include "levels/lll/areas/1/1/model.inc.c"
 #include "levels/lll/areas/1/2/model.inc.c"
 #include "levels/lll/areas/1/3/model.inc.c"
+// Level geometry objects model data
 #include "levels/lll/areas/1/4/model.inc.c"
 #include "levels/lll/areas/1/5/model.inc.c"
 #include "levels/lll/areas/1/6/model.inc.c"
@@ -28,6 +33,8 @@
 #include "levels/lll/areas/1/13/model.inc.c"
 #include "levels/lll/areas/1/14/model.inc.c"
 #include "levels/lll/areas/1/15/model.inc.c"
+
+// "MoveBG" model data
 #include "levels/lll/moving_octagonal_mesh_platform/model.inc.c"
 #include "levels/lll/drawbridge_part/model.inc.c"
 #include "levels/lll/rotating_block_fire_bars/model.inc.c"
@@ -40,8 +47,12 @@
 #include "levels/lll/sinking_square_platform/model.inc.c"
 #include "levels/lll/tilting_square_platform/model.inc.c"
 #include "levels/lll/puzzle_piece/model.inc.c"
+
+// Main level collision data and macro objects
 #include "levels/lll/areas/1/collision.inc.c"
 #include "levels/lll/areas/1/macro.inc.c"
+
+// "MoveBG" collision data
 #include "levels/lll/moving_octagonal_mesh_platform/collision.inc.c"
 #include "levels/lll/drawbridge_part/collision.inc.c"
 #include "levels/lll/rotating_block_fire_bars/collision.inc.c"
@@ -53,4 +64,6 @@
 #include "levels/lll/tilting_square_platform/collision.inc.c"
 #include "levels/lll/puzzle_piece/collision.inc.c"
 #include "levels/lll/areas/1/10/collision.inc.c"
+
+// Areamap data
 #include "levels/lll/areas/1/areamap.inc.c"

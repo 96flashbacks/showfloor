@@ -1,7 +1,6 @@
-// 0x0700FB94 - 0x0700FC0C
-const Collision wf_seg7_collision_platform[] = {
+const Collision wf_seg7_collision_platform[] = { // lift_0_3_info
     COL_INIT(),
-    COL_VERTEX_INIT(0x8),
+    COL_VERTEX_INIT(8),
     COL_VERTEX(-214, 102, -204),
     COL_VERTEX(-214, 0, -204),
     COL_VERTEX(-214, 0, 205),

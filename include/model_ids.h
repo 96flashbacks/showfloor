@@ -239,8 +239,8 @@
 #define MODEL_LLL_BOWSER_PIECE_13                 0x4F        // lll_geo_000D90
 #define MODEL_LLL_BOWSER_PIECE_14                 0x50        // lll_geo_000DB0
 #define MODEL_LLL_MOVING_OCTAGONAL_MESH_PLATFORM  0x36        // lll_geo_000B08
-#define MODEL_LLL_SINKING_ROCK_BLOCK              0x37        // lll_geo_000DD0
-#define MODEL_LLL_ROLLING_LOG                     0x39        // lll_geo_000DE8
+//#define MODEL_LLL_SINKING_ROCK_BLOCK              0x37        // lll_geo_000DD0
+//#define MODEL_LLL_ROLLING_LOG                     0x39        // lll_geo_000DE8
 #define MODEL_LLL_WOOD_BRIDGE                     0x35        // lll_geo_000B50
 #define MODEL_LLL_LARGE_WOOD_BRIDGE               0x3B        // lll_geo_000B68
 #define MODEL_LLL_FALLING_PLATFORM                0x3C        // lll_geo_000B80
@@ -546,10 +546,11 @@
 // level model aliases to level geometry IDs. Possibly a relic from an older level
 // format that used to rely on level geometry objects. (seen in WF, LLL, etc)
 
-// TO-DO : investigate these
+// These aliases not a thing in the iQue source, there it just uses the regular
+// model IDs like other level geometry (S_bgXX)
 #define MODEL_LLL_ROTATING_HEXAGONAL_PLATFORM     MODEL_LEVEL_GEOMETRY_09   // lll_geo_000A78
 #define MODEL_WF_GIANT_POLE                       MODEL_LEVEL_GEOMETRY_0D   // wf_geo_000AE0
-#define MODEL_WF_ROTATING_PLATFORM                MODEL_LEVEL_GEOMETRY_10   // wf_geo_0009B8
+//#define MODEL_WF_ROTATING_PLATFORM                MODEL_LEVEL_GEOMETRY_10   // wf_geo_0009B8
 //#define MODEL_BITDW_WARP_PIPE                     MODEL_LEVEL_GEOMETRY_12   // warp_pipe_geo
 //#define MODEL_THI_WARP_PIPE                       MODEL_LEVEL_GEOMETRY_16   // warp_pipe_geo
 //#define MODEL_VCUTM_WARP_PIPE                     MODEL_LEVEL_GEOMETRY_16   // warp_pipe_geo

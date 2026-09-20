@@ -1,6 +1,6 @@
 // warp.inc.c
 
-void bhv_warp_loop(void) {
+void bhv_warp_loop(void) { // s_tripchimney2
     if (o->oTimer == 0) {
         u16 bhvParams1stByte = (o->oBhvParams >> 24) & 0xFF;
 

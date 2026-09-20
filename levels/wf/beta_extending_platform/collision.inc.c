@@ -1,5 +1,4 @@
-// 0x0700FB1C - 0x0700FB94
-const Collision wf_seg7_collision_trapezoid[] = {
+const Collision wf_seg7_collision_trapezoid[] = { // lift_0fan_info (modified)
     COL_INIT(),
 	COL_VERTEX_INIT(8),
 	COL_VERTEX(-214, 102, -204),

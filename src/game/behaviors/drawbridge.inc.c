@@ -1,6 +1,6 @@
 // drawbridge.inc.c
 
-void bhv_lll_drawbridge_spawner_loop(void) {
+void bhv_lll_drawbridge_spawner_loop(void) { // s_motosbridge_main
     struct Object *drawbridge1, *drawbridge2;
 
     drawbridge1 = spawn_object(o, MODEL_LLL_DRAWBRIDGE_PART, bhvLLLDrawbridge);
@@ -16,7 +16,7 @@ void bhv_lll_drawbridge_spawner_loop(void) {
     o->activeFlags = ACTIVE_FLAG_DEACTIVATED;
 }
 
-void bhv_lll_drawbridge_loop(void) {
+void bhv_lll_drawbridge_loop(void) { // s_motos_bridge (modified)
     s32 globalTimer = gGlobalTimer;
 
     switch (o->oAction) {
@@ -29,25 +29,27 @@ void bhv_lll_drawbridge_loop(void) {
             break;
     }
 
-    if ((s16) o->oFaceAngleRoll < -0x1FFD) {
-        o->oFaceAngleRoll = 0xDFFF;
+    if ((s16) o->oFaceAngleRoll < -8189) { // Open
+        o->oFaceAngleRoll = degree(315);
 
         //! Because the global timer increments when the game is paused, pausing and unpausing
         //  the game at regular intervals can leave the drawbridge raised indefinitely.
-        if (o->oTimer > 60 && (globalTimer % 8) == 0) {
+        //  The drawbridge takes longer to move in the demo, after 80 frames instead of 50.
+        if (o->oTimer > 80 && (globalTimer & 0x07) == 0) {
             o->oAction = LLL_DRAWBRIDGE_ACT_LOWER;
-            // cur_obj_play_sound_2(SOUND_GENERAL_BOAT_TILT1);
+            // No sound when moving
         }
     }
 
-    if ((s16) o->oFaceAngleRoll >= 0) {
-        o->oFaceAngleRoll = 0;
+    if ((s16) o->oFaceAngleRoll >= 0) { // Closed
+        o->oFaceAngleRoll = degree(0);
 
         //! Because the global timer increments when the game is paused, pausing and unpausing
         //  the game at regular intervals can leave the drawbridge lowered indefinitely.
-        if (o->oTimer > 103 && (globalTimer % 8) == 0) {
+        // The drawbridge takes longer to move in the demo, after 80 frames instead of 50.
+        if (o->oTimer > 80 && (globalTimer & 0x07) == 0) {
             o->oAction = LLL_DRAWBRIDGE_ACT_RAISE;
-            // cur_obj_play_sound_2(SOUND_GENERAL_BOAT_TILT2);
+            // No sound when moving
         }
     }
 }

@@ -5,12 +5,6 @@
 #include "game/moving_texture.h"
 #include "game/areamap.h"
 
-/* this could have a bunch of externs removed but that isn't super important right now */
-
-/* i really hate how this level is sorted out, it's so messy. same as wf */
-
-/* at least the others levels are somewhat clean in comparison, lol */
-
 // geo
 extern const GeoLayout lll_geo_0009E0[];
 extern const GeoLayout lll_geo_0009F8[];
@@ -19,11 +13,12 @@ extern const GeoLayout lll_geo_000A28[];
 extern const GeoLayout lll_geo_000A40[];
 extern const GeoLayout lll_geo_000A60[];
 extern const GeoLayout lll_geo_000A78[];
-extern const GeoLayout fire_bubble_platform_geo[];
 extern const GeoLayout fire_bubble_volcano_geo[];
+extern const GeoLayout fire_bubble_platform_geo[];
 extern const GeoLayout lll_geo_000AC0[];
 extern const GeoLayout lll_geo_000AD8[];
 extern const GeoLayout lll_geo_000AF0[];
+
 extern const GeoLayout lll_geo_000B08[];
 extern const GeoLayout lll_geo_000B20[];
 extern const GeoLayout lll_geo_000B38[];
@@ -49,13 +44,12 @@ extern const GeoLayout lll_geo_000D50[];
 extern const GeoLayout lll_geo_000D70[];
 extern const GeoLayout lll_geo_000D90[];
 extern const GeoLayout lll_geo_000DB0[];
-extern const GeoLayout lll_geo_000DD0[];
-extern const GeoLayout lll_geo_000DE8[];
+
 extern const GeoLayout fire_bubble_geo[];
 
 // leveldata
-extern const Gfx fire_bubble_lava_plane_mesh[];
 extern const Gfx fire_bubble_1_dl_mesh[];
+extern const Gfx fire_bubble_lava_plane_mesh[];
 extern const Gfx lll_seg7_dl_070137C0[];
 extern const Gfx lll_seg7_dl_070138F8[];
 extern const Gfx lll_seg7_dl_07013D28[];
@@ -66,11 +60,12 @@ extern const Gfx lll_seg7_dl_07015C88[];
 extern const Gfx lll_seg7_dl_07015E20[];
 extern const Gfx lll_seg7_dl_07016250[];
 extern const Gfx lll_seg7_dl_070165C8[];
-extern const Gfx fire_bubble_2_dl_mesh[];
 extern const Gfx fire_bubble_3_dl_mesh[];
+extern const Gfx fire_bubble_2_dl_mesh[];
 extern const Gfx lll_seg7_dl_070178A8[];
 extern const Gfx lll_seg7_dl_07017B50[];
 extern const Gfx lll_seg7_dl_07017F40[];
+
 extern const Gfx lll_seg7_dl_07018380[];
 extern const Gfx lll_seg7_dl_07018680[];
 extern const Gfx lll_seg7_dl_07018A30[];
@@ -97,10 +92,10 @@ extern const Gfx lll_seg7_dl_0701A598[];
 extern const Gfx lll_seg7_dl_0701A5C8[];
 extern const Gfx lll_seg7_dl_0701A5F8[];
 extern const Gfx lll_seg7_dl_0701A628[];
-extern const Gfx lll_seg7_dl_0701A878[];
-extern const Gfx lll_seg7_dl_0701AD70[];
+
 extern const Collision fire_bubble_collision[];
 extern const MacroObject fire_bubble_macro[];
+
 extern const Collision lll_seg7_collision_octagonal_moving_platform[];
 extern const Collision lll_seg7_collision_drawbridge[];
 extern const Collision lll_seg7_collision_rotating_fire_bars[];
@@ -113,6 +108,7 @@ extern const Collision lll_seg7_collision_inverted_pyramid[];
 extern const Collision lll_seg7_collision_puzzle_piece[];
 extern const Collision lll_seg7_collision_floating_block[];
 extern const Collision lll_seg7_collision_hexagonal_platform[];
+
 extern struct AreaMapData fire_bubble_areamap;
 
 // script

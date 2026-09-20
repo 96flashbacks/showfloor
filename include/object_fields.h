@@ -348,16 +348,16 @@
 #define /*0x0F8*/ oPiranhaPlantScale           OBJECT_FIELD_F32(0x1C)
 
 /* WF Platform */
-#define /*0x10C*/ oPlatformUnk10C OBJECT_FIELD_F32(0x21)
-#define /*0x110*/ oPlatformUnk110 OBJECT_FIELD_F32(0x22)
+#define /*0x10C*/ oPlatformSpeed  OBJECT_FIELD_F32(0x21)
+#define /*0x110*/ oPlatformLength OBJECT_FIELD_F32(0x22)
 
-/* Platform Spawner */
-#define /*0x0F4*/ oPlatformSpawnerUnkF4  OBJECT_FIELD_S32(0x1B)
-#define /*0x0F8*/ oPlatformSpawnerUnkF8  OBJECT_FIELD_S32(0x1C)
-#define /*0x0FC*/ oPlatformSpawnerUnkFC  OBJECT_FIELD_S32(0x1D)
-#define /*0x100*/ oPlatformSpawnerUnk100 OBJECT_FIELD_F32(0x1E)
-#define /*0x104*/ oPlatformSpawnerUnk104 OBJECT_FIELD_F32(0x1F)
-#define /*0x108*/ oPlatformSpawnerUnk108 OBJECT_FIELD_F32(0x20)
+/* WF Platform Spawner */
+#define /*0x0F4*/ oPlatformSpawnerCounter       OBJECT_FIELD_S32(0x1B)
+#define /*0x0F8*/ oPlatformSpawnerStartingAngle OBJECT_FIELD_S32(0x1C)
+#define /*0x0FC*/ oPlatformSpawnerYawMultiplier OBJECT_FIELD_S32(0x1D)
+#define /*0x100*/ oPlatformSpawnerRadius        OBJECT_FIELD_F32(0x1E)
+#define /*0x104*/ oPlatformSpawnerLength        OBJECT_FIELD_F32(0x1F)
+#define /*0x108*/ oPlatformSpawnerSpeed         OBJECT_FIELD_F32(0x20)
 
 /* LLL Rotating Hex Flame */
 #define /*0x0F4*/ oLLLRotatingHexFlameUnkF4 OBJECT_FIELD_F32(0x1B)

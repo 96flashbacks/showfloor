@@ -13,8 +13,12 @@
 
 #include "levels/wf/texture.inc.c"
 #include "levels/wf/material.inc.c"
+
+// Static level geometry model data
 #include "levels/wf/areas/1/1/model.inc.c"
 #include "levels/wf/areas/1/2/model.inc.c"
+
+// Level geometry objects model data
 #include "levels/wf/areas/1/5/model.inc.c"
 #include "levels/wf/areas/1/6/model.inc.c"
 #include "levels/wf/areas/1/7/model.inc.c"
@@ -29,6 +33,7 @@
 #include "levels/wf/areas/1/15/model.inc.c"
 #include "levels/wf/areas/1/16/model.inc.c"
 
+// "MoveBG" model data
 #include "levels/wf/small_bomp/1.inc.c"
 #include "levels/wf/small_bomp/2.inc.c"
 #include "levels/wf/large_bomp/model.inc.c"
@@ -36,9 +41,13 @@
 #include "levels/wf/tumbling_bridge_far/model.inc.c"
 #include "levels/wf/rotating_wooden_platform/1.inc.c"
 #include "levels/wf/rotating_wooden_platform/2.inc.c"
+#include "levels/wf/rotating_wooden_platform/3.inc.c"
 #include "levels/wf/sliding_platform/model.inc.c"
 #include "levels/wf/beta_extending_platform/model.inc.c"
-#include "levels/wf/extending_platform/model.inc.c"
+#include "levels/wf/extending_platform/1.inc.c"
+#include "levels/wf/extending_platform/2.inc.c"
+
+// "MoveBG" collision data
 #include "levels/wf/small_bomp/collision.inc.c"
 #include "levels/wf/large_bomp/collision.inc.c"
 #include "levels/wf/rotating_wooden_platform/collision.inc.c"
@@ -46,16 +55,15 @@
 #include "levels/wf/tumbling_bridge_near/collision.inc.c"
 #include "levels/wf/beta_extending_platform/collision.inc.c"
 #include "levels/wf/extending_platform/collision.inc.c"
-#include "levels/wf/rotating_platform/collision.inc.c" // This is odd... TODO: investigate this.
 
-#include "levels/wf/areas/1/rotating_wooden_platform/3.inc.c"
-#include "levels/wf/areas/1/extending_platform/3.inc.c"
-
-#include "levels/wf/areas/1/11/collision.inc.c"
+// Level geometry objects collision data
 #include "levels/wf/areas/1/10/collision.inc.c"
-#include "levels/wf/areas/1/collision.inc.c"
+#include "levels/wf/areas/1/11/collision.inc.c"
 
+// Main level collision data and macro objects
+#include "levels/wf/areas/1/collision.inc.c"
 #include "levels/wf/areas/1/macro.inc.c"
 
+// Water surface and areamap data
 #include "levels/wf/areas/1/movtext.inc.c"
 #include "levels/wf/areas/1/areamap.inc.c"

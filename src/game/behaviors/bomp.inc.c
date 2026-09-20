@@ -1,12 +1,12 @@
 // bomp.inc.c
 
-void bhv_small_bomp_init(void) {
+void bhv_small_bomp_init(void) { // s_dossun_bar_init
     o->oFaceAngleYaw -= 0x4000;
     o->oSmallBompInitX = o->oPosX;
     o->oTimer = random_float() * 100.0f;
 }
 
-void bhv_small_bomp_loop(void) {
+void bhv_small_bomp_loop(void) { // s_dossun_bar_main (modified)
     switch (o->oAction) {
         case BOMP_ACT_WAIT:
             if (o->oTimer > 100) {
@@ -24,6 +24,7 @@ void bhv_small_bomp_loop(void) {
             if (o->oTimer == 15.0) {
                 o->oAction = BOMP_ACT_EXTEND;
                 o->oForwardVel = 40.0f;
+                // No sound when moving
             }
             break;
 
@@ -37,6 +38,7 @@ void bhv_small_bomp_loop(void) {
                 o->oAction = BOMP_ACT_RETRACT;
                 o->oForwardVel = 10.0f;
                 o->oMoveAngleYaw -= 0x8000;
+                // No sound when moving
             }
             break;
 
@@ -55,12 +57,12 @@ void bhv_small_bomp_loop(void) {
     }
 }
 
-void bhv_large_bomp_init(void) {
+void bhv_large_bomp_init(void) { // s_dossun_bar2_init
     o->oMoveAngleYaw += 0x4000;
     o->oTimer = random_float() * 100.0f;
 }
 
-void bhv_large_bomp_loop(void) {
+void bhv_large_bomp_loop(void) { // s_dossun_bar2_main (modified)
     switch (o->oAction) {
         case BOMP_ACT_WAIT:
             if (o->oTimer > 100) {
@@ -78,6 +80,7 @@ void bhv_large_bomp_loop(void) {
             if (o->oTimer == 15.0) {
                 o->oAction = BOMP_ACT_EXTEND;
                 o->oForwardVel = 10.0f;
+                // No sound when moving
             }
             break;
 
@@ -91,6 +94,7 @@ void bhv_large_bomp_loop(void) {
                 o->oAction = BOMP_ACT_RETRACT;
                 o->oForwardVel = 10.0f;
                 o->oMoveAngleYaw -= 0x8000;
+                // No sound when moving
             }
             break;
 

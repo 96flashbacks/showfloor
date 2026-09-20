@@ -1,6 +1,6 @@
 // sliding_platform.inc.c
 
-void bhv_wf_sliding_platform_init(void) {
+void bhv_wf_sliding_platform_init(void) { // s_trans_bar_init
     o->oFaceAngleYaw -= 0x4000;
     o->oPosX += 2.0f;
     o->oHomeX = o->oPosX;
@@ -22,7 +22,7 @@ void bhv_wf_sliding_platform_init(void) {
     o->oTimer = random_float() * 100.0f;
 }
 
-void bhv_wf_sliding_platform_loop(void) {
+void bhv_wf_sliding_platform_loop(void) { // s_trans_bar_main
     switch (o->oAction) {
         case WF_SLID_BRICK_PTFM_ACT_WAIT:
             if (o->oTimer > 100) {

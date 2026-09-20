@@ -30,7 +30,6 @@ extern const BehaviorScript bhvCannon[];
 extern const BehaviorScript bhvCannonBarrel[];
 extern const BehaviorScript bhvCannonBurnSmoke[];
 extern const BehaviorScript bhvUnused05A8[];
-extern const BehaviorScript bhvRotatingPlatform[];
 extern const BehaviorScript bhvTower[];
 extern const BehaviorScript bhvBulletBillCannon[];
 extern const BehaviorScript bhvRotatingCounterClockwise[];

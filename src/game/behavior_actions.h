@@ -32,7 +32,6 @@ void bhv_cannon_base_loop(void);
 void bhv_cannon_barrel_loop(void);
 void bhv_cannon_burn_smoke_loop(void);
 // pathcastleobj.p
-void bhv_rotating_platform_loop(void);
 void bhv_wf_rotating_wooden_platform_loop(void);
 // pathchimney.p
 void bhv_warp_loop(void);
