@@ -88,7 +88,7 @@ static const LevelScript script_func_local_5[] = { // Stars
     RETURN(),
 };
 
-const LevelScript level_lll_entry[] = {
+const LevelScript level_lll_entry[] = { // SEQ_DoStage22
     INIT_LEVEL(),
     LOAD_MIO0        (/*seg*/ 0x07, _lll_segment_7SegmentRomStart, _lll_segment_7SegmentRomEnd),
     LOAD_MIO0_TEXTURE(/*seg*/ 0x09, _generic_mio0SegmentRomStart, _generic_mio0SegmentRomEnd),

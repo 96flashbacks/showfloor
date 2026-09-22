@@ -16,21 +16,21 @@
 #include "make_const_nonconst.h"
 #include "levels/ccm/header.h"
 
-static const LevelScript script_func_local_1[] = {
+static const LevelScript script_func_local_1[] = { // Scene 1 Enemies
     OBJECT(/*model*/ MODEL_PENGUIN,          /*pos*/  7346, -4096,  6186, /*angle*/ 0,   0, 0, /*bhvParam*/ 0x00020000, /*bhv*/ bhvSmallPenguin),
     OBJECT(/*model*/ MODEL_PENGUIN,          /*pos*/  7488, -4096,  6083, /*angle*/ 0,   0, 0, /*bhvParam*/ 0x00020000, /*bhv*/ bhvSmallPenguin),
-    OBJECT(/*model*/ MODEL_PENGUIN,          /*pos*/  3416, -2778, 3420, /*angle*/ 0,  90, 0, /*bhvParam*/ 0x00020000, /*bhv*/ bhvSmallPenguin),
+    OBJECT(/*model*/ MODEL_PENGUIN,          /*pos*/  3416, -2778, 3420,  /*angle*/ 0,  90, 0, /*bhvParam*/ 0x00020000, /*bhv*/ bhvSmallPenguin),
     OBJECT(/*model*/ MODEL_PENGUIN,          /*pos*/  2147,  4400, -1261, /*angle*/ 0, 180, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvSmallPenguin),
     RETURN(),
 };
 
-static const LevelScript script_func_local_2[] = {
+static const LevelScript script_func_local_2[] = { // Scene 1 Stars
     OBJECT(/*model*/ MODEL_PENGUIN,          /*pos*/  7296, -4096,  6085, /*angle*/ 0, 0, 0, /*bhvParam*/ 0x01000000, /*bhv*/ bhvTuxiesMother),
     OBJECT(/*model*/ MODEL_STAR,             /*pos*/  5625, -3578,  5379, /*angle*/ 0, 0, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvStar),
     RETURN(),
 };
 
-static const LevelScript script_func_local_area_2[] = {
+static const LevelScript script_func_local_area_2[] = { // Scene 2 BG Parts
     OBJECT(/*model*/ MODEL_TTM_BLUE_SMILEY,   /*pos*/  4389,  3160,   624, /*angle*/ 0, 0, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvStaticObject),
     OBJECT(/*model*/ MODEL_TTM_YELLOW_SMILEY, /*pos*/ -1251,  2050,  2224, /*angle*/ 0, 0, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvStaticObject),
     OBJECT(/*model*/ MODEL_TTM_STAR_SMILEY,   /*pos*/ -2547,   876,  -520, /*angle*/ 0, 0, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvStaticObject),
@@ -38,7 +38,7 @@ static const LevelScript script_func_local_area_2[] = {
     RETURN(),
 };
 
-static const LevelScript script_func_local_area_3[] = {
+static const LevelScript script_func_local_area_3[] = { // Scene 3 BG Parts
     OBJECT(/*model*/ MODEL_TTM_BLUE_SMILEY,   /*pos*/  7867, -1559, -6085, /*angle*/ 0, 0, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvStaticObject),
     OBJECT(/*model*/ MODEL_TTM_BLUE_SMILEY,   /*pos*/ -5241,  4700,  9466, /*angle*/ 0, 0, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvStaticObject),
     OBJECT(/*model*/ MODEL_TTM_YELLOW_SMILEY, /*pos*/ -1869, -5800,  7358, /*angle*/ 0, 0, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvStaticObject),
@@ -48,14 +48,14 @@ static const LevelScript script_func_local_area_3[] = {
     RETURN(),
 };
 
-static const LevelScript script_func_local_area_4[] = {
+static const LevelScript script_func_local_area_4[] = { // Scene 4 BG Parts
     OBJECT(/*model*/ MODEL_TTM_YELLOW_SMILEY, /*pos*/  5157,  1474, -8292, /*angle*/ 0, 0, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvStaticObject),
     OBJECT(/*model*/ MODEL_TTM_STAR_SMILEY,   /*pos*/ 11106,  2200,   381, /*angle*/ 0, 0, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvStaticObject),
     OBJECT(/*model*/ MODEL_TTM_MOON_SMILEY,   /*pos*/    37,  1474, -1124, /*angle*/ 0, 0, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvStaticObject),
     RETURN(),
 };
 
-const LevelScript level_ccm_entry[] = {
+const LevelScript level_ccm_entry[] = { // SEQ_DoStage05
     INIT_LEVEL(),
     LOAD_MIO0        (/*seg*/ 0x07, _ccm_segment_7SegmentRomStart, _ccm_segment_7SegmentRomEnd),
     LOAD_MIO0_TEXTURE(/*seg*/ 0x09, _slide_mio0SegmentRomStart, _slide_mio0SegmentRomEnd),
@@ -108,8 +108,8 @@ const LevelScript level_ccm_entry[] = {
     END_AREA(),
 
     AREA(/*index*/ 3, ccm_geo_000BEC),
-        WARP_NODE(/*id*/ 0xF0, /*destLevel*/ LEVEL_CASTLE, /*destArea*/ 0x01, /*destNode*/ 0x32, /*flags*/ WARP_NO_CHECKPOINT),
-        WARP_NODE(/*id*/ 0xF1, /*destLevel*/ LEVEL_CASTLE, /*destArea*/ 0x01, /*destNode*/ 0x64, /*flags*/ WARP_NO_CHECKPOINT),
+        WARP_NODE(/*id*/ WARP_NODE_SUCCESS, /*destLevel*/ LEVEL_CASTLE, /*destArea*/ 1, /*destNode*/ WARP_NODE_32, /*flags*/ WARP_NO_CHECKPOINT),
+        WARP_NODE(/*id*/ WARP_NODE_DEATH,   /*destLevel*/ LEVEL_CASTLE, /*destArea*/ 1, /*destNode*/ WARP_NODE_64, /*flags*/ WARP_NO_CHECKPOINT),
         JUMP_LINK(script_func_local_area_3),
         TERRAIN(/*terrainData*/ ccm_seg7_area_3_collision),
         MACRO_OBJECTS(/*objList*/ ccm_seg7_area_3_macro_objs),
@@ -120,9 +120,9 @@ const LevelScript level_ccm_entry[] = {
 
     AREA(/*index*/ 4, ccm_geo_000C84),
         OBJECT(/*model*/ MODEL_TTM_SLIDE_EXIT_PODIUM, /*pos*/ -7285, -1866, -4812, /*angle*/ 0, 0, 0, /*bhvParam*/ 0x000A0000, /*bhv*/ bhvExitPodiumWarp),
-        WARP_NODE(/*id*/ 0x0A, /*destLevel*/ LEVEL_CCM, /*destArea*/ 0x01, /*destNode*/ 0x14, /*flags*/ WARP_NO_CHECKPOINT),
-        WARP_NODE(/*id*/ 0xF0, /*destLevel*/ LEVEL_CASTLE, /*destArea*/ 0x01, /*destNode*/ 0x32, /*flags*/ WARP_NO_CHECKPOINT),
-        WARP_NODE(/*id*/ 0xF1, /*destLevel*/ LEVEL_CASTLE, /*destArea*/ 0x01, /*destNode*/ 0x64, /*flags*/ WARP_NO_CHECKPOINT),
+        WARP_NODE(/*id*/ WARP_NODE_0A,      /*destLevel*/ LEVEL_CCM,    /*destArea*/ 1, /*destNode*/ WARP_NODE_14, /*flags*/ WARP_NO_CHECKPOINT),
+        WARP_NODE(/*id*/ WARP_NODE_SUCCESS, /*destLevel*/ LEVEL_CASTLE, /*destArea*/ 1, /*destNode*/ WARP_NODE_32, /*flags*/ WARP_NO_CHECKPOINT),
+        WARP_NODE(/*id*/ WARP_NODE_DEATH,   /*destLevel*/ LEVEL_CASTLE, /*destArea*/ 1, /*destNode*/ WARP_NODE_64, /*flags*/ WARP_NO_CHECKPOINT),
         JUMP_LINK(script_func_local_area_4),
         TERRAIN(/*terrainData*/ ccm_seg7_area_4_collision),
         MACRO_OBJECTS(/*objList*/ ccm_seg7_area_4_macro_objs),

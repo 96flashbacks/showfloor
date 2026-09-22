@@ -9,8 +9,10 @@
 #include "dialog_ids.h"
 
 #include "make_const_nonconst.h"
+
 #include "levels/castle_inside/texture.inc.c"
 #include "levels/castle_inside/material.inc.c"
+
 #include "levels/castle_inside/painting.inc.c"
 
 #include "levels/castle_inside/areas/1/lobby/model.inc.c"
@@ -20,6 +22,7 @@
 #include "levels/castle_inside/areas/1/water_land_room/model.inc.c"
 #include "levels/castle_inside/areas/1/snow_slider_room/model.inc.c"
 #include "levels/castle_inside/areas/1/hallway/model.inc.c"
+
 #include "levels/castle_inside/areas/1/collision.inc.c"
 #include "levels/castle_inside/areas/1/room.inc.c"
 

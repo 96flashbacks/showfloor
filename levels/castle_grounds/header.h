@@ -17,7 +17,9 @@ extern const Gfx castle_grounds_4_dl_mesh[];
 extern const Gfx castle_grounds_5_dl_mesh[];
 extern const Gfx castle_grounds_tower_1_dl_mesh[];
 extern const Gfx castle_grounds_tower_2_dl_mesh[];
+
 extern const Collision castle_grounds_collision[];
+
 extern const struct MovtexQuadCollection castle_grounds_movtex_water[];
 extern Movtex castle_grounds_movtex_tris_waterfall[];
 extern const Gfx castle_grounds_dl_waterfall[];

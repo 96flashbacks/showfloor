@@ -15,14 +15,14 @@
 #include "make_const_nonconst.h"
 #include "levels/castle_courtyard/header.h"
 
-static const LevelScript script_func_local_1[] = {
+static const LevelScript script_func_local_1[] = { // BGParts
     OBJECT(/*model*/ MODEL_NONE, /*pos*/     0, 200, -1652, /*angle*/ 0, 0, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvAmbientSounds),
     OBJECT(/*model*/ MODEL_NONE, /*pos*/ -2700,   0, -1652, /*angle*/ 0, 0, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvBirdsSoundLoop),
     OBJECT(/*model*/ MODEL_NONE, /*pos*/  2700,   0, -1652, /*angle*/ 0, 0, 0, /*bhvParam*/ 0x00010000, /*bhv*/ bhvBirdsSoundLoop),
     RETURN(),
 };
 
-static const LevelScript script_func_local_2[] = {
+static const LevelScript script_func_local_2[] = { // Enemies
     OBJECT(/*model*/ MODEL_BOO,  /*pos*/ -3217, 100,  -101, /*angle*/ 0, 0, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvCourtyardBooTriplet),
     OBJECT(/*model*/ MODEL_BOO,  /*pos*/  3317, 100, -1701, /*angle*/ 0, 0, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvCourtyardBooTriplet),
     OBJECT(/*model*/ MODEL_BOO,  /*pos*/   -71,   1, -1387, /*angle*/ 0, 0, 0, /*bhvParam*/ 0x00000000, /*bhv*/ bhvCourtyardBooTriplet),
@@ -31,7 +31,7 @@ static const LevelScript script_func_local_2[] = {
     RETURN(),
 };
 
-const LevelScript level_castle_courtyard_entry[] = {
+const LevelScript level_castle_courtyard_entry[] = { // SEQ_DoStage26
     INIT_LEVEL(),
     LOAD_MIO0(        /*seg*/ 0x07, _castle_courtyard_segment_7SegmentRomStart, _castle_courtyard_segment_7SegmentRomEnd),
     LOAD_MIO0(        /*seg*/ 0x0A, _water_skybox_mio0SegmentRomStart, _water_skybox_mio0SegmentRomEnd),
@@ -47,8 +47,8 @@ const LevelScript level_castle_courtyard_entry[] = {
     JUMP_LINK(script_func_global_1),
     JUMP_LINK(script_func_global_10),
     JUMP_LINK(script_func_global_18),
-    LOAD_MODEL_FROM_GEO(MODEL_BUBBLY_TREE,           RCP_HmsMainTree),
-    LOAD_MODEL_FROM_GEO(MODEL_CASTLE_DOOR_WARP,      RCP_HmsMainDoor),
+    LOAD_MODEL_FROM_GEO(MODEL_BUBBLY_TREE,      RCP_HmsMainTree),
+    LOAD_MODEL_FROM_GEO(MODEL_CASTLE_DOOR_WARP, RCP_HmsMainDoor),
 
     AREA(/*index*/ 1, courtyard_geo),
         OBJECT(/*model*/ MODEL_NONE, /*pos*/     0,   51, -1000, /*angle*/ 0, 180, 0, /*bhvParam*/ BPARAM2(WARP_NODE_0A), /*bhv*/ bhvLaunchStarCollectWarp),

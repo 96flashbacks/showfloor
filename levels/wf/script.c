@@ -65,7 +65,7 @@ static const LevelScript script_func_local_4[] = { // Stars
     RETURN(),
 };
 
-const LevelScript level_wf_entry[] = {
+const LevelScript level_wf_entry[] = { // SEQ_DoStage24
     INIT_LEVEL(),
     LOAD_MIO0        (/*seg*/ 0x07, _wf_segment_7SegmentRomStart, _wf_segment_7SegmentRomEnd),
     LOAD_MIO0        (/*seg*/ 0x0A, _cloud_floor_skybox_mio0SegmentRomStart, _cloud_floor_skybox_mio0SegmentRomEnd),
