@@ -152,5 +152,5 @@ const Collision mountain_10_collision[] = {
 	COL_TRI(52, 33, 53),
 	COL_TRI(26, 51, 50),
 	COL_TRI_STOP(),
-	COL_END()
+	COL_END(),
 };

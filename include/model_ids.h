@@ -427,7 +427,7 @@
 //#define MODEL_HEART                       0x78        // heart_geo
 #define MODEL_TRANSPARENT_STAR            0x79        // RCP_HmsDotstar
 #define MODEL_STAR                        0x7A        // RCP_HmsItemStar
-#define MODEL_TTM_SLIDE_EXIT_PODIUM       0x7B        // ttm_geo_000DF4
+#define MODEL_SLIDE_EXIT_PODIUM           0x7B        // ttm_geo_000DF4 (S_chimney)
 //#define MODEL_WOODEN_SIGNPOST             0x7C        // wooden_signpost_geo
 #define MODEL_GREEN_KOOPA_SHELL           0x7D        // RCP_HmsGreenNoko (S_green_kame)
 #define MODEL_RED_KOOPA_SHELL             0x7E        // RCP_HmsRedNoko (S_red_kame)
@@ -475,7 +475,7 @@
 // find me
 #define MODEL_PURPLE_MARBLE               0xAA        // purple_marble_geo
 // find me
-#define MODEL_UNKNOWN_AC                  0xAC        // according to an special preset, it was the original id of the castle floor trap
+#define MODEL_CASTLE_FLOOR_TRAP           0xAC        // The original castle floor trap ID, internally named 'S_mainroom_trap'
 #define MODEL_WF_SLIDING_PLATFORM         0xAD        // wf_geo_000A98
 #define MODEL_WF_SMALL_BOMP               0xAE        // wf_geo_000A00
 #define MODEL_WF_ROTATING_WOODEN_PLATFORM 0xAF        // wf_geo_000A58

@@ -20,10 +20,12 @@ struct SpecialPreset {
 static struct SpecialPreset sSpecialObjectPresets[] = {
     { special_null_start,                         SPTYPE_YROT_NO_PARAMS,     0x00, MODEL_NONE, NULL },
     { special_yellow_coin,                        SPTYPE_NO_YROT_OR_PARAMS,  0x00, MODEL_YELLOW_COIN, bhvYellowCoin },
-    { special_yellow_coin_2,                      SPTYPE_NO_YROT_OR_PARAMS,  0x00, MODEL_YELLOW_COIN, bhvYellowCoin },
+    { special_yellow_coin_2,                      SPTYPE_NO_YROT_OR_PARAMS,  0x00, MODEL_YELLOW_COIN, bhvYellowCoin }, // Internally called "STAR" but it's a coin duplicate in vanilla
     { special_unknown_3,                          SPTYPE_NO_YROT_OR_PARAMS,  0x00, MODEL_UNKNOWN_B8, bhvStaticObject },
     { special_boo,                                SPTYPE_NO_YROT_OR_PARAMS,  0x00, MODEL_BOO, bhvCourtyardBooTriplet },
-    { special_unknown_5,                          SPTYPE_NO_YROT_OR_PARAMS,  0x00, MODEL_UNKNOWN_AC, bhvCastleFloorTrap },
+    { special_castle_floor_trap,                  SPTYPE_NO_YROT_OR_PARAMS,  0x00, MODEL_CASTLE_FLOOR_TRAP, bhvCastleFloorTrap },
+    { special_lll_moving_octagonal_mesh_platform, SPTYPE_NO_YROT_OR_PARAMS,  0x00, MODEL_LLL_MOVING_OCTAGONAL_MESH_PLATFORM, bhvLLLMovingOctagonalMeshPlatform },
+    { special_empty_7,                            SPTYPE_NO_YROT_OR_PARAMS,  0x00, MODEL_NONE, bhvStaticObject }, // Weirdly in vanilla it's a snowball preset, but its internally named 'OBJSETCODE_MOTOS_OBJ02'
     { special_lll_drawbridge_spawner,             SPTYPE_YROT_NO_PARAMS,     0x00, MODEL_LLL_DRAWBRIDGE_PART, bhvLLLDrawbridgeSpawner },
     { special_empty_9,                            SPTYPE_NO_YROT_OR_PARAMS,  0x00, MODEL_NONE, bhvStaticObject },
     { special_lll_rotating_block_with_fire_bars,  SPTYPE_NO_YROT_OR_PARAMS,  0x00, MODEL_LLL_ROTATING_BLOCK_FIRE_BARS, bhvLLLRotatingBlockWithFireBars },
@@ -35,18 +37,20 @@ static struct SpecialPreset sSpecialObjectPresets[] = {
     { special_lll_tilting_square_platform,        SPTYPE_NO_YROT_OR_PARAMS,  0x00, MODEL_LLL_TILTING_SQUARE_PLATFORM, bhvLLLTiltingInvertedPyramid },
     { special_lll_bowser_puzzle,                  SPTYPE_NO_YROT_OR_PARAMS,  0x00, MODEL_NONE, bhvLLLBowserPuzzle },
     { special_mr_i,                               SPTYPE_NO_YROT_OR_PARAMS,  0x00, MODEL_NONE, bhvMrI },
+    { special_small_bully,                        SPTYPE_NO_YROT_OR_PARAMS,  0x00, MODEL_BULLY, bhvSmallBully },
+    { special_big_bully,                          SPTYPE_NO_YROT_OR_PARAMS,  0x00, MODEL_BULLY_BOSS, bhvBigBully },
     { special_empty_21,                           SPTYPE_NO_YROT_OR_PARAMS,  0x00, MODEL_NONE, bhvStaticObject },
     { special_empty_22,                           SPTYPE_NO_YROT_OR_PARAMS,  0x00, MODEL_NONE, bhvStaticObject },
     { special_empty_23,                           SPTYPE_NO_YROT_OR_PARAMS,  0x00, MODEL_NONE, bhvStaticObject },
     { special_empty_24,                           SPTYPE_NO_YROT_OR_PARAMS,  0x00, MODEL_NONE, bhvStaticObject },
     { special_empty_25,                           SPTYPE_NO_YROT_OR_PARAMS,  0x00, MODEL_NONE, bhvStaticObject },
-    { special_moving_coin,                        SPTYPE_NO_YROT_OR_PARAMS,  0x00, MODEL_YELLOW_COIN, bhvMovingCoin },
-    { special_slider_coin,                        SPTYPE_NO_YROT_OR_PARAMS,  0x00, MODEL_YELLOW_COIN, bhvSliderCoin },
+    { special_moving_blue_coin,                   SPTYPE_NO_YROT_OR_PARAMS,  0x00, MODEL_YELLOW_COIN, bhvSliderCoin },
     { special_jrb_chest,                          SPTYPE_NO_YROT_OR_PARAMS,  0x00, MODEL_TREASURE_CHEST_BASE, bhvBetaChestBottom },
     { special_water_ring,                         SPTYPE_NO_YROT_OR_PARAMS,  0x00, MODEL_WATER_RING, bhvJetStreamRingSpawner },
     { special_mine,                               SPTYPE_NO_YROT_OR_PARAMS,  0x00, MODEL_WATER_MINE, bhvBowserBomb },
     { special_empty_30,                           SPTYPE_UNKNOWN,            0x00, MODEL_NONE, bhvStaticObject },
     { special_empty_31,                           SPTYPE_NO_YROT_OR_PARAMS,  0x00, MODEL_NONE, bhvStaticObject },
+    { special_butterfly,                          SPTYPE_NO_YROT_OR_PARAMS,  0x00, MODEL_BUTTERFLY, bhvTripletButterfly }, // Uses the single butterfly bhv in vanilla instead of the triplet spawner
     { special_bowser,                             SPTYPE_NO_YROT_OR_PARAMS,  0x00, MODEL_BOWSER, bhvBowser },
     { special_wf_rotating_wooden_platform,        SPTYPE_NO_YROT_OR_PARAMS,  0x00, MODEL_WF_ROTATING_WOODEN_PLATFORM, bhvWFRotatingWoodenPlatform },
     { special_small_bomp,                         SPTYPE_YROT_NO_PARAMS,     0x00, MODEL_WF_SMALL_BOMP, bhvSmallBomp },
@@ -77,10 +81,10 @@ static struct SpecialPreset sSpecialObjectPresets[] = {
     { special_level_geo_16,                       SPTYPE_YROT_NO_PARAMS,     0x00, MODEL_LEVEL_GEOMETRY_16, bhvStaticObject },
     { special_bubble_tree,                        SPTYPE_NO_YROT_OR_PARAMS,  0x00, MODEL_BUBBLY_TREE, bhvTree },
     { special_castle_door,                        SPTYPE_YROT_NO_PARAMS,     0x00, MODEL_CASTLE_DOOR, bhvDoor },
-    { special_castle_door_A,                      SPTYPE_YROT_NO_PARAMS,     0x00, MODEL_CASTLE_DOOR_A, bhvDoor }, /* door no. 3 */
-    { special_castle_door_B,                      SPTYPE_YROT_NO_PARAMS,     0x00, MODEL_CASTLE_DOOR_B, bhvDoor }, /* door no. 1 */
-    { special_castle_door_C,                      SPTYPE_YROT_NO_PARAMS,     0x00, MODEL_CASTLE_DOOR_C, bhvDoor }, /* door no. 2 */
-    { special_castle_door_D,                      SPTYPE_YROT_NO_PARAMS,     0x00, MODEL_CASTLE_DOOR_D, bhvDoor }, /* door no. 4 */
+    { special_castle_door_A,                      SPTYPE_DEF_PARAM_AND_YROT, 0x00, MODEL_CASTLE_DOOR_A, bhvDoor },
+    { special_castle_door_B,                      SPTYPE_DEF_PARAM_AND_YROT, 0x01, MODEL_CASTLE_DOOR_B, bhvDoor },
+    { special_castle_door_C,                      SPTYPE_DEF_PARAM_AND_YROT, 0x03, MODEL_CASTLE_DOOR_C, bhvDoor },
+    { special_castle_door_D,                      SPTYPE_DEF_PARAM_AND_YROT, 0x00, MODEL_CASTLE_DOOR_D, bhvDoor },
     { special_castle_door_warp,                   SPTYPE_PARAMS_AND_YROT,    0x00, MODEL_CASTLE_DOOR_WARP, bhvDoorWarp },
     { special_null_end,                           SPTYPE_NO_YROT_OR_PARAMS,  0x00, MODEL_NONE, NULL },
 };

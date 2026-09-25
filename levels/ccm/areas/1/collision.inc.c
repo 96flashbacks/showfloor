@@ -1454,5 +1454,5 @@ const Collision snow_slider_collision[] = {
 	COL_TRI(369, 477, 143),
 	COL_TRI(369, 143, 151),
 	COL_TRI_STOP(),
-	COL_END()
+	COL_END(),
 };

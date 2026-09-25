@@ -23,4 +23,3 @@
 #include "levels/ccm/yellow_smiley/geo.inc.c"
 #include "levels/ccm/star_smiley/geo.inc.c"
 #include "levels/ccm/moon_smiley/geo.inc.c"
-#include "levels/ccm/slide_exit_podium/geo.inc.c"

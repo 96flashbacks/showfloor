@@ -69,7 +69,6 @@ const LevelScript level_ccm_entry[] = { // SEQ_DoStage05
     MARIO(/*model*/ MODEL_MARIO, /*bhvParam*/ BPARAM4(0x01), /*bhv*/ bhvMario),
     JUMP_LINK(script_func_global_1),
     JUMP_LINK(script_func_global_8),
-    LOAD_MODEL_FROM_GEO(MODEL_TTM_SLIDE_EXIT_PODIUM, ccm_geo_000DF4),
     LOAD_MODEL_FROM_GEO(MODEL_TTM_BLUE_SMILEY,       ccm_geo_000D14),
     LOAD_MODEL_FROM_GEO(MODEL_TTM_YELLOW_SMILEY,     ccm_geo_000D4C),
     LOAD_MODEL_FROM_GEO(MODEL_TTM_STAR_SMILEY,       ccm_geo_000D84),
@@ -119,7 +118,7 @@ const LevelScript level_ccm_entry[] = { // SEQ_DoStage05
     END_AREA(),
 
     AREA(/*index*/ 4, ccm_geo_000C84),
-        OBJECT(/*model*/ MODEL_TTM_SLIDE_EXIT_PODIUM, /*pos*/ -7285, -1866, -4812, /*angle*/ 0, 0, 0, /*bhvParam*/ 0x000A0000, /*bhv*/ bhvExitPodiumWarp),
+        OBJECT(/*model*/ MODEL_SLIDE_EXIT_PODIUM, /*pos*/ -7285, -1866, -4812, /*angle*/ 0, 0, 0, /*bhvParam*/ 0x000A0000, /*bhv*/ bhvExitPodiumWarp),
         WARP_NODE(/*id*/ WARP_NODE_0A,      /*destLevel*/ LEVEL_CCM,    /*destArea*/ 1, /*destNode*/ WARP_NODE_14, /*flags*/ WARP_NO_CHECKPOINT),
         WARP_NODE(/*id*/ WARP_NODE_SUCCESS, /*destLevel*/ LEVEL_CASTLE, /*destArea*/ 1, /*destNode*/ WARP_NODE_32, /*flags*/ WARP_NO_CHECKPOINT),
         WARP_NODE(/*id*/ WARP_NODE_DEATH,   /*destLevel*/ LEVEL_CASTLE, /*destArea*/ 1, /*destNode*/ WARP_NODE_64, /*flags*/ WARP_NO_CHECKPOINT),

@@ -612,7 +612,7 @@ const BehaviorScript bhvExitPodiumWarp[] = { // e_tripchimney
     SET_INT(oInteractType, INTERACT_WARP),
     DROP_TO_FLOOR(),
     SET_FLOAT(oCollisionDistance, 8000),
-    LOAD_COLLISION_DATA(ccm_seg7_collision_podium_warp),
+    LOAD_COLLISION_DATA(endoor_info),
     SET_INT(oIntangibleTimer, 0),
     SET_HITBOX(/*Radius*/ 50, /*Height*/ 50),
     BEGIN_LOOP(),
@@ -1644,9 +1644,9 @@ const BehaviorScript bhvStaticObject[] = { // e_stop
     BREAK(),
 };
 
-const BehaviorScript bhvCastleFloorTrap[] = { // e_mainroom_trap
+const BehaviorScript bhvCastleFloorTrap[] = { // e_mainroom_trap (modified)
     BEGIN(OBJ_LIST_DEFAULT),
-    DISABLE_RENDERING(),
+    HIDE(), // Removing or changing the 'DISABLE_RENDERING()' command makes the sound effect play like footage
     CALL_NATIVE(bhv_castle_floor_trap_init),
     BEGIN_LOOP(),
         CALL_NATIVE(bhv_castle_floor_trap_loop),

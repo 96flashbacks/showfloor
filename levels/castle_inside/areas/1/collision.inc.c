@@ -2699,5 +2699,20 @@ const Collision castle_inside_collision[] = {
 	COL_TRI(1170, 1168, 1169),
 	COL_TRI(1170, 1169, 1171),
 	COL_TRI_STOP(),
-	COL_END()
+/*---------------- Special objects ----------------*/
+	COL_SPECIAL_INIT(13),
+	SPECIAL_OBJECT_WITH_YAW(/*preset*/ special_null_start,        /*pos*/     0,    0,  2013, /*yaw*/ 128), // unused, probably an early way to set initial position
+	SPECIAL_OBJECT_WITH_YAW(/*preset*/ special_castle_door,       /*pos*/   332,    0, -2856, /*yaw*/  32),                            // Courtyard Hallway right door
+	SPECIAL_OBJECT_WITH_YAW(/*preset*/ special_castle_door,       /*pos*/  -332,    0, -2856, /*yaw*/ 224),                            // Courtyard Hallway left door
+	SPECIAL_OBJECT_WITH_YAW(/*preset*/ special_castle_door,       /*pos*/    77,  410, -3060, /*yaw*/ 128),                            // Bowser Hallway right door
+	SPECIAL_OBJECT_WITH_YAW(/*preset*/ special_castle_door,       /*pos*/   -77,  410, -3060, /*yaw*/   0),                            // Bowser Hallway left door
+	SPECIAL_OBJECT_WITH_YAW_AND_PARAM(/*preset*/ special_castle_door_warp,  /*pos*/   -77,    0, -1116, /*yaw*/   0, /*bhvParam2*/ 0), // Lobby entrance left door
+    SPECIAL_OBJECT_WITH_YAW_AND_PARAM(/*preset*/ special_castle_door_warp,  /*pos*/    77,    0, -1116, /*yaw*/ 128, /*bhvParam2*/ 1), // Lobby entrance right door
+	SPECIAL_OBJECT_WITH_YAW_AND_PARAM(/*preset*/ special_castle_door_warp,  /*pos*/     0,    0, -5416, /*yaw*/   0, /*bhvParam2*/ 2), // Courtyard Hallway warp door
+	SPECIAL_OBJECT_WITH_YAW(/*preset*/ special_castle_door_A,     /*pos*/ -1690,  205, -2320, /*yaw*/  64),                            // Snow Slider door
+	SPECIAL_OBJECT_WITH_YAW(/*preset*/ special_castle_door_B,     /*pos*/  -946,    0, -3060, /*yaw*/   0),                            // Mountain door
+	SPECIAL_OBJECT_WITH_YAW(/*preset*/ special_castle_door_C,     /*pos*/   946,    0, -3060, /*yaw*/   0),                            // Fire Bubble door
+	SPECIAL_OBJECT_WITH_YAW(/*preset*/ special_castle_door_D,     /*pos*/  1690,  205, -2320, /*yaw*/ 192),                            // Water Land door
+	SPECIAL_OBJECT(/*preset*/ special_castle_floor_trap, /*pos*/     0,   614, -6364), // Using the leftover OBJSETCODE_MAINROOM_TRAP, with an earlier model ID
+	COL_END(),
 };

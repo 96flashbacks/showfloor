@@ -1015,5 +1015,8 @@ const Collision fire_bubble_collision[] = {
 	COL_TRI(118, 121, 116),
 	COL_TRI(118, 119, 121),
 	COL_TRI_STOP(),
-	COL_END()
+/*---------------- Special objects ----------------*/
+	COL_SPECIAL_INIT(1),
+    SPECIAL_OBJECT_WITH_YAW(/*preset*/ special_null_start, /*pos*/ 1285, 154, 6272, /*yaw*/ 64), // unused, probably an early way to set initial position
+	COL_END(),
 };

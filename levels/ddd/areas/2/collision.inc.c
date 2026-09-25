@@ -560,6 +560,7 @@ const Collision water_land_area_2_collision[] = {
 	COL_TRI(210, 189, 188),
 	COL_TRI(210, 188, 201),
 	COL_TRI_STOP(),
+/*------------------ Water Box --------------------*/
 	COL_WATER_BOX_INIT(1),
     COL_WATER_BOX(0, -6143, -7167,  8192,  7168, 0),
     COL_END(),

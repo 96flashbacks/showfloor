@@ -139,6 +139,7 @@ static const LevelScript script_exec_ ## folder [] = { \
 #undef DEFINE_LEVEL
 
 const LevelScript script_func_global_1[] = {
+    LOAD_MODEL_FROM_GEO(MODEL_SLIDE_EXIT_PODIUM,       RCP_HmsEndoor), // The slide exit podium was seemingly a general object based on its inclusion in 'shape/keep/OLD/'
     LOAD_MODEL_FROM_GEO(MODEL_GREEN_KOOPA_SHELL,       RCP_HmsGreenNoko),
     LOAD_MODEL_FROM_GEO(MODEL_RED_KOOPA_SHELL,         RCP_HmsRedNoko),
     LOAD_MODEL_FROM_GEO(MODEL_CANNON_BARREL,           RCP_HmsCannonBody),

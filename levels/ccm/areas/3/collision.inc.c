@@ -1426,5 +1426,5 @@ const Collision ccm_seg7_area_3_collision[] = {
 	COL_TRI(250, 261, 550),
 	COL_TRI(261, 551, 550),
 	COL_TRI_STOP(),
-	COL_END()
+	COL_END(),
 };

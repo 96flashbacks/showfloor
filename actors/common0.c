@@ -9,6 +9,10 @@
 
 #define SCALE 0.25
 
+#include "slide_exit_podium/endoor.sou"
+#include "slide_exit_podium/endoor.flk"
+UNUSED static const u64 binid_2 = 2;
+
 #include "cannon_base/cannon_base.sou"
 UNUSED static const u64 binid_3 = 3;
 

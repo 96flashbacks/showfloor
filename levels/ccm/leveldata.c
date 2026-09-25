@@ -35,14 +35,11 @@
 #include "levels/ccm/yellow_smiley/model.inc.c"
 #include "levels/ccm/star_smiley/model.inc.c"
 #include "levels/ccm/moon_smiley/model.inc.c"
-#include "levels/ccm/slide_exit_podium/model.inc.c"
 
 // Level collision data
 #include "levels/ccm/areas/2/collision.inc.c"
 #include "levels/ccm/areas/3/collision.inc.c"
 #include "levels/ccm/areas/4/collision.inc.c"
-// Level geometry object collision data
-#include "levels/ccm/slide_exit_podium/collision.inc.c"
 
 // Macro objects
 #include "levels/ccm/areas/2/macro.inc.c"

@@ -21,5 +21,5 @@ const Collision wf_seg7_collision_trapezoid[] = { // lift_0fan_info (modified)
 	COL_TRI(6, 5, 7),
 	COL_TRI(6, 7, 4),
 	COL_TRI_STOP(),
-	COL_END()
+	COL_END(),
 };

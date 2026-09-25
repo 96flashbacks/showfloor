@@ -472,5 +472,5 @@ const Collision water_land_submarine_collision[] = {
 	COL_TRI(32, 33, 34),
 	COL_TRI(32, 35, 33),
 	COL_TRI_STOP(),
-	COL_END()
+	COL_END(),
 };

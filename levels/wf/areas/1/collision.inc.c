@@ -634,11 +634,13 @@ const Collision mountain_collision[] = {
 	COL_TRI(58, 51, 255),
 	COL_TRI(255, 51, 254),
 	COL_TRI_STOP(),
+/*---------------- Special objects ----------------*/
 	COL_SPECIAL_INIT(4),
     SPECIAL_OBJECT_WITH_YAW(/*preset*/ special_null_start,   /*pos*/  2560,  256, 5120, /*yaw*/ 64), // unused, probably an early way to set intial position
     SPECIAL_OBJECT_WITH_YAW(/*preset*/ special_level_geo_0E, /*pos*/  3584,  154, 4864, /*yaw*/ 0),
     SPECIAL_OBJECT_WITH_YAW(/*preset*/ special_level_geo_0F, /*pos*/  4608,  256, 1792, /*yaw*/ 0),
     SPECIAL_OBJECT(/*preset*/ special_bubble_tree,  /*pos*/  2560,  256, 4608),
+/*------------------ Water Box --------------------*/
     COL_WATER_BOX_INIT(1),
     COL_WATER_BOX(0, -1023, 1024, 3226, 4096, 973),
     COL_END(),

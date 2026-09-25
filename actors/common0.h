@@ -4,6 +4,10 @@
 #include "types.h"
 #include "headers.h"
 
+// slide_exit_podium
+extern Hierarchy RCP_HmsEndoor[];
+extern const Collision endoor_info[];
+
 // cannon_barrel
 extern Hierarchy RCP_HmsCannonBody[];
 

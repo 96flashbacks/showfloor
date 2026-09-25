@@ -925,6 +925,7 @@ const Collision castle_grounds_collision[] = {
 	COL_TRI(345, 327, 344),
 	COL_TRI(341, 348, 337),
 	COL_TRI_STOP(),
+/*---------------- Special objects ----------------*/
 	COL_SPECIAL_INIT(31),
     SPECIAL_OBJECT_WITH_YAW(/*preset*/ special_level_geo_03,     /*pos*/     0, 2989, -4128, /*yaw*/ 0),
 	SPECIAL_OBJECT(/*preset*/ special_bubble_tree,  /*pos*/  -926,  607, 2374),
@@ -960,6 +961,7 @@ const Collision castle_grounds_collision[] = {
 
     SPECIAL_OBJECT_WITH_YAW_AND_PARAM(/*preset*/ special_castle_door_warp, /*pos*/   -76,  803, -3155, /*yaw*/   0, /*behParam2*/ 0),
     SPECIAL_OBJECT_WITH_YAW_AND_PARAM(/*preset*/ special_castle_door_warp, /*pos*/    77,  803, -3155, /*yaw*/ 128, /*behParam2*/ 1),
+/*------------------ Water Box --------------------*/
     COL_WATER_BOX_INIT(2),
     COL_WATER_BOX(0, -7129, -7222, 8253, -58, -216),
     COL_WATER_BOX(1, 1024, -58, 8230, 8137, -216),

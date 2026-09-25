@@ -9,6 +9,7 @@
 #include "common0.h"
 
 #include "test_platform/geo.inc.c"
+#include "slide_exit_podium/endoor.hms"
 #include "cannon_base/cannon_base.hms"
 #include "cannon_barrel/cannon_body.hms"
 #include "koopa_shell/nokonoko.hms"
