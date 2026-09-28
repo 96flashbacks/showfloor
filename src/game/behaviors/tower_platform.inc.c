@@ -27,7 +27,6 @@ void bhv_wf_elevator_tower_platform_loop(void) { // s_goalbar_updown
             break;
 
         case 1:
-            cur_obj_play_sound_1(SOUND_ENV_ELEVATOR1);
             if (o->oTimer > goalbar_updown_height/goalbar_updown_speed) {
                 o->oAction++;
             } else {
@@ -42,7 +41,6 @@ void bhv_wf_elevator_tower_platform_loop(void) { // s_goalbar_updown
             break;
 
         case 3:
-            cur_obj_play_sound_1(SOUND_ENV_ELEVATOR1);
             if (o->oTimer > goalbar_updown_height/goalbar_updown_speed) {
                 o->oAction = 0;
             } else {
