@@ -18,7 +18,7 @@ void bhv_wf_solid_tower_platform_loop(void) { // s_goalbar_stop
 #define	goalbar_updown_speed		5
 #define	goalbar_updown_height		700
 
-void bhv_wf_elevator_tower_platform_loop(void) { // s_goalbar_updown
+void bhv_wf_elevator_tower_platform_loop(void) { // s_goalbar_updown (modified)
     switch (o->oAction) {
         case 0:
             if (gMarioObject->platform == o) {
@@ -27,6 +27,7 @@ void bhv_wf_elevator_tower_platform_loop(void) { // s_goalbar_updown
             break;
 
         case 1:
+            // Removed elevator sound
             if (o->oTimer > goalbar_updown_height/goalbar_updown_speed) {
                 o->oAction++;
             } else {
@@ -41,6 +42,7 @@ void bhv_wf_elevator_tower_platform_loop(void) { // s_goalbar_updown
             break;
 
         case 3:
+            // Removed elevator sound
             if (o->oTimer > goalbar_updown_height/goalbar_updown_speed) {
                 o->oAction = 0;
             } else {
