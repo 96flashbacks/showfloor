@@ -922,7 +922,7 @@ const Collision castle_grounds_collision[] = {
 	SPECIAL_OBJECT(/*preset*/ special_bubble_tree,  /*pos*/ -5168,  283,   880),
 
 	SPECIAL_OBJECT(/*preset*/ special_bubble_tree,  /*pos*/ 5868,  880,  -6537),
-	SPECIAL_OBJECT(/*preset*/ special_bubble_tree,  /*pos*/ 5272,  649,  -6057),
+	SPECIAL_OBJECT(/*preset*/ special_bubble_tree,  /*pos*/ 5270,  648,  -5987),
 	SPECIAL_OBJECT(/*preset*/ special_bubble_tree,  /*pos*/ 5956,  715,  -4572),
 	SPECIAL_OBJECT(/*preset*/ special_bubble_tree,  /*pos*/ 6456,  718,  -3754),
 	SPECIAL_OBJECT(/*preset*/ special_bubble_tree,  /*pos*/ 5443,  516,  -3207),
