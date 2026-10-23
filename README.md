@@ -5,7 +5,7 @@
 
 **showfloor** is a recreation of the Shoshinkai 1995 demo of Super Mario 64, based on [The Preservation Project](https://github.com/Sunlitspace542/tpp-mirror) (TPP). It aims to continue TPP's legacy with greater accuracy to the source material.
 
-## Installation
+## Compiling
 
 The build process is the same as the [SM64 Decomp's](https://github.com/n64decomp/sm64).
 Follow their [README](https://github.com/n64decomp/sm64/blob/master/README.md#installation) for setup steps and prerequisites (dependencies, baserom, etc).
@@ -17,6 +17,9 @@ git clone https://github.com/96flashbacks/showfloor.git
 cd showfloor
 make
 ```
+## Patches
+
+If you just want to play the game, go to the Releases section and download a patch from Continuous Pre-releases for the newest build. A Japanese Super Mario 64 ROM is required for patching. Patches labeled with "HLE" run without issue on real hardware and most emulators. Patches without the "HLE" label use code from the U64 Aging Cartridge and only work on accurate emulators or real hardware.
 
 ### RSP Microcode
 
