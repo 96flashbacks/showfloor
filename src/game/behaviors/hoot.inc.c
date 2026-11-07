@@ -239,7 +239,7 @@ void bhv_hoot_loop(void) {
             if ((gMarioState->action & ACT_GROUP_MASK) == ACT_GROUP_STATIONARY || 
                 (gMarioState->action & ACT_GROUP_MASK) == ACT_GROUP_MOVING) {
                 level_set_transition(-1, NULL);
-                create_dialog_box(MESS_TORI);
+                //create_dialog_box(MESS_TORI);
                 o->oHootAvailability = HOOT_AVAIL_READY_TO_FLY;
             }
             break;
