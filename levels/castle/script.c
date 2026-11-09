@@ -38,7 +38,7 @@ const LevelScript level_castle_entry[] = {
 
     AREA(/*index*/ 1, RCP_Stage1Scene1),
         TERRAIN(/*terrainData*/ castle_info),
-        SET_BACKGROUND_MUSIC(/*settingsPreset*/ 0x0000, /*seq*/ SEQ_SOUND_PLAYER),
+        SET_BACKGROUND_MUSIC(/*settingsPreset*/ 0x0005, /*seq*/ SEQ_LEVEL_GRASS),
         TERRAIN_TYPE(/*terrainType*/ TERRAIN_GRASS),
 
     END_AREA(),
