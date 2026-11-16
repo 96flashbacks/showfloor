@@ -17,6 +17,21 @@ extern const u8 generic_09004000[];
 extern const u8 generic_09004800[];
 extern const u8 generic_09005000[];
 extern const u8 generic_09005800[];
+extern const u8 generic_09006000[];
+extern const u8 generic_09006800[];
+extern const u8 generic_09007000[];
+extern const u8 generic_09007800[];
+extern const u8 generic_09008000[];
+extern const u8 generic_09008800[];
+extern const u8 generic_09009000[];
+extern const u8 generic_09009800[];
+extern const u8 generic_0900A000[];
+extern const u8 generic_0900A800[];
+extern const u8 generic_0900B000[];
+extern const u8 generic_0900B800[];
+extern const u8 generic_0900C000[];
+extern const u8 generic_0900C800[];
+extern const u8 generic_0900D000[];
 
 // inside
 extern const u8 inside_09000000[];
