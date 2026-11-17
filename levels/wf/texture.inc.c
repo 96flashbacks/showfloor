@@ -63,6 +63,11 @@ ALIGNED8 static const u8 wf_seg7_texture_07007000[] = {
 #include "levels/wf/12.rgba16.inc.c"
 };
 
+// 0x07007800 - 0x07008000
+ALIGNED8 static const u8 wf_seg7_texture_07007800[] = {
+#include "levels/wf/13.rgba16.inc.c"
+};
+
 ALIGNED8 static const u8 wf_seg7_texture_areamap_top[] = {
 #include "levels/wf/areamap_mountain_top.rgba16.inc.c"
 };
