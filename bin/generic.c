@@ -105,10 +105,5 @@ ALIGNED8 const Texture generic_09009800[] = {
 
 // 0x0900A000
 ALIGNED8 const Texture generic_0900A000[] = {
-#include "textures/generic/generic_textures.0A000.rgba16.inc.c"
-};
-
-// 0x0900A800
-ALIGNED8 const Texture generic_0900A800[] = {
-#include "textures/generic/generic_textures.0A800.ia16.inc.c"
+#include "textures/generic/generic_textures.0A000.ia16.inc.c"
 };

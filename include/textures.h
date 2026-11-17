@@ -26,7 +26,6 @@ extern const u8 generic_09008800[];
 extern const u8 generic_09009000[];
 extern const u8 generic_09009800[];
 extern const u8 generic_0900A000[];
-extern const u8 generic_0900A800[];
 
 // inside
 extern const u8 inside_09000000[];
