@@ -105,35 +105,5 @@ ALIGNED8 const Texture generic_09009800[] = {
 
 // 0x0900A000
 ALIGNED8 const Texture generic_0900A000[] = {
-#include "textures/generic/generic_textures.0A000.rgba16.inc.c"
-};
-
-// 0x0900A800
-ALIGNED8 const Texture generic_0900A800[] = {
-#include "textures/generic/generic_textures.0A800.rgba16.inc.c"
-};
-
-// 0x0900B000
-ALIGNED8 const Texture generic_0900B000[] = {
-#include "textures/generic/generic_textures.0B000.rgba16.inc.c"
-};
-
-// 0x0900B800
-ALIGNED8 const Texture generic_0900B800[] = {
-#include "textures/generic/generic_textures.0B800.rgba16.inc.c"
-};
-
-// 0x0900C000
-ALIGNED8 const Texture generic_0900C000[] = {
-#include "textures/generic/generic_textures.0C000.rgba16.inc.c"
-};
-
-// 0x0900C800
-ALIGNED8 const Texture generic_0900C800[] = {
-#include "textures/generic/generic_textures.0C800.ia16.inc.c"
-};
-
-// 0x0900D000
-ALIGNED8 const Texture generic_0900D000[] = {
-#include "textures/generic/generic_textures.0D000.ia16.inc.c"
+#include "textures/generic/generic_textures.0A000.ia16.inc.c"
 };
